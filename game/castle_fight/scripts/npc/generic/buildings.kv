@@ -1,0 +1,65 @@
+"DOTAUnits"
+{
+  "castle" 
+  {
+    "Model"            "models/props_structures/good_ancient001.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "5"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1"
+    "RingRadius"       "400"
+    "BoundsHullName"   "DOTA_HULL_SIZE_BARRACKS"
+
+    "MinimapIcon"       "minimap_ancient"
+    "MinimapIconSize"     "400"
+    "HealthBarOffset"     "400"
+
+    "Ability1"                ""
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "5000"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "4000"
+    "VisionNighttimeRange"   "4000"
+  }
+
+  "treasure_box" 
+  {
+    "Model"            "models/props_gameplay/treasure_chest_gold.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "5"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1"
+    "RingRadius"       "100"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Killing"
+
+    "Ability1"                "treasure_box_income"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "650"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+}

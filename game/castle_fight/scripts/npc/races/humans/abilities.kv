@@ -1,0 +1,1271 @@
+"DOTAAbilities"
+{
+  "train_footman"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "dragon_knight_dragon_blood"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "footman"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_defender"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "dragon_knight_dragon_tail"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "ThinkInterval"  "25.0"
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "defender"
+          }
+        }
+      }
+    }
+  }
+
+  "defender_evasion"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "15"
+      }      
+    }
+  }
+
+  // Defend: 50% chance to repel long-range attacks.
+  // It also reduces the damage received from ranged attacks by 40%, spell damage by 50%.
+  "defender_defend"
+  {
+    "AbilityTextureName"          "mars_bulwark"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/human/defender_defend"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_mars/mars_shield_of_mars.vpcf"
+      "particle"  "particles/units/heroes/hero_mars/mars_shield_of_mars_small.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_mars.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                    "FIELD_INTEGER"
+        "ranged_repel_chance"         "50"
+      }      
+      "02"
+      {
+        "var_type"                    "FIELD_INTEGER"
+        "ranged_damage_reduction"     "40"
+      }
+      "03"
+      {
+        "var_type"                    "FIELD_INTEGER"
+        "spell_damage_reduction"      "50"
+      }
+    }
+  }
+
+  "build_barracks"
+  {
+    "AbilityTextureName"            "barracks"
+
+    "UnitName"                      "barracks"
+    "AbilityGoldCost"               "100"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_stronghold"
+  {
+    "AbilityTextureName"            "stronghold"
+    "AbilityGoldCost"               "100"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradeCost"
+      }
+    }
+
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "stronghold"
+      }
+    }
+  }
+
+  "train_sniper"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "sniper_assassinate"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "sniper"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_marksman"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "sniper_take_aim"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "ThinkInterval"  "25.0"
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "marksman"
+          }
+        }
+      }
+    }
+  }
+
+  "train_heavy_gunner"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "sniper_shrapnel"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "ThinkInterval"  "25.0"
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "heavy_gunner"
+          }
+        }
+      }
+    }
+  }
+
+  "build_sniper_nest"
+  {
+    "AbilityTextureName"            "sniper_nest"
+
+    "UnitName"                      "sniper_nest"
+    "AbilityGoldCost"               "140"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_gunners_hall"
+  {
+    "AbilityTextureName"            "gunners_hall"
+    "AbilityGoldCost"               "180"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradeCost"
+      }
+    }
+
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "gunners_hall"
+      }
+    }
+  }
+
+  "upgrade_marskmens_encampment"
+  {
+    "AbilityTextureName"            "marksmens_encampment"
+    "AbilityGoldCost"               "160"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradeCost"
+      }
+    }
+
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "marksmens_encampment"
+      }
+    }
+  }
+
+  "heavy_gunner_critical_strike"
+  {
+    "AbilityTextureName"            "sniper_headshot"
+    "BaseClass"                     "ability_datadriven"
+    "MaxLevel"                      "1"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+    }
+
+    "Modifiers"
+    {
+      "passive_crit"
+      {
+        "Passive"       "1"
+        "IsHidden"      "1"
+        "OnAttackStart"
+        {
+          "Random"
+          {
+            "Chance"        "%crit_chance"
+            "PseudoRandom"  "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+            "OnSuccess"
+            {
+              "ApplyModifier"
+              {
+                "Target"        "CASTER"
+                "ModifierName"  "next_hit_crit"
+              }
+            }
+          }
+        }
+      }
+
+      "next_hit_crit"
+      {
+        "IsHidden"  "1"
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "crit_damage"
+        }
+        "OnAttackLanded"
+        {
+          "FireEffect"
+          {
+            "EffectName"         "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+            "EffectAttachType"   "follow_origin"
+            "Target"             "TARGET"
+          }
+          "RemoveModifier"
+          {
+            "ModifierName"    "next_hit_crit"
+            "Target"      "CASTER"  
+          }
+          "FireSound"
+          {
+            "EffectName"  "Hero_PhantomAssassin.CoupDeGrace"
+            "Target"      "TARGET"
+          }
+        }
+      }
+
+      "AbilitySpecial"
+      {
+        "01"
+        {
+          "var_type"      "FIELD_INTEGER"
+          "crit_chance"   "20"
+        }
+        "02"
+        {
+          "var_type"      "FIELD_INTEGER"
+          "crit_damage"   "200"
+        }
+      }
+    }
+  }
+
+  "marksman_critical_strike"
+  {
+    "AbilityTextureName"            "sniper_headshot"
+    "BaseClass"                     "ability_datadriven"
+    "MaxLevel"                      "1"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+    }
+
+    "Modifiers"
+    {
+      "passive_crit"
+      {
+        "Passive"       "1"
+        "IsHidden"      "1"
+        "OnAttackStart"
+        {
+          "Random"
+          {
+            "Chance"        "%crit_chance"
+            "PseudoRandom"  "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+            "OnSuccess"
+            {
+              "ApplyModifier"
+              {
+                "Target"        "CASTER"
+                "ModifierName"  "next_hit_crit"
+              }
+            }
+          }
+        }
+      }
+
+      "next_hit_crit"
+      {
+        "IsHidden"  "1"
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "crit_damage"
+        }
+        "OnAttackLanded"
+        {
+          "FireEffect"
+          {
+            "EffectName"         "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+            "EffectAttachType"   "follow_origin"
+            "Target"             "TARGET"
+          }
+          "RemoveModifier"
+          {
+            "ModifierName"    "next_hit_crit"
+            "Target"      "CASTER"  
+          }
+          "FireSound"
+          {
+            "EffectName"  "Hero_PhantomAssassin.CoupDeGrace"
+            "Target"      "TARGET"
+          }
+        }
+      }
+
+      "AbilitySpecial"
+      {
+        "01"
+        {
+          "var_type"      "FIELD_INTEGER"
+          "crit_chance"   "40"
+        }
+        "02"
+        {
+          "var_type"      "FIELD_INTEGER"
+          "crit_damage"   "300"
+        }
+      }
+    }
+  }
+
+  "build_weapon_lab"
+  {
+    "AbilityTextureName"            "weapon_lab"
+
+    "UnitName"                      "weapon_lab"
+    "AbilityGoldCost"               "210"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "train_mortar"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "techies_suicide"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "ThinkInterval"  "25.0"
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "mortar"
+          }
+        }
+      }
+    }
+  }
+
+  "build_gryphon_rock"
+  {
+    "AbilityTextureName"            "gryphon_rock"
+
+    "UnitName"                      "gryphon_rock"
+    "AbilityGoldCost"               "250"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "train_gryphon_rider"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "jakiro_dual_breath"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "ThinkInterval"  "25.0"
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "gryphon_rider"
+          }
+        }
+      }
+    }
+  }
+
+  "gryphon_bash"
+  {
+    "AbilityTextureName"          "slardar_bash"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/bash"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_duration"  "2"
+      }
+      "02"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_chance"    "15"
+      }
+      "03"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_damage"    "25"
+      }
+    }
+  }
+
+  "passive_chain_lightning"
+  {
+    "AbilityTextureName"             "harpy_storm_chain_lightning"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/passive_chain_lightning"
+    "MaxLevel"                       "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "precache"
+    {
+      "particle"  "particles/items_fx/chain_lightning.vpcf"
+      "soundfile" "soundevents/game_sounds_items.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "trigger_chance"         "10"
+      }
+      "02"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "initial_damage"     "150"
+      }
+      "03"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "max_targets"        "7"
+      }
+      "04"
+      {
+        "var_type"                 "FIELD_FLOAT"
+        "jump_damage_reduction"    "0.25"
+      }
+      "05"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "jump_range"         "500"
+      }      
+      "06"
+      {
+        "var_type"           "FIELD_FLOAT"
+        "jump_delay"         "0.25"
+      }
+    }
+  }
+
+  "build_chapel"
+  {
+    "AbilityTextureName"            "cathedral"
+
+    "UnitName"                      "chapel"
+    "AbilityGoldCost"               "280"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "train_crusader"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "omniknight_repel"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "crusader"
+          }
+        }
+      }
+    }    
+  }
+
+  "upgrade_church"
+  {
+    "AbilityTextureName"            "cathedral"
+    "AbilityGoldCost"               "245"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradeCost"
+      }
+    }
+
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "church"
+      }
+    }
+  }
+
+  // 25%
+  "crusader_cleave"
+  {
+    "AbilityTextureName"          "sven_great_cleave"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/cleave"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "cleave_damage"         "25"
+      }      
+      "02"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "cleave_radius"         "200.0"
+      }
+    }
+  }
+
+  "crusader_bash"
+  {
+    "AbilityTextureName"          "slardar_bash"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/bash"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_duration"  "2"
+      }
+      "02"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_chance"    "20"
+      }
+      "03"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_damage"    "25"
+      }
+    }
+  }
+
+  //level 1 (+6 armor, +16hp / sec, +100 thp)
+  //level 2 (+9 armor, +25hp / sec, +100 thp)
+  //duration?
+  "crusader_blessing"
+  {
+    "AbilityTextureName"             "luna_lunar_blessing"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/crusader_blessing"
+    "MaxLevel"                       "2"
+
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"        "40.0"
+    "AbilityManaCost"        "103"
+    "AbilityCastPoint"       "0.2"
+    "AbilityCastRange"       "500"
+
+    "precache"
+    {
+      "particle"  "particles/custom/human/inner_fire.vpcf"
+      "soundfile" "soundevents/game_sounds_items.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "duration"               "60"
+      }
+      "02"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "armor_bonus"            "6 9"
+      }
+      "03"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "regen_bonus"            "16 25"
+      }
+      "04"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "health_bonus"           "100"
+      }
+    }
+  }
+
+  "train_paladin"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "chen_hand_of_god"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "paladin"
+          }
+        }
+      }
+    }    
+  }
+
+  // resurrects an allied non-legendary unit, 103 mana CD 40
+  "crusader_resurrection"
+  {
+    "AbilityTextureName"             "chen_hand_of_god"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/crusader_resurrection"
+    "MaxLevel"                       "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_POINT"
+
+    "AbilityCooldown"        "40.0"
+    "AbilityManaCost"        "103"
+    "AbilityCastPoint"       "0.0"
+
+    "precache"
+    {
+      "particle"  "particles/status_fx/status_effect_guardian_angel.vpcf"
+      "particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "range"                  "900"
+      }
+    }
+  }
+
+  "crusader_armor_aura"
+  {
+    "AbilityTextureName"             "sven_warcry"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/devotion_aura"
+    "MaxLevel"                       "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"              "particles/custom/aura_devotion.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "armor_bonus"            "3"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"        "900"
+      }
+    }
+  }
+
+  "train_warlock"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "pugna_nether_ward"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "warlock"
+          }
+        }
+      }
+    }    
+  }
+
+  "build_hjordhejmen"
+  {
+    "AbilityTextureName"            "hjordhejmen"
+
+    "UnitName"                      "hjordhejmen"
+    "AbilityGoldCost"               "300"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  // 270 dmg within 370 aoe, 35 mana 12 CD
+  "chamber_of_darkness"
+  {
+    "AbilityTextureName"             "pugna_nether_blast"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/chamber_of_darkness"
+    "MaxLevel"                       "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilityCooldown"        "12.0"
+    "AbilityManaCost"        "35"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "radius"                 "370"
+      }
+      "02"
+      {
+        "var_type"               "FIELD_FLOAT"
+        "delay"                  "0.9"
+      }
+      "03"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "damage"                 "270"
+      }
+    }
+  }
+
+  "build_gjallarhorn"
+  {
+    "AbilityTextureName"            "gjallarhorn"
+
+    "UnitName"                      "gjallarhorn"
+    "AbilityGoldCost"               "225"
+    "LumberCost"                    "750"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  // Increases the attack speed of nearby allied units by 66%. 7 mana, CD: 7
+  "holy_power"
+  {
+    "AbilityTextureName"             "huskar_inner_fire"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/holy_power"
+    "MaxLevel"                       "1"
+
+    "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "AbilityCooldown"                "7.0"
+    "AbilityManaCost"                "7"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "attack_speed"           "66"
+      }
+      "02"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "radius"                 "800"
+      }
+    }
+  }
+
+  "build_artillery"
+  {
+    "AbilityTextureName"            "artillery"
+
+    "UnitName"                      "artillery"
+    "AbilityGoldCost"               "200"
+    "LumberCost"                    "360"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  // Shoots artillery shells at the enemy base. Deals 300-400 siege damage.
+  // Not very accurate but very destructive if it hits the target.
+  // Strong AOE damage.) Recharge time: 12 seconds
+  "artillery_fire"
+  {
+    "AbilityTextureName"             "gyrocopter_homing_missile"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/artillery_fire"
+    "MaxLevel"                       "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"             "12.0"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_techies/techies_base_attack.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "damage_min"             "300"
+      }
+      "02"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "damage_max"             "400"
+      }
+    }
+  }
+
+  "build_watch_tower"
+  {
+    "AbilityTextureName"            "watch_tower"
+
+    "UnitName"                      "watch_tower"
+    "AbilityGoldCost"               "150"
+    "LumberCost"                    "300"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "build_heroic_shrine"
+  {
+    "AbilityTextureName"            "heroic_shrine"
+
+    "UnitName"                      "heroic_shrine"
+    "AbilityGoldCost"               "700"
+    "LumberCost"                    "1800"
+    "IsLegendary"                   "1"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  // Whenever an allied structure trains a unit, there is a 24% chance of 
+  // producing an additional unit of the same type, fighting for the owner of
+  // the Altar. Does not train legendary units. Aura does not stack.
+  "call_to_arms"
+  {
+    "AbilityTextureName"             "chen_holy_persuasion"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/call_to_arms"
+    "MaxLevel"                       "1"
+
+    "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "trigger_chance"         "24"
+      }
+    }
+  }
+}

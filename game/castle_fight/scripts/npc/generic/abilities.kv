@@ -1,0 +1,80 @@
+"DOTAAbilities"
+{
+  "Version"   "1"
+
+  "builder_invulnerable"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "MaxLevel"                  "1"
+    "AbilityTextureName"        "invulnerable"
+    "Modifiers"
+    {
+      "builder_invulnerable_modifier"
+      {
+        "Passive"    "1"
+        "States"
+        {
+          "MODIFIER_STATE_NO_UNIT_COLLISION"      "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_ATTACK_IMMUNE"          "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        }
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"   "1"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"    "1"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"       "1"
+        }
+      }
+    }
+  }
+
+  "build_treasure_box"
+  {
+    "AbilityTextureName"            "alchemist_goblins_greed"
+
+    "UnitName"                      "treasure_box"
+    "AbilityGoldCost"               "350"
+    "LumberCost"                    "400"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "treasure_box_income"
+  {
+    "AbilityTextureName"            "alchemist_goblins_greed"
+    "BaseClass"                     "ability_datadriven"
+    "MaxLevel"                      "1"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  // This is just cosmetic, the actual logic for splash damage is in the units.kv
+  "splash_attack"
+  {
+    "AbilityTextureName"            "black_dragon_splash_attack"
+    "BaseClass"                     "ability_datadriven"
+    "MaxLevel"                      "1"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf"
+    }
+  }
+}

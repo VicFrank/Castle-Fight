@@ -1,0 +1,7 @@
+#base "races/humans/items.kv"
+#base "generic/items.kv"
+
+"DOTAAbilities"
+{
+  
+}

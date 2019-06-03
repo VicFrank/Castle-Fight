@@ -1,0 +1,57 @@
+"BH_Settings"
+{
+    // Particle settings
+    "GRID_ALPHA"                "30"  //Defines the transparency of the base green/red squares in Panorama
+    "ALT_GRID_ALPHA"            "90"  //Defines the transparency of the alt grid white/red squares in Panorama
+    "ALT_GRID_SQUARES"          "4"   //Defines how many small squares to create to each side of the building construction size
+    "RANGE_OVERLAY_ALPHA"       "30"  //Defines the transparency of the range overlay showed when placing a building with attack capabilities
+    "MODEL_ALPHA"               "100" //Defines the transparency of both the ghost model in Panorama and Building Placed in Lua
+    "RECOLOR_GHOST_MODEL"       "false" //Recolor the ghost model green when valid or just default color
+    "RED_MODEL_WHEN_INVALID"    "true"  //Recolor red when ghosting over an invalid position
+    "RECOLOR_BUILDING_PLACED"   "true"  //Recolor green the queue of buildings placed in Lua
+    "PERMANENT_ALT_GRID"        "false"
+
+    // Does this game have tree cutting methods and allows for building on them?
+    "UPDATE_TREES"              "false"
+
+    // Percentage health that buildings should start at
+    "INITIAL_HEALTH_FACTOR"     "0.1"
+
+    // Percentage health at which buildings should play their FireEffect
+    "FIRE_EFFECT_FACTOR"        "0.5"
+
+    // Min Height buildings are able to be placed, leave it empty for none. If a value is defined, all building placements strictly below this number will be invalid
+    "HEIGHT_RESTRICTION"        ""
+
+    // Should buildings be immune to magic damage? Should also be careful with healing abilities targeting them.
+    "MAGIC_IMMUNE_BUILDINGS"    "true"
+
+    // Should buildings be deniable from 100% HP?
+    "DENIABLE_BUILDINGS"        "false"
+
+    // Should we disable building turnrate by default? Defining a "DisableTurning" kv on the unit will still override the global setting
+    "DISABLE_BUILDING_TURNING"  "true"
+
+    // Path of the builder callbacks, can be changed to somewhere else within vscripts
+    "BUILD_PATH"                "builder"
+
+    // Should we try to tie allied building rightclick to a "RepairAbility" usage ?
+    "RIGHT_CLICK_REPAIR"        "true"
+
+    // Path of the repair callbacks, can be changed to somewhere else within vscripts
+    "REPAIR_PATH"               "repair"
+
+    // The following can be overriden in each ability KV if different ratios are necessary
+    "REPAIR_SETTINGS"
+    {
+        "RepairCostRatio"       "0.0" //Resource cost needed to heal the buildings HP based on the original cost
+        "RepairTimeRatio"       "1.5"  //Time needed to heal the buildings HP based on the original time
+
+        // Powerbuild is applied for every extra builder working on the same building
+        "PowerbuildCost"        "0.15" //Cost Ratio = RepairCostRatio + PowerbuildCost*(Builders-1)
+        "PowerbuildRate"        "0.6"  //Time Ratio = RepairTimeRatio * PowerbuildRate^(Builders-1)
+    }
+
+    // Turn this off to hide the console print messages
+    "TESTING"                   "true"
+}

@@ -1,0 +1,521 @@
+"DOTAUnits"
+{
+  "barracks" 
+  {
+    "Model"            "models/props_structures/radiant_melee_barracks001.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    // DestructionEffect   .vpcf String    The particle effect to play when the building is destroyed
+    // FireEffect          .vpcf String    The particle effect to play when the building is below the FIRE_EFFECT_FACTOR (0.5 default)
+    // ModelRotation        Angle Number   Rotates the building by a certain amount for particle ghost and placement.
+    // ModelOffset          Number         Positions the building at a height offset from the ground.
+    // PedestalModel       .vmdl String    Puts a model prop at the buildings feet.
+    // PedestalModelScale   Number         Defines the model scale of the pedestal
+
+    "Ability1"                "train_footman"
+    "Ability2"                "upgrade_stronghold"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "stronghold" 
+  {
+    "Model"            "models/props_structures/good_barracks_melee001.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_defender"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1300"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "sniper_nest" 
+  {
+    "Model"            "models/props_structures/radiant_ranged_barracks001.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_sniper"
+    "Ability2"                "upgrade_gunners_hall"
+    "Ability3"                "upgrade_marskmens_encampment"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "gunners_hall" 
+  {
+    "Model"            "models/props_structures/tent_dk_large.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.3"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotation"    "90"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_heavy_gunner"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "marksmens_encampment" 
+  {
+    "Model"            "models/props_structures/tent_dk_med.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_marksman"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "weapon_lab"
+  {
+    "Model"            "models/items/rattletrap/mechanised_pilgrim_cog/mechanised_pilgrim_cog.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "2.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "SiegeTrainer"
+
+    "Ability1"                "train_mortar"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "gryphon_rock"
+  {
+    "Model"            "models/gryphon.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.2"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_gryphon_rider"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "chapel"
+  {
+    "Model"            "models/cathedral.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotation"    "90"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_crusader"
+    "Ability2"                "upgrade_church"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "church"
+  {
+    "Model"            "models/cathedral.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.5"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotation"    "90"
+
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_paladin"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  // No, I don't know what this means.
+  // Also, I think this unit is lame
+  "hjordhejmen"
+  {
+    "Model"            "models/items/pugna/ward/draining_wight/draining_wight.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_warlock"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "gjallarhorn"
+  {
+    "Model"            "models/props_structures/good_statue008.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Support"
+
+    "Ability1"                "holy_power"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "artillery"
+  {
+    "Model"            "models/props_structures/radiant_tower001.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Killing"
+
+    "Ability1"                "artillery_fire"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+    "AttackDamageMin"         "300"
+    "AttackDamageMax"         "400"
+    "AttackRate"              "12"
+    "AttackAnimationPoint"    "1.0"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "99999"
+    "ProjectileModel"         "particles/units/heroes/hero_techies/techies_base_attack.vpcf"
+    "ProjectileSpeed"         "900"
+
+    "SplashAttack"              "1"
+    "SplashFullRadius"          "25"
+    "SplashMediumRadius"        "50"
+    "SplashMediumDamage"        "0.4"
+    "SplashSmallRadius"         "150"
+    "SplashSmallDamage"         "0.25"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "watch_tower"
+  {
+    "Model"            "models/props_structures/tower_good.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "50"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Tower"
+
+    "SoundSet"                 "Hero_Mirana"
+    "GameSoundsFile"           "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+
+    "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
+    "AttackDamageMin"           "60.0"
+    "AttackDamageMax"           "70.0"
+    "AttackRate"                "0.72"
+    "AttackAnimationPoint"      "0.3"
+    "AttackAcquisitionRange"    "950"
+    "AttackRange"               "950"
+    "ProjectileModel"           "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf"    
+    "ProjectileSpeed"           "1800"
+
+    "ArmorPhysical"             "8"
+    "MagicalResistance"         "0.75"
+    "AttackType"                "pierce"
+    "ArmorType"                 "fortified"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1500"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "heroic_shrine"
+  {
+    "Model"            "models/tower_good2.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.76"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "140"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Support"
+
+    "Ability1"                "call_to_arms"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+}

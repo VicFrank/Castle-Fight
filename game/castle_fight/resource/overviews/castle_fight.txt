@@ -1,0 +1,8 @@
+castle_fight
+{
+	material materials/overviews/castle_fight.vmat
+	pos_x -8192
+	pos_y 8192
+	scale 16.000
+}
+

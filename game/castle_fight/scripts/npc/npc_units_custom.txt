@@ -1,0 +1,8 @@
+#base "races/humans/buildings.kv"
+#base "races/humans/units.kv"
+#base "generic/buildings.kv"
+
+"DOTAUnits"
+{
+
+}

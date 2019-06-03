@@ -1,0 +1,16 @@
+# Cache
+*.bin
+*.cfg
+*.soc
+*.tmp
+
+# Compiled formats
+*.vmat_c
+*.vagrp_c
+*.vmesh_c
+
+# Map files
+*.vpk
+
+# Map overviews
+resource/overviews/*
