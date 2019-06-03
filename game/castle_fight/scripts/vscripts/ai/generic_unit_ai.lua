@@ -234,7 +234,11 @@ function thisEntity:UseAbility()
       FIND_ANY_ORDER,
       false)
 
-    target = GetRandomTableElement(targets)
+    target = FindFirstUnit(targets, function(target) 
+      return not IsCustomBuilding(target)
+    end)
+
+    if not target then return false end
   else
     target = self.aiState.aggroTarget
   end

@@ -8,7 +8,7 @@ function GameMode:OnGameRulesStateChange()
 end
 
 function GameMode:OnGameInProgress()
-  GameMode:StartRound()
+  GameMode:CountdownToNextRound(TIME_BEFORE_FIRST_ROUND)
 end
 
 function GameMode:OnNPCSpawned(keys)

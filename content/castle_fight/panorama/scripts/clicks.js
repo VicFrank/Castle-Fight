@@ -1,5 +1,5 @@
 "use strict"
-var right_click_repair = true; //CustomNetTables.GetTableValue("building_settings", "right_click_repair").value;
+var right_click_repair = CustomNetTables.GetTableValue("building_settings", "right_click_repair").value;
 
 function GetMouseTarget()
 {
@@ -52,7 +52,7 @@ function OnLeftButtonPressed() {
 }
 
 function IsCustomBuilding(entIndex) {
-    return (Entities.GetAbilityByName( entIndex, "ability_building") != -1)
+    return HasModifier(entIndex, "modifier_building") || (Entities.GetUnitLabel( entIndex ) == "castle")
 }
 
 function IsBuilder(entIndex) {
@@ -93,3 +93,12 @@ GameUI.SetMouseCallback( function( eventName, arg ) {
     }
     return CONTINUE_PROCESSING_EVENT
 } )
+
+function HasModifier(entIndex, modifierName) {
+    var nBuffs = Entities.GetNumBuffs(entIndex)
+    for (var i = 0; i < nBuffs; i++) {
+        if (Buffs.GetName(entIndex, Entities.GetBuff(entIndex, i)) == modifierName)
+            return true
+    };
+    return false
+}; 

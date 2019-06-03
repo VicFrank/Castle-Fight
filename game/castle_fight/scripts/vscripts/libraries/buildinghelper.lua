@@ -1353,8 +1353,8 @@ end
 -- Starts the repair process when the builder is on range of the target
 function BuildingHelper:StartRepair(builder, target)
     local work = builder.work
-    local underConstruction = IsCustomBuilding(target) and target:IsUnderConstruction() -- For RequiresRepair building behaviour
-    
+    -- VicFrank commenting this out because it is nil when reapiring the castle
+    -- local underConstruction = IsCustomBuilding(target) and target:IsUnderConstruction() -- For RequiresRepair building behaviour
     -- Check target and cancel if invalid
     local repair_ability = BuildingHelper:GetRepairAbility(builder)
     if underConstruction and repair_ability and not repair_ability:GetKeyValue("CanAssistConstruction") then
@@ -1470,14 +1470,18 @@ function BuildingHelper:StartRepair(builder, target)
             if builderCount == 0 then return fserverFrameRate end
 
             local buildTimeFactor = timeRatio*(powerBuildRate^(builderCount-1))
-            local nextTick = (buildTime*buildTimeFactor)/target:GetMaxHealth()
+            -- VicFrank
+            -- local nextTick = (buildTime*buildTimeFactor)/target:GetMaxHealth()
+            local nextTick = fserverFrameRate
             local hpGain = 0
 
             -- Calculate the HP to be gained on this tick
             if nextTick > fserverFrameRate then
                 hpGain = 1
             else
-                local nHealthInterval = target:GetMaxHealth() / (buildTime*buildTimeFactor / fserverFrameRate)
+                --VicFrank
+                -- local nHealthInterval = target:GetMaxHealth() / (buildTime*buildTimeFactor / fserverFrameRate)
+                local nHealthInterval = REPAIR_HEAL_RATE * fserverFrameRate
                 local fSmallHealthInterval = nHealthInterval - math.floor(nHealthInterval) --floating point component
                 nHealthInterval = math.floor(nHealthInterval)
 

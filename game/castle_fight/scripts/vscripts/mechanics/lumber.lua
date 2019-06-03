@@ -8,7 +8,6 @@ end
 
 function CDOTA_BaseNPC:SetLumber(lumber)
   self.lumber = lumber
-  print(self.lumber)
   CustomNetTables:SetTableValue(
     "lumber",
     tostring(self:GetPlayerOwnerID()),

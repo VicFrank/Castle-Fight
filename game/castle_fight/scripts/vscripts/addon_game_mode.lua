@@ -6,6 +6,8 @@ require('libraries/timers')
 require('libraries/notifications')
 require('libraries/selection')
 require("libraries/buildinghelper")
+require('repair')
+
 require("mechanics/units")
 require("mechanics/attacks")
 require("mechanics/lumber")

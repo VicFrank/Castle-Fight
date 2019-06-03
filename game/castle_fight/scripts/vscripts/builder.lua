@@ -101,6 +101,11 @@ function Build( event )
             unit.lumber_cost = lumber_cost
         end
 
+        -- Add the dust construction particle
+        if not unit.construction_particle then
+            unit.construction_particle = ParticleManager:CreateParticle("particles/custom/construction_dust.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+        end
+
         -- FindClearSpace for the builder
         FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
         caster:AddNewModifier(caster, nil, "modifier_phased", {duration=0.03})
@@ -121,6 +126,12 @@ function Build( event )
         -- Remove the item
         if unit.item_building_cancel then
             UTIL_Remove(unit.item_building_cancel)
+        end
+
+        -- Remove the dust construction particle
+        if unit.construction_particle and BuildingHelper:GetNumBuildersRepairing(unit) == 0 then 
+            ParticleManager:DestroyParticle(unit.construction_particle, false)
+            unit.construction_particle = nil
         end
 
         -- Give the unit their original attack capability

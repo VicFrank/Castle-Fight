@@ -20,11 +20,17 @@ end
 
 -- As soon as the builder reaches the building
 function BuildingHelper:OnRepairStarted(builder, building)
-    self:print("OnRepairStarted "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> "..building:GetUnitName().." "..building:GetEntityIndex())
+    -- print("OnRepairStarted "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> "..building:GetUnitName().." "..building:GetEntityIndex())
 
     local repair_ability = self:GetRepairAbility(builder)
     if repair_ability and repair_ability:GetToggleState() == false then
         repair_ability:ToggleAbility() -- Fake toggle the ability
+    end
+
+    -- Wisp Particle
+    if not builder.gathering_particle then
+        builder.gathering_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_wisp/wisp_overcharge.vpcf", PATTACH_ABSORIGIN_FOLLOW, builder)
+        ParticleManager:SetParticleControlEnt(builder.gathering_particle, 0, builder, PATTACH_POINT_FOLLOW, "attach_hitloc", builder:GetAbsOrigin(), true)
     end
 
     builder:StartGesture(ACT_DOTA_ATTACK)
@@ -67,20 +73,32 @@ end
 
 -- After an ongoing move-to-building or repair process is cancelled
 function BuildingHelper:OnRepairCancelled(builder, building)
-    self:print("OnRepairCancelled "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> "..building:GetUnitName().." "..building:GetEntityIndex())
+    -- print("OnRepairCancelled "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> "..building:GetUnitName().." "..building:GetEntityIndex())
+
+    builder:RemoveModifierByName("modifier_builder_repairing")
 
     if builder.repair_animation_timer then
         builder:RemoveGesture(ACT_DOTA_ATTACK)
         Timers:RemoveTimer(builder.repair_animation_timer)
     end
+
+    if builder.gathering_particle then
+        ParticleManager:DestroyParticle(builder.gathering_particle, false)
+        builder.gathering_particle = nil
+    end
 end
 
 -- After a building is fully constructed via repair ("RequiresRepair" buildings), or is fully repaired
 function BuildingHelper:OnRepairFinished(builder, building)
-    self:print("OnRepairFinished "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> "..building:GetUnitName().." "..building:GetEntityIndex())
+    -- print("OnRepairFinished "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> "..building:GetUnitName().." "..building:GetEntityIndex())
 
     if builder.repair_animation_timer then 
         builder:RemoveGesture(ACT_DOTA_ATTACK)
         Timers:RemoveTimer(builder.repair_animation_timer)
+    end
+
+    if builder.gathering_particle then
+        ParticleManager:DestroyParticle(builder.gathering_particle, false)
+        builder.gathering_particle = nil
     end
 end

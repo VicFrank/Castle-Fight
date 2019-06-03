@@ -5,7 +5,7 @@ end
 
 function GameMode:SetupHeroes()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
-    hero:SetGold(STARTING_GOLD, true)
+    hero:ModifyGold(STARTING_GOLD - hero:GetGold(), false, 0)
     hero:SetLumber(STARTING_LUMBER)
     hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
   end
@@ -35,10 +35,10 @@ end
 
 function GameMode:StartIncomeTimer()
   Timers:CreateTimer("IncomeTimer", {
-    endTime = 10,
+    endTime = INCOME_TICK_RATE,
     callback = function()
       GameMode:PayIncome()
-      return 10
+      return INCOME_TICK_RATE
     end
   })
 end
@@ -63,10 +63,11 @@ end
 -- Start Round
 --------------------------------------------------------
 function GameMode:StartRound()
+  print("Starting Round")
+  GameMode:InitializeRoundStats()
   GameMode:SpawnCastles()
   GameMode:SetupHeroes()
   GameMode:StartIncomeTimer()
-  GameMode:InitializeRoundStats()
 end
 
 --------------------------------------------------------
@@ -123,7 +124,8 @@ function GameMode:EndRound(losingTeam)
   -- Stop the income timer until the next round
   GameMode:StopIncomeTimer()
 
-  -- Prevent heroes from building until next round starts
+  -- Prevent heroes from moving until next round starts
+  -- Hide them out of world
   -- TODO
 
   -- Countdown to next round start

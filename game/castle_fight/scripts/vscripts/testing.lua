@@ -1,11 +1,11 @@
 function GameMode:OnScriptReload()
   print("Script Reload")
 
-  SpawnRandomBuilding()
+  -- SpawnRandomBuilding()
+  -- KillEverything()
+  -- GameMode:StartRound()
+  -- GiveLumberToAllPlayers(1000)
   KillAllUnits()
-  KillAllBuildings()
-  GameMode:StartRound()
-  GiveLumberToAllPlayers(1000)
 end
 
 function SpawnTestBuildings()
@@ -15,8 +15,6 @@ function SpawnTestBuildings()
   else
     GameRules.SpawnTestBuilding = true
   end
-
-  print("SpawnTestBuildings")
 
   local humanBuildings = {
     "barracks",
@@ -82,6 +80,16 @@ function KillAllBuildings()
 
   for _,unit in pairs(units) do
     if IsCustomBuilding(unit) and unit:GetUnitName() ~= "castle" then
+      unit:ForceKill(false)
+    end
+  end
+end
+
+function KillEverything()
+  local allUnits = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
+
+  for _,unit in pairs(allUnits) do
+    if not unit:IsHero() then
       unit:ForceKill(false)
     end
   end
