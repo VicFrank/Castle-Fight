@@ -1,23 +1,22 @@
-
 function OnPlayerLumberChanged(table_name, key, data) {
-   UpdateLumber()
+   UpdateLumber();
 }
 
 function UpdateLumber() {
   var playerID = Players.GetLocalPlayer();
-  var data = CustomNetTables.GetTableValue("lumber", playerID)
-   $('#LumberText').text = data.value;
+  var data = CustomNetTables.GetTableValue("lumber", playerID);
+  if (data && data.value) $('#LumberText').text = data.value;
 }
 
 function UpdateGold() {
-  var playerID = Players.GetLocalPlayer()
-  var gold = Players.GetGold(playerID)
-  $('#GoldText').text = gold
+  var playerID = Players.GetLocalPlayer();
+  var gold = Players.GetGold(playerID);
+  $('#GoldText').text = gold;
   $.Schedule(0.1, UpdateGold);
 }
 
 (function () {
   UpdateGold();
-  UpdateLumber();
+  // UpdateLumber();
   CustomNetTables.SubscribeNetTableListener("lumber", OnPlayerLumberChanged);
 })();

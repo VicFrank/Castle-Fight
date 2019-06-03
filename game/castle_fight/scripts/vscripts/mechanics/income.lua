@@ -1,8 +1,11 @@
 function GameMode:PayIncome()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     local income = GameMode:GetIncomeForTeam(hero:GetTeam())
+
     hero:ModifyGold(income, true, DOTA_ModifyGold_Unspecified)
     SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, income, hero)
+
+    hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
   end
 end
 
@@ -13,13 +16,13 @@ function GameMode:IncreaseIncomeByBuilding(building, cost)
   if buildingType == "UnitTrainer" then
     multiplier = 0.02
   elseif buildingType == "SiegeTrainer" then
-    multiplier = 0.18
+    multiplier = 0.018
   elseif buildingType == "Tower" then
-    multiplier = 0.08
+    multiplier = 0.008
   elseif buildingType == "Support" then
-    multiplier = 0.12
+    multiplier = 0.012
   elseif buildingType == "Killing" then
-    multiplier = 0.09
+    multiplier = 0.009
   else
     print(building:GetUnitName() .. " does not have a BuildingType")
   end
@@ -100,7 +103,7 @@ function GameMode:GetIncomeForTeam(team)
     numBoxes = GameRules.numRightTreasureBoxes
   end
 
-  local treasureBoxMultiplier = GameMode:CalculateTreasureBoxMultiplier(baseIncome, numBoxes)
+  local treasureBoxMultiplier = GameMode:CalculateTreasureBoxMultiplier(numBoxes)
   local income = baseIncome + baseIncome * treasureBoxMultiplier
 
   return GameMode:GetPostTaxIncome(income)

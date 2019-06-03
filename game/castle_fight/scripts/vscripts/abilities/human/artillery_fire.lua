@@ -10,10 +10,10 @@ modifier_artillery_fire = class({})
 function modifier_artillery_fire:IsHidden() return true end
 
 function modifier_artillery_fire:OnCreated()
+  if not IsServer() then return end
+
   self.ability = self:GetAbility()
   self.caster = self.ability:GetCaster()
-
-  if not self.caster then return end
 
   local team = self.caster:GetTeam()
 

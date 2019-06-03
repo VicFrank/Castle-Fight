@@ -7,6 +7,7 @@ function GameMode:SetupHeroes()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     hero:SetGold(STARTING_GOLD, true)
     hero:SetLumber(STARTING_LUMBER)
+    hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
   end
 end
 

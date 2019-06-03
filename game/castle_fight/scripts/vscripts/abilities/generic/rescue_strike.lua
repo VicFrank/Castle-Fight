@@ -22,7 +22,7 @@ function item_rescue_strike:OnSpellStart()
   local enemies = FindEnemiesInRadius(caster, radius)
 
   for _,enemy in pairs(enemies) do
-    enemy:kill(ability, caster)
+    enemy:Kill(ability, caster)
 
     damageDone = damageDone + enemy:GetHealth()
     enemiesKilled = enemiesKilled + 1

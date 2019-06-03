@@ -73,14 +73,14 @@ function GameMode:OnEntityKilled(keys)
   end
 
   local bounty = killed:GetGoldBounty()
-  if killer and bounty then
+  if killer and bounty and not killer:IsRealHero() then
     local player = killer:GetPlayerOwner()
     local playerID = killer:GetPlayerOwnerID()
     SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, nil)
     PlayerResource:ModifyGold(playerID, bounty, true, DOTA_ModifyGold_CreepKill)
   end
 
-  if building:GetUnitName == "item_build_treasure_box" then
+  if killed:GetUnitName() == "item_build_treasure_box" then
     if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
       GameRules.numLeftTreasureBoxes = GameRules.numLeftTreasureBoxes - 1
     else
@@ -121,7 +121,7 @@ function GameMode:OnConstructionCompleted(building, ability)
   end
 
   -- If the unit is a treasure box, increase the income for the team
-  if building:GetUnitName == "item_build_treasure_box" then
+  if building:GetUnitName() == "item_build_treasure_box" then
     if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
       GameRules.numLeftTreasureBoxes = GameRules.numLeftTreasureBoxes + 1
     else
