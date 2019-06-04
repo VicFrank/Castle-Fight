@@ -6,67 +6,204 @@
 
 #ResourcePanel
 {
-  width: 220px;
-  height: 36px;
-
-  horizontal-align: right;
-  vertical-align: bottom;
-
-  background-image: url("s2r://panorama/images/hud/reborn/shop_launcher_button_psd.vtex");
+	margin-right: 0px;
+	margin-bottom: 0px;
+	horizontal-align: right;
+	vertical-align: bottom;
+	z-index: -2;
+	width: 131px;
+	height: 140px;
+	background-color: #111920bb;
+	background-size: 100%;
 }
 
-#LumberPanel
+#ResourcesLabel
 {
-  width: 100px;
+	align: center top;
+	margin-top: 5px;
+	margin-left: 4px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: white;
+	text-shadow: 1px 1px 2px 1.2 black;
+	font-family: defaultFont;
+}
 
-  vertical-align: bottom;  
+#LumberLabelPanel
+{
+	width: 80px;
+    height: 36px;
+	background-color:gradient( linear, 0% 0%, 0% 100%, from( #60862d ), to( #3d5f1c ) );
+	border-top: 1px solid #ffffff22;
+	border-left: 1px solid #ffffff11;
+	border-right: 1px solid #00000044;
+	border-bottom: 1px solid #00000088;
+    brightness: 1;
+    z-index: -1;
+    box-shadow: #000000aa 0px 0px 2px 2px;
+    align: right bottom;
+    margin-bottom: 74px;
+    transition-property: background-image;
+    transition-duration: .18s;
+    transition-timing-function: ease-in-out;
+    tooltip-position: top;
+}
+
+#LumberIconPanel 
+{
+	width: 50px;
+	height: 36px;
+	background-image: url("s2r://panorama/images/hud/reborn/ability_bg_psd.vtex");
+	background-size: 100%;
+	margin-bottom: 74px;
+	vertical-align: bottom;
+	border-top: 1px solid #ffffff22;
+	border-left: 1px solid #ffffff11;
+	border-right: 1px solid #00000044;
+	border-bottom: 1px solid #00000088;
+	opacity: 1;
+	tooltip-position: left;
 }
 
 #LumberText
 {
-  color: green;
+  color: white;
   font-size: 20px;
   font-family: Radiance;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
+  vertical-align: center;
+  horizontal-align: left;
+  margin-left: 5px;
   text-shadow: 0px 0px 3px 3.0 #000000;
-
-  margin-left: 38px;
-  margin-top: 3px;
+  margin-top: 4px;
+  text-overflow: shrink;
 }
 
 #LumberIcon 
 { 
-  width:36px; 
-  height:26px; 
-  background-image: url("s2r://panorama/images/custom_game/lumber_icon.png"); 
-  background-size: 100% 100%;
+	background-image: url("s2r://panorama/images/custom_game/lumber_icon.png"); 
+	background-size: 100% 100%;
+    width: 36px;
+    height: 26px;
+    horizontal-align: center;
+    vertical-align: center;
 }
 
-#GoldPanel
+#GoldLabelPanel
 {
-  width: 100px;
+	width: 80px;
+    height: 36px;
+    background-color:gradient( linear, 0% 0%, 0% 100%, from( orange ), to( orange ) );
+	border-top: 1px solid #ffffff22;
+	border-left: 1px solid #ffffff11;
+	border-right: 1px solid #00000044;
+	border-bottom: 1px solid #00000088;
+    brightness: 1;
+    z-index: -1;
+    box-shadow: #000000aa 0px 0px 2px 2px;
+    align: right bottom;
+    margin-bottom: 37px;
+    transition-property: background-image;
+    transition-duration: .18s;
+    transition-timing-function: ease-in-out;
+    tooltip-position: top;
+}
 
-  vertical-align: bottom;
-
-  margin-left: 107px;
+#GoldIconPanel 
+{
+	width: 50px;
+	height: 36px;
+	background-image: url("s2r://panorama/images/hud/reborn/ability_bg_psd.vtex");
+	background-size: 100%;
+	vertical-align: bottom;
+	margin-bottom: 37px;
+	border-top: 1px solid #ffffff22;
+	border-left: 1px solid #ffffff11;
+	border-right: 1px solid #00000044;
+	border-bottom: 1px solid #00000088;
+	tooltip-position: left;
 }
 
 #GoldText
 {
-  color: #fea500;
+  color: white;
   font-size: 20px;
   font-family: Radiance;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   text-shadow: 0px 0px 3px 3.0 #000000;
-
-  margin-left: 38px;
-  margin-top: 7px;
+  vertical-align: center;
+  horizontal-align: left;
+  margin-left: 5px;
+  margin-top: 4px;
+  text-overflow: shrink;
 }
 
 #GoldIcon 
 {   
-  width:36px; 
-  height:36px; 
+	background-size: 100% 100%;
+    width: 36px;
+    height: 36px;
+    horizontal-align: center;
+    vertical-align: center;
+}
+
+#CheeseLabelPanel
+{
+	width: 80px;
+    height: 36px;
+    background-size: 100% 100%;
+	background-color:gradient( linear, 0% 0%, 0% 100%, from( #9862E9 ), to( #9862E9 ) );
+	border-top: 1px solid #ffffff22;
+	border-left: 1px solid #ffffff11;
+	border-right: 1px solid #00000044;
+	border-bottom: 1px solid #00000088;
+    brightness: 1;
+    z-index: -1;
+    box-shadow: #000000aa 0px 0px 2px 2px;
+    align: right bottom;
+    transition-property: background-image;
+    transition-duration: .18s;
+    transition-timing-function: ease-in-out;
+    tooltip-position: top;
+}
+
+#CheeseIconPanel 
+{
+	width: 50px;
+	height: 36px;
+	background-image: url("s2r://panorama/images/hud/reborn/ability_bg_psd.vtex");
+	background-size: 100%;
+	vertical-align: bottom;
+	border-top: 1px solid #ffffff22;
+	border-left: 1px solid #ffffff11;
+	border-right: 1px solid #00000044;
+	border-bottom: 1px solid #00000088;
+	tooltip-position: left;
+}
+
+#CheeseText
+{
+  color: white;
+  font-size: 20px;
+  font-family: Radiance;
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 0px 0px 3px 3.0 #000000;
+  vertical-align: center;
+  horizontal-align: left;
+  margin-left: 5px;
+  margin-top: 4px;
+  text-overflow: shrink;
+}
+
+#CheeseIcon 
+{   
+	background-size: 100% 100%;
+    width: 32px;
+    height: 32px;
+    horizontal-align: center;
+    vertical-align: center;
 }

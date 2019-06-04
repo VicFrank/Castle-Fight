@@ -38,9 +38,9 @@
     GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_8] = "#8c2af4;";
 
     var HUD = $.GetContextPanel().GetParent().GetParent();
-
     var newUI = HUD.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
-
+	var NoGlyphAndRadar = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("minimap_container");
+	
     //Talent UI
     newUI.FindChildTraverse("StatBranch").style.visibility = "collapse";
     newUI.FindChildTraverse("StatBranch").SetPanelEvent("onmouseover", function(){});
@@ -55,6 +55,9 @@
     //Back UI
     newUI.FindChildTraverse("inventory").FindChildTraverse("inventory_items").FindChildTraverse("inventory_backpack_list").style.visibility = "collapse";
 
+	//RadarAndGlyphContainer
+	 NoGlyphAndRadar.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
+	
   </script> 
 
   <Panel>
