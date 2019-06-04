@@ -55,8 +55,7 @@ function GameMode:OnHeroInGame(hero)
     hero:AddItem(CreateItem("item_build_artillery", hero, hero))
     hero:AddItem(CreateItem("item_build_watch_tower", hero, hero))
     hero:AddItem(CreateItem("item_build_heroic_shrine", hero, hero))
-    hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
-    hero:AddItem(CreateItem("item_rescue_strike", hero, hero))
+    hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))    
   end)  
 end
 
@@ -77,7 +76,7 @@ function GameMode:OnEntityKilled(keys)
     local player = killer:GetPlayerOwner()
     local playerID = killer:GetPlayerOwnerID()
     SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, nil)
-    PlayerResource:ModifyGold(playerID, bounty, true, DOTA_ModifyGold_CreepKill)
+    PlayerResource:ModifyGold(playerID, bounty, false, DOTA_ModifyGold_CreepKill)
   end
 
   if killed:GetUnitName() == "item_build_treasure_box" then

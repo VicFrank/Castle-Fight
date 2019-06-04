@@ -31,6 +31,8 @@ function SpawnUnit(keys)
   local unitName = keys.UnitName
   local numUnits = keys.NumUnits
 
+  if caster:IsNull() or not caster:IsAlive() then return end
+
   local cooldown = ability:GetCooldown(ability:GetLevel())
   ability:StartCooldown(cooldown)
 

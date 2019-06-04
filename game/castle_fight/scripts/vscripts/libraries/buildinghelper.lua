@@ -1353,8 +1353,8 @@ end
 -- Starts the repair process when the builder is on range of the target
 function BuildingHelper:StartRepair(builder, target)
     local work = builder.work
-    -- VicFrank commenting this out because it is nil when reapiring the castle
-    -- local underConstruction = IsCustomBuilding(target) and target:IsUnderConstruction() -- For RequiresRepair building behaviour
+    -- VicFrank castle doesn't have IsUnderConstruction()
+    local underConstruction = IsCustomBuilding(target) and not target:GetUnitName() == "castle" and target:IsUnderConstruction() -- For RequiresRepair building behaviour
     -- Check target and cancel if invalid
     local repair_ability = BuildingHelper:GetRepairAbility(builder)
     if underConstruction and repair_ability and not repair_ability:GetKeyValue("CanAssistConstruction") then
@@ -2015,11 +2015,22 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
         local unitName = overrideGhost or buildingName
         local entity
 
+        -- VicFrank We don't use override ghost
+        -- if overrideGhost then
+        --     -- Use a hero dummy to project the queue particles
+        --     entity = BuildingHelper:GetOrCreateDummy(unitName)
+        -- else
+        --     -- Create the building entity that will be used to start construction and project the queue particles
+        --     entity = CreateUnitByName(unitName, model_location, false, nil, nil, builder:GetTeam())
+        --     entity:SetNeverMoveToClearSpace(true)
+        --     function entity:IsUnderConstruction() return true end
+        -- end
+
         -- Create the building entity that will be used to start construction and project the queue particles
         entity = CreateUnitByName(unitName, model_location, false, nil, nil, builder:GetTeam())
         entity:SetNeverMoveToClearSpace(true)
         function entity:IsUnderConstruction() return true end
-        
+
         entity:AddEffects(EF_NODRAW)
         entity:AddNewModifier(entity, nil, "modifier_out_of_world", {})
         work.entity = entity

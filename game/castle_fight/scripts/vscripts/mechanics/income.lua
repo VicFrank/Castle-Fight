@@ -2,10 +2,11 @@ function GameMode:PayIncome()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     local income = GameMode:GetIncomeForTeam(hero:GetTeam())
 
-    hero:ModifyGold(income, true, DOTA_ModifyGold_Unspecified)
+    hero:ModifyGold(income, false, DOTA_ModifyGold_Unspecified)
     SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, income, hero)
 
     hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
+    hero:AddNewModifier(hero, nil, "income_modifier_enemy", {duration=10})
   end
 end
 
@@ -14,7 +15,7 @@ function GameMode:IncreaseIncomeByBuilding(building, cost)
   local multiplier
 
   if buildingType == "UnitTrainer" then
-    multiplier = 0.02
+    multiplier = 0.020
   elseif buildingType == "SiegeTrainer" then
     multiplier = 0.018
   elseif buildingType == "Tower" then

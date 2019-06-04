@@ -8,6 +8,10 @@ function GameMode:SetupHeroes()
     hero:ModifyGold(STARTING_GOLD - hero:GetGold(), false, 0)
     hero:SetLumber(STARTING_LUMBER)
     hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
+    hero:AddNewModifier(hero, nil, "income_modifier_enemy", {duration=10})
+    if not hero:HasItemInInventory("item_rescue_strike") then
+      hero:AddItem(CreateItem("item_rescue_strike", hero, hero))
+    end
   end
 end
 

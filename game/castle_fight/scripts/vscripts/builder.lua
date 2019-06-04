@@ -18,7 +18,6 @@ function Build( event )
 
     -- Additional checks to confirm a valid building position can be performed here
     event:OnPreConstruction(function(vPos)
-
         -- Check for minimum height if defined
         if not BuildingHelper:MeetsHeightCondition(vPos) then
             print("Failed placement of " .. building_name .." - Placement is below the min height required")

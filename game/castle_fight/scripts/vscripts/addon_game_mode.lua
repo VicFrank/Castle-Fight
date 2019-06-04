@@ -156,6 +156,7 @@ function GameMode:InitGameMode()
   -- Lua Modifiers
   LinkLuaModifier("modifier_disable_turning", "libraries/modifiers/modifier_disable_turning", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("income_modifier", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
+  LinkLuaModifier("income_modifier_enemy", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
 
   -- Setup Global Values
   GameRules.leftCastlePosition = Entities:FindByName(nil, "left_ancient_position"):GetAbsOrigin()

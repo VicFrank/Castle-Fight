@@ -34,8 +34,8 @@ function RefundUpgradePrice(keys)
   local caster = keys.caster
   local ability = keys.ability
   
-  local abilityPrice = ability:GetGoldCost()
+  local abilityPrice = ability:GetGoldCost(ability:GetLevel())
   local playerID = caster:GetPlayerOwnerID()
 
-  PlayerResource:ModifyGold(playerID, abilityPrice, true, DOTA_ModifyGold_SellItem)
+  PlayerResource:ModifyGold(playerID, abilityPrice, false, DOTA_ModifyGold_SellItem)
 end
