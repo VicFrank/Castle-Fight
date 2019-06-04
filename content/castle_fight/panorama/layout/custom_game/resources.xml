@@ -12,19 +12,19 @@
 	  <Panel id='LumberIconPanel'>
         <Image id="LumberIcon" src="file://{images}/custom_game/lumber_icon.png" onmouseover="UIShowTextTooltip(Lumber)"  onmouseout="UIHideTextTooltip()"/>
       </Panel>
-      <Panel id='LumberLabelPanel'>
+      <Panel id='LumberLabelPanel' onmouseover="UIShowTextTooltip(Put Some Data/Info Here)"  onmouseout="UIHideTextTooltip()">
         <Label id="LumberText" text="0" class="TitleFont" />
       </Panel>
 	  <Panel id='GoldIconPanel'>
         <Image id="GoldIcon" src="file://{images}/custom_game/gold_icon.png" onmouseover="UIShowTextTooltip(Gold)"  onmouseout="UIHideTextTooltip()" />
       </Panel>
-      <Panel id='GoldLabelPanel'>
+      <Panel id='GoldLabelPanel' onmouseover="UIShowTextTooltip(Put Some Data/Info Here)"  onmouseout="UIHideTextTooltip()">
         <Label id="GoldText" text="0" html="true" class="TitleFont" />
       </Panel>
 	   <Panel id='CheeseIconPanel'>
         <Image id="CheeseIcon" src="file://{images}/custom_game/cheese_icon.tga" onmouseover="UIShowTextTooltip(Cheese)"  onmouseout="UIHideTextTooltip()" />
       </Panel>
-	  <Panel id='CheeseLabelPanel'>
+	  <Panel id='CheeseLabelPanel' onmouseover="UIShowTextTooltip(Put Some Data/Info Here)"  onmouseout="UIHideTextTooltip()">
         <Label id="CheeseText" text="0" html="true" class="TitleFont" />
       </Panel>
     </Panel>
