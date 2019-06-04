@@ -10,6 +10,11 @@ function item_rescue_strike:OnSpellStart()
 
   local radius = ability:GetSpecialValueFor("radius")
 
+  -- Can't use rescue strike before the first round starts
+  if not GameRules.rescueStrikeDamage then
+    return
+  end
+
   EmitSoundOnLocationWithCaster(target, sound, caster)
 
   local particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
