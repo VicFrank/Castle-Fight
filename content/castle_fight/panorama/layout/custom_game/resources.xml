@@ -6,7 +6,7 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/resources.js" />     
   </scripts>
-  <Panel class="ResourceRoot">
+  <Panel class="ResourceRoot" hittest="false">
     <Panel id='ResourcePanel'>
 	  <Label id="ResourcesLabel" text="RESOURCES" html="true" class="TitleFont" />
 	  <Panel id='LumberIconPanel'>

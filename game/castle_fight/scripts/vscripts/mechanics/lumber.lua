@@ -1,8 +1,5 @@
 function CDOTA_BaseNPC:GetLumber()
-  if not self.lumber then
-    print("Hero has not had lumber initialized, defaulting to 0")
-    self.lumber = 0
-  end
+  if not self.lumber then self.lumber = 0 end
   return self.lumber
 end
 
@@ -19,5 +16,14 @@ function CDOTA_BaseNPC:ModifyLumber(value)
 end
 
 function CDOTA_BaseNPC:GiveLumber(value)
+  if not self.lumber then self.lumber = 0 end
   self:SetLumber(self.lumber + value)
+end
+
+function CDOTA_BaseNPC:SetCheese(cheese)
+  self.cheese = cheese
+  CustomNetTables:SetTableValue(
+    "cheese",
+    tostring(self:GetPlayerOwnerID()),
+    {value = self.cheese})
 end

@@ -1,11 +1,13 @@
 function GameMode:OnScriptReload()
   print("Script Reload")
 
+  -- SpawnTestBuildings()
   -- SpawnRandomBuilding()
   -- KillEverything()
   -- GameMode:StartRound()
-  -- GiveLumberToAllPlayers(1000)
-  KillAllUnits()
+  -- GameMode:EndRound()
+  GiveLumberToAllPlayers(2000)
+  -- KillAllUnits()
 end
 
 function SpawnTestBuildings()

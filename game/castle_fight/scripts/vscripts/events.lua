@@ -72,7 +72,8 @@ function GameMode:OnEntityKilled(keys)
   end
 
   local bounty = killed:GetGoldBounty()
-  if killer and bounty and not killer:IsRealHero() then
+  if killer and bounty and not killer:IsRealHero() and not killer == killed then
+    -- when you use forcekill, it's the same as the unit killing itself
     local player = killer:GetPlayerOwner()
     local playerID = killer:GetPlayerOwnerID()
     SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, nil)

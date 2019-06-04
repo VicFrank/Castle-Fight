@@ -13,7 +13,7 @@ function modifier_call_to_arms_aura:IsAura()
 end
 
 function modifier_call_to_arms_aura:IsHidden()
-  return true
+  return false
 end
 
 function modifier_call_to_arms_aura:IsPurgable()
@@ -33,16 +33,16 @@ function modifier_call_to_arms_aura:GetAuraSearchTeam()
 end
 
 function modifier_call_to_arms_aura:GetAuraEntityReject(target)
-  return not IsCustomBuilding(target)
+  return not IsCustomBuilding(target) or not (target:GetBuildingType() == "UnitTrainer" or target:GetBuildingType() == "SiegeTrainer")
 end
 
 function modifier_call_to_arms_aura:GetAuraSearchType()
-  return DOTA_UNIT_TARGET_BASIC
+  return DOTA_UNIT_TARGET_ALL
 end
 
--- function modifier_call_to_arms_aura:GetAuraDuration()
---   return 0.5
--- end
+function modifier_call_to_arms_aura:GetAuraDuration()
+  return 0.5
+end
 
 modifier_call_to_arms_aura_buff = class({})
 

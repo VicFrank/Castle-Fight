@@ -7,6 +7,7 @@ function GameMode:SetupHeroes()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     hero:ModifyGold(STARTING_GOLD - hero:GetGold(), false, 0)
     hero:SetLumber(STARTING_LUMBER)
+    hero:SetCheese(STARTING_CHEESE)
     hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
     hero:AddNewModifier(hero, nil, "income_modifier_enemy", {duration=10})
     if not hero:HasItemInInventory("item_rescue_strike") then
