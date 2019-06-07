@@ -1,16 +1,17 @@
 function GameMode:PayIncome()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
-    local income = GameMode:GetIncomeForTeam(hero:GetTeam())
+    local playerID = hero:GetPlayerOwnerID()
+    local income = GameMode:GetIncomeForPlayer(playerID)
 
     hero:ModifyGold(income, false, DOTA_ModifyGold_Unspecified)
     SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, income, hero)
 
     hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
-    hero:AddNewModifier(hero, nil, "income_modifier_enemy", {duration=10})
   end
 end
 
-function GameMode:IncreaseIncomeByBuilding(building, cost)
+function GameMode:GetIncomeIncreaseForBuilding(building, cost)
+  local playerID = building:GetPlayerOwnerID()
   local buildingType = building:GetBuildingType()
   local multiplier
 
@@ -30,11 +31,7 @@ function GameMode:IncreaseIncomeByBuilding(building, cost)
 
   local increase = cost * multiplier
 
-  if building:GetTeam() == DOTA_TEAM_GOODGUYS then
-    GameRules.leftIncome = GameRules.leftIncome + increase
-  else
-    GameRules.rightIncome = GameRules.rightIncome + increase
-  end
+  return increase
 end
 
 -- Profit from Treasure Boxes give 1.2% income from its value
@@ -92,17 +89,9 @@ function GameMode:GetPostTaxIncome(income)
   return sum
 end
 
-function GameMode:GetIncomeForTeam(team)
-  local baseIncome
-  local numBoxes
-
-  if team == DOTA_TEAM_GOODGUYS then
-    baseIncome = GameRules.leftIncome
-    numBoxes = GameRules.numLeftTreasureBoxes
-  else
-    baseIncome = GameRules.rightIncome
-    numBoxes = GameRules.numRightTreasureBoxes
-  end
+function GameMode:GetIncomeForPlayer(playerID)
+  local baseIncome = GameRules.income[playerID]
+  local numBoxes = GameRules.numBoxes[playerID]
 
   local treasureBoxMultiplier = GameMode:CalculateTreasureBoxMultiplier(numBoxes)
   local income = baseIncome + baseIncome * treasureBoxMultiplier

@@ -1,0 +1,506 @@
+"DOTAAbilities"
+{
+  // Shakes the ground under a random enemy unit, causing damage and slowing
+  // all enemy units in the area around the unit. Deals 40 spell damage,
+  // slows down by 50% for 10 seconds
+  // CD: 7
+  "earthquake"
+  {
+    "AbilityTextureName"          "earthshaker_echo_slam"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/earthquake"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"             "7.0"
+    "AbilityManaCost"             "100"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "15"
+      }      
+    }
+  }
+
+  // Grants control over a random non-legendary enemy unit
+  // CD 18
+  "control_enemy"
+  {
+    "AbilityTextureName"          "chen_holy_persuasion"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/control_enemy"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"             "18.0"
+    "AbilityManaCost"             "100"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "15"
+      }      
+    }
+  }
+
+  // Increases the life regeneration from allied units standing close to
+  // 7.5 HP / SEC, as well as the regeneration of buildings 2.5 HP / SEC
+  // effect from Coral Statue stacks with other effects Coral Statue, as
+  // well as the effect of the Rune of the Repair.
+  "restore_area"
+  {
+    "AbilityTextureName"          "oracle_fortunes_end"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/restore_area"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "15"
+      }      
+    }
+  }
+
+  // Throws a huge wave in the direction of a random enemy unit.
+  // The wave deals 270 damage to all ground enemy units in its path.
+  //  Recharge time: 15 seconds 
+  "tsunami"
+  {
+    "AbilityTextureName"          "tidehunter_gush"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/tsunami"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"             "15.0"
+    "AbilityManaCost"             "100"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "15"
+      }      
+    }
+  }
+
+  "murloc_critical_strike"
+  {
+    "AbilityTextureName"          "phantom_assassin_coup_de_grace"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "4"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "10 10 10 20"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "200"
+      }
+    }
+  }
+
+  "murloc_cleave"
+  {
+    "AbilityTextureName"          "sven_great_cleave"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/cleave"
+    "MaxLevel"                    "4"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "cleave_damage"           "25 25 25 30"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "cleave_radius"           "200"
+      }
+    }
+  }
+  
+  "murloc_evasion"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "4"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "8 8 8 15"
+      }      
+    }
+  }
+
+  "murloc_bash"
+  {
+    "AbilityTextureName"          "slardar_bash"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/bash"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_duration"  "2"
+      }
+      "02"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_chance"    "15"
+      }
+      "03"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_damage"    "25"
+      }
+    }
+  }
+
+  "murloc_feedback"
+  {
+    "AbilityTextureName"          "antimage_mana_break"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/feedback"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "mana_burn"      "25"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "mana_to_damage"    "100"
+      }
+    }
+  }
+
+  "hydra_poison_attack"
+  {
+    "AbilityTextureName"          "viper_poison_attack"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/hydra_poison_attack"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "attack_slow"      "35"
+      }
+      "02"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "move_speed_slow"    "35"
+      }
+      "03"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "dps"                "4"
+      }
+      "04"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "duration"           "2"
+      }
+    }
+  }
+
+  "ancient_hydra_split"
+  {
+    "AbilityTextureName"          "venomancer_plague_ward"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/hydra_split"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  "hydra_split"
+  {
+    "AbilityTextureName"          "venomancer_plague_ward"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/hydra_split"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  "winged_serpent_bouncing_attack"
+  {
+    "AbilityTextureName"          "luna_moon_glaive"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/bouncing_attack"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "bounds"           "2"
+      }
+      "02"
+      {
+        "var_type"                    "FIELD_INTEGER"
+        "damage_reduction_percent"    "30"
+      }
+    }
+  }
+
+  "naga_guardian_cleave"
+  {
+    "AbilityTextureName"          "sven_great_cleave"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/cleave"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "cleave_damage"           "35 50"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "cleave_radius"           "200"
+      }
+    }
+  }
+
+  "royal_guard_critical_strike"
+  {
+    "AbilityTextureName"          "phantom_assassin_coup_de_grace"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "10"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "200"
+      }
+    }
+  }
+
+  "dragon_turtle_bash"
+  {
+    "AbilityTextureName"          "slardar_bash"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/bash"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_duration"  "2"
+      }
+      "02"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_chance"    "15"
+      }
+      "03"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_damage"    "25"
+      }
+    }
+  }
+
+  // Thornshell (35%)
+  "dragon_turtle_damage_return"
+  {
+    "AbilityTextureName"          "centaur_return"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/damage_return"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "damage_return"  "35"
+      }
+    }
+  }
+
+  // Remove all buffs, significant slow, 20 mana, CD: 6
+  "naga_siren_purge"
+  {
+    "AbilityTextureName"          "satyr_trickster_purge"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/purge"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"      "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+    "AbilityCastAnimation"        "ACT_DOTA_CAST_ABILITY_1"
+
+    "AbilityCooldown"             "6.0"
+    "AbilityManaCost"             "20"
+    "AbilityCastPoint"            "0.3"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "slow_percent"            "10"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "5"
+      }
+    }
+  }
+
+  // Summon Lobsters Summons two lobsters that live for 45 seconds.
+  // Lobsters (Pierce / Heavy, 360HP) have Critical Strike (10%, 3x)
+  // 50% chance to reduce damage taken by 35.
+  "naga_siren_summon_lobsters"
+  {
+    "AbilityTextureName"          "lycan_summon_wolves"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/summon_lobsters"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    "AbilityCastPoint"        "0.3"
+    "AbilityCooldown"         "30.0 30.0 30.0 30.0"
+    "AbilityManaCost"         "145"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "slow_percent"            "10"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "5"
+      }
+    }
+  }
+
+  "lobster_critical_strike"
+  {
+    "AbilityTextureName"          "phantom_assassin_coup_de_grace"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "10"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "300"
+      }
+    }
+  }
+
+  "lobster_damage_reduction"
+  {
+    "AbilityTextureName"          "phantom_assassin_coup_de_grace"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/damage_reduction"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "damage_reduced"          "35"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "reduction_chance"        "50"
+      }
+    }
+  }
+}

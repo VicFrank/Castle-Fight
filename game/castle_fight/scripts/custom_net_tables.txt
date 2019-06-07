@@ -7,6 +7,7 @@
     "construction_size",
     "building_settings",
     "lumber",
-    "cheese"
+    "cheese",
+    "item_costs"
   ]
 } 

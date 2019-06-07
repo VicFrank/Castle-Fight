@@ -9,7 +9,6 @@ function GameMode:SetupHeroes()
     hero:SetLumber(STARTING_LUMBER)
     hero:SetCheese(STARTING_CHEESE)
     hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
-    hero:AddNewModifier(hero, nil, "income_modifier_enemy", {duration=10})
     if not hero:HasItemInInventory("item_rescue_strike") then
       hero:AddItem(CreateItem("item_rescue_strike", hero, hero))
     end
@@ -17,12 +16,13 @@ function GameMode:SetupHeroes()
 end
 
 function GameMode:InitializeRoundStats()
-  GameRules.roundTime = 0
-  GameRules.leftIncome = 5
-  GameRules.rightIncome = 5
-  GameRules.numLeftTreasureBoxes = 0
-  GameRules.numRightTreasureBoxes = 0
+  GameRules.roundCount = GameRules.roundCount + 1
 
+  GameRules.roundTime = 0
+  GameRules.numPlayersBuilt = 0
+
+  GameRules.income = {}
+  GameRules.numBoxes = {}
   GameRules.unitsKilled = {}
   GameRules.buildingsBuilt = {}
   GameRules.numUnitsTrained = {}
@@ -30,11 +30,14 @@ function GameMode:InitializeRoundStats()
   GameRules.rescueStrikeKills = {}
 
   for _,playerID in pairs(GameRules.playerIDs) do
+    GameRules.income[playerID] = STARTING_INCOME
+    GameRules.numBoxes[playerID] = 0
     GameRules.unitsKilled[playerID] = {}
     GameRules.buildingsBuilt[playerID] = {}
     GameRules.numUnitsTrained[playerID] = {}
     GameRules.rescueStrikeDamage[playerID] = {}
     GameRules.rescueStrikeKills[playerID] = {}
+    print(playerID, GameRules.numBoxes[playerID])
   end
 end
 
@@ -56,6 +59,10 @@ function GameMode:CountdownToNextRound(seconds)
   CustomGameEventManager:Send_ServerToAllClients("start_countdown_timer",
     {seconds = seconds})
 
+  if seconds >= 3 then
+    Notifications:TopToAll({text="Get ready for round " .. GameRules.roundCount + 1, duration=3.0})
+  end
+
   Timers:CreateTimer("RoundCountdownTimer", {
     endTime = seconds,
     callback = function()
@@ -64,21 +71,40 @@ function GameMode:CountdownToNextRound(seconds)
   })
 end
 
+-- Kills all units and structures, including both castles. Does not kill heroes.
+function GameMode:KillAllUnitsAndBuildings()
+  local allUnits = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
+
+  for _,unit in pairs(allUnits) do
+    if not unit:IsHero() then
+      unit:ForceKill(false)
+    end
+  end
+end
+
 --------------------------------------------------------
 -- Start Round
 --------------------------------------------------------
 function GameMode:StartRound()
   print("Starting Round")
+  -- Clear the map again, just in case
+  GameMode:KillAllUnitsAndBuildings()
   GameMode:InitializeRoundStats()
   GameMode:SpawnCastles()
   GameMode:SetupHeroes()
   GameMode:StartIncomeTimer()
+
+  Notifications:TopToAll({text="Round " .. GameRules.roundCount .. " started!", duration=3.0})
+
+  GameRules.roundInProgress = true
 end
 
 --------------------------------------------------------
 -- End Round
 --------------------------------------------------------
 function GameMode:EndRound(losingTeam)
+  GameRules.roundInProgress = false
+
   local winningTeam  
   if losingTeam == DOTA_TEAM_BADGUYS then
     winningTeam = DOTA_TEAM_GOODGUYS
@@ -117,17 +143,11 @@ function GameMode:EndRound(losingTeam)
     numKilledFromHighestRescueStrike = numKilledFromHighestRescueStrike,
   })
 
-  -- Clear the map of all units/structures
-  local allUnits = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
-
-  for _,unit in pairs(allUnits) do
-    if not unit:IsHero() then
-      unit:ForceKill(false)
-    end
-  end
-
   -- Stop the income timer until the next round
   GameMode:StopIncomeTimer()
+
+  -- Clear the map
+  GameMode:KillAllUnitsAndBuildings()
 
   -- Prevent heroes from moving until next round starts
   -- Hide them out of world

@@ -6,6 +6,7 @@ function Build( event )
     local building_name = ability:GetAbilityKeyValues()['UnitName']
     local gold_cost = ability:GetGoldCost(1) 
     local lumber_cost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
+    local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
     local hero = caster:IsRealHero() and caster or caster:GetOwner()
     local playerID = hero:GetPlayerID()
 
@@ -39,6 +40,13 @@ function Build( event )
             return false
         end
 
+        -- If not enough resources to queue, stop
+        if hero:GetCheese() < cheese_cost then
+            print("Failed placement of " .. building_name .." - Not enough cheese!")
+            SendErrorMessage(playerID, "#error_not_enough_cheese")
+            return false
+        end
+
         return true
     end)
 
@@ -47,6 +55,7 @@ function Build( event )
         -- Spend resources
         hero:ModifyGold(-gold_cost, false, 0)
         hero:ModifyLumber(-lumber_cost)
+        hero:ModifyCheese(-cheese_cost)
 
         -- Play a sound
         EmitSoundOnClient("DOTA_Item.ObserverWard.Activate", PlayerResource:GetPlayer(playerID))
@@ -69,6 +78,7 @@ function Build( event )
         if work.refund then
             hero:ModifyGold(gold_cost, false, 0)
             hero:ModifyLumber(lumber_cost)
+            hero:ModifyCheese(cheese_cost)
         end
     end)
 
@@ -98,6 +108,7 @@ function Build( event )
             unit:AddItem(unit.item_building_cancel)
             unit.gold_cost = gold_cost
             unit.lumber_cost = lumber_cost
+            unit.cheese_cost = cheese_cost
         end
 
         -- Add the dust construction particle
@@ -167,6 +178,7 @@ function CancelBuilding( keys )
     if building.gold_cost then
         hero:ModifyGold(building.gold_cost, false, 0)
         hero:ModifyLumber(building.lumber_cost)
+        hero:ModifyCheese(building.cheese_cost)
     end
 
     -- Eject builder

@@ -20,7 +20,7 @@ function UpgradeBuilding(keys)
       PlayerResource:AddToSelection(playerID, building)
   end
       
-  GameMode:OnConstructionCompleted(building, ability)
+  GameMode:OnConstructionCompleted(building, ability, true, caster.incomeValue)
   
   -- Remove old building entity
   caster:RemoveSelf()

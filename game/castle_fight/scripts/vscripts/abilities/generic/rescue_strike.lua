@@ -43,6 +43,22 @@ function item_rescue_strike:OnSpellStart()
     enemiesKilled = enemiesKilled
   })
 
+  local message
+  local username = PlayerResource:GetPlayerName(playerID)
+
+  if enemiesKilled == 0 then
+    message = "EPIC FAIL! " .. username .. " WASTED their Rescue Strike, killing only " .. enemiesKilled ..
+      "units and dealing " .. damageDone .. " damage!"
+  elseif enemiesKilled < 5 then
+    message = username .. " WASTED their Rescue Strike, killing only " .. enemiesKilled ..
+      "units and dealing " .. damageDone .. " damage!"
+  else
+    message = username .. " killed " .. enemiesKilled .. " enemies with their Rescue Strike, dealing " ..
+      damageDone .. " damage!"
+  end
+
+  Notifications:TopToAll({text=message, duration=3.0})
+
   -- Consume Rescue Strike
   caster:RemoveItem(ability)
 end

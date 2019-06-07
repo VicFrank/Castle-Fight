@@ -5,6 +5,8 @@ gryphon_bash = class({})
 function gryphon_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
 crusader_bash = class({})
 function crusader_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
+dragon_turtle_bash = class({})
+function dragon_turtle_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
 
 modifier_bash_chance_custom = class({})
 

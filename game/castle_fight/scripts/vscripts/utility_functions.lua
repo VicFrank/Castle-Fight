@@ -4,6 +4,44 @@ function GetRandomTableElement( table )
     return randomElement
 end
 
+function TableContainsValue( t, value )
+  for _, v in pairs( t ) do
+    if v == value then
+      return true
+    end
+  end
+
+  return false
+end
+
+function TableCount( t )
+  local n = 0
+  for _ in pairs( t ) do
+    n = n + 1
+  end
+  return n
+end
+
+function DeepTableCompare(t1,t2,ignore_mt)
+  local ty1 = type(t1)
+  local ty2 = type(t2)
+  if ty1 ~= ty2 then return false end
+  -- non-table types can be directly compared
+  if ty1 ~= 'table' and ty2 ~= 'table' then return t1 == t2 end
+  -- as well as tables which have the metamethod __eq
+  local mt = getmetatable(t1)
+  if not ignore_mt and mt and mt.__eq then return t1 == t2 end
+  for k1,v1 in pairs(t1) do
+    local v2 = t2[k1]
+    if v2 == nil or not DeepTableCompare(v1,v2) then return false end
+  end
+  for k2,v2 in pairs(t2) do
+    local v1 = t1[k2]
+    if v1 == nil or not DeepTableCompare(v1,v2) then return false end
+  end
+  return true
+end
+
 function RandomPositionBetweenBounds(min, max)
   local positionX = RandomFloat(min.x, max.x)
   local positionY = RandomFloat(min.y, max.y)
@@ -12,4 +50,17 @@ end
 
 function GetDistanceBetweenTwoUnits(unit1, unit2)
   return (unit1:GetAbsOrigin() - unit2:GetAbsOrigin()):Length2D()
+end
+
+-- 1st, 2nd, 3rd, 4th, ..., nth
+function getNumberSuffix(number)
+  if number == 1 then
+    return "st"
+  elseif number == 2 then
+    return "nd"
+  elseif number == 3 then
+    return "rd"
+  else
+    return "th"
+  end
 end

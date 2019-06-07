@@ -42,6 +42,13 @@ end
 function GameMode:OnHeroInGame(hero)
   print("Hero Spawned")
 
+  -- Add bots to the playerids list
+  local playerID = hero:GetPlayerOwnerID()
+  if not TableContainsValue(GameRules.playerIDs, playerID) then
+    print("Didn't find playerID, inserting")
+    table.insert(GameRules.playerIDs, playerID)
+  end
+
   -- Get rid of the tp scroll
   Timers:CreateTimer(.03, function()
     for i=0,15 do
@@ -55,7 +62,8 @@ function GameMode:OnHeroInGame(hero)
     hero:AddItem(CreateItem("item_build_artillery", hero, hero))
     hero:AddItem(CreateItem("item_build_watch_tower", hero, hero))
     hero:AddItem(CreateItem("item_build_heroic_shrine", hero, hero))
-    hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))    
+    hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
+
   end)  
 end
 
@@ -68,36 +76,43 @@ function GameMode:OnEntityKilled(keys)
   end
 
   if killed:GetUnitName() == "castle" then
-    GameMode:EndRound(killed:GetTeam())
+    if GameRules.roundInProgress then
+      GameMode:EndRound(killed:GetTeam())
+    end
+    return
   end
 
   local bounty = killed:GetGoldBounty()
-  if killer and bounty and not killer:IsRealHero() and not killer == killed then
+  if killer and bounty and not killer:IsRealHero() and not DeepTableCompare(killer == killed, true) then
     -- when you use forcekill, it's the same as the unit killing itself
     local player = killer:GetPlayerOwner()
-    local playerID = killer:GetPlayerOwnerID()
-    SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, nil)
-    PlayerResource:ModifyGold(playerID, bounty, false, DOTA_ModifyGold_CreepKill)
+    local killerPlayerID = killer:GetPlayerOwnerID()
+    SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, player)
+    PlayerResource:ModifyGold(killerPlayerID, bounty, false, DOTA_ModifyGold_CreepKill)
   end
 
-  if killed:GetUnitName() == "item_build_treasure_box" then
-    if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
-      GameRules.numLeftTreasureBoxes = GameRules.numLeftTreasureBoxes - 1
-    else
-      GameRules.numRightTreasureBoxes = GameRules.numRightTreasureBoxes - 1
+  if IsCustomBuilding(killed) and not killed:IsUnderConstruction() then
+    local killedPlayerID = killed:GetPlayerOwnerID()
+
+    -- Lose the income value that this building was generating
+    local lostIncome = killed.incomeValue
+    GameRules.income[killedPlayerID] = GameRules.income[killedPlayerID] - lostIncome
+
+    if killed:GetUnitName() == "item_build_treasure_box" then
+      GameRules.numBoxes[killedPlayerID] = GameRules.numBoxes[killedPlayerID] - 1
     end
   end
 end
 
 function GameMode:OnConnectFull(keys)
   local entIndex = keys.index+1
-    -- The Player entity of the joining user
-    local ply = EntIndexToHScript(entIndex)
+  -- The Player entity of the joining user
+  local ply = EntIndexToHScript(entIndex)
 
-    -- The Player ID of the joining player
-    local playerID = ply:GetPlayerID()
+  -- The Player ID of the joining player
+  local playerID = ply:GetPlayerID()
 
-    table.insert(GameRules.playerIDs, playerID)
+  table.insert(GameRules.playerIDs, playerID)
 end
 
 function GameMode:OnPlayerReconnect(keys)
@@ -105,10 +120,10 @@ function GameMode:OnPlayerReconnect(keys)
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local playerHero = player:GetAssignedHero()
   
-  -- Update the ui to reflect the player's current state
+  -- Do necessary UI rebuilding here
 end
 
-function GameMode:OnConstructionCompleted(building, ability)
+function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previousIncomeValue)
   local buildingType = building:GetBuildingType()
   local hero = building:GetOwner()
   local playerID = building:GetPlayerOwnerID()
@@ -121,15 +136,34 @@ function GameMode:OnConstructionCompleted(building, ability)
   end
 
   -- If the unit is a treasure box, increase the income for the team
-  if building:GetUnitName() == "item_build_treasure_box" then
-    if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
-      GameRules.numLeftTreasureBoxes = GameRules.numLeftTreasureBoxes + 1
-    else
-      GameRules.numRightTreasureBoxes = GameRules.numRightTreasureBoxes + 1
-    end
+  if building:GetUnitName() == "treasure_box" then
+    GameRules.numBoxes[playerID] = GameRules.numBoxes[playerID] + 1
   end
 
+  -- Give the player a reward for being the nth player to build a building
+  -- reward is 20, 15, 10, 5
+  if TableCount(GameRules.buildingsBuilt[playerID]) == 0 then
+    local numBuilt = GameRules.numPlayersBuilt
+    local reward = 20 - numBuilt * 5
+
+    if reward > 0 then
+      local rewardMessage = "You received <font color='FFBF00'>" .. reward .. "</font> gold for being the <font color='#00C400'>" .. 
+        numBuilt + 1 .. getNumberSuffix(numBuilt + 1) .. "</font> player to build a building."
+      Notifications:Top(playerID, {text=rewardMessage, duration=5.0})
+    end
+
+    GameRules.numPlayersBuilt = numBuilt + 1
+  end
   table.insert(GameRules.buildingsBuilt[playerID], building)
 
-  GameMode:IncreaseIncomeByBuilding(building, goldCost)
+  local increase = GameMode:GetIncomeIncreaseForBuilding(building, goldCost)
+
+  -- Track how much income this building is generating
+  if isUpgrade then
+    building.incomeValue = previousIncomeValue + increase
+  else
+    building.incomeValue = increase
+  end
+
+  GameRules.income[playerID] = GameRules.income[playerID] + building.incomeValue
 end

@@ -6,7 +6,7 @@
   
   "castle_fight"
   {
-    "MaxPlayers"          "10"
+    "MaxPlayers"          "8"
   }
   //"Default_Keys"
   //{

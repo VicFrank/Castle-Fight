@@ -2,6 +2,10 @@ LinkLuaModifier("modifier_custom_cleave", "abilities/generic/cleave.lua", LUA_MO
 
 crusader_cleave = class({})
 function crusader_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
+murloc_cleave = class({})
+function murloc_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
+naga_guardian_cleave = class({})
+function naga_guardian_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
 
 modifier_custom_cleave = class({})
 

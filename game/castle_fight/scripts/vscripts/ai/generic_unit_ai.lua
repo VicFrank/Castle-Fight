@@ -35,7 +35,7 @@ function Spawn(keys)
     thisEntity.aiState = {
       aggroTarget = nil,
       targetAcquisitionRange = acquisitionRange,
-      buildingAcquisitionRange = 600, -- TODO: Make units only aggro on buildings if they're close to them
+      stopPursuitRange = 1600,
       goal = goal,
       canHitFlying = canHitFlying,
       canHitGround = canHitGround,
@@ -81,6 +81,15 @@ end
 -- Search for nearby valid targets to aggro onto
 --------------------------------------------------------------------------------
 function thisEntity:FindAggro()
+  local currentTarget = self.aiState.aggroTarget
+
+  if currentTarget and 
+    currentTarget:IsAlive() and 
+    GetDistanceBetweenTwoUnits(self, currentTarget) < self.aiState.stopPursuitRange and 
+    not IsCustomBuilding(currentTarget) then
+    return true
+  end
+
   local aggroTargets = FindEnemiesInRadius(self, self.aiState.targetAcquisitionRange)
 
   local target
@@ -129,18 +138,14 @@ end
 -- GetTargetPriority
 -- Returns the level of priority the unit has when calculating what to aggro onto
 -- Higher Number = Higher Priority
--- 4 - Target is a unit
--- 3 - Target is a building that can attack
--- 2 - Target is the castle
+-- 3 - Target is a unit
+-- 2 - Target is a building that can attack
 -- 1 - Target is a building
 --------------------------------------------------------------------------------
 function thisEntity:GetTargetPriority(target)
   if IsCustomBuilding(target) then
     if target:HasAttackCapability() then
       -- Is a building that can attack
-      return 3
-    elseif target:GetUnitName() == "castle" then
-      -- Is the castle
       return 2
     else
       -- Is a regular building
@@ -148,7 +153,7 @@ function thisEntity:GetTargetPriority(target)
     end
   else
     -- Is a regular unit
-    return 4
+    return 3
   end
 end
 
@@ -166,6 +171,13 @@ function thisEntity:GetHigherPriorityTarget(unit1, unit2)
 
   local distance1 = GetDistanceBetweenTwoUnits(self, unit1)
   local distance2 = GetDistanceBetweenTwoUnits(self, unit2)
+
+  -- The castle is a big fat boy, so the distance from the origin is misleading
+  if unit1:GetUnitName() == "castle" then
+    distance1 = distance1 - 200
+  elseif unit2:GetUnitName() == "castle" then
+    distance2 = distance2 - 200
+  end
 
   -- print(unit1:GetUnitName(), unit1:GetUnitName(), unit2:GetUnitName())
   -- print(priority1, priority2)

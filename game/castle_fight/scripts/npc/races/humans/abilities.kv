@@ -7,7 +7,7 @@
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "25.0"
+    "AbilityCooldown"       "20.0"
 
     "Modifiers"
     {
@@ -214,7 +214,7 @@
     {
       "modifier_train_unit"
       {
-        "ThinkInterval"  "25.0"
+        "ThinkInterval"  "30.0"
         "Passive"        "1"
         "IsHidden"       "1"
         "OnCreated"
@@ -317,7 +317,7 @@
     }
   }
 
-  "upgrade_marskmens_encampment"
+  "upgrade_marksmens_encampment"
   {
     "AbilityTextureName"            "marksmens_encampment"
     "AbilityGoldCost"               "160"
@@ -350,7 +350,8 @@
   "heavy_gunner_critical_strike"
   {
     "AbilityTextureName"            "sniper_headshot"
-    "BaseClass"                     "ability_datadriven"
+    "BaseClass"                     "ability_lua"
+    "ScriptFile"                    "abilities/generic/critical_strike"
     "MaxLevel"                      "1"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -360,70 +361,17 @@
       "soundfile" "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
     }
 
-    "Modifiers"
+    "AbilitySpecial"
     {
-      "passive_crit"
+      "01"
       {
-        "Passive"       "1"
-        "IsHidden"      "1"
-        "OnAttackStart"
-        {
-          "Random"
-          {
-            "Chance"        "%crit_chance"
-            "PseudoRandom"  "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
-            "OnSuccess"
-            {
-              "ApplyModifier"
-              {
-                "Target"        "CASTER"
-                "ModifierName"  "next_hit_crit"
-              }
-            }
-          }
-        }
+        "var_type"      "FIELD_INTEGER"
+        "crit_chance"   "20"
       }
-
-      "next_hit_crit"
+      "02"
       {
-        "IsHidden"  "1"
-        "Properties"
-        {
-          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "crit_damage"
-        }
-        "OnAttackLanded"
-        {
-          "FireEffect"
-          {
-            "EffectName"         "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-            "EffectAttachType"   "follow_origin"
-            "Target"             "TARGET"
-          }
-          "RemoveModifier"
-          {
-            "ModifierName"    "next_hit_crit"
-            "Target"      "CASTER"  
-          }
-          "FireSound"
-          {
-            "EffectName"  "Hero_PhantomAssassin.CoupDeGrace"
-            "Target"      "TARGET"
-          }
-        }
-      }
-
-      "AbilitySpecial"
-      {
-        "01"
-        {
-          "var_type"      "FIELD_INTEGER"
-          "crit_chance"   "20"
-        }
-        "02"
-        {
-          "var_type"      "FIELD_INTEGER"
-          "crit_damage"   "200"
-        }
+        "var_type"      "FIELD_INTEGER"
+        "crit_damage"   "2"
       }
     }
   }
@@ -431,7 +379,8 @@
   "marksman_critical_strike"
   {
     "AbilityTextureName"            "sniper_headshot"
-    "BaseClass"                     "ability_datadriven"
+    "BaseClass"                     "ability_lua"
+    "ScriptFile"                    "abilities/generic/critical_strike"
     "MaxLevel"                      "1"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -441,70 +390,17 @@
       "soundfile" "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
     }
 
-    "Modifiers"
+    "AbilitySpecial"
     {
-      "passive_crit"
+      "01"
       {
-        "Passive"       "1"
-        "IsHidden"      "1"
-        "OnAttackStart"
-        {
-          "Random"
-          {
-            "Chance"        "%crit_chance"
-            "PseudoRandom"  "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
-            "OnSuccess"
-            {
-              "ApplyModifier"
-              {
-                "Target"        "CASTER"
-                "ModifierName"  "next_hit_crit"
-              }
-            }
-          }
-        }
+        "var_type"      "FIELD_INTEGER"
+        "crit_chance"   "40"
       }
-
-      "next_hit_crit"
+      "02"
       {
-        "IsHidden"  "1"
-        "Properties"
-        {
-          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "crit_damage"
-        }
-        "OnAttackLanded"
-        {
-          "FireEffect"
-          {
-            "EffectName"         "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-            "EffectAttachType"   "follow_origin"
-            "Target"             "TARGET"
-          }
-          "RemoveModifier"
-          {
-            "ModifierName"    "next_hit_crit"
-            "Target"      "CASTER"  
-          }
-          "FireSound"
-          {
-            "EffectName"  "Hero_PhantomAssassin.CoupDeGrace"
-            "Target"      "TARGET"
-          }
-        }
-      }
-
-      "AbilitySpecial"
-      {
-        "01"
-        {
-          "var_type"      "FIELD_INTEGER"
-          "crit_chance"   "40"
-        }
-        "02"
-        {
-          "var_type"      "FIELD_INTEGER"
-          "crit_damage"   "300"
-        }
+        "var_type"      "FIELD_INTEGER"
+        "crit_damage"   "3"
       }
     }
   }
@@ -604,7 +500,7 @@
     {
       "modifier_train_unit"
       {
-        "ThinkInterval"  "25.0"
+        "ThinkInterval"  "27.0"
         "Passive"        "1"
         "IsHidden"       "1"
         "OnCreated"
@@ -735,7 +631,7 @@
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "25.0"
+    "AbilityCooldown"       "29.0"
 
     "Modifiers"
     {
@@ -812,7 +708,7 @@
       "02"
       {
         "var_type"              "FIELD_INTEGER"
-        "cleave_radius"         "200.0"
+        "cleave_radius"         "200"
       }
     }
   }
@@ -904,7 +800,7 @@
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "25.0"
+    "AbilityCooldown"       "41.0"
 
     "Modifiers"
     {
@@ -993,7 +889,7 @@
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "25.0"
+    "AbilityCooldown"       "30.0"
 
     "Modifiers"
     {

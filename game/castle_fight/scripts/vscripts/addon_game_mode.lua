@@ -18,6 +18,7 @@ require("testing")
 require("events")
 require("constants")
 require("utility_functions")
+require("precache_tables")
 
 function Precache( context )
   --[[
@@ -43,38 +44,13 @@ function Precache( context )
   -- General Precaches
   PrecacheUnitByNameSync("treasure_box", context)
   PrecacheUnitByNameSync("castle", context)
+  PrecacheResource("particle", "particles/dire_fx/fire_barracks.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf", context) -- splash attack
 
   -- Human Precaches
-  PrecacheUnitByNameSync("barracks", context)
-  PrecacheUnitByNameSync("stronghold", context)
-  PrecacheUnitByNameSync("footman", context)
-  PrecacheUnitByNameSync("defender", context)
-
-  PrecacheUnitByNameSync("sniper_nest", context)
-  PrecacheUnitByNameSync("gunners_hall", context)
-  PrecacheUnitByNameSync("marksmens_encampment", context)
-  PrecacheUnitByNameSync("sniper", context)
-  PrecacheUnitByNameSync("heavy_gunner", context)
-  PrecacheUnitByNameSync("marksman", context)
-
-  PrecacheUnitByNameSync("weapon_lab", context)
-  PrecacheUnitByNameSync("mortar", context)
-
-  PrecacheUnitByNameSync("gryphon_rock", context)
-  PrecacheUnitByNameSync("gryphon_rider", context)  
-
-  PrecacheUnitByNameSync("chapel", context)
-  PrecacheUnitByNameSync("church", context)
-  PrecacheUnitByNameSync("crusader", context)
-  PrecacheUnitByNameSync("paladin", context)
-
-  PrecacheUnitByNameSync("hjordhejmen", context)
-  PrecacheUnitByNameSync("warlock", context)
-
-  PrecacheUnitByNameSync("gjallarhorn", context)
-  PrecacheUnitByNameSync("artillery", context)
-  PrecacheUnitByNameSync("watch_tower", context)
-  PrecacheUnitByNameSync("heroic_shrine", context)  
+  for _,unitname in ipairs(g_Human_Precache) do
+    PrecacheUnitByNameSync(unitname, context)
+  end
 end
 
 -- Create the game mode when we activate
@@ -120,6 +96,9 @@ function GameMode:InitGameMode()
   GameRules:SetStartingGold(0)
   GameRules:SetGoldPerTick(0)
 
+  GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 4)
+  GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 4)
+
   -- -- Set game mode rules
   mode = GameRules:GetGameModeEntity()        
   mode:DisableHudFlip(true)
@@ -147,16 +126,14 @@ function GameMode:InitGameMode()
   ListenToGameEvent('npc_spawned', Dynamic_Wrap(GameMode, 'OnNPCSpawned'), self)
   ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(GameMode, 'OnGameRulesStateChange'), self)
   -- ListenToGameEvent('entity_hurt', Dynamic_Wrap(GameMode, 'OnEntityHurt'), self)
-  -- ListenToGameEvent('player_chat', Dynamic_Wrap(GameMode, 'OnPlayerChat'), self)
+  ListenToGameEvent('player_chat', Dynamic_Wrap(GameMode, 'OnPlayerChat'), self)
 
   -- Filters
-  mode:SetModifyExperienceFilter(Dynamic_Wrap(GameMode, "FilterExperience"), self)
   mode:SetDamageFilter(Dynamic_Wrap(GameMode, "FilterDamage"), self)
 
   -- Lua Modifiers
   LinkLuaModifier("modifier_disable_turning", "libraries/modifiers/modifier_disable_turning", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("income_modifier", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
-  LinkLuaModifier("income_modifier_enemy", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
 
   -- Setup Global Values
   GameRules.leftCastlePosition = Entities:FindByName(nil, "left_ancient_position"):GetAbsOrigin()
@@ -168,15 +145,40 @@ function GameMode:InitGameMode()
 
   GameRules.leftRoundsWon = 0
   GameRules.rightRoundsWon = 0
-
+  GameRules.roundCount = 0
+  GameRules.roundInProgress = false
   GameRules.playerIDs = {}
 
   -- Modifier Applier
   GameRules.Applier = CreateItem("item_apply_modifiers", nil, nil)
 
   GameRules.Damage = LoadKeyValues("scripts/kv/damage_table.kv")
+
+  SetUpCustomItemCosts()
 end
 
-function GameMode:FilterExperience(filterTable)
-  return false
+function SetUpCustomItemCosts()
+  local item_names = {
+    "item_build_gjallarhorn",
+    "item_build_artillery",
+    "item_build_watch_tower",
+    "item_build_heroic_shrine",
+    "item_build_treasure_box",
+  }
+
+  for _,itemname in ipairs(item_names) do
+    local item = CreateItem(itemname, nil, nil)
+
+    local goldCost = item:GetCost()
+    local lumberCost = tonumber(item:GetAbilityKeyValues()['LumberCost']) or 0
+    local isLegendary = item:GetAbilityKeyValues()['IsLegendary'] ~= nil
+
+    CustomNetTables:SetTableValue("item_costs", itemname, {
+      goldCost = goldCost,
+      lumberCost = lumberCost,
+      isLegendary = isLegendary
+    })
+
+    item:RemoveSelf()
+  end
 end

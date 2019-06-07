@@ -77,4 +77,23 @@
       "particle"  "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf"
     }
   }
+
+  "legendary_spell_resistance"
+  {
+    "AbilityTextureName"          "antimage_counterspell"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/spell_resistance"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "magic_resist"      "70"
+      }
+    }
+  }
 }

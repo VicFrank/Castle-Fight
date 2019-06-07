@@ -6,8 +6,9 @@ function GameMode:OnScriptReload()
   -- KillEverything()
   -- GameMode:StartRound()
   -- GameMode:EndRound()
-  GiveLumberToAllPlayers(2000)
-  -- KillAllUnits()
+  -- GiveLumberToAllPlayers(2000)
+  KillAllUnits()
+  -- KillAllBuildings()
 end
 
 function SpawnTestBuildings()
@@ -100,5 +101,47 @@ end
 function GiveLumberToAllPlayers(value)
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     hero:GiveLumber(value)
+  end
+end
+
+function GameMode:GreedIsGood(playerID, value)
+  for _,hero in pairs(HeroList:GetAllHeroes()) do
+    hero:GiveLumber(value)
+    hero:ModifyGold(value, false, 0)
+  end
+end
+
+function GameMode:LumberCheat(playerID, value)
+  PlayerResource:GetSelectedHeroEntity(playerID):GiveLumber(value)
+end
+
+    
+CHEAT_CODES = {
+  ["lumber"] = function(...) GameMode:LumberCheat(...) end,                -- "Gives you X lumber"
+  ["greedisgood"] = function(...) GameMode:GreedIsGood(...) end,           -- "Gives you X gold and lumber" 
+  ["unitsaredead"] = function(...) KillAllUnits() end,                     -- "Kills all units"    
+  ["reset"] = function(...) KillEverything() end,                          -- "Kills all units and buildings"    
+  ["nextround"] = function(...) GameMode:StartRound(...) end,              -- "Calls start round"      
+  ["endround"] = function(...) GameMode:EndRound(...) end,                 -- "Calls end round"
+}
+
+function GameMode:OnPlayerChat(keys)
+  local text = keys.text
+  local userID = keys.userid
+  local playerID = self.vUserIds[userID] and self.vUserIds[userID]:GetPlayerID()
+  if not playerID then return end
+
+  -- Cheats are only available in the tools
+  if not IsInToolsMode() then return end
+
+  -- Handle '-command'
+  if StringStartsWith(text, "-") then
+      text = string.sub(text, 2, string.len(text))
+  end
+
+  local input = split(text)
+  local command = input[1]
+  if CHEAT_CODES[command] then
+    CHEAT_CODES[command](playerID, input[2])
   end
 end
