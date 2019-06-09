@@ -26,6 +26,7 @@ g_Human_Precache = {
 }
 
 g_Naga_Precache = {
+  -- Buildings
   "murloc_hut",
   "murloc_camp",
   "murloc_village",
@@ -41,6 +42,7 @@ g_Naga_Precache = {
   "oracle_of_sirens",
   "coral_statue",
   "tidal_guardian",
+  -- Units
   "murloc",
   "murloc_warrior",
   "murloc_champion",
@@ -55,4 +57,45 @@ g_Naga_Precache = {
   "dragon_turtle",
   "naga_siren",
   "naga_lobster",
+}
+
+g_Undead_Precache = {
+  -- Buildings
+  "rotting_hay_cart",
+  "tainted_farm",
+  "defiled_granary",
+  "temple_of_bone",
+  "temple_of_necromancy",
+  "high_citadel_of_necromancy",
+  "crypt",
+  "graveyard",
+  "haunted_mine",
+  "slaughter_house",
+  "dragon_cemetary",
+  "death_pit",
+  "skull_pile",
+  "skull_shrine",
+  "turret_of_souls",
+  "city_of_decay",
+  -- Units
+  "zombie",
+  "suffocated_zombie",
+  "plague_bearer",
+  "necromancer",
+  "mighty_necromancer",
+  "lich_king",
+  "vampire",
+  "lesser_vampire",
+  "vampire_lord",
+  "banshee",
+  "flesh_golem",
+  "frost_wyrm",
+  "skeletal_mage",
+  "greater_skeletal_mage",
+  "skeleton_archer",
+  "greater_skeleton_archer",
+  "skeleton_warrior",
+  "greater_skeleton_warrior",
+  "skeleton_hero",
+  "skeleton_general",
 }

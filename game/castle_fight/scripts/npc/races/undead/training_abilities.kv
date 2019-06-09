@@ -1,9 +1,9 @@
 "DOTAUnits"
 {
-  "train_murloc"
+  "train_zombie"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "murloc"
+    "AbilityTextureName"        "zombie"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -22,21 +22,21 @@
             "ScriptFile"    "abilities/buildings/unit_spawner.lua"
             "Function"      "StartSpawningUnits"
             "NumUnits"      "1"
-            "UnitName"      "murloc"
+            "UnitName"      "zombie"
           }
         }
       }
     }    
   }
 
-  "train_murloc_warrior"
+  "train_suffocated_zombie"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "murloc_warrior"
+    "AbilityTextureName"        "suffocated_zombie"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "27.0"
+    "AbilityCooldown"       "26.0"
 
     "Modifiers"
     {
@@ -51,21 +51,21 @@
             "ScriptFile"    "abilities/buildings/unit_spawner.lua"
             "Function"      "StartSpawningUnits"
             "NumUnits"      "1"
-            "UnitName"      "murloc_warrior"
+            "UnitName"      "suffocated_zombie"
           }
         }
       }
     }    
   }
 
-  "train_murloc_champion"
+  "train_plague_bearer"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "murloc_champion"
+    "AbilityTextureName"        "plague_bearer"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "35.0"
+    "AbilityCooldown"       "36.0"
 
     "Modifiers"
     {
@@ -80,21 +80,21 @@
             "ScriptFile"    "abilities/buildings/unit_spawner.lua"
             "Function"      "StartSpawningUnits"
             "NumUnits"      "1"
-            "UnitName"      "murloc_champion"
+            "UnitName"      "plague_bearer"
           }
         }
       }
     }    
   }
 
-  "train_murloc_assassin"
+  "train_necromancer"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "murloc_assassin"
+    "AbilityTextureName"        "necromancer"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "45.0"
+    "AbilityCooldown"       "26.0"
 
     "Modifiers"
     {
@@ -109,133 +109,17 @@
             "ScriptFile"    "abilities/buildings/unit_spawner.lua"
             "Function"      "StartSpawningUnits"
             "NumUnits"      "1"
-            "UnitName"      "murloc_assassin"
+            "UnitName"      "necromancer"
           }
         }
       }
     }    
   }
 
-  "train_suupmolk"
+  "train_mighty_necromancer"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "suupmolk"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "24.0"
-
-    "Modifiers"
-    {
-      "modifier_train_unit"
-      {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "suupmolk"
-          }
-        }
-      }
-    }    
-  }
-
-  "train_ancient_hydra"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "ancient_hydra"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "60.0"
-
-    "Modifiers"
-    {
-      "modifier_train_unit"
-      {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "ancient_hydra"
-          }
-        }
-      }
-    }    
-  }
-
-  "train_winged_serpent"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "winged_serpent"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "27.0"
-
-    "Modifiers"
-    {
-      "modifier_train_unit"
-      {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "winged_serpent"
-          }
-        }
-      }
-    }    
-  }
-
-  "train_naga_guardian"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "naga_guardian"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "28.0"
-
-    "Modifiers"
-    {
-      "modifier_train_unit"
-      {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "naga_guardian"
-          }
-        }
-      }
-    }    
-  }
-
-  "train_royal_guard"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "royal_guard"
+    "AbilityTextureName"        "mighty_necromancer"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -254,21 +138,21 @@
             "ScriptFile"    "abilities/buildings/unit_spawner.lua"
             "Function"      "StartSpawningUnits"
             "NumUnits"      "1"
-            "UnitName"      "royal_guard"
+            "UnitName"      "mighty_necromancer"
           }
         }
       }
     }    
   }
 
-  "train_dragon_turtle"
+  "train_lich_king"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "dragon_turtle"
+    "AbilityTextureName"        "lich_king"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "29.0"
+    "AbilityCooldown"       "52.0"
 
     "Modifiers"
     {
@@ -283,21 +167,21 @@
             "ScriptFile"    "abilities/buildings/unit_spawner.lua"
             "Function"      "StartSpawningUnits"
             "NumUnits"      "1"
-            "UnitName"      "dragon_turtle"
+            "UnitName"      "lich_king"
           }
         }
       }
     }    
   }
 
-  "train_naga_siren"
+  "train_vampire"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "naga_siren"
+    "AbilityTextureName"        "vampire"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCooldown"       "33.0"
+    "AbilityCooldown"       "27.0"
 
     "Modifiers"
     {
@@ -312,7 +196,123 @@
             "ScriptFile"    "abilities/buildings/unit_spawner.lua"
             "Function"      "StartSpawningUnits"
             "NumUnits"      "1"
-            "UnitName"      "naga_siren"
+            "UnitName"      "vampire"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_vampire_lord"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "vampire_lord"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "39.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "vampire_lord"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_banshee"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "banshee"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "30.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "banshee"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_flesh_golem"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "flesh_golem"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "34.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "flesh_golem"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_frost_wyrm"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "frost_wyrm"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "40.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "frost_wyrm"
           }
         }
       }

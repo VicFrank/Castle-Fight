@@ -1,8 +1,8 @@
 "DOTAUnits"
 {
-  "murloc_hut" 
+  "rotting_hay_cart" 
   {
-    "Model"            "maps/reef_assets/models/props/organic/darkreef_anenome001.vmdl"
+    "Model"            "models/heroes/undying/undying_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -15,8 +15,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_murloc"
-    "Ability2"                "upgrade_murloc_camp"
+    "Ability1"                "train_zombie"
+    "Ability2"                "upgrade_tainted_farm"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -35,11 +35,11 @@
     "BlockPathingSize"       "2"
   }
 
-  "murloc_camp" 
+  "tainted_farm" 
   {
-    "Model"            "maps/reef_assets/models/props/organic/darkreef_anenome002.vmdl"
+    "Model"            "models/items/undying/idol_of_ruination/idol_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
-    "Level"            "1"
+    "Level"            "3"
     "ConsideredHero"   "1"
     "ModelScale"       "1.0"
     "RingRadius"       "100"
@@ -50,8 +50,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_murloc_warrior"
-    "Ability2"                "upgrade_murloc_village"
+    "Ability1"                "train_suffocated_zombie"
+    "Ability2"                "upgrade_defiled_granary"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -70,9 +70,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "murloc_village" 
+  "defiled_granary" 
   {
-    "Model"            "maps/reef_assets/models/props/organic/darkreef_anenometree01.vmdl"
+    "Model"            "models/items/undying/idol_of_ruination/idol_tower_gold.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -85,8 +85,7 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_murloc_champion"
-    "Ability2"                "upgrade_murloc_fortress"
+    "Ability1"                "train_plague_bearer"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -105,9 +104,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "murloc_fortress" 
+  "temple_of_bone" 
   {
-    "Model"            "maps/reef_assets/models/props/organic/darkreef_anenometree02.vmdl"
+    "Model"            "models/props_structures/bad_statue001.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -120,7 +119,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_murloc_assassin"
+    "Ability1"                "train_necromancer"
+    "Ability2"                "upgrade_temple_of_necromancy"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -139,78 +139,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "swamp_well" 
+  "temple_of_necromancy" 
   {
-    "Model"            "models/props_structures/rock_statue001.vmdl"
-    "BaseClass"        "npc_dota_creature"
-    "Level"            "1"
-    "ConsideredHero"   "1"
-    "ModelScale"       "1.0"
-    "RingRadius"       "100"
-    "HealthBarOffset"  "160"
-    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "40"
-
-    "BuildTime"        "5"
-    "BuildingType"     "UnitTrainer"
-
-    "Ability1"                "train_suumpmolk"
-    "Ability2"                "upgrade_lernaean_fountain"
-
-    "ArmorPhysical"             "5"
-    "MagicalResistance"         "0.75"
-    "ArmorType"                 "fortified"
-
-    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
-
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1200"
-    "StatusMana"             "0"
-
-    "VisionDaytimeRange"     "900"
-    "VisionNighttimeRange"   "600"
-
-    "ConstructionSize"       "2"
-    "BlockPathingSize"       "2"
-  }
-
-  "lernaean_fountain" 
-  {
-    "Model"            "models/props_structures/classical_fountain001.vmdl"
-    "BaseClass"        "npc_dota_creature"
-    "Level"            "1"
-    "ConsideredHero"   "1"
-    "ModelScale"       "0.4"
-    "RingRadius"       "100"
-    "HealthBarOffset"  "160"
-    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "40"
-
-    "BuildTime"        "10"
-    "BuildingType"     "UnitTrainer"
-
-    "Ability1"                "train_ancient_hydra"
-
-    "ArmorPhysical"             "5"
-    "MagicalResistance"         "0.75"
-    "ArmorType"                 "fortified"
-
-    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
-
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1200"
-    "StatusMana"             "0"
-
-    "VisionDaytimeRange"     "900"
-    "VisionNighttimeRange"   "600"
-
-    "ConstructionSize"       "2"
-    "BlockPathingSize"       "2"
-  }
-
-  "temple_of_snakes" 
-  {
-    "Model"            "models/props_structures/statue_mystical001.vmdl"
+    "Model"            "models/props_structures/bad_barracks001_ranged.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -223,7 +154,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_winged_serpent"
+    "Ability1"                "train_mighty_necromancer"
+    "Ability2"                "upgrade_high_citadel_of_necromancy"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -242,13 +174,13 @@
     "BlockPathingSize"       "2"
   }
 
-  "spawning_grounds" 
+  "high_citadel_of_necromancy" 
   {
-    "Model"            "maps/reef_assets/models/props/naga_city/darkreef_naga_statue001.vmdl"
+    "Model"            "models/props_structures/bad_ancient001.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
-    "ModelScale"       "0.8"
+    "ModelScale"       "0.4"
     "RingRadius"       "100"
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -257,8 +189,7 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_naga_guardian"
-    "Ability2"                "upgrade_royal_spawning_grounds"
+    "Ability1"                "train_lich_king"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -277,9 +208,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "royal_spawning_grounds" 
+  "crypt" 
   {
-    "Model"            "maps/reef_assets/models/props/naga_city/darkreef_naga_statue001.vmdl"
+    "Model"            "models/props_structures/gravestone005.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -292,7 +223,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_royal_guard"
+    "Ability1"                "train_vampire"
+    "Ability2"                "upgrade_graveyard"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -311,13 +243,81 @@
     "BlockPathingSize"       "2"
   }
 
-  "reptile_pool" 
+  "graveyard" 
   {
-    "Model"            "maps/reef_assets/models/props/naga_city/darkreef_statue002.vmdl"
+    "Model"            "models/props_gameplay/tombstonea01.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
     "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_vampire_lord"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "haunted_mine" 
+  {
+    "Model"            "models/props_mines/buffer_stop002.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_banshee"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "slaughter_house" 
+  {
+    "Model"            "models/props_structures/bad_barracks001_melee.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.4"
     "RingRadius"       "100"
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -326,7 +326,7 @@
     "BuildTime"        "5"
     "BuildingType"     "SiegeTrainer"
 
-    "Ability1"                "train_dragon_turtle"
+    "Ability1"                "train_flesh_golem"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -345,9 +345,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "naga_spring" 
+  "dragon_cemetary" 
   {
-    "Model"            "maps/cavern_assets/models/statues/statue_cavern.vmdl"
+    "Model"            "models/props_structures/tower_dragon_black.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -360,7 +360,7 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_naga_siren"
+    "Ability1"                "train_frost_wyrm"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -379,9 +379,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "ancient_pyramid" 
+  "death_pit" 
   {
-    "Model"            "maps/reef_assets/models/props/naga_city/darkreef_column_004.vmdl"
+    "Model"            "models/props_structures/well_skull.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -394,7 +394,7 @@
     "BuildTime"        "5"
     "BuildingType"     "Killing"
 
-    "Ability1"                "earthquake"
+    "Ability1"                "sudden_death"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -413,43 +413,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "oracle_of_sirens" 
+  "skull_pile" 
   {
-    "Model"            "maps/reef_assets/models/props/naga_city/darkreef_lamp.vmdl"
-    "BaseClass"        "npc_dota_creature"
-    "Level"            "1"
-    "ConsideredHero"   "1"
-    "ModelScale"       "1.0"
-    "RingRadius"       "100"
-    "HealthBarOffset"  "160"
-    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "40"
-
-    "BuildTime"        "5"
-    "BuildingType"     "Killing"
-
-    "Ability1"                "control_enemy"
-
-    "ArmorPhysical"             "5"
-    "MagicalResistance"         "0.75"
-    "ArmorType"                 "fortified"
-
-    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
-
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1200"
-    "StatusMana"             "0"
-
-    "VisionDaytimeRange"     "900"
-    "VisionNighttimeRange"   "600"
-
-    "ConstructionSize"       "2"
-    "BlockPathingSize"       "2"
-  }
-
-  "coral_statue" 
-  {
-    "Model"            "maps/cavern_assets/models/statues/geode_radiant.vmdl"
+    "Model"            "models/props_bones/skeleton_design002.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -462,7 +428,8 @@
     "BuildTime"        "5"
     "BuildingType"     "Support"
 
-    "Ability1"                "restore_area"
+    "Ability1"                "skull_pile_raise_dead"
+    "Ability2"                "upgrade_skull_shrine"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -472,6 +439,88 @@
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
     "StatusHealth"           "1200"
+    "StatusMana"             "18"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "skull_shrine" 
+  {
+    "Model"            "models/props_bones/skeleton_design001.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Support"
+
+    "Ability1"                "skull_shrine_greater_raise_dead"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "18"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "turret_of_souls" 
+  {
+    "Model"            "models/props_structures/tower_bad.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "20"
+    "BuildingType"     "Tower"
+
+    "Ability1"                "turret_of_souls_soul_steal"
+    "Ability2"                "weaken_soul"
+
+    "ArmorPhysical"             "8"
+    "MagicalResistance"         "0.75"
+
+    "AttackType"                "chaos"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"           "80"
+    "AttackDamageMax"           "100"
+    "AttackRate"                "1.2"
+    "AttackAnimationPoint"      "0.1"
+    "AttackAcquisitionRange"    "800"
+    "AttackRange"               "800"
+    "ProjectileModel"           "particles/econ/items/necrolyte/necronub_base_attack/necrolyte_base_attack_ka.vpcf"
+    "ProjectileSpeed"           "800"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1500"
+    "StatusHealthRegen"      "1.5"
     "StatusMana"             "0"
 
     "VisionDaytimeRange"     "900"
@@ -481,22 +530,22 @@
     "BlockPathingSize"       "2"
   }
 
-  "tidal_guardian" 
+  "city_of_decay" 
   {
-    "Model"            "models/items/pugna/ward/tentaclesofnetherreach/tentaclesofnetherreach.vmdl"
+    "Model"            "models/props_structures/bad_ancient002.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
-    "ModelScale"       "1.0"
+    "ModelScale"       "0.3"
     "RingRadius"       "100"
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
 
     "BuildTime"        "5"
-    "BuildingType"     "Killing"
+    "BuildingType"     "Support"
 
-    "Ability1"                "tsunami"
+    "Ability1"                "city_of_decay_decay"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
