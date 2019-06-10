@@ -1,8 +1,8 @@
 "DOTAUnits"
 {
-  "hunters_hall" 
+  "spider_egg_clutch" 
   {
-    "Model"            "models/props/landing_page/armadillo/armadillo_school.vmdl"
+    "Model"            "models/heroes/undying/undying_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -15,8 +15,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_huntress"
-    "Ability2"                "upgrade_rangers_hall"
+    "Ability1"                "train_black_spiders"
+    "Ability2"                "upgrade_spider_egg_nest"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -35,9 +35,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "rangers_hall" 
+  "spider_egg_nest" 
   {
-    "Model"            "models/props/landing_page/armadillo/armadillo_church.vmdl"
+    "Model"            "models/items/undying/idol_of_ruination/idol_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "2"
     "ConsideredHero"   "1"
@@ -50,8 +50,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_ranger"
-    "Ability2"                "upgrade_amazons_hall"
+    "Ability1"                "train_giant_spiders"
+    "Ability2"                "upgrade_spider_egg_hatchery"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -70,9 +70,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "amazons_hall" 
+  "spider_egg_hatchery" 
   {
-    "Model"            "models/props/landing_page/armadillo/armadillo_house.vmdl"
+    "Model"            "models/items/undying/idol_of_ruination/idol_tower_gold.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "3"
     "ConsideredHero"   "1"
@@ -85,7 +85,7 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_amazon"
+    "Ability1"                "train_brood_mothers"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -104,9 +104,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "moon_shrine" 
+  "furbolg_hut" 
   {
-    "Model"            "models/props_structures/good_statue010.vmdl"
+    "Model"            "models/props_structures/bad_statue001.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -119,8 +119,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_druid"
-    "Ability2"                "upgrade_moon_altar"
+    "Ability1"                "train_furbolg_shaman"
+    "Ability2"                "upgrade_furbolg_abode"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -139,9 +139,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "moon_altar" 
+  "furbolg_abode" 
   {
-    "Model"            "models/props_structures/radiant_statue002.vmdl"
+    "Model"            "models/props_structures/bad_barracks001_ranged.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "2"
     "ConsideredHero"   "1"
@@ -154,7 +154,7 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_sage_druid"
+    "Ability1"                "train_furbolg_elder_shaman"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -173,147 +173,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "house_of_shadows" 
+  "ancient_of_growth" 
   {
-    "Model"            "models/props/landing_page/armadillo/armadillo_tower.vmdl"
-    "BaseClass"        "npc_dota_creature"
-    "Level"            "1"
-    "ConsideredHero"   "1"
-    "ModelScale"       "0.8"
-    "RingRadius"       "100"
-    "HealthBarOffset"  "160"
-    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "40"
-
-    "BuildTime"        "5"
-    "BuildingType"     "UnitTrainer"
-
-    "Ability1"                "train_assassin"
-    "Ability2"                "upgrade_guild_of_shadows"
-
-    "ArmorPhysical"             "5"
-    "MagicalResistance"         "0.75"
-    "ArmorType"                 "fortified"
-
-    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
-
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1200"
-    "StatusMana"             "0"
-
-    "VisionDaytimeRange"     "900"
-    "VisionNighttimeRange"   "600"
-
-    "ConstructionSize"       "2"
-    "BlockPathingSize"       "2"
-  }
-
-  "guild_of_shadows" 
-  {
-    "Model"            "models/props/landing_page/armadillo/armadillo_tower.vmdl"
-    "BaseClass"        "npc_dota_creature"
-    "Level"            "2"
-    "ConsideredHero"   "1"
-    "ModelScale"       "1.0"
-    "RingRadius"       "100"
-    "HealthBarOffset"  "160"
-    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "40"
-
-    "BuildTime"        "5"
-    "BuildingType"     "UnitTrainer"
-
-    "Ability1"                "train_royal_assassin"
-
-    "ArmorPhysical"             "5"
-    "MagicalResistance"         "0.75"
-    "ArmorType"                 "fortified"
-
-    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
-
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1200"
-    "StatusMana"             "0"
-
-    "VisionDaytimeRange"     "900"
-    "VisionNighttimeRange"   "600"
-
-    "ConstructionSize"       "2"
-    "BlockPathingSize"       "2"
-  }
-
-  "pillaged_hut" 
-  {
-    "Model"            "models/tent_01a.vmdl"
-    "BaseClass"        "npc_dota_creature"
-    "Level"            "1"
-    "ConsideredHero"   "1"
-    "ModelScale"       "1.0"
-    "RingRadius"       "100"
-    "HealthBarOffset"  "160"
-    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "40"
-
-    "BuildTime"        "5"
-    "BuildingType"     "UnitTrainer"
-
-    "Ability1"                "train_avenging_spirit"
-    "Ability2"                "upgrade_scorched_mansion"
-
-    "ArmorPhysical"             "5"
-    "MagicalResistance"         "0.75"
-    "ArmorType"                 "fortified"
-
-    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
-
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1200"
-    "StatusMana"             "0"
-
-    "VisionDaytimeRange"     "900"
-    "VisionNighttimeRange"   "600"
-
-    "ConstructionSize"       "2"
-    "BlockPathingSize"       "2"
-  }
-
-  "scorched_mansion" 
-  {
-    "Model"            "models/tent_03a.vmdl"
-    "BaseClass"        "npc_dota_creature"
-    "Level"            "1"
-    "ConsideredHero"   "1"
-    "ModelScale"       "1.0"
-    "RingRadius"       "100"
-    "HealthBarOffset"  "160"
-    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "40"
-
-    "BuildTime"        "5"
-    "BuildingType"     "UnitTrainer"
-
-    "Ability1"                "train_avatar_of_vengeance"
-
-    "ArmorPhysical"             "5"
-    "MagicalResistance"         "0.75"
-    "ArmorType"                 "fortified"
-
-    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
-
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1200"
-    "StatusMana"             "0"
-
-    "VisionDaytimeRange"     "900"
-    "VisionNighttimeRange"   "600"
-
-    "ConstructionSize"       "2"
-    "BlockPathingSize"       "2"
-  }
-
-  "fountain_of_wonders" 
-  {
-    "Model"            "maps/journey_assets/props/trees/journey_fountain/journey_fountain.vmdl"
+    "Model"             "models/items/furion/treant/furion_treant_nelum_red/furion_treant_nelum_red.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -326,7 +188,8 @@
     "BuildTime"        "5"
     "BuildingType"     "UnitTrainer"
 
-    "Ability1"                "train_faerie_dragon"
+    "Ability1"                "train_dryad"
+    "Ability2"                "upgrade_ancient_of_life"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -345,9 +208,147 @@
     "BlockPathingSize"       "2"
   }
 
-  "nightelf_siege_factory" 
+  "ancient_of_life" 
   {
-    "Model"            "models/props/traps/barking_dog/barking_dog.vmdl"
+    "Model"            "models/items/furion/treant/primeval_treant/primeval_treant.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_keeper_of_the_grove"
+    "Ability2"                "upgrade_ancient_of_eternity"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "ancient_of_eternity" 
+  {
+    "Model"            "models/items/furion/treant_flower_1.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_ancient_keeper"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "ancient_of_slumber" 
+  {
+    "Model"            "models/items/furion/treant/furion_treant_nelum_red/furion_treant_nelum_red.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_bear"
+    "Ability2"                "upgrade_ancient_of_hibernation"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "ancient_of_hibernation" 
+  {
+    "Model"            "models/items/furion/treant/furion_treant_nelum_red/furion_treant_nelum_red.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_ancient_bear"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "emerald_dragon_roost" 
+  {
+    "Model"            "models/props_structures/tower_dragon_black.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -360,7 +361,7 @@
     "BuildTime"        "5"
     "BuildingType"     "SiegeTrainer"
 
-    "Ability1"                "train_glaive_thrower"
+    "Ability1"                "train_emerald_dragon"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -379,9 +380,43 @@
     "BlockPathingSize"       "2"
   }
 
-  "silver_glade" 
+  "monolith" 
   {
-    "Model"            "models/props_structures/rock_statue001.vmdl"
+    "Model"            "models/props_structures/good_statue010.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "SiegeTrainer"
+
+    "Ability1"                "train_mountain_giant"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "ancient_guardian" 
+  {
+    "Model"            "models/props_bones/skeleton_design002.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -394,7 +429,7 @@
     "BuildTime"        "5"
     "BuildingType"     "Support"
 
-    "Ability1"                "moon_shine_blessing"
+    "Ability1"                "ancient_guardian_banish"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -403,8 +438,8 @@
     "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1000"
-    "StatusMana"             "23"
+    "StatusHealth"           "1200"
+    "StatusMana"             "18"
     "StatusManaRegen"        "1.0"
 
     "VisionDaytimeRange"     "900"
@@ -414,44 +449,10 @@
     "BlockPathingSize"       "2"
   }
 
-  "obelisk_of_wilderness" 
+  // dps 70
+  "ancient_protector" 
   {
-    "Model"            "models/props_structures/obelisk001.vmdl"
-    "BaseClass"        "npc_dota_creature"
-    "Level"            "1"
-    "ConsideredHero"   "1"
-    "ModelScale"       "1.0"
-    "RingRadius"       "100"
-    "HealthBarOffset"  "160"
-    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "40"
-
-    "BuildTime"        "5"
-    "BuildingType"     "Support"
-
-    "Ability1"                "resistance_of_the_wilderness"
-
-    "ArmorPhysical"             "5"
-    "MagicalResistance"         "0.75"
-    "ArmorType"                 "fortified"
-
-    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
-
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "900"
-    "StatusMana"             "10"
-    "StatusManaRegen"        "1.0"
-
-    "VisionDaytimeRange"     "900"
-    "VisionNighttimeRange"   "600"
-
-    "ConstructionSize"       "2"
-    "BlockPathingSize"       "2"
-  }
-
-  "elunes_lantern" 
-  {
-    "Model"            "models/props_debris/chinese_lantern002.vmdl"
+    "Model"            "models/props_structures/rock_golem/tower_radiant_rock_golem.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -461,30 +462,32 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
 
-    "BuildTime"        "22"
+    "BuildTime"        "5"
     "BuildingType"     "Tower"
 
-    "Ability1"                "elunes_lantern_feedback"
+    "Ability1"                "ancient_protector_bash"
+    "Ability2"                "splash_attack"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
 
-    "AttackType"                "magic"
-    "ArmorType"                 "fortified"
+    "AttackType"              "siege"
+    "ArmorType"               "fortified"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "50"
-    "AttackDamageMax"         "90"
-    "AttackRate"              "0.8"
+    "AttackDamageMin"         "70"
+    "AttackDamageMax"         "70"
+    "AttackRate"              "1.0"
     "AttackAnimationPoint"    "0.6"
-    "AttackAcquisitionRange"  "850"
-    "AttackRange"             "850"
-    "ProjectileModel"         "particles/base_attacks/ranged_tower_good.vpcf"
+    "AttackAcquisitionRange"  "700"
+    "AttackRange"             "700"
+    "ProjectileModel"         "particles/econ/world/towers/rock_golem/radiant_rock_golem_attack.vpcf"
     "ProjectileSpeed"         "750"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1500"
-    "StatusMana"             "0"
+    "StatusHealth"           "1200"
+    "StatusMana"             "18"
+    "StatusManaRegen"        "1.0"
 
     "VisionDaytimeRange"     "900"
     "VisionNighttimeRange"   "600"
@@ -493,9 +496,9 @@
     "BlockPathingSize"       "2"
   }
 
-  "starfall_obelisk" 
+  "ancient_of_wind" 
   {
-    "Model"            "models/props_structures/obelisk001.vmdl"
+    "Model"            "models/items/furion/treant_flower_1.vmdl"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -508,7 +511,7 @@
     "BuildTime"        "5"
     "BuildingType"     "Support"
 
-    "Ability1"                "starfall"
+    "Ability1"                "ancient_of_wind_cyclone"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0.75"
@@ -518,7 +521,42 @@
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
     "StatusHealth"           "1200"
-    "StatusMana"             "33"
+    "StatusMana"             "18"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "ancient_of_wonders" 
+  {
+    "Model"            "models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Support"
+
+    "Ability1"                "ancient_of_wonders_natures_curse"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "18"
     "StatusManaRegen"        "1.0"
 
     "VisionDaytimeRange"     "900"

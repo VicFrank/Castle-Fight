@@ -6,6 +6,8 @@ murloc_cleave = class({})
 function murloc_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
 naga_guardian_cleave = class({})
 function naga_guardian_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
+bear_cleave = class({})
+function bear_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
 
 modifier_custom_cleave = class({})
 

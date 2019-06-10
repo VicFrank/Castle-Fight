@@ -1,0 +1,717 @@
+"DOTAAbilities"
+{
+  // Natures Curse (Reduces the mana regeneration rate of all enemy 
+  // buildings and units on the map by 50%. Duration: 10 seconds.)
+  "ancient_of_wonders_natures_curse"
+  {
+    "AbilityTextureName"          "silencer_curse_of_the_silent"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/natures_curse"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    "AbilityCooldown"             "35.0"
+    "AbilityManaCost"             "35"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "mana_regen"              "-50"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "10"
+      }
+    }
+  }
+
+  // Summons a wandering tornado around an enemy unit that slows down its
+  // movement and attack speed by 25%, and also causes 40 dps in the area
+  // of ​​250 AoE for 5 seconds. Buildings take 50% damage
+  "ancient_of_wind_cyclone"
+  {
+    "AbilityTextureName"          "brewmaster_storm_cyclone"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/cyclone"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "radius"            "250"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "move_slow"         "25"
+      }
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "attack_slow"       "25"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "dps"               "40"
+      }
+    }
+  }
+
+  "ancient_protector_bash"
+  {
+    "AbilityTextureName"          "slardar_bash"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/bash"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_duration"  "2"
+      }
+      "02"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_chance"    "15"
+      }
+      "03"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_damage"    "25"
+      }
+    }
+  }
+
+  // Moves the enemy unit in the astral Units located in the astral plane
+  // can not attack, but they can cast spells Spells aimed at units during
+  // their prebyvaeniya in the astral plane to inflict additional damage
+  "ancient_guardian_banish"
+  {
+    "AbilityTextureName"          "obsidian_destroyer_astral_imprisonment"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/banish"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityCooldown"             "12.0"
+    "AbilityManaCost"             "12"
+  }
+
+  "spider_poision"
+  {
+    "AbilityTextureName"          "broodmother_poison_sting"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/poison"
+    "MaxLevel"                    "3"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "slow"                    "10 15 25"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "dps"                     "5 8 12"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "10"
+      }
+    }
+  }
+
+  // TODO: What does this do
+  "spider_web"
+  {
+    "AbilityTextureName"          "broodmother_spin_web"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/web"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  // spawns 2 black spiders
+  "giant_spider_split"
+  {
+    "AbilityTextureName"          "broodmother_spawn_spiderite"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/spider_split"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  // spawns 2 gaint spiders
+  "brood_mother_split"
+  {
+    "AbilityTextureName"          "broodmother_spawn_spiderite"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/spider_split"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  // Deals 100 initial damage and 20 damage / second for 10 seconds.
+  // A killed unit spawns 2 forest spiders
+  "brood_mother_infest"
+  {
+    "AbilityTextureName"          "broodmother_spawn_spiderite"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/infest"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "18.0"
+    "AbilityManaCost"             "50"
+    "AbilityCastPoint"            "0.3"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage"        "100"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "dps"           "20"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "duration"      "10"
+      }
+    }
+  }
+
+  // (200hp over 10 seconds, 50 mana, CD 16)
+  "furbolg_rejuvenation"
+  {
+    "AbilityTextureName"          "enchantress_natures_attendants"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/rejuvenation"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "16.0 14.0"
+    "AbilityManaCost"             "50"
+    "AbilityCastPoint"            "0.3"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "health"                  "200 400"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "10"
+      }
+    }
+  }
+
+  // 15% to burn 150 mana, inflicts damage equal to mana burned
+  "furbolg_mana_burn"
+  {
+    "AbilityTextureName"          "nyx_assassin_mana_burn"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/infest"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "chance"        "15"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "mana_burn"     "150"
+      }
+    }
+  }
+
+  // 15% chance to remove positive buff from an enemy
+  "dryad_abolish_magic"
+  {
+    "AbilityTextureName"          "brewmaster_storm_dispel_magic"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/abolish_magic"
+    "MaxLevel"                    "3"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "chance"        "15 20 25"
+      }
+    }
+  }
+
+  "dryad_spell_resist"
+  {
+    "AbilityTextureName"          "antimage_spell_shield"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/spell_resist"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"            "FIELD_INTEGER"
+        "magic_resist"        "15 20"
+      }
+    }
+  }
+
+  // 150hp, 3 armor
+  // TODO: what is this
+  "dryad_natures_touch"
+  {
+    "AbilityTextureName"          "enchantress_untouchable"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/natures_touch"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"            "FIELD_INTEGER"
+        "health"              "75 150"
+      }
+      "02"
+      {
+        "var_type"            "FIELD_INTEGER"
+        "armor"               "2 3"
+      }
+    }
+  }
+
+  // Summons 2 ents with Thorns ability (reflects 10% of melee damage taken
+  "dryad_summon_treants"
+  {
+    "AbilityTextureName"          "furion_force_of_nature"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/summon_treants"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityCooldown"             "25.0"
+    "AbilityManaCost"             "100"
+  }
+
+  "treant_thorns"
+  {
+    "AbilityTextureName"          "centaur_return"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/natures_touch"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"            "FIELD_INTEGER"
+        "damage_reflected"    "10"
+      }
+    }
+  }
+
+  "keeper_incorporeal"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "25"
+      }      
+    }
+  }
+
+  // invokes 5 trees around itself that protect it from melee attacks.
+  // After 3 seconds, the trees turn into treants that go on the attack.
+  "keeper_treant_sprout"
+  {
+    "AbilityTextureName"          "furion_sprout"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/treant_sprout"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityCooldown"             "30.0"
+    "AbilityManaCost"             "200"
+  }
+
+  // 15hp / sec, 350 aoe
+  "keeper_natures_aura"
+  {
+    "AbilityTextureName"          "furion_teleportation"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/treant_sprout"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCastRange"            "350"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "health_per_second"      "15"
+      }
+      "02"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "radius"         "350"
+      }
+    }
+  }
+
+  "spell_immune"
+  {
+    "AbilityTextureName"          "roshan_spell_block"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/spell_immune"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  // reduce armor by 2 for each attack, max -6
+  "emerald_dragon_corrosive_breath"
+  {
+    "AbilityTextureName"          "dragon_knight_elder_dragon_form"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/corrosive_breath"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "armor_reduction"      "-2"
+      }
+      "02"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "max_reduction"    "-6"
+      }
+    }
+  }
+
+  // Taunt (350 aoe) TODO: Look up cooldown and mana cost
+  "mountain_giant_taunt"
+  {
+    "AbilityTextureName"          "axe_berserkers_call"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/taunt"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityCastRange"            "350"
+    "AbilityCastPoint"            "0.3"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "radius"               "350"
+      }
+    }
+  }
+
+  // increases damage, changes attack type to siege, can hit flying,
+  // lasts 20 attacks
+  // TODO: Look up stats
+  "mountain_giant_grab_tree"
+  {
+    "AbilityTextureName"          "tiny_craggy_exterior"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/taunt"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityCastRange"            "350"
+    "AbilityCastPoint"            "0.3"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "radius"               "350"
+      }
+    }
+  }
+
+  // 20% less from strikes and status resistance
+  "mountain_giant_resistant_skin"
+  {
+    "AbilityTextureName"          "dragon_knight_elder_dragon_form"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/corrosive_breath"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "damage_reduction"     "20"
+      }
+      "02"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "status_resistance"    "20"
+      }
+    }
+  }
+
+  // 30%, 200 dmg, 175 AoE
+  "mountain_giant_pulverize"
+  {
+    "AbilityTextureName"          "earthshaker_enchant_totem"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/pulverize"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+       "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "chance"        "30"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "close_range"   "175"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "close_damage"  "200"
+      }
+      "04"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "far_range"     "175"
+      }
+      "05"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "far_damage"    "200"
+      }
+    }
+  }
+
+  // 15% (lvl2-50%) chance to increase your own attack speed and receive
+  // additional damage by 20% (lvl2-30%) from the hit.
+  // TODO: Look up duration
+  "bear_feral_rage"
+  {
+    "AbilityTextureName"          "lone_druid_rabid"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/feral_rage"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "chance"               "15 50"
+      }
+      "02"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "attack_speed"         "20 30"
+      }
+      "03"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "damage_increase"      "20 30"
+      }
+      "04"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "duration"             "5"
+      }
+    }
+  }
+
+  // A bear hibernates when its hp level is low, which increases
+  // the speed of regeneration of its lives to 20hp / sec.
+
+  // Hibernation: Ancient Bear goes into deep hibernation if its hp level
+  // is extremely low, which increases the regeneration of its lives to
+  // 40hp / sec. In addition, Ancient Bear takes 100% damage to the first
+  // attack after waking up.
+  // TODO: Look up this ability
+  "bear_slumber"
+  {
+    "AbilityTextureName"          "lone_druid_spirit_link"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/slumber"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "health_regen"         "20 40"
+      }
+      "02"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "health_threshold"     "20"
+      }
+    }
+  }
+
+  "bear_cleave"
+  {
+    "AbilityTextureName"          "sven_great_cleave"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/cleave"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "cleave_damage"           "30 35"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "cleave_radius"           "200"
+      }
+    }
+  }
+
+  "bear_critical_strike"
+  {
+    "AbilityTextureName"          "phantom_assassin_coup_de_grace"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "25 30"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "200"
+      }
+    }
+  }
+
+  "bear_bash"
+  {
+    "AbilityTextureName"          "slardar_bash"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/bash"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_duration"  "1"
+      }
+      "02"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_chance"    "30"
+      }
+      "03"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_damage"    "65"
+      }
+    }
+  }
+}

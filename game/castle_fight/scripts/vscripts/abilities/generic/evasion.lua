@@ -10,6 +10,8 @@ assassin_evasion = class({})
 function assassin_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
 avenging_spirit_evasion = class({})
 function avenging_spirit_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
+keeper_incorporeal = class({})
+function keeper_incorporeal:GetIntrinsicModifierName() return "modifier_custom_evasion" end
 
 modifier_custom_evasion = class({})
 

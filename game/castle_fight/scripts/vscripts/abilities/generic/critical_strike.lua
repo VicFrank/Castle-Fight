@@ -10,6 +10,8 @@ royal_guard_critical_strike = class({})
 function royal_guard_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
 lobster_critical_strike = class({})
 function lobster_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+bear_critical_strike = class({})
+function bear_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
 
 modifier_critical_strike_custom = class({})
 

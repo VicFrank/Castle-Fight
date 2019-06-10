@@ -1,6 +1,5 @@
 "DOTAUnits"
 {
-  // TODO: Damage range (DPS 27) Move Speed, Health, Bounty
   "hunter" 
   {
     "Model"            "models/heroes/windrunner/windrunner.vmdl"
@@ -20,9 +19,9 @@
     "ArmorPhysical"           "1"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "27"
-    "AttackDamageMax"         "27"
-    "AttackRate"              "1"
+    "AttackDamageMin"         "40"
+    "AttackDamageMax"         "43"
+    "AttackRate"              "1.8"
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "400"
@@ -31,7 +30,7 @@
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "270"
-    "StatusHealth"           "265"
+    "StatusHealth"           "300"
     "StatusHealthRegen"      "0.5"
     "StatusMana"             "0"
     "StatusManaRegen"        "0.0"     
@@ -58,7 +57,6 @@
     }
   }
 
-  // TODO: All stats
   "ranger" 
   {
     "Model"            "models/heroes/windrunner/windrunner.vmdl"
@@ -74,24 +72,24 @@
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "hunter_evasion"
-    "Ability1"                "ranger_multi_shot"
+    "Ability2"                "ranger_multi_shot"
 
-    "ArmorPhysical"           "1"
+    "ArmorPhysical"           "3"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "27"
-    "AttackDamageMax"         "27"
-    "AttackRate"              "1"
+    "AttackDamageMin"         "50"
+    "AttackDamageMax"         "80"
+    "AttackRate"              "1.05"
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "400"
+    "AttackRange"             "425"
     "ProjectileModel"         "particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
     "ProjectileSpeed"         "1250"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "270"
-    "StatusHealth"           "265"
-    "StatusHealthRegen"      "0.5"
+    "StatusHealth"           "500"
+    "StatusHealthRegen"      "1.5"
     "StatusMana"             "0"
     "StatusManaRegen"        "0.0"     
     "VisionDaytimeRange"     "1400"
@@ -117,7 +115,7 @@
     }
   }
 
-  // TODO: All stats
+  // 100 dps
   "amazon" 
   {
     "Model"            "models/heroes/drow/drow.vmdl"
@@ -133,25 +131,25 @@
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "legendary_spell_resistance"
-    "Ability1"                "ranger_multi_shot"
-    "Ability1"                "hunter_evasion"
+    "Ability2"                "ranger_multi_shot"
+    "Ability3"                "hunter_evasion"
 
-    "ArmorPhysical"           "1"
+    "ArmorPhysical"           "5"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "27"
-    "AttackDamageMax"         "27"
+    "AttackDamageMin"         "70"
+    "AttackDamageMax"         "130"
     "AttackRate"              "1"
     "AttackAnimationPoint"    "0.7"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "400"
+    "AttackRange"             "460"
     "ProjectileModel"         "particles/units/heroes/hero_drow/drow_base_attack.vpcf"
     "ProjectileSpeed"         "1250"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "270"
-    "StatusHealth"           "265"
-    "StatusHealthRegen"      "0.5"
+    "StatusHealth"           "900"
+    "StatusHealthRegen"      "2.5"
     "StatusMana"             "0"
     "StatusManaRegen"        "0.0"     
     "VisionDaytimeRange"     "1400"
@@ -197,9 +195,9 @@
     "ArmorPhysical"           "1"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "31"
-    "AttackDamageMax"         "31"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "40"
+    "AttackDamageMax"         "60"
+    "AttackRate"              "1.6"
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "375"
@@ -236,7 +234,6 @@
     }
   }
 
-  // TODO: All stats
   "sage_druid" 
   {
     "Model"            "npc_dota_hero_furion"
@@ -253,12 +250,12 @@
 
     "Ability1"                "druid_mass_entangle"
 
-    "ArmorPhysical"           "1"
+    "ArmorPhysical"           "3"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "31"
-    "AttackDamageMax"         "31"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "60"
+    "AttackDamageMax"         "90"
+    "AttackRate"              "1.6"
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "375"
@@ -267,11 +264,11 @@
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "270"
-    "StatusHealth"           "325"
-    "StatusHealthRegen"      "1.0"
-    "StatusMana"             "200"
-    "StatusManaRegen"        "1.0"     
-    "StatusStartingMana"     "100"
+    "StatusHealth"           "550"
+    "StatusHealthRegen"      "1.5"
+    "StatusMana"             "300"
+    "StatusManaRegen"        "2.0"     
+    "StatusStartingMana"     "150"
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -432,9 +429,9 @@
     "ArmorPhysical"           "5"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"         "40"
-    "AttackDamageMax"         "50"
-    "AttackRate"              "0.75"
+    "AttackDamageMin"         "30"
+    "AttackDamageMax"         "60"
+    "AttackRate"              "1.2"
     "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
@@ -468,6 +465,7 @@
     }
   }
 
+  // 77 dps
   "avatar_of_vengeance" 
   {
     "Model"            "models/heroes/spectre/spectre.vmdl"
@@ -488,19 +486,19 @@
     "Ability4"                "avenging_spirit_heal_on_kill"
     "Ability5"                "avenging_spirit_revenge"
 
-    "ArmorPhysical"           "5"
+    "ArmorPhysical"           "8"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"         "40"
-    "AttackDamageMax"         "50"
-    "AttackRate"              "0.75"
+    "AttackDamageMin"         "50"
+    "AttackDamageMax"         "90"
+    "AttackRate"              "0.9"
     "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "300"
-    "StatusHealth"           "425"
+    "StatusHealth"           "700"
     "StatusHealthRegen"      "1.75"
     "StatusMana"             "0"
     "StatusManaRegen"        "0.0"     
@@ -549,16 +547,18 @@
     "ArmorPhysical"           "2"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "28"
-    "AttackDamageMax"         "28"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "50"
+    "AttackDamageMax"         "50"
+    "AttackRate"              "1.8"
     "AttackAnimationPoint"    "0.55"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "128"
+    "AttackRange"             "350"
+    "ProjectileModel"         "particles/units/heroes/hero_puck/puck_base_attack.vpcf"
+    "ProjectileSpeed"         "900"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_FLY"
     "MovementSpeed"          "270"
-    "StatusHealth"           "465"
+    "StatusHealth"           "460"
     "StatusHealthRegen"      "1"
     "StatusMana"             "0"
     "StatusManaRegen"        "0.0"     
