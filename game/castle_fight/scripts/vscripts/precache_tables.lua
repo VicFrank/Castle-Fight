@@ -99,3 +99,36 @@ g_Undead_Precache = {
   "skeleton_hero",
   "skeleton_general",
 }
+
+g_Night_Elves_Precache = {
+  -- Buildings
+  "hunters_hall",
+  "rangers_hall",
+  "amazons_hall",
+  "moon_shrine",
+  "moon_altar",
+  "house_of_shadows",
+  "guild_of_shadows",
+  "pillaged_hut",
+  "scorched_mansion",
+  "fountain_of_wonders",
+  "nightelf_siege_factory",
+  "silver_glade",
+  "obelisk_of_wilderness",
+  "elunes_lantern",
+  "starfall_obelisk",
+  -- Units
+  "hunter"
+  "ranger"
+  "amazon"
+  "druid"
+  "sage_druid"
+  "assassin"
+  "royal_assassin"
+  "avenging_spirit"
+  "avatar_of_vengeance"
+  "faerie_dragon"
+  "glaive_thrower"
+}
+
+  

@@ -1,0 +1,324 @@
+// TODO: Determine spawn rates for all units
+// Currently known: Amazon is 52
+"DOTAUnits"
+{
+  "train_huntress"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "huntress"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "21.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "huntress"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_ranger"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "ranger"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "26.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "ranger"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_amazon"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "amazon"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "50.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "amazon"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_druid"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "druid"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "25.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "druid"
+          }
+        }
+      }
+    }    
+  }
+
+
+  "train_sage_druid"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "sage_druid"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "26.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "sage_druid"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_assassin"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "assassin"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "30.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "assassin"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_royal_assassin"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "royal_assassin"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "30.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "royal_assassin"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_avenging_spirit"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "avenging_spirit"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "27.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "avenging_spirit"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_avatar_of_vengeance"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "avatar_of_vengeance"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "39.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "avatar_of_vengeance"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_faerie_dragon"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "faerie_dragon"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "30.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "faerie_dragon"
+          }
+        }
+      }
+    }    
+  }
+
+  "train_glaive_thrower"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "glaive_thrower"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCooldown"       "34.0"
+
+    "Modifiers"
+    {
+      "modifier_train_unit"
+      {
+        "Passive"        "1"
+        "IsHidden"       "1"
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+            "Function"      "StartSpawningUnits"
+            "NumUnits"      "1"
+            "UnitName"      "glaive_thrower"
+          }
+        }
+      }
+    }    
+  }
+}

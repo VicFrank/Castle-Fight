@@ -4,6 +4,7 @@
   // all enemy units in the area around the unit. Deals 40 spell damage,
   // slows down by 50% for 10 seconds
   // CD: 7
+  // TODO: Look up radius
   "earthquake"
   {
     "AbilityTextureName"          "earthshaker_echo_slam"
@@ -11,7 +12,7 @@
     "ScriptFile"                  "abilities/naga/earthquake"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityCooldown"             "7.0"
     "AbilityManaCost"             "100"
 
@@ -20,8 +21,23 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "evasion"                 "15"
-      }      
+        "damage"                  "40"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "slow_pct"                "50"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "slow_duration"           "10"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "300"
+      }
     }
   }
 
@@ -37,21 +53,13 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityCooldown"             "18.0"
     "AbilityManaCost"             "100"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "evasion"                 "15"
-      }      
-    }
   }
 
   // Increases the life regeneration from allied units standing close to
   // 7.5 HP / SEC, as well as the regeneration of buildings 2.5 HP / SEC
   // effect from Coral Statue stacks with other effects Coral Statue, as
   // well as the effect of the Rune of the Repair.
+  // TODO: Look up radius
   "restore_area"
   {
     "AbilityTextureName"          "oracle_fortunes_end"
@@ -60,14 +68,25 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCastRange"            "700"
 
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "radius"                  "15"
-      }      
+        "radius"                  "700"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_FLOAT"
+        "unit_regen"              "7.5"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_FLOAT"
+        "building_regen"          "2.5"
+      }
     }
   }
 
@@ -90,7 +109,7 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "evasion"                 "15"
+        "damage"                  "270"
       }      
     }
   }
@@ -283,13 +302,18 @@
     {
       "01"
       {
-        "var_type"         "FIELD_INTEGER"
-        "bounds"           "2"
+        "var_type"          "FIELD_INTEGER"
+        "range"             "500"
       }
       "02"
       {
-        "var_type"                    "FIELD_INTEGER"
-        "damage_reduction_percent"    "30"
+        "var_type"          "FIELD_INTEGER"
+        "bounces"           "2"
+      }
+      "03"
+      {
+        "var_type"                  "FIELD_INTEGER"
+        "damage_reduction_percent"  "30"
       }
     }
   }

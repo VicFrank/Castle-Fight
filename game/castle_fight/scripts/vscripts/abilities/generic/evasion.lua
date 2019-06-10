@@ -4,6 +4,12 @@ defender_evasion = class({})
 function defender_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
 murloc_evasion = class({})
 function murloc_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
+hunter_evasion = class({})
+function hunter_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
+assassin_evasion = class({})
+function assassin_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
+avenging_spirit_evasion = class({})
+function avenging_spirit_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
 
 modifier_custom_evasion = class({})
 

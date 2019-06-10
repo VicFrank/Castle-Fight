@@ -1,0 +1,498 @@
+"DOTAAbilities"
+{
+  // Stars fall from the sky around a random enemy unit, damaing all
+  // enemies in its area for 11 seconds, dealing 50 dps spell damage.
+  // Buildings receive only 40% of this damage.
+  "starfall"
+  {
+    "AbilityTextureName"          "mirana_starfall"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/starfall"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "30.0"
+    "AbilityManaCost"             "30"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "900"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "11"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "building_damage"         "40"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "dps"                     "50"
+      }
+    }
+  }
+
+  "elunes_lantern_feedback"
+  {
+    "AbilityTextureName"          "antimage_mana_break"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/feedback"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "mana_burn"         "35"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "mana_to_damage"    "100"
+      }    
+    }
+  }
+
+  // Blesses a friendly random unit with the resistance of the wilderness,
+  // giving it permanent 40% spell damage reduction and a 40% chance to
+  // reduce incoming attack damage by 40. Has an extra chance to target
+  // units that don't have the buff yet.
+  // TODO: Cooldown/mana cost
+  "resistance_of_the_wilderness"
+  {
+    "AbilityTextureName"          "lone_druid_rabid"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/starfall"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    "AbilityCooldown"             "30.0"
+    "AbilityManaCost"             "30"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "spell_resistance"        "40"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "chance"                  "40"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "attack_damage_reduction" "40"
+      }
+    }
+  }
+
+  // Blesses everything around a random friendly unit that is attacked.
+  // Blessed units regain 175 health, 50 mana and +6 armor for 6 seconds.
+  "moon_shine_blessing"
+  {
+    "AbilityTextureName"          "dark_troll_warlord_raise_dead"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/moon_shine_blessing"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityCooldown"             "20.0"
+    "AbilityManaCost"             "20"
+
+     "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "health_restored"             "175"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "mana_restored"           "50"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "armor"                   "6"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "6"
+      }
+    }
+  }
+
+  "hunter_evasion"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "3"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "8 15 25"
+      }      
+    }
+  }
+
+  // TODO: Investigate damage reduction
+  "ranger_multi_shot"
+  {
+    "AbilityTextureName"          "medusa_split_shot"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/multi_shot"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "damage_modifier"         "0"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "arrow_count"             "3 7"
+      }
+    }
+  }
+
+  // Entangle 5 sec, 15 dps
+  // cd 14 mana cost 30
+  // only hits ground units
+  "druid_entangle"
+  {
+    "AbilityTextureName"          "lone_druid_spirit_bear_entangle"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/entangle"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "14.0"
+    "AbilityManaCost"             "30"
+    "AbilityCastPoint"            "0.3"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "5"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "dps"                     "15"
+      }
+    }
+  }
+
+  // 3 ground units 6 seconds 35dps
+  // cd 14 mana cost 35
+  // only hits ground units
+  "druid_mass_entangle"
+  {
+    "AbilityTextureName"          "lone_druid_spirit_bear_entangle"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/entangle"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "14.0"
+    "AbilityManaCost"             "35"
+    "AbilityCastPoint"            "0.3"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "6"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "dps"                     "35"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "targets"                 "3"
+      }
+    }
+  }
+
+  "assassin_evasion"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "15 25"
+      }      
+    }
+  }
+
+  "assassin_feedback"
+  {
+    "AbilityTextureName"          "antimage_mana_break"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/feedback"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "mana_burn"      "40 60"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "mana_to_damage"    "170 220"
+      }
+    }
+  }
+
+  "assassin_backstab"
+  {
+    "AbilityTextureName"          "bounty_hunter_wind_walk"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/undead/vampire_attack"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityCooldown"             "0.0"
+    "AbilityManaCost"             "50"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage"        "150 300"
+      }
+    }
+  }
+
+  "avenging_spirit_evasion"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "30 40"
+      }      
+    }
+  }
+
+  "avenging_spirit_corrosive_attack"
+  {
+    "AbilityTextureName"          "viper_nethertoxin"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/corrosive_attack"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "armor_reduction"         "-4 -7"
+      }      
+    }
+  }
+
+  // I don't know what this is. Status resistance?
+  "avenging_spirit_spell_reduction"
+  {
+    "AbilityTextureName"          "spectre_dispersion"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/spell_reduction"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "resistance"              "30"
+      }
+    }
+  }
+
+  // 14%
+  "avenging_spirit_heal_on_kill"
+  {
+    "AbilityTextureName"          "spectre_desolate"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/heal_on_kill"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "heal_pct"      "14"
+      }
+    }
+  }
+
+  "avenging_spirit_revenge"
+  {
+    "AbilityTextureName"          "spectre_haunt"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/revenge"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage"        "350"
+      }
+    }
+  }
+
+  // Heals a friendly unit for 175 health cd 6 mana cost 20
+  "faerie_dragon_heal"
+  {
+    "AbilityTextureName"          "spectre_haunt"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/revenge"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "6.0"
+    "AbilityManaCost"             "20"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "heal"          "175"
+      }
+    }
+  }
+
+  "faerie_dragon_feedback"
+  {
+    "AbilityTextureName"          "antimage_mana_break"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/feedback"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "mana_burn"         "25"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "mana_to_damage"    "100"
+      }    
+    }
+  }
+
+  // Bouncing attack (4 targets, 30% less on each bounce)
+  "glaive_thrower_bouncing_attack"
+  {
+    "AbilityTextureName"          "luna_moon_glaive"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/bouncing_attack"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "range"             "500"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "bounces"           "3"
+      }
+      "03"
+      {
+        "var_type"                  "FIELD_INTEGER"
+        "damage_reduction_percent"  "30"
+      }
+    }
+  }
+}
