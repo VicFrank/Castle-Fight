@@ -105,6 +105,7 @@ function GiveLumberToAllPlayers(value)
 end
 
 function GameMode:GreedIsGood(playerID, value)
+  value = tonumber(value) or 500
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     hero:GiveLumber(value)
     hero:ModifyGold(value, false, 0)
@@ -119,7 +120,8 @@ end
 CHEAT_CODES = {
   ["lumber"] = function(...) GameMode:LumberCheat(...) end,                -- "Gives you X lumber"
   ["greedisgood"] = function(...) GameMode:GreedIsGood(...) end,           -- "Gives you X gold and lumber" 
-  ["unitsaredead"] = function(...) KillAllUnits() end,                     -- "Kills all units"    
+  ["killallunits"] = function(...) KillAllUnits() end,                     -- "Kills all units"    
+  ["killallbuildings"] = function(...) KillAllBuildings() end,                     -- "Kills all units"    
   ["reset"] = function(...) KillEverything() end,                          -- "Kills all units and buildings"    
   ["nextround"] = function(...) GameMode:StartRound(...) end,              -- "Calls start round"      
   ["endround"] = function(...) GameMode:EndRound(...) end,                 -- "Calls end round"

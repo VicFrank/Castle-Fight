@@ -762,6 +762,8 @@
     "AbilityCastPoint"       "0.2"
     "AbilityCastRange"       "500"
 
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_1"
+
     "precache"
     {
       "particle"  "particles/custom/human/inner_fire.vpcf"
@@ -834,22 +836,16 @@
 
     "AbilityCooldown"        "40.0"
     "AbilityManaCost"        "103"
-    "AbilityCastPoint"       "0.0"
+    "AbilityCastPoint"       "0.2"
+    "AbilityCastRange"       "900"
+
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_1"
 
     "precache"
     {
       "particle"  "particles/status_fx/status_effect_guardian_angel.vpcf"
       "particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
       "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"               "FIELD_INTEGER"
-        "range"                  "900"
-      }
     }
   }
 
@@ -947,9 +943,12 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     "AbilityCooldown"        "12.0"
     "AbilityManaCost"        "35"
+    "AbilityCastRange"        "370"
 
     "precache"
     {
@@ -1011,10 +1010,11 @@
     "ScriptFile"                     "abilities/human/holy_power"
     "MaxLevel"                       "1"
 
-    "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 
     "AbilityCooldown"                "7.0"
     "AbilityManaCost"                "7"
+    "AbilityCastRange"               "800"
 
     "AbilitySpecial"
     {

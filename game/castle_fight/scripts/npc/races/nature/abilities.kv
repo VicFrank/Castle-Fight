@@ -9,7 +9,7 @@
     "ScriptFile"                  "abilities/nature/natures_curse"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 
     "AbilityCooldown"             "35.0"
     "AbilityManaCost"             "35"
@@ -39,7 +39,7 @@
     "ScriptFile"                  "abilities/nature/cyclone"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 
     "AbilitySpecial"
     {
@@ -106,7 +106,7 @@
     "ScriptFile"                  "abilities/nature/banish"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "12.0"
     "AbilityManaCost"             "12"
   }
@@ -140,7 +140,8 @@
     }
   }
 
-  // TODO: What does this do
+  // Immobilizes enemies. Tends to target air units first, and brings them
+  // to the ground
   "spider_web"
   {
     "AbilityTextureName"          "broodmother_spin_web"
@@ -148,10 +149,24 @@
     "ScriptFile"                  "abilities/nature/web"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "18.0"
+    "AbilityCastPoint"            "0.3"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "duration"      "5 8"
+      }
+    }
   }
 
-  // spawns 2 black spiders
+  // spawns 2 forest spiders
   "giant_spider_split"
   {
     "AbilityTextureName"          "broodmother_spawn_spiderite"
@@ -162,7 +177,7 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   }
 
-  // spawns 2 gaint spiders
+  // spawns 2 giant spiders
   "brood_mother_split"
   {
     "AbilityTextureName"          "broodmother_spawn_spiderite"
@@ -242,11 +257,12 @@
   }
 
   // 15% to burn 150 mana, inflicts damage equal to mana burned
+  // drains the mana burned
   "furbolg_mana_burn"
   {
     "AbilityTextureName"          "nyx_assassin_mana_burn"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/nature/infest"
+    "ScriptFile"                  "abilities/nature/mana_burn"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -302,11 +318,16 @@
         "var_type"            "FIELD_INTEGER"
         "magic_resist"        "15 20"
       }
+      "02"
+      {
+        "var_type"            "FIELD_INTEGER"
+        "status_resist"       "20 25"
+      }
     }
   }
 
   // 150hp, 3 armor
-  // TODO: what is this
+  // Heals and boosts armour
   "dryad_natures_touch"
   {
     "AbilityTextureName"          "enchantress_untouchable"
@@ -314,7 +335,13 @@
     "ScriptFile"                  "abilities/nature/natures_touch"
     "MaxLevel"                    "2"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "10.0 8.0"
+    "AbilityManaCost"             "25"
+    "AbilityCastPoint"            "0.3"
 
     "AbilitySpecial"
     {
@@ -457,7 +484,7 @@
     }
   }
 
-  // Taunt (350 aoe) TODO: Look up cooldown and mana cost
+  // Taunt (350 aoe)
   "mountain_giant_taunt"
   {
     "AbilityTextureName"          "axe_berserkers_call"
@@ -469,41 +496,38 @@
     "AbilityCastRange"            "350"
     "AbilityCastPoint"            "0.3"
 
+    "AbilityCooldown"        "15"
+
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"             "FIELD_INTEGER"
         "radius"               "350"
+      }
+      "02"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "duration"             "5"
       }
     }
   }
 
   // increases damage, changes attack type to siege, can hit flying,
-  // lasts 20 attacks
-  // TODO: Look up stats
+  // lasts 20 attacks, 25% demolish
+  // I'm just going to make this a passive tree holding thingn
   "mountain_giant_grab_tree"
   {
     "AbilityTextureName"          "tiny_craggy_exterior"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/nature/taunt"
+    "ScriptFile"                  "abilities/nature/grab_tree"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityCastRange"            "350"
-    "AbilityCastPoint"            "0.3"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"             "FIELD_INTEGER"
-        "radius"               "350"
-      }
-    }
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   }
 
   // 20% less from strikes and status resistance
+  // 30% chance to resist negative buffs
   "mountain_giant_resistant_skin"
   {
     "AbilityTextureName"          "dragon_knight_elder_dragon_form"
@@ -523,7 +547,7 @@
       "02"
       {
         "var_type"             "FIELD_INTEGER"
-        "status_resistance"    "20"
+        "status_resistance"    "50"
       }
     }
   }
@@ -568,9 +592,7 @@
     }
   }
 
-  // 15% (lvl2-50%) chance to increase your own attack speed and receive
-  // additional damage by 20% (lvl2-30%) from the hit.
-  // TODO: Look up duration
+  // chance on hit to gain damage and attack speed for 10 seconds
   "bear_feral_rage"
   {
     "AbilityTextureName"          "lone_druid_rabid"
@@ -600,19 +622,18 @@
       "04"
       {
         "var_type"             "FIELD_INTEGER"
-        "duration"             "5"
+        "duration"             "10"
       }
     }
   }
-
-  // A bear hibernates when its hp level is low, which increases
-  // the speed of regeneration of its lives to 20hp / sec.
 
   // Hibernation: Ancient Bear goes into deep hibernation if its hp level
   // is extremely low, which increases the regeneration of its lives to
   // 40hp / sec. In addition, Ancient Bear takes 100% damage to the first
   // attack after waking up.
-  // TODO: Look up this ability
+
+  // at half health, the bear runs away for a bit, and then goes to sleep
+  // for 10 seconds or until woken up by an attack
   "bear_slumber"
   {
     "AbilityTextureName"          "lone_druid_spirit_link"
@@ -633,6 +654,11 @@
       {
         "var_type"             "FIELD_INTEGER"
         "health_threshold"     "20"
+      }
+      "03"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "duration"             "10"
       }
     }
   }

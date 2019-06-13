@@ -10,20 +10,20 @@ function holy_power:OnSpellStart()
   local allies = FindAlliesInRadius(caster, radius)
 
   for _,unit in pairs(allies) do
-    unit:AddNewModifier(caster, ability, "modifier_holy_power", {})
+    if not unit:IsRealHero() then
+      unit:AddNewModifier(caster, ability, "modifier_holy_power", {})
+    end
   end
 end
 
 modifier_holy_power = class({})
-
-function modifier_holy_power:IsHidden() return true end
 
 function modifier_holy_power:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
-  self.attack_speed = self.ability:GetSpecialValueFor("attack_speed")
+  self.attack_speed = self.ability:GetSpecialValueFor("attack_speed")  
 end
 
 function modifier_holy_power:DeclareFunctions()

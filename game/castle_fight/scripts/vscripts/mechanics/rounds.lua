@@ -21,8 +21,6 @@ function GameMode:InitializeRoundStats()
   GameRules.roundTime = 0
   GameRules.numPlayersBuilt = 0
 
-  GameRules.income = {}
-  GameRules.numBoxes = {}
   GameRules.unitsKilled = {}
   GameRules.buildingsBuilt = {}
   GameRules.numUnitsTrained = {}
@@ -30,15 +28,14 @@ function GameMode:InitializeRoundStats()
   GameRules.rescueStrikeKills = {}
 
   for _,playerID in pairs(GameRules.playerIDs) do
-    GameRules.income[playerID] = STARTING_INCOME
-    GameRules.numBoxes[playerID] = 0
     GameRules.unitsKilled[playerID] = {}
     GameRules.buildingsBuilt[playerID] = {}
     GameRules.numUnitsTrained[playerID] = {}
     GameRules.rescueStrikeDamage[playerID] = {}
     GameRules.rescueStrikeKills[playerID] = {}
-    print(playerID, GameRules.numBoxes[playerID])
   end
+
+  GameMode:ResetIncome()
 end
 
 function GameMode:StartIncomeTimer()
@@ -86,17 +83,25 @@ end
 -- Start Round
 --------------------------------------------------------
 function GameMode:StartRound()
-  print("Starting Round")
-  -- Clear the map again, just in case
-  GameMode:KillAllUnitsAndBuildings()
-  GameMode:InitializeRoundStats()
-  GameMode:SpawnCastles()
-  GameMode:SetupHeroes()
-  GameMode:StartIncomeTimer()
+  -- Wait for precaching to finish before starting the round
+  Timers:CreateTimer(function()
+    if GameRules.numToCache > 0 then
+      print("Loading...")
+      return 1
+    end
 
-  Notifications:TopToAll({text="Round " .. GameRules.roundCount .. " started!", duration=3.0})
+    print("Starting Round")
+    -- Clear the map again, just in case
+    GameMode:KillAllUnitsAndBuildings()
+    GameMode:InitializeRoundStats()
+    GameMode:SpawnCastles()
+    GameMode:SetupHeroes()
+    GameMode:StartIncomeTimer()
 
-  GameRules.roundInProgress = true
+    Notifications:TopToAll({text="Round " .. GameRules.roundCount .. " started!", duration=3.0})
+
+    GameRules.roundInProgress = true
+  end)
 end
 
 --------------------------------------------------------

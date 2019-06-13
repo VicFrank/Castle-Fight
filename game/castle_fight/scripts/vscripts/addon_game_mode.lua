@@ -6,19 +6,23 @@ require('libraries/timers')
 require('libraries/notifications')
 require('libraries/selection')
 require("libraries/buildinghelper")
-require('repair')
 
 require("mechanics/units")
 require("mechanics/attacks")
 require("mechanics/lumber")
 require("mechanics/rounds")
 require("mechanics/income")
+require("mechanics/corpses")
+
+require("tables/precache_tables")
+require("tables/item_tables")
+
+require('repair')
 require("damage")
 require("testing")
 require("events")
 require("constants")
 require("utility_functions")
-require("precache_tables")
 
 function Precache( context )
   --[[
@@ -44,13 +48,14 @@ function Precache( context )
   -- General Precaches
   PrecacheUnitByNameSync("treasure_box", context)
   PrecacheUnitByNameSync("castle", context)
+  PrecacheUnitByNameSync("dotacraft_corpse", context)
   PrecacheResource("particle", "particles/dire_fx/fire_barracks.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf", context) -- splash attack
 
   -- Human Precaches
-  for _,unitname in ipairs(g_Human_Precache) do
-    PrecacheUnitByNameSync(unitname, context)
-  end
+  -- for _,unitname in ipairs(g_Human_Precache) do
+  --   PrecacheUnitByNameSync(unitname, context)
+  -- end
 end
 
 -- Create the game mode when we activate
@@ -61,7 +66,7 @@ function Activate()
 
   if IsInToolsMode() then
     Timers:CreateTimer(2, function()
-      Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
+      Tutorial:AddBot("npc_dota_hero_kunkka", "", "", false)
     end)
   end
 end
@@ -75,7 +80,7 @@ function GameMode:InitGameMode()
   GameMode = self
   print("Castle Fight has loaded.")
 
-  LimitPathingSearchDepth(0.5)
+  -- LimitPathingSearchDepth(0.5)
 
   GameRules:SetCustomGameAllowMusicAtGameStart(false)
   GameRules:SetCustomGameAllowBattleMusic(false)
@@ -117,7 +122,7 @@ function GameMode:InitGameMode()
   mode:SetRecommendedItemsDisabled(true)
   mode:SetSelectionGoldPenaltyEnabled(false)
   mode:SetKillingSpreeAnnouncerDisabled(true)
-  mode:SetCustomGameForceHero("npc_dota_hero_wisp")
+  mode:SetCustomGameForceHero("npc_dota_hero_slark")
 
   -- Event Hooks
   ListenToGameEvent('entity_killed', Dynamic_Wrap(GameMode, 'OnEntityKilled'), self)
@@ -135,6 +140,8 @@ function GameMode:InitGameMode()
   LinkLuaModifier("modifier_disable_turning", "libraries/modifiers/modifier_disable_turning", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("income_modifier", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
 
+  self.vUserIds = {}
+  
   -- Setup Global Values
   GameRules.leftCastlePosition = Entities:FindByName(nil, "left_ancient_position"):GetAbsOrigin()
   GameRules.rightCastlePosition = Entities:FindByName(nil, "right_ancient_position"):GetAbsOrigin()
@@ -148,6 +155,8 @@ function GameMode:InitGameMode()
   GameRules.roundCount = 0
   GameRules.roundInProgress = false
   GameRules.playerIDs = {}
+  GameRules.numToCache = 0
+  GameRules.precached = {}
 
   -- Modifier Applier
   GameRules.Applier = CreateItem("item_apply_modifiers", nil, nil)

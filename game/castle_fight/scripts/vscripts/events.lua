@@ -32,8 +32,8 @@ function GameMode:OnNPCSpawned(keys)
   end
 
   if npc:IsRealHero() and npc.bFirstSpawned == nil then
-      npc.bFirstSpawned = true
-      GameMode:OnHeroInGame(npc)
+    npc.bFirstSpawned = true
+    GameMode:OnHeroInGame(npc)
   end
 
   Units:Init(npc)
@@ -58,12 +58,27 @@ function GameMode:OnHeroInGame(hero)
       end
     end
 
-    hero:AddItem(CreateItem("item_build_gjallarhorn", hero, hero))
-    hero:AddItem(CreateItem("item_build_artillery", hero, hero))
-    hero:AddItem(CreateItem("item_build_watch_tower", hero, hero))
-    hero:AddItem(CreateItem("item_build_heroic_shrine", hero, hero))
+    local unitName = hero:GetUnitName()
+    local items = g_Race_Items[unitName]
+    for _,itemname in ipairs(items) do
+      hero:AddItem(CreateItem(itemname, hero, hero))
+    end
+
     hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
 
+    -- Precache this race
+    if not GameRules.precached[unitName] then
+      for _,unit in ipairs(g_Precache_Tables[unitName]) do
+        GameRules.numToCache = GameRules.numToCache + 1
+
+        PrecacheUnitByNameAsync(unit, function(unit)
+          GameRules.numToCache = GameRules.numToCache - 1
+          print(GameRules.numToCache)
+         end)
+      end
+
+      GameRules.precached[unitName] = true
+    end
   end)  
 end
 
@@ -96,19 +111,24 @@ function GameMode:OnEntityKilled(keys)
 
     -- Lose the income value that this building was generating
     local lostIncome = killed.incomeValue
-    GameRules.income[killedPlayerID] = GameRules.income[killedPlayerID] - lostIncome
+    GameMode:ModifyIncome(killedPlayerID, -lostIncome)
 
     if killed:GetUnitName() == "item_build_treasure_box" then
-      GameRules.numBoxes[killedPlayerID] = GameRules.numBoxes[killedPlayerID] - 1
+      GameMode:ModifyNumBoxes(killedPlayerID, -1)
     end
   end
+
+  Corpses:CreateFromUnit(killed)
 end
 
 function GameMode:OnConnectFull(keys)
   local entIndex = keys.index+1
   -- The Player entity of the joining user
   local ply = EntIndexToHScript(entIndex)
+  local userID = keys.userid
 
+  self.vUserIds = self.vUserIds or {}
+  self.vUserIds[userID] = ply
   -- The Player ID of the joining player
   local playerID = ply:GetPlayerID()
 
@@ -137,7 +157,7 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
 
   -- If the unit is a treasure box, increase the income for the team
   if building:GetUnitName() == "treasure_box" then
-    GameRules.numBoxes[playerID] = GameRules.numBoxes[playerID] + 1
+    GameMode:ModifyNumBoxes(playerID, 1)
   end
 
   -- Give the player a reward for being the nth player to build a building
@@ -165,5 +185,5 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
     building.incomeValue = increase
   end
 
-  GameRules.income[playerID] = GameRules.income[playerID] + building.incomeValue
+  GameMode:ModifyIncome(playerID, building.incomeValue)
 end

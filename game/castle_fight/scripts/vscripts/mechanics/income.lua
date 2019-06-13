@@ -90,11 +90,65 @@ function GameMode:GetPostTaxIncome(income)
 end
 
 function GameMode:GetIncomeForPlayer(playerID)
-  local baseIncome = GameRules.income[playerID]
-  local numBoxes = GameRules.numBoxes[playerID]
+  local baseIncome = GameMode:GetIncome(playerID)
+  local numBoxes = GameMode:GetNumBoxes(playerID)
 
   local treasureBoxMultiplier = GameMode:CalculateTreasureBoxMultiplier(numBoxes)
   local income = baseIncome + baseIncome * treasureBoxMultiplier
 
   return GameMode:GetPostTaxIncome(income)
+end
+
+--------------
+-- Income here refers to base income, before box multipliers and tax
+function GameMode:ResetIncome()
+  GameRules.income = {}
+  GameRules.numBoxes = {}
+
+  for _,playerID in pairs(GameRules.playerIDs) do
+    GameMode:SetIncome(playerID, STARTING_INCOME)
+    GameMode:SetNumBoxes(playerID, 0)
+  end
+end
+
+function GameMode:SetIncome(playerID, value)
+  GameRules.income[playerID] = value
+  CustomNetTables:SetTableValue("player_income", tostring(playerID),
+    {
+      income = value,
+      numBoxes = GameMode:GetNumBoxes(playerID)
+    })
+end
+
+function GameMode:GetIncome(playerID)
+  if not GameRules.income[playerID] then
+    GameRules.income[playerID] = 0
+  end
+  return GameRules.income[playerID]
+end
+
+function GameMode:ModifyIncome(playerID, value)
+  GameMode:SetIncome(playerID, GameMode:GetIncome(playerID) + value)
+end
+
+--------------
+
+function GameMode:SetNumBoxes(playerID, value)
+  GameRules.numBoxes[playerID] = value
+  CustomNetTables:SetTableValue("player_income", tostring(playerID),
+    {
+      income = GameMode:GetIncome(playerID),
+      numBoxes = value
+    })
+end
+
+function GameMode:GetNumBoxes(playerID)
+  if not GameRules.numBoxes[playerID] then
+    GameRules.numBoxes[playerID] = 0
+  end
+  return GameRules.numBoxes[playerID]
+end
+
+function GameMode:ModifyNumBoxes(playerID, value)
+  GameMode:SetNumBoxes(playerID, GameMode:GetNumBoxes(playerID) + value)
 end

@@ -1,6 +1,51 @@
 "DOTAUnits"
 {
   // TODO: Look up unit bounties/MS
+  // TODO: different model
+  "forest_spider" 
+  {
+    "Model"            "models/items/broodmother/spiderling/lycosidae_spiderling/lycosidae_spiderling.vmdl"
+    "SoundSet"         "0"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ModelScale"       "0.5"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "12"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "ArmorPhysical"           "0"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"         "14"
+    "AttackDamageMax"         "15"
+    "AttackRate"              "0.9"
+    "AttackAnimationPoint"    "0.5"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "128"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "270"
+    "StatusHealth"           "150"
+    "StatusHealthRegen"      "0.0"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "2"
+    "BountyGoldMax"          "2"
+
+    "AttackType"             "pierce"
+    "ArmorType"              "unarmored"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+
   "black_spider" 
   {
     "Model"            "models/items/broodmother/spiderling/lycosidae_spiderling/lycosidae_spiderling.vmdl"
@@ -11,7 +56,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "12"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "spider_poision"
@@ -19,9 +64,9 @@
     "ArmorPhysical"           "1"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"         "30"
+    "AttackDamageMin"         "25"
     "AttackDamageMax"         "30"
-    "AttackRate"              "1.0"
+    "AttackRate"              "0.9"
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
@@ -49,7 +94,7 @@
 
   "giant_spider" 
   {
-    "Model"            "models/heroes/broodmother/spiderling.vmdl"
+    "Model"            "models/items/broodmother/spiderling/virulent_matriarchs_spiderling/virulent_matriarchs_spiderling.vmdl"
     "SoundSet"         "0"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
@@ -57,7 +102,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "16"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "spider_poision"
@@ -67,9 +112,9 @@
     "ArmorPhysical"           "4"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"         "53"
-    "AttackDamageMax"         "53"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "35"
+    "AttackDamageMax"         "45"
+    "AttackRate"              "0.75"
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
@@ -97,7 +142,7 @@
 
   "brood_mother" 
   {
-    "Model"            "models/items/broodmother/spiderling/lycosidae_spiderling/lycosidae_spiderling.vmdl"
+    "Model"            "models/items/broodmother/spiderling/elder_blood_heir_of_elder_blood/elder_blood_heir_of_elder_blood.vmdl"
     "SoundSet"         "0"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
@@ -105,7 +150,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "spider_poision"
@@ -116,9 +161,9 @@
     "ArmorPhysical"           "6"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"         "76"
-    "AttackDamageMax"         "76"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "65"
+    "AttackDamageMax"         "75"
+    "AttackRate"              "0.92"
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
@@ -127,8 +172,9 @@
     "MovementSpeed"          "270"
     "StatusHealth"           "800"
     "StatusHealthRegen"      "0.5"
-    "StatusMana"             "0"
-    "StatusManaRegen"        "0.0"     
+    "StatusMana"             "100"
+    "StatusManaRegen"        "1.0"
+    "StatusStartingMana"     "50"
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -144,7 +190,6 @@
     }
   }
 
-  // TODO: Look up mana
   "furbolg_shaman" 
   {
     "Model"            "models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl"
@@ -163,9 +208,9 @@
     "ArmorPhysical"           "1"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "37"
-    "AttackDamageMax"         "37"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "50"
+    "AttackDamageMax"         "55"
+    "AttackRate"              "1.4"
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "400"
@@ -194,7 +239,6 @@
     }
   }
 
-  // TODO: Look up mana
   "furbolg_shaman" 
   {
     "Model"            "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl"
@@ -214,9 +258,9 @@
     "ArmorPhysical"           "3"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "40"
-    "AttackDamageMax"         "40"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "60"
+    "AttackDamageMax"         "85"
+    "AttackRate"              "1.8"
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "450"
@@ -227,9 +271,9 @@
     "MovementSpeed"          "270"
     "StatusHealth"           "450"
     "StatusHealthRegen"      "1.5"
-    "StatusMana"             "200"
-    "StatusManaRegen"        "1.0"     
-    "StatusStartingMana"     "100"
+    "StatusMana"             "250"
+    "StatusManaRegen"        "1.5"     
+    "StatusStartingMana"     "125"
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -245,7 +289,6 @@
     }
   }
 
-  // TODO: Look up mana
   "dryad" 
   {
     "Model"            "models/heroes/enchantress/enchantress.vmdl"
@@ -267,9 +310,9 @@
     "ArmorPhysical"           "3"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "37"
-    "AttackDamageMax"         "37"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "50"
+    "AttackDamageMax"         "70"
+    "AttackRate"              "1.62"
     "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "500"
@@ -280,8 +323,9 @@
     "MovementSpeed"          "270"
     "StatusHealth"           "500"
     "StatusHealthRegen"      "1.75"
-    "StatusMana"             "0"
-    "StatusManaRegen"        "0.0"     
+    "StatusMana"             "150"
+    "StatusManaRegen"        "1.0"
+    "StatusStartingMana"     "75"    
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -328,9 +372,9 @@
     "ArmorPhysical"           "5"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "50"
-    "AttackDamageMax"         "50"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "80"
+    "AttackDamageMax"         "100"
+    "AttackRate"              "1.8"
     "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "525"
@@ -341,8 +385,9 @@
     "MovementSpeed"          "270"
     "StatusHealth"           "800"
     "StatusHealthRegen"      "2.0"
-    "StatusMana"             "0"
-    "StatusManaRegen"        "0.0"     
+    "StatusMana"             "200"
+    "StatusManaRegen"        "1.5"     
+    "StatusStartingMana"     "100"     
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -390,9 +435,9 @@
     "ArmorPhysical"           "7"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "69"
-    "AttackDamageMax"         "69"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "140"
+    "AttackDamageMax"         "150"
+    "AttackRate"              "2.1"
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "550"
@@ -403,8 +448,9 @@
     "MovementSpeed"          "270"
     "StatusHealth"           "1000"
     "StatusHealthRegen"      "3.0"
-    "StatusMana"             "0"
-    "StatusManaRegen"        "0.0"     
+    "StatusMana"             "400"
+    "StatusManaRegen"        "3.0"     
+    "StatusStartingMana"     "200"     
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -456,9 +502,9 @@
     "SplashSmallDamage"         "0.25"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "30"
-    "AttackDamageMax"         "30"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "55"
+    "AttackDamageMax"         "75"
+    "AttackRate"              "2.1"
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "250"
@@ -508,17 +554,10 @@
 
     "ArmorPhysical"           "5"
 
-    "SplashAttack"              "1"
-    "SplashFullRadius"          "25"
-    "SplashMediumRadius"        "50"
-    "SplashMediumDamage"        "0.4"
-    "SplashSmallRadius"         "150"
-    "SplashSmallDamage"         "0.25"
-
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"         "45"
-    "AttackDamageMax"         "45"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "80"
+    "AttackDamageMax"         "90"
+    "AttackRate"              "1.9"
     "AttackAnimationPoint"    "0.43"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
@@ -567,17 +606,10 @@
 
     "ArmorPhysical"           "8"
 
-    "SplashAttack"              "1"
-    "SplashFullRadius"          "25"
-    "SplashMediumRadius"        "50"
-    "SplashMediumDamage"        "0.4"
-    "SplashSmallRadius"         "150"
-    "SplashSmallDamage"         "0.25"
-
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"         "57"
-    "AttackDamageMax"         "57"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "105"
+    "AttackDamageMax"         "125"
+    "AttackRate"              "2.0"
     "AttackAnimationPoint"    "0.43"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
@@ -624,9 +656,9 @@
     "ArmorPhysical"           "8"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"         "87"
-    "AttackDamageMax"         "87"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "125"
+    "AttackDamageMax"         "175"
+    "AttackRate"              "1.7"
     "AttackAnimationPoint"    "0.49"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
@@ -657,6 +689,52 @@
         "Wearable4" { "ItemDef" "496" } //Right Arm
         "Wearable5" { "ItemDef" "497" } //Tree
       }
+    }
+  }
+
+  "keeper_treant" 
+  {
+    "Model"            "models/heroes/furion/treant.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "SoundSet"         "Furion_Treant"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts""Level"            "1"
+    "ModelScale"       "1.35"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "treant_thorns"
+
+    "ArmorPhysical"           "5"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"         "25"
+    "AttackDamageMax"         "35"
+    "AttackRate"              "1.0"
+    "AttackAnimationPoint"    "0.467"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "128"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "270"
+    "StatusHealth"           "400"
+    "StatusHealthRegen"      "2.0"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "7"
+    "BountyGoldMax"          "7"
+
+    "AttackType"             "pierce"
+    "ArmorType"              "heavy"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
     }
   }
 }

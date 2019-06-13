@@ -1,8 +1,41 @@
 #base "races/humans/buildings.kv"
+#base "races/naga/buildings.kv"
+#base "races/nature/buildings.kv"
+#base "races/night_elves/buildings.kv"
+#base "races/undead/buildings.kv"
+
 #base "races/humans/units.kv"
+#base "races/naga/units.kv"
+#base "races/nature/units.kv"
+#base "races/night_elves/units.kv"
+#base "races/undead/units.kv"
+
 #base "generic/buildings.kv"
 
 "DOTAUnits"
 {
+  "dummy_unit"
+  {
+    "BaseClass"         "npc_dota_creature"
+    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+    "VisionDaytimeRange"    "0" 
+    "VisionNighttimeRange"    "0"
+    "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+    "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
+    "AbilityLayout"       "4"
+    "Ability1"          "dummy_passive"
+  }
 
+  "dotacraft_corpse"
+  {
+    "BaseClass"         "npc_dota_creature"
+    "Model"           "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_troll_skeleton_fx.vmdl"
+    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+    "VisionDaytimeRange"    "0" 
+    "VisionNighttimeRange"    "0"
+    "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+    "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
+    "AbilityLayout"       "4"
+    "Ability1"          "dummy_passive"
+  }
 }

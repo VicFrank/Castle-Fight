@@ -10,7 +10,7 @@
     "ScriptFile"                  "abilities/night_elves/starfall"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
@@ -78,7 +78,7 @@
     "ScriptFile"                  "abilities/night_elves/starfall"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 
     "AbilityCooldown"             "30.0"
     "AbilityManaCost"             "30"
@@ -107,12 +107,12 @@
   // Blessed units regain 175 health, 50 mana and +6 armor for 6 seconds.
   "moon_shine_blessing"
   {
-    "AbilityTextureName"          "dark_troll_warlord_raise_dead"
+    "AbilityTextureName"          "luna_lucent_beam"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/night_elves/moon_shine_blessing"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "20.0"
     "AbilityManaCost"             "20"
 

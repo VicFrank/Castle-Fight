@@ -1,4 +1,8 @@
 "CustomHeroList"
 {
-  "npc_dota_hero_wisp"    "1"
+  "npc_dota_hero_kunkka"            "1"
+  "npc_dota_hero_slark"             "1"
+  "npc_dota_hero_treant"            "1"
+  "npc_dota_hero_vengefulspirit"    "1"
+  "npc_dota_hero_abaddon"           "1"
 }
