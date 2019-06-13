@@ -6,7 +6,30 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/hero_selection.js" />     
   </scripts>
-  <Panel class="ResourceRoot" hittest="false">
-   
+  <Panel class="HeroSelectionRoot" hittest="false">
+    <Panel id="HeroPickHolder" class="HeroSelectHidden" hittest="false">
+      <Panel id="HeroList" hittest="false">
+        <Label id="HeroListLabel" text="Choose Your Race" />
+        <Panel class="HeroRow">
+          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('human')" heroname="npc_dota_hero_kunkka"/>
+          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('naga')" heroname="npc_dota_hero_slark"/>
+          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('nature')" heroname="npc_dota_hero_treant"/>
+        </Panel>
+        <Panel class="HeroRow">
+          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('night_elves')" heroname="npc_dota_hero_vengefulspirit"/>
+          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('undead')" heroname="npc_dota_hero_abaddon"/>
+          <!-- Wisp is my stand in for "random" because I couldn't find a picture for it -->
+          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('random')" heroname="npc_dota_hero_wisp"/>
+        </Panel>
+      </Panel>
+      <Panel id="HeroDetails" hittest="false">
+        <Label id="CurrentHeroLabel" text="Human" />
+        <DOTAHeroImage id="SelectedHeroImage" heroname="npc_dota_hero_kunkka" heroimagestyle="landscape" />
+        <Label id="RaceDescription" text="" />
+        <Button id="HeroSelectButton" onactivate="OnHeroSelectButtonPressed()">
+          <Label id="HeroSelectButtonLabel" text="Select" />
+        </Button>
+      </Panel>
+    </Panel>
   </Panel>
 </root>

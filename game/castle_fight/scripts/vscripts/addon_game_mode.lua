@@ -133,6 +133,9 @@ function GameMode:InitGameMode()
   -- ListenToGameEvent('entity_hurt', Dynamic_Wrap(GameMode, 'OnEntityHurt'), self)
   ListenToGameEvent('player_chat', Dynamic_Wrap(GameMode, 'OnPlayerChat'), self)
 
+  -- Custom Event Hooks
+  CustomGameEventManager:RegisterListener('on_race_selected', OnRaceSelected)
+
   -- Filters
   mode:SetDamageFilter(Dynamic_Wrap(GameMode, "FilterDamage"), self)
 

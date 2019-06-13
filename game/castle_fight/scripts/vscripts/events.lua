@@ -131,6 +131,7 @@ function GameMode:OnConnectFull(keys)
   self.vUserIds[userID] = ply
   -- The Player ID of the joining player
   local playerID = ply:GetPlayerID()
+  print(playerID .. " connected")
 
   table.insert(GameRules.playerIDs, playerID)
 end
@@ -186,4 +187,13 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
   end
 
   GameMode:ModifyIncome(playerID, building.incomeValue)
+end
+
+function OnRaceSelected(eventSourceIndex, args)
+  local playerID = args.PlayerID
+  local heroName = args.hero
+
+  print(playerID, heroName)
+
+  PlayerResource:ReplaceHeroWith(playerID, heroName, 0, 0)
 end
