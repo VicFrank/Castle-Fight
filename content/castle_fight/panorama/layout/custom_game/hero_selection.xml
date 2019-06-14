@@ -11,24 +11,26 @@
       <Panel id="HeroList" hittest="false">
         <Label id="HeroListLabel" text="Choose Your Race" />
         <Panel class="HeroRow">
-          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('human')" heroname="npc_dota_hero_kunkka"/>
-          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('naga')" heroname="npc_dota_hero_slark"/>
-          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('nature')" heroname="npc_dota_hero_treant"/>
+		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_kunkka.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Human )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('human')" />
+		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_slark.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Naga )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('naga')" />
+		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_treant.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Nature )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('nature')" />
         </Panel>
         <Panel class="HeroRow">
-          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('night_elves')" heroname="npc_dota_hero_vengefulspirit"/>
-          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('undead')" heroname="npc_dota_hero_abaddon"/>
-          <!-- Wisp is my stand in for "random" because I couldn't find a picture for it -->
-          <DOTAHeroImage class="HeroImage" onactivate="OnRaceSelected('random')" heroname="npc_dota_hero_wisp"/>
+		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_vengefulspirit.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Night Elves )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('night_elves')" />
+		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_abaddon.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Undead )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('undead')" />
+		  <!-- Wisp is my stand in for "random" because I couldn't find a picture for it -->
+		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_wisp.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Random )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('random')" />
         </Panel>
       </Panel>
       <Panel id="HeroDetails" hittest="false">
-        <Label id="CurrentHeroLabel" text="Human" />
-        <DOTAHeroImage id="SelectedHeroImage" heroname="npc_dota_hero_kunkka" heroimagestyle="landscape" />
-        <Label id="RaceDescription" text="" />
-        <Button id="HeroSelectButton" onactivate="OnHeroSelectButtonPressed()">
-          <Label id="HeroSelectButtonLabel" text="Select" />
-        </Button>
+		<MoviePanel id="HeroImageSelected" src="file://{resources}/videos/heroes/npc_dota_hero_kunkka.webm" repeat="true" autoplay="onload"/>
+        <Panel id="RaceDescription" text="">
+			<Label id="CurrentHeroLabel" text="Human" />
+			<Label id="RaceDescriptionLabel" text=""/>
+		</Panel>
+		<Button id="HeroSelectButton" onactivate="OnHeroSelectButtonPressed()">
+			<Label id="HeroSelectButtonLabel" text="Select" />
+		</Button>
       </Panel>
     </Panel>
   </Panel>

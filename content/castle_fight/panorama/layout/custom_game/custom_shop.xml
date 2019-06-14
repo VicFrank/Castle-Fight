@@ -32,7 +32,8 @@
       </Panel>
 
       <Button id="ShopButton" onactivate="OnShopButtonPressed()">
-        <Label id="ShopLabel" text="Shop" />
+		<Image id="ShopIcon" src="s2r://panorama/images/control_icons/shop_icon_main_psd.vtex" />
+        <Label id="ShopLabel" text="SHOP" />
       </Button>
     </Panel>
   </Panel>

@@ -6,10 +6,8 @@
 
 #ShopButton
 {
-  width: 150px;
-
+  width: 140px;
   horizontal-align: right;
-
   background-image: url("s2r://panorama/images/hud/reborn/bg_mainshop_psd.vtex");
 }
 
@@ -23,6 +21,16 @@
   font-size: 32px;
   text-align: center;
   horizontal-align: center;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+#ShopIcon
+{
+	width: 48px;
+	height: 48px;
+	margin-top: -1px;
+	margin-left: 0px;
 }
 
 #ShopHolder
