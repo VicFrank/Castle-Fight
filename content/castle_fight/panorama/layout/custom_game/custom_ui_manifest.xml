@@ -39,8 +39,8 @@
 
     var HUD = $.GetContextPanel().GetParent().GetParent();
     var newUI = HUD.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
-	var NoGlyphAndRadar = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("minimap_container");
-	
+    var NoGlyphAndRadar = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("minimap_container");
+
     //Talent UI
     newUI.FindChildTraverse("StatBranch").style.visibility = "collapse";
     newUI.FindChildTraverse("StatBranch").SetPanelEvent("onmouseover", function(){});
@@ -55,8 +55,11 @@
     //Back UI
     newUI.FindChildTraverse("inventory").FindChildTraverse("inventory_items").FindChildTraverse("inventory_backpack_list").style.visibility = "collapse";
 
-	//RadarAndGlyphContainer
-	 NoGlyphAndRadar.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
+    //RadarAndGlyphContainer
+     NoGlyphAndRadar.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
+
+    //Tertiary Ability Container (blocks modifiers)
+    newUI.FindChildrenWithClassTraverse("TertiaryAbilityContainer")[0].style.visibility = "collapse";
 	
   </script> 
 
@@ -66,5 +69,6 @@
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/resources.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/hero_selection.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_shop.xml" />
   </Panel>
 </root>

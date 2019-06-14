@@ -28,16 +28,16 @@ end
 function modifier_defender_defend:GetModifierPhysical_ConstantBlock(keys)
   if not IsServer() then return end
 
-  local parent = params.target
-  local attacker = params.attacker
-  local damage = params.damage
+  local parent = keys.target
+  local attacker = keys.attacker
+  local damage = keys.damage
 
   local sound = "Hero_Mars.Shield.Block"
   local soundSmall = "Hero_Mars.Shield.BlockSmall"
   local particleName = "particles/units/heroes/hero_mars/mars_shield_of_mars.vpcf"
   local particleNameSmall = "particles/units/heroes/hero_mars/mars_shield_of_mars_small.vpcf"
 
-  local distance = (attacker:GetAbsOrigin() - target:GetAbsOrigin()):Length2D()
+  local distance = (attacker:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D()
 
   if distance > 200 then
     -- if it was a ranged attack, chance to repel it completely

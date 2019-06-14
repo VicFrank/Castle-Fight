@@ -1,0 +1,39 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="s2r://panorama/styles/custom_game/custom_shop.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_shop.js" />     
+  </scripts>
+  <Panel class="CustomShopRoot" hittest="false">    
+    <Panel id="ShopHolder" hittest="false">
+      <Panel id="Items" class="ShopHidden" hittest="false">
+        <Label id="ShopHeader" text="Shop" />
+        <Panel class="ItemRow" hittest="false">
+          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+        </Panel>
+        <Panel class="ItemRow" hittest="false">
+          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+        </Panel>
+        <Panel class="ItemRow" hittest="false">
+          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+        </Panel>
+        <Panel class="ItemRow" hittest="false">
+          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+        </Panel>
+        <Panel class="ItemRow" hittest="false">
+          <DOTAItemImage class="ShopIcon" itemname="item_cheese" />
+        </Panel>
+      </Panel>
+
+      <Button id="ShopButton" onactivate="OnShopButtonPressed()">
+        <Label id="ShopLabel" text="Shop" />
+      </Button>
+    </Panel>
+  </Panel>
+</root>

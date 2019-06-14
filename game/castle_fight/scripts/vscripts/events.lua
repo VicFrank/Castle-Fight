@@ -28,7 +28,10 @@ function GameMode:OnNPCSpawned(keys)
 
   for i=0,16 do
     local ability = npc:GetAbilityByIndex(i)
-    if ability then ability:SetLevel(ability:GetMaxLevel()) end
+    if ability then
+      local level = math.min(ability:GetMaxLevel(), npc:GetLevel())
+      ability:SetLevel(level) 
+    end
   end
 
   if npc:IsRealHero() and npc.bFirstSpawned == nil then

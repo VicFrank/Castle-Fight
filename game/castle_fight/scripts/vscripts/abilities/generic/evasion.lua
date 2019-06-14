@@ -16,7 +16,7 @@ function keeper_incorporeal:GetIntrinsicModifierName() return "modifier_custom_e
 modifier_custom_evasion = class({})
 
 function modifier_custom_evasion:OnCreated()
-  self.evasion = self.ability:GetSpecialValueFor("evasion")
+  self.evasion = self:GetAbility():GetSpecialValueFor("evasion")
 end
 
 function modifier_custom_evasion:DeclareFunctions()
