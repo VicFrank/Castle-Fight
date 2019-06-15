@@ -6,6 +6,8 @@ function StartSpawningUnits(keys)
   local cooldown = ability:GetCooldown(ability:GetLevel())
   -- Wait for the building to build before starting to spawn units
   Timers:CreateTimer(1, function()
+    if parent:IsNull() then return end
+    
     if not parent:IsSilenced() and not caster:HasModifier("modifier_out_of_world") then
       ability:StartCooldown(cooldown)
       
@@ -44,7 +46,6 @@ function SpawnUnit(keys)
   end
 
   for i=1,numUnits do
-    local unit = CreateUnitByName(unitName, parent:GetAbsOrigin(), true, parent, parent, 0)
-    unit:SetTeam(parent:GetTeam())
+    local unit = CreateUnitByName(unitName, parent:GetAbsOrigin(), true, parent, parent, parent:GetTeam())
   end
 end

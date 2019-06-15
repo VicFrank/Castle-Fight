@@ -196,7 +196,18 @@ function OnRaceSelected(eventSourceIndex, args)
   local playerID = args.PlayerID
   local heroName = args.hero
 
-  print(playerID, heroName)
+  local heroes = {
+    "npc_dota_hero_kunkka",
+    "npc_dota_hero_slark",
+    "npc_dota_hero_treant",
+    "npc_dota_hero_vengefulspirit",
+    "npc_dota_hero_abaddon",
+  }
+
+  if heroName == "random" then
+    -- Randomly select a hero from the pool
+    local hero = GetRandomTableElement(heroes)
+  end
 
   PlayerResource:ReplaceHeroWith(playerID, heroName, 0, 0)
 end

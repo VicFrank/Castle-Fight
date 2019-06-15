@@ -47,7 +47,7 @@ function modifier_critical_strike_custom:GetModifierPreAttack_CriticalStrike(par
     ParticleManager:SetParticleControlEnt(particle, 1, target, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
     ParticleManager:ReleaseParticleIndex(particle)
 
-    return self.crit_damage * 100
+    return self.crit_damage
   else
     return nil
   end

@@ -16,19 +16,16 @@ end
 
 function modifier_damage_reduction:DeclareFunctions()
   local funcs = {
-    MODIFIER_EVENT_ON_ATTACK_LANDED,
+    MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK,
   }
   return funcs
 end
 
-function modifier_damage_reduction:OnAttackLanded(keys)
+function modifier_damage_reduction:GetModifierPhysical_ConstantBlock()
   if not IsServer() then return end
 
-  local attacker = keys.attacker
-  local target = keys.target
-
-  if attacker == self.caster then
-    -- do mana burn here
+  if self.reduction_chance > RandomInt(1,100) then
+    return self.damage_reduced
   end
 end
 

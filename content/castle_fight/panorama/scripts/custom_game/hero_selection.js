@@ -4,14 +4,16 @@ var RaceToHero = {
   nature: "npc_dota_hero_treant",
   night_elves: "npc_dota_hero_vengefulspirit",
   undead: "npc_dota_hero_abaddon",
+  ranodm: "random",
 };
 
-var RaceToHeroWebm = {
-  humanwebm: "file://{resources}/videos/heroes/npc_dota_hero_kunkka.webm",
-  nagawebm: "file://{resources}/videos/heroes/npc_dota_hero_slark.webm",
-  naturewebm: "file://{resources}/videos/heroes/npc_dota_hero_treant.webm",
-  night_elveswebm: "file://{resources}/videos/heroes/npc_dota_hero_vengefulspirit.webm",
-  undeadwebm: "file://{resources}/videos/heroes/npc_dota_hero_abaddon.webm",
+var RaceToPanelID = {
+  human: "kunkka_selected",
+  naga: "slark_selected",
+  nature: "treant_selected",
+  night_elves: "vengefulspirit_selected",
+  undead: "abaddon_selected",
+  random: "random_selected",
 };
 
 var CurrentRace = "human";
@@ -22,6 +24,8 @@ function OnRaceSelected(race) {
   Game.EmitSound("General.ButtonClick")
 }
 
+var CurrentSelectedMoviePanel = $("#kunkka_selected");
+
 function UpdateHeroDetails(race) {
   var heroLabel = $("#CurrentHeroLabel");
   var heroImage = $("#HeroImageSelected");
@@ -29,7 +33,13 @@ function UpdateHeroDetails(race) {
 
   heroLabel.text = $.Localize("#" + race);
   description.text = $.Localize("#" + race + "_description");
-  heroImage.src = RaceToHeroWebm[race];
+
+  var moviePanelID = RaceToPanelID[race];
+  var moviePanel = $("#" + moviePanelID);
+
+  CurrentSelectedMoviePanel.style.visibility = "collapse";
+  moviePanel.style.visibility = "visible";
+  CurrentSelectedMoviePanel = moviePanel;
 }
 
 function OnHeroSelectButtonPressed() {

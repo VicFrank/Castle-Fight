@@ -173,6 +173,23 @@ function FindFirstUnit(list, filter)
   end
 end
 
+function FindAllVisibleEnemies(team)
+  local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS
+  local enemies = FindUnitsInRadius(team, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, flags, FIND_ANY_ORDER, false)
+  local notBuildings = {}
+  for _,enemy in pairs(enemies) do
+    if not IsCustomBuilding(enemy) then
+      table.insert(notBuildings)
+    end
+  end
+  return notBuildings
+end
+
+function GetRandomVisibleEnemy(team)
+  local enemies = FindAllVisibleEnemies(team)
+  return GetRandomTableElement(enemies)
+end
+
 function ReplaceUnit( unit, new_unit_name )
   --print("Replacing "..unit:GetUnitName().." with "..new_unit_name)
 
@@ -190,7 +207,7 @@ function ReplaceUnit( unit, new_unit_name )
   FindClearSpaceForUnit(new_unit, position, true)
 
   if PlayerResource:IsUnitSelected(playerID, unit) then
-      PlayerResource:AddToSelection(playerID, new_unit)
+    PlayerResource:AddToSelection(playerID, new_unit)
   end
 
   -- Add the new unit to the player units

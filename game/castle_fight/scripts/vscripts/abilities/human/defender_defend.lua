@@ -39,7 +39,7 @@ function modifier_defender_defend:GetModifierPhysical_ConstantBlock(keys)
 
   local distance = (attacker:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D()
 
-  if distance > 200 then
+  if distance > 250 then
     -- if it was a ranged attack, chance to repel it completely
     if self.ranged_repel_chance > RandomInt(1,100) then
       local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, self.parent)
@@ -47,18 +47,18 @@ function modifier_defender_defend:GetModifierPhysical_ConstantBlock(keys)
 
       self.parent:EmitSound(sound)
 
-      return 0
+      return damage
     else
       local particle = ParticleManager:CreateParticle(particleNameSmall, PATTACH_ABSORIGIN_FOLLOW, self.parent)
       ParticleManager:ReleaseParticleIndex(particle)
 
       self.parent:EmitSound(soundSmall)
 
-      return (damage * self.ranged_damage_reduction * .01)
+      return damage * self.ranged_damage_reduction * .01
     end
   end
 
-  return damage
+  return 0
 end
 
 function modifier_defender_defend:GetModifierMagicalResistanceBonus()

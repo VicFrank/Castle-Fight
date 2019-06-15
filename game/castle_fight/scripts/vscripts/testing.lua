@@ -7,7 +7,7 @@ function GameMode:OnScriptReload()
   -- GameMode:StartRound()
   -- GameMode:EndRound()
   -- GiveLumberToAllPlayers(2000)
-  KillAllUnits()
+  -- KillAllUnits()
   -- KillAllBuildings()
 end
 

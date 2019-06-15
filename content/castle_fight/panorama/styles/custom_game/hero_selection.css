@@ -190,7 +190,11 @@
 	
 }
 
-#HeroImageSelected {
+#SelectedHeroMovie {
+  horizontal-align: center;
+}
+
+.HeroImageSelected {
 	width: 148px;
 	height: 186px;
 	background-color: #000000de;
@@ -204,4 +208,8 @@
 	border-left: 1px solid #ffffff11;
 	border-right: 1px solid #ffffff11;
 	border-bottom: 1px solid #ffffff11;
+}
+
+.HeroSelectionHidden {
+  visibility: collapse;
 }

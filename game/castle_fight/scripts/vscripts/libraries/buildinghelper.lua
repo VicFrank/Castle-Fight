@@ -2106,7 +2106,7 @@ function BuildingHelper:AddRepairToQueue(builder, building, bQueued)
     print("AddRepairToQueue "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> building "..building:GetUnitName())
     
     -- Make the new work entry
-    local work = {["building"] = building, ["name"] = buildingName, ["buildingTable"] = buildingTable, ["callbacks"] = callbacks}
+    local work = {["building"] = building, ["name"] = buildingName, ["buildingTable"] = buildingTable, ["callbacks"] = callbacks, isRepair = true}
 
     -- If the ability wasn't queued, override the building queue
     if not bQueued then
@@ -2260,7 +2260,9 @@ function BuildingHelper:ClearQueue(builder)
         if work.entity then BuildingHelper:RemoveEntity(work.entity.prop) end
 
         -- Only refund work that hasn't been placed yet
-        if not work.inProgress then
+        -- VicFrank: Also classified work types as repair, so it won't refund when
+        -- you cancel a repair 
+        if not work.inProgress and not work.isRepair then
             BuildingHelper:RemoveEntity(work.entity)
             work.refund = true
         end

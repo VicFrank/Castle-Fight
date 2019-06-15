@@ -18,4 +18,5 @@
   "nature_description"          "The forces of nature itself are called upon to fight for their masters. Specializing in strong units and powerful spells, the race of nature is a bit more expensive, but generally better than other races."
   "night_elves_description"     "Night elves separated from the Union of Elves and fight independently for their goddess Elune. These seemingly fragile creatures know how to dodge enemy strikes and counteract negative spells. The night elves have a tower that burns enemy mana."
   "undead_description"          "The undead are gaining warriors in their ranks from among the resurrected dead. They bring death and disease to their enemies. The builder of the undead can construct a tower of spirits to protect your base."
+  "random_description"          "Choose a random race."
 }

@@ -15,19 +15,35 @@ end
 
 function modifier_damage_return:DeclareFunctions()
   local funcs = {
-    MODIFIER_EVENT_ON_ATTACK_LANDED,
+    MODIFIER_EVENT_ON_TAKEDAMAGE,
   }
   return funcs
 end
 
-function modifier_damage_return:OnAttackLanded(keys)
+function modifier_damage_return:OnTakeDamage(keys)
   if not IsServer() then return end
 
   local attacker = keys.attacker
-  local target = keys.target
+  local target = keys.unit
 
-  if attacker == self.caster then
-    -- do mana burn here
+
+  if self.parent == target then
+    local particleName = "particles/units/heroes/hero_centaur/centaur_return.vpcf"
+    local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, self.parent)
+    ParticleManager:SetParticleControlEnt(particle, 0, self.parent, PATTACH_POINT_FOLLOW, "attach_hitloc", self.parent:GetAbsOrigin(), true)
+    ParticleManager:SetParticleControlEnt(particle, 1, attacker, PATTACH_POINT_FOLLOW, "attach_hitloc", attacker:GetAbsOrigin(), true)
+    ParticleManager:ReleaseParticleIndex(particle)
+
+    local damageTable = {
+      victim = attacker,
+      attacker = self.parent,
+      damage = self.damage_return,
+      damage_type = DAMAGE_TYPE_PHYSICAL,
+      damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_REFLECTION,
+      ability = self.ability
+    }
+
+    ApplyDamage(damageTable)
   end
 end
 

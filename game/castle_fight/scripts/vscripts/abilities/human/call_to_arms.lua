@@ -29,7 +29,7 @@ function modifier_call_to_arms_aura:GetModifierAura()
 end
 
 function modifier_call_to_arms_aura:GetAuraSearchTeam()
-    return DOTA_UNIT_TARGET_TEAM_FRIENDLY
+  return DOTA_UNIT_TARGET_TEAM_FRIENDLY
 end
 
 function modifier_call_to_arms_aura:GetAuraEntityReject(target)

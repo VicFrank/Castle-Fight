@@ -1,0 +1,34 @@
+control_enemy = class({})
+
+function control_enemy:OnSpellStart()
+  local caster = self:GetCaster()
+  local ability = self
+
+  local particleName = "particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf"
+
+  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  if not target then return end
+
+  caster:EmitSound("Hero_Chen.HolyPersuasionCast")
+
+  -- swap target for new unit under our control
+  local hero = caster:GetOwner()
+  local playerID = hero:GetPlayerOwnerID()
+
+  local position = target:GetAbsOrigin()
+  local relative_health = target:GetHealthPercent() * 0.01
+  local fv = target:GetForwardVector()
+  local unitName = target:GetUnitName()
+  local new_unit = CreateUnitByName(unitName, position, true, hero, hero, hero:GetTeamNumber())
+  new_unit:SetHealth(new_unit:GetMaxHealth() * relative_health)
+  new_unit:SetForwardVector(fv)
+  FindClearSpaceForUnit(new_unit, position, true)
+
+  target:RemoveSelf()
+
+  new_unit:EmitSound("Hero_Chen.HolyPersuasionEnemy")
+
+  local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, new_unit)
+  ParticleManager:SetParticleControl(particle, 1, new_unit:GetAbsOrigin())
+  ParticleManager:ReleaseParticleIndex(particle)
+end

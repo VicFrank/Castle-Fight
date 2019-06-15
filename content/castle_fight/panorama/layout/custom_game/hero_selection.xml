@@ -23,7 +23,14 @@
         </Panel>
       </Panel>
       <Panel id="HeroDetails" hittest="false">
-		<MoviePanel id="HeroImageSelected" src="file://{resources}/videos/heroes/npc_dota_hero_kunkka.webm" repeat="true" autoplay="onload"/>
+        <Panel id="SelectedHeroMovie" hittest="false">
+          <MoviePanel id="kunkka_selected" class="HeroImageSelected" src="file://{resources}/videos/heroes/npc_dota_hero_kunkka.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="slark_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_slark.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="treant_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_treant.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="vengefulspirit_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_vengefulspirit.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="abaddon_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_abaddon.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="random_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_wisp.webm" repeat="true" autoplay="onload"/>
+        </Panel>
         <Panel id="RaceDescription" text="">
 			<Label id="CurrentHeroLabel" text="Human" />
 			<Label id="RaceDescriptionLabel" text=""/>

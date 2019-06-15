@@ -33,8 +33,33 @@ function modifier_feedback_custom:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
+  if target:GetMaxMana() == 0 or target:IsMagicImmune() then
+    return
+  end
+
   if attacker == self.caster then
     -- do mana burn here
+      target:EmitSound("Hero_Antimage.ManaBreak")
+
+      local particleName = "particles/generic_gameplay/generic_manaburn.vpcf"
+      local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, target)
+      ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
+      ParticleManager:ReleaseParticleIndex(particle)
+
+      local manaToBurn = math.min(self.mana_burn, target:GetMana())
+
+      target:ReduceMana(manaToBurn)
+      SendOverheadEventMessage(nil, OVERHEAD_ALERT_MANA_LOSS, target, manaToBurn, nil)
+
+      local damageTable = {
+        victim = target,
+        damage = manaToBurn * self.mana_to_damage * 0.01,
+        damage_type = DAMAGE_TYPE_MAGICAL,
+        attacker = attacker,
+        ability = self.ability
+      }
+
+      ApplyDamage(damageTable)
   end
 end
 
