@@ -7,11 +7,27 @@ function winged_serpent_bouncing_attack:BounceAttack(target, damage, bounces, so
   local caster = self:GetCaster()
   local hSource = source or caster
   local extraData = {damage = damage, bounces = bounces}
-  self:FireTrackingProjectile(
-    caster:GetRangedProjectileName(),
-    target,
-    caster:GetProjectileSpeed(),
-    {extraData = extraData, source = hSource, origin = hSource:GetAbsOrigin()})
+
+  local projectile = {
+    Target = target,
+    Source = hSource,
+    Ability = self, 
+    EffectName = caster:GetRangedProjectileName(),
+    iMoveSpeed = caster:GetProjectileSpeed(),
+    vSourceLoc= hSource:GetAbsOrigin(),
+    bDrawsOnMinimap = false,
+    bDodgeable = false,
+    bIsAttack = true,
+    bVisibleToEnemies = true,
+    bReplaceExisting = false,
+    -- flExpireTime = internalData.duration,
+    bProvidesVision = false,
+    iVisionTeamNumber = caster:GetTeamNumber(),
+    iSourceAttachment =  0,
+    ExtraData = extraData
+  }
+
+  ProjectileManager:CreateTrackingProjectile(projectile)
 end
 
 function winged_serpent_bouncing_attack:OnProjectileHit_ExtraData(target, position, extraData)
@@ -19,6 +35,7 @@ function winged_serpent_bouncing_attack:OnProjectileHit_ExtraData(target, positi
 
   if target then
     local caster = self:GetCaster()
+    local ability = self
     
     local damage = tonumber(extraData.damage)
     local bounces = tonumber(extraData.bounces) or 0
@@ -29,14 +46,16 @@ function winged_serpent_bouncing_attack:OnProjectileHit_ExtraData(target, positi
       damage_type = DAMAGE_TYPE_PHYSICAL,
       damage_flags = DOTA_DAMAGE_FLAG_NONE,
       attacker = caster,
-      ability = self
+      ability = ability
     }
 
     ApplyDamage(damageTable)
     
     if bounces > 0 then
-      local radius = self.range
-      local reduction = (100 - self.damage_reduction_percent) / 100
+      local radius = ability:GetSpecialValueFor("range")
+      local damage_reduction_percent = ability:GetSpecialValueFor("damage_reduction_percent")
+
+      local reduction = (100 - damage_reduction_percent) / 100
       local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
       for _,enemy in pairs(enemies) do
@@ -53,27 +72,35 @@ end
 modifier_winged_serpent_bouncing_attack = class({})
 
 function modifier_winged_serpent_bouncing_attack:OnCreated()
+  self.caster = self:GetCaster()
+  self.ability = self:GetAbility()
+  self.parent = self:GetParent()
+
   self.range = self.ability:GetSpecialValueFor("range")
   self.bounces = self.ability:GetSpecialValueFor("bounces")
+  self.range = self.ability:GetSpecialValueFor("range")
   self.damage_reduction_percent = self.ability:GetSpecialValueFor("damage_reduction_percent")
 end
 
 function modifier_winged_serpent_bouncing_attack:DeclareFunctions()
-  local funcs = {
-    MODIFIER_EVENT_ON_ATTACK_LANDED,
-  }
-  return funcs
+  return {MODIFIER_EVENT_ON_TAKEDAMAGE}
 end
 
-function modifier_winged_serpent_bouncing_attack:OnAttackLanded(keys)
-  if not IsServer() then return end
+function modifier_winged_serpent_bouncing_attack:OnTakeDamage(params)
+  local attacker = params.attacker
+  local target = params.unit
 
-  local attacker = keys.attacker
-  local target = keys.target
+  if attacker == self.parent and 
+    params.damage_category == DOTA_DAMAGE_CATEGORY_ATTACK and 
+    self.parent:GetHealth() > 0 and 
+    not params.inflictor then
 
-  if attacker == self.caster then
-    local enemy = FindEnemyUnitsInRadius()
-    local damage = attacker:GetAttackDamage()
-    self:GetAbility():BounceAttack(enemy, damage, self.bounces, target)
+    local enemies = FindEnemiesInRadius(self.parent, self.range, target:GetAbsOrigin())
+    for _, enemy in ipairs(enemies) do
+      if enemy ~= target then
+        self.ability:BounceAttack(enemy, params.damage, self.bounces - 1, target)
+        break
+      end
+    end
   end
 end

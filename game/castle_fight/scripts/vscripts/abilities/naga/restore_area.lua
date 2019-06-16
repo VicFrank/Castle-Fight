@@ -1,8 +1,8 @@
-LinkLuaModifier("modifier_restore_area_aura", "abilities/naga/restore_area_aura.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_restore_area_aura", "abilities/naga/restore_area.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_restore_area", "abilities/naga/restore_area.lua", LUA_MODIFIER_MOTION_NONE)
 
 restore_area = class({})
-function class:GetIntrinsicModifierName() return "modifier_restore_area_aura" end
+function restore_area:GetIntrinsicModifierName() return "modifier_restore_area_aura" end
 
 modifier_restore_area_aura = class({})
 
@@ -35,7 +35,7 @@ function modifier_restore_area_aura:GetAuraSearchTeam()
 end
 
 function modifier_restore_area_aura:GetAuraEntityReject(target)
-  return target:IsRealHero()
+  return self.parent:IsUnderConstruction() and target:IsRealHero()
 end
 
 function modifier_restore_area_aura:GetAuraSearchType()

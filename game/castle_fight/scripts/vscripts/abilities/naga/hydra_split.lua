@@ -19,10 +19,13 @@ function modifier_ancient_hydra_split:OnDeath(keys)
   if not IsServer() then return nil end
 
   if keys.unit == self:GetParent() then
-    local unitName = "hydra"
-    local position = self:GetParent():GetAbsOrigin()
-    local hero = self:GetParent():GetOwner()
-    CreateUnitByName(unitName, position, true, hero, hero, hero:GetTeamNumber())
+    for i=1,2 do
+      local unitName = "hydra"
+      local position = self:GetParent():GetAbsOrigin()
+      local hero = self:GetParent():GetOwner()
+      local team = self:GetParent():GetTeam()
+      CreateUnitByName(unitName, position, true, hero, hero, team)
+    end
   end
 end
 
@@ -39,9 +42,12 @@ function modifier_hydra_split:OnDeath(keys)
   if not IsServer() then return nil end
 
   if keys.unit == self:GetParent() then
-    local unitName = "lesser_hydra"
-    local position = self:GetParent():GetAbsOrigin()
-    local hero = self:GetParent():GetOwner()
-    CreateUnitByName(unitName, position, true, hero, hero, hero:GetTeamNumber())
+    for i=1,2 do
+      local unitName = "lesser_hydra"
+      local position = self:GetParent():GetAbsOrigin()
+      local hero = self:GetParent():GetOwner()
+      local team = self:GetParent():GetTeam()
+      CreateUnitByName(unitName, position, true, hero, hero, team)
+    end
   end
 end

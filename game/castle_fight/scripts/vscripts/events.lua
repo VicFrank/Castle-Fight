@@ -56,7 +56,7 @@ function GameMode:OnHeroInGame(hero)
   Timers:CreateTimer(.03, function()
     for i=0,15 do
       local item = hero:GetItemInSlot(i)
-      if item ~= nil and item:GetAbilityName() == "item_tpscroll" then
+      if item ~= nil then
         item:RemoveSelf()
       end
     end
@@ -64,6 +64,7 @@ function GameMode:OnHeroInGame(hero)
     local unitName = hero:GetUnitName()
     local items = g_Race_Items[unitName]
     for _,itemname in ipairs(items) do
+      print(itemname)
       hero:AddItem(CreateItem(itemname, hero, hero))
     end
 

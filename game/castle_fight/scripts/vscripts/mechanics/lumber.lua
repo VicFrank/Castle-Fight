@@ -20,7 +20,10 @@ function CDOTA_BaseNPC:GiveLumber(value)
   self:SetLumber(self.lumber + value)
 end
 
+-------------------------------------------
+
 function CDOTA_BaseNPC:SetCheese(cheese)
+  if not self.cheese then self.cheese = 0 end
   self.cheese = cheese
   CustomNetTables:SetTableValue("cheese",
     tostring(self:GetPlayerOwnerID()),
@@ -32,5 +35,6 @@ function CDOTA_BaseNPC:ModifyCheese(value)
 end
 
 function CDOTA_BaseNPC:GetCheese(cheese)
+  if not self.cheese then self.cheese = 0 end
   return self.cheese
 end

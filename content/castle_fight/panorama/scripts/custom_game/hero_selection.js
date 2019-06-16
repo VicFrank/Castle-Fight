@@ -4,7 +4,7 @@ var RaceToHero = {
   nature: "npc_dota_hero_treant",
   night_elves: "npc_dota_hero_vengefulspirit",
   undead: "npc_dota_hero_abaddon",
-  ranodm: "random",
+  random: "random",
 };
 
 var RaceToPanelID = {

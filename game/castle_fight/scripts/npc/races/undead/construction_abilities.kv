@@ -154,6 +154,15 @@
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"

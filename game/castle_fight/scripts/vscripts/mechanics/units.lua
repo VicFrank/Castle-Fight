@@ -175,11 +175,11 @@ end
 
 function FindAllVisibleEnemies(team)
   local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS
-  local enemies = FindUnitsInRadius(team, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, flags, FIND_ANY_ORDER, false)
-  local notBuildings = {}
+  local enemies = FindUnitsInRadius(team, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, flags, FIND_ANY_ORDER, false)
+  local notBuildings = {}  
   for _,enemy in pairs(enemies) do
     if not IsCustomBuilding(enemy) then
-      table.insert(notBuildings)
+      table.insert(notBuildings, enemy)
     end
   end
   return notBuildings

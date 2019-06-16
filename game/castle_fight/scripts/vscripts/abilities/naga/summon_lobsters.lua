@@ -8,7 +8,7 @@ function naga_siren_summon_lobsters:OnSpellStart()
   local position = caster:GetAbsOrigin()
   local hero = caster:GetOwner()
 
-  local duration = self:GetTalentSpecialValueFor("duration")
+  local duration = ability:GetSpecialValueFor("duration")
 
   for i=1,2 do
     local lobster = CreateUnitByName(unitName, position, true, hero, hero, hero:GetTeamNumber())

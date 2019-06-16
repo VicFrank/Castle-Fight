@@ -1,4 +1,39 @@
--- Basic functionality cribbed from DotaCraft
+function ResourceCheck(keys)
+  local caster = keys.caster
+  local ability = keys.ability
+  local playerID = caster:GetPlayerOwnerID()
+  local hero = caster:GetOwner()
+
+  local lumber_cost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
+  local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
+
+  -- If not enough resources to upgrade, stop
+  if hero:GetLumber() < lumber_cost then
+    SendErrorMessage(playerID, "#error_not_enough_lumber")
+    ability:EndChannel(true)
+    Timers:CreateTimer(.03, function()
+      ability:EndChannel(true)
+    end)
+    ability.refund = false
+    return false
+  end
+
+  -- If not enough resources to upgrade, stop
+  if hero:GetCheese() < cheese_cost then
+    SendErrorMessage(playerID, "#error_not_enough_cheese")
+    ability:EndChannel(true)
+    Timers:CreateTimer(.03, function()
+      ability:EndChannel(true)
+    end)
+    ability.refund = false
+    return false
+  end
+
+  hero:ModifyLumber(-lumber_cost)
+  hero:ModifyCheese(-cheese_cost)
+  ability.refund = true
+end
+
 function UpgradeBuilding(keys)
   local caster = keys.caster
   local ability = keys.ability
@@ -35,7 +70,17 @@ function RefundUpgradePrice(keys)
   local ability = keys.ability
   
   local abilityPrice = ability:GetGoldCost(ability:GetLevel())
+  local lumber_cost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
+  local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
+    
   local playerID = caster:GetPlayerOwnerID()
 
+  local hero = caster:GetOwner()
+
   PlayerResource:ModifyGold(playerID, abilityPrice, false, DOTA_ModifyGold_SellItem)
+  
+  if ability.refund then
+    hero:ModifyLumber(lumber_cost)
+    hero:ModifyCheese(cheese_cost)
+  end
 end

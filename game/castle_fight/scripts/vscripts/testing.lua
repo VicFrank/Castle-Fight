@@ -113,12 +113,17 @@ function GameMode:GreedIsGood(playerID, value)
 end
 
 function GameMode:LumberCheat(playerID, value)
-  PlayerResource:GetSelectedHeroEntity(playerID):GiveLumber(value)
+  PlayerResource:GetSelectedHeroEntity(playerID):GiveLumber(tonumber(value))
+end
+
+function GameMode:SetCheeseCheat(playerID, value)
+  PlayerResource:GetSelectedHeroEntity(playerID):SetCheese(tonumber(value))
 end
 
     
 CHEAT_CODES = {
   ["lumber"] = function(...) GameMode:LumberCheat(...) end,                -- "Gives you X lumber"
+  ["setcheese"] = function(...) GameMode:SetCheeseCheat(...) end,                -- "Gives you X lumber"
   ["greedisgood"] = function(...) GameMode:GreedIsGood(...) end,           -- "Gives you X gold and lumber" 
   ["killallunits"] = function(...) KillAllUnits() end,                     -- "Kills all units"    
   ["killallbuildings"] = function(...) KillAllBuildings() end,                     -- "Kills all units"    

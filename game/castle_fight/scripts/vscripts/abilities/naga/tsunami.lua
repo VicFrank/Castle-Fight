@@ -9,6 +9,7 @@ function tsunami:OnSpellStart()
   local speed = ability:GetSpecialValueFor("speed")
   local aoe = ability:GetSpecialValueFor("aoe")
 
+
   local target = GetRandomVisibleEnemy(caster:GetTeam())
   if not target then return end
 
@@ -32,7 +33,7 @@ function tsunami:OnSpellStart()
     iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
     fExpireTime = GameRules:GetGameTime() + 10.0,
     bDeleteOnHit = false,
-    vVelocity = speed,
+    vVelocity = speed * direction,
     bProvidesVision = false,
   }
     
@@ -41,6 +42,7 @@ end
 
 function tsunami:OnProjectileHit(target, location)
   if not IsServer() then return end
+  if not target then return end
 
   local damage = self:GetSpecialValueFor("damage")
 

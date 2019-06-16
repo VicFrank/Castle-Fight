@@ -170,27 +170,22 @@ function GameMode:InitGameMode()
 end
 
 function SetUpCustomItemCosts()
-  local item_names = {
-    "item_build_gjallarhorn",
-    "item_build_artillery",
-    "item_build_watch_tower",
-    "item_build_heroic_shrine",
-    "item_build_treasure_box",
-  }
+  for _,item_names in pairs(g_Race_Items) do
+    for _,itemname in ipairs(item_names) do
+      print(itemname)
+      local item = CreateItem(itemname, nil, nil)
 
-  for _,itemname in ipairs(item_names) do
-    local item = CreateItem(itemname, nil, nil)
+      local goldCost = item:GetCost()
+      local lumberCost = tonumber(item:GetAbilityKeyValues()['LumberCost']) or 0
+      local isLegendary = item:GetAbilityKeyValues()['IsLegendary'] ~= nil
 
-    local goldCost = item:GetCost()
-    local lumberCost = tonumber(item:GetAbilityKeyValues()['LumberCost']) or 0
-    local isLegendary = item:GetAbilityKeyValues()['IsLegendary'] ~= nil
+      CustomNetTables:SetTableValue("item_costs", itemname, {
+        goldCost = goldCost,
+        lumberCost = lumberCost,
+        isLegendary = isLegendary
+      })
 
-    CustomNetTables:SetTableValue("item_costs", itemname, {
-      goldCost = goldCost,
-      lumberCost = lumberCost,
-      isLegendary = isLegendary
-    })
-
-    item:RemoveSelf()
+      item:RemoveSelf()
+    end
   end
 end

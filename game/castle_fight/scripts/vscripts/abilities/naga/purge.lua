@@ -13,6 +13,10 @@ function naga_siren_purge:OnSpellStart()
 
   target:Purge(true, false, false, false, false)
   target:AddNewModifier(caster, ability, "modifier_naga_purge", {duration = duration})
+
+  target:EmitSound("DOTA_Item.DiffusalBlade.Target")
+
+  ParticleManager:CreateParticle("particles/generic_gameplay/generic_purge.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 end
 
 modifier_naga_purge = class({})
