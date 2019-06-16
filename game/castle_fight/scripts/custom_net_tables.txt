@@ -9,6 +9,7 @@
     "lumber",
     "cheese",
     "item_costs",
+    "ability_costs",
     "player_income"
   ]
 } 

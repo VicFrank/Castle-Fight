@@ -16,6 +16,7 @@ require("mechanics/corpses")
 
 require("tables/precache_tables")
 require("tables/item_tables")
+require("tables/ability_costs")
 
 require('repair')
 require("damage")
@@ -167,20 +168,18 @@ function GameMode:InitGameMode()
   GameRules.Damage = LoadKeyValues("scripts/kv/damage_table.kv")
 
   SetUpCustomItemCosts()
+  SetupCustomAblityCosts()
 end
 
 function SetUpCustomItemCosts()
   for _,item_names in pairs(g_Race_Items) do
     for _,itemname in ipairs(item_names) do
-      print(itemname)
       local item = CreateItem(itemname, nil, nil)
 
-      local goldCost = item:GetCost()
       local lumberCost = tonumber(item:GetAbilityKeyValues()['LumberCost']) or 0
       local isLegendary = item:GetAbilityKeyValues()['IsLegendary'] ~= nil
 
       CustomNetTables:SetTableValue("item_costs", itemname, {
-        goldCost = goldCost,
         lumberCost = lumberCost,
         isLegendary = isLegendary
       })
@@ -188,4 +187,22 @@ function SetUpCustomItemCosts()
       item:RemoveSelf()
     end
   end
+end
+
+function SetupCustomAblityCosts()
+  local dummy = CreateUnitByName("dummy_unit", Vector(0,0,0), false, nil, nil, 0)
+  for _,abilityname in ipairs(g_Custom_Ability_Costs) do
+    local ability = dummy:AddAbility(abilityname)
+
+    local lumberCost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
+    local isLegendary = ability:GetAbilityKeyValues()['IsLegendary'] ~= nil
+
+    CustomNetTables:SetTableValue("ability_costs", abilityname, {
+      lumberCost = lumberCost,
+      isLegendary = isLegendary
+    })
+
+    dummy:RemoveAbility(abilityname)
+  end
+  dummy:RemoveSelf()
 end

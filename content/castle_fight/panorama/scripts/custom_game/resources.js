@@ -8,6 +8,7 @@ var inventoryTop = inventoryContainer.FindChildTraverse("inventory_list");
 var inventoryBot = inventoryContainer.FindChildTraverse("inventory_list2");
 
 var GeneratedItemPanels = [];
+var GeneratedAbilityPanels = [];
 
 function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost){
   var subContainer;
@@ -76,6 +77,78 @@ function UpdateItemsUI() {
   }
 }
 
+var AbilitiesContainer = newUI.FindChildTraverse("AbilitiesAndStatBranch").FindChildTraverse("abilities");
+
+function SetCustomAbilityCosts(abilityNumber, lumberCost, cheeseCost) {
+  $.Msg("SetCustomAbilityCosts")
+  var AbilityPanel = AbilitiesContainer.FindChildTraverse("Ability" + abilityNumber);
+  var AbilityButton = AbilityPanel.FindChildTraverse("ButtonAndLevel").FindChildTraverse("ButtonWithLevelUpTab").FindChildTraverse("ButtonWell").FindChildTraverse("ButtonSize");
+
+  var LumberCostLabel = $.CreatePanel("Label", AbilityButton, "LumberCost");
+  LumberCostLabel.text = lumberCost;
+  LumberCostLabel.style.fontSize = "14px";
+  LumberCostLabel.style.verticalAlign = "bottom";
+  LumberCostLabel.style.horizontalAlign = "right";
+  LumberCostLabel.style.fontWeight = "bold";
+  LumberCostLabel.style.color = "#22a543";
+  LumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
+
+  GeneratedAbilityPanels.push(LumberCostLabel);
+
+  if (cheeseCost > 0) {
+    var CheeseCostLabel = $.CreatePanel("Label", AbilityButton, "CheeseCost");
+    CheeseCostLabel.text = cheeseCost;
+    CheeseCostLabel.style.fontSize = "16px";
+    CheeseCostLabel.style.verticalAlign = "top";
+    CheeseCostLabel.style.horizontalAlign = "right";
+    CheeseCostLabel.style.marginRight = "8px";
+    CheeseCostLabel.style.fontWeight = "bold";
+    CheeseCostLabel.style.color = "#7f22a5";
+    CheeseCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
+
+    GeneratedAbilityPanels.push(CheeseCostLabel);
+  }
+}
+
+function ClearCustomAbilityCosts() {
+   GeneratedAbilityPanels.forEach(function(panel) {
+     panel.text = '';
+     // I don't think this actually works, but making the text '' seems to.
+     panel.RemoveAndDeleteChildren();
+   });
+
+   GeneratedAbilityPanels = [];
+}
+
+function UpdateAbilityUI() {
+  ClearCustomAbilityCosts();
+
+  var queryUnit = Players.GetLocalPlayerPortraitUnit();
+
+  for (var i=0; i < Entities.GetAbilityCount(queryUnit); ++i) {
+    var ability = Entities.GetAbility(queryUnit, i);
+    if (ability == -1)
+      continue;
+
+    if (!Abilities.IsDisplayedAbility(ability))
+      continue;
+
+    var abilityname = Abilities.GetAbilityName(ability);
+
+    $.Msg(abilityname)
+
+    var abilityCostData = CustomNetTables.GetTableValue("ability_costs", abilityname);
+    if (!abilityCostData) continue;
+
+    var lumberCost = abilityCostData.lumberCost;
+    var isLegendary = abilityCostData.isLegendary;
+
+    var cheeseCost = 0;
+    if (isLegendary) cheeseCost = 1;
+
+    SetCustomAbilityCosts(i, lumberCost, cheeseCost)
+  }
+}
 
 function OnPlayerLumberChanged(table_name, key, data) {
   UpdateLumber();
@@ -190,4 +263,8 @@ $('#GoldLabelPanel').SetPanelEvent(
   GameEvents.Subscribe("dota_player_update_selected_unit", UpdateItemsUI);
   GameEvents.Subscribe("dota_player_update_query_unit", UpdateItemsUI);
   GameEvents.Subscribe("dota_inventory_changed", UpdateItemsUI);
+
+  UpdateAbilityUI();
+  GameEvents.Subscribe("dota_player_update_selected_unit", UpdateAbilityUI);
+  GameEvents.Subscribe("dota_player_update_query_unit", UpdateAbilityUI);
 })();
