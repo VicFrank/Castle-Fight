@@ -116,20 +116,40 @@ function GameMode:LumberCheat(playerID, value)
   PlayerResource:GetSelectedHeroEntity(playerID):GiveLumber(tonumber(value))
 end
 
+function GameMode:SetLumberCheat(playerID, value)
+  PlayerResource:GetSelectedHeroEntity(playerID):SetLumber(tonumber(value))
+end
+
 function GameMode:SetCheeseCheat(playerID, value)
   PlayerResource:GetSelectedHeroEntity(playerID):SetCheese(tonumber(value))
+end
+
+function GameMode:SpawnUnits(playerID, unitname, count)
+  local position = Vector(0,0,0)
+  local team = PlayerResource:GetTeam(playerID)
+
+  if count < 0 then
+    count = count * -1
+    team = DOTA_TEAM_BADGUYS
+  end
+
+  for i=1,count do
+    CreateUnitByName(unitname, position, true, nil, nil, team)
+  end
 end
 
     
 CHEAT_CODES = {
   ["lumber"] = function(...) GameMode:LumberCheat(...) end,                -- "Gives you X lumber"
-  ["setcheese"] = function(...) GameMode:SetCheeseCheat(...) end,                -- "Gives you X lumber"
+  ["setlumber"] = function(...) GameMode:SetLumberCheat(...) end,             -- "Gives you X lumber"
+  ["setcheese"] = function(...) GameMode:SetCheeseCheat(...) end,          -- "Sets your cheese to X"
   ["greedisgood"] = function(...) GameMode:GreedIsGood(...) end,           -- "Gives you X gold and lumber" 
   ["killallunits"] = function(...) KillAllUnits() end,                     -- "Kills all units"    
-  ["killallbuildings"] = function(...) KillAllBuildings() end,                     -- "Kills all units"    
+  ["killallbuildings"] = function(...) KillAllBuildings() end,             -- "Kills all buildings"    
   ["reset"] = function(...) KillEverything() end,                          -- "Kills all units and buildings"    
   ["nextround"] = function(...) GameMode:StartRound(...) end,              -- "Calls start round"      
   ["endround"] = function(...) GameMode:EndRound(...) end,                 -- "Calls end round"
+  ["spawn"] = function(...) GameMode:SpawnUnits(...) end,                  -- "Spawns some units."
 }
 
 function GameMode:OnPlayerChat(keys)
@@ -149,6 +169,6 @@ function GameMode:OnPlayerChat(keys)
   local input = split(text)
   local command = input[1]
   if CHEAT_CODES[command] then
-    CHEAT_CODES[command](playerID, input[2])
+    CHEAT_CODES[command](playerID, input[2], input[3])
   end
 end

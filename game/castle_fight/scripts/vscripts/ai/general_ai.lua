@@ -5,14 +5,15 @@
 function FindAggro(self)
   local currentTarget = self.aiState.aggroTarget
 
+  local searchRange = self.aiState.targetAcquisitionRange
+
+  -- expand the search range if we're currently aggro'd
   if currentTarget and not currentTarget:IsNull() and 
-    currentTarget:IsAlive() and 
-    GetDistanceBetweenTwoUnits(self, currentTarget) < self.aiState.stopPursuitRange and 
-    not IsCustomBuilding(currentTarget) then
-    return true
+    currentTarget:IsAlive() and not IsCustomBuilding(currentTarget) then
+    self.aiState.stopPursuitRange
   end
 
-  local aggroTargets = FindEnemiesInRadius(self, self.aiState.targetAcquisitionRange)
+  local aggroTargets = FindEnemiesInRadius(self, searchRange)
 
   local target
   for _,potentialTarget in pairs(aggroTargets) do

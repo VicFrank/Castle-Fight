@@ -80,7 +80,6 @@ function UpdateItemsUI() {
 var AbilitiesContainer = newUI.FindChildTraverse("AbilitiesAndStatBranch").FindChildTraverse("abilities");
 
 function SetCustomAbilityCosts(abilityNumber, lumberCost, cheeseCost) {
-  $.Msg("SetCustomAbilityCosts")
   var AbilityPanel = AbilitiesContainer.FindChildTraverse("Ability" + abilityNumber);
   var AbilityButton = AbilityPanel.FindChildTraverse("ButtonAndLevel").FindChildTraverse("ButtonWithLevelUpTab").FindChildTraverse("ButtonWell").FindChildTraverse("ButtonSize");
 
@@ -134,8 +133,6 @@ function UpdateAbilityUI() {
       continue;
 
     var abilityname = Abilities.GetAbilityName(ability);
-
-    $.Msg(abilityname)
 
     var abilityCostData = CustomNetTables.GetTableValue("ability_costs", abilityname);
     if (!abilityCostData) continue;
