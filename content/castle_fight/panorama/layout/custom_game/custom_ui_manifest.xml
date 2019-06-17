@@ -70,5 +70,6 @@
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/resources.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/hero_selection.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_shop.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/round_timer.xml" />
   </Panel>
 </root>

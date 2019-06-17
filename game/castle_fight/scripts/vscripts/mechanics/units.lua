@@ -190,6 +190,15 @@ function GetRandomVisibleEnemy(team)
   return GetRandomTableElement(enemies)
 end
 
+function CreateLaneUnit(unitname, position, team, playerID)
+  local unit = CreateUnitByName(unitname, position, true, nil, nil, team)
+  unit.playerID = playerID
+  if not playerID then
+    print(unitname .. " created without playerID")
+  end
+  return unit
+end
+
 function ReplaceUnit( unit, new_unit_name )
   --print("Replacing "..unit:GetUnitName().." with "..new_unit_name)
 

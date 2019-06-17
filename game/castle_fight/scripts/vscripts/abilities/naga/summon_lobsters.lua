@@ -7,11 +7,13 @@ function naga_siren_summon_lobsters:OnSpellStart()
   local unitName = "naga_lobster"
   local position = caster:GetAbsOrigin()
   local hero = caster:GetOwner()
+  local team = caster:GetTeam()
+  local playerID = caster.playerID
 
   local duration = ability:GetSpecialValueFor("duration")
 
   for i=1,2 do
-    local lobster = CreateUnitByName(unitName, position, true, hero, hero, hero:GetTeamNumber())
+    local lobster = CreateLaneUnit(unitName, position, team, playerID)
     lobster:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
   end
 end

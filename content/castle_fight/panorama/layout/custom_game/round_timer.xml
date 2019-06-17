@@ -1,0 +1,14 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="s2r://panorama/styles/custom_game/round_timer.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/round_timer.js" />     
+  </scripts>
+  <Panel class="RoundTimerRoot" hittest="false">
+    <Panel id="RoundTimerContainer" class="RoundTimerHidden RoundTimerVisible" hittest="false">
+     
+    </Panel>
+  </Panel>
+</root>

@@ -53,6 +53,12 @@ function Precache( context )
   PrecacheResource("particle", "particles/dire_fx/fire_barracks.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf", context) -- splash attack
 
+  -- Precache the heroes
+  PrecacheUnitByNameSync("human_builder", context)
+  PrecacheUnitByNameSync("naga_builder", context)
+  PrecacheUnitByNameSync("nature_builder", context)
+  PrecacheUnitByNameSync("night_elf_builder", context)
+  PrecacheUnitByNameSync("undead_builder", context)
   -- Human Precaches
   -- for _,unitname in ipairs(g_Human_Precache) do
   --   PrecacheUnitByNameSync(unitname, context)

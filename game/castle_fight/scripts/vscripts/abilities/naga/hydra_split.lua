@@ -22,9 +22,9 @@ function modifier_ancient_hydra_split:OnDeath(keys)
     for i=1,2 do
       local unitName = "hydra"
       local position = self:GetParent():GetAbsOrigin()
-      local hero = self:GetParent():GetOwner()
       local team = self:GetParent():GetTeam()
-      CreateUnitByName(unitName, position, true, hero, hero, team)
+      local playerID = self:GetParent().playerID
+      CreateLaneUnit(unitName, position, team, playerID)
     end
   end
 end
@@ -45,9 +45,9 @@ function modifier_hydra_split:OnDeath(keys)
     for i=1,2 do
       local unitName = "lesser_hydra"
       local position = self:GetParent():GetAbsOrigin()
-      local hero = self:GetParent():GetOwner()
       local team = self:GetParent():GetTeam()
-      CreateUnitByName(unitName, position, true, hero, hero, team)
+      local playerID = self:GetParent().playerID
+      CreateLaneUnit(unitName, position, team, playerID)
     end
   end
 end

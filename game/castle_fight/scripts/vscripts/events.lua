@@ -104,10 +104,15 @@ function GameMode:OnEntityKilled(keys)
   local bounty = killed:GetGoldBounty()
   if killer and bounty and not killer:IsRealHero() and not DeepTableCompare(killer == killed, true) then
     -- when you use forcekill, it's the same as the unit killing itself
-    local player = killer:GetPlayerOwner()
-    local killerPlayerID = killer:GetPlayerOwnerID()
-    SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, player)
-    PlayerResource:ModifyGold(killerPlayerID, bounty, false, DOTA_ModifyGold_CreepKill)
+    local killerPlayerID = killer.playerID or killer:GetPlayerOwnerID()
+    if killerPlayerID and killerPlayerID > 0 then
+      local player = PlayerResource:GetPlayer(killerPlayerID)
+
+      SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, player)
+      PlayerResource:ModifyGold(killerPlayerID, bounty, false, DOTA_ModifyGold_CreepKill)
+    else
+      -- print(killer:GetUnitName() .. " doesn't have a .playerID")
+    end
   end
 
   if IsCustomBuilding(killed) and not killed:IsUnderConstruction() then

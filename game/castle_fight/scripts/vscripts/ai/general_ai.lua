@@ -10,7 +10,7 @@ function FindAggro(self)
   -- expand the search range if we're currently aggro'd
   if currentTarget and not currentTarget:IsNull() and 
     currentTarget:IsAlive() and not IsCustomBuilding(currentTarget) then
-    self.aiState.stopPursuitRange
+    searchRange = self.aiState.stopPursuitRange
   end
 
   local aggroTargets = FindEnemiesInRadius(self, searchRange)

@@ -128,6 +128,8 @@ function GameMode:SpawnUnits(playerID, unitname, count)
   local position = Vector(0,0,0)
   local team = PlayerResource:GetTeam(playerID)
 
+  count = tonumber(count) or 1
+
   if count < 0 then
     count = count * -1
     team = DOTA_TEAM_BADGUYS

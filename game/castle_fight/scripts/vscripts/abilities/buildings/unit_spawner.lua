@@ -46,6 +46,6 @@ function SpawnUnit(keys)
   end
 
   for i=1,numUnits do
-    local unit = CreateUnitByName(unitName, parent:GetAbsOrigin(), true, parent, parent, parent:GetTeam())
+    CreateLaneUnit(unitName, parent:GetAbsOrigin(), parent:GetTeam(), parent:GetPlayerOwnerID())
   end
 end

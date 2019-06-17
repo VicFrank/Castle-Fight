@@ -38,6 +38,8 @@ function modifier_critical_strike_custom:GetModifierPreAttack_CriticalStrike(par
 
   local target = params.target
 
+  if IsCustomBuilding(target) then return end
+
   if self.crit_chance >= RandomInt(1,100) then
     self:GetParent():EmitSound("Hero_PhantomAssassin.CoupDeGrace")
 

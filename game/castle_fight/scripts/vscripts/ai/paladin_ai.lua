@@ -103,9 +103,10 @@ function thisEntity:CastResurrection(corpse)
   -- do the revive unit logic here, instead of in the ability
   Timers:CreateTimer(.5, function()
     local owner = self:GetOwner()
+    local playerID = self.playerID
     local team = self:GetTeam()
 
-    local resurrected = CreateUnitByName(corpse.unit_name, position, true, owner, owner, team)
+    local resurrected = CreateLaneUnit(corpse.unit_name, position, team, playerID)
 
     resurrected:SetForwardVector(corpse:GetForwardVector())
     FindClearSpaceForUnit(resurrected, position, true)
