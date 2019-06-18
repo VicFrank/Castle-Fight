@@ -121,7 +121,7 @@ function Build( event )
         caster:AddNewModifier(caster, nil, "modifier_phased", {duration=0.03})
 
         -- Silence the building while it is being constructed
-        unit:AddNewModifier(caster, nil, "modifier_silence", {duration=-1})
+        unit:AddNewModifier(caster, nil, "modifier_under_construction", {duration=-1})
 
         -- Remove invulnerability on npc_dota_building baseclass
         unit:RemoveModifierByName("modifier_invulnerable")
@@ -148,7 +148,7 @@ function Build( event )
         unit:SetAttackCapability(unit.original_attack)
 
         -- Unsilence the unit
-        unit:RemoveModifierByName("modifier_silence")
+        unit:RemoveModifierByName("modifier_under_construction")
 
         GameMode:OnConstructionCompleted(unit, ability)
     end)

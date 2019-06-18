@@ -52,20 +52,84 @@ function GameMode:StopIncomeTimer()
   Timers:RemoveTimer("IncomeTimer")
 end
 
-function GameMode:CountdownToNextRound(seconds)
-  CustomGameEventManager:Send_ServerToAllClients("start_countdown_timer",
-    {seconds = seconds})
+-- TODO: Find a better file for this
+function GameMode:RandomHero(playerID)
+  local heroes = {
+    "npc_dota_hero_kunkka",
+    "npc_dota_hero_slark",
+    -- "npc_dota_hero_treant",
+    -- "npc_dota_hero_vengefulspirit",
+    -- "npc_dota_hero_abaddon",
+  }
 
-  if seconds >= 3 then
-    Notifications:TopToAll({text="Get ready for round " .. GameRules.roundCount + 1, duration=3.0})
+  -- Randomly select a hero from the pool
+  local hero = GetRandomTableElement(heroes)
+
+  PlayerResource:ReplaceHeroWith(playerID, hero, 0, 0)
+end
+
+function GameMode:StartHeroSelection()
+  GameRules.InHeroSelection = true
+  CustomGameEventManager:Send_ServerToAllClients("hero_select_started", {})
+
+  GameRules.needToPick = 0
+  for _,hero in pairs(HeroList:GetAllHeroes()) do
+    if hero:IsAlive() then
+      hero.hasPicked = false
+      -- TODO: Hide your old hero until you've picked a new one
+      -- Stun the new one until the round starts
+      GameRules.needToPick = GameRules.needToPick + 1
+    end
   end
 
-  Timers:CreateTimer("RoundCountdownTimer", {
-    endTime = seconds,
-    callback = function()
-      GameMode:StartRound()
+  local timeToStart = HERO_SELECT_TIME
+  -- Reset the timer if it's already going
+  Timers:RemoveTimer(GameRules.HeroSelectionTimer)
+
+  GameRules.HeroSelectionTimer = Timers:CreateTimer(function()
+    CustomGameEventManager:Send_ServerToAllClients("countdown",
+      {seconds = timeToStart})
+
+    if timeToStart == 0 then
+      --Hero Selection is over
+      GameMode:EndHeroSelection()
     end
-  })
+
+    timeToStart = timeToStart - 1
+
+    return 1
+  end)
+end
+
+function GameMode:EndHeroSelection()
+  Timers:RemoveTimer(GameRules.HeroSelectionTimer)
+
+  GameRules.InHeroSelection = false
+  CustomGameEventManager:Send_ServerToAllClients("hero_select_ended", {})
+  -- Force players who haven't picked to random a hero
+  for _,hero in pairs(HeroList:GetAllHeroes()) do
+    if hero:IsAlive() and not hero.hasPicked then
+      GameMode:RandomHero(hero:GetPlayerOwnerID())
+    end
+  end
+
+  -- Wait for loading, then start the next round
+  GameMode:WaitToLoad()
+end
+
+function GameMode:WaitToLoad()
+  CustomGameEventManager:Send_ServerToAllClients("loading_started", {})
+
+  Timers:RemoveTimer(GameRules.LoadingTimer)
+
+  GameRules.LoadingTimer = Timers:CreateTimer(1, function()
+    if GameRules.numToCache == 0 then
+      -- Start the next round after we've finished precaching everything
+      GameMode:StartRound()
+      return
+    end
+    return 1
+  end)
 end
 
 -- Kills all units and structures, including both castles. Does not kill heroes.
@@ -99,6 +163,9 @@ function GameMode:StartRound()
     GameMode:StartIncomeTimer()
 
     Notifications:TopToAll({text="Round " .. GameRules.roundCount .. " started!", duration=3.0})
+
+    CustomGameEventManager:Send_ServerToAllClients("round_started", 
+      {round = GameRules.roundCount})
 
     GameRules.roundInProgress = true
   end)
@@ -154,10 +221,5 @@ function GameMode:EndRound(losingTeam)
   -- Clear the map
   GameMode:KillAllUnitsAndBuildings()
 
-  -- Prevent heroes from moving until next round starts
-  -- Hide them out of world
-  -- TODO
-
-  -- Countdown to next round start
-  GameMode:CountdownToNextRound(TIME_BETWEEN_ROUNDS)
+  GameMode:StartHeroSelection()
 end

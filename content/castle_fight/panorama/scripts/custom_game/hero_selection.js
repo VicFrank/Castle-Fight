@@ -64,6 +64,8 @@ function ShowHeroSelect() {
 }
 
 (function () {
-  ShowHeroSelect();
+  // ShowHeroSelect();
   UpdateHeroDetails(CurrentRace);
+  GameEvents.Subscribe("hero_select_started", ShowHeroSelect);
+  GameEvents.Subscribe("hero_select_ended", HideHeroSelect);
 })();

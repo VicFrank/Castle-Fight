@@ -8,7 +8,13 @@
   </scripts>
   <Panel class="RoundTimerRoot" hittest="false">
     <Panel id="RoundTimerContainer" class="RoundTimerHidden RoundTimerVisible" hittest="false">
-     
+      <Panel id="TimerHolder">
+        <Label id="CountdownTimer" text="" hittest="false" />
+      </Panel>
+      <Panel id="RoundInfo" hittest="false">
+        <Label id="RoundLabel" text="Round 1" hittest="false" />
+        <Label id="RoundStatusLabel" text="" hittest="false" />
+      </Panel>
     </Panel>
   </Panel>
 </root>

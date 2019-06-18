@@ -1,40 +1,43 @@
 function CDOTA_BaseNPC:GetLumber()
-  if not self.lumber then self.lumber = 0 end
-  return self.lumber
+  local nettable = CustomNetTables:GetTableValue("lumber", tostring(self:GetPlayerOwnerID()))
+  return nettable.value
 end
 
 function CDOTA_BaseNPC:SetLumber(lumber)
-  if not self.lumber then self.lumber = 0 end
-  self.lumber = lumber
   CustomNetTables:SetTableValue("lumber",
     tostring(self:GetPlayerOwnerID()),
-    {value = self.lumber})
+    {value = lumber})
 end
 
 function CDOTA_BaseNPC:ModifyLumber(value)
-  self:SetLumber(math.max(0, self.lumber + value))
+  self:SetLumber(math.max(0, self:GetLumber() + value))
 end
 
 function CDOTA_BaseNPC:GiveLumber(value)
-  if not self.lumber then self.lumber = 0 end
-  self:SetLumber(self.lumber + value)
+  self:SetLumber(self:GetLumber() + value)
+end
+
+function SetLumber(playerID, lumber)
+  CustomNetTables:SetTableValue("lumber", tostring(playerID), {value = lumber})
 end
 
 -------------------------------------------
 
+function CDOTA_BaseNPC:GetCheese()
+  local nettable = CustomNetTables:GetTableValue("cheese", tostring(self:GetPlayerOwnerID()))
+  return nettable.value
+end
+
 function CDOTA_BaseNPC:SetCheese(cheese)
-  if not self.cheese then self.cheese = 0 end
-  self.cheese = cheese
   CustomNetTables:SetTableValue("cheese",
     tostring(self:GetPlayerOwnerID()),
-    {value = self.cheese})
+    {value = cheese})
 end
 
 function CDOTA_BaseNPC:ModifyCheese(value)
-  self:SetCheese(math.max(0, self.cheese + value))
+  self:SetCheese(math.max(0, self:GetCheese() + value))
 end
 
-function CDOTA_BaseNPC:GetCheese(cheese)
-  if not self.cheese then self.cheese = 0 end
-  return self.cheese
+function SetCheese(playerID, cheese)
+  CustomNetTables:SetTableValue("cheese", tostring(playerID), {value = cheese})
 end

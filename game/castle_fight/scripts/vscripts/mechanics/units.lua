@@ -124,6 +124,13 @@ function FindEnemiesInRadius( unit, radius, point )
   return FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_CLOSEST, false)
 end
 
+function FindEnemiesInRadiusFromTeam( team, radius, point )
+  local position = point
+  local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+  local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS
+  return FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_CLOSEST, false)
+end
+
 -- Returns all units (friendly and enemy) in radius of the unit/point
 function FindAllUnitsInRadius( radius, point )
   local position = point
@@ -173,6 +180,7 @@ function FindFirstUnit(list, filter)
   end
 end
 
+-- Returns all visible enemy units  (not buildings)
 function FindAllVisibleEnemies(team)
   local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS
   local enemies = FindUnitsInRadius(team, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, flags, FIND_ANY_ORDER, false)
@@ -270,6 +278,10 @@ function CDOTA_BaseNPC:SetAttackType( attack_type )
   self:RemoveModifierByName("modifier_attack_"..current_attack_type)
   self.AttackType = attack_type
   ApplyModifier(self, "modifier_attack_"..attack_type)
+end
+
+function CDOTA_BaseNPC:IsMechanical()
+    return self:GetUnitLabel():match("mechanical")
 end
 
 -- Changes the ArmorType and current visual tooltip of the unit

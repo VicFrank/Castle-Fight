@@ -9,6 +9,7 @@ function GameMode:OnScriptReload()
   -- GiveLumberToAllPlayers(2000)
   -- KillAllUnits()
   -- KillAllBuildings()
+  -- GameMode:StartHeroSelection()
 end
 
 function SpawnTestBuildings()
@@ -140,6 +141,10 @@ function GameMode:SpawnUnits(playerID, unitname, count)
   end
 end
 
+function GameMode:Reset()
+  GameMode:EndRound(DOTA_TEAM_BADGUYS)
+end
+
     
 CHEAT_CODES = {
   ["lumber"] = function(...) GameMode:LumberCheat(...) end,                -- "Gives you X lumber"
@@ -148,7 +153,7 @@ CHEAT_CODES = {
   ["greedisgood"] = function(...) GameMode:GreedIsGood(...) end,           -- "Gives you X gold and lumber" 
   ["killallunits"] = function(...) KillAllUnits() end,                     -- "Kills all units"    
   ["killallbuildings"] = function(...) KillAllBuildings() end,             -- "Kills all buildings"    
-  ["reset"] = function(...) KillEverything() end,                          -- "Kills all units and buildings"    
+  ["reset"] = function(...) GameMode:Reset() end,                          -- "Restarts the round"    
   ["nextround"] = function(...) GameMode:StartRound(...) end,              -- "Calls start round"      
   ["endround"] = function(...) GameMode:EndRound(...) end,                 -- "Calls end round"
   ["spawn"] = function(...) GameMode:SpawnUnits(...) end,                  -- "Spawns some units."

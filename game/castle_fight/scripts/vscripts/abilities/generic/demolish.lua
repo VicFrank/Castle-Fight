@@ -1,9 +1,9 @@
-LinkLuaModifier("modifier_demolish", "abilities/generic/demloish.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_demolish", "abilities/generic/demolish.lua", LUA_MODIFIER_MOTION_NONE)
 
 flesh_golem_demolish = class({})
-function flesh_golem_demolish:GetIntrinsicModifierName() return "modifier_pulverize" end
+function flesh_golem_demolish:GetIntrinsicModifierName() return "modifier_demolish" end
 
-modifier_pulverize = class({})
+modifier_demolish = class({})
 
 function modifier_demolish:OnCreated()
   self.caster = self:GetCaster()
@@ -26,8 +26,19 @@ function modifier_demolish:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
-  if attacker == self.caster then
-    -- do mana burn here
+  if attacker == self.caster and IsCustomBuilding(target) then
+    local damage = keys.damage
+    damage = damage * (self.damage_pct - 100) * 0.01
+
+    print(damage)
+    ApplyDamage({
+      victim = target,
+      damage = damage,
+      damage_type = DAMAGE_TYPE_PHYSICAL,
+      damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION,
+      attacker = self.caster,
+      ability = self.ability
+    })
   end
 end
 

@@ -54,11 +54,11 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf", context) -- splash attack
 
   -- Precache the heroes
-  PrecacheUnitByNameSync("human_builder", context)
-  PrecacheUnitByNameSync("naga_builder", context)
+  PrecacheUnitByNameSync("npc_dota_hero_kunkka", context)
+  PrecacheUnitByNameSync("npc_dota_hero_slark", context)
   PrecacheUnitByNameSync("nature_builder", context)
   PrecacheUnitByNameSync("night_elf_builder", context)
-  PrecacheUnitByNameSync("undead_builder", context)
+  PrecacheUnitByNameSync("npc_dota_hero_abaddon", context)
   -- Human Precaches
   -- for _,unitname in ipairs(g_Human_Precache) do
   --   PrecacheUnitByNameSync(unitname, context)
@@ -149,6 +149,7 @@ function GameMode:InitGameMode()
   -- Lua Modifiers
   LinkLuaModifier("modifier_disable_turning", "libraries/modifiers/modifier_disable_turning", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("income_modifier", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
+  LinkLuaModifier("modifier_under_construction", "libraries/modifiers/modifier_under_construction", LUA_MODIFIER_MOTION_NONE)
 
   self.vUserIds = {}
   
@@ -164,9 +165,14 @@ function GameMode:InitGameMode()
   GameRules.rightRoundsWon = 0
   GameRules.roundCount = 0
   GameRules.roundInProgress = false
+  GameRules.InHeroSelection = false
+  GameRules.needToPick = 0
   GameRules.playerIDs = {}
   GameRules.numToCache = 0
   GameRules.precached = {}
+
+  GameRules.HeroSelectionTimer = ""
+  GameRules.LoadingTimer = ""
 
   -- Modifier Applier
   GameRules.Applier = CreateItem("item_apply_modifiers", nil, nil)

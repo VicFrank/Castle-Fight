@@ -26,7 +26,7 @@
   {
     "AbilityTextureName"          "necrolyte_death_pulse"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/soul_steal_chance"
+    "ScriptFile"                  "abilities/undead/soul_steal"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -103,6 +103,10 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityCooldown"             "45.0"
     "AbilityManaCost"             "75"
+
+    "AbilityCastRange"          "900"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
   }
 
   // Raises a skeleton. Can also raise Greater Skeletons and Heros. (but no generals)
@@ -116,6 +120,10 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityCooldown"             "30.0"
     "AbilityManaCost"             "75"
+
+    "AbilityCastRange"          "900"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
   }
 
   // Raises 2 greater skeletons. Skeletons raised this way have 3 bonus armor and 12 bonus damage.
@@ -130,6 +138,24 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityCooldown"             "25.0"
     "AbilityManaCost"             "100"
+
+    "AbilityCastRange"          "900"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "armor_bonus"      "3"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage_bonus"    "12"
+      }
+    }
   }
 
   // Kills a random enemy unit instantly
@@ -153,6 +179,13 @@
     "MaxLevel"                    "3"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_pudge/pudge_rot.vpcf"
+      "particle"  "particles/units/heroes/hero_pudge/pudge_rot_recipient.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -179,6 +212,11 @@
     "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_venomancer/venomancer_poison_debuff.vpcf"
+    }
 
     "AbilitySpecial"
     {
@@ -210,6 +248,12 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_death_prophet/death_prophet_carrion_swarm.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -261,6 +305,12 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -291,7 +341,7 @@
       "06"
       {
         "var_type"                "FIELD_INTEGER"
-        "death_and_decay_drain"   "8"
+        "damage_percent"          "8"
       }
     }
   }
@@ -326,12 +376,17 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityCastRange"            "900"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_skeletonking/wraith_king_vampiric_aura_lifesteal.vpcf"
+    }
+
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"      "FIELD_INTEGER"
-        "range"         "900"
+        "radius"        "900"
       }
       "02"
       {
@@ -376,7 +431,7 @@
       "01"
       {
         "var_type"      "FIELD_INTEGER"
-        "range"         "450"
+        "radius"         "450"
       }
       "02"
       {
@@ -454,6 +509,12 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
+    "precache"
+    {
+      "particle"  "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -485,7 +546,6 @@
   }
 
   // All units hit get chilled for 5 seconds
-  // TODO: Unsure about slow amounts
   "frost_wyrm_chilling_attack"
   {
     "AbilityTextureName"          "winter_wyvern_arctic_burn"
@@ -494,6 +554,11 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/generic_gameplay/generic_slowed_cold.vpcf"
+    }
 
     "AbilitySpecial"
     {
@@ -505,7 +570,7 @@
       "02"
       {
         "var_type"      "FIELD_INTEGER"
-        "move_slow"      "30"
+        "move_slow"     "30"
       }
       "03"
       {
@@ -515,7 +580,7 @@
       "04"
       {
         "var_type"      "FIELD_INTEGER"
-        "radius"        "150"
+        "radius"        "250"
       }
     }
   }

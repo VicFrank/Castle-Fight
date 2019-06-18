@@ -2367,6 +2367,10 @@ function BuildingHelper:GetOrCreateDummy(unitName)
         mgd:AddNewModifier(mgd, nil, "modifier_out_of_world", {})
         BuildingHelper.Dummies[unitName] = mgd
         mgd.BHDUMMY = true -- Skip removing this entity
+        for i=0,16 do
+            local ability = mgd:GetAbilityByIndex(i)
+            if ability then ability:SetLevel(0) end
+        end
         return mgd
     end
 end

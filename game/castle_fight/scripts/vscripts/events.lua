@@ -8,7 +8,7 @@ function GameMode:OnGameRulesStateChange()
 end
 
 function GameMode:OnGameInProgress()
-  GameMode:CountdownToNextRound(TIME_BEFORE_FIRST_ROUND)
+  GameMode:StartHeroSelection()
 end
 
 function GameMode:OnNPCSpawned(keys)
@@ -45,12 +45,18 @@ end
 function GameMode:OnHeroInGame(hero)
   print("Hero Spawned")
 
+  hero.hasPicked = true
+
   -- Add bots to the playerids list
   local playerID = hero:GetPlayerOwnerID()
   if not TableContainsValue(GameRules.playerIDs, playerID) then
-    print("Didn't find playerID, inserting")
+    print("Didn't find playerID, inserting")    
     table.insert(GameRules.playerIDs, playerID)
   end
+
+  -- Initialize custom resource values
+  SetLumber(playerID, 0)
+  SetCheese(playerID, 0)
 
   -- Get rid of the tp scroll
   Timers:CreateTimer(.03, function()
@@ -83,7 +89,7 @@ function GameMode:OnHeroInGame(hero)
 
       GameRules.precached[unitName] = true
     end
-  end)  
+  end) 
 end
 
 function GameMode:OnEntityKilled(keys)
@@ -141,6 +147,9 @@ function GameMode:OnConnectFull(keys)
   -- The Player ID of the joining player
   local playerID = ply:GetPlayerID()
   print(playerID .. " connected")
+
+  SetLumber(playerID, 0)
+  SetCheese(playerID, 0)
 
   table.insert(GameRules.playerIDs, playerID)
 end
@@ -202,18 +211,24 @@ function OnRaceSelected(eventSourceIndex, args)
   local playerID = args.PlayerID
   local heroName = args.hero
 
-  local heroes = {
-    "npc_dota_hero_kunkka",
-    "npc_dota_hero_slark",
-    "npc_dota_hero_treant",
-    "npc_dota_hero_vengefulspirit",
-    "npc_dota_hero_abaddon",
-  }
+  if not GameRules.InHeroSelection then return end
 
   if heroName == "random" then
-    -- Randomly select a hero from the pool
-    local hero = GetRandomTableElement(heroes)
+    GameMode:RandomHero(playerID)
+  else
+    PlayerResource:ReplaceHeroWith(playerID, heroName, 0, 0)
   end
 
-  PlayerResource:ReplaceHeroWith(playerID, heroName, 0, 0)
+  GameRules.needToPick = GameRules.needToPick - 1
+
+  print(GameRules.needToPick .. " players still need to pick")
+
+  if GameRules.needToPick == 0 then
+    GameMode:EndHeroSelection()
+  end
+
+  -- Don't need the bot to pick
+  if IsInToolsMode() and GameRules.needToPick == 1 then
+    GameMode:EndHeroSelection()
+  end
 end

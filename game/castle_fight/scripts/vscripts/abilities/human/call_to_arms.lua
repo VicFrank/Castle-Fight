@@ -21,7 +21,13 @@ function modifier_call_to_arms_aura:IsPurgable()
 end
 
 function modifier_call_to_arms_aura:GetAuraRadius()
-  return 99999
+  if not IsServer() then return end
+  local radius = 99999
+  local parent = self:GetParent()
+  if parent:GetTeam() == DOTA_TEAM_NEUTRALS or parent:PassivesDisabled() then
+    radius = 0
+  end
+  return radius
 end
 
 function modifier_call_to_arms_aura:GetModifierAura()

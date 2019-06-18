@@ -1,12 +1,14 @@
 function GameMode:PayIncome()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
-    local playerID = hero:GetPlayerOwnerID()
-    local income = GameMode:GetIncomeForPlayer(playerID)
+    if hero:IsAlive() then
+      local playerID = hero:GetPlayerOwnerID()
+      local income = GameMode:GetIncomeForPlayer(playerID)
 
-    hero:ModifyGold(income, false, DOTA_ModifyGold_Unspecified)
-    SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, income, hero)
+      hero:ModifyGold(income, false, DOTA_ModifyGold_Unspecified)
+      SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, income, hero)
 
-    hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
+      hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
+    end
   end
 end
 
