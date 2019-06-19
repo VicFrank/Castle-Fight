@@ -30,7 +30,6 @@ function modifier_demolish:OnAttackLanded(keys)
     local damage = keys.damage
     damage = damage * (self.damage_pct - 100) * 0.01
 
-    print(damage)
     ApplyDamage({
       victim = target,
       damage = damage,

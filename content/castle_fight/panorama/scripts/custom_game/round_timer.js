@@ -33,9 +33,24 @@ function OnLoadingStarted(data) {
   $("#CountdownTimer").text = "";
 }
 
+function UpdateHeroSelectState() {
+  $.Msg("UpdateHeroSelectVisibility");
+  
+  var data = CustomNetTables.GetTableValue("hero_select", "status");
+  if (data && data.ongoing) {
+    OnHeroSelectStarted();
+  }
+}
+
+function OnHeroSelectStatusChanged(table_name, key, data) {
+  UpdateHeroSelectState();
+}
+
 (function () {
   GameEvents.Subscribe("countdown", UpdateTimer);
   GameEvents.Subscribe("round_started", OnRoundStarted);
-  GameEvents.Subscribe("hero_select_started", OnHeroSelectStarted);
   GameEvents.Subscribe("loading_started", OnLoadingStarted);
+
+  CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
+  UpdateHeroSelectState();
 })();

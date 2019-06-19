@@ -53,19 +53,48 @@ function OnHeroSelectButtonPressed() {
   HideHeroSelect();
 }
 
+var HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
+var HeroHUD = HUD.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats");
+
+function HideHeroPanel() {
+  HeroHUD.style.visibility = "collapse";
+}
+
+function ShowHeroPanel() {
+  HeroHUD.style.visibility = "visible";
+}
+
 var HeroSelectPanel = $("#HeroPickHolder");
 
 function HideHeroSelect() {
   HeroSelectPanel.RemoveClass("HeroSelectVisible")
+  ShowHeroPanel();  
 }
 
 function ShowHeroSelect() {
   HeroSelectPanel.AddClass("HeroSelectVisible");
+  HideHeroPanel();
+}
+
+function UpdateHeroSelectVisibility() {
+  $.Msg("UpdateHeroSelectVisibility");
+  
+  var data = CustomNetTables.GetTableValue("hero_select", "status");
+  if (data && data.ongoing) {
+    ShowHeroSelect();
+  } else {
+    HideHeroSelect();
+  }
+}
+
+function OnHeroSelectStatusChanged(table_name, key, data) {
+  UpdateHeroSelectVisibility();
 }
 
 (function () {
   // ShowHeroSelect();
   UpdateHeroDetails(CurrentRace);
-  GameEvents.Subscribe("hero_select_started", ShowHeroSelect);
-  GameEvents.Subscribe("hero_select_ended", HideHeroSelect);
+
+  CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
+  UpdateHeroSelectVisibility();
 })();

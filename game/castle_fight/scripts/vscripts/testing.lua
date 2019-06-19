@@ -108,8 +108,10 @@ end
 function GameMode:GreedIsGood(playerID, value)
   value = tonumber(value) or 500
   for _,hero in pairs(HeroList:GetAllHeroes()) do
-    hero:GiveLumber(value)
-    hero:ModifyGold(value, false, 0)
+    if hero:IsAlive() then
+      hero:GiveLumber(value)
+      hero:ModifyGold(value, false, 0)
+    end
   end
 end
 
@@ -142,6 +144,9 @@ function GameMode:SpawnUnits(playerID, unitname, count)
 end
 
 function GameMode:Reset()
+  GameRules.leftRoundsWon = -1
+  GameRules.rightRoundsWon = 0
+  GameRules.roundCount = 0
   GameMode:EndRound(DOTA_TEAM_BADGUYS)
 end
 

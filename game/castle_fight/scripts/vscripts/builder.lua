@@ -174,10 +174,14 @@ function CancelBuilding( keys )
 
     print("CancelBuilding "..building:GetUnitName().." "..building:GetEntityIndex())
 
+    -- Discount the refund based on how much damage the tower took when cancelled
+    local refundPercent = (building:GetHealth() - building.initialHealth) / building.addedHealth
+    refundPercent = math.min(1, refundPercent)
+
     -- Refund here
     if building.gold_cost then
-        hero:ModifyGold(building.gold_cost, false, 0)
-        hero:ModifyLumber(building.lumber_cost)
+        hero:ModifyGold(building.gold_cost * refundPercent, false, 0)
+        hero:ModifyLumber(building.lumber_cost * refundPercent)
         hero:ModifyCheese(building.cheese_cost)
     end
 

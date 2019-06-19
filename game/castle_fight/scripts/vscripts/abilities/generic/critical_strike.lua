@@ -41,13 +41,13 @@ function modifier_critical_strike_custom:GetModifierPreAttack_CriticalStrike(par
   if IsCustomBuilding(target) then return end
 
   if self.crit_chance >= RandomInt(1,100) then
-    self:GetParent():EmitSound("Hero_PhantomAssassin.CoupDeGrace")
+    -- self:GetParent():EmitSound("Hero_PhantomAssassin.CoupDeGrace")
 
-    local particleName = "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-    local particle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, self:GetParent())
-    ParticleManager:SetParticleControlEnt(particle, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
-    ParticleManager:SetParticleControlEnt(particle, 1, target, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
-    ParticleManager:ReleaseParticleIndex(particle)
+    -- local particleName = "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+    -- local particle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, self:GetParent())
+    -- ParticleManager:SetParticleControlEnt(particle, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+    -- ParticleManager:SetParticleControlEnt(particle, 1, target, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+    -- ParticleManager:ReleaseParticleIndex(particle)
 
     return self.crit_damage
   else

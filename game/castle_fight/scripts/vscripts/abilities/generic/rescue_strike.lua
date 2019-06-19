@@ -27,9 +27,10 @@ function item_rescue_strike:OnSpellStart()
   local enemies = FindEnemiesInRadius(caster, radius)
 
   for _,enemy in pairs(enemies) do
+    damageDone = damageDone + enemy:GetHealth()
+    
     enemy:Kill(ability, caster)
 
-    damageDone = damageDone + enemy:GetHealth()
     enemiesKilled = enemiesKilled + 1
   end
 
@@ -48,10 +49,10 @@ function item_rescue_strike:OnSpellStart()
 
   if enemiesKilled == 0 then
     message = "EPIC FAIL! " .. username .. " WASTED their Rescue Strike, killing only " .. enemiesKilled ..
-      "units and dealing " .. damageDone .. " damage!"
+      " enemies, and dealing " .. damageDone .. " damage!"
   elseif enemiesKilled < 5 then
     message = username .. " WASTED their Rescue Strike, killing only " .. enemiesKilled ..
-      "units and dealing " .. damageDone .. " damage!"
+      " enemies, and dealing " .. damageDone .. " damage!"
   else
     message = username .. " killed " .. enemiesKilled .. " enemies with their Rescue Strike, dealing " ..
       damageDone .. " damage!"

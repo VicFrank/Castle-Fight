@@ -31,6 +31,7 @@ function SpawnUnit(keys)
   local parent = keys.target
   local unitName = keys.UnitName
   local numUnits = keys.NumUnits
+  local playerID = parent:GetPlayerOwnerID()
 
   if parent:IsNull() or not parent:IsAlive() then return end
 
@@ -46,6 +47,7 @@ function SpawnUnit(keys)
   end
 
   for i=1,numUnits do
-    CreateLaneUnit(unitName, parent:GetAbsOrigin(), parent:GetTeam(), parent:GetPlayerOwnerID())
+    CreateLaneUnit(unitName, parent:GetAbsOrigin(), parent:GetTeam(), playerID)
+    GameRules.numUnitsTrained[playerID] = GameRules.numUnitsTrained[playerID] + 1
   end
 end

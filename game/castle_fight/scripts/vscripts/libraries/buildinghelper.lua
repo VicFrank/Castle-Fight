@@ -1188,6 +1188,9 @@ function BuildingHelper:StartBuilding(builder)
         end
 
         local fAddedHealth = 0
+        -- VicFrank, added second added health to calculate how much damage it took while being built
+        building.addedHealth = 0
+        building.initialHealth = nInitialHealth
         local nHealthInterval = (fMaxHealth-nInitialHealth) / (buildTime / fserverFrameRate)
         local fSmallHealthInterval = nHealthInterval - math.floor(nHealthInterval) -- just the floating point component
         nHealthInterval = math.floor(nHealthInterval)
@@ -1218,6 +1221,7 @@ function BuildingHelper:StartBuilding(builder)
 
                     if hpGain > 0 then
                         fAddedHealth = fAddedHealth + hpGain
+                        building.addedHealth = building.addedHealth + hpGain
                         building:SetHealth(building:GetHealth() + hpGain)
                     end
                 else

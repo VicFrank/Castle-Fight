@@ -18,6 +18,8 @@ require("tables/precache_tables")
 require("tables/item_tables")
 require("tables/ability_costs")
 
+require("items/custom_shop")
+
 require('repair')
 require("damage")
 require("testing")
@@ -59,6 +61,12 @@ function Precache( context )
   PrecacheUnitByNameSync("nature_builder", context)
   PrecacheUnitByNameSync("night_elf_builder", context)
   PrecacheUnitByNameSync("npc_dota_hero_abaddon", context)
+
+  -- Shop Items
+  PrecacheItemByNameSync("item_blast_staff", context)
+  PrecacheItemByNameSync("orb_of_lightning", context)
+  PrecacheItemByNameSync("scroll_of_stone", context)
+  
   -- Human Precaches
   -- for _,unitname in ipairs(g_Human_Precache) do
   --   PrecacheUnitByNameSync(unitname, context)
@@ -129,7 +137,7 @@ function GameMode:InitGameMode()
   mode:SetRecommendedItemsDisabled(true)
   mode:SetSelectionGoldPenaltyEnabled(false)
   mode:SetKillingSpreeAnnouncerDisabled(true)
-  mode:SetCustomGameForceHero("npc_dota_hero_slark")
+  mode:SetCustomGameForceHero("npc_dota_hero_kunkka")
 
   -- Event Hooks
   ListenToGameEvent('entity_killed', Dynamic_Wrap(GameMode, 'OnEntityKilled'), self)
@@ -142,14 +150,17 @@ function GameMode:InitGameMode()
 
   -- Custom Event Hooks
   CustomGameEventManager:RegisterListener('on_race_selected', OnRaceSelected)
+  CustomGameEventManager:RegisterListener('attempt_purchase', OnAttemptPurchase)
 
   -- Filters
   mode:SetDamageFilter(Dynamic_Wrap(GameMode, "FilterDamage"), self)
 
   -- Lua Modifiers
   LinkLuaModifier("modifier_disable_turning", "libraries/modifiers/modifier_disable_turning", LUA_MODIFIER_MOTION_NONE)
-  LinkLuaModifier("income_modifier", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("modifier_under_construction", "libraries/modifiers/modifier_under_construction", LUA_MODIFIER_MOTION_NONE)
+  LinkLuaModifier("income_modifier", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
+  LinkLuaModifier("modifier_hide_hero", "abilities/modifiers/modifier_hide_hero", LUA_MODIFIER_MOTION_NONE)
+  LinkLuaModifier("modifier_stunned_custom", "abilities/modifiers/modifier_stunned_custom", LUA_MODIFIER_MOTION_NONE)
 
   self.vUserIds = {}
   
@@ -166,6 +177,7 @@ function GameMode:InitGameMode()
   GameRules.roundCount = 0
   GameRules.roundInProgress = false
   GameRules.InHeroSelection = false
+  GameRules.roundStartTime = 0
   GameRules.needToPick = 0
   GameRules.playerIDs = {}
   GameRules.numToCache = 0

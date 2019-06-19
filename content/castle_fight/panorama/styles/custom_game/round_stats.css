@@ -1,0 +1,36 @@
+.RoundScoresRoot
+{
+  width: 100%;
+  height: 100%;
+}
+
+#RoundScoresContainer
+{
+  width: 200px;
+
+  horizontal-align: center;
+  vertical-align: top;
+
+}
+
+#GoodGuysScore
+{
+  horizontal-align: left;
+}
+#BadGuysScore
+{
+  horizontal-align: right;
+}
+
+.TeamScore
+{
+  width: 50px;
+  height: 40px;
+
+  font-size: 32px;
+  text-align: center;
+
+
+
+  background-color: black;
+}

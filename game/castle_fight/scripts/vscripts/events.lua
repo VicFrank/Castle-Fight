@@ -76,6 +76,9 @@ function GameMode:OnHeroInGame(hero)
 
     hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
 
+    -- Stun the hero until the round starts
+    hero:AddNewModifier(hero, nil, "modifier_stunned_custom", {})
+
     -- Precache this race
     if not GameRules.precached[unitName] then
       for _,unit in ipairs(g_Precache_Tables[unitName]) do
@@ -116,8 +119,10 @@ function GameMode:OnEntityKilled(keys)
 
       SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, player)
       PlayerResource:ModifyGold(killerPlayerID, bounty, false, DOTA_ModifyGold_CreepKill)
+
+      GameRules.unitsKilled[killerPlayerID] = GameRules.unitsKilled[killerPlayerID] + 1
     else
-      -- print(killer:GetUnitName() .. " doesn't have a .playerID")
+      print(killer:GetUnitName() .. " doesn't have a .playerID")
     end
   end
 
@@ -181,7 +186,7 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
 
   -- Give the player a reward for being the nth player to build a building
   -- reward is 20, 15, 10, 5
-  if TableCount(GameRules.buildingsBuilt[playerID]) == 0 then
+  if GameRules.buildingsBuilt[playerID] == 0 then
     local numBuilt = GameRules.numPlayersBuilt
     local reward = 20 - numBuilt * 5
 
@@ -193,7 +198,8 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
 
     GameRules.numPlayersBuilt = numBuilt + 1
   end
-  table.insert(GameRules.buildingsBuilt[playerID], building)
+
+  GameRules.buildingsBuilt[playerID] = GameRules.buildingsBuilt[playerID] + 1
 
   local increase = GameMode:GetIncomeIncreaseForBuilding(building, goldCost)
 

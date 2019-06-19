@@ -80,6 +80,7 @@ function OnLightningProc(modifier, target)
     damage = damage - (damage * modifier.jump_damage_reduction)
 
     -- Find the next bounce target
+    lastBounce = nextBounce
     nextBounce = nil
 
     local nearbyEnemies = FindEnemiesInRadius(modifier.caster, modifier.jump_range, lastBounce:GetAbsOrigin())

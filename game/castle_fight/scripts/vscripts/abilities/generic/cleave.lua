@@ -27,16 +27,23 @@ function modifier_custom_cleave:DeclareFunctions()
   return funcs
 end
 
-function modifier_custom_cleave:OnAttackLanded(keys)
+function modifier_custom_cleave:OnAttackLanded(params)
   if not IsServer() then return end
 
-  local attacker = keys.attacker
-  local target = keys.target
-  local damage = keys.damage
+  local attacker = params.attacker
+  local target = params.target
+  local damage = params.damage
 
-  local particle = "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+  local particleName = "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
 
-  if attacker == self.caster then
-    DoCleaveAttack(attacker, target, self.ability, damage * self.cleave_damage * 0.01, self.cleave_radius, self.cleave_radius, self.cleave_radius, particle)
+  if params.attacker == self.parent and (not self.parent:IsIllusion()) then
+    if self:GetParent():PassivesDisabled() then
+      return 0
+    end
+
+    if target ~= nil and target:GetTeamNumber() ~= self.parent:GetTeamNumber() then
+      local cleaveDamage = (self.cleave_damage * params.damage) / 100.0
+      DoCleaveAttack(self.parent, target, self.ability, cleaveDamage, self.cleave_radius, self.cleave_radius, self.cleave_radius, particleName)
+    end
   end
 end

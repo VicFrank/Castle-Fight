@@ -1,0 +1,15 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="s2r://panorama/styles/custom_game/round_stats.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/round_stats.js" />     
+  </scripts>
+  <Panel class="RoundScoresRoot" hittest="false">
+    <Panel id="RoundScoresContainer" hittest="false">
+      <Label id="GoodGuysScore" class="TeamScore" text="0" hittest="false" />
+      <Label id="BadGuysScore" class="TeamScore" text="0" hittest="false" />
+    </Panel>
+  </Panel>
+</root>

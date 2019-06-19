@@ -37,7 +37,7 @@ function tsunami:OnSpellStart()
     bProvidesVision = false,
   }
     
-  self.projectile = ProjectileManager:CreateLinearProjectile(linear_projectile)
+  self.projectile = ProjectileManager:CreateTrackingProjectile(linear_projectile)
 end
 
 function tsunami:OnProjectileHit(target, location)

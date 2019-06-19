@@ -5,20 +5,28 @@ end
 
 function GameMode:SetupHeroes()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
-    hero:ModifyGold(STARTING_GOLD - hero:GetGold(), false, 0)
-    hero:SetLumber(STARTING_LUMBER)
-    hero:SetCheese(STARTING_CHEESE)
-    hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
-    if not hero:HasItemInInventory("item_rescue_strike") then
-      hero:AddItem(CreateItem("item_rescue_strike", hero, hero))
+    if hero:IsAlive() then
+      hero:ModifyGold(STARTING_GOLD - hero:GetGold(), false, 0)
+      hero:SetLumber(STARTING_LUMBER)
+      hero:SetCheese(STARTING_CHEESE)
+      hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
+      hero:RemoveModifierByName("modifier_stunned_custom")
+      if not hero:HasItemInInventory("item_rescue_strike") then
+        hero:AddItem(CreateItem("item_rescue_strike", hero, hero))
+      end
     end
   end
+end
+
+function GameMode:SetupShops()
+  GameMode:SetupShopForTeam(DOTA_TEAM_GOODGUYS)
+  GameMode:SetupShopForTeam(DOTA_TEAM_BADGUYS)
 end
 
 function GameMode:InitializeRoundStats()
   GameRules.roundCount = GameRules.roundCount + 1
 
-  GameRules.roundTime = 0
+  GameRules.roundStartTime = GameRules:GetGameTime()
   GameRules.numPlayersBuilt = 0
 
   GameRules.unitsKilled = {}
@@ -28,11 +36,11 @@ function GameMode:InitializeRoundStats()
   GameRules.rescueStrikeKills = {}
 
   for _,playerID in pairs(GameRules.playerIDs) do
-    GameRules.unitsKilled[playerID] = {}
-    GameRules.buildingsBuilt[playerID] = {}
-    GameRules.numUnitsTrained[playerID] = {}
-    GameRules.rescueStrikeDamage[playerID] = {}
-    GameRules.rescueStrikeKills[playerID] = {}
+    GameRules.unitsKilled[playerID] = 0
+    GameRules.buildingsBuilt[playerID] = 0
+    GameRules.numUnitsTrained[playerID] = 0
+    GameRules.rescueStrikeDamage[playerID] = 0
+    GameRules.rescueStrikeKills[playerID] = 0
   end
 
   GameMode:ResetIncome()
@@ -52,14 +60,13 @@ function GameMode:StopIncomeTimer()
   Timers:RemoveTimer("IncomeTimer")
 end
 
--- TODO: Find a better file for this
 function GameMode:RandomHero(playerID)
   local heroes = {
     "npc_dota_hero_kunkka",
     "npc_dota_hero_slark",
     -- "npc_dota_hero_treant",
     -- "npc_dota_hero_vengefulspirit",
-    -- "npc_dota_hero_abaddon",
+    "npc_dota_hero_abaddon",
   }
 
   -- Randomly select a hero from the pool
@@ -69,15 +76,16 @@ function GameMode:RandomHero(playerID)
 end
 
 function GameMode:StartHeroSelection()
+  print("StartHeroSelection()")
+
   GameRules.InHeroSelection = true
-  CustomGameEventManager:Send_ServerToAllClients("hero_select_started", {})
+  CustomNetTables:SetTableValue("hero_select", "status", {ongoing = true})
 
   GameRules.needToPick = 0
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     if hero:IsAlive() then
       hero.hasPicked = false
-      -- TODO: Hide your old hero until you've picked a new one
-      -- Stun the new one until the round starts
+      hero:AddNewModifier(hero, nil, "modifier_hide_hero", {})
       GameRules.needToPick = GameRules.needToPick + 1
     end
   end
@@ -105,7 +113,7 @@ function GameMode:EndHeroSelection()
   Timers:RemoveTimer(GameRules.HeroSelectionTimer)
 
   GameRules.InHeroSelection = false
-  CustomGameEventManager:Send_ServerToAllClients("hero_select_ended", {})
+  CustomNetTables:SetTableValue("hero_select", "status", {ongoing = false})
   -- Force players who haven't picked to random a hero
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     if hero:IsAlive() and not hero.hasPicked then
@@ -160,6 +168,7 @@ function GameMode:StartRound()
     GameMode:InitializeRoundStats()
     GameMode:SpawnCastles()
     GameMode:SetupHeroes()
+    GameMode:SetupShops()
     GameMode:StartIncomeTimer()
 
     Notifications:TopToAll({text="Round " .. GameRules.roundCount .. " started!", duration=3.0})
@@ -177,6 +186,7 @@ end
 function GameMode:EndRound(losingTeam)
   GameRules.roundInProgress = false
 
+  -- Record the winner
   local winningTeam  
   if losingTeam == DOTA_TEAM_BADGUYS then
     winningTeam = DOTA_TEAM_GOODGUYS
@@ -186,15 +196,19 @@ function GameMode:EndRound(losingTeam)
     GameRules.rightRoundsWon = GameRules.rightRoundsWon + 1
   end
 
+  CustomNetTables:SetTableValue("round_score", "score", {
+    left_score = GameRules.leftRoundsWon,
+    right_score = GameRules.rightRoundsWon,
+  })
+
   -- Send round info to the clients
-  local roundDuration = 0
-  local highestIncome = 0
-  local mostUnitsKilled = 0
-  local mostUnitSpawningBuildings = 0
-  local mostSpecialBuildings = 0
-  local mostUnitsTrained = 0
-  local highestRescueStrikeDamage = 0
-  local numKilledFromHighestRescueStrike = 0
+  local roundDuration = GameRules:GetGameTime() - GameRules.roundStartTime
+
+  GameRules.unitsKilled = {}
+  GameRules.buildingsBuilt = {}
+  GameRules.numUnitsTrained = {}
+  GameRules.rescueStrikeDamage = {}
+  GameRules.rescueStrikeKills = {}
 
   CustomGameEventManager:Send_ServerToAllClients("round_ended", {
     winningTeam = winningTeam,
@@ -202,17 +216,8 @@ function GameMode:EndRound(losingTeam)
     leftPoints = GameRules.leftRoundsWon,
     rightPoints = GameRules.rightRoundsWon,
 
-    roundNumber = GameRules.roundNumber,
-
+    roundNumber = GameRules.roundCount,
     roundDuration = roundDuration,
-
-    highestIncome = highestIncome,
-    mostUnitsKilled = mostUnitsKilled,
-    mostUnitSpawningBuildings = mostUnitSpawningBuildings,
-    mostSpecialBuildings = mostSpecialBuildings,
-    mostUnitsTrained = mostUnitsTrained,
-    highestRescueStrikeDamage = highestRescueStrikeDamage,
-    numKilledFromHighestRescueStrike = numKilledFromHighestRescueStrike,
   })
 
   -- Stop the income timer until the next round
@@ -221,5 +226,15 @@ function GameMode:EndRound(losingTeam)
   -- Clear the map
   GameMode:KillAllUnitsAndBuildings()
 
-  GameMode:StartHeroSelection()
+  if GameRules.leftRoundsWon >= POINTS_TO_WIN or GameRules.rightRoundsWon >= POINTS_TO_WIN then
+    GameMode:EndGame(winningTeam)
+  else
+    -- Go into the next round preparation phase
+    GameMode:StartHeroSelection()
+  end
+end
+
+function GameMode:EndGame(team)
+  -- TODO: Post Game Stats
+  GameRules:SetGameWinner(team)
 end

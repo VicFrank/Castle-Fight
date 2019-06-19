@@ -91,3 +91,66 @@
 {
   brightness: 1.4;
 }
+
+.CooldownOverlay
+{
+  height: 100%;
+  background-color: #000000DD;
+}
+
+.Cooldown
+{
+  width: 100%;
+  height: 100%;
+  visibility: collapse;
+}
+
+.in_cooldown .Cooldown
+{
+  visibility: visible;
+}
+
+.GoldCost
+{
+  vertical-align: bottom;
+  horizontal-align: left;
+
+  color: #FFFF99;
+  font-size: 18px;
+  text-shadow: 0px 0px 3px 3.0 #000000;
+
+  margin-left: 5px;
+
+  /*background-image: url("s2r://panorama/images/hud/goldamount_bg_png.vtex");
+  background-size: 100% 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;*/
+}
+
+.LumberCost
+{
+  vertical-align: bottom;
+  horizontal-align: right;
+
+  margin-right: 5px;
+
+  color: #22A543FF;
+  font-size: 18px;
+  text-shadow: 0px 0px 3px 3.0 #000000;
+}
+
+.Stock
+{
+  vertical-align: bottom;
+  horizontal-align: right;
+
+  margin-right: 5px;
+  margin-bottom: -3px;
+
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 0px 3px 4.0 #000000;
+
+  font-family: RadianceM;
+}

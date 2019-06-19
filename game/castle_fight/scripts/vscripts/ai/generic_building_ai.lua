@@ -10,7 +10,9 @@ function Spawn(keys)
       if ability and not ability:IsPassive() then
         table.insert(thisEntity.abilityList, ability)
         -- Toggle auto cast on
-        ability:ToggleAutoCast()
+        if hasbit(ability:GetBehavior(), DOTA_ABILITY_BEHAVIOR_AUTOCAST) then
+          ability:ToggleAutoCast()
+        end
       end
     end
 
@@ -32,9 +34,14 @@ end
 function thisEntity:UseAutoCastAbility()
   local ability = GetRandomTableElement(thisEntity.abilityList)
 
-  if ability:IsFullyCastable() and ability:GetAutoCastState() then
+  if ability:IsFullyCastable() and ability:GetAutoCastState() and
+    not self:IsChanneling() and hasbit(ability:GetBehavior(), DOTA_ABILITY_BEHAVIOR_AUTOCAST) then
     self:CastAbilityNoTarget(ability, -1)
   end
 
   return 0.1
+end
+
+function hasbit(x, p)
+  return x % (p + p) >= p       
 end

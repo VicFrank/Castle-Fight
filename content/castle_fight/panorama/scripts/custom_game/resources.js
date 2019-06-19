@@ -18,16 +18,18 @@ function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost){
   var slotContainer = subContainer.FindChildTraverse("inventory_slot_" + itemSlot);
   var button = slotContainer.FindChildTraverse("ButtonAndLevel").FindChildTraverse("ButtonWithLevelUpTab").FindChildTraverse("ButtonWell").FindChildTraverse("ButtonSize");
 
-  var LumberCostLabel = $.CreatePanel("Label", button, "LumberCost");
-  LumberCostLabel.text = lumberCost;
-  LumberCostLabel.style.fontSize = "14px";
-  LumberCostLabel.style.verticalAlign = "bottom";
-  LumberCostLabel.style.horizontalAlign = "right";
-  LumberCostLabel.style.fontWeight = "bold";
-  LumberCostLabel.style.color = "#22a543";
-  LumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
+  if (lumberCost > 0) {
+    var LumberCostLabel = $.CreatePanel("Label", button, "LumberCost");
+    LumberCostLabel.text = lumberCost;
+    LumberCostLabel.style.fontSize = "14px";
+    LumberCostLabel.style.verticalAlign = "bottom";
+    LumberCostLabel.style.horizontalAlign = "right";
+    LumberCostLabel.style.fontWeight = "bold";
+    LumberCostLabel.style.color = "#22a543";
+    LumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
 
-  GeneratedItemPanels.push(LumberCostLabel);
+    GeneratedItemPanels.push(LumberCostLabel);
+  }
 
   if (cheeseCost > 0) {
     var CheeseCostLabel = $.CreatePanel("Label", button, "CheeseCost");

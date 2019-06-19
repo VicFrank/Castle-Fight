@@ -10,6 +10,9 @@
     "cheese",
     "item_costs",
     "ability_costs",
-    "player_income"
+    "player_income",
+    "hero_select",
+    "custom_shop",
+    "round_score"
   ]
 } 

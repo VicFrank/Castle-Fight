@@ -7,27 +7,135 @@
     <include src="file://{resources}/scripts/custom_game/custom_shop.js" />     
   </scripts>
   <Panel class="CustomShopRoot" hittest="false">    
-    <Panel id="ShopHolder" hittest="false">
-      <Panel id="Items" class="ShopHidden" hittest="false">
+    <Panel id="ShopHolder">
+      <Panel id="Items" class="ShopHidden">
         <Label id="ShopHeader" text="Shop" />
-        <Panel class="ItemRow" hittest="false">
-          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
-          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+        <Panel class="ItemRow">
+          <Button id="item_scroll_of_stone"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_scroll_of_stone')"
+              oncontextmenu="AttemptPurchase('item_scroll_of_stone')"
+              >
+            <DOTAItemImage itemname="item_scroll_of_stone" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false"/>
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
+          <Button id="item_orb_of_lightning"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_orb_of_lightning')"
+              oncontextmenu="AttemptPurchase('item_orb_of_lightning')"
+              >
+            <DOTAItemImage itemname="item_orb_of_lightning" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false" />
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
         </Panel>
-        <Panel class="ItemRow" hittest="false">
-          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
-          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+        <Panel class="ItemRow">
+          <Button id="item_blast_staff"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_blast_staff')"
+              oncontextmenu="AttemptPurchase('item_blast_staff')"
+              >
+            <DOTAItemImage itemname="item_blast_staff" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false" />
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
+          <Button id="item_rune_of_repair"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_rune_of_repair')"
+              oncontextmenu="AttemptPurchase('item_rune_of_repair')"
+              >
+            <DOTAItemImage itemname="item_rune_of_repair" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false" />
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
         </Panel>
-        <Panel class="ItemRow" hittest="false">
-          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
-          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+        <Panel class="ItemRow">
+          <Button id="item_bassline"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_bassline')"
+              oncontextmenu="AttemptPurchase('item_bassline')"
+              >
+            <DOTAItemImage itemname="item_bassline" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false" />
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
+          <Button id="item_drums"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_drums')"
+              oncontextmenu="AttemptPurchase('item_drums')"
+              >
+            <DOTAItemImage itemname="item_drums" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false" />
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
         </Panel>
-        <Panel class="ItemRow" hittest="false">
-          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
-          <DOTAItemImage class="ShopIcon" itemname="item_blink" />
+        <Panel class="ItemRow">
+          <Button id="item_double_damage"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_double_damage')"
+              oncontextmenu="AttemptPurchase('item_double_damage')"
+              >
+            <DOTAItemImage itemname="item_double_damage" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false" />
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
+          <Button id="item_quad_damage"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_quad_damage')"
+              oncontextmenu="AttemptPurchase('item_quad_damage')"
+              >
+            <DOTAItemImage itemname="item_quad_damage" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false" />
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
         </Panel>
-        <Panel class="ItemRow" hittest="false">
-          <DOTAItemImage class="ShopIcon" itemname="item_cheese" />
+        <Panel class="ItemRow">
+          <Button id="item_custom_cheese"
+              class="ShopIcon"
+              onactivate="AttemptPurchase('item_custom_cheese')"
+              oncontextmenu="AttemptPurchase('item_custom_cheese')"
+              >
+            <DOTAItemImage itemname="item_custom_cheese" />
+            <Panel class="Cooldown" hittest="false">
+              <Panel class="CooldownOverlay" hittest="false" />
+            </Panel>
+            <Label class="GoldCost" />
+            <Label class="LumberCost" />
+            <Label class="Stock" />
+          </Button>
         </Panel>
       </Panel>
 
