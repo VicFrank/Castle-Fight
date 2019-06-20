@@ -3,10 +3,11 @@ LinkLuaModifier("modifier_winged_serpent_bouncing_attack", "abilities/naga/bounc
 winged_serpent_bouncing_attack = class({})
 function winged_serpent_bouncing_attack:GetIntrinsicModifierName() return "modifier_winged_serpent_bouncing_attack" end
 
-function winged_serpent_bouncing_attack:BounceAttack(target, damage, bounces, source)
+function winged_serpent_bouncing_attack:BounceAttack(target, source, extraData)
   local caster = self:GetCaster()
   local hSource = source or caster
-  local extraData = {damage = damage, bounces = bounces}
+
+  extraData[tostring(target:GetEntityIndex())] = 1
 
   local projectile = {
     Target = target,
@@ -39,6 +40,7 @@ function winged_serpent_bouncing_attack:OnProjectileHit_ExtraData(target, positi
     
     local damage = tonumber(extraData.damage)
     local bounces = tonumber(extraData.bounces) or 0
+    local targets = extraData.targets
 
     local damageTable = {
       victim = target,
@@ -59,8 +61,13 @@ function winged_serpent_bouncing_attack:OnProjectileHit_ExtraData(target, positi
       local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
       for _,enemy in pairs(enemies) do
-        if enemy ~= target then
-          self:BounceAttack(enemy, damage * reduction, bounces - 1, target)
+        if not extraData[tostring(target:GetEntityIndex())] then
+          local extraData = {
+            damage =  damage * reduction,
+            bounces = bounces - 1
+          }
+
+          self:BounceAttack(enemy, target, extraData)
           break
         end
       end
@@ -98,7 +105,14 @@ function modifier_winged_serpent_bouncing_attack:OnTakeDamage(params)
     local enemies = FindEnemiesInRadius(self.parent, self.range, target:GetAbsOrigin())
     for _, enemy in ipairs(enemies) do
       if enemy ~= target then
-        self.ability:BounceAttack(enemy, params.damage, self.bounces - 1, target)
+        local extraData = {
+          damage =  params.damage,
+          bounces = self.bounces - 1
+        }
+
+        extraData[tostring(target:GetEntityIndex())] = 1
+
+        self.ability:BounceAttack(enemy, target, extraData)
         break
       end
     end

@@ -17,6 +17,14 @@
     "AbilityCooldown"             "30.0"
     "AbilityManaCost"             "30"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+      "particle"  "particles/units/heroes/hero_mirana/mirana_starfall_moonray.vpcf"
+      "particle"  "particles/custom/nightelf/potm/starfall.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -38,6 +46,11 @@
       {
         "var_type"                "FIELD_INTEGER"
         "dps"                     "50"
+      }
+      "05"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "wave_interval"           "1.5"
       }
     }
   }
@@ -83,6 +96,12 @@
     "AbilityCooldown"             "30.0"
     "AbilityManaCost"             "30"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -116,12 +135,18 @@
     "AbilityCooldown"             "20.0"
     "AbilityManaCost"             "20"
 
+    "precache"
+    {
+      "particle"  "particles/econ/items/treant_protector/ti7_shoulder/treant_ti7_crimson_livingarmor.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
+    }
+
      "AbilitySpecial"
     {
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "health_restored"             "175"
+        "health_restored"         "175"
       }
       "02"
       {
@@ -133,10 +158,15 @@
         "var_type"                "FIELD_INTEGER"
         "armor"                   "6"
       }
-      "03"
+      "04"
       {
         "var_type"                "FIELD_INTEGER"
         "duration"                "6"
+      }
+      "05"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "600"
       }
     }
   }
@@ -160,7 +190,6 @@
     }
   }
 
-  // TODO: I don't think this reduces damage
   "ranger_multi_shot"
   {
     "AbilityTextureName"          "medusa_split_shot"
@@ -310,6 +339,13 @@
     "AbilityCooldown"             "0.0"
     "AbilityManaCost"             "50"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+      "particle"  "particles/generic_hero_status/status_invisibility_start.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -348,13 +384,23 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo_debuff.vpcf"
+    }
+
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"                "FIELD_INTEGER"
         "armor_reduction"         "-4 -7"
-      }      
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"               "5"
+      }
     }
   }
 
@@ -433,6 +479,12 @@
 
     "AbilityCooldown"             "6.0"
     "AbilityManaCost"             "20"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+    }
 
     "AbilitySpecial"
     {

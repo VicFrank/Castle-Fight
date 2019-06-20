@@ -28,10 +28,10 @@ function BuildingHelper:OnRepairStarted(builder, building)
     end
 
     -- Wisp Particle
-    if not builder.gathering_particle then
-        builder.gathering_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_wisp/wisp_overcharge.vpcf", PATTACH_ABSORIGIN_FOLLOW, builder)
-        ParticleManager:SetParticleControlEnt(builder.gathering_particle, 0, builder, PATTACH_POINT_FOLLOW, "attach_hitloc", builder:GetAbsOrigin(), true)
-    end
+    -- if not builder.gathering_particle then
+    --     builder.gathering_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_wisp/wisp_overcharge.vpcf", PATTACH_ABSORIGIN_FOLLOW, builder)
+    --     ParticleManager:SetParticleControlEnt(builder.gathering_particle, 0, builder, PATTACH_POINT_FOLLOW, "attach_hitloc", builder:GetAbsOrigin(), true)
+    -- end
 
     builder:StartGesture(ACT_DOTA_ATTACK)
     builder.repair_animation_timer = Timers:CreateTimer(function()

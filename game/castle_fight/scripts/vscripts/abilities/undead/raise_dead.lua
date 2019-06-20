@@ -79,7 +79,11 @@ function RaiseDead(caster, skeletonTable, range)
   local playerID = caster.playerID or caster:GetPlayerOwnerID()
   local team = caster:GetTeam()
 
-  return CreateLaneUnit(unitname, position, team, playerID)
+  local skeleton = CreateLaneUnit(unitname, position, team, playerID)
+
+  skeleton:SetNoCorpse()
+
+  return skeleton
 end
 
 modifier_ultimate_raise_dead = class({})

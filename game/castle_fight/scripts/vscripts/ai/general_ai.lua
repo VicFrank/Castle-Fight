@@ -154,6 +154,12 @@ function UseAbility(self)
 
   if not ability then return false end
 
+  if string.sub(getBinaryValues(ability:GetBehavior()),3,3) == "1" then
+    --DOTA_ABILITY_BEHAVIOR_NO_TARGET
+    self:CastAbilityNoTarget(ability, -1)
+    return true
+  end
+
   local target
   local castRange = ability:GetCastRange(self:GetAbsOrigin(), self)
 
@@ -178,10 +184,7 @@ function UseAbility(self)
     target = self.aiState.aggroTarget
   end
 
-  if string.sub(getBinaryValues(ability:GetBehavior()),3,3) == "1" then
-  --DOTA_ABILITY_BEHAVIOR_NO_TARGET
-    self:CastAbilityNoTarget(ability, -1)
-  elseif string.sub(getBinaryValues(ability:GetBehavior()),4,4) == "1" then
+  if string.sub(getBinaryValues(ability:GetBehavior()),4,4) == "1" then
   --DOTA_ABILITY_BEHAVIOR_UNIT_TARGET
     self:CastAbilityOnTarget(target, ability, -1)
   elseif string.sub(getBinaryValues(ability:GetBehavior()),5,5) == "1" then

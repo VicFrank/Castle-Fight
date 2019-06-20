@@ -33,6 +33,8 @@
     "AbilityManaCost"             "0"
     "AbilityCastPoint"            "0.3"
 
+    "AbilityCastRange"            "1200"
+
     "precache"
     {
       "particle"  "particles/items_fx/chain_lightning.vpcf"

@@ -153,7 +153,7 @@ end
     
 CHEAT_CODES = {
   ["lumber"] = function(...) GameMode:LumberCheat(...) end,                -- "Gives you X lumber"
-  ["setlumber"] = function(...) GameMode:SetLumberCheat(...) end,             -- "Gives you X lumber"
+  ["setlumber"] = function(...) GameMode:SetLumberCheat(...) end,          -- "Gives you X lumber"
   ["setcheese"] = function(...) GameMode:SetCheeseCheat(...) end,          -- "Sets your cheese to X"
   ["greedisgood"] = function(...) GameMode:GreedIsGood(...) end,           -- "Gives you X gold and lumber" 
   ["killallunits"] = function(...) KillAllUnits() end,                     -- "Kills all units"    

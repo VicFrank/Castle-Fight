@@ -114,7 +114,7 @@ function GameMode:OnEntityKilled(keys)
   if killer and bounty and not killer:IsRealHero() and not DeepTableCompare(killer == killed, true) then
     -- when you use forcekill, it's the same as the unit killing itself
     local killerPlayerID = killer.playerID or killer:GetPlayerOwnerID()
-    if killerPlayerID and killerPlayerID > 0 then
+    if killerPlayerID and killerPlayerID >= 0 then
       local player = PlayerResource:GetPlayer(killerPlayerID)
 
       SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, player)
@@ -229,7 +229,7 @@ function OnRaceSelected(eventSourceIndex, args)
 
   print(GameRules.needToPick .. " players still need to pick")
 
-  if GameRules.needToPick == 0 then
+  if GameRules.needToPick <= 0 then
     GameMode:EndHeroSelection()
   end
 

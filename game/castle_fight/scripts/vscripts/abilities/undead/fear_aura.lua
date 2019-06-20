@@ -57,8 +57,12 @@ function modifier_fear_aura_buff:DeclareFunctions()
   return funcs
 end
 
+function modifier_fear_aura_buff:OnCreated()
+  self.damage_decrease = -self:GetAbility():GetSpecialValueFor("damage_decrease")
+end
+
 function modifier_fear_aura_buff:GetModifierBaseDamageOutgoing_Percentage()
-  return -self:GetAbility():GetSpecialValueFor("damage_decrease")
+  return self.damage_decrease
 end
 
 function modifier_fear_aura_buff:IsDebuff()

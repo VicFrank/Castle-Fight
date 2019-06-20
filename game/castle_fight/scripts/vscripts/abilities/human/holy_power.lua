@@ -19,6 +19,8 @@ end
 modifier_holy_power = class({})
 
 function modifier_holy_power:OnCreated()
+  if not IsServer() then return end
+
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()

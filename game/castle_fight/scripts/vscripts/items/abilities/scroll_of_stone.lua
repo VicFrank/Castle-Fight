@@ -59,7 +59,7 @@ function modifier_scroll_of_stone:DeclareFunctions()
 end
 
 function modifier_scroll_of_stone:OnCreated()
-  self.armor = self:GetAbility():GetSpecialValueFor("armor")
+  self.armor = 6
 end
 
 function modifier_scroll_of_stone:GetModifierPhysicalArmorBonus()

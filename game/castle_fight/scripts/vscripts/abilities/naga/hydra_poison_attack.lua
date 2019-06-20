@@ -53,6 +53,10 @@ function modifier_hydra_poison_attack_debuff:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
+  local playerID = self.caster.playerID or self.caster:GetPlayerOwnerID()
+  if playerID < 0 then playerID = 0 end
+  self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
+
   self.attack_slow = self.ability:GetSpecialValueFor("attack_slow")
   self.move_speed_slow = self.ability:GetSpecialValueFor("move_speed_slow")
   self.dps = self.ability:GetSpecialValueFor("dps")
@@ -64,7 +68,7 @@ end
 function modifier_hydra_poison_attack_debuff:DamageTick()
   if IsServer() then
     local final_damage = ApplyDamage({
-      attacker = self.caster,
+      attacker = self.playerHero,
       victim = self.parent,
       ability = self.ability,
       damage = self.dps,

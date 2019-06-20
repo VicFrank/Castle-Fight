@@ -86,9 +86,10 @@ function GameMode:StartHeroSelection()
     if hero:IsAlive() then
       hero.hasPicked = false
       hero:AddNewModifier(hero, nil, "modifier_hide_hero", {})
-      GameRules.needToPick = GameRules.needToPick + 1
     end
   end
+
+  GameRules.needToPick = TableCount(GameRules.playerIDs)
 
   local timeToStart = HERO_SELECT_TIME
   -- Reset the timer if it's already going
@@ -142,13 +143,23 @@ end
 
 -- Kills all units and structures, including both castles. Does not kill heroes.
 function GameMode:KillAllUnitsAndBuildings()
-  local allUnits = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
+  local numSweeps = 5
+  -- Kill everything multiple times, to make sure we get revivers
+  Timers:CreateTimer(function()
+    if numSweeps <= 0 then return end
 
-  for _,unit in pairs(allUnits) do
-    if not unit:IsHero() then
-      unit:ForceKill(false)
+    local allUnits = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
+
+    for _,unit in pairs(allUnits) do
+      if not unit:IsHero() then
+        unit:ForceKill(false)
+      end
     end
-  end
+
+    numSweeps = numSweeps - 1
+
+    return 1/30
+  end)
 end
 
 --------------------------------------------------------
@@ -163,8 +174,6 @@ function GameMode:StartRound()
     end
 
     print("Starting Round")
-    -- Clear the map again, just in case
-    GameMode:KillAllUnitsAndBuildings()
     GameMode:InitializeRoundStats()
     GameMode:SpawnCastles()
     GameMode:SetupHeroes()

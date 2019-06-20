@@ -138,9 +138,11 @@
     "AttackType"             "chaos"
     "ArmorType"              "medium"
 
-    "AttachWearables"
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
       {
-        "DisableClumpingBehavior" "1"
         "Wearable1"   { "ItemDef"  "47"  }
         "Wearable2"   { "ItemDef"  "258" }
         "Wearable3"   { "ItemDef"  "259" }
@@ -148,6 +150,7 @@
         "Wearable4"   { "ItemDef"  "261" }
         "Wearable4"   { "ItemDef"  "262" }
       }
+    }
   }
 
   "necromancer" 
@@ -225,7 +228,7 @@
     "Ability1"                "necromancer_greater_raise_dead"
     "Ability2"                "necromancer_carrion_swarm"
 
-    "ArmorPhysical"           "3"
+    "ArmorPhysical"           "2"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
     "AttackDamageMin"         "75"
@@ -273,7 +276,7 @@
     "SoundSet"         "Hero_Lich"
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
-    "Level"            "1"
+    "Level"            "5"
     "ModelScale"       "0.85"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
@@ -344,7 +347,7 @@
     "Ability1"                "raise_lesser_vampire"
     "Ability2"                "vampire_lifesteal_aura"
 
-    "ArmorPhysical"           "3"
+    "ArmorPhysical"           "6"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
     "AttackDamageMin"         "40"
@@ -449,7 +452,7 @@
     "Ability1"                "raise_vampire"
     "Ability2"                "vampire_lifesteal_aura"
     
-    "ArmorPhysical"           "3"
+    "ArmorPhysical"           "7"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
     "AttackDamageMin"         "65"

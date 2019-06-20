@@ -44,7 +44,7 @@ function modifier_zombie_rot_aura:OnCreated(kv)
     self.radius = self:GetAbility():GetSpecialValueFor("radius")
     self.dps = self:GetAbility():GetSpecialValueFor("dps")
 
-    self.rot_tick = .2
+    self.rot_tick = 0.2
 
     if self:GetParent() == self:GetCaster() then
       -- EmitSoundOn( "Hero_Pudge.Rot", self:GetCaster() )
@@ -71,16 +71,14 @@ function modifier_zombie_rot_aura:OnIntervalThink()
   if IsServer() then
     local flDamagePerTick = self.rot_tick * self.dps
 
-    if self:GetCaster():IsAlive() then
-      local damage = {
+    if self:GetCaster():IsAlive() and self:GetParent():GetTeam() ~= self:GetCaster():GetTeam() then
+      ApplyDamage({
         victim = self:GetParent(),
         attacker = self:GetCaster(),
         damage = flDamagePerTick,
         damage_type = DAMAGE_TYPE_MAGICAL,
         ability = self:GetAbility()
-      }
-
-      ApplyDamage( damage )
+      })
     end
   end
 end

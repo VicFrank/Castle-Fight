@@ -7,7 +7,7 @@
     <include src="file://{resources}/scripts/custom_game/round_timer.js" />     
   </scripts>
   <Panel class="RoundTimerRoot" hittest="false">
-    <Panel id="RoundTimerContainer" class="RoundTimerHidden RoundTimerVisible" hittest="false">
+    <Panel id="RoundTimerContainer" class="RoundTimerHidden" hittest="false">
       <Panel id="TimerHolder">
         <Label id="CountdownTimer" text="" hittest="false" />
       </Panel>
