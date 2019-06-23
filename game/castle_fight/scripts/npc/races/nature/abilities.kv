@@ -29,17 +29,22 @@
     }
   }
 
-  // Summons a wandering tornado around an enemy unit that slows down its
+  // Summons a wandering tornado around an enemy unit that slows
   // movement and attack speed by 25%, and also causes 40 dps in the area
   // of ​​250 AoE for 5 seconds. Buildings take 50% damage
   "ancient_of_wind_cyclone"
   {
-    "AbilityTextureName"          "brewmaster_storm_cyclone"
+    "AbilityTextureName"          "enraged_wildkin_tornado"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/nature/cyclone"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+
+    "precache"
+    {
+      "particle"  "particles/neutral_fx/tornado_ambient.vpcf"
+    }
 
     "AbilitySpecial"
     {
@@ -53,15 +58,20 @@
         "var_type"          "FIELD_INTEGER"
         "move_slow"         "25"
       }
-      "01"
+      "03"
       {
         "var_type"          "FIELD_INTEGER"
         "attack_slow"       "25"
       }
-      "02"
+      "04"
       {
         "var_type"          "FIELD_INTEGER"
         "dps"               "40"
+      }
+      "05"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "duration"          "5"
       }
     }
   }
@@ -99,6 +109,7 @@
   // Moves the enemy unit in the astral Units located in the astral plane
   // can not attack, but they can cast spells Spells aimed at units during
   // their prebyvaeniya in the astral plane to inflict additional damage
+  // TODO: look up duration
   "ancient_guardian_banish"
   {
     "AbilityTextureName"          "obsidian_destroyer_astral_imprisonment"
@@ -109,9 +120,18 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "12.0"
     "AbilityManaCost"             "12"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "duration"      "15"
+      }
+    }
   }
 
-  "spider_poision"
+  "spider_poison"
   {
     "AbilityTextureName"          "broodmother_poison_sting"
     "BaseClass"                   "ability_lua"
@@ -119,6 +139,11 @@
     "MaxLevel"                    "3"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_broodmother/broodmother_poison_debuff.vpcf"
+    }
 
     "AbilitySpecial"
     {
@@ -154,7 +179,16 @@
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     "AbilityCooldown"             "18.0"
-    "AbilityCastPoint"            "0.3"
+
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "precache"
+    {
+      "particle" "particles/econ/courier/courier_trail_hw_2012/courier_trail_hw_2012_webs.vpcf"
+      "particle"  "particles/units/heroes/hero_broodmother/broodmother_spin_web_cast.vpcf"
+    }
 
     "AbilitySpecial"
     {
@@ -203,7 +237,17 @@
 
     "AbilityCooldown"             "18.0"
     "AbilityManaCost"             "50"
-    "AbilityCastPoint"            "0.3"
+
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_broodmother/broodmother_web_cast.vpcf"
+      "particle"  "particles/units/heroes/hero_broodmother/broodmother_spiderlings_debuff.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_broodmother.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -239,7 +283,15 @@
 
     "AbilityCooldown"             "16.0 14.0"
     "AbilityManaCost"             "50"
-    "AbilityCastPoint"            "0.3"
+
+    "AbilityCastRange"          "700"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "precache"
+    {
+      "particle"  "particles/items_fx/healing_flask.vpcf"
+    }
 
     "AbilitySpecial"
     {
@@ -266,6 +318,13 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf"
+      "particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn_start.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -341,7 +400,10 @@
 
     "AbilityCooldown"             "10.0 8.0"
     "AbilityManaCost"             "25"
-    "AbilityCastPoint"            "0.3"
+
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.3"
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_1"
 
     "AbilitySpecial"
     {
@@ -375,7 +437,7 @@
   {
     "AbilityTextureName"          "centaur_return"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/nature/natures_touch"
+    "ScriptFile"                  "abilities/generic/damage_return"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -385,7 +447,7 @@
       "01"
       {
         "var_type"            "FIELD_INTEGER"
-        "damage_reflected"    "10"
+        "damage_return"       "10"
       }
     }
   }
@@ -459,6 +521,11 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_dragon_knight/dragon_knight_corrosion_debuff.vpcf"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -469,7 +536,12 @@
       "02"
       {
         "var_type"         "FIELD_INTEGER"
-        "max_reduction"    "-6"
+        "max_stacks"       "3"
+      }
+      "03"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "duration"         "8"
       }
     }
   }
@@ -488,6 +560,11 @@
 
     "AbilityCooldown"        "15"
 
+    "precache"
+    {
+      "particle"  "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -505,7 +582,6 @@
 
   // increases damage, changes attack type to siege, can hit flying,
   // lasts 20 attacks, 25% demolish
-  // I'm just going to make this a passive tree holding thingn
   "mountain_giant_grab_tree"
   {
     "AbilityTextureName"          "tiny_craggy_exterior"
@@ -513,16 +589,47 @@
     "ScriptFile"                  "abilities/nature/grab_tree"
     "MaxLevel"                    "1"
 
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_CUSTOM"
+
+    "AbilityCooldown"        "60"
+    "AbilityManaCost"        "0"
+
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_3"
+    "AbilityCastRange"        "165"
+    "AbilityCastPoint"        "0.2"
+
+    "precache"
+    {
+      "particle"  "particle_name"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
+      "model"     "models/heroes/tiny_01/tiny_01_tree.vmdl"
+    }
+
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "bonus_damage"      "40"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "attack_range"      "350"
+      }
+    }
   }
 
   // 20% less from strikes and status resistance
   // 30% chance to resist negative buffs
   "mountain_giant_resistant_skin"
   {
-    "AbilityTextureName"          "dragon_knight_elder_dragon_form"
+    "AbilityTextureName"          "tiny_grow"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/nature/corrosive_breath"
+    "ScriptFile"                  "abilities/nature/resistant_skin"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -618,8 +725,8 @@
   }
 
   // Hibernation: Ancient Bear goes into deep hibernation if its hp level
-  // is extremely low, which increases the regeneration of its lives to
-  // 40hp / sec. In addition, Ancient Bear takes 100% damage to the first
+  // is extremely low, which increases health regeneration to
+  // 40hp / sec. In addition, Ancient Bear takes 100% damage from the first
   // attack after waking up.
 
   // at half health, the bear runs away for a bit, and then goes to sleep
@@ -631,7 +738,12 @@
     "ScriptFile"                  "abilities/nature/slumber"
     "MaxLevel"                    "2"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    "precache"
+    {
+      "particle"  "particles/generic_gameplay/generic_sleep.vpcf"
+    }
 
     "AbilitySpecial"
     {
@@ -641,11 +753,6 @@
         "health_regen"         "20 40"
       }
       "02"
-      {
-        "var_type"             "FIELD_INTEGER"
-        "health_threshold"     "20"
-      }
-      "03"
       {
         "var_type"             "FIELD_INTEGER"
         "duration"             "10"

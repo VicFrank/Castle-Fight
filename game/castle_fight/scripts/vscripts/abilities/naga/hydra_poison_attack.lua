@@ -27,7 +27,7 @@ function modifier_hydra_poison_attack:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
-  if attacker == self.caster then
+  if attacker == self.caster and not IsCustomBuilding(target) then
     local debuffName = "modifier_hydra_poison_attack_debuff"
     target:AddNewModifier(self.caster, self.ability, debuffName, {duration = self.duration})
   end

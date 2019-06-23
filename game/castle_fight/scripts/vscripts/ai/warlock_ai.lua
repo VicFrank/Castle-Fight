@@ -71,14 +71,24 @@ function thisEntity:AIThink()
   end
 
   if FindAggro(self) then
-    -- print(self:GetUnitName() .. " is aggro'd onto " .. self.aiState.aggroTarget:GetUnitName())
-    if UseAbility(self) then print("UseAbility") return 1 end
+    if self:UseAbility() then return .1 end
     AttackTarget(self)
     return .3
   end
 
   MoveTowardsGoal(self)
   return .3
+end
+
+function thisEntity:UseAbility()
+  local ability = self:FindAbilityByName("chamber_of_darkness")
+
+  if GetDistanceBetweenTwoUnits(self, self.aiState.aggroTarget) < 200 then
+    self:CastAbilityNoTarget(ability, -1)
+    return true
+  end
+
+  return false
 end
 
 function thisEntity:AbilityOnCooldown()

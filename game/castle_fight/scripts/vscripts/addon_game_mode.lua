@@ -54,12 +54,12 @@ function Precache( context )
   PrecacheUnitByNameSync("dotacraft_corpse", context)
   PrecacheResource("particle", "particles/dire_fx/fire_barracks.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf", context) -- splash attack
+  PrecacheResource("particle", "particles/abilities/generic/quad_damage/rune_quaddamage_owner.vpcf", context) -- quad damage
 
   -- Precache the heroes
   PrecacheUnitByNameSync("npc_dota_hero_kunkka", context)
   PrecacheUnitByNameSync("npc_dota_hero_slark", context)
-  PrecacheUnitByNameSync("nature_builder", context)
-  PrecacheUnitByNameSync("night_elf_builder", context)
+  PrecacheUnitByNameSync("npc_dota_hero_treant", context)
   PrecacheUnitByNameSync("npc_dota_hero_abaddon", context)
 
   -- Shop Items
@@ -174,7 +174,7 @@ function GameMode:InitGameMode()
 
   GameRules.leftRoundsWon = 0
   GameRules.rightRoundsWon = 0
-  GameRules.roundCount = 0
+  GameRules.roundCount = 1
   GameRules.roundInProgress = false
   GameRules.InHeroSelection = false
   GameRules.roundStartTime = 0

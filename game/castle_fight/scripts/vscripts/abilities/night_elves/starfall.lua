@@ -13,7 +13,7 @@ function starfall:OnSpellStart()
   local targetParticle = "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
   local targetFireParticle = "particles/units/heroes/hero_mirana/mirana_starfall_moonray.vpcf"
 
-  local targetParticleIndex = ParticleManager:CreateParticle(targetParticle, PATTACH_ABSORIGIN, target)
+  local targetParticleIndex = ParticleManager:CreateParticle(targetParticle, PATTACH_ABSORIGIN_FOLLOW, target)
 
   local position = target:GetAbsOrigin()
 
@@ -24,12 +24,12 @@ function starfall:OnSpellStart()
       return
     end
 
-    if target:IsAlive() then
-      local fireParticleIndex = ParticleManager:CreateParticle(targetFireParticle, PATTACH_ABSORIGIN, target)
+    if not target:IsNull() and target and target:IsAlive() then
+      local fireParticleIndex = ParticleManager:CreateParticle(targetFireParticle, PATTACH_ABSORIGIN_FOLLOW, target)
       position = target:GetAbsOrigin()
     end
 
-    StarfallDamage(ability, target:GetAbsOrigin())
+    StarfallDamage(ability, position)
 
     timeSpent = timeSpent + wave_interval
     return wave_interval
@@ -39,34 +39,38 @@ end
 function StarfallDamage(ability, position)
   local caster = ability:GetCaster()
   local radius = ability:GetSpecialValueFor("radius")
-  local dps = ability:GetSpecialValueFor("damage")
-  local wave_interval = ability:GetSpecialValueFor("damage")
+  local dps = ability:GetSpecialValueFor("wave_interval")
+  local wave_interval = ability:GetSpecialValueFor("dps")
   local damage = dps * wave_interval
 
-  local targets = FindEnemiesInRadius(caster, radius, caster:GetAbsOrigin())
+  local targets = FindEnemiesInRadius(caster, radius, position)
 
   for _,target in pairs(targets) do
-    local particle = ParticleManager:CreateParticle("particles/custom/nightelf/potm/starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-    ParticleManager:ReleaseParticleIndex(particle)
+    Timers:CreateTimer(RandomFloat(0.1, wave_interval), function()
+      -- Drop a starfall
+      local particle = ParticleManager:CreateParticle("particles/custom/nightelf/potm/starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+      ParticleManager:ReleaseParticleIndex(particle)
+       Timers:CreateTimer(0.4, function()
+        if IsValidEntity(target) and target:IsAlive() then
+
+          if IsCustomBuilding(target) then
+            damage = damage * 0.4
+          end
+
+          ApplyDamage({
+            victim = target,
+            attacker = caster,
+            damage = damage,
+            ability = ability,
+            damage_type = DAMAGE_TYPE_MAGICAL
+          })
+
+          target:EmitSound("Ability.StarfallImpact")
+        end 
+      end)
+
+    end)
   end 
 
-  Timers:CreateTimer(0.4, function()
-    for _,target in pairs(targets) do
-      if IsValidEntity(target) and target:IsAlive() then
-        if IsCustomBuilding(target) then
-          damage = damage * 0.4
-        end
-
-        ApplyDamage({
-          victim = target,
-          attacker = caster,
-          damage = damage,
-          ability = ability,
-          damage_type = DAMAGE_TYPE_MAGICAL
-        })
-
-        target:EmitSound("Ability.StarfallImpact")
-      end
-    end 
-  end)
+ 
 end

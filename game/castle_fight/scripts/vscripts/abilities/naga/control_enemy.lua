@@ -23,6 +23,7 @@ function control_enemy:OnSpellStart()
   local team = hero:GetTeam()
   local new_unit = CreateLaneUnit(unitName, position, team, playerID)
   new_unit:SetHealth(new_unit:GetMaxHealth() * relative_health)
+  new_unit:SetMana(target:GetMana())
   new_unit:SetForwardVector(fv)
   FindClearSpaceForUnit(new_unit, position, true)
 

@@ -21,6 +21,8 @@ end
 
 modifier_naga_purge = class({})
 
+function modifier_naga_purge:IsDebuff() return true end
+
 function modifier_naga_purge:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

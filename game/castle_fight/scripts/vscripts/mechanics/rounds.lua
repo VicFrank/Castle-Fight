@@ -24,8 +24,6 @@ function GameMode:SetupShops()
 end
 
 function GameMode:InitializeRoundStats()
-  GameRules.roundCount = GameRules.roundCount + 1
-
   GameRules.roundStartTime = GameRules:GetGameTime()
   GameRules.numPlayersBuilt = 0
 
@@ -64,8 +62,8 @@ function GameMode:RandomHero(playerID)
   local heroes = {
     "npc_dota_hero_kunkka",
     "npc_dota_hero_slark",
-    -- "npc_dota_hero_treant",
-    -- "npc_dota_hero_vengefulspirit",
+    "npc_dota_hero_treant",
+    "npc_dota_hero_vengefulspirit",
     "npc_dota_hero_abaddon",
   }
 
@@ -228,6 +226,8 @@ function GameMode:EndRound(losingTeam)
     roundNumber = GameRules.roundCount,
     roundDuration = roundDuration,
   })
+
+  GameRules.roundCount = GameRules.roundCount + 1
 
   -- Stop the income timer until the next round
   GameMode:StopIncomeTimer()

@@ -47,7 +47,7 @@ function OnHeroSelectButtonPressed() {
     {
       hero: RaceToHero[CurrentRace]
     });
-  // TODO: Change button style on pressed
+
   Game.EmitSound("HeroPicker.Selected")
 
   HideHeroSelect();
@@ -76,8 +76,13 @@ function ShowHeroSelect() {
   HideHeroPanel();
 }
 
+// Dota TV Spectators have PlayerID of -1
+var IsSpectator = !Players.IsValidPlayerID(Players.GetLocalPlayer());
+
 function UpdateHeroSelectVisibility() {
   $.Msg("UpdateHeroSelectVisibility");
+
+  if (IsSpectator) return;
   
   var data = CustomNetTables.GetTableValue("hero_select", "status");
   if (data && data.ongoing) {

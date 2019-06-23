@@ -18,6 +18,7 @@ end
 function modifier_chilling_attack:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED,
+    MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND
   }
   return funcs
 end
@@ -36,6 +37,10 @@ function modifier_chilling_attack:OnAttackLanded(keys)
       enemy:AddNewModifier(self.caster, self.ability, debuffName, {duration = self.duration})
     end
   end
+end
+
+function modifier_chilling_attack:GetAttackSound()
+  return "Hero_DragonKnight.ElderDragonShoot3.Attack"
 end
 
 modifier_chilling_attack_debuff = class({})

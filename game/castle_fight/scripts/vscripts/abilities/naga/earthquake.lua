@@ -42,6 +42,8 @@ end
 
 modifier_earthquake_slow = class({})
 
+function modifier_earthquake_slow:IsDebuff() return true end
+
 function modifier_earthquake_slow:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

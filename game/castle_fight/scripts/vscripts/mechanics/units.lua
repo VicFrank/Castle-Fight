@@ -164,7 +164,7 @@ function FindOrganicAlliesInRadius( unit, radius, point )
   local allies = FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, flags, FIND_CLOSEST, false)
   local organic_allies = {}
   for _,ally in pairs(allies) do
-    if not IsCustomBuilding(ally) and not ally:IsWard() and not ally:IsMechanical() then
+    if not IsCustomBuilding(ally) and not ally:IsMechanical() then
       table.insert(organic_allies, ally)
     end
   end

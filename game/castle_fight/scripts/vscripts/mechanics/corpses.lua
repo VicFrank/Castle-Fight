@@ -77,15 +77,21 @@ function Corpses:FindInRadius(team, origin, radius)
   local targets = FindUnitsInRadius(team, origin, nil, radius, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD, FIND_CLOSEST, false)
   local corpses = {}
   for _,target in pairs(targets) do
+    if IsCorpse(target) then
+      table.insert(corpses, target)
+    end
+  end
+  return corpses
+end
+
+function Corpses:FindVisibleInRadius(team, origin, radius)
+  local targets = FindUnitsInRadius(team, origin, nil, radius, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD, FIND_CLOSEST, false)
+  local corpses = {}
+  for _,target in pairs(targets) do
     if IsCorpse(target) and not target.meat_wagon then -- Ignore meat wagon corpses as first targets
       table.insert(corpses, target)
     end
   end
-  -- for _,target in pairs(targets) do
-  --   if IsCorpse(target) and target.meat_wagon and target.meat_wagon:GetPlayerOwnerID() == playerID then -- Check meat wagon ownership
-  --     table.insert(corpses, target)
-  --   end
-  -- end
   return corpses
 end
 

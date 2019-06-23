@@ -61,13 +61,15 @@ end
 function lich_ultimate_raise_dead:OnSpellStart()
   for i=1,2 do
     local skeleton = RaiseDead(self:GetCaster(), greaterSkeletons, 900)
-    skeleton:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_ultimate_raise_dead", {})
+    if skeleton then
+      skeleton:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_ultimate_raise_dead", {})
+    end
   end
 end
 
 
 function RaiseDead(caster, skeletonTable, range)
-  local corpses = Corpses:FindInRadius(caster:GetTeam(), Vector(0,0,0), range)
+  local corpses = Corpses:FindVisibleInRadius(caster:GetTeam(), caster:GetAbsOrigin(), range)
   
   if #corpses == 0 then return end
 

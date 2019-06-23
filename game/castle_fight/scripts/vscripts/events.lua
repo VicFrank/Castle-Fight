@@ -8,7 +8,18 @@ function GameMode:OnGameRulesStateChange()
 end
 
 function GameMode:OnGameInProgress()
-  GameMode:StartHeroSelection()
+  local numPlayers = TableCount(GameRules.playerIDs)
+
+  -- Wait for all the heroes to load in
+  Timers:CreateTimer(function()
+    if TableCount(HeroList:GetAllHeroes()) >= numPlayers then
+      GameMode:StartHeroSelection()
+      return
+    end
+
+    print("Waiting for heroes")
+    return .3
+  end)
 end
 
 function GameMode:OnNPCSpawned(keys)
@@ -16,7 +27,6 @@ function GameMode:OnNPCSpawned(keys)
 
   -- Ignore specific units
   local unitName = npc:GetUnitName()
-  if unitName == "npc_dota_hero_treant" then return end
   if unitName == "npc_dota_thinker" then return end
   if unitName == "npc_dota_units_base" then return end
   if unitName == "" then return end
@@ -39,6 +49,10 @@ function GameMode:OnNPCSpawned(keys)
     GameMode:OnHeroInGame(npc)
   end
 
+  if npc:GetUnitName() == "frost_wyrm" then
+    npc:SetMaterialGroup("3")
+  end
+
   Units:Init(npc)
 end
 
@@ -53,6 +67,8 @@ function GameMode:OnHeroInGame(hero)
     print("Didn't find playerID, inserting")    
     table.insert(GameRules.playerIDs, playerID)
   end
+
+  PlayerResource:SetDefaultSelectionEntity(playerID, hero)
 
   -- Initialize custom resource values
   SetLumber(playerID, 0)
@@ -113,7 +129,7 @@ function GameMode:OnEntityKilled(keys)
   local bounty = killed:GetGoldBounty()
   if killer and bounty and not killer:IsRealHero() and not DeepTableCompare(killer == killed, true) then
     -- when you use forcekill, it's the same as the unit killing itself
-    local killerPlayerID = killer.playerID or killer:GetPlayerOwnerID()
+    local killerPlayerID = killer.playerID
     if killerPlayerID and killerPlayerID >= 0 then
       local player = PlayerResource:GetPlayer(killerPlayerID)
 
@@ -122,7 +138,7 @@ function GameMode:OnEntityKilled(keys)
 
       GameRules.unitsKilled[killerPlayerID] = GameRules.unitsKilled[killerPlayerID] + 1
     else
-      print(killer:GetUnitName() .. " doesn't have a .playerID")
+      -- print(killer:GetUnitName() .. " doesn't have a .playerID")
     end
   end
 
@@ -193,7 +209,7 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
     if reward > 0 then
       local rewardMessage = "You received <font color='FFBF00'>" .. reward .. "</font> gold for being the <font color='#00C400'>" .. 
         numBuilt + 1 .. getNumberSuffix(numBuilt + 1) .. "</font> player to build a building."
-      Notifications:Top(playerID, {text=rewardMessage, duration=5.0})
+      Notifications:Top(playerID, {text=rewardMessage, duration=8.0})
     end
 
     GameRules.numPlayersBuilt = numBuilt + 1

@@ -8,11 +8,15 @@ function banshee_astral_chains:OnSpellStart()
 
   local duration = ability:GetSpecialValueFor("duration")
 
+  caster:EmitSound("Hero_Lich.IceAge")
+
   target:AddNewModifier(caster, ability, "modifier_astral_chains_debuff", {duration = duration})
 end
 
 
 modifier_astral_chains_debuff = class({})
+
+function modifier_astral_chains_debuff:IsDebuff() return true end
 
 function modifier_astral_chains_debuff:OnCreated()
   self.caster = self:GetCaster()
@@ -37,4 +41,12 @@ end
 
 function modifier_astral_chains_debuff:GetModifierAttackSpeedBonus_Constant()
   return -self.attack_slow;
+end
+
+function modifier_chilling_attack_debuff:GetEffectName()
+  return "particles/generic_gameplay/generic_slowed_cold.vpcf"
+end
+
+function modifier_chilling_attack_debuff:GetEffectAttachType()
+  return PATTACH_POINT_FOLLOW
 end

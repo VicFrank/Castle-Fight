@@ -10,7 +10,7 @@ function holy_power:OnSpellStart()
   local allies = FindAlliesInRadius(caster, radius)
 
   for _,unit in pairs(allies) do
-    if not unit:IsRealHero() then
+    if not IsCustomBuilding(unit) and not unit:IsRealHero() then
       unit:AddNewModifier(caster, ability, "modifier_holy_power", {})
     end
   end

@@ -9,8 +9,8 @@ function resistance_of_the_wilderness:OnSpellStart()
   local allies = FindOrganicAlliesInRadius(caster, FIND_UNITS_EVERYWHERE)
 
   local target
-  for _,ally in allies do
-    if not ally:IsRealHero() then
+  for _,ally in pairs(allies) do
+    if not ally:IsRealHero() and not ally:HasModifier("modifier_resistance_of_the_wilderness") then
       target = ally
       break
     end
@@ -30,10 +30,16 @@ function modifier_resistance_of_the_wilderness:OnCreated()
   self.chance = ability:GetSpecialValueFor("chance")
   self.spell_resistance = ability:GetSpecialValueFor("spell_resistance")
   self.attack_damage_reduction = ability:GetSpecialValueFor("attack_damage_reduction")
+
+  local parent = self:GetParent()
+
+  parent.WildernessParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_treant/treant_livingarmor.vpcf", PATTACH_POINT_FOLLOW, parent)
+  ParticleManager:SetParticleControlEnt(parent.WildernessParticle, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
+  ParticleManager:SetParticleControlEnt(parent.WildernessParticle, 1, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
 end
 
-function modifier_resistance_of_the_wilderness:GetEffectName()
-  "particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+function modifier_resistance_of_the_wilderness:OnDestroy()
+  ParticleManager:DestroyParticle(self:GetParent().WildernessParticle, true)
 end
 
 function modifier_resistance_of_the_wilderness:DeclareFunctions()

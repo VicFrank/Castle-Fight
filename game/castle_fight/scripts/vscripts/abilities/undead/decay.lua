@@ -48,6 +48,8 @@ end
 
 modifier_city_of_decay_debuff = class({})
 
+function modifier_city_of_decay_debuff:IsDebuff() return true end
+
 function modifier_city_of_decay_debuff:IsPurgable()
   return false
 end

@@ -10,9 +10,7 @@
     "ScriptFile"                  "abilities/night_elves/starfall"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 
     "AbilityCooldown"             "30.0"
     "AbilityManaCost"             "30"
@@ -49,7 +47,7 @@
       }
       "05"
       {
-        "var_type"                "FIELD_INTEGER"
+        "var_type"                "FIELD_FLOAT"
         "wave_interval"           "1.5"
       }
     }
@@ -83,7 +81,6 @@
   // giving it permanent 40% spell damage reduction and a 40% chance to
   // reduce incoming attack damage by 40. Has an extra chance to target
   // units that don't have the buff yet.
-  // TODO: Cooldown/mana cost
   "resistance_of_the_wilderness"
   {
     "AbilityTextureName"          "lone_druid_rabid"
@@ -93,8 +90,8 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 
-    "AbilityCooldown"             "30.0"
-    "AbilityManaCost"             "30"
+    "AbilityCooldown"             "7.0"
+    "AbilityManaCost"             "7"
 
     "precache"
     {
@@ -195,7 +192,7 @@
     "AbilityTextureName"          "medusa_split_shot"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/night_elves/multi_shot"
-    "MaxLevel"                    "2"
+    "MaxLevel"                    "3"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -209,7 +206,7 @@
       "02"
       {
         "var_type"                "FIELD_INTEGER"
-        "arrow_count"             "3 7"
+        "arrow_count"             "3 3 7"
       }
     }
   }
@@ -231,6 +228,14 @@
     "AbilityCooldown"             "14.0"
     "AbilityManaCost"             "30"
     "AbilityCastPoint"            "0.3"
+    "AbilityCastRange"            "700"
+    "AbilityCastAnimation"        "ACT_DOTA_CAST_ABILITY_1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -264,6 +269,8 @@
     "AbilityCooldown"             "14.0"
     "AbilityManaCost"             "35"
     "AbilityCastPoint"            "0.3"
+    "AbilityCastRange"            "700"
+    "AbilityCastAnimation"        "ACT_DOTA_CAST_ABILITY_1"
 
     "AbilitySpecial"
     {
@@ -336,7 +343,7 @@
     "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityCooldown"             "0.0"
+    "AbilityCooldown"             "20.0"
     "AbilityManaCost"             "50"
 
     "precache"
@@ -430,7 +437,7 @@
     "AbilityTextureName"          "spectre_desolate"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/night_elves/heal_on_kill"
-    "MaxLevel"                    "1"
+    "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -439,7 +446,7 @@
       "01"
       {
         "var_type"      "FIELD_INTEGER"
-        "heal_pct"      "14"
+        "heal_pct"      "12 14"
       }
     }
   }
@@ -455,6 +462,12 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
+    "precache"
+    {
+      "particle"  "particles/items_fx/necronomicon_warrior_last_will.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -468,7 +481,7 @@
   // Heals a friendly unit for 175 health cd 6 mana cost 20
   "faerie_dragon_heal"
   {
-    "AbilityTextureName"          "spectre_haunt"
+    "AbilityTextureName"          "omniknight_purification"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/night_elves/faerie_dragon_heal"
     "MaxLevel"                    "1"
@@ -479,6 +492,10 @@
 
     "AbilityCooldown"             "6.0"
     "AbilityManaCost"             "20"
+
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.3"
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_1"
 
     "precache"
     {
@@ -540,7 +557,7 @@
       "02"
       {
         "var_type"          "FIELD_INTEGER"
-        "bounces"           "3"
+        "bounces"           "4"
       }
       "03"
       {

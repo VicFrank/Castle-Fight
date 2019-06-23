@@ -30,3 +30,7 @@ end
 function modifier_custom_quad_damage:GetModifierBaseDamageOutgoing_Percentage()
   return 300
 end
+
+function modifier_custom_double_damage:GetEffectName()
+  return "particles/abilities/generic/quad_damage/rune_quaddamage_owner.vpcf"
+end

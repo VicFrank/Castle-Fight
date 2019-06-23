@@ -1,8 +1,8 @@
 -- Lifted from DotaCraft
 function GameMode:FilterDamage( filterTable )
-  --for k, v in pairs( filterTable ) do
+  -- for k, v in pairs( filterTable ) do
   --  print("Damage: " .. k .. " " .. tostring(v) )
-  --end
+  -- end
   local victim_index = filterTable["entindex_victim_const"]
   local attacker_index = filterTable["entindex_attacker_const"]
   if not victim_index or not attacker_index then
@@ -51,13 +51,13 @@ function GameMode:GetPreMitigationDamage(value, victim, attacker, damagetype)
     local reduction = ((0.052 * armor) / (0.9 + 0.048 * math.abs(armor)))
     local damage = value / (1 - reduction)
 
-    return damage,reduction
+    return damage, reduction
 
   elseif damagetype == DAMAGE_TYPE_MAGICAL then
     local reduction = victim:GetMagicalArmorValue() * 0.01
     local damage = value / (1 - reduction)
 
-    return damage,reduction
+    return damage, reduction
   else
     return value, 0
   end

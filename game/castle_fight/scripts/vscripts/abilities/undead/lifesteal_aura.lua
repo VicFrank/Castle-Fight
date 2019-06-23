@@ -44,10 +44,6 @@ function modifier_vampire_lifesteal_aura:GetAuraEntityReject(target)
   return IsCustomBuilding(target) or target:IsRealHero() or target:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK
 end
 
-function modifier_vampire_lifesteal_aura:IsHidden()
-  return true
-end
-
 modifier_vampire_lifesteal_aura_buff = class({})
 
 function modifier_vampire_lifesteal_aura_buff:DeclareFunctions()
@@ -66,7 +62,7 @@ function modifier_vampire_lifesteal_aura_buff:OnAttackLanded(params)
   local ability = self:GetAbility()
   local damage = params.damage
 
-  if attacker == parent then
+  if attacker == parent and not IsCustomBuilding(target) then
     local lifesteal = ability:GetSpecialValueFor("lifesteal")
     attacker:Heal(damage * lifesteal * 0.01, attacker)
 

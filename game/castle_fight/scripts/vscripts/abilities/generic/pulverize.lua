@@ -2,6 +2,8 @@ LinkLuaModifier("modifier_pulverize", "abilities/generic/pulverize.lua", LUA_MOD
 
 flesh_golem_pulverize = class({})
 function flesh_golem_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
+mountain_giant_pulverize = class({})
+function mountain_giant_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
 
 modifier_pulverize = class({})
 

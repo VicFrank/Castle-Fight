@@ -1,4 +1,4 @@
-avenging_spirit_revenge = class({})
+  avenging_spirit_revenge = class({})
 
 LinkLuaModifier("modifier_revenge", "abilities/night_elves/revenge.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -21,7 +21,12 @@ function modifier_revenge:OnDeath(params)
   if params.unit == self:GetParent() then
     local attacker = params.attacker
     if attacker then
+      local particleName = "particles/items_fx/necronomicon_warrior_last_will.vpcf"
+      local particle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, self:GetParent())
+      ParticleManager:SetParticleControl(particle, 1, attacker:GetAbsOrigin())
       local damage = self:GetAbility():GetSpecialValueFor("damage")
+
+      self:GetParent():EmitSound("Hero_Pugna.NetherWard.Attack.Wight")
 
       ApplyDamage({
         victim = attacker,

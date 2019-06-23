@@ -12,7 +12,10 @@ function Build( event )
 
     -- If the ability has an AbilityGoldCost, it's impossible to not have enough gold the first time it's cast
     -- Always refund the gold here, as the building hasn't been placed yet
-    hero:ModifyGold(gold_cost, false, 0)
+
+    -- Somehow, the gold isn't being consumed, or you're gaining it somewhere else,
+    -- so I've commented this out (VicFrank)
+    -- hero:ModifyGold(gold_cost, false, 0)
 
     -- Makes a building dummy and starts panorama ghosting
     BuildingHelper:AddBuilding(event)
@@ -73,6 +76,11 @@ function Build( event )
     event:OnConstructionCancelled(function(work)
         local building_name = work.name
         print("Cancelled construction of " .. building_name)
+
+        -- work.building is not nil if this was a repair action
+        if work.building then
+            return
+        end
 
         -- Refund resources for this cancelled work
         if work.refund then

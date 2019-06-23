@@ -40,5 +40,5 @@ function modifier_blast_staff:OnIntervalThink()
     bReplaceExisting = false,
   }
 
-  ProjectileManager:CreateTrackingProjectile(projectile)  
+  ProjectileManager:CreateTrackingProjectile(projectile)
 end

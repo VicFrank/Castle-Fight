@@ -115,14 +115,13 @@
     }
   }
 
-  // 100 dps TODO: death shadow cosmetics
   "amazon" 
   {
-    "Model"            "models/heroes/drow/drow.vmdl"
+    "Model"            "models/heroes/drow/drow_base.vmdl"
     "SoundSet"         "Hero_DrowRanger"
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
-    "Level"            "1"
+    "Level"            "3"
     "ModelScale"       "0.95"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
@@ -166,19 +165,20 @@
       "DisableClumpingBehavior" "1"
       "AttachWearables"
       {
-        "Wearable1" { "ItemDef"  "4595" } // bow
-        "Wearable2" { "ItemDef"  "4613" } // legs
-        "Wearable3" { "ItemDef"  "4626" } // back
-        "Wearable4" { "ItemDef"  "4628" } // head
-        "Wearable5" { "ItemDef"  "4629" } // misc
+        "Wearable1" { "ItemDef"  "5847" } // bow
+        "Wearable2" { "ItemDef"  "5844" } // legs
+        "Wearable3" { "ItemDef"  "5842" } // back
+        "Wearable4" { "ItemDef"  "5843" } // head
+        "Wearable5" { "ItemDef"  "5845" } // misc
+        "Wearable5" { "ItemDef"  "5841" } // arms
+        "Wearable5" { "ItemDef"  "5846" } // shoulder
       }
     }
   }
 
-  // TODO: Move speed, damage range, bounty
   "druid" 
   {
-    "Model"            "npc_dota_hero_furion"
+    "Model"            "models/heroes/furion/furion.vmdl"
     "SoundSet"         "Hero_Furion"
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
@@ -236,7 +236,7 @@
 
   "sage_druid" 
   {
-    "Model"            "npc_dota_hero_furion"
+    "Model"            "models/heroes/furion/furion.vmdl"
     "SoundSet"         "Hero_Furion"
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
@@ -304,7 +304,7 @@
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "vscripts"         "ai/assassin_ai.lua"
 
     "Ability1"                "assassin_evasion"
     "Ability2"                "assassin_feedback"
@@ -312,13 +312,15 @@
 
     "ArmorPhysical"           "1"
 
-    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
     "AttackDamageMin"         "25"
     "AttackDamageMax"         "35"
     "AttackRate"              "1.0"
     "AttackAnimationPoint"    "0.46"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
+    "ProjectileModel"         "particles/units/heroes/hero_templar_assassin/templar_assassin_base_attack.vpcf"
+    "ProjectileSpeed"         "900"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "300"
@@ -349,20 +351,19 @@
     }
   }
 
-  // TODO: Wuxia cosmetics
   "royal_assassin" 
   {
     "Model"            "models/heroes/lanaya/lanaya.vmdl"
     "SoundSet"         "Hero_TemplarAssassin"
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
-    "Level"            "1"
+    "Level"            "2"
     "ModelScale"       "0.85"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "vscripts"         "ai/assassin_ai.lua"
 
     "Ability1"                "assassin_evasion"
     "Ability2"                "assassin_feedback"
@@ -370,13 +371,15 @@
 
     "ArmorPhysical"           "2"
 
-    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
     "AttackDamageMin"         "40"
     "AttackDamageMax"         "50"
     "AttackRate"              "0.75"
     "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
+    "ProjectileModel"         "particles/units/heroes/hero_templar_assassin/templar_assassin_base_attack.vpcf"
+    "ProjectileSpeed"         "900"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "300"
@@ -399,11 +402,11 @@
       "DisableClumpingBehavior" "1"
       "AttachWearables"
       {
-        "Wearable1"   { "ItemDef"  "514" } // ambient effects
-        "Wearable2"   { "ItemDef"  "5229"  } // armor
+        "Wearable1"   { "ItemDef"  "514"  } // ambient effects
+        "Wearable2"   { "ItemDef"  "8872" } // armor
         "Wearable3"   { "ItemDef"  "5292" } // head
-        "Wearable4"   { "ItemDef"  "5293" } // shoulder
-        "Wearable5"   { "ItemDef"  "5304" } // head
+        "Wearable4"   { "ItemDef"  "8867" } // shoulder
+        "Wearable5"   { "ItemDef"  "8868" } // head
       }
     }
   }
@@ -426,6 +429,7 @@
     "Ability1"                "avenging_spirit_corrosive_attack"
     "Ability2"                "avenging_spirit_spell_reduction"
     "Ability3"                "avenging_spirit_evasion"
+    "Ability4"                "avenging_spirit_heal_on_kill"
 
     "ArmorPhysical"           "5"
 
@@ -473,7 +477,7 @@
     "SoundSet"         "Hero_Spectre"
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
-    "Level"            "1"
+    "Level"            "2"
     "ModelScale"       "0.70"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
@@ -540,7 +544,7 @@
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "vscripts"         "ai/faerie_dragon_ai.lua"
 
     "Ability1"                "faerie_dragon_heal"
     "Ability2"                "faerie_dragon_feedback"
@@ -561,8 +565,9 @@
     "MovementSpeed"          "270"
     "StatusHealth"           "460"
     "StatusHealthRegen"      "1"
-    "StatusMana"             "0"
-    "StatusManaRegen"        "0.0"     
+    "StatusMana"             "200"
+    "StatusManaRegen"        "1.50"     
+    "StatusStartingMana"     "150"     
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -606,9 +611,9 @@
     "ArmorPhysical"           "2"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "26"
-    "AttackDamageMax"         "26"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "80"
+    "AttackDamageMax"         "105"
+    "AttackRate"              "3.5"
     "AttackAnimationPoint"    "0.55"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "1000"

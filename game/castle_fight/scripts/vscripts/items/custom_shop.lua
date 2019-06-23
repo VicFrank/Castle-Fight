@@ -79,11 +79,15 @@ function OnAttemptPurchase(eventSourceIndex, args)
     return false
   end
 
+  -- Make the payment
+  hero:ModifyGold(-gold_cost, false, 0)
+  hero:ModifyLumber(-lumber_cost)
+
   -- Successful purchase
   -- Update Stock info
   local purchase_time = GameRules:GetGameTime()
   local restock_time = itemData.restock_time
-  local currentRound = GameRules.roundNumber
+  local currentRound = GameRules.roundCount
 
   CustomNetTables:SetTableValue("custom_shop",
     shopKey,
@@ -101,7 +105,7 @@ function OnAttemptPurchase(eventSourceIndex, args)
   if (restock_time > 0) then
     Timers:CreateTimer(restock_time, function()
       -- Only restock if it's still the same round
-      if currentRound == GameRules.roundNumber then
+      if currentRound == GameRules.roundCount then
         local currentItemData = CustomNetTables:GetTableValue("custom_shop", shopKey)
 
         CustomNetTables:SetTableValue("custom_shop",

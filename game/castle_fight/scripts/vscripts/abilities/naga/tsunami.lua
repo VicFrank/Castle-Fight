@@ -4,11 +4,8 @@ function tsunami:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local particleName = "particles/units/heroes/hero_tidehunter/tidehunter_gush_upgrade.vpcf"
-
   local speed = ability:GetSpecialValueFor("speed")
   local aoe = ability:GetSpecialValueFor("aoe")
-
 
   local target = GetRandomVisibleEnemy(caster:GetTeam())
   if not target then return end
@@ -32,12 +29,12 @@ function tsunami:OnSpellStart()
     iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
     iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
     fExpireTime = GameRules:GetGameTime() + 10.0,
-    bDeleteOnHit = false,
+    bDeleteOnHit = true,
     vVelocity = speed * direction,
     bProvidesVision = false,
   }
     
-  self.projectile = ProjectileManager:CreateTrackingProjectile(linear_projectile)
+  self.projectile = ProjectileManager:CreateLinearProjectile(linear_projectile)
 end
 
 function tsunami:OnProjectileHit(target, location)

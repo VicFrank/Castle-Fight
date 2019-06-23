@@ -2,6 +2,8 @@ LinkLuaModifier("modifier_damage_return", "abilities/generic/damage_return.lua",
 
 dragon_turtle_damage_return = class({})
 function dragon_turtle_damage_return:GetIntrinsicModifierName() return "modifier_damage_return" end
+treant_thorns = class({})
+function treant_thorns:GetIntrinsicModifierName() return "modifier_damage_return" end
 
 modifier_damage_return = class({})
 

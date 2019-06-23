@@ -149,18 +149,28 @@ function UpdateAbilityUI() {
   }
 }
 
+var LocalPlayerID = Players.GetLocalPlayer();
+
+function GetPlayerIDToShow() {
+  var queryUnit = Players.GetLocalPlayerPortraitUnit();
+  if (Entities.IsRealHero(queryUnit))
+    return Entities.GetPlayerOwnerID(queryUnit);
+  else
+    return LocalPlayerID;
+}
+
 function OnPlayerLumberChanged(table_name, key, data) {
   UpdateLumber();
 }
 
 function UpdateLumber() {
-  var playerID = Players.GetLocalPlayer();
+  var playerID = GetPlayerIDToShow();
   var data = CustomNetTables.GetTableValue("lumber", playerID);
   if (data && data.value) $('#LumberText').text = data.value;
 }
 
 function UpdateGold() {
-  var playerID = Players.GetLocalPlayer();
+  var playerID = GetPlayerIDToShow();  
   var gold = Players.GetGold(playerID);
   $('#GoldText').text = gold;
   $.Schedule(0.1, UpdateGold);
@@ -172,7 +182,7 @@ function OnPlayerCheeseChanged(table_name, key, data) {
 }
 
 function UpdateCheese() {
-  var playerID = Players.GetLocalPlayer();
+  var playerID = GetPlayerIDToShow();
   var data = CustomNetTables.GetTableValue("cheese", playerID);
   if (data && data.value) $('#CheeseText').text = data.value;
 }
@@ -232,7 +242,7 @@ function GenerateGoldTooltip() {
   var line3 = "Interest from Buildings: <font color='#FFBF00'>" + 
     Math.floor(buildingInterest) + "</font>";
   var line4 = "Treasure Chest Multiplier: <font color='#00C400'>" +
-    Math.floor(treasureChestMultiplier) + "</font>";
+    Math.floor(treasureChestMultiplier * 100) + "%%</font>";
   var line5 = "Taxes: <font color='#C40000'>" +
     Math.floor(taxes) + "</font>";
   var line6 = "Total Interest: <font color='#FFBF00'>" +

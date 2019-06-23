@@ -7,6 +7,20 @@ function FindAggro(self)
 
   local searchRange = self.aiState.targetAcquisitionRange
 
+  -- Handle if we're taunted
+  if self:HasModifier("mountain_giant_taunt") then
+    local tauntTarget = self.tauntTarget
+
+    if not tauntTarget:IsAlive() then
+      self:RemoveModifierByName("mountain_giant_taunt")
+    else
+      if CanAttackTarget(self, tauntTarget) then
+        self.aiState.aggroTarget = tauntTarget
+        return true
+      end
+    end
+  end
+
   -- expand the search range if we're currently aggro'd
   if currentTarget and not currentTarget:IsNull() and 
     currentTarget:IsAlive() and not IsCustomBuilding(currentTarget) then

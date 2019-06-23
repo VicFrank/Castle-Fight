@@ -20,20 +20,23 @@ function druid_entangle:CastFilterResultTarget(target)
 end
 
 function druid_mass_entangle:OnSpellStart()
+  if not IsServer() then return end
+
   local caster = self:GetCaster()
   local ability = self
   local target = self:GetCursorTarget()
 
   local duration = ability:GetSpecialValueFor("duration")
   local num_targets = ability:GetSpecialValueFor("targets")
+  local radius = 600
 
   local targets = {}
-  table.insert(targets, target)
 
   local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
   for _,enemy in pairs(enemies) do
-    if not enemy == target and not IsCustomBuilding(target) and not target:HasFlyMovementCapability() then
+    if not IsCustomBuilding(target) and not target:HasFlyMovementCapability() then
       table.insert(targets, enemy)
+      if #targets >= num_targets then break end
     end
   end
 
@@ -50,12 +53,17 @@ end
 
 modifier_druid_entangle = class({})
 
+function modifier_druid_entangle:IsDebuff() return true end
+
 function modifier_druid_entangle:OnCreated()
   self.parent = self:GetParent()
   self.ability = self:GetAbility()
   self.caster = self:GetCaster()
 
   self.dps = self.ability:GetSpecialValueFor("dps")
+
+  if not IsServer() then return end
+  self.parent:EmitSound("LoneDruid_SpiritBear.Entangle")
 
   self:StartIntervalThink(1)
 end
@@ -76,4 +84,8 @@ function modifier_druid_entangle:CheckState()
   return { 
     [MODIFIER_STATE_ROOTED] = true,
   }
+end
+
+function modifier_druid_entangle:GetEffectName()
+  return "particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle.vpcf"
 end

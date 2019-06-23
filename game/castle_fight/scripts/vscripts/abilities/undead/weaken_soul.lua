@@ -21,7 +21,13 @@ function modifier_weaken_soul_aura:IsPurgable()
 end
 
 function modifier_weaken_soul_aura:GetAuraRadius()
-  return self.range
+  if not IsServer() then return end
+  local radius = self.range
+  local parent = self:GetParent()
+  if parent:GetTeam() == DOTA_TEAM_NEUTRALS or parent:PassivesDisabled() then
+    radius = 0
+  end
+  return radius
 end
 
 function modifier_weaken_soul_aura:GetModifierAura()
@@ -46,6 +52,8 @@ function modifier_weaken_soul_aura:GetAuraDuration()
 end
 
 modifier_weaken_soul_debuff = class({})
+
+function modifier_weaken_soul_debuff:IsDebuff() return true end
 
 function modifier_weaken_soul_debuff:IsPurgable()
   return false

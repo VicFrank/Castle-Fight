@@ -8,6 +8,10 @@ end
 modifier_zombie_rot_aura = class({})
 
 function modifier_zombie_rot_aura:IsDebuff()
+  if self:GetCaster() == self:GetParent() then
+    return false
+  end
+  
   return true
 end
 

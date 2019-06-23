@@ -4,16 +4,16 @@ ranger_multi_shot = class({})
 LinkLuaModifier("modifier_ranger_split_shot", "abilities/night_elves/multi_shot", LUA_MODIFIER_MOTION_NONE)
 
 function ranger_multi_shot:GetIntrinsicModifierName()
-  return modifier_ranger_split_shot
+  return "modifier_ranger_split_shot"
 end
 
 modifier_ranger_split_shot = class({})
 
-function modifier_ranger_split_shot:Oncreated()
+function modifier_ranger_split_shot:OnCreated()
   self.ability = self:GetAbility()
 
-  self.damage_modifier = self:GetSpecialValueFor(damage_modifier)
-  self.arrow_count = self:GetSpecialValueFor(arrow_count)
+  self.damage_modifier = self.ability:GetSpecialValueFor("damage_modifier")
+  self.arrow_count = self.ability:GetSpecialValueFor("arrow_count")
 end
 
 function modifier_ranger_split_shot:DeclareFunctions()
@@ -38,14 +38,14 @@ function modifier_ranger_split_shot:OnAttack(keys)
       self:GetParent():GetTeamNumber(), 
       self:GetParent():GetAbsOrigin(), 
       nil, 
-      self:GetParent():GetAttackRange(), 
+      self:GetParent():GetAttackRangeBuffer() + 100, 
       DOTA_UNIT_TARGET_TEAM_ENEMY,
       DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE,
       FIND_ANY_ORDER, false)
     
     local target_number = 0
         
-    for _, enemy in pairs(enemies) do
+    for _, enemy in ipairs(enemies) do
       if enemy ~= keys.target then        
         self:GetParent():PerformAttack(enemy, false, false, true, false, true, false, false)
         

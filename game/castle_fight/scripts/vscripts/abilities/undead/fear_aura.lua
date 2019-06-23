@@ -66,5 +66,5 @@ function modifier_fear_aura_buff:GetModifierBaseDamageOutgoing_Percentage()
 end
 
 function modifier_fear_aura_buff:IsDebuff()
-    return false
+    return true
 end

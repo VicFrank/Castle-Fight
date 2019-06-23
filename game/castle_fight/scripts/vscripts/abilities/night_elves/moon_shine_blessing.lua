@@ -9,7 +9,7 @@ function moon_shine_blessing:OnSpellStart()
   local allies = FindOrganicAlliesInRadius(caster, FIND_UNITS_EVERYWHERE)
 
   local target
-  for _,ally in allies do
+  for _,ally in pairs(allies) do
     if not ally:IsRealHero() then
       if target == nil or ally:GetHealth() < ally:GetMaxHealth() then
         target = ally
@@ -48,10 +48,16 @@ function modifier_moon_shine_blessing:OnCreated()
   local ability = self:GetAbility()
 
   self.armor = ability:GetSpecialValueFor("armor")
+
+  local parent = self:GetParent()
+
+  parent.MoonShineParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_treant/treant_livingarmor.vpcf", PATTACH_POINT_FOLLOW, parent)
+  ParticleManager:SetParticleControlEnt(parent.MoonShineParticle, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
+  ParticleManager:SetParticleControlEnt(parent.MoonShineParticle, 1, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
 end
 
-function modifier_moon_shine_blessing:GetEffectName()
-  "particles/econ/items/treant_protector/ti7_shoulder/treant_ti7_crimson_livingarmor.vpcf"
+function modifier_moon_shine_blessing:OnDestroy()
+  ParticleManager:DestroyParticle(self:GetParent().MoonShineParticle, true)
 end
 
 function modifier_moon_shine_blessing:DeclareFunctions()

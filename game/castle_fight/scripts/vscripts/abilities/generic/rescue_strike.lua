@@ -58,7 +58,7 @@ function item_rescue_strike:OnSpellStart()
       damageDone .. " damage!"
   end
 
-  Notifications:TopToAll({text=message, duration=3.0})
+  Notifications:TopToAll({text=message, duration=5.0})
 
   -- Consume Rescue Strike
   caster:RemoveItem(ability)

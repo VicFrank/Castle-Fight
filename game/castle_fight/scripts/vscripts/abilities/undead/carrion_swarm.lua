@@ -54,19 +54,19 @@ function modifier_carrion_swarm:OnAttackLanded(keys)
   local target = keys.target
 
   if attacker == self.caster then
-    if self.chance >= RandomInt(1,100) then
+    if self.chance >= RandomInt(1, 100) then
       -- Release carrion swarm
       local direction = (target:GetAbsOrigin() - self.caster:GetAbsOrigin()):Normalized()
 
       ProjectileManager:CreateLinearProjectile({
-        Ability = ability,
-        EffectName = "particles/units/heroes/hero_death_prophet/death_prophet_carrion_swarm.vpcf",
-        vSpawnOrigin = caster:GetAbsOrigin(),
+        Ability = self.ability,
+        EffectName = "particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf",
+        vSpawnOrigin = self.caster:GetAbsOrigin(),
         fDistance = self.range,
         fStartRadius = self.start_radius,
         fEndRadius = self.end_radius,
         Source = self.caster,
-        bHasFrontalCone = false,
+        bHasFrontalCone = true,
         bReplaceExisting = false,
         iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
         iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
