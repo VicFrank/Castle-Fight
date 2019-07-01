@@ -2,12 +2,12 @@
 {
   "hunter" 
   {
-    "Model"            "models/heroes/windrunner/windrunner.vmdl"
-    "SoundSet"         "Hero_Windrunner"
+    "Model"            "models/heroes/mirana/mirana.vmdl"
+    "SoundSet"         "Hero_Mirana"
     "BaseClass"        "npc_dota_creature"
-    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
     "Level"            "1"
-    "ModelScale"       "0.7"
+    "ModelScale"       "0.65"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -22,11 +22,11 @@
     "AttackDamageMin"         "40"
     "AttackDamageMax"         "43"
     "AttackRate"              "1.8"
-    "AttackAnimationPoint"    "0.4"
+    "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "400"
-    "ProjectileModel"         "particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
-    "ProjectileSpeed"         "1250"
+    "ProjectileModel"         "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf"
+    "ProjectileSpeed"         "900"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "270"
@@ -48,21 +48,23 @@
       "DisableClumpingBehavior" "1"
       "AttachWearables"
       {
-        "Wearable1"   { "ItemDef"  "21" }
-        "Wearable2"   { "ItemDef"  "22" }
-        "Wearable3"   { "ItemDef"  "23" }
-        "Wearable4"   { "ItemDef"  "24" }
-        "Wearable5"   { "ItemDef"  "25" }
+        "Wearable1"   { "ItemDef"  "403" }
+        "Wearable2"   { "ItemDef"  "404" }
+        "Wearable3"   { "ItemDef"  "405" }
+        "Wearable4"   { "ItemDef"  "406" }
+        "Wearable5"   { "ItemDef"  "407" }
+        "Wearable6"   { "ItemDef"  "408" }
+        "Wearable7"   { "ItemDef"  "409" }
       }
     }
   }
 
   "ranger" 
   {
-    "Model"            "models/heroes/windrunner/windrunner.vmdl"
-    "SoundSet"         "Hero_Windrunner"
+    "Model"            "models/heroes/mirana/mirana.vmdl"
+    "SoundSet"         "Hero_Mirana"
     "BaseClass"        "npc_dota_creature"
-    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
     "Level"            "2"
     "ModelScale"       "0.85"
     "RingRadius"       "40"
@@ -80,11 +82,11 @@
     "AttackDamageMin"         "50"
     "AttackDamageMax"         "80"
     "AttackRate"              "1.05"
-    "AttackAnimationPoint"    "0.4"
+    "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "425"
-    "ProjectileModel"         "particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
-    "ProjectileSpeed"         "1250"
+    "ProjectileModel"         "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf"
+    "ProjectileSpeed"         "900"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "270"
@@ -106,11 +108,13 @@
       "DisableClumpingBehavior" "1"
       "AttachWearables"
       {
-        "Wearable1"   { "ItemDef"  "4454" } // bow
-        "Wearable2"   { "ItemDef"  "4408" } // offhand
-        "Wearable3"   { "ItemDef"  "4504" } // head
-        "Wearable4"   { "ItemDef"  "4495" }
-        "Wearable5"   { "ItemDef"  "4512" } // back
+        "Wearable1"   { "ItemDef"  "5283" }
+        "Wearable2"   { "ItemDef"  "5284" }
+        "Wearable3"   { "ItemDef"  "5285" }
+        "Wearable4"   { "ItemDef"  "5286" }
+        "Wearable5"   { "ItemDef"  "5288" }
+        "Wearable6"   { "ItemDef"  "5289" }
+        "Wearable7"   { "ItemDef"  "404" }
       }
     }
   }
@@ -566,7 +570,7 @@
     "StatusHealth"           "460"
     "StatusHealthRegen"      "1"
     "StatusMana"             "200"
-    "StatusManaRegen"        "1.50"     
+    "StatusManaRegen"        "1.00"     
     "StatusStartingMana"     "150"     
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"

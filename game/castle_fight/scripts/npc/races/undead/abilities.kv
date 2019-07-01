@@ -353,6 +353,11 @@
     "ScriptFile"                  "abilities/undead/raise_vampire"
     "MaxLevel"                    "1"
 
+    "precache"
+    {
+      "particle"  "particles/econ/events/ti6/hero_levelup_ti6.vpcf"
+    }
+
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   }
 
@@ -456,7 +461,10 @@
 
     "AbilityCooldown"             "10.0"
     "AbilityManaCost"             "25"
-    "AbilityCastPoint"            "0.3"
+
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
 
     "precache"
     {

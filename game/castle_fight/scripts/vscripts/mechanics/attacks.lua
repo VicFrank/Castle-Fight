@@ -24,8 +24,13 @@ function SplashAttackUnit(attacker, position)
     DebugDrawCircle(position, Vector(255,0,0), 50, small_damage_radius, true, 3)
   end
 
+  local canHitFlying = true
+  if attacker:GetKeyValue("AttacksDisallowed") == "flying" then
+    canHitFlying = false
+  end
+
   for _,unit in pairs(splash_targets) do
-    if not unit:HasFlyMovementCapability() then
+    if canHitFlying or not unit:HasFlyMovementCapability() then
       local distance_from_impact = (unit:GetAbsOrigin() - position):Length2D()
       if distance_from_impact <= full_damage_radius then
         ApplyDamage({ victim = unit, attacker = attacker, damage = full_damage, ability = GameRules.Applier, damage_type = DAMAGE_TYPE_PHYSICAL})

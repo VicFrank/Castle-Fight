@@ -10,6 +10,7 @@ function Corpses:CreateFromUnit(killed)
     local team = killed:GetTeamNumber()
     local corpse = Corpses:CreateByNameOnPosition(name, position, team)
     corpse.playerID = killed:GetPlayerOwnerID()
+    corpse.isLegendary = killed.isLegendary
     corpse:SetForwardVector(fv)
     corpse:AddNoDraw()
     Timers:CreateTimer(CORPSE_APPEAR_DELAY, function()

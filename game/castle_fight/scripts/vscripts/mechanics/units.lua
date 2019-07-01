@@ -139,6 +139,21 @@ function FindAllUnitsInRadius( radius, point )
   return FindUnitsInRadius(DOTA_TEAM_NEUTRALS, position, nil, radius, DOTA_UNIT_TARGET_TEAM_BOTH, target_type, flags, FIND_ANY_ORDER, false)
 end
 
+function FindAllUnits()
+  local position = Vector(0,0,0)
+  local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+  local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_INVULNERABLE
+  return FindUnitsInRadius(DOTA_TEAM_NEUTRALS, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, target_type, flags, FIND_ANY_ORDER, false)
+end
+
+
+function FindAllVisibleUnitsInRadius( team, radius, point )
+  local position = point
+  local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+  local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS
+  return FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_BOTH, target_type, flags, FIND_ANY_ORDER, false)
+end
+
 -- Returns all units in radius of a point
 function FindAllUnitsAroundPoint( unit, point, radius )
   local team = unit:GetTeamNumber()
@@ -281,7 +296,11 @@ function CDOTA_BaseNPC:SetAttackType( attack_type )
 end
 
 function CDOTA_BaseNPC:IsMechanical()
-    return self:GetUnitLabel():match("mechanical")
+  return self:GetUnitLabel():match("mechanical")
+end
+
+function CDOTA_BaseNPC:IsLegendary()
+  return self.isLegendary
 end
 
 -- Changes the ArmorType and current visual tooltip of the unit

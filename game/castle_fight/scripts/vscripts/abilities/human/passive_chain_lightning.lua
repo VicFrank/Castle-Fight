@@ -1,9 +1,9 @@
-passive_chain_lightning = class({})
 LinkLuaModifier("modifier_passive_chain_lightning", "abilities/human/passive_chain_lightning.lua", LUA_MODIFIER_MOTION_NONE)
 
-function passive_chain_lightning:GetIntrinsicModifierName()
-  return "modifier_passive_chain_lightning"
-end
+passive_chain_lightning = class({})
+function passive_chain_lightning:GetIntrinsicModifierName() return "modifier_passive_chain_lightning" end
+sorceress_chain_lightning = class({})
+function sorceress_chain_lightning:GetIntrinsicModifierName() return "modifier_passive_chain_lightning" end
 
 modifier_passive_chain_lightning = class({})
 

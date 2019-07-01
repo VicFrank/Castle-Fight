@@ -1,5 +1,6 @@
 g_Precache_Tables = {
   npc_dota_hero_kunkka = {
+  "npc_dota_hero_kunkka",    
     "barracks",
     "stronghold",
     "footman",
@@ -23,10 +24,11 @@ g_Precache_Tables = {
     "gjallarhorn",
     "artillery",
     "watch_tower",
-    "heroic_shrine",
+    "heroic_shrine",    
   },
 
   npc_dota_hero_slark = {
+    "npc_dota_hero_slark",
     -- Buildings
     "murloc_hut",
     "murloc_camp",
@@ -61,6 +63,7 @@ g_Precache_Tables = {
   },
 
   npc_dota_hero_abaddon = {
+    "npc_dota_hero_abaddon",
     -- Buildings
     "rotting_hay_cart",
     "tainted_farm",
@@ -102,6 +105,7 @@ g_Precache_Tables = {
   },
 
   npc_dota_hero_vengefulspirit = {
+    "npc_dota_hero_vengefulspirit",
     -- Buildings
     "hunters_hall",
     "rangers_hall",
@@ -133,6 +137,7 @@ g_Precache_Tables = {
   },
 
   npc_dota_hero_treant = {
+    "npc_dota_hero_treant",
     -- Buildings
     "spider_egg_clutch",
     "spider_egg_nest",
@@ -163,5 +168,99 @@ g_Precache_Tables = {
     "bear",
     "ancient_bear",
     "mountain_giant",
+    "keeper_treant",
+  },
+
+  npc_dota_hero_juggernaut = {
+    "npc_dota_hero_juggernaut",
+    -- Buildings
+    "fighters_hall",
+    "advanced_fighters_hall",
+    "superior_fighters_hall",
+    "shamanic_tent",
+    "troll_hut",
+    "trappers_hut",
+    "falcon_clan_encampment",
+    "kodo_farm",
+    "offensive_kodo_farm",
+    "defensive_kodo_farm",
+    "spellbreaker_kodo_farm",
+    "orcish_siege_factory",
+    "serpent_rock",
+    "ceremonial_totem",
+    "anti_air_tower",
+    "stasis_totem",
+    -- Units
+    "grunt",
+    "veteran_grunt",
+    "axemaster",
+    "shaman",
+    "troll",
+    "troll_trapper",
+    "wyvern_rider",
+    "kodo",
+    "offensive_kodo",
+    "defensive_kodo",
+    "spellbreaker_kodo",
+    "catapult",
+  },
+
+  npc_dota_hero_tusk = {
+    "npc_dota_hero_tusk",
+    -- Buildings
+    "snowy_rocks",
+    "icy_rocks",
+    "glacier",
+    "igloo",
+    "ice_troll_hut",
+    "ice_troll_voodoo_hut",
+    "ice_claws",
+    "frost_claws",
+    "azure_nest",
+    "crystal_palace",
+    "frost_launcher",
+    "greater_frost_launcher",
+    "chilling_mushroom",
+    "icy_tower",
+    "world_freezer",
+    -- Units
+    "frost_wolf",
+    "polar_bear",
+    "magnataur",
+    "hrimthrusa",
+    "troll_shadow_priest",
+    "ice_troll_witch_doctor",
+    "wendigo",
+    "ancient_wendigo",
+    "azure_drake",
+    "ice_queen",
+  },
+
+  npc_dota_hero_invoker = {
+    "npc_dota_hero_invoker",
+    -- Buildings
+    "archery_range",
+    "archery_tower",
+    "hall_of_honor",
+    "hall_of_the_eldest",
+    "bloodelf_war_academy",
+    "dragonhawk_portal",
+    "highelf_siege_factory",
+    "school_of_wizardry",
+    "tower_of_supreme_magic",
+    "city_of_magic",
+    "obelisk_of_light",
+    "arcane_tower",
+    "golden_shrine_of_justice",
+    -- Units
+    "archer",
+    "master_archer",
+    "blademaster",
+    "elder_blademaster",
+    "bloodthirster",
+    "dragonhawk_rider",
+    "siege_ballista",
+    "sorceress",
+    "wizard",
   },
 }

@@ -1,0 +1,250 @@
+"DOTAUnits"
+{
+  "build_archery_range"
+  {
+    "AbilityTextureName"            "archery_range"
+
+    "UnitName"                      "archery_range"
+    "AbilityGoldCost"               "180"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_archery_tower"
+  {
+    "AbilityTextureName"            "archery_tower"
+    "AbilityGoldCost"               "200"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "archery_tower"
+      }
+    }
+  }
+
+  "build_hall_of_honor"
+  {
+    "AbilityTextureName"            "hall_of_honor"
+
+    "UnitName"                      "hall_of_honor"
+    "AbilityGoldCost"               "220"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_hall_of_the_eldest"
+  {
+    "AbilityTextureName"            "hall_of_the_eldest"
+    "AbilityGoldCost"               "230"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "hall_of_the_eldest"
+      }
+    }
+  }
+
+  "build_bloodelf_war_academy"
+  {
+    "AbilityTextureName"            "bloodelf_war_academy"
+
+    "UnitName"                      "bloodelf_war_academy"
+    "AbilityGoldCost"               "275"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "build_dragonhawk_portal"
+  {
+    "AbilityTextureName"            "dragonhawk_portal"
+
+    "UnitName"                      "dragonhawk_portal"
+    "AbilityGoldCost"               "310"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "build_highelf_siege_factory"
+  {
+    "AbilityTextureName"            "highelf_siege_factory"
+
+    "UnitName"                      "highelf_siege_factory"
+    "AbilityGoldCost"               "350"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "build_school_of_wizardry"
+  {
+    "AbilityTextureName"            "school_of_wizardry"
+
+    "UnitName"                      "school_of_wizardry"
+    "AbilityGoldCost"               "360"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_tower_of_supreme_magic"
+  {
+    "AbilityTextureName"            "tower_of_supreme_magic"
+    "AbilityGoldCost"               "440"
+    "LumberCost"                    "400"
+    "IsLegendary"                   "1"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "tower_of_supreme_magic"
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+"DOTAAbilities"
+{
+  "item_build_frost_launcher"
+  {
+    "AbilityTextureName"            "frost_launcher"
+
+    "UnitName"                      "frost_launcher"
+    "AbilityGoldCost"               "210"
+    "LumberCost"                    "475"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "item_build_chilling_mushroom"
+  {
+    "AbilityTextureName"            "chilling_mushroom"
+
+    "UnitName"                      "chilling_mushroom"
+    "AbilityGoldCost"               "190"
+    "LumberCost"                    "350"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "item_build_icy_tower"
+  {
+    "AbilityTextureName"            "icy_tower"
+
+    "UnitName"                      "icy_tower"
+    "AbilityGoldCost"               "230"
+    "LumberCost"                    "300"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "item_build_world_freezer"
+  {
+    "AbilityTextureName"            "world_freezer"
+
+    "UnitName"                      "world_freezer"
+    "AbilityGoldCost"               "600"
+    "LumberCost"                    "1350"
+    "IsLegendary"                   "1"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+}

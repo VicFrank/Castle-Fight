@@ -11,15 +11,20 @@
       <Panel id="HeroList" hittest="false">
         <Label id="HeroListLabel" text="Choose Your Race" />
         <Panel class="HeroRow">
-		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_kunkka.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Human )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('human')" />
-		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_slark.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Naga )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('naga')" />
-		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_treant.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Nature )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('nature')" />
+    		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_kunkka.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Human )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('human')" />
+    		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_slark.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Naga )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('naga')" />
+    		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_treant.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Nature )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('nature')" />
         </Panel>
         <Panel class="HeroRow">
-		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_vengefulspirit.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Night Elves )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('night_elves')" />
-		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_abaddon.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Undead )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('undead')" />
-		  <!-- Wisp is my stand in for "random" because I couldn't find a picture for it -->
-		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_wisp.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Random )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('random')" />
+    		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_vengefulspirit.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Night Elves )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('night_elves')" />
+    		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_abaddon.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Undead )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('undead')" />
+    		  <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_juggernaut.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Orc )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('orc')" />
+        </Panel>
+        <Panel class="HeroRow">
+          <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_tusk.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( North )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('north')" />
+          <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_invoker.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Elves )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('elves')" />
+          <!-- Wisp is my stand in for "random" because I couldn't find a picture for it -->
+          <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_wisp.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( Random )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('random')" />
         </Panel>
       </Panel>
       <Panel id="HeroDetails" hittest="false">
@@ -29,6 +34,9 @@
           <MoviePanel id="treant_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_treant.webm" repeat="true" autoplay="onload"/>
           <MoviePanel id="vengefulspirit_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_vengefulspirit.webm" repeat="true" autoplay="onload"/>
           <MoviePanel id="abaddon_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_abaddon.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="juggernaut_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_juggernaut.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="tusk_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_tusk.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="invoker_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_invoker.webm" repeat="true" autoplay="onload"/>
           <MoviePanel id="random_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_wisp.webm" repeat="true" autoplay="onload"/>
         </Panel>
         <Panel id="RaceDescription" text="">

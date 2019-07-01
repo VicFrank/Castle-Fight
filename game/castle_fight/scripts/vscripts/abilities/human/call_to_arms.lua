@@ -16,6 +16,10 @@ function modifier_call_to_arms_aura:IsHidden()
   return false
 end
 
+function modifier_call_to_arms_aura:IsAuraActiveOnDeath()
+  return false
+end
+
 function modifier_call_to_arms_aura:IsPurgable()
   return false
 end
@@ -39,7 +43,7 @@ function modifier_call_to_arms_aura:GetAuraSearchTeam()
 end
 
 function modifier_call_to_arms_aura:GetAuraEntityReject(target)
-  return not IsCustomBuilding(target) or not (target:GetBuildingType() == "UnitTrainer" or target:GetBuildingType() == "SiegeTrainer")
+  return not IsCustomBuilding(target) or not (target:GetBuildingType() == "UnitTrainer" or target:GetBuildingType() == "SiegeTrainer") or target:IsLegendary()
 end
 
 function modifier_call_to_arms_aura:GetAuraSearchType()

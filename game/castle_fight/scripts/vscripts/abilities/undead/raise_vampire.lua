@@ -29,7 +29,11 @@ function modifier_raise_lesser_vampire:OnDeath(params)
     local team = self:GetParent():GetTeam()
     local playerID = self:GetParent().playerID
 
-    CreateLaneUnit(unitname, position, team, playerID)
+    local vampire = CreateLaneUnit(unitname, position, team, playerID)
+
+    local particle = ParticleManager:CreateParticle("particles/econ/events/ti6/hero_levelup_ti6.vpcf", PATTACH_ABSORIGIN_FOLLOW, vampire)
+    ParticleManager:SetParticleControl(particle, 0, vampire:GetAbsOrigin())
+    vampire:EmitSound("ui.trophy_levelup")
   end
 end
 
@@ -49,6 +53,10 @@ function modifier_raise_vampire:OnDeath(params)
     local team = self:GetParent():GetTeam()
     local playerID = self:GetParent().playerID
     
-    CreateLaneUnit(unitname, position, team, playerID)
+    local vampire = CreateLaneUnit(unitname, position, team, playerID)
+
+    local particle = ParticleManager:CreateParticle("particles/econ/events/ti6/hero_levelup_ti6.vpcf", PATTACH_ABSORIGIN_FOLLOW, vampire)
+    ParticleManager:SetParticleControl(particle, 0, vampire:GetAbsOrigin())
+    vampire:EmitSound("ui.trophy_levelup")
   end
 end

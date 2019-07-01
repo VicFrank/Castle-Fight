@@ -12,11 +12,25 @@
   "nature"          "Nature"
   "night_elves"     "Night Elves"
   "undead"          "Undead"
+  "orc"             "Orc"
+  "north"           "Northern Alliance"
+  "elves"           "High Elves"
 
   "human_description"           "Humans use many cheap units to overrun the enemy. They can use artillery to demolish the enemy base without having to attack it directly. The race has a basic defense tower."
+
   "naga_description"            "The Nagas have above average powerful units with a high hitpoint regeneration. In addition many expensive special buildings are available to them. But note that this race has no towers."
+
   "nature_description"          "The forces of nature itself are called upon to fight for their masters. Specializing in strong units and powerful spells, the race of nature is a bit more expensive, but generally better than other races."
+
   "night_elves_description"     "Night elves separated from the Union of Elves and fight independently for their goddess Elune. These seemingly fragile creatures know how to dodge enemy strikes and counteract negative spells. The night elves have a tower that burns enemy mana."
+
   "undead_description"          "The undead are gaining warriors in their ranks from among the resurrected dead. They bring death and disease to their enemies. The builder of the undead can construct a tower of spirits to protect your base."
+
+  "orc_description"          "The horde trains hardy and strong warriors, and well as supports them with the help of magic shamans. Their axe masters are feared by all on the battlefield. Orcs can build an anti-air defense tower."
+
+  "north_description"          "The northern inhabitants act as a united front against anyone who wants to invade their ice plains and mountains. The north uses many spells that slow and freeze their enemies. Northerners defend their buildings with a tower that deals freezing splash damage."
+
+  "elves_description"          "The High Elves have gathered to defend their kingdoms. High Elves use strong magic to weaken enemies and help allies. In addition, they have strong siege weapons and a defensive tower, which hits several enemies simultaneously."
+
   "random_description"          "Choose a random race."
 }

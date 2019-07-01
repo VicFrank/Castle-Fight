@@ -65,6 +65,9 @@ function GameMode:RandomHero(playerID)
     "npc_dota_hero_treant",
     "npc_dota_hero_vengefulspirit",
     "npc_dota_hero_abaddon",
+    "npc_dota_hero_juggernaut",
+    "npc_dota_hero_tusk",
+    "npc_dota_hero_invoker",
   }
 
   -- Randomly select a hero from the pool
@@ -145,10 +148,7 @@ function GameMode:KillAllUnitsAndBuildings()
   -- Kill everything multiple times, to make sure we get revivers
   Timers:CreateTimer(function()
     if numSweeps <= 0 then return end
-
-    local allUnits = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
-
-    for _,unit in pairs(allUnits) do
+    for _,unit in pairs(FindAllUnits()) do
       if not unit:IsHero() then
         unit:ForceKill(false)
       end
@@ -158,6 +158,17 @@ function GameMode:KillAllUnitsAndBuildings()
 
     return 1/30
   end)
+end
+
+function GameMode:PlayEndRoundAnimations(winningTeam)
+  for _,unit in pairs(FindAllUnits()) do
+    if unit:GetTeam() == winningTeam then
+      unit:StartGesture(ACT_DOTA_VICTORY)
+    else
+      unit:StartGesture(ACT_DOTA_DEFEAT)
+    end
+    unit:AddNewModifier(unit, nil, "modifier_end_round", {})
+  end
 end
 
 --------------------------------------------------------
@@ -180,6 +191,8 @@ function GameMode:StartRound()
 
     Notifications:TopToAll({text="Round " .. GameRules.roundCount .. " started!", duration=3.0})
 
+    EmitGlobalSound("GameStart.RadiantAncient")
+
     CustomGameEventManager:Send_ServerToAllClients("round_started", 
       {round = GameRules.roundCount})
 
@@ -195,13 +208,19 @@ function GameMode:EndRound(losingTeam)
 
   -- Record the winner
   local winningTeam  
+  local losingCastlePosition
   if losingTeam == DOTA_TEAM_BADGUYS then
     winningTeam = DOTA_TEAM_GOODGUYS
     GameRules.leftRoundsWon = GameRules.leftRoundsWon + 1
+    losingCastlePosition = GameRules.rightCastlePosition
   else
     winningTeam = DOTA_TEAM_BADGUYS
     GameRules.rightRoundsWon = GameRules.rightRoundsWon + 1
+    losingCastlePosition = GameRules.leftCastlePosition
   end
+
+  AddFOWViewer(DOTA_TEAM_BADGUYS, losingCastlePosition, 1800, POST_ROUND_TIME, false)
+  AddFOWViewer(DOTA_TEAM_GOODGUYS, losingCastlePosition, 1800, POST_ROUND_TIME, false)
 
   CustomNetTables:SetTableValue("round_score", "score", {
     left_score = GameRules.leftRoundsWon,
@@ -225,6 +244,8 @@ function GameMode:EndRound(losingTeam)
 
     roundNumber = GameRules.roundCount,
     roundDuration = roundDuration,
+
+    losingCastlePosition = losingCastlePosition,
   })
 
   GameRules.roundCount = GameRules.roundCount + 1
@@ -232,18 +253,32 @@ function GameMode:EndRound(losingTeam)
   -- Stop the income timer until the next round
   GameMode:StopIncomeTimer()
 
-  -- Clear the map
-  GameMode:KillAllUnitsAndBuildings()
+  -- Celebrate the end of the round
+  GameMode:PlayEndRoundAnimations(winningTeam)
 
-  if GameRules.leftRoundsWon >= POINTS_TO_WIN or GameRules.rightRoundsWon >= POINTS_TO_WIN then
-    GameMode:EndGame(winningTeam)
-  else
-    -- Go into the next round preparation phase
-    GameMode:StartHeroSelection()
-  end
+  -- Wait to start the next round
+  Timers:RemoveTimer(GameRules.PostRoundTimer)
+
+  GameRules.PostRoundTimer = Timers:CreateTimer(POST_ROUND_TIME, function()
+    -- Clear the map
+    GameMode:KillAllUnitsAndBuildings()
+
+    if GameRules.leftRoundsWon >= POINTS_TO_WIN or GameRules.rightRoundsWon >= POINTS_TO_WIN then
+      GameMode:EndGame(winningTeam)
+    else
+      -- Go into the next round preparation phase
+      GameMode:StartHeroSelection()
+    end
+  end)
+
 end
 
 function GameMode:EndGame(team)
-  -- TODO: Post Game Stats
+  if team == DOTA_TEAM_GOODGUYS then
+    Notifications:TopToAll({text="Western Forces Victory!", duration=30})
+  else
+    Notifications:TopToAll({text="Eastern Forces Victory!", duration=30})
+  end
+
   GameRules:SetGameWinner(team)
 end

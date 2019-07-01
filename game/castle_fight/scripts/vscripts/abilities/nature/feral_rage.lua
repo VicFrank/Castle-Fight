@@ -30,7 +30,7 @@ function modifier_bear_feral_rage:OnAttackLanded(keys)
 
   if attacker == self.caster and not IsCustomBuilding(target) then
     if self.chance >= RandomInt(1, 100) then
-      attacker:AddNewModifier(attacker, self.ability, "modifier_feral_rage_buff", {duration = self.duration})
+      attacker:AddNewModifier(attacker, self.ability, "modifier_bear_feral_rage_buff", {duration = self.duration})
     end
   end
 end

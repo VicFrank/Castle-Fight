@@ -57,7 +57,7 @@ function modifier_assassin_backstab:GetModifierInvisibilityLevel()
 end
 
 function modifier_assassin_backstab:GetModifierMoveSpeedBonus_Percentage()
-  return 50
+  return 30
 end
 
 function modifier_assassin_backstab:OnAttackLanded(keys)
@@ -69,16 +69,22 @@ function modifier_assassin_backstab:OnAttackLanded(keys)
     -- Only apply on the caster attacking
     if self.caster == attacker then
 
-      -- Deal bonus damage
-      local damageTable = {
-        victim = target,
-        damage = self.damage,
-        damage_type = DAMAGE_TYPE_PHYSICAL,
-        attacker = self.caster,
-        ability = self.ability
-      }
+      if not IsCustomBuilding(target) then
+        self.caster:EmitSound("Hero_BountyHunter.Jinada")
 
-      ApplyDamage(damageTable)
+        -- Deal bonus damage
+        local damageTable = {
+          victim = target,
+          damage = self.damage,
+          damage_type = DAMAGE_TYPE_PHYSICAL,
+          attacker = self.caster,
+          ability = self.ability
+        }
+
+        ApplyDamage(damageTable)
+
+        SendOverheadEventMessage(nil, OVERHEAD_ALERT_CRITICAL, target, self.damage, nil)
+      end
 
       -- Remove invisibility
       self:Destroy()

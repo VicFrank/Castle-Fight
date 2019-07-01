@@ -1,0 +1,644 @@
+"DOTAUnits"
+{
+  "grunt" 
+  {
+    "Model"            "models/heroes/axe/axe.vmdl"
+    "SoundSet"         "Hero_Axe"
+    "BaseClass"        "npc_dota_creature"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+    "Level"            "1"
+    "ModelScale"       "0.55"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "ArmorPhysical"           "4"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"         "25"
+    "AttackDamageMax"         "30"
+    "AttackRate"              "1.5"
+    "AttackAnimationPoint"    "0.5"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "128"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "270"
+    "StatusHealth"           "325"
+    "StatusHealthRegen"      "0.5"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "4"
+    "BountyGoldMax"          "4"
+
+    "AttackType"             "normal"
+    "ArmorType"              "heavy"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1"   { "ItemDef"  "2" }
+        "Wearable2"   { "ItemDef"  "3" }
+        "Wearable3"   { "ItemDef"  "4" }
+        "Wearable4"   { "ItemDef"  "5" }
+      }
+    }
+  }
+
+  // black orc warboss
+  "veteran_grunt" 
+  {
+    "Model"            "models/heroes/axe/axe.vmdl"
+    "SoundSet"         "Hero_Axe"
+    "BaseClass"        "npc_dota_creature"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+    "Level"            "2"
+    "ModelScale"       "0.6"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "grunt_critical_strike"
+
+    "ArmorPhysical"           "6"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"         "35"
+    "AttackDamageMax"         "45"
+    "AttackRate"              "1.3"
+    "AttackAnimationPoint"    "0.5"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "128"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "280"
+    "StatusHealth"           "575"
+    "StatusHealthRegen"      "1.0"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "7"
+    "BountyGoldMax"          "7"
+
+    "AttackType"             "normal"
+    "ArmorType"              "heavy"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1"   { "ItemDef"  "8382" }
+        "Wearable2"   { "ItemDef"  "8384" }
+        "Wearable3"   { "ItemDef"  "8386" }
+        "Wearable4"   { "ItemDef"  "8388" }
+        "Wearable5"   { "ItemDef"  "8389" }
+        "Wearable6"   { "ItemDef"  "8469" }
+        "Wearable7"   { "ItemDef"  "8470" }
+        "Wearable8"   { "ItemDef"  "8471" }
+        "Wearable9"   { "ItemDef"  "8472" }
+        "Wearable10"   { "ItemDef"  "8473" }
+      }
+    }
+  }
+
+  // shattered vanguard
+  "axemaster" 
+  {
+    "Model"            "models/heroes/axe/axe.vmdl"
+    "SoundSet"         "Hero_Axe"
+    "BaseClass"        "npc_dota_creature"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+    "Level"            "3"
+    "ModelScale"       "0.65"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "grunt_critical_strike"
+    "Ability2"                "grunt_pulverize"
+
+    "ArmorPhysical"           "10"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"         "60"
+    "AttackDamageMax"         "70"
+    "AttackRate"              "1.0"
+    "AttackAnimationPoint"    "0.5"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "128"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "320"
+    "StatusHealth"           "900"
+    "StatusHealthRegen"      "2.25"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "14"
+    "BountyGoldMax"          "14"
+
+    "AttackType"             "normal"
+    "ArmorType"              "heavy"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1"   { "ItemDef"  "9040" }
+        "Wearable2"   { "ItemDef"  "8910" }
+        "Wearable3"   { "ItemDef"  "8909" }
+        "Wearable4"   { "ItemDef"  "8908" }
+        "Wearable5"   { "ItemDef"  "8907" }
+      }
+    }
+  }
+
+  // scarlet raven
+  "shaman" 
+  {
+    "Model"            "models/heroes/blood_seeker/blood_seeker.vmdl"
+    "SoundSet"         "Hero_Bloodseeker"
+    "BaseClass"        "npc_dota_creature"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
+    "Level"            "1"
+    "ModelScale"       "0.6"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "shaman_buff"
+
+    "ArmorPhysical"           "1"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "40"
+    "AttackDamageMax"         "60"
+    "AttackRate"              "1.9"
+    "AttackAnimationPoint"    "0.43"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "350"
+    "ProjectileModel"           "particles/units/heroes/hero_disruptor/disruptor_base_attack.vpcf"
+    "ProjectileSpeed"           "1200"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "270"
+    "StatusHealth"           "340"
+    "StatusHealthRegen"      "0.25"
+    "StatusMana"             "200"
+    "StatusManaRegen"        "0.8"     
+    "StatusStartingMana"     "120"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "6"
+    "BountyGoldMax"          "6"
+
+    "AttackType"             "magic"
+    "ArmorType"              "unarmored"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1" { "ItemDef"  "5512"  }
+        "Wearable2" { "ItemDef"  "5511"  }
+        "Wearable3" { "ItemDef"  "5510"  }
+        "Wearable4" { "ItemDef"  "5509"  }
+        "Wearable5" { "ItemDef"  "5508"  }
+        "Wearable6" { "ItemDef"  "5506"  }
+        "Wearable7" { "ItemDef"  "5505" }
+      }
+    }
+  }
+
+  "troll" 
+  {
+    "Model"            "models/heroes/troll_warlord/troll_warlord.vmdl"
+    "SoundSet"         "Hero_TrollWarlord"
+    "BaseClass"        "npc_dota_creature"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+    "Level"            "1"
+    "ModelScale"       "0.6"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "troll_berserk"
+
+    "ArmorPhysical"           "3"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "40"
+    "AttackDamageMax"         "50"
+    "AttackRate"              "1.5"
+    "AttackAnimationPoint"    "0.3"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "300"
+    "ProjectileModel"         "particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+    "ProjectileSpeed"         "1200"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "270"
+    "StatusHealth"           "450"
+    "StatusHealthRegen"      "0.5"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0"
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "7"
+    "BountyGoldMax"          "7"
+
+    "AttackType"             "normal"
+    "ArmorType"              "medium"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1"   { "ItemDef"  "373"  }
+        "Wearable2"   { "ItemDef"  "374"  }
+        "Wearable3"   { "ItemDef"  "379"  }
+        "Wearable4"   { "ItemDef"  "380"  }
+        "Wearable5"   { "ItemDef"  "410"  }
+        "Wearable6"   { "ItemDef"  "411"  }
+        "Wearable7"   { "ItemDef"  "412"  }
+      }
+    }
+  }
+
+  // imperious command
+  "troll_trapper" 
+  {
+    "Model"            "models/heroes/troll_warlord/troll_warlord.vmdl"
+    "SoundSet"         "Hero_TrollWarlord"
+    "BaseClass"        "npc_dota_creature"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+    "Level"            "5"
+    "ModelScale"       "0.85"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "troll_berserk"
+    "Ability2"                "troll_ensnare"
+
+    "ArmorPhysical"           "4"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "50"
+    "AttackDamageMax"         "65"
+    "AttackRate"              "1.5"
+    "AttackAnimationPoint"    "0.3"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "325"
+    "ProjectileModel"         "particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+    "ProjectileSpeed"         "1200"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "320"
+    "StatusHealth"           "600"
+    "StatusHealthRegen"      "0.5"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0"
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "9"
+    "BountyGoldMax"          "9"
+
+    "AttackType"             "normal"
+    "ArmorType"              "medium"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1"   { "ItemDef"  "7867"  }
+        "Wearable2"   { "ItemDef"  "7873"  }
+        "Wearable3"   { "ItemDef"  "7875"  }
+        "Wearable4"   { "ItemDef"  "9677"  }
+      }
+    }
+  }
+
+  "wyvern_rider" 
+  {
+    "Model"            "models/creeps/neutral_creeps/n_creep_harpy_a/n_creep_harpy_a.vmdl"
+    "SoundSet"         "Creep_Bad_Range"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ModelScale"       "0.6"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "wyvern_minor_poison_attack"
+
+    "ArmorPhysical"           "2"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "30"
+    "AttackDamageMax"         "30"
+    "AttackRate"              "1.0"
+    "AttackAnimationPoint"    "0.6"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "400"
+    "ProjectileModel"         "particles/econ/items/necrolyte/necronub_base_attack/necrolyte_base_attack_ka.vpcf"
+    "ProjectileSpeed"         "1200"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_FLY"
+    "MovementSpeed"          "330"
+    "StatusHealth"           "600"
+    "StatusHealthRegen"      "0.5"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "7"
+    "BountyGoldMax"          "7"
+
+    "AttackType"             "pierce"
+    "ArmorType"              "unarmored"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+
+  "kodo" 
+  {
+    "Model"            "models/courier/smeevil_mammoth/smeevil_mammoth.vmdl"
+    "SoundSet"         "Creep_Bad_Melee"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ModelScale"       "1.6"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "ArmorPhysical"           "6"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"         "30"
+    "AttackDamageMax"         "30"
+    "AttackRate"              "1.44"
+    "AttackAnimationPoint"    "0.5"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "128"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "250"
+    "StatusHealth"           "1100"
+    "StatusHealthRegen"      "1"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "8"
+    "BountyGoldMax"          "8"
+
+    "AttackType"             "pierce"
+    "ArmorType"              "light"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+
+  "offensive_kodo" 
+  {
+    "Model"            "models/courier/smeevil_mammoth/smeevil_mammoth.vmdl"
+    "SoundSet"         "Creep_Bad_Melee"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ModelScale"       "2.0"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "kodo_melee_damage_aura"
+    
+    "ArmorPhysical"           "7"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "30"
+    "AttackDamageMax"         "50"
+    "AttackRate"              "1.20"
+    "AttackAnimationPoint"    "0.85"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "200"
+    "ProjectileModel"         "particles/neutral_fx/thunderlizard_base_attack.vpcf"
+    "ProjectileSpeed"         "1200"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "250"
+    "StatusHealth"           "1200"
+    "StatusHealthRegen"      "1"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "13"
+    "BountyGoldMax"          "13"
+
+    "AttackType"             "pierce"
+    "ArmorType"              "light"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+
+  "defensive_kodo" 
+  {
+    "Model"            "models/courier/smeevil_mammoth/smeevil_mammoth.vmdl"
+    "SoundSet"         "Creep_Bad_Melee"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ModelScale"       "2.0"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "kodo_armor_aura"
+
+    "ArmorPhysical"           "7"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "30"
+    "AttackDamageMax"         "50"
+    "AttackRate"              "1.2"
+    "AttackAnimationPoint"    "0.85"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "200"
+    "ProjectileModel"         "particles/neutral_fx/thunderlizard_base_attack.vpcf"
+    "ProjectileSpeed"         "1200"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "250"
+    "StatusHealth"           "1200"
+    "StatusHealthRegen"      "1.0"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0"
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "13"
+    "BountyGoldMax"          "13"
+
+    "AttackType"             "pierce"
+    "ArmorType"              "light"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+
+  "spellbreaker_kodo" 
+  {
+    "Model"            "models/courier/smeevil_mammoth/smeevil_mammoth.vmdl"
+    "SoundSet"         "Creep_Bad_Melee"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ModelScale"       "2.0"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "kodo_spell_resistance"
+
+    "ArmorPhysical"           "7"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "30"
+    "AttackDamageMax"         "50"
+    "AttackRate"              "1.35"
+    "AttackAnimationPoint"    "0.85"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "200"
+    "ProjectileModel"         "particles/neutral_fx/thunderlizard_base_attack.vpcf"
+    "ProjectileSpeed"         "1200"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "250"
+    "StatusHealth"           "1200"
+    "StatusHealthRegen"      "3.0"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "12"
+    "BountyGoldMax"          "12"
+
+    "AttackType"             "pierce"
+    "ArmorType"              "light"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+
+  "catapult" 
+  {
+    "Model"            "models/creeps/lane_creeps/creep_bad_siege/creep_bad_siege.vmdl"
+    "SoundSet"         "Creep_Bad_Engine"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "140"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "25"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "catapult_burning_ammo"
+    "Ability2"                "splash_attack"
+
+    "AttacksDisallowed"      "flying"
+
+    "ArmorPhysical"           "5"
+
+    "SplashAttack"              "1"
+    "SplashFullRadius"          "25"
+    "SplashMediumRadius"        "50"
+    "SplashMediumDamage"        "0.4"
+    "SplashSmallRadius"         "150"
+    "SplashSmallDamage"         "0.25"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "120"
+    "AttackDamageMax"         "150"
+    "AttackRate"              "5.0"
+    "AttackAnimationPoint"    "0.94"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "1000"
+    "ProjectileModel"         "particles/base_attacks/ranged_siege_bad.vpcf"
+    "ProjectileSpeed"         "900"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "220"
+    "StatusHealth"           "475"
+    "StatusHealthRegen"      "0.5"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "12"
+    "BountyGoldMax"          "12"
+
+    "AttackType"             "siege"
+    "ArmorType"              "medium"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+}

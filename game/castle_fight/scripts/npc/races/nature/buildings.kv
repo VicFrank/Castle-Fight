@@ -6,13 +6,13 @@
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
-    "ModelScale"       "1.0"
+    "ModelScale"       "1.5"
     "RingRadius"       "100"
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
 
-    "BuildTime"        "5"
+    "BuildTime"        "3"
     "BuildingType"     "UnitTrainer"
 
     "Ability1"                "train_black_spiders"
@@ -126,7 +126,7 @@
     "CollisionSize"    "40"
     "ModelRotation"    "90"
 
-    "BuildTime"        "5"
+    "BuildTime"        "3"
     "BuildingType"     "UnitTrainer"
 
     "Ability1"                "train_furbolg_shaman"
@@ -351,7 +351,7 @@
     "BaseClass"        "npc_dota_creature"
     "Level"            "2"
     "ConsideredHero"   "1"
-    "ModelScale"       "0.4"
+    "ModelScale"       "1.0"
     "RingRadius"       "100"
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -485,7 +485,8 @@
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
     "StatusHealth"           "1200"
-    "StatusMana"             "18"
+    "StatusMana"             "14"
+    "StatusStartingMana"     "0"
     "StatusManaRegen"        "1.0"
 
     "VisionDaytimeRange"     "900"
@@ -502,6 +503,7 @@
   "ancient_protector" 
   {
     "Model"            "models/props_structures/rock_golem/tower_radiant_rock_golem.vmdl"
+    "SoundSet"         "Tower.Water"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
@@ -512,22 +514,30 @@
     "CollisionSize"    "40"
     "ModelRotation"    "90"
 
-    "BuildTime"        "5"
+    "BuildTime"        "30"
     "BuildingType"     "Tower"
 
     "Ability1"                "ancient_protector_bash"
     "Ability2"                "splash_attack"
+    "Ability3"                "ancient_protector_animations"
 
-    "ArmorPhysical"             "5"
+    "SplashAttack"              "1"
+    "SplashFullRadius"          "25"
+    "SplashMediumRadius"        "50"
+    "SplashMediumDamage"        "0.4"
+    "SplashSmallRadius"         "150"
+    "SplashSmallDamage"         "0.25"
+
+    "ArmorPhysical"             "8"
     "MagicalResistance"         "0.75"
 
     "AttackType"              "siege"
     "ArmorType"               "fortified"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "70"
-    "AttackDamageMax"         "70"
-    "AttackRate"              "1.0"
+    "AttackDamageMin"         "100"
+    "AttackDamageMax"         "110"
+    "AttackRate"              "1.5"
     "AttackAnimationPoint"    "0.6"
     "AttackAcquisitionRange"  "700"
     "AttackRange"             "700"
@@ -535,9 +545,7 @@
     "ProjectileSpeed"         "750"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
-    "StatusHealth"           "1200"
-    "StatusMana"             "18"
-    "StatusManaRegen"        "1.0"
+    "StatusHealth"           "1600"
 
     "VisionDaytimeRange"     "900"
     "VisionNighttimeRange"   "600"
@@ -576,8 +584,9 @@
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
     "StatusHealth"           "1200"
-    "StatusMana"             "18"
+    "StatusMana"             "15"
     "StatusManaRegen"        "1.0"
+    "StatusStartingMana"     "0"
 
     "VisionDaytimeRange"     "900"
     "VisionNighttimeRange"   "600"
@@ -616,8 +625,6 @@
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
     "StatusHealth"           "1200"
-    "StatusMana"             "18"
-    "StatusManaRegen"        "1.0"
 
     "VisionDaytimeRange"     "900"
     "VisionNighttimeRange"   "600"

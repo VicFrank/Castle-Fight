@@ -12,6 +12,14 @@ lobster_critical_strike = class({})
 function lobster_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
 bear_critical_strike = class({})
 function bear_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+grunt_critical_strike = class({})
+function grunt_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+tribal_blessing_critical_strike = class({})
+function tribal_blessing_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+wolf_critical_strike = class({})
+function wolf_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+blademaster_critical_strike = class({})
+function blademaster_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
 
 modifier_critical_strike_custom = class({})
 

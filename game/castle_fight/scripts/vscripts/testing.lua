@@ -110,7 +110,7 @@ function GameMode:GreedIsGood(playerID, value)
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     if hero:IsAlive() then
       hero:GiveLumber(value)
-      hero:ModifyGold(value, false, 0)
+      hero:ModifyGold(value, false, DOTA_ModifyGold_CheatCommand)
     end
   end
 end
@@ -171,7 +171,7 @@ function GameMode:OnPlayerChat(keys)
   if not playerID then return end
 
   -- Cheats are only available in the tools
-  if not IsInToolsMode() then return end
+  if not GameRules:IsCheatMode() then return end
 
   -- Handle '-command'
   if StringStartsWith(text, "-") then

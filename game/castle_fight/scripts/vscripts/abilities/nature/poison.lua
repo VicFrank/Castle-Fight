@@ -27,7 +27,7 @@ function modifier_spider_poison:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
-  if attacker == self.caster then
+  if attacker == self.caster and not IsCustomBuilding(target) then
     local debuffName = "modifier_spider_poison_debuff"
     target:AddNewModifier(self.caster, self.ability, debuffName, {duration = self.duration})
   end
@@ -51,17 +51,20 @@ function modifier_spider_poison_debuff:DeclareFunctions()
   return decFuns
 end
 
-function modifier_spider_poison_debuff:OnCreated()
+function modifier_spider_poison_debuff:OnCreated()  
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
+
+  self.move_speed_slow = self.ability:GetSpecialValueFor("slow")
+  self.dps = self.ability:GetSpecialValueFor("dps")
+
+  if not IsServer() then return end
 
   local playerID = self.caster.playerID or self.caster:GetPlayerOwnerID()
   if playerID < 0 then playerID = 0 end
   self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
 
-  self.move_speed_slow = self.ability:GetSpecialValueFor("slow")
-  self.dps = self.ability:GetSpecialValueFor("dps")
 
   self:StartIntervalThink(1)
   self:DamageTick()

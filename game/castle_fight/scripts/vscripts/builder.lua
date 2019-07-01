@@ -13,9 +13,7 @@ function Build( event )
     -- If the ability has an AbilityGoldCost, it's impossible to not have enough gold the first time it's cast
     -- Always refund the gold here, as the building hasn't been placed yet
 
-    -- Somehow, the gold isn't being consumed, or you're gaining it somewhere else,
-    -- so I've commented this out (VicFrank)
-    -- hero:ModifyGold(gold_cost, false, 0)
+    hero:ModifyGold(gold_cost, false, 0)
 
     -- Makes a building dummy and starts panorama ghosting
     BuildingHelper:AddBuilding(event)
@@ -130,6 +128,11 @@ function Build( event )
 
         -- Silence the building while it is being constructed
         unit:AddNewModifier(caster, nil, "modifier_under_construction", {duration=-1})
+
+        -- Mark the building as legendary if it is
+        if cheese_cost == 1 then
+            unit.isLegendary = true
+        end
 
         -- Remove invulnerability on npc_dota_building baseclass
         unit:RemoveModifierByName("modifier_invulnerable")

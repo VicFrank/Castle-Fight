@@ -1,0 +1,568 @@
+"DOTAAbilities"
+{
+  "grunt_critical_strike"
+  {
+    "AbilityTextureName"          "phantom_assassin_coup_de_grace"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "3"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "0 25 30"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "0 200 300"
+      }
+    }
+  }
+
+  // 35%, 130 dmg
+  "grunt_pulverize"
+  {
+    "AbilityTextureName"          "earthshaker_enchant_totem"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/pulverize"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+       "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "chance"        "35"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "close_range"   "175"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "close_damage"  "130"
+      }
+      "04"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "far_range"     "175"
+      }
+      "05"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "far_damage"    "130"
+      }
+    }
+  }
+
+  // (+4 armor, +33% dmg, +3hp/sec)
+  "shaman_buff"
+  {
+    "AbilityTextureName"          "shadow_shaman_shackles"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/shaman_buff"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "10.0"
+    "AbilityManaCost"             "35"
+
+    "AbilityCastRange"          "700"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "armor"                   "4"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "damage_increase"         "33"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "health_per_second"       "3"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "60"
+      }
+    }
+  }
+
+  // Whenever this unit kills an enemy, it goes into a rampage, gaining 200% attack
+  // speed, 25% move speed, but also takes 10% more damage. Rampage lasts 6 seconds.
+  "troll_berserk"
+  {
+    "AbilityTextureName"          "troll_warlord_berserkers_rage"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/berserk"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "attack_speed"            "200"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "move_speed"              "25"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "damage_increase"         "10"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "6"
+      }
+    }
+  }
+
+  // Ensnares an enemy air unit for 16 seconds CD 8
+  "troll_ensnare"
+  {
+    "AbilityTextureName"          "naga_siren_ensnare"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/ensnare"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "8.0"
+    "AbilityManaCost"             "0"
+
+    "AbilityCastRange"          "600"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_siren/siren_net_projectile.vpcf"
+      "particle"  "particles/units/heroes/hero_siren/siren_net.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "16"
+      }
+    }
+  }
+
+  "wyvern_minor_poison_attack"
+  {
+    "AbilityTextureName"          "beastmaster_boar_poison"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/minor_poison_attack"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "attack_slow"             "20"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "move_slow"               "20"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "dps"                     "4"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "3"
+      }
+    }
+  }
+
+  // increases the damage of all allied melee units in 900 range by 30%
+  "kodo_melee_damage_aura"
+  {
+    "AbilityTextureName"          "alpha_wolf_command_aura"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/kodo_auras"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "damage"                  "30"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "900"
+      }
+    }
+  }
+
+  // look up aoe
+  "kodo_armor_aura"
+  {
+    "AbilityTextureName"          "enraged_wildkin_toughness_aura"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/kodo_auras"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "armor"                   "4"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "900"
+      }
+    }
+  }
+
+  "kodo_spell_resistance"
+  {
+    "AbilityTextureName"          "antimage_counterspell"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/spell_resistance"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "magic_resistance"        "80"
+      }
+    }
+  }
+
+  // only damages ground
+  "catapult_burning_ammo"
+  {
+    "AbilityTextureName"          "huskar_burning_spear"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/burning_ammo"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "precache"
+    {
+      "particle"  "particles/neutral_fx/black_dragon_fireball.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "dps"                     "48"
+      }
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "2.5"
+      }
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "225"
+      }
+    }
+  }
+
+  "tower_poisoned_arrows"
+  {
+    "AbilityTextureName"          "beastmaster_boar_poison"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/tower_poisoned_arrows"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "attack_slow"             "25"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "move_slow"               "25"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "dps"                     "5"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "4"
+      }
+    }
+  }
+
+  // Stuns all enemy units for 4.5 seconds
+  "global_stasis"
+  {
+    "AbilityTextureName"          "techies_stasis_trap"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/global_stasis"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "12.0"
+    "AbilityManaCost"             "0"
+
+    "precache"
+    {
+      "particle"  "particles/status_fx/status_effect_techies_stasis.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "duration"      "4.5"
+      }
+    }
+  }
+
+  //Gives a random ally permanent +20 damage, +20 attack speed, 3 armor and
+  // 200 hit points. Also gives one of the following
+  //  - Demolish (x1.5)
+  //  - Critical Strike (25%, x2)
+  //  - Evasion (30%)
+  "tribal_blessing"
+  {
+    "AbilityTextureName"          "dazzle_bad_juju"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/tribal_blessing"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "12.0"
+    "AbilityManaCost"             "12"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"             "FIELD_INTEGER"
+        "damage_increase"      "20"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "attack_speed"  "20"
+      }
+      "04"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "armor"         "3"
+      }
+      "05"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "health"        "200"
+      }
+    }
+  }
+
+  "tribal_blessing_critical_strike"
+  {
+    "AbilityTextureName"          "phantom_assassin_coup_de_grace"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "25"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "200"
+      }
+    }
+  }
+
+  "tribal_blessing_evasion"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "30"
+      }      
+    }
+  }
+
+  "tribal_blessing_demolish"
+  {
+    "AbilityTextureName"          "lone_druid_spirit_bear_demolish"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/demolish"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage_pct"    "150"
+      }
+    }
+  }
+
+  // Spits poison onto an area near a random enemy unit. All units that get hit by
+  // the poison get their armor reduced by 5, their attack and move speed reduced
+  // by 20%, and take damage over time. The poison lasts 5 seconds and deals 30 dps.
+  "poison_area"
+  {
+    "AbilityTextureName"          "alchemist_acid_spray"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/orc/poison_area"
+    "MaxLevel"                    "1"
+
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "12.0"
+    "AbilityManaCost"             "12"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "armor_reduction"  "5"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "attack_slow"   "20"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "move_slow"     "20"
+      }
+      "04"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "duration"      "5"
+      }
+      "05"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "dps"           "30"
+      }
+      "06"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"        "250"
+      }      
+    }
+  }
+}

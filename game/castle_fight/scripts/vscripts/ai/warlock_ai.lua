@@ -42,7 +42,6 @@ function Spawn(keys)
       canHitFlying = canHitFlying,
       canHitGround = canHitGround,
       spawnLocation = thisEntity:GetAbsOrigin(),
-      retreating = true,
     }
 
     -- Get all of the unit's abilities
@@ -71,7 +70,7 @@ function thisEntity:AIThink()
   end
 
   if FindAggro(self) then
-    if self:UseAbility() then return .1 end
+    if self:UseAbility() then return .2 end
     AttackTarget(self)
     return .3
   end
@@ -83,7 +82,7 @@ end
 function thisEntity:UseAbility()
   local ability = self:FindAbilityByName("chamber_of_darkness")
 
-  if GetDistanceBetweenTwoUnits(self, self.aiState.aggroTarget) < 200 then
+  if GetDistanceBetweenTwoUnits(self, self.aiState.aggroTarget) < 230 then
     self:CastAbilityNoTarget(ability, -1)
     return true
   end

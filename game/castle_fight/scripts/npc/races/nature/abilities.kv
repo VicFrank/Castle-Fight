@@ -12,7 +12,7 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 
     "AbilityCooldown"             "35.0"
-    "AbilityManaCost"             "35"
+    "AbilityManaCost"             "0"
 
     "AbilitySpecial"
     {
@@ -40,6 +40,9 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+
+    "AbilityCooldown"        "14.0"
+    "AbilityManaCost"        "14"
 
     "precache"
     {
@@ -106,10 +109,22 @@
     }
   }
 
-  // Moves the enemy unit in the astral Units located in the astral plane
-  // can not attack, but they can cast spells Spells aimed at units during
-  // their prebyvaeniya in the astral plane to inflict additional damage
-  // TODO: look up duration
+  "ancient_protector_animations"
+  {
+    "AbilityTextureName"          "slardar_bash"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/ancient_protector_animations"
+    "MaxLevel"                    "1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+    }
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  }
+
+  // Makes the target Ethereal
   "ancient_guardian_banish"
   {
     "AbilityTextureName"          "obsidian_destroyer_astral_imprisonment"
@@ -121,12 +136,19 @@
     "AbilityCooldown"             "12.0"
     "AbilityManaCost"             "12"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+      "particle"  "particles/status_fx/status_effect_ghost.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"      "FIELD_INTEGER"
-        "duration"      "15"
+        "duration"      "30"
       }
     }
   }
@@ -261,7 +283,7 @@
         "var_type"      "FIELD_INTEGER"
         "dps"           "20"
       }
-      "02"
+      "03"
       {
         "var_type"      "FIELD_INTEGER"
         "duration"      "10"
@@ -403,7 +425,6 @@
 
     "AbilityCastRange"        "700"
     "AbilityCastPoint"        "0.3"
-    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_1"
 
     "AbilitySpecial"
     {
@@ -555,6 +576,8 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityCastRange"            "350"
     "AbilityCastPoint"            "0.3"
 
@@ -589,24 +612,19 @@
     "ScriptFile"                  "abilities/nature/grab_tree"
     "MaxLevel"                    "1"
 
-    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
-    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_CUSTOM"
+    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
-    "AbilityCooldown"        "60"
+    "AbilityCooldown"        "45"
     "AbilityManaCost"        "0"
 
     "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_3"
-    "AbilityCastRange"        "165"
     "AbilityCastPoint"        "0.2"
 
     "precache"
     {
-      "particle"  "particle_name"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
       "model"     "models/heroes/tiny_01/tiny_01_tree.vmdl"
     }
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     "AbilitySpecial"
     {
@@ -619,6 +637,11 @@
       {
         "var_type"          "FIELD_INTEGER"
         "attack_range"      "350"
+      }
+      "03"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "num_attacks"       "10"
       }
     }
   }
@@ -659,6 +682,12 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
+    "precache"
+    {
+      "particle"  "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+    }
+
     "AbilitySpecial"
     {
        "01"
@@ -687,6 +716,24 @@
         "far_damage"    "200"
       }
     }
+  }
+
+  "mountain_giant_cosmetics"
+  {
+    "AbilityTextureName"          "tiny_grow"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/nature/mountain_giant_cosmetics"
+    "MaxLevel"                    "1"
+
+    "precache"
+    {
+      "model"  "models/heroes/tiny_04/tiny_04_head.vmdl"
+      "model"  "models/heroes/tiny_04/tiny_04_right_arm.vmdl"
+      "model"  "models/heroes/tiny_04/tiny_04_left_arm.vmdl"
+      "model"  "models/heroes/tiny_04/tiny_04_body.vmdl"
+    }
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
   }
 
   // chance on hit to gain damage and attack speed for 10 seconds
@@ -740,9 +787,13 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
+    "AbilityCooldown"        "45"
+    "AbilityManaCost"        "0"
+
     "precache"
     {
       "particle"  "particles/generic_gameplay/generic_sleep.vpcf"
+      "particle"  "particles/status_fx/status_effect_nightmare.vpcf"
     }
 
     "AbilitySpecial"

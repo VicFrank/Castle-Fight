@@ -18,6 +18,10 @@ function modifier_restore_area_aura:IsAura()
   return true
 end
 
+function modifier_restore_area_aura:IsAuraActiveOnDeath()
+  return false
+end
+
 function modifier_restore_area_aura:IsPurgable()
   return false
 end

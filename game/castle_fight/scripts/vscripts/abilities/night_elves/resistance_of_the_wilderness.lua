@@ -25,6 +25,8 @@ end
 modifier_resistance_of_the_wilderness = class({})
 
 function modifier_resistance_of_the_wilderness:OnCreated()
+  if not IsServer() then return end
+  
   local ability = self:GetAbility()
 
   self.chance = ability:GetSpecialValueFor("chance")
@@ -39,6 +41,8 @@ function modifier_resistance_of_the_wilderness:OnCreated()
 end
 
 function modifier_resistance_of_the_wilderness:OnDestroy()
+  if not IsServer() then return end
+  if not self:GetParent().WildernessParticle then return end
   ParticleManager:DestroyParticle(self:GetParent().WildernessParticle, true)
 end
 

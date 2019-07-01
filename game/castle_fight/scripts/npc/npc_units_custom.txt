@@ -3,12 +3,18 @@
 #base "races/nature/buildings.kv"
 #base "races/night_elves/buildings.kv"
 #base "races/undead/buildings.kv"
+#base "races/orc/buildings.kv"
+#base "races/north/buildings.kv"
+#base "races/elf/buildings.kv"
 
 #base "races/humans/units.kv"
 #base "races/naga/units.kv"
 #base "races/nature/units.kv"
 #base "races/night_elves/units.kv"
 #base "races/undead/units.kv"
+#base "races/orc/units.kv"
+#base "races/north/units.kv"
+#base "races/elf/units.kv"
 
 #base "generic/buildings.kv"
 

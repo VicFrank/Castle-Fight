@@ -16,12 +16,12 @@ function ancient_of_wind_cyclone:OnSpellStart()
   dummy.playerID = caster:GetPlayerOwnerID()
 
   dummy:AddNewModifier(caster, ability, "modifier_ancient_of_wind_cyclone_aura", {})
-  dummy:AddNewModifier(caster, ability, "modifier_kill", {duraiton = duration})
+  dummy:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
 
   local particle = ParticleManager:CreateParticle("particles/neutral_fx/tornado_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, dummy)
 
   dummy:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
-  dummy:SetBaseMoveSpeed(200)
+  dummy:SetBaseMoveSpeed(100)
 
   -- Wander in random directions
   Timers:CreateTimer(function()

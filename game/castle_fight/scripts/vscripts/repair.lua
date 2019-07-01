@@ -33,6 +33,10 @@ function BuildingHelper:OnRepairStarted(builder, building)
     --     ParticleManager:SetParticleControlEnt(builder.gathering_particle, 0, builder, PATTACH_POINT_FOLLOW, "attach_hitloc", builder:GetAbsOrigin(), true)
     -- end
 
+    if not building.construction_particle then
+        building.construction_particle = ParticleManager:CreateParticle("particles/custom/construction_dust.vpcf", PATTACH_ABSORIGIN_FOLLOW, building)
+    end
+
     builder:StartGesture(ACT_DOTA_ATTACK)
     builder.repair_animation_timer = Timers:CreateTimer(function()
         if builder.state == "repairing" then
@@ -85,6 +89,11 @@ function BuildingHelper:OnRepairCancelled(builder, building)
     if builder.gathering_particle then
         ParticleManager:DestroyParticle(builder.gathering_particle, false)
         builder.gathering_particle = nil
+    end
+
+     if building.construction_particle and BuildingHelper:GetNumBuildersRepairing(building) == 0 then 
+        ParticleManager:DestroyParticle(building.construction_particle, false)
+        building.construction_particle = nil
     end
 end
 

@@ -49,8 +49,11 @@ function GameMode:OnNPCSpawned(keys)
     GameMode:OnHeroInGame(npc)
   end
 
+  -- handle dragon knight material sets
   if npc:GetUnitName() == "frost_wyrm" then
     npc:SetMaterialGroup("3")
+  elseif npc:GetUnitName() == "azure_drake" then
+    npc:SetMaterialGroup("2")
   end
 
   Units:Init(npc)
@@ -85,9 +88,11 @@ function GameMode:OnHeroInGame(hero)
 
     local unitName = hero:GetUnitName()
     local items = g_Race_Items[unitName]
-    for _,itemname in ipairs(items) do
-      print(itemname)
-      hero:AddItem(CreateItem(itemname, hero, hero))
+    if items then
+      for _,itemname in ipairs(items) do
+        print(itemname)
+        hero:AddItem(CreateItem(itemname, hero, hero))
+      end
     end
 
     hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
@@ -96,7 +101,7 @@ function GameMode:OnHeroInGame(hero)
     hero:AddNewModifier(hero, nil, "modifier_stunned_custom", {})
 
     -- Precache this race
-    if not GameRules.precached[unitName] then
+    if not GameRules.precached[unitName] and g_Precache_Tables[unitName] then
       for _,unit in ipairs(g_Precache_Tables[unitName]) do
         GameRules.numToCache = GameRules.numToCache + 1
 
@@ -122,6 +127,7 @@ function GameMode:OnEntityKilled(keys)
   if killed:GetUnitName() == "castle" then
     if GameRules.roundInProgress then
       GameMode:EndRound(killed:GetTeam())
+      killed:EmitSound("Radiant.ancient.Destruction")
     end
     return
   end

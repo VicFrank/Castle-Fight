@@ -34,9 +34,6 @@ function modifier_furbolg_mana_burn:OnAttackLanded(keys)
       ParticleManager:SetParticleControlEnt(particle, 0, target, PATTACH_POINT, "attach_hitloc", target:GetAbsOrigin(), true)
       ParticleManager:ReleaseParticleIndex(particle)
 
-      ParticleManager:FireParticle(, PATTACH_POINT_FOLLOW, caster, {[0]="attach_mouth"})
-
-
       local FX = ParticleManager:CreateParticle("particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn_start.vpcf", PATTACH_POINT_FOLLOW, caster)
       ParticleManager:SetParticleControlEnt(FX, 0, caster, PATTACH_POINT_FOLLOW, "attach_mouth", caster:GetAbsOrigin(), true)
       ParticleManager:ReleaseParticleIndex(FX)

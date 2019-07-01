@@ -8,7 +8,8 @@ function item_rescue_strike:OnSpellStart()
   local particleName = "particles/abilities/generic/rescue_strike/rescue_strike.vpcf"
   local sound = "Hero_Techies.BlastOff.Cast"
 
-  local radius = ability:GetSpecialValueFor("radius")
+  -- making the radius a bit bigger than it shows
+  local radius = ability:GetSpecialValueFor("radius") + 100
 
   -- Can't use rescue strike before the first round starts
   if not GameRules.rescueStrikeDamage then
@@ -48,8 +49,7 @@ function item_rescue_strike:OnSpellStart()
   local username = PlayerResource:GetPlayerName(playerID)
 
   if enemiesKilled == 0 then
-    message = "EPIC FAIL! " .. username .. " WASTED their Rescue Strike, killing only " .. enemiesKilled ..
-      " enemies, and dealing " .. damageDone .. " damage!"
+    message = "EPIC FAIL! " .. username .. " WASTED their Rescue Strike, killing no enemies and dealing 0 damage!"
   elseif enemiesKilled < 5 then
     message = username .. " WASTED their Rescue Strike, killing only " .. enemiesKilled ..
       " enemies, and dealing " .. damageDone .. " damage!"

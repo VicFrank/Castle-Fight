@@ -4,6 +4,10 @@ flesh_golem_pulverize = class({})
 function flesh_golem_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
 mountain_giant_pulverize = class({})
 function mountain_giant_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
+grunt_pulverize = class({})
+function grunt_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
+wendigo_pulverize = class({})
+function wendigo_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
 
 modifier_pulverize = class({})
 
@@ -41,7 +45,7 @@ function modifier_pulverize:OnAttackLanded(keys)
       ParticleManager:SetParticleControl(particle, 1, Vector(self.far_range, self.far_range, self.far_range))
       ParticleManager:ReleaseParticleIndex(particle)
 
-      local enemies = FindEnemiesInRadius(target, self.far_range)
+      local enemies = FindEnemiesInRadius(attacker, self.far_range)
 
       for _,enemy in pairs(enemies) do
         local distance = (attacker:GetAbsOrigin() - enemy:GetAbsOrigin()):Length2D()

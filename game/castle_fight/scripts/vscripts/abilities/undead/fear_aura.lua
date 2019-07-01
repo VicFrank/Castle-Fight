@@ -25,7 +25,7 @@ function modifier_fear_aura:GetAuraSearchFlags()
 end
 
 function modifier_fear_aura:GetAuraSearchTeam()
-  return DOTA_UNIT_TARGET_TEAM_FRIENDLY
+  return DOTA_UNIT_TARGET_TEAM_ENEMY
 end
 
 function modifier_fear_aura:GetAuraSearchType()

@@ -52,6 +52,8 @@ function modifier_plague_attack_debuff:DeclareFunctions()
 end
 
 function modifier_plague_attack_debuff:OnCreated()
+  if not IsServer() then return end
+  
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()

@@ -85,8 +85,10 @@ function thisEntity:UseAbility()
 
   if resurrection:IsFullyCastable() and #corpses > 0 then
     local corpseToRevive = GetRandomTableElement(corpses)
-    self:CastResurrection(corpseToRevive)
-    return true
+    if not corpseToRevive.isLegendary then
+      self:CastResurrection(corpseToRevive)
+      return true
+    end
   elseif blessing:IsFullyCastable() then 
     return self:TryCastBlessing()
   end

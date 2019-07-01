@@ -4,6 +4,9 @@ var RaceToHero = {
   nature: "npc_dota_hero_treant",
   night_elves: "npc_dota_hero_vengefulspirit",
   undead: "npc_dota_hero_abaddon",
+  orc: "npc_dota_hero_juggernaut",
+  north: "npc_dota_hero_tusk",
+  elves: "npc_dota_hero_invoker",
   random: "random",
 };
 
@@ -13,6 +16,9 @@ var RaceToPanelID = {
   nature: "treant_selected",
   night_elves: "vengefulspirit_selected",
   undead: "abaddon_selected",
+  orc: "juggernaut_selected",
+  north: "tusk_selected",
+  elves: "invoker_selected",
   random: "random_selected",
 };
 

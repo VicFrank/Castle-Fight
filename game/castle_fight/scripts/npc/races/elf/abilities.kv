@@ -1,0 +1,570 @@
+"DOTAAbilities"
+{
+  // Whenever an allied unit dies, there is a 20% chance the unit will revive after 
+  // 2 seconds.
+  // Cannot revive legendary units. This aura stacks once.
+  "bright_aura_of_grace"
+  {
+    "AbilityTextureName"          "omniknight_guardian_angel"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/bright_aura_of_grace"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "chance"             "20"
+      }
+    }
+  }
+
+  // 5 targets
+  "arcane_tower_multishot"
+  {
+    "AbilityTextureName"          "medusa_split_shot"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/night_elves/multi_shot"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "damage_modifier"         "0"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "arrow_count"             "5"
+      }
+    }
+  }
+
+  // Light Beam: Shoots a beam of light at a random unit, dealing 160 damage to it.
+  "obelisk_of_light_light_beam"
+  {
+    "AbilityTextureName"          "keeper_of_the_light_illuminate"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/light_beam"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "4.0"
+    "AbilityManaCost"             "0"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_tinker/tinker_laser.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage"        "160"
+      }
+    }
+  }
+
+  // Hex: Turns a random enemy unit into a sheep for 45 second
+  "city_of_magic_hex"
+  {
+    "AbilityTextureName"          "shadow_shaman_voodoo"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/hex"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "10.0"
+    "AbilityManaCost"             "10"
+
+    "precache"
+    {
+      "model"     "models/props_gameplay/chicken.vmdl"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "duration"        "45"
+      }
+    }
+  }
+
+  "archer_headshot"
+  {
+    "AbilityTextureName"          "sniper_headshot"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/headshot"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "chance"            "10 20"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_FLOAT"
+        "stun_duration"     "0.5"
+      }
+      "03"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "damage"           "50 125"
+      }
+    }
+  }
+
+  "archer_evasion"
+  {
+    "AbilityTextureName"          "windrunner_windrun"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "15 25"
+      }      
+    }
+  }
+
+  "blademaster_evasion"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "15 25"
+      }      
+    }
+  }
+
+  "blademaster_critical_strike"
+  {
+    "AbilityTextureName"          "juggernaut_blade_dance"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "25 30"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "250 300"
+      }
+    }
+  }
+
+  "blademaster_spell_resist"
+  {
+    "AbilityTextureName"          "antimage_counterspell"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/spell_resist"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "magic_resist"            "15 25"
+      }
+    }
+  }
+
+  "blademaster_feedback"
+  {
+    "AbilityTextureName"          "antimage_mana_break"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/feedback"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"           "SPELL_IMMUNITY_ENEMIES_NO"
+
+    "precache"
+    {
+      "particle"  "particles/generic_gameplay/generic_manaburn.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "mana_burn"      "40"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "mana_to_damage"    "100"
+      }
+    }
+  }
+
+  // Remove a negative buff from an ally and apply it to an enemy, or remove a positive
+  // buff from an enemy and apply it to an ally
+  "blademaster_spell_steal"
+  {
+    "AbilityTextureName"          "chen_divine_favor"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/spell_steal"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "12.0"
+    "AbilityManaCost"             "0"
+
+    "AbilityCastRange"          "700"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"        "900"
+      }
+    }
+  }
+  
+  "bloodthirster_bouncing_attack"
+  {
+    "AbilityTextureName"          "luna_moon_glaive"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/bouncing_attack"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "range"             "500"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "bounces"           "3"
+      }
+      "03"
+      {
+        "var_type"                  "FIELD_INTEGER"
+        "damage_reduction_percent"  "30"
+      }
+    }
+  }
+
+  "bloodthirster_faerie_fire"
+  {
+    "AbilityTextureName"          "slardar_amplify_damage"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/faerie_fire"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "6.0"
+    "AbilityManaCost"             "20"
+
+    "AbilityCastRange"          "700"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_slardar/slardar_amp_damage.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "armor"         "6"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "duration"      "30"
+      }
+    }
+  }
+
+  // Strikes up to 4 non-mechanical air units in 400 aoe with sunlight,
+  // dealing 80 damage and stunning for 4 seconds
+  // CD 14 Mana cost 50
+  "dragonhawk_rider_solar_strike"
+  {
+    "AbilityTextureName"          "skywrath_mage_mystic_flare"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/solar_strike"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+
+    "AbilityCooldown"             "14.0"
+    "AbilityManaCost"             "50"
+
+    "AbilityCastRange"          "400"
+    "AbilityCastPoint"          "0.1"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_4"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_skywrath_mage/skywrath_mage_mystic_flare_ambient.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"        "400"
+      }
+      "02"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "stun_duration"    "4"
+      }
+      "03"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "damage"           "80"
+      }
+    }
+  }
+
+  // attacks damage all units 200 range behind the target
+  "ballista_line_damage"
+  {
+    "AbilityTextureName"          "templar_assassin_psi_blades"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/line_damage"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "attack_spill_range"         "200"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "attack_spill_width"         "200"
+      }
+    }
+  }
+
+  // (150hp, 2 targets) cd 8 mana cost 50 40% less on each bounce
+  "sorceress_healing_wave"
+  {
+    "AbilityTextureName"          "dazzle_shadow_wave"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elf/healing_wave"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "8.0"
+    "AbilityManaCost"             "50"
+
+    "AbilityCastRange"          "700"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "heal"                    "150"
+      }
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "bounces"         "2"
+      }
+      "03"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "health_loss"       "40"
+      }
+    }
+  }
+
+  "sorceress_chain_lightning"
+  {
+    "AbilityTextureName"             "harpy_storm_chain_lightning"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/human/passive_chain_lightning"
+    "MaxLevel"                       "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "precache"
+    {
+      "particle"  "particles/items_fx/chain_lightning.vpcf"
+      "soundfile" "soundevents/game_sounds_items.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "trigger_chance"         "25 30"
+      }
+      "02"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "initial_damage"     "150 260"
+      }
+      "03"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "max_targets"        "7"
+      }
+      "04"
+      {
+        "var_type"                 "FIELD_FLOAT"
+        "jump_damage_reduction"    "0.30 0.20"
+      }
+      "05"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "jump_range"         "500"
+      }
+      "06"
+      {
+        "var_type"           "FIELD_FLOAT"
+        "jump_delay"         "0.25"
+      }
+    }
+  }
+
+  // casts a firebolt on a random enemy unit or building every 3 seconds.
+  // Deals 75 damage on impact. Burns for 4 seconds, 25 dps
+  "wizard_firebolt"
+  {
+    "AbilityTextureName"             "ogre_magi_fireblast"
+    "BaseClass"                      "ability_lua"
+    "ScriptFile"                     "abilities/elf/firebolt"
+    "MaxLevel"                       "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilityCastRange"        "500"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+      "particle"  "particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff.vpcf"
+      "particle"  "particles/status_fx/status_effect_burn.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "fire_interval"          "3"
+      }
+      "02"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "damage"             "75"
+      }
+      "03"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "dps"                "25"
+      }
+      "04"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "duration"           "4"
+      }
+      "05"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "radius"             "500"
+      }
+    }
+  }
+}

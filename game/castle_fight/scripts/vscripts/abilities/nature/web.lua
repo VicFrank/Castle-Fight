@@ -27,11 +27,11 @@ end
 
 function spider_web:OnProjectileHit(target, locationn)
   local caster = self:GetCaster()
-  local duration = ability:GetSpecialValueFor("duration")
+  local duration = self:GetSpecialValueFor("duration")
 
   if target then
     target:EmitSound("Hero_Broodmother.SpawnSpiderlingsCast")
-    target:AddNewModifier(caster, ability, "modifier_spider_web", {duration = duration})
+    target:AddNewModifier(caster, self, "modifier_spider_web", {duration = duration})
   end
 end
 
@@ -48,12 +48,14 @@ function modifier_spider_web:CheckState()
 end
 
 function modifier_spider_web:OnCreated()
+  if not IsServer() then return end
   self.parent = self:GetParent()
 
   self.parent:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
 end
 
 function modifier_spider_web:OnDestroy()
+  if not IsServer() then return end
   self.parent:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
 end
 

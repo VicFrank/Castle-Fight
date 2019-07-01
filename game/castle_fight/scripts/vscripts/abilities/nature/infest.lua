@@ -26,8 +26,8 @@ end
 
 function brood_mother_infest:OnProjectileHit(target, locationn)
   local caster = self:GetCaster()
-  local duration = ability:GetSpecialValueFor("duration")
-  local damage = ability:GetSpecialValueFor("damage")
+  local duration = self:GetSpecialValueFor("duration")
+  local damage = self:GetSpecialValueFor("damage")
 
   if target then
     target:EmitSound("Hero_Broodmother.SpawnSpiderlingsCast")
@@ -65,14 +65,16 @@ function modifier_brood_mother_infest:OnDeath(keys)
     for i=1,2 do
       local unitName = "forest_spider"
       local position = self:GetParent():GetAbsOrigin()
-      local team = self:GetParent():GetTeam()
+      local team = self:GetCaster():GetTeam()
       local playerID = self:GetParent().playerID
       CreateLaneUnit(unitName, position, team, playerID)
     end
   end
 end
 
-function modifier_spider_poison_debuff:OnCreated()
+function modifier_brood_mother_infest:OnCreated()
+  if not IsServer() then return end
+  
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
@@ -86,7 +88,7 @@ function modifier_spider_poison_debuff:OnCreated()
   self:StartIntervalThink(1)
 end
 
-function modifier_spider_poison_debuff:OnIntervalThink()
+function modifier_brood_mother_infest:OnIntervalThink()
   if not IsServer() then return end
 
   local final_damage = ApplyDamage({

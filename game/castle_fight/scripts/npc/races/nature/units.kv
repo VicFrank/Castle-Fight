@@ -3,14 +3,14 @@
   "forest_spider" 
   {
     "Model"            "models/items/broodmother/spiderling/lycosidae_spiderling/lycosidae_spiderling.vmdl"
-    "SoundSet"         "0"
+    "SoundSet"         "Hero_Broodmother"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
-    "ModelScale"       "0.5"
+    "ModelScale"       "0.24"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "12"
+    "CollisionSize"    "6"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "ArmorPhysical"           "0"
@@ -47,14 +47,14 @@
   "black_spider" 
   {
     "Model"            "models/heroes/broodmother/spiderling.vmdl"
-    "SoundSet"         "0"
+    "SoundSet"         "Hero_Broodmother"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
-    "ModelScale"       "0.7"
+    "ModelScale"       "0.5"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "12"
+    "CollisionSize"    "10"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "spider_poison"
@@ -93,17 +93,17 @@
   "giant_spider" 
   {
     "Model"            "models/items/broodmother/spiderling/virulent_matriarchs_spiderling/virulent_matriarchs_spiderling.vmdl"
-    "SoundSet"         "0"
+    "SoundSet"         "Hero_Broodmother"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
-    "ModelScale"       "1.0"
+    "ModelScale"       "0.65"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "16"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "vscripts"         "ai/spider_ai.lua"
 
-    "Ability1"                "spider_poision"
+    "Ability1"                "spider_poison"
     "Ability2"                "spider_web"
     "Ability3"                "giant_spider_split"
 
@@ -141,17 +141,17 @@
   "brood_mother" 
   {
     "Model"            "models/items/broodmother/spiderling/elder_blood_heir_of_elder_blood/elder_blood_heir_of_elder_blood.vmdl"
-    "SoundSet"         "0"
+    "SoundSet"         "Hero_Broodmother"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
-    "ModelScale"       "1.2"
+    "ModelScale"       "0.8"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "vscripts"         "ai/spider_ai.lua"
 
-    "Ability1"                "spider_poision"
+    "Ability1"                "spider_poison"
     "Ability2"                "spider_web"
     "Ability3"                "brood_mother_split"
     "Ability4"                "brood_mother_infest"
@@ -191,7 +191,7 @@
   "furbolg_shaman" 
   {
     "Model"            "models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl"
-    "SoundSet"         "n_creep_Melee"
+    "SoundSet"         "n_creep_Ranged"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ModelScale"       "0.70"
@@ -212,7 +212,7 @@
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "400"
-    "ProjectileModel"         "particles/base_attacks/ranged_goodguy.vpcf"
+    "ProjectileModel"         "particles/base_attacks/ranged_tower_good.vpcf"
     "ProjectileSpeed"         "900"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
@@ -240,7 +240,7 @@
   "furbolg_elder_shaman" 
   {
     "Model"            "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl"
-    "SoundSet"         "n_creep_Melee"
+    "SoundSet"         "n_creep_Ranged"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ModelScale"       "0.80"
@@ -262,7 +262,7 @@
     "AttackAnimationPoint"    "0.4"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "450"
-    "ProjectileModel"         "particles/base_attacks/ranged_goodguy.vpcf"
+    "ProjectileModel"         "particles/base_attacks/ranged_tower_good.vpcf"
     "ProjectileSpeed"         "900"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
@@ -275,8 +275,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "12"
-    "BountyGoldMax"          "12"
+    "BountyGoldMin"          "13"
+    "BountyGoldMax"          "13"
 
     "AttackType"             "magic"
     "ArmorType"              "light"
@@ -294,7 +294,7 @@
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
     "Level"            "1"
-    "ModelScale"       "0.64"
+    "ModelScale"       "0.62"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -347,7 +347,6 @@
     }
   }
 
-  // TODO: Change cosmetics to amberlight
   "keeper_of_the_grove" 
   {
     "Model"            "models/heroes/enchantress/enchantress.vmdl"
@@ -355,7 +354,7 @@
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
     "Level"            "1"
-    "ModelScale"       "0.64"
+    "ModelScale"       "0.95"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -400,16 +399,15 @@
       "DisableClumpingBehavior" "1"
       "AttachWearables"
       {
-        "Wearable1" { "ItemDef" "286" }
-        "Wearable2" { "ItemDef" "287" }
-        "Wearable3" { "ItemDef" "288" }
-        "Wearable4" { "ItemDef" "289" }
-        "Wearable5" { "ItemDef" "290" }
+        "Wearable1" { "ItemDef" "6346" }
+        "Wearable2" { "ItemDef" "6347" }
+        "Wearable3" { "ItemDef" "6348" }
+        "Wearable4" { "ItemDef" "6349" }
+        "Wearable5" { "ItemDef" "6350" }
       }
     }
   }
 
-  // TODO: Thorns of the sundering cosmetics
   "ancient_keeper" 
   {
     "Model"            "models/heroes/leshrac/leshrac.vmdl"
@@ -417,7 +415,7 @@
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
     "Level"            "1"
-    "ModelScale"       "0.64"
+    "ModelScale"       "1.2"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -464,11 +462,11 @@
       "AttachWearables"
       {
         "Wearable1" { "ItemDef" "529" } // ambient
-        "Wearable2" { "ItemDef" "4843" } // misc
+        "Wearable2" { "ItemDef" "4991" } // misc
         "Wearable3" { "ItemDef" "591" } // weapon
-        "Wearable4" { "ItemDef" "4840" } // head
-        "Wearable5" { "ItemDef" "4841" } // tail
-        "Wearable6" { "ItemDef" "4842" } // back
+        "Wearable4" { "ItemDef" "4993" } // head
+        "Wearable5" { "ItemDef" "4992" } // tail
+        "Wearable6" { "ItemDef" "4990" } // back
       }
     }
   }
@@ -542,7 +540,7 @@
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "vscripts"         "ai/bear_ai.lua"
 
     "Ability1"                "bear_feral_rage"
     "Ability2"                "bear_cleave"
@@ -593,7 +591,7 @@
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "vscripts"         "ai/bear_ai.lua"
 
     "Ability1"                "bear_feral_rage"
     "Ability2"                "bear_cleave"
@@ -639,17 +637,18 @@
     "SoundSet"         "Hero_Tiny"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
     "Level"            "1"
-    "ModelScale"       "1.35"
+    "ModelScale"       "1.2"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
     "vscripts"         "ai/generic_unit_ai.lua"
 
-    "Ability1"                "mountain_giant_taunt"
-    "Ability2"                "mountain_giant_grab_tree"
+    "Ability1"                "mountain_giant_grab_tree"
+    "Ability2"                "mountain_giant_taunt"
     "Ability3"                "mountain_giant_resistant_skin"
     "Ability4"                "mountain_giant_pulverize"
+    "Ability5"                "mountain_giant_cosmetics"
 
     "ArmorPhysical"           "8"
 
@@ -679,14 +678,6 @@
     "Creature"
     {
       "DisableClumpingBehavior" "1"
-      "AttachWearables"
-      {
-        "Wearable1" { "ItemDef" "493" } //Head
-        "Wearable2" { "ItemDef" "494" } //Body
-        "Wearable3" { "ItemDef" "495" } //Left Arm
-        "Wearable4" { "ItemDef" "496" } //Right Arm
-        "Wearable5" { "ItemDef" "497" } //Tree
-      }
     }
   }
 
@@ -697,7 +688,7 @@
     "SoundSet"         "Furion_Treant"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
     "Level"            "1"
-    "ModelScale"       "1.35"
+    "ModelScale"       "0.7"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"

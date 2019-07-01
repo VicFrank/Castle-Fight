@@ -1,19 +1,29 @@
+#base "generic/abilities.kv"
+
 #base "races/humans/abilities.kv"
 #base "races/naga/abilities.kv"
 #base "races/nature/abilities.kv"
 #base "races/night_elves/abilities.kv"
 #base "races/undead/abilities.kv"
-#base "generic/abilities.kv"
+#base "races/orc/abilities.kv"
+#base "races/north/abilities.kv"
+#base "races/elf/abilities.kv"
 
 #base "races/naga/construction_abilities.kv"
 #base "races/nature/construction_abilities.kv"
 #base "races/night_elves/construction_abilities.kv"
 #base "races/undead/construction_abilities.kv"
+#base "races/orc/construction_abilities.kv"
+#base "races/north/construction_abilities.kv"
+#base "races/elf/construction_abilities.kv"
 
 #base "races/naga/training_abilities.kv"
 #base "races/nature/training_abilities.kv"
 #base "races/night_elves/training_abilities.kv"
 #base "races/undead/training_abilities.kv"
+#base "races/orc/training_abilities.kv"
+#base "races/north/training_abilities.kv"
+#base "races/elf/training_abilities.kv"
 
 "DOTAAbilities"
 {

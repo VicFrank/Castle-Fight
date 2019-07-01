@@ -6,23 +6,20 @@ mountain_giant_grab_tree = mountain_giant_grab_tree or class({})
 LinkLuaModifier("imba_tiny_tree_modifier", "abilities/nature/grab_tree", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("imba_tiny_tree_building_modifier", "abilities/nature/grab_tree", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("imba_tiny_tree_animation_modifier", "abilities/nature/grab_tree", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("imba_tiny_tree_damage_modifier", "abilities/nature/grab_tree", LUA_MODIFIER_MOTION_NONE)
 
 function mountain_giant_grab_tree:OnSpellStart()
   if IsServer() then 
     local caster = self:GetCaster()
-    local target_point = self:GetCursorPosition()
-
-    -- Destroy targeted tree
-    GridNav:DestroyTreesAroundPoint(target_point, 1, false)
 
     local damage_modifier = caster:AddNewModifier(caster, self, "imba_tiny_tree_damage_modifier", {})
     damage_modifier:SetStackCount(self:GetSpecialValueFor("bonus_damage"))
     local tree_modifier = caster:AddNewModifier(caster, self, "imba_tiny_tree_modifier", {})
-    tree_modifier:SetStackCount(20)
+    tree_modifier:SetStackCount(self:GetSpecialValueFor("num_attacks"))
 
     -- Change damage type to siege
     caster:RemoveModifierByName("modifier_attack_normal")
-    caster:AddNewModifier(caster, ability, "modifier_attack_siege", {})
+    ApplyModifier(caster, "modifier_attack_siege")
 
     -- Can hit flying
     caster.aiState.canHitFlying = true
@@ -196,7 +193,7 @@ function imba_tiny_tree_modifier:OnRemoved()
     caster:RemoveModifierByName("imba_tiny_tree_animation_modifier")
 
     caster:RemoveModifierByName("modifier_attack_siege")
-    caster:AddNewModifier(caster, ability, "modifier_attack_normal", {})
+    ApplyModifier(caster, "modifier_attack_normal")
 
     caster.aiState.canHitFlying = false
   end

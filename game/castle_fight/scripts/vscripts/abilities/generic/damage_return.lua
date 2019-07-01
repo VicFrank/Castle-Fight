@@ -17,17 +17,16 @@ end
 
 function modifier_damage_return:DeclareFunctions()
   local funcs = {
-    MODIFIER_EVENT_ON_TAKEDAMAGE,
+    MODIFIER_EVENT_ON_ATTACK_LANDED,
   }
   return funcs
 end
 
-function modifier_damage_return:OnTakeDamage(keys)
+function modifier_damage_return:OnAttackLanded(keys)
   if not IsServer() then return end
 
   local attacker = keys.attacker
-  local target = keys.unit
-
+  local target = keys.target
 
   if self.parent == target then
     local particleName = "particles/units/heroes/hero_centaur/centaur_return.vpcf"

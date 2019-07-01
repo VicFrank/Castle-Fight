@@ -16,6 +16,10 @@ function modifier_city_of_decay_aura:IsPurgable()
   return false
 end
 
+function modifier_city_of_decay_aura:IsAuraActiveOnDeath()
+  return false
+end
+
 function modifier_city_of_decay_aura:GetAuraRadius()
   if not IsServer() then return end
   local radius = 99999

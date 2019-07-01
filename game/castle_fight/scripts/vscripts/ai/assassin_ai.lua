@@ -35,7 +35,7 @@ function Spawn(keys)
 
     thisEntity.aiState = {
       aggroTarget = nil,
-      targetAcquisitionRange = 200,
+      targetAcquisitionRange = 1200,
       stopPursuitRange = 1600,
       goal = goal,
       canHitFlying = canHitFlying,
@@ -66,10 +66,10 @@ function thisEntity:AIThink()
   end
 
   -- While invisible, seek out and kill a mage, or wait for one to appear
-  if self:IsInvisible() then
-    self:FindAndAttackMage()
-    return .3
-  end
+  -- if self:IsInvisible() then
+  --   self:FindAndAttackMage()
+  --   return .3
+  -- end
 
   if self:GoInvisible() then
     return 0.5

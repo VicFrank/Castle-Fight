@@ -3,6 +3,7 @@ function GameMode:FilterDamage( filterTable )
   -- for k, v in pairs( filterTable ) do
   --  print("Damage: " .. k .. " " .. tostring(v) )
   -- end
+
   local victim_index = filterTable["entindex_victim_const"]
   local attacker_index = filterTable["entindex_attacker_const"]
   if not victim_index or not attacker_index then

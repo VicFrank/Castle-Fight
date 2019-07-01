@@ -8,6 +8,8 @@ faerie_dragon_feedback = class({})
 function faerie_dragon_feedback:GetIntrinsicModifierName() return "modifier_feedback_custom" end
 assassin_feedback = class({})
 function assassin_feedback:GetIntrinsicModifierName() return "modifier_feedback_custom" end
+blademaster_feedback = class({})
+function blademaster_feedback:GetIntrinsicModifierName() return "modifier_feedback_custom" end
 
 modifier_feedback_custom = class({})
 

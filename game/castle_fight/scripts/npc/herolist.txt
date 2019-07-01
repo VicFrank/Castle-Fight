@@ -5,4 +5,8 @@
   "npc_dota_hero_treant"            "1"
   "npc_dota_hero_vengefulspirit"    "1"
   "npc_dota_hero_abaddon"           "1"
+  "npc_dota_hero_juggernaut"        "1"
+  "npc_dota_hero_tusk"              "1"
+  "npc_dota_hero_invoker"           "1"
+  "npc_dota_hero_wisp"              "1"
 }

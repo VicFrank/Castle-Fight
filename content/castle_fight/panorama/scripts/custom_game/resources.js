@@ -150,17 +150,25 @@ function UpdateAbilityUI() {
 }
 
 var LocalPlayerID = Players.GetLocalPlayer();
+var LocalPlayerTeam = Players.GetTeam(LocalPlayerID);
 
 function GetPlayerIDToShow() {
   var queryUnit = Players.GetLocalPlayerPortraitUnit();
-  if (Entities.IsRealHero(queryUnit))
-    return Entities.GetPlayerOwnerID(queryUnit);
+  var queryUnitTeam = Entities.GetTeamNumber(queryUnit);
+  var queryUnitPlayerOwnerID = Entities.GetPlayerOwnerID(queryUnit);
+  if (queryUnitPlayerOwnerID >=0 && queryUnitTeam === LocalPlayerTeam)
+    return queryUnitPlayerOwnerID;
   else
     return LocalPlayerID;
 }
 
 function OnPlayerLumberChanged(table_name, key, data) {
   UpdateLumber();
+}
+
+function UpdateResources() {
+  UpdateLumber();
+  UpdateCheese();
 }
 
 function UpdateLumber() {
@@ -263,8 +271,7 @@ $('#GoldLabelPanel').SetPanelEvent(
 
 (function () {
   UpdateGold();
-  UpdateLumber();
-  UpdateCheese();
+  UpdateResources();
   CustomNetTables.SubscribeNetTableListener("lumber", OnPlayerLumberChanged);
   CustomNetTables.SubscribeNetTableListener("cheese", OnPlayerCheeseChanged);
 
@@ -272,6 +279,9 @@ $('#GoldLabelPanel').SetPanelEvent(
   GameEvents.Subscribe("dota_player_update_selected_unit", UpdateItemsUI);
   GameEvents.Subscribe("dota_player_update_query_unit", UpdateItemsUI);
   GameEvents.Subscribe("dota_inventory_changed", UpdateItemsUI);
+
+  GameEvents.Subscribe("dota_player_update_query_unit", UpdateResources);
+  GameEvents.Subscribe("dota_player_update_selected_unit", UpdateResources);
 
   UpdateAbilityUI();
   GameEvents.Subscribe("dota_player_update_selected_unit", UpdateAbilityUI);

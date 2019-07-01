@@ -32,4 +32,22 @@ g_Race_Items = {
     "item_build_turret_of_souls",
     "item_build_city_of_decay",
   },
+  npc_dota_hero_juggernaut = {
+    "item_build_serpent_rock",
+    "item_build_ceremonial_totem",
+    "item_build_anti_air_tower",
+    "item_build_stasis_totem",
+  },
+  npc_dota_hero_tusk = {
+    "item_build_frost_launcher",
+    "item_build_chilling_mushroom",
+    "item_build_icy_tower",
+    "item_build_world_freezer",
+  },
+  npc_dota_hero_invoker = {
+    "item_build_city_of_magic",
+    "item_build_obelisk_of_light",
+    "item_build_arcane_tower",
+    "item_build_golden_shrine_of_justice",
+  },
 }

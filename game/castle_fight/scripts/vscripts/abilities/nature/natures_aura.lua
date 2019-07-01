@@ -7,16 +7,16 @@ function keeper_natures_aura:GetIntrinsicModifierName()
   return "modifier_keeper_natures_aura"
 end
 
-modifier_keeper_natures_aura_buff = class({})
+modifier_keeper_natures_aura = class({})
 
-function modifier_keeper_natures_aura_buff:IsAura() return true end
-function modifier_keeper_natures_aura_buff:GetAuraDuration() return 0.5 end
-function modifier_keeper_natures_aura_buff:GetAuraRadius() return self:GetAbility():GetSpecialValueFor("radius") end
-function modifier_keeper_natures_aura_buff:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
-function modifier_keeper_natures_aura_buff:GetAuraSearchType() return DOTA_UNIT_TARGET_ALL end
-function modifier_keeper_natures_aura_buff:GetModifierAura() return "modifier_keeper_natures_aura_buff" end
-function modifier_keeper_natures_aura_buff:IsAuraActiveOnDeath() return false end
-function modifier_keeper_natures_aura_buff:GetAuraEntityReject(target) return target:IsRealHero() or IsCustomBuilding(target) end
+function modifier_keeper_natures_aura:IsAura() return true end
+function modifier_keeper_natures_aura:GetAuraDuration() return 0.5 end
+function modifier_keeper_natures_aura:GetAuraRadius() return self:GetAbility():GetSpecialValueFor("radius") end
+function modifier_keeper_natures_aura:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
+function modifier_keeper_natures_aura:GetAuraSearchType() return DOTA_UNIT_TARGET_ALL end
+function modifier_keeper_natures_aura:GetModifierAura() return "modifier_keeper_natures_aura_buff" end
+function modifier_keeper_natures_aura:IsAuraActiveOnDeath() return false end
+function modifier_keeper_natures_aura:GetAuraEntityReject(target) return target:IsRealHero() or IsCustomBuilding(target) end
 
 modifier_keeper_natures_aura_buff = class({})
 

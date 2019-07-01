@@ -17,6 +17,7 @@ end
 function modifier_emerald_dragon_corrosive_breath:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED,
+    MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND
   }
   return funcs
 end
@@ -33,9 +34,13 @@ function modifier_emerald_dragon_corrosive_breath:OnAttackLanded(keys)
 
     local max_stacks = self.ability:GetSpecialValueFor("max_stacks")
 
-    local stackCount = self.parent:GetModifierStackCount(modifierName, self.caster)
+    local stackCount = target:GetModifierStackCount(modifierName, self.caster)
     modifier:SetStackCount(math.min(stackCount + 1, max_stacks))
   end
+end
+
+function modifier_emerald_dragon_corrosive_breath:GetAttackSound()
+  return "Hero_DragonKnight.ElderDragonShoot3.Attack"
 end
 
 modifier_emerald_dragon_corrosive_breath_debuff = class({})
@@ -61,7 +66,7 @@ function modifier_emerald_dragon_corrosive_breath_debuff:OnCreated()
 end
 
 function modifier_emerald_dragon_corrosive_breath_debuff:GetModifierPhysicalArmorBonus()
-  return self.armor_reduction
+  return self:GetStackCount() * self.armor_reduction
 end
 
 function modifier_emerald_dragon_corrosive_breath_debuff:GetEffectName()

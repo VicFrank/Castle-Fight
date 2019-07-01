@@ -2,6 +2,8 @@ LinkLuaModifier("modifier_demolish", "abilities/generic/demolish.lua", LUA_MODIF
 
 flesh_golem_demolish = class({})
 function flesh_golem_demolish:GetIntrinsicModifierName() return "modifier_demolish" end
+tribal_blessing_demolish = class({})
+function tribal_blessing_demolish:GetIntrinsicModifierName() return "modifier_demolish" end
 
 modifier_demolish = class({})
 

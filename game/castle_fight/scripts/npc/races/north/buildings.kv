@@ -1,0 +1,599 @@
+"DOTAUnits"
+{
+  "snowy_rocks" 
+  {
+    "Model"            "models/north/cliff_wall005_snow.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.75"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotation"    "90"
+
+    "BuildTime"        "3"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_frost_wolf"
+    "Ability2"                "upgrade_icy_rocks"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "36"
+    "BountyGoldMax"          "36"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "icy_rocks" 
+  {
+    "Model"            "models/north/ice_spike_lrg.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotation"    "90"
+
+    "BuildTime"        "3"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_polar_bear"
+    "Ability2"                "upgrade_glacier"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1300"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "36"
+    "BountyGoldMax"          "36"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "glacier" 
+  {
+    "Model"            "models/north/crystal_maiden_ice.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "3"
+    "ConsideredHero"   "1"
+    "ModelScale"       "2.5"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotation"    "90"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_magnataur"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1500"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "36"
+    "BountyGoldMax"          "36"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "igloo" 
+  {
+    "Model"            "models/north/frostivus_igloo.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "140"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_hrimthrusa"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1700"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "36"
+    "BountyGoldMax"          "36"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "ice_troll_hut" 
+  {
+    "Model"            "models/north/tuskhouse01.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.2"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_troll_shadow_priest"
+    "Ability2"                "upgrade_ice_troll_voodoo_hut"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1300"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "36"
+    "BountyGoldMax"          "36"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "ice_troll_voodoo_hut" 
+  {
+    "Model"            "models/items/witchdoctor/wd_ward/ribbitar_ward/ribbitar_ward.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_ice_troll_witch_doctor"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "36"
+    "BountyGoldMax"          "36"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "ice_claws" 
+  {
+    "Model"            "models/north/pedestal_cm_arcana.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.9"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "ModelOffset"      "30"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_wendigo"
+    "Ability2"                "upgrade_frost_claws"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1300"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "36"
+    "BountyGoldMax"          "36"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "frost_claws" 
+  {
+    "Model"            "models/north/crystal_ring01.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_ancient_wendigo"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1300"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "36"
+    "BountyGoldMax"          "36"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "azure_nest" 
+  {
+    "Model"            "models/north/frostivus_ancient_bare.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.23"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_azure_drake"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "74"
+    "BountyGoldMax"          "74"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "crystal_palace" 
+  {
+    "Model"            "models/north/crystal_ball.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "2.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "ModelOffset"      "50"
+    "CollisionSize"    "40"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_ice_queen"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "74"
+    "BountyGoldMax"          "74"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "frost_launcher" 
+  {
+    "Model"            "models/items/wards/frozen_formation/frozen_formation.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.3"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Killing"
+
+    "Ability1"                "frost_bolt"
+    "Ability2"                "upgrade_greater_frost_launcher"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "15"
+    "StatusStartingMana"     "0"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "72"
+    "BountyGoldMax"          "72"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "greater_frost_launcher" 
+  {
+    "Model"            "models/items/wards/crystal_maiden_ward/crystal_maiden_ward.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.6"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Killing"
+
+    "Ability1"                "greater_frost_bolt"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "18"
+    "StatusStartingMana"     "0"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "72"
+    "BountyGoldMax"          "72"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "chilling_mushroom" 
+  {
+    "Model"            "models/items/witchdoctor/wd_ward/ti8_wd_spore_gardener_spore_abomination_ti8/ti8_wd_spore_gardener_spore_abomination_ti8.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Killing"
+
+    "Ability1"                "freezing_blast"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "13"
+    "StatusStartingMana"     "0"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "32"
+    "BountyGoldMax"          "32"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "icy_tower" 
+  {
+    "Model"            "models/north/frostivus_snowman.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "SoundSet"         "Tower.Fire"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotation"    "90"
+
+    "BuildTime"        "30"
+    "BuildingType"     "Tower"
+
+    "Ability1"                "north_chilling_attack"
+    "Ability2"                "splash_attack"
+
+    "SplashAttack"              "1"
+    "SplashFullRadius"          "25"
+    "SplashMediumRadius"        "50"
+    "SplashMediumDamage"        "0.4"
+    "SplashSmallRadius"         "150"
+    "SplashSmallDamage"         "0.25"
+
+    "ArmorPhysical"             "8"
+    "MagicalResistance"         "0.75"
+
+    "AttackType"                "normal"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"           "80"
+    "AttackDamageMax"           "100"
+    "AttackRate"                "1.2"
+    "AttackAnimationPoint"      "0.1"
+    "AttackAcquisitionRange"    "800"
+    "AttackRange"               "750"
+    "ProjectileModel"           "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_frost.vpcf"
+    "ProjectileSpeed"           "1000"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1500"
+    "StatusHealthRegen"      "1.5"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "50"
+    "BountyGoldMax"          "50"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "world_freezer" 
+  {
+    "Model"            "models/north/kings_chair.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.3"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Killing"
+
+    "Ability1"                "onset_of_winter"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0.75"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "38"
+    "StatusManaRegen"        "1.0"
+    "StatusStartingMana"     "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "130"
+    "BountyGoldMax"          "130"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+}

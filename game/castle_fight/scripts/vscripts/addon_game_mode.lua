@@ -6,6 +6,7 @@ require('libraries/timers')
 require('libraries/notifications')
 require('libraries/selection')
 require("libraries/buildinghelper")
+require("libraries/animations")
 
 require("mechanics/units")
 require("mechanics/attacks")
@@ -13,10 +14,12 @@ require("mechanics/lumber")
 require("mechanics/rounds")
 require("mechanics/income")
 require("mechanics/corpses")
+require("mechanics/modifiers")
 
 require("tables/precache_tables")
 require("tables/item_tables")
 require("tables/ability_costs")
+require("tables/ai_modifier_table")
 
 require("items/custom_shop")
 
@@ -55,12 +58,9 @@ function Precache( context )
   PrecacheResource("particle", "particles/dire_fx/fire_barracks.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf", context) -- splash attack
   PrecacheResource("particle", "particles/abilities/generic/quad_damage/rune_quaddamage_owner.vpcf", context) -- quad damage
+  PrecacheResource("particle", "particles/econ/generic/generic_timer/generic_timer.vpcf", context)
 
   -- Precache the heroes
-  PrecacheUnitByNameSync("npc_dota_hero_kunkka", context)
-  PrecacheUnitByNameSync("npc_dota_hero_slark", context)
-  PrecacheUnitByNameSync("npc_dota_hero_treant", context)
-  PrecacheUnitByNameSync("npc_dota_hero_abaddon", context)
 
   -- Shop Items
   PrecacheItemByNameSync("item_blast_staff", context)
@@ -81,7 +81,7 @@ function Activate()
 
   if IsInToolsMode() then
     Timers:CreateTimer(2, function()
-      Tutorial:AddBot("npc_dota_hero_kunkka", "", "", false)
+      Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
     end)
   end
 end
@@ -137,7 +137,7 @@ function GameMode:InitGameMode()
   mode:SetRecommendedItemsDisabled(true)
   mode:SetSelectionGoldPenaltyEnabled(false)
   mode:SetKillingSpreeAnnouncerDisabled(true)
-  mode:SetCustomGameForceHero("npc_dota_hero_kunkka")
+  mode:SetCustomGameForceHero("npc_dota_hero_wisp")
 
   -- Event Hooks
   ListenToGameEvent('entity_killed', Dynamic_Wrap(GameMode, 'OnEntityKilled'), self)
@@ -161,6 +161,7 @@ function GameMode:InitGameMode()
   LinkLuaModifier("income_modifier", "abilities/generic/income_modifier", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("modifier_hide_hero", "abilities/modifiers/modifier_hide_hero", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("modifier_stunned_custom", "abilities/modifiers/modifier_stunned_custom", LUA_MODIFIER_MOTION_NONE)
+  LinkLuaModifier("modifier_end_round", "abilities/modifiers/modifier_end_round", LUA_MODIFIER_MOTION_NONE)
 
   self.vUserIds = {}
   
@@ -185,6 +186,7 @@ function GameMode:InitGameMode()
 
   GameRules.HeroSelectionTimer = ""
   GameRules.LoadingTimer = ""
+  GameRules.PostRoundTimer = ""
 
   -- Modifier Applier
   GameRules.Applier = CreateItem("item_apply_modifiers", nil, nil)

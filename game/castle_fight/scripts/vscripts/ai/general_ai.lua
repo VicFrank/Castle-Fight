@@ -60,6 +60,8 @@ function CanAttackTarget(self, target)
     return true
   end
 
+  if target:IsAttackImmune() then return false end
+
   if target:IsRealHero() then
    return false
   elseif target:HasFlyMovementCapability() and not self.aiState.canHitFlying then
@@ -106,8 +108,8 @@ function GetHigherPriorityTarget(self, unit1, unit2)
   if priority1 > priority2 then return unit1 end
   if priority2 > priority1 then return unit2 end
 
-  local distance1 = GetDistanceBetweenTwoUnits(self, unit1)
-  local distance2 = GetDistanceBetweenTwoUnits(self, unit2)
+  local distance1 = GridNav:FindPathLength(self:GetAbsOrigin(), unit1:GetAbsOrigin())
+  local distance2 = GridNav:FindPathLength(self:GetAbsOrigin(), unit2:GetAbsOrigin())
 
   -- The castle is a big fat boy, so the distance from the origin is misleading
   if unit1:GetUnitName() == "castle" then
@@ -168,12 +170,6 @@ function UseAbility(self)
 
   if not ability then return false end
 
-  if string.sub(getBinaryValues(ability:GetBehavior()),3,3) == "1" then
-    --DOTA_ABILITY_BEHAVIOR_NO_TARGET
-    self:CastAbilityNoTarget(ability, -1)
-    return true
-  end
-
   local target
   local castRange = ability:GetCastRange(self:GetAbsOrigin(), self)
 
@@ -189,8 +185,19 @@ function UseAbility(self)
       FIND_ANY_ORDER,
       false)
 
+    -- Don't cast an ability that applies the modifier we're going to apply anyway
+    local modifierBlackList = g_AI_Modifier_Table[self:GetUnitName()]
+
     target = FindFirstUnit(targets, function(target) 
-      return not IsCustomBuilding(target)
+      local isValidTarget = not IsCustomBuilding(target)
+
+      if modifierBlackList then
+        if target:HasModifier(modifierBlackList) then
+          isValidTarget = false
+        end
+      end
+
+      return isValidTarget
     end)
 
     if not target then return false end
@@ -198,7 +205,10 @@ function UseAbility(self)
     target = self.aiState.aggroTarget
   end
 
-  if string.sub(getBinaryValues(ability:GetBehavior()),4,4) == "1" then
+  if string.sub(getBinaryValues(ability:GetBehavior()),3,3) == "1" then
+    --DOTA_ABILITY_BEHAVIOR_NO_TARGET
+    self:CastAbilityNoTarget(ability, -1)
+  elseif string.sub(getBinaryValues(ability:GetBehavior()),4,4) == "1" then
   --DOTA_ABILITY_BEHAVIOR_UNIT_TARGET
     self:CastAbilityOnTarget(target, ability, -1)
   elseif string.sub(getBinaryValues(ability:GetBehavior()),5,5) == "1" then

@@ -43,10 +43,10 @@ function modifier_astral_chains_debuff:GetModifierAttackSpeedBonus_Constant()
   return -self.attack_slow;
 end
 
-function modifier_chilling_attack_debuff:GetEffectName()
+function modifier_astral_chains_debuff:GetEffectName()
   return "particles/generic_gameplay/generic_slowed_cold.vpcf"
 end
 
-function modifier_chilling_attack_debuff:GetEffectAttachType()
-  return PATTACH_POINT_FOLLOW
+function modifier_astral_chains_debuff:GetEffectAttachType()
+  return PATTACH_ABSORIGIN_FOLLOW
 end

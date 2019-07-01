@@ -7,6 +7,10 @@ end
 
 modifier_decaying_attack = class({})
 
+function modifier_decaying_attack:IsPurgable()
+  return false
+end
+
 function modifier_decaying_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

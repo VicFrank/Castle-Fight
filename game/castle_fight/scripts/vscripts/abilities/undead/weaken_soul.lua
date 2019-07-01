@@ -20,6 +20,10 @@ function modifier_weaken_soul_aura:IsPurgable()
   return false
 end
 
+function modifier_weaken_soul_aura:IsAuraActiveOnDeath()
+  return false
+end
+
 function modifier_weaken_soul_aura:GetAuraRadius()
   if not IsServer() then return end
   local radius = self.range

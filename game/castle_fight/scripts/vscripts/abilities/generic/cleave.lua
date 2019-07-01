@@ -8,6 +8,8 @@ naga_guardian_cleave = class({})
 function naga_guardian_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
 bear_cleave = class({})
 function bear_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
+polar_bear_cleave = class({})
+function polar_bear_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
 
 modifier_custom_cleave = class({})
 

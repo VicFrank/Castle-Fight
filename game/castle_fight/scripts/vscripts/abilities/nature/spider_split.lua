@@ -42,12 +42,10 @@ function modifier_brood_mother_split:OnDeath(keys)
   if not IsServer() then return nil end
 
   if keys.unit == self:GetParent() then
-    for i=1,2 do
-      local unitName = "giant_spider"
-      local position = self:GetParent():GetAbsOrigin()
-      local team = self:GetParent():GetTeam()
-      local playerID = self:GetParent().playerID
-      CreateLaneUnit(unitName, position, team, playerID)
-    end
+    local unitName = "giant_spider"
+    local position = self:GetParent():GetAbsOrigin()
+    local team = self:GetParent():GetTeam()
+    local playerID = self:GetParent().playerID
+    CreateLaneUnit(unitName, position, team, playerID)
   end
 end

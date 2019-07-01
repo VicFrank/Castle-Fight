@@ -6,7 +6,11 @@ function control_enemy:OnSpellStart()
 
   local particleName = "particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf"
 
-  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  local enemies = FindAllVisibleEnemies(caster:GetTeam())
+  local target = FindFirstUnit(enemies, function(target) 
+      return not target:IsLegendary()
+    end)
+
   if not target then return end
 
   caster:EmitSound("Hero_Chen.HolyPersuasionCast")

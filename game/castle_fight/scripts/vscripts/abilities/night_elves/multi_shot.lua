@@ -1,11 +1,10 @@
 -- From Dota Imba
-ranger_multi_shot = class({})
-
 LinkLuaModifier("modifier_ranger_split_shot", "abilities/night_elves/multi_shot", LUA_MODIFIER_MOTION_NONE)
 
-function ranger_multi_shot:GetIntrinsicModifierName()
-  return "modifier_ranger_split_shot"
-end
+ranger_multi_shot = class({})
+function ranger_multi_shot:GetIntrinsicModifierName() return "modifier_ranger_split_shot" end
+arcane_tower_multishot = class({})
+function arcane_tower_multishot:GetIntrinsicModifierName() return "modifier_ranger_split_shot" end
 
 modifier_ranger_split_shot = class({})
 

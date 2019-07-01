@@ -1,10 +1,13 @@
+#base "generic/items.kv"
+
 #base "races/humans/items.kv"
 #base "races/naga/items.kv"
 #base "races/nature/items.kv"
 #base "races/night_elves/items.kv"
 #base "races/undead/items.kv"
-
-#base "generic/items.kv"
+#base "races/orc/items.kv"
+#base "races/north/items.kv"
+#base "races/elf/items.kv"
 
 "DOTAAbilities"
 {

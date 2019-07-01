@@ -1,6 +1,6 @@
 bear_slumber = class({})
 
-LinkLuaModifier("modifier_bear_slumber", "abilities/nature/bear_slumber.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_bear_slumber", "abilities/nature/slumber.lua", LUA_MODIFIER_MOTION_NONE)
 
 function bear_slumber:OnSpellStart()
   local caster = self:GetCaster()
@@ -42,6 +42,8 @@ function modifier_bear_slumber:OnAttackLanded(keys)
       attacker = attacker,
       ability = self:GetAbility()
     })
+
+    self:GetParent():RemoveModifierByName("modifier_bear_slumber")
   end
 end
 
@@ -53,4 +55,12 @@ end
 
 function modifier_bear_slumber:GetEffectName()
   return "particles/generic_gameplay/generic_sleep.vpcf"
+end
+
+function modifier_bear_slumber:GetEffectAttachType()
+  return PATTACH_OVERHEAD_FOLLOW
+end
+
+function modifier_bear_slumber:GetStatusEffectName()
+  return "particles/status_fx/status_effect_nightmare.vpcf"
 end

@@ -24,10 +24,10 @@ function mountain_giant_taunt:OnSpellStart()
   end
 end
 
-mountain_giant_taunt = class({})
+modifier_mountain_giant_taunt = class({})
 
-function mountain_giant_taunt:IsDebuff() return true end
+function modifier_mountain_giant_taunt:IsDebuff() return true end
 
-function mountain_giant_taunt:OnCreated()
+function modifier_mountain_giant_taunt:OnCreated()
   self:GetParent().tauntTarget = self:GetCaster()
 end

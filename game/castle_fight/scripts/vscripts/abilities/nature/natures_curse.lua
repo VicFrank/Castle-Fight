@@ -17,6 +17,10 @@ function modifier_natures_curse_aura:IsPurgable()
   return false
 end
 
+function modifier_natures_curse_aura:IsAuraActiveOnDeath()
+  return false
+end
+
 function modifier_natures_curse_aura:GetAuraRadius()
   if not IsServer() then return end
   local radius = 99999
@@ -35,9 +39,9 @@ function modifier_natures_curse_aura:GetAuraSearchTeam()
   return DOTA_UNIT_TARGET_TEAM_ENEMY
 end
 
-function modifier_natures_curse_aura:GetAuraEntityReject(target)
-  return target:IsRealHero()
-end
+-- function modifier_natures_curse_aura:GetAuraEntityReject(target)
+--   return not IsCustomBuilding(target)
+-- end
 
 function modifier_natures_curse_aura:GetAuraSearchType()
   return DOTA_UNIT_TARGET_ALL
@@ -55,11 +59,11 @@ end
 
 function modifier_natures_curse_debuff:DeclareFunctions()
   local funcs = {
-    MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE
+    MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE
   }
   return funcs  
 end
 
-function modifier_natures_curse_debuff:GetModifierPercentageManaRegen()
-  return self:GetAbility():GetSpecialValueFor("mana_regen")
+function modifier_natures_curse_debuff:GetModifierTotalPercentageManaRegen()
+  return -0.25
 end

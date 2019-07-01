@@ -7,9 +7,9 @@
     <include src="file://{resources}/scripts/custom_game/round_stats.js" />     
   </scripts>
   <Panel class="RoundScoresRoot" hittest="false">
-    <Panel id="RoundScoresContainer" hittest="false">
-      <Label id="GoodGuysScore" class="TeamScore" text="0" hittest="false" />
-      <Label id="BadGuysScore" class="TeamScore" text="0" hittest="false" />
+    <Panel id="RoundScoresContainer" onmouseover="UIShowTextTooltip(Need to win 2 rounds to win)" onmouseout="UIHideTextTooltip()">
+      <Label id="GoodGuysScore" class="TeamScore" text="0" />
+      <Label id="BadGuysScore" class="TeamScore" text="0" />
     </Panel>
   </Panel>
 </root>

@@ -11,18 +11,23 @@ end
 
 modifier_dryad_natures_touch = class({})
 
+function modifier_dryad_natures_touch:OnCreated()
+  self.health_bonus = self:GetAbility():GetSpecialValueFor("health")
+  self.armor = self:GetAbility():GetSpecialValueFor("armor")
+end
+
 function modifier_dryad_natures_touch:DeclareFunctions()
   local funcs = {
-    MODIFIER_PROPERTY_HEALTH_BONUS,
+    MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS
   }
   return funcs
 end
 
-function modifier_dryad_natures_touch:GetModifierHealthBonus(keys)
-  return self:GetAbility():GetSpecialValueFor("health")
+function modifier_dryad_natures_touch:GetModifierExtraHealthBonus(keys)
+  return self.health_bonus
 end
 
-function modifier_dryad_natures_touch:GetModifierStatusResistance(keys)
-  return self:GetAbility():GetSpecialValueFor("armor")
+function modifier_dryad_natures_touch:GetModifierPhysicalArmorBonus(keys)
+  return self.armor
 end
