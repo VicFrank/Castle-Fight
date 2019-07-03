@@ -1,6 +1,6 @@
 g_Precache_Tables = {
   npc_dota_hero_kunkka = {
-  "npc_dota_hero_kunkka",    
+    "npc_dota_hero_kunkka",    
     "barracks",
     "stronghold",
     "footman",

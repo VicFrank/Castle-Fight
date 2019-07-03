@@ -11,5 +11,128 @@
       <Label id="GoodGuysScore" class="TeamScore" text="0" />
       <Label id="BadGuysScore" class="TeamScore" text="0" />
     </Panel>
+
+    <Panel id="ScoreboardHolder" class="ScoreboardHidden">
+      <Label id="RoundWinner" text="" class="" />
+      <Panel id="PostRoundScoreboard" hittest="false">
+        <Panel hittest="false" class="HeaderRow">
+          <Label id="WestScore" class="WestColor TeamScoreScoreboard" text="3" />
+          <Label id="WesternForcesHeader" class="TeamNameLabel WestColor" text="Western Forces" />
+          <Label class="ScoreboardHeader" text="Income" />
+          <Label class="ScoreboardHeader" text="Units Trained" />
+          <Label class="ScoreboardHeader" text="Units Killed" />
+          <Label class="ScoreboardHeader" text="Buildings Built" />
+          <Label class="ScoreboardHeader" text="RS Damage" />
+        </Panel>
+        
+        <Panel id="ScoreboardRow1" hittest="false" class="ScoreboardRow">
+          <DOTAAvatarImage steamid="local" class="ScoreboardAvatar Invisible" />
+          <Panel class="PlayerAndHeroContainer Invisible">
+            <DOTAUserName steamid="local" class="ScoreboardUsername" />
+            <Label text="Undead Builder" class="HeroNameLabel" />
+          </Panel>
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+        </Panel>
+        <Panel id="ScoreboardRow2" hittest="false" class="ScoreboardRow">
+          <DOTAAvatarImage steamid="" class="ScoreboardAvatar Invisible" />
+          <Panel class="PlayerAndHeroContainer Invisible">
+            <DOTAUserName steamid="local" class="ScoreboardUsername" />
+            <Label text="Undead Builder" class="HeroNameLabel" />
+          </Panel>
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+        </Panel>
+        <Panel id="ScoreboardRow3" hittest="false" class="ScoreboardRow">
+          <DOTAAvatarImage steamid="" class="ScoreboardAvatar Invisible" />
+          <Panel class="PlayerAndHeroContainer Invisible">
+            <DOTAUserName steamid="local" class="ScoreboardUsername" />
+            <Label text="Undead Builder" class="HeroNameLabel" />
+          </Panel>
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+        </Panel>
+        <Panel id="ScoreboardRow4" hittest="false" class="ScoreboardRow">
+          <DOTAAvatarImage steamid="" class="ScoreboardAvatar Invisible" />
+          <Panel class="PlayerAndHeroContainer Invisible">
+            <DOTAUserName steamid="local" class="ScoreboardUsername" />
+            <Label text="Undead Builder" class="HeroNameLabel" />
+          </Panel>
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+        </Panel>
+
+        <Panel hittest="false" class="HeaderRow">
+          <Label id="EastScore" class="TeamScoreScoreboard EastScore" text="2" />
+          <Label id="EasternForcesHeader" class="TeamNameLabel EastScore" text="Eastern Forces" />
+          <Label class="ScoreboardHeader" text="Income" />
+          <Label class="ScoreboardHeader" text="Units Trained" />
+          <Label class="ScoreboardHeader" text="Units Killed" />
+          <Label class="ScoreboardHeader" text="Buildings Built" />
+          <Label class="ScoreboardHeader" text="RS Damage" />
+        </Panel>
+
+        <Panel id="ScoreboardRow5" hittest="false" class="ScoreboardRow">
+          <DOTAAvatarImage steamid="" class="ScoreboardAvatar Invisible" />
+          <Panel class="PlayerAndHeroContainer Invisible">
+            <DOTAUserName steamid="local" class="ScoreboardUsername" />
+            <Label text="Undead Builder" class="HeroNameLabel" />
+          </Panel>
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+        </Panel>
+        <Panel id="ScoreboardRow6" hittest="false" class="ScoreboardRow">
+          <DOTAAvatarImage steamid="" class="ScoreboardAvatar Invisible" />
+          <Panel class="PlayerAndHeroContainer Invisible">
+            <DOTAUserName steamid="local" class="ScoreboardUsername" />
+            <Label text="Undead Builder" class="HeroNameLabel" />
+          </Panel>
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+        </Panel>
+        <Panel id="ScoreboardRow7" hittest="false" class="ScoreboardRow">
+          <DOTAAvatarImage steamid="" class="ScoreboardAvatar Invisible" />
+          <Panel class="PlayerAndHeroContainer Invisible">
+            <DOTAUserName steamid="local" class="ScoreboardUsername" />
+            <Label text="Undead Builder" class="HeroNameLabel" />
+          </Panel>
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+        </Panel>
+        <Panel id="ScoreboardRow8" hittest="false" class="ScoreboardRow">
+          <DOTAAvatarImage steamid="" class="ScoreboardAvatar Invisible" />
+          <Panel class="PlayerAndHeroContainer Invisible">
+            <DOTAUserName steamid="local" class="ScoreboardUsername" />
+            <Label text="Undead Builder" class="HeroNameLabel" />
+          </Panel>
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+          <Label class="RoundScoreLabel" text="" />
+        </Panel>
+      </Panel>
+    </Panel>
   </Panel>
 </root>

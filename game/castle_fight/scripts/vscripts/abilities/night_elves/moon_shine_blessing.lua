@@ -51,15 +51,7 @@ function modifier_moon_shine_blessing:OnCreated()
 
   self.armor = ability:GetSpecialValueFor("armor")
 
-  local parent = self:GetParent()
-
-  parent.MoonShineParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_treant/treant_livingarmor.vpcf", PATTACH_POINT_FOLLOW, parent)
-  ParticleManager:SetParticleControlEnt(parent.MoonShineParticle, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
-  ParticleManager:SetParticleControlEnt(parent.MoonShineParticle, 1, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
-end
-
-function modifier_moon_shine_blessing:OnDestroy()
-  ParticleManager:DestroyParticle(self:GetParent().MoonShineParticle, true)
+  local parent = self:GetParent()  
 end
 
 function modifier_moon_shine_blessing:DeclareFunctions()

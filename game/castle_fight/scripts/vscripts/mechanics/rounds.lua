@@ -92,6 +92,15 @@ function GameMode:StartHeroSelection()
 
   GameRules.needToPick = TableCount(GameRules.playerIDs)
 
+  -- Have the bots pick automatically
+  for _,hero in pairs(HeroList:GetAllHeroes()) do
+    local playerID = hero:GetPlayerOwnerID()
+
+    if PlayerResource:IsFakeClient(playerID) then
+      OnRaceSelected(0, {PlayerID = playerID, hero = "npc_dota_hero_kunkka"})
+    end
+  end
+
   local timeToStart = HERO_SELECT_TIME
   -- Reset the timer if it's already going
   Timers:RemoveTimer(GameRules.HeroSelectionTimer)
@@ -227,14 +236,20 @@ function GameMode:EndRound(losingTeam)
     right_score = GameRules.rightRoundsWon,
   })
 
+  for _,playerID in pairs(GameRules.playerIDs) do    
+    CustomNetTables:SetTableValue("round_score", tostring(playerID), {
+      unitsKilled = GameRules.unitsKilled[playerID],
+      buildingsBuilt = GameRules.buildingsBuilt[playerID],
+      numUnitsTrained = GameRules.numUnitsTrained[playerID],
+      rescueStrikeDamage = GameRules.rescueStrikeDamage[playerID],
+      rescueStrikeKills = GameRules.rescueStrikeKills[playerID],
+      income = GameMode:GetIncomeForPlayer(playerID),
+    })
+  end
+
   -- Send round info to the clients
   local roundDuration = GameRules:GetGameTime() - GameRules.roundStartTime
-
-  GameRules.unitsKilled = {}
-  GameRules.buildingsBuilt = {}
-  GameRules.numUnitsTrained = {}
-  GameRules.rescueStrikeDamage = {}
-  GameRules.rescueStrikeKills = {}
+  GameRules.roundCount = GameRules.roundCount + 1
 
   CustomGameEventManager:Send_ServerToAllClients("round_ended", {
     winningTeam = winningTeam,
@@ -248,8 +263,6 @@ function GameMode:EndRound(losingTeam)
     losingCastlePosition = losingCastlePosition,
   })
 
-  GameRules.roundCount = GameRules.roundCount + 1
-
   -- Stop the income timer until the next round
   GameMode:StopIncomeTimer()
 
@@ -261,12 +274,12 @@ function GameMode:EndRound(losingTeam)
 
   GameRules.PostRoundTimer = Timers:CreateTimer(POST_ROUND_TIME, function()
     -- Clear the map
-    GameMode:KillAllUnitsAndBuildings()
 
     if GameRules.leftRoundsWon >= POINTS_TO_WIN or GameRules.rightRoundsWon >= POINTS_TO_WIN then
       GameMode:EndGame(winningTeam)
     else
       -- Go into the next round preparation phase
+      GameMode:KillAllUnitsAndBuildings()
       GameMode:StartHeroSelection()
     end
   end)

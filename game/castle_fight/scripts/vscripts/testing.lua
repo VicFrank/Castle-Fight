@@ -10,6 +10,8 @@ function GameMode:OnScriptReload()
   -- KillAllUnits()
   -- KillAllBuildings()
   -- GameMode:StartHeroSelection()
+
+  -- print(PlayerResource:GetGold(1))
 end
 
 function SpawnTestBuildings()

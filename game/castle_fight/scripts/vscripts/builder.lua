@@ -13,7 +13,9 @@ function Build( event )
     -- If the ability has an AbilityGoldCost, it's impossible to not have enough gold the first time it's cast
     -- Always refund the gold here, as the building hasn't been placed yet
 
-    hero:ModifyGold(gold_cost, false, 0)
+    if not PlayerResource:IsFakeClient(playerID) then
+        hero:ModifyGold(gold_cost, false, 0)
+    end
 
     -- Makes a building dummy and starts panorama ghosting
     BuildingHelper:AddBuilding(event)

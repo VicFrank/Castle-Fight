@@ -30,7 +30,7 @@ function FindAggro(self)
   local aggroTargets = FindEnemiesInRadius(self, searchRange)
 
   local target
-  for _,potentialTarget in pairs(aggroTargets) do
+  for _,potentialTarget in ipairs(aggroTargets) do
     -- print(potentialTarget:GetUnitName(), self:CanAttackTarget(potentialTarget))
     if CanAttackTarget(self, potentialTarget) then
       if not target then
@@ -111,11 +111,18 @@ function GetHigherPriorityTarget(self, unit1, unit2)
   local distance1 = GridNav:FindPathLength(self:GetAbsOrigin(), unit1:GetAbsOrigin())
   local distance2 = GridNav:FindPathLength(self:GetAbsOrigin(), unit2:GetAbsOrigin())
 
-  -- The castle is a big fat boy, so the distance from the origin is misleading
-  if unit1:GetUnitName() == "castle" then
+  -- Stick to the currently aggro'd target
+  if (unit1 == self.aiState.aggroTarget) then
     distance1 = distance1 - 200
-  elseif unit2:GetUnitName() == "castle" then
+  elseif (unit2 == self.aiState.aggroTarget) then
     distance2 = distance2 - 200
+  end
+
+  -- The castle is a big fat boy, so the distance from the center is misleading
+  if unit1:GetUnitName() == "castle" then
+    distance1 = distance1 - 150
+  elseif unit2:GetUnitName() == "castle" then
+    distance2 = distance2 - 150
   end
 
   -- print(unit1:GetUnitName(), unit1:GetUnitName(), unit2:GetUnitName())
@@ -123,6 +130,13 @@ function GetHigherPriorityTarget(self, unit1, unit2)
   -- print(distance1, distance2)
 
   if distance1 < distance2 then return unit1
+  -- Because we search in order from closest to farthest, unit1 will always
+  -- be closer than unit2 (in absolute terms)
+  elseif distance1 == distance2 then 
+    if self.aiState.aggroTarget and IsCustomBuilding(self.aiState.aggroTarget) then
+      return self.aiState.aggroTarget
+    end
+    return unit1
   else return unit2
   end
 end

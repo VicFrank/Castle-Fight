@@ -23,6 +23,8 @@ require("tables/ai_modifier_table")
 
 require("items/custom_shop")
 
+require("ai/bot_ai/bot_ai")
+
 require('repair')
 require("damage")
 require("testing")
@@ -81,6 +83,8 @@ function Activate()
 
   if IsInToolsMode() then
     Timers:CreateTimer(2, function()
+      Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
+      Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
     end)
   end

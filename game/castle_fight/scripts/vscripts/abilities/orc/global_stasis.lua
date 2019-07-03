@@ -12,7 +12,7 @@ function global_stasis:OnSpellStart()
   local position = point or caster:GetAbsOrigin()
   local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
   local flags = DOTA_UNIT_TARGET_FLAG_NONE
-  local enemies = FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_CLOSEST, false)
+  local enemies = FindUnitsInRadius(team, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_CLOSEST, false)
 
   caster:EmitSound("Hero_Techies.StasisTrap.Stun")
 

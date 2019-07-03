@@ -34,7 +34,7 @@ function modifier_artillery_fire:OnCreated()
     -- Wait to finish building
     Timers:CreateTimer(1, function()
       if not self.caster:IsAlive() then return end
-      if self.caster:HasModifier("modifier_silence") then return .1 end
+      if self.caster:IsSilenced() then return .1 end
 
       FireCannon(self.ability, self)
       self:StartIntervalThink(self.fire_delay)
@@ -79,7 +79,6 @@ function FireCannon(ability, modifier)
 
       EmitSoundOn(sound_impact, caster)
 
-      -- TODO: SplashAttackGround requires the caster not be deleted from c++
       if not caster:IsNull() then
         SplashAttackGround(caster, target)
       end

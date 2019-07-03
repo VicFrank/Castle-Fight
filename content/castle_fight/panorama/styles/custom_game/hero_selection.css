@@ -10,7 +10,9 @@
   height: 700px;
 
   horizontal-align: center;
-  vertical-align: center;
+  vertical-align: top;
+
+  margin-top: 75px;
 
   border-radius: 5.0px;
   background-color: #000000da;

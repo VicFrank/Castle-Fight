@@ -69,8 +69,6 @@ function thisEntity:AIThink()
     if UseAbility(self) then return 1.5 end
     AttackTarget(self)
     return .3
-    -- self:MoveToAggroTarget()
-    -- return .3
   end
 
   MoveTowardsGoal(self)

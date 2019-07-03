@@ -30,7 +30,181 @@
   font-size: 32px;
   text-align: center;
 
-
-
   background-color: black;
+}
+
+#ScoreboardHolder
+{
+  margin-top: 75.0px;
+  horizontal-align: center;
+
+  flow-children: down;
+}
+
+#RoundWinner
+{
+  horizontal-align: center;
+
+  font-size: 76px;
+  
+  brightness: 4;
+
+  color: black;
+}
+
+#PostRoundScoreboard
+{
+  flow-children: down;
+  horizontal-align: center;
+
+  height: fit-children;
+  width: fit-children;
+
+  background-color: #111920dd;
+  background-size: 100%;
+}
+
+.ScoreboardHidden
+{
+  transition-property: opacity, transform;
+    transition-duration: 0.5s;
+  opacity: 0;
+  transform: scaleX(0) scaleY(0) translatey(-50.0px);
+}
+
+.ScoreboardVisible
+{
+  opacity: 1;
+  transform: scaleX(1) scaleY(1);
+}
+
+.HeaderRow
+{
+  flow-children: right;
+  vertical-align: center;
+  margin-top: 4px;
+}
+
+.TeamScoreScoreboard
+{
+  width: 80px;
+  vertical-align: center;
+
+  font-size: 38px;
+  text-align: center;
+}
+
+.TeamNameLabel
+{
+  margin-right: 80px;
+
+  vertical-align: center;
+
+  font-size: 24px;
+}
+
+.WestColor
+{
+  text-shadow: 0.0px 0.0px 6px 1.0 #9BE40C8F;
+}
+
+.EastScore
+{
+  text-shadow: 0.0px 0.0px 6px 1.0 #E74D088F;
+}
+
+.ScoreboardHeader
+{
+  width: 180.0px;
+  horizontal-align: center;
+  vertical-align: center;
+
+  text-align: center;
+  color: #afd2e3;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.ScoreboardRow
+{
+  margin-top: 2px;  
+  width: 100%;
+  height: 48px;
+
+  flow-children: right;
+  background-color: #111920bb;
+  border-top: 1px solid #ffffff05;
+  border-bottom: 1px solid #ffffff03;
+
+  vertical-align: center;
+}
+
+.ScoreboardRow.LocalPlayer
+{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #373C3B ), color-stop( 0.4, #505959 ), color-stop( 0.6, #505959 ), to( #2F3535 ) );
+}
+
+.ScoreboardAvatar
+{
+  margin-left: 20.0px;
+  width: 48px;
+  height: 48px;
+}
+
+.PlayerAndHeroContainer
+{
+  flow-children: down;
+}
+
+.ScoreboardUsername
+{
+  width: 230px;
+  margin-left: 10.0px;
+  vertical-align: center;
+}
+
+.ScoreboardUsername Label
+{
+  font-size: 20px;
+
+  margin-top: 4px;
+  margin-bottom: 0px;
+
+  text-align: left;
+}
+
+.HeroNameLabel
+{
+  margin-left: 10px;
+  margin-top: -6px;
+
+  color: #a9a6aa;
+
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: thin;
+  letter-spacing: 1px;
+
+  text-align: left;
+}
+
+.RoundScoreLabel
+{
+  width: 180.0px;
+  height:100%;
+
+  font-size: 20.0px;
+  text-align: center;
+
+  margin-top: 10px;
+}
+
+.HighScore
+{
+  brightness: 4;
+}
+
+.Invisible
+{
+  visibility: collapse;
 }

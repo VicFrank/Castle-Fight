@@ -7,9 +7,11 @@ function ice_queen_frost_nova:OnSpellStart()
   local ability = self
   local target = self:GetCursorTarget()
 
-  local aoe_damage = ability:GetSpecialValueFor("aoe_damage")
+  local damage = ability:GetSpecialValueFor("aoe_damage")
   local duration = ability:GetSpecialValueFor("duration")
   local radius = ability:GetSpecialValueFor("radius")
+
+  caster:EmitSound("Ability.FrostNova")
 
   local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
@@ -70,10 +72,10 @@ function modifier_ice_queen_frost_nova:GetModifierAttackSpeedBonus_Constant()
   return -self.attack_slow
 end
 
-function modifier_ice_queen_frost_nova:GetEffectName()
-  return "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+function modifier_ice_queen_frost_nova:GetEffect()
+  return "particles/generic_gameplay/generic_slowed_cold.vpcf"
 end
 
 function modifier_ice_queen_frost_nova:GetEffectAttachType()
-  return PATTACH_POINT_FOLLOW
+  return PATTACH_ABSORIGIN_FOLLOW
 end

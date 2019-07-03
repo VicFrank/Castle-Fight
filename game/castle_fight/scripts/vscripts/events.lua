@@ -71,6 +71,12 @@ function GameMode:OnHeroInGame(hero)
     table.insert(GameRules.playerIDs, playerID)
   end
 
+  if PlayerResource:IsValidPlayerID(playerID) and PlayerResource:IsFakeClient(playerID)
+    and hero:GetUnitName() ~= "npc_dota_hero_wisp" then
+    print("Bot Hero Spawned")
+    BotAI:Init(hero)
+  end
+
   PlayerResource:SetDefaultSelectionEntity(playerID, hero)
 
   -- Initialize custom resource values
@@ -99,6 +105,18 @@ function GameMode:OnHeroInGame(hero)
 
     -- Stun the hero until the round starts
     hero:AddNewModifier(hero, nil, "modifier_stunned_custom", {})
+
+    -- Place the hero at a random spawn location
+    local spawnPositions
+    if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
+      spawnPositions = Entities:FindAllByClassname("info_player_start_goodguys")
+    else
+      spawnPositions = Entities:FindAllByClassname("info_player_start_badguys")
+    end
+    print(spawnPositions)
+    print(#spawnPositions)
+    local spawnPosition = GetRandomTableElement(spawnPositions):GetAbsOrigin()
+    hero:SetAbsOrigin(spawnPosition)
 
     -- Precache this race
     if not GameRules.precached[unitName] and g_Precache_Tables[unitName] then
@@ -252,11 +270,6 @@ function OnRaceSelected(eventSourceIndex, args)
   print(GameRules.needToPick .. " players still need to pick")
 
   if GameRules.needToPick <= 0 then
-    GameMode:EndHeroSelection()
-  end
-
-  -- Don't need the bot to pick
-  if IsInToolsMode() and GameRules.needToPick == 1 then
     GameMode:EndHeroSelection()
   end
 end

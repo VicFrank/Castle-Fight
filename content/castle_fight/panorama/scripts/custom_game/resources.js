@@ -149,6 +149,8 @@ function UpdateAbilityUI() {
   }
 }
 
+var IsSpectator = !Players.IsValidPlayerID(Players.GetLocalPlayer());
+
 var LocalPlayerID = Players.GetLocalPlayer();
 var LocalPlayerTeam = Players.GetTeam(LocalPlayerID);
 
@@ -156,7 +158,9 @@ function GetPlayerIDToShow() {
   var queryUnit = Players.GetLocalPlayerPortraitUnit();
   var queryUnitTeam = Entities.GetTeamNumber(queryUnit);
   var queryUnitPlayerOwnerID = Entities.GetPlayerOwnerID(queryUnit);
-  if (queryUnitPlayerOwnerID >=0 && queryUnitTeam === LocalPlayerTeam)
+  if (queryUnitPlayerOwnerID >= 0 && queryUnitTeam === LocalPlayerTeam)
+    return queryUnitPlayerOwnerID;
+  else if (IsSpectator && queryUnitPlayerOwnerID >= 0)
     return queryUnitPlayerOwnerID;
   else
     return LocalPlayerID;
