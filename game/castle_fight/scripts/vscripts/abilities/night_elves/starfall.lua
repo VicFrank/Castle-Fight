@@ -28,7 +28,7 @@ function starfall:OnSpellStart()
       local fireParticleIndex = ParticleManager:CreateParticle(targetFireParticle, PATTACH_ABSORIGIN_FOLLOW, target)
       position = target:GetAbsOrigin()
     end
-
+    
     StarfallDamage(ability, position)
 
     timeSpent = timeSpent + wave_interval
@@ -39,14 +39,15 @@ end
 function StarfallDamage(ability, position)
   local caster = ability:GetCaster()
   local radius = ability:GetSpecialValueFor("radius")
-  local dps = ability:GetSpecialValueFor("wave_interval")
-  local wave_interval = ability:GetSpecialValueFor("dps")
+  local dps = ability:GetSpecialValueFor("dps")
+  local wave_interval = ability:GetSpecialValueFor("wave_interval")
   local damage = dps * wave_interval
 
   local targets = FindEnemiesInRadius(caster, radius, position)
 
   for _,target in pairs(targets) do
-    Timers:CreateTimer(RandomFloat(0.1, wave_interval), function()
+    local timeToDamage = RandomFloat(0.1, wave_interval)
+    Timers:CreateTimer(timeToDamage, function()
       -- Drop a starfall
       local particle = ParticleManager:CreateParticle("particles/custom/nightelf/potm/starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
       ParticleManager:ReleaseParticleIndex(particle)
@@ -56,6 +57,8 @@ function StarfallDamage(ability, position)
           if IsCustomBuilding(target) then
             damage = damage * 0.4
           end
+
+          print(damage)
 
           ApplyDamage({
             victim = target,

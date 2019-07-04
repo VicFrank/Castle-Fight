@@ -967,6 +967,12 @@ function BuildingHelper:PlaceBuilding(player, name, location, construction_size,
         building:SetAngles(0,-angle,0)
     end
 
+    -- VicFrank: Added self destruct ability to every building
+    if building:GetUnitName() ~= "castle" then
+        local ability = building:AddAbility("building_self_destruct")
+        ability:SetLevel(1)
+    end
+
     return building
 end
 
@@ -1172,6 +1178,12 @@ function BuildingHelper:StartBuilding(builder)
     if bScale then
         building:SetModelScale(fCurrentScale)
         bScaling = true
+    end
+
+    -- VicFrank: Added self destruct ability to every building
+    if building:GetUnitName() ~= "castle" then
+        local ability = building:AddAbility("building_self_destruct")
+        ability:SetLevel(1)
     end
 
     -- Put the builder invulnerable inside the building in construction

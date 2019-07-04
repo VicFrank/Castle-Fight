@@ -6,27 +6,19 @@
     "AbilityTextureName"        "archer"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "24.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "archer"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "archer"
       }
-    }    
+    }
   }
 
   "train_master_archer"
@@ -35,27 +27,19 @@
     "AbilityTextureName"        "master_archer"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "24.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "master_archer"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "master_archer"
       }
-    }    
+    }
   }
 
   "train_blademaster"
@@ -64,27 +48,19 @@
     "AbilityTextureName"        "blademaster"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "26.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "blademaster"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "blademaster"
       }
-    }    
+    }
   }
 
   "train_elder_blademaster"
@@ -93,27 +69,19 @@
     "AbilityTextureName"        "elder_blademaster"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "38.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "elder_blademaster"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "elder_blademaster"
       }
-    }    
+    }
   }
 
   "train_bloodthirster"
@@ -122,27 +90,19 @@
     "AbilityTextureName"        "bloodthirster"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "29.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "bloodthirster"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "bloodthirster"
       }
-    }    
+    }
   }
 
   "train_dragonhawk_rider"
@@ -151,27 +111,19 @@
     "AbilityTextureName"        "dragonhawk_rider"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "31.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "dragonhawk_rider"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "dragonhawk_rider"
       }
-    }    
+    }
   }
 
   "train_siege_ballista"
@@ -180,27 +132,19 @@
     "AbilityTextureName"        "siege_ballista"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "33.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "siege_ballista"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "siege_ballista"
       }
-    }    
+    }
   }
 
   "train_sorceress"
@@ -209,27 +153,19 @@
     "AbilityTextureName"        "sorceress"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "33.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "sorceress"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "sorceress"
       }
-    }    
+    }
   }
 
   "train_wizard"
@@ -238,26 +174,18 @@
     "AbilityTextureName"        "wizard"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "37.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "wizard"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "wizard"
       }
-    }    
+    }
   }
 }

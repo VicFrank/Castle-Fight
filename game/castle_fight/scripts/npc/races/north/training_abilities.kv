@@ -6,27 +6,19 @@
     "AbilityTextureName"        "frost_wolf"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "20.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "frost_wolf"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "frost_wolf"
       }
-    }    
+    }
   }
 
   "train_polar_bear"
@@ -35,27 +27,19 @@
     "AbilityTextureName"        "polar_bear"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "28.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "polar_bear"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "polar_bear"
       }
-    }    
+    }
   }
 
   "train_magnataur"
@@ -64,27 +48,19 @@
     "AbilityTextureName"        "magnataur"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "38.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "magnataur"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "magnataur"
       }
-    }    
+    }
   }
 
   "train_hrimthrusa"
@@ -93,27 +69,19 @@
     "AbilityTextureName"        "hrimthrusa"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "23.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "hrimthrusa"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "hrimthrusa"
       }
-    }    
+    }
   }
 
   "train_troll_shadow_priest"
@@ -122,25 +90,17 @@
     "AbilityTextureName"        "troll_shadow_priest"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "23.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "troll_shadow_priest"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "troll_shadow_priest"
       }
     }
   }
@@ -151,27 +111,19 @@
     "AbilityTextureName"        "ice_troll_witch_doctor"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "30.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "ice_troll_witch_doctor"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "ice_troll_witch_doctor"
       }
-    }    
+    }
   }
 
   "train_wendigo"
@@ -180,27 +132,19 @@
     "AbilityTextureName"        "wendigo"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "28.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "wendigo"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "wendigo"
       }
-    }    
+    }
   }
 
   "train_ancient_wendigo"
@@ -209,27 +153,19 @@
     "AbilityTextureName"        "ancient_wendigo"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "40.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "ancient_wendigo"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "ancient_wendigo"
       }
-    }    
+    }
   }
 
   "train_azure_drake"
@@ -238,27 +174,19 @@
     "AbilityTextureName"        "azure_drake"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "28.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "azure_drake"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "azure_drake"
       }
-    }    
+    }
   }
 
   "train_ice_queen"
@@ -267,26 +195,18 @@
     "AbilityTextureName"        "ice_queen"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "35.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "ice_queen"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "ice_queen"
       }
-    }    
+    }
   }
 }

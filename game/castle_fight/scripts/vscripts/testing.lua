@@ -137,7 +137,7 @@ function GameMode:SpawnUnits(playerID, unitname, count)
 
   if count < 0 then
     count = count * -1
-    team = DOTA_TEAM_BADGUYS
+    team = GetOpposingTeam(team)
   end
 
   for i=1,count do

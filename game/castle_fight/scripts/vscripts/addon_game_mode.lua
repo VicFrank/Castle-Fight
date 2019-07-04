@@ -68,6 +68,7 @@ function Precache( context )
   PrecacheItemByNameSync("item_blast_staff", context)
   PrecacheItemByNameSync("orb_of_lightning", context)
   PrecacheItemByNameSync("scroll_of_stone", context)
+  PrecacheItemByNameSync("building_self_destruct", context)
   
   -- Human Precaches
   -- for _,unitname in ipairs(g_Human_Precache) do
@@ -99,7 +100,7 @@ function GameMode:InitGameMode()
   GameMode = self
   print("Castle Fight has loaded.")
 
-  -- LimitPathingSearchDepth(0.5)
+  LimitPathingSearchDepth(0.5)
 
   GameRules:SetCustomGameAllowMusicAtGameStart(false)
   GameRules:SetCustomGameAllowBattleMusic(false)
@@ -187,6 +188,8 @@ function GameMode:InitGameMode()
   GameRules.playerIDs = {}
   GameRules.numToCache = 0
   GameRules.precached = {}
+  GameRules.income = {}
+  GameRules.numBoxes = {}
 
   GameRules.HeroSelectionTimer = ""
   GameRules.LoadingTimer = ""

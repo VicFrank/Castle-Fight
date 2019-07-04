@@ -6,27 +6,19 @@
     "AbilityTextureName"        "zombie"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "21.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "zombie"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "zombie"
       }
-    }    
+    }
   }
 
   "train_suffocated_zombie"
@@ -35,27 +27,19 @@
     "AbilityTextureName"        "suffocated_zombie"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "26.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "suffocated_zombie"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "suffocated_zombie"
       }
-    }    
+    }
   }
 
   "train_plague_bearer"
@@ -64,27 +48,19 @@
     "AbilityTextureName"        "plague_bearer"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "36.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "plague_bearer"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "plague_bearer"
       }
-    }    
+    }
   }
 
   "train_necromancer"
@@ -93,27 +69,19 @@
     "AbilityTextureName"        "necromancer"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "26.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "necromancer"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "necromancer"
       }
-    }    
+    }
   }
 
   "train_mighty_necromancer"
@@ -122,27 +90,19 @@
     "AbilityTextureName"        "mighty_necromancer"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "34.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "mighty_necromancer"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "mighty_necromancer"
       }
-    }    
+    }
   }
 
   "train_lich_king"
@@ -151,27 +111,19 @@
     "AbilityTextureName"        "lich_king"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "52.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "lich_king"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "lich_king"
       }
-    }    
+    }
   }
 
   "train_vampire"
@@ -180,27 +132,19 @@
     "AbilityTextureName"        "vampire"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "27.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "vampire"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "vampire"
       }
-    }    
+    }
   }
 
   "train_vampire_lord"
@@ -209,27 +153,19 @@
     "AbilityTextureName"        "vampire_lord"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "39.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "vampire_lord"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "vampire_lord"
       }
-    }    
+    }
   }
 
   "train_banshee"
@@ -238,27 +174,19 @@
     "AbilityTextureName"        "banshee"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "30.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "banshee"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "banshee"
       }
-    }    
+    }
   }
 
   "train_flesh_golem"
@@ -267,27 +195,19 @@
     "AbilityTextureName"        "flesh_golem"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "34.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "flesh_golem"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "flesh_golem"
       }
-    }    
+    }
   }
 
   "train_frost_wyrm"
@@ -296,26 +216,18 @@
     "AbilityTextureName"        "frost_wyrm"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "40.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "frost_wyrm"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "frost_wyrm"
       }
-    }    
+    }
   }
 }

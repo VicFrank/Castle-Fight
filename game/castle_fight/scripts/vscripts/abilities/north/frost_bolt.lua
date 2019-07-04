@@ -48,6 +48,7 @@ function frost_bolt:OnProjectileHit(target, locationn)
   if target then
     target:EmitSound("hero_Crystal.projectileImpact")
     target:AddNewModifier(caster, self, "modifier_frost_bolt_freeze", {duration = duration})
+    FreezeCooldowns(target, duration)
 
     local damage = self:GetSpecialValueFor("damage")
 
@@ -69,7 +70,7 @@ function greater_frost_bolt:OnSpellStart()
   local position = point or caster:GetAbsOrigin()
   local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
   local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
-  local enemies =  FindUnitsInRadius(team, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_ANY_ORDER, false)
+  local enemies = FindUnitsInRadius(team, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_ANY_ORDER, false)
 
   local enemyBuildings = {}
 
@@ -113,6 +114,7 @@ function greater_frost_bolt:OnProjectileHit(target, locationn)
 
     for _,enemy in pairs(enemies) do
       enemy:AddNewModifier(caster, self, "modifier_frost_bolt_freeze", {duration = duration})
+      FreezeCooldowns(enemy, duration)
 
       ApplyDamage({
         victim = enemy,
@@ -121,6 +123,24 @@ function greater_frost_bolt:OnProjectileHit(target, locationn)
         damage_type = DAMAGE_TYPE_PURE,
         ability = self,
       })
+    end
+  end
+end
+
+function FreezeCooldowns(unit, duration)
+  for i = 0, 23 do
+    local ability = unit:GetAbilityByIndex(i)
+    if ability and not ability:IsCooldownReady() then
+      ability:StartCooldown(ability:GetCooldownTimeRemaining() + duration)
+
+      if startsWith(ability:GetAbilityName(), "train_") and unit.progressParticle then
+      -- Recreate the progress particle
+        ParticleManager:DestroyParticle(unit.progressParticle, true)
+        ParticleManager:ReleaseParticleIndex(unit.progressParticle)
+
+        unit.progressParticle = ParticleManager:CreateParticle(particleName, PATTACH_OVERHEAD_FOLLOW, unit)
+        ParticleManager:SetParticleControl(unit.progressParticle, 1, Vector(50, 1 / ability:GetCooldown(ability:GetLevel()), 1))
+      end
     end
   end
 end

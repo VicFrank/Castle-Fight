@@ -6,27 +6,20 @@
     "AbilityTextureName"        "grunt"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "21.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "grunt"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "grunt"
       }
-    }    
+    }
+
   }
 
   "train_veteran_grunt"
@@ -35,27 +28,20 @@
     "AbilityTextureName"        "veteran_grunt"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "26.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "veteran_grunt"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "veteran_grunt"
       }
-    }    
+    }
+
   }
 
   "train_axemaster"
@@ -64,27 +50,19 @@
     "AbilityTextureName"        "axemaster"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "38.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "axemaster"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "axemaster"
       }
-    }    
+    }
   }
 
   "train_shaman"
@@ -93,27 +71,19 @@
     "AbilityTextureName"        "shaman"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "24.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "shaman"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "shaman"
       }
-    }    
+    }
   }
 
   "train_troll"
@@ -122,27 +92,19 @@
     "AbilityTextureName"        "troll"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "25.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "troll"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "troll"
       }
-    }    
+    }
   }
 
   "train_troll_trapper"
@@ -151,27 +113,19 @@
     "AbilityTextureName"        "troll_trapper"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "29.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "troll_trapper"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "troll_trapper"
       }
-    }    
+    }
   }
 
   "train_wyvern_rider"
@@ -180,27 +134,19 @@
     "AbilityTextureName"        "wyvern_rider"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "26.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "wyvern_rider"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "wyvern_rider"
       }
-    }    
+    }
   }
 
   "train_kodo"
@@ -209,27 +155,19 @@
     "AbilityTextureName"        "kodo"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "28.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "kodo"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "kodo"
       }
-    }    
+    }
   }
 
   "train_offensive_kodo"
@@ -238,27 +176,19 @@
     "AbilityTextureName"        "offensive_kodo"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "35.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "offensive_kodo"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "offensive_kodo"
       }
-    }    
+    }
   }
 
   "train_defensive_kodo"
@@ -267,27 +197,19 @@
     "AbilityTextureName"        "defensive_kodo"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "35.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "defensive_kodo"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "defensive_kodo"
       }
-    }    
+    }
   }
 
   "train_spellbreaker_kodo"
@@ -296,25 +218,17 @@
     "AbilityTextureName"        "spellbreaker_kodo"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "31.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "spellbreaker_kodo"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "spellbreaker_kodo"
       }
     }
   }
@@ -325,25 +239,17 @@
     "AbilityTextureName"        "catapult"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "34.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "catapult"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "catapult"
       }
     }
   }

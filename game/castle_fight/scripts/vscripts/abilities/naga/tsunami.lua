@@ -19,7 +19,7 @@ function tsunami:OnSpellStart()
     Ability = ability,
     EffectName = "particles/units/heroes/hero_tidehunter/tidehunter_gush_upgrade.vpcf", -- Might not do anything
     vSpawnOrigin = caster:GetAbsOrigin(),
-    fDistance = 9999,
+    fDistance = 15000,
     fStartRadius = aoe,
     fEndRadius = aoe,
     Source = caster,
@@ -28,7 +28,7 @@ function tsunami:OnSpellStart()
     iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
     iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
     iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-    fExpireTime = GameRules:GetGameTime() + 10.0,
+    fExpireTime = GameRules:GetGameTime() + 15.0,
     bDeleteOnHit = true,
     vVelocity = speed * direction,
     bProvidesVision = false,
@@ -39,7 +39,7 @@ end
 
 function tsunami:OnProjectileHit(target, location)
   if not IsServer() then return end
-  if not target then return end
+  if not target or IsCustomBuilding(target) then return end
 
   local damage = self:GetSpecialValueFor("damage")
 

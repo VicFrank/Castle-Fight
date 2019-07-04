@@ -6,8 +6,6 @@ function freezing_blast:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  caster:EmitSound("Hero_Winter_Wyvern.SplinterBlast.Cast")
-
   local particleName = "particles/units/heroes/hero_winter_wyvern/wyvern_splinter_blast.vpcf"
 
   local team = caster:GetTeamNumber()
@@ -26,12 +24,16 @@ function freezing_blast:OnSpellStart()
 
   local target = GetRandomTableElement(flyingUnits)
 
+  if not target then return end
+
+  caster:EmitSound("Hero_Winter_Wyvern.SplinterBlast.Cast")
+
   local projectile = {
     Target = target,
     Source = caster,
     Ability = ability,
     EffectName = particleName,
-    iMoveSpeed = 900,
+    iMoveSpeed = 1600,
     bDodgeable = false,
     bVisibleToEnemies = true,
     bReplaceExisting = false,

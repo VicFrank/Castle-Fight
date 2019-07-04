@@ -6,27 +6,19 @@
     "AbilityTextureName"        "dragon_knight_dragon_blood"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "20.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "footman"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "footman"
       }
-    }    
+    }
   }
 
   "train_defender"
@@ -35,26 +27,17 @@
     "AbilityTextureName"        "dragon_knight_dragon_tail"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "25.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "ThinkInterval"  "25.0"
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "defender"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "defender"
       }
     }
   }
@@ -178,27 +161,19 @@
     "AbilityTextureName"        "sniper_assassinate"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "25.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "sniper"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "sniper"
       }
-    }    
+    }
   }
 
   "train_marksman"
@@ -207,26 +182,17 @@
     "AbilityTextureName"        "sniper_take_aim"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "25.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "ThinkInterval"  "30.0"
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "marksman"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "marksman"
       }
     }
   }
@@ -237,26 +203,17 @@
     "AbilityTextureName"        "sniper_shrapnel"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "25.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "ThinkInterval"  "25.0"
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "heavy_gunner"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "heavy_gunner"
       }
     }
   }
@@ -437,26 +394,17 @@
     "AbilityTextureName"        "techies_suicide"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "25.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "ThinkInterval"  "25.0"
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "mortar"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "mortar"
       }
     }
   }
@@ -493,26 +441,17 @@
     "AbilityTextureName"        "jakiro_dual_breath"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "25.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "ThinkInterval"  "27.0"
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "gryphon_rider"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "gryphon_rider"
       }
     }
   }
@@ -630,27 +569,19 @@
     "AbilityTextureName"        "omniknight_repel"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "29.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "crusader"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "footman"
       }
-    }    
+    }
   }
 
   "upgrade_church"
@@ -801,27 +732,19 @@
     "AbilityTextureName"        "chen_hand_of_god"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "41.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "paladin"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "footman"
       }
-    }    
+    }
   }
 
   // resurrects an allied non-legendary unit, 103 mana CD 40
@@ -884,27 +807,19 @@
     "AbilityTextureName"        "pugna_nether_ward"
 
     "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"       "30.0"
 
-    "Modifiers"
+    "OnSpellStart"
     {
-      "modifier_train_unit"
+      "RunScript"
       {
-        "Passive"        "1"
-        "IsHidden"       "1"
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-            "Function"      "StartSpawningUnits"
-            "NumUnits"      "1"
-            "UnitName"      "warlock"
-          }
-        }
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "warlock"
       }
-    }    
+    }
   }
 
   "build_hjordhejmen"

@@ -79,6 +79,12 @@ function GameMode:OnHeroInGame(hero)
 
   PlayerResource:SetDefaultSelectionEntity(playerID, hero)
 
+  -- Move the camera to the hero
+  PlayerResource:SetCameraTarget(playerID, hero)
+  Timers:CreateTimer(.5, function()
+    PlayerResource:SetCameraTarget(playerID, nil)
+  end)
+
   -- Initialize custom resource values
   SetLumber(playerID, 0)
   SetCheese(playerID, 0)
@@ -149,6 +155,9 @@ function GameMode:OnEntityKilled(keys)
     end
     return
   end
+
+  -- refresh selections for all players
+  PlayerResource:RefreshSelection()
 
   local bounty = killed:GetGoldBounty()
   if killer and bounty and not killer:IsRealHero() and not DeepTableCompare(killer == killed, true) then
@@ -234,6 +243,8 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
       local rewardMessage = "You received <font color='FFBF00'>" .. reward .. "</font> gold for being the <font color='#00C400'>" .. 
         numBuilt + 1 .. getNumberSuffix(numBuilt + 1) .. "</font> player to build a building."
       Notifications:Top(playerID, {text=rewardMessage, duration=8.0})
+
+      hero:ModifyGold(reward, false, DOTA_ModifyGold_Unspecified)
     end
 
     GameRules.numPlayersBuilt = numBuilt + 1

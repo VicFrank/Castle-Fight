@@ -1,3 +1,17 @@
+function GetOpposingTeam(team)
+  if team == DOTA_TEAM_GOODGUYS then
+    return DOTA_TEAM_BADGUYS
+  elseif team == DOTA_TEAM_BADGUYS then
+    return DOTA_TEAM_GOODGUYS
+  end
+
+  return DOTA_TEAM_NEUTRALS
+end
+
+function startsWith(str, start)
+  return str:sub(1, #start) == start
+end
+
 function GetRandomTableElement( table )
   local nRandomIndex = RandomInt( 1, #table )
     local randomElement = table[ nRandomIndex ]

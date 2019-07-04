@@ -27,21 +27,21 @@ local building_data = {
     armorType = "",
     canHitFlying = true,
   },
-  "weapon_lab" = {
+  weapon_lab = {
     damageType = "",
     armorType = "",
   },
-  "gryphon_rock" = {
+  gryphon_rock = {
     damageType = "",
     armorType = "",
     canHitFlying = true,
     trainsFlying = true,
   },
-  "chapel" = {
+  chapel = {
     damageType = "",
     armorType = "",
   },
-  "church" = {
+  church = {
     damageType = "",
     armorType = "",
   },

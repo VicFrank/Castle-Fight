@@ -27,13 +27,14 @@ function onset_of_winter:OnSpellStart()
 
   for i=1,3 do
     local direction = (goal - caster:GetAbsOrigin()):Normalized()
-    direction = (direction + RandomVector(1)):Normalized()
+    direction = (direction + RandomVector(0.4)):Normalized()
+    direction = Vector(direction.x, direction.y, 0)
     
     local projectile = {
       Ability       = self,
       EffectName      = "particles/custom/north/lich/lich_chain_frost_2.vpcf",
       vSpawnOrigin    = caster:GetAbsOrigin(),
-      fDistance     = 9999,
+      fDistance     = 15000,
       fStartRadius    = 100,
       fEndRadius      = 100,
       Source        = caster,
@@ -42,7 +43,7 @@ function onset_of_winter:OnSpellStart()
       iUnitTargetTeam   = DOTA_UNIT_TARGET_TEAM_ENEMY,
       iUnitTargetFlags  = DOTA_UNIT_TARGET_FLAG_NONE,
       iUnitTargetType   = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-      fExpireTime     = GameRules:GetGameTime() + 10.0,
+      fExpireTime     = GameRules:GetGameTime() + 27.0,
       bDeleteOnHit    = false,
       vVelocity     = direction * speed,
       ExtraData     = {
@@ -56,9 +57,10 @@ end
 
 function onset_of_winter:OnProjectileThink_ExtraData(location, ExtraData)
   if not IsServer() then return end
-
   local caster = self:GetCaster()
   local ability = self
+
+  if caster:IsNull() or not caster then return end
 
   local dps = ExtraData.dps
 
@@ -85,9 +87,10 @@ end
 
 function onset_of_winter:OnProjectileHit(target, location)
   if not IsServer() then return end
-
   local caster = self:GetCaster()
   local ability = self
+
+  if caster:IsNull() or not caster then return end
 
   if not target then return end
 

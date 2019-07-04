@@ -29,6 +29,8 @@ function FindAggro(self)
 
   local aggroTargets = FindEnemiesInRadius(self, searchRange)
 
+  local maxTargets = 10
+
   local target
   for _,potentialTarget in ipairs(aggroTargets) do
     -- print(potentialTarget:GetUnitName(), self:CanAttackTarget(potentialTarget))
@@ -39,6 +41,9 @@ function FindAggro(self)
         target = GetHigherPriorityTarget(self, target, potentialTarget)
       end
     end
+
+    maxTargets = maxTargets - 1
+    if maxTargets <= 0 then break end
   end
 
   if target then
