@@ -178,7 +178,7 @@ function UpdateResources() {
 function UpdateLumber() {
   var playerID = GetPlayerIDToShow();
   var data = CustomNetTables.GetTableValue("lumber", playerID);
-  if (data && data.value) $('#LumberText').text = data.value;
+  if (data) $('#LumberText').text = data.value;
 }
 
 function UpdateGold() {
@@ -196,7 +196,7 @@ function OnPlayerCheeseChanged(table_name, key, data) {
 function UpdateCheese() {
   var playerID = GetPlayerIDToShow();
   var data = CustomNetTables.GetTableValue("cheese", playerID);
-  if (data && data.value) $('#CheeseText').text = data.value;
+  if (data) $('#CheeseText').text = data.value;
 }
 
 // this logic is also in income.lua
@@ -235,7 +235,7 @@ function GenerateGoldTooltip() {
   var playerID = Players.GetLocalPlayer();
   var incomeData = CustomNetTables.GetTableValue("player_income", playerID);
 
-  var line1 = "Gold is earned from killing enemy units, and periodically from interest.";
+  var line1 = $.Localize("#gold_tip");
   
   if (!incomeData) {
     return line1;
@@ -249,15 +249,15 @@ function GenerateGoldTooltip() {
   var totalInterest = GetPostTaxIncome(income);
   var taxes = income - totalInterest;
 
-  var line2 = "Base Interest: <font color='#FFBF00'>" +
+  var line2 = $.Localize("#base_interest") + ": <font color='#FFBF00'>" +
     Math.floor(baseInterest) +"</font>";
-  var line3 = "Interest from Buildings: <font color='#FFBF00'>" + 
+  var line3 = $.Localize("#interest_from_buildings") + ": <font color='#FFBF00'>" + 
     Math.floor(buildingInterest) + "</font>";
-  var line4 = "Treasure Chest Multiplier: <font color='#00C400'>" +
+  var line4 = $.Localize("#treasure_chest_multiplier") + ": <font color='#00C400'>" +
     Math.floor(treasureChestMultiplier * 100) + "%%</font>";
-  var line5 = "Taxes: <font color='#C40000'>" +
+  var line5 = $.Localize("#taxes") + ": <font color='#C40000'>" +
     Math.floor(taxes) + "</font>";
-  var line6 = "Total Interest: <font color='#FFBF00'>" +
+  var line6 = $.Localize("#total_interest") + ": <font color='#FFBF00'>" +
     Math.floor(totalInterest) + "</font>";
 
   return line1 + "<br><br>" + line2  + "<br>" + line3  + "<br>" + line4 +

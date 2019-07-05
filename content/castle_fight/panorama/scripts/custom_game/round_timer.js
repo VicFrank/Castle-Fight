@@ -18,18 +18,18 @@ function OnRoundStarted(data) {
   HideTimer();
 
   var round = data.round;
-  $("#RoundLabel").text = "Round " + round;
+  $("#RoundLabel").text = $.Localize("#round") + " " + round;
 }
 
 function OnHeroSelectStarted(data) {
   $.Msg("OnHeroSelectStarted")
-  $("#RoundStatusLabel").text = "Race Selection";
+  $("#RoundStatusLabel").text = $.Localize("#race_selection");
   ShowTimer();
 }
 
 function OnLoadingStarted(data) {
   $.Msg("OnLoadingStarted")
-  $("#RoundStatusLabel").text = "Loading...";
+  $("#RoundStatusLabel").text = $.Localize("#loading") + "...";
   $("#CountdownTimer").text = "";
 }
 

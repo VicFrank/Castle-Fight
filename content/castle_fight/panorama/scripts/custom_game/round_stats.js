@@ -50,6 +50,8 @@ function OnRoundScoreChanged(table_name, key, data) {
 
     if (playerID == localPlayerID) {
       ScoreboardRow.AddClass("LocalPlayer");
+    } else {
+      ScoreboardRow.RemoveClass("LocalPlayer");
     }
 
     // DOTAAvatarImage
@@ -63,14 +65,24 @@ function OnRoundScoreChanged(table_name, key, data) {
     ScoreboardRow.GetChild(1).GetChild(1).text = heroName;
     // Income
     ScoreboardRow.GetChild(2).text = income;
+    if (data.maxIncome) ScoreboardRow.GetChild(2).AddClass("HighScore");
+    else ScoreboardRow.GetChild(2).RemoveClass("HighScore");
     // Units Trained
     ScoreboardRow.GetChild(3).text = numUnitsTrained;
+    if (data.maxUnitsTrained) ScoreboardRow.GetChild(3).AddClass("HighScore");
+    else ScoreboardRow.GetChild(3).RemoveClass("HighScore");
     // Units Killed
     ScoreboardRow.GetChild(4).text = unitsKilled;
+    if (data.maxUnitsKilled) ScoreboardRow.GetChild(4).AddClass("HighScore");
+    else ScoreboardRow.GetChild(4).RemoveClass("HighScore");
     // Buildings Built
     ScoreboardRow.GetChild(5).text = buildingsBuilt;
+    if (data.maxBuildingsBuilt) ScoreboardRow.GetChild(5).AddClass("HighScore");
+    else ScoreboardRow.GetChild(5).RemoveClass("HighScore");
     // Rescue Strike Damage
     ScoreboardRow.GetChild(6).text = rescueStrikeDamage;
+    if (data.maxRescueStrikeDamage) ScoreboardRow.GetChild(6).AddClass("HighScore");
+    else ScoreboardRow.GetChild(6).RemoveClass("HighScore");
   }
 }
 
@@ -85,10 +97,10 @@ function OnRoundEnded(data) {
   var RoundWinnerPanel = $("#RoundWinner");
 
   if (data.winningTeam == DOTATeam_t.DOTA_TEAM_GOODGUYS) {
-    RoundWinnerPanel.text = "Western Forces Victory!";
+    RoundWinnerPanel.text = $.Localize("western_forces") + " " + $.Localize("#victory") + "!";
     RoundWinnerPanel.AddClass("WestColor");
   } else {
-    RoundWinnerPanel.text = "Eastern Forces Victory!";
+    RoundWinnerPanel.text = $.Localize("eastern_forces") + " " + $.Localize("#victory") + "!";
     RoundWinnerPanel.AddClass("EastColor");
   }
 }

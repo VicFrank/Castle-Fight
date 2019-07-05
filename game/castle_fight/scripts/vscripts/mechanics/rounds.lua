@@ -236,6 +236,16 @@ function GameMode:EndRound(losingTeam)
     right_score = GameRules.rightRoundsWon,
   })
 
+  local maxUnitsKilled = GetTableMax(GameRules.unitsKilled)
+  local maxBuildingsBuilt = GetTableMax(GameRules.buildingsBuilt)
+  local maxUnitsTrained = GetTableMax(GameRules.numUnitsTrained)
+  local maxRescueStrikeDamage = GetTableMax(GameRules.rescueStrikeDamage)
+  local maxIncome = 0
+
+  for _,playerID in pairs(GameRules.playerIDs) do
+    maxIncome = math.max(maxIncome, GameMode:GetIncomeForPlayer(playerID))
+  end
+
   for _,playerID in pairs(GameRules.playerIDs) do    
     CustomNetTables:SetTableValue("round_score", tostring(playerID), {
       unitsKilled = GameRules.unitsKilled[playerID],
@@ -244,6 +254,13 @@ function GameMode:EndRound(losingTeam)
       rescueStrikeDamage = GameRules.rescueStrikeDamage[playerID],
       rescueStrikeKills = GameRules.rescueStrikeKills[playerID],
       income = GameMode:GetIncomeForPlayer(playerID),
+
+      maxUnitsKilled = GameRules.unitsKilled[playerID] == maxUnitsKilled,
+      maxBuildingsBuilt = GameRules.buildingsBuilt[playerID] == maxBuildingsBuilt,
+      maxUnitsTrained = GameRules.numUnitsTrained[playerID] == maxUnitsTrained,
+      maxRescueStrikeDamage = GameRules.rescueStrikeDamage[playerID] == maxRescueStrikeDamage,
+      maxIncome = GameMode:GetIncomeForPlayer(playerID) == maxIncome,
+
     })
   end
 

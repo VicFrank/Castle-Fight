@@ -125,9 +125,9 @@ function GetHigherPriorityTarget(self, unit1, unit2)
 
   -- The castle is a big fat boy, so the distance from the center is misleading
   if unit1:GetUnitName() == "castle" then
-    distance1 = distance1 - 150
+    distance1 = distance1 - 100
   elseif unit2:GetUnitName() == "castle" then
-    distance2 = distance2 - 150
+    distance2 = distance2 - 100
   end
 
   -- print(unit1:GetUnitName(), unit1:GetUnitName(), unit2:GetUnitName())

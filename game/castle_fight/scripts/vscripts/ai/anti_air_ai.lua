@@ -56,6 +56,7 @@ function thisEntity:FindAggro()
 
   if target then
     self:SetAggroTarget(target)
+    self:SetForceAttackTarget(target)
     return true
   else
     return false

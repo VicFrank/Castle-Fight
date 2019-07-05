@@ -49,16 +49,16 @@ local building_data = {
 
 local ability_data = {
   build_barracks = {
-    interestToConsider = 5,
+    interestToConsider = 0,
   },
   build_sniper_nest = {
-    interestToConsider = 5,
+    interestToConsider = 0,
   },
   build_weapon_lab = {
-    interestToConsider = 5,
+    interestToConsider = 25,
   },
   build_gryphon_rock = {
-    interestToConsider = 5,
+    interestToConsider = 0,
   },
   build_chapel = {
     interestToConsider = 15,

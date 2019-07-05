@@ -154,7 +154,6 @@ end
 function modifier_frost_bolt_freeze:CheckState()
   return {
     [MODIFIER_STATE_ROOTED] = true,
-    [MODIFIER_STATE_DISARMED] = true,
   }
 end
 
@@ -163,6 +162,17 @@ function modifier_frost_bolt_freeze:OnCreated( kv )
     --Play sound
     self:GetParent():EmitSound("Hero_Crystal.Frostbite")
   end
+end
+
+function modifier_frost_bolt_freeze:DeclareFunctions()
+  local funcs = {
+    MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
+  }
+  return funcs
+end
+
+function modifier_frost_bolt_freeze:GetModifierProvidesFOWVision()
+  return 1
 end
 
 function modifier_frost_bolt_freeze:GetEffectName() return "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf" end

@@ -8,23 +8,23 @@
   </scripts>
   <Panel class="ResourceRoot" hittest="false">
     <Panel id='ResourcePanel'>
-	  <Label id="ResourcesLabel" text="RESOURCES" html="true" class="TitleFont" />
+	  <Label id="ResourcesLabel" text="#resources" html="true" class="TitleFont" />
 	  <Panel id='LumberIconPanel'>
-        <Image id="LumberIcon" src="file://{images}/custom_game/lumber_icon.png" onmouseover="UIShowTextTooltip(Lumber)"  onmouseout="UIHideTextTooltip()"/>
+        <Image id="LumberIcon" src="file://{images}/custom_game/lumber_icon.png" onmouseover="UIShowTextTooltip(#lumber)"  onmouseout="UIHideTextTooltip()"/>
       </Panel>
-      <Panel id='LumberLabelPanel' onmouseover="UIShowTextTooltip(Lumber is earned from making buildings that can train units.)"  onmouseout="UIHideTextTooltip()">
+      <Panel id='LumberLabelPanel' onmouseover="UIShowTextTooltip(#lumber_tip)"  onmouseout="UIHideTextTooltip()">
         <Label id="LumberText" text="0" class="TitleFont" />
       </Panel>
 	  <Panel id='GoldIconPanel'>
-        <Image id="GoldIcon" src="file://{images}/custom_game/gold_icon.png" onmouseover="UIShowTextTooltip(Gold)"  onmouseout="UIHideTextTooltip()" />
+        <Image id="GoldIcon" src="file://{images}/custom_game/gold_icon.png" onmouseover="UIShowTextTooltip(#gold)"  onmouseout="UIHideTextTooltip()" />
       </Panel>
       <Panel id='GoldLabelPanel'  onmouseout="UIHideTextTooltip()">
         <Label id="GoldText" text="0" html="true" class="TitleFont" />
       </Panel>
 	   <Panel id='CheeseIconPanel'>
-        <Image id="CheeseIcon" src="file://{images}/custom_game/cheese_icon.tga" onmouseover="UIShowTextTooltip(Cheese)"  onmouseout="UIHideTextTooltip()" />
+        <Image id="CheeseIcon" src="file://{images}/custom_game/cheese_icon.tga" onmouseover="UIShowTextTooltip(#cheese)"  onmouseout="UIHideTextTooltip()" />
       </Panel>
-      <Panel id='CheeseLabelPanel' onmouseover="UIShowTextTooltip(Cheese is used to build legendary buildings.)"  onmouseout="UIHideTextTooltip()">
+      <Panel id='CheeseLabelPanel' onmouseover="UIShowTextTooltip(#cheese_tip)"  onmouseout="UIHideTextTooltip()">
         <Label id="CheeseText" text="0" html="true" class="TitleFont" />
       </Panel>
     </Panel>

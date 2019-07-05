@@ -24,11 +24,11 @@ function BotAI:Init(hero)
     hero.buildingSize = BuildingHelper:GetConstructionSize("barracks")
 
     if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
-      hero.baseMinBounds = GameRules.leftBaseMinBounds + Vector(100, 200, 0)
-      hero.baseMaxBounds = GameRules.leftBaseMaxBounds - Vector(100, 500, 0)
+      hero.baseMinBounds = GameRules.leftBaseMinBounds
+      hero.baseMaxBounds = GameRules.leftBaseMaxBounds
     else
-      hero.baseMinBounds = GameRules.rightBaseMinBounds + Vector(100, 500, 0)
-      hero.baseMaxBounds = GameRules.rightBaseMaxBounds - Vector(100, 200, 0)
+      hero.baseMinBounds = GameRules.rightBaseMinBounds
+      hero.baseMaxBounds = GameRules.rightBaseMaxBounds
     end
 
     if hero:GetAbsOrigin().y < 0 then
@@ -47,6 +47,7 @@ function BotAI:OnThink(hero)
 
   if BotAI:LookingForNextBuilding(hero) then
     hero.nextBuilding = BotAI:GetNextBuildingToBuild(hero)
+    print("Next building is: ", hero.nextBuilding:GetAbilityName())
   end
 
   if BotAI:WaitingToBuild(hero) then
@@ -114,10 +115,7 @@ function BotAI:GetPlaceToBuild(hero)
   local searchLocation = GetGroundPosition(searchStart, hero)
 
   for i=1,100 do
-    local isValidBuildLocation = BuildingHelper:ValidPosition(hero.buildingSize, searchLocation, hero, {})
-    local canFindPath = GridNav:CanFindPath(hero:GetAbsOrigin(), searchLocation)
-
-    print(isValidBuildLocation, hero.buildingSize)
+    local isValidBuildLocation = BotAI:CanBuildAtPosition(hero, searchLocation)
     if isValidBuildLocation then
       return searchLocation
     end
@@ -126,9 +124,17 @@ function BotAI:GetPlaceToBuild(hero)
 
     searchLocation = searchLocation + Vector(0, searchDirectionY * searchInterval, 0)
 
-    if searchLocation.y > hero.baseMaxBounds.y or searchLocation.y < hero.baseMinBounds.y then
-      searchLocation.y = searchStart.y
-      searchLocation = searchLocation + Vector(searchDirectionX * searchInterval, 0, 0)
+    -- If you cross the center while searching, reset the y, and move the x
+    if hero.sideToBuild == "SOUTH" then
+      if searchLocation.y > 0 then
+        searchLocation.y = searchStart.y
+        searchLocation = searchLocation + Vector(searchDirectionX * searchInterval, 0, 0)
+      end
+    elseif hero.sideToBuild == "NORTH" then
+      if searchLocation.y < 0 then
+        searchLocation.y = searchStart.y
+        searchLocation = searchLocation + Vector(searchDirectionX * searchInterval, 0, 0)
+      end
     end
   end
 
@@ -150,9 +156,7 @@ function BotAI:CanBuildBuilding(hero, ability)
 end
 
 function BotAI:LookingForNextBuilding(hero)
-  if hero.nextBuilding == nil then
-    return true
-  end
+  return not hero.nextBuilding
 end
 
 function BotAI:WaitingToBuild(hero)
@@ -174,20 +178,35 @@ function BotAI:RepairBuildings(hero)
   return 0.1
 end
 
+function BotAI:CanBuildAtPosition(hero, position)
+  if position == nil then return false end
+  BuildingHelper:SnapToGrid(hero.buildingSize, position)
+  local canFindPath = GridNav:CanFindPath(hero:GetAbsOrigin(), position)
+  local isValidPosition = BuildingHelper:ValidPosition(hero.buildingSize, position, hero, {})
+  return canFindPath and isValidPosition
+end
+
 function BotAI:BuildNextBuilding(hero)
-  if not hero.nextBuilding and hero.state == "idle" then
+  local state = hero.state
+
+  if not hero.nextBuilding and state == "idle" then
     -- If we've finished our building queue, start looking for our next building
     print("BotAI: look for next building")
     return 0.5
   end
 
-  if not hero.buildPosition or not GridNav:CanFindPath(hero:GetAbsOrigin(), hero.buildPosition) then
+  local hasValidBuildPosition = hero.buildPosition and BotAI:CanBuildAtPosition(hero, hero.buildPosition)
+  if not hasValidBuildPosition then
     -- Find new build position
     hero.buildPosition = BotAI:GetPlaceToBuild(hero)
   end
 
-  BotAI:PlaceBuilding(hero, hero.nextBuilding, hero.buildPosition)
-  hero.nextBuilding = nil
+  if hero.buildPosition then
+    BotAI:PlaceBuilding(hero, hero.nextBuilding, hero.buildPosition)
+    hero.nextBuilding = nil
+  else
+    print("Couldn't find buildPosition")
+  end
   
   return 1
 end
@@ -195,5 +214,6 @@ end
 function BotAI:PlaceBuilding(hero, ability, position)
   DebugDrawCircle(position, Vector(0,255,0), 50, 100, true, 3)
 
+  print("Place Building ", position)
   BuildingHelper:OrderBuildingConstruction(hero, ability, position)
 end

@@ -9,7 +9,7 @@
   <Panel class="CustomShopRoot" hittest="false">    
     <Panel id="ShopHolder">
       <Panel id="Items" class="ShopHidden">
-        <Label id="ShopHeader" text="Shop" />
+        <Label id="ShopHeader" text="#shop" />
         <Panel class="ItemRow">
           <Button id="item_scroll_of_stone"
               class="ShopIcon"
@@ -140,8 +140,8 @@
       </Panel>
 
       <Button id="ShopButton" onactivate="OnShopButtonPressed()">
-		<Image id="ShopIcon" src="s2r://panorama/images/control_icons/shop_icon_main_psd.vtex" />
-        <Label id="ShopLabel" text="SHOP" />
+		    <Image id="ShopIcon" src="s2r://panorama/images/control_icons/shop_icon_main_psd.vtex" />
+        <Label id="ShopLabel" text="#shop" />
       </Button>
     </Panel>
   </Panel>

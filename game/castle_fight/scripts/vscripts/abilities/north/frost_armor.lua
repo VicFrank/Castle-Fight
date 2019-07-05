@@ -22,6 +22,13 @@ function modifier_ice_troll_frost_armor:OnCreated()
 
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
   self.debuff_duration = self:GetAbility():GetSpecialValueFor("debuff_duration")
+
+  local particleName = "particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
+
+  self.particle_frost_armor_fx = ParticleManager:CreateParticle(particleName, PATTACH_OVERHEAD_FOLLOW, self.parent)
+  ParticleManager:SetParticleControl(self.particle_frost_armor_fx, 0, self.parent:GetAbsOrigin())
+  ParticleManager:SetParticleControl(self.particle_frost_armor_fx, 1, Vector(1,1,1))
+  self:AddParticle(self.particle_frost_armor_fx, false, false, -1, false, false)
 end
 
 function modifier_ice_troll_frost_armor:IsPurgable()

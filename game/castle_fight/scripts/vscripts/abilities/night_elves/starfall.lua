@@ -17,6 +17,9 @@ function starfall:OnSpellStart()
 
   local position = target:GetAbsOrigin()
 
+  -- Make it night time for the duration of the starfall
+  GameRules:BeginTemporaryNight(duration)
+
   local timeSpent = 0
   Timers:CreateTimer(function()
     if timeSpent >= duration then
@@ -53,11 +56,6 @@ function StarfallDamage(ability, position)
       ParticleManager:ReleaseParticleIndex(particle)
        Timers:CreateTimer(0.4, function()
         if IsValidEntity(target) and target:IsAlive() then
-
-          if IsCustomBuilding(target) then
-            damage = damage * 0.4
-          end
-
           print(damage)
 
           ApplyDamage({

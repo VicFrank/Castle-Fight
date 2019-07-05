@@ -12,7 +12,7 @@
         <Label id="CountdownTimer" text="" hittest="false" />
       </Panel>
       <Panel id="RoundInfo" hittest="false">
-        <Label id="RoundLabel" text="Round 1" hittest="false" />
+        <Label id="RoundLabel" text="#round 1" hittest="false" />
         <Label id="RoundStatusLabel" text="" hittest="false" />
       </Panel>
     </Panel>

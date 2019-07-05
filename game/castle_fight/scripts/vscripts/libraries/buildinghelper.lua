@@ -1862,8 +1862,8 @@ function BuildingHelper:ValidPosition(size, location, unit, callbacks)
     if bBlocked then
         if callbacks.onConstructionFailed then
             callbacks.onConstructionFailed()
-            return false
         end
+        return false
     end
 
     -- Check enemy units blocking the area
@@ -1877,8 +1877,8 @@ function BuildingHelper:ValidPosition(size, location, unit, callbacks)
         if not IsCustomBuilding(enemy) and BuildingHelper:EnemyIsInsideBuildingArea(enemy:GetAbsOrigin(), location, size) then
             if callbacks.onConstructionFailed then
                 callbacks.onConstructionFailed()
-                return false
             end
+            return false
         end      
     end
 

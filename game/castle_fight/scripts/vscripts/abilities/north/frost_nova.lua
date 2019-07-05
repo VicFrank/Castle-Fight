@@ -13,6 +13,14 @@ function ice_queen_frost_nova:OnSpellStart()
 
   caster:EmitSound("Ability.FrostNova")
 
+  local particle_nova = "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+
+  local particle_nova_fx = ParticleManager:CreateParticle(particle_nova, PATTACH_ABSORIGIN_FOLLOW, target)
+  ParticleManager:SetParticleControl(particle_nova_fx, 0, target:GetAbsOrigin())
+  ParticleManager:SetParticleControl(particle_nova_fx, 1, Vector(radius, radius, radius))
+  ParticleManager:SetParticleControl(particle_nova_fx, 2, target:GetAbsOrigin())
+  ParticleManager:ReleaseParticleIndex(particle_nova_fx)
+
   local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
   for _,enemy in pairs(enemies) do

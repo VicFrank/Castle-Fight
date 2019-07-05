@@ -78,3 +78,12 @@ function getNumberSuffix(number)
     return "th"
   end
 end
+
+function GetTableMax(t)
+  local max
+  for _,v in pairs(t) do
+    if not max then max = v end
+    max = math.max(max,v)
+  end
+  return max
+end

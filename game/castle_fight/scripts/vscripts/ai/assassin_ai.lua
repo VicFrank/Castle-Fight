@@ -65,11 +65,12 @@ function thisEntity:AIThink()
     return 0.1
   end
 
-  -- While invisible, seek out and kill a mage, or wait for one to appear
-  -- if self:IsInvisible() then
-  --   self:FindAndAttackMage()
-  --   return .3
-  -- end
+  --While invisible, seek out and kill a mage, or wait for one to appear
+  if self:IsInvisible() then
+    if self:FindAndAttackMage() then
+      return .3
+    end
+  end
 
   if self:GoInvisible() then
     return 0.5

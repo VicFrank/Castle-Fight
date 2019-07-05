@@ -33,4 +33,35 @@
   "elves_description"          "The High Elves have gathered to defend their kingdoms. High Elves use strong magic to weaken enemies and help allies. In addition, they have strong siege weapons and a defensive tower, which hits several enemies simultaneously."
 
   "random_description"          "Choose a random race."
+
+  "shop"                     "Shop"
+  "resources"                "Resources"
+  "western_forces"           "Western Forces"
+  "eastern_forces"           "Eastern Forces"
+  "income"                   "Income"
+  "units_trained"            "Units Trained"
+  "units_killed"             "Units Killed"
+  "buildings_built"          "Buildings Built"
+  "rs_damage"                "RS Damage"
+  "choose_your_race"         "Choose Your Race"
+  "select"                   "Select"
+  "lumber"                   "Lumber"
+  "gold"                     "Gold"
+  "cheese"                   "Cheese"
+  "cheese_tip"               "Cheese is used to build legendary buildings."
+  "lumber_tip"               "Lumber is earned from making buildings that can train units."
+  "gold_tip"                 "Gold is earned from killing enemy units, and periodically from interest."
+  "round"                        "Round"
+  "victory"                      "Victory"
+  "base_interest"                "Base Interest"
+  "interest_from_buildings"      "Interest from Buildings"
+  "treasure_chest_multiplier"    "Treasure Chest multiplier"
+  "taxes"                        "Taxes"
+  "total_interest"               "Total Interest"
+  "race_selection"               "Race Selection"
+  "loading"                      "Loading"
+
+
+
+
 }
