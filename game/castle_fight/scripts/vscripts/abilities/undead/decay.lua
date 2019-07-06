@@ -67,6 +67,8 @@ function modifier_city_of_decay_debuff:OnCreated()
 
   self.dps = self.ability:GetSpecialValueFor("dps")
 
+  if self.parent:IsMechanical() then self:Destroy() end
+
   self:StartIntervalThink(1)
 end
 

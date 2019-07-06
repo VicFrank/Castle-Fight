@@ -43,6 +43,7 @@ function modifier_city_of_magic_hex:CheckState()
     [MODIFIER_STATE_DISARMED] = true,
     [MODIFIER_STATE_HEXED] = true,
     [MODIFIER_STATE_MUTED] = true,
-    [MODIFIER_STATE_SILENCED] = true
+    [MODIFIER_STATE_SILENCED] = true,
+    [MODIFIER_STATE_NO_UNIT_COLLISION] = true,
   }
 end

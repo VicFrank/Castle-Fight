@@ -35,8 +35,8 @@ function onset_of_winter:OnSpellStart()
       EffectName      = "particles/custom/north/lich/lich_chain_frost_2.vpcf",
       vSpawnOrigin    = caster:GetAbsOrigin(),
       fDistance     = 15000,
-      fStartRadius    = 100,
-      fEndRadius      = 100,
+      fStartRadius    = 150,
+      fEndRadius      = 150,
       Source        = caster,
       bHasFrontalCone   = true,
       bReplaceExisting  = false,
@@ -67,7 +67,7 @@ function onset_of_winter:OnProjectileThink_ExtraData(location, ExtraData)
   local enemies = FindEnemiesInRadius(caster, ExtraData.radius, location)
 
   for _,enemy in pairs(enemies) do
-    enemy:AddNewModifier(caster, ability, "modifier_north_chilling_attack_debuff", {duration = 0.1})
+    enemy:AddNewModifier(caster, ability, "modifier_north_chilling_attack_debuff", {duration = 1})
   end
 
   if #enemies == 0 then return end

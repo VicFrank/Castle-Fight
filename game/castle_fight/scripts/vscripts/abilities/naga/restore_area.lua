@@ -39,7 +39,8 @@ function modifier_restore_area_aura:GetAuraSearchTeam()
 end
 
 function modifier_restore_area_aura:GetAuraEntityReject(target)
-  return self.parent:IsUnderConstruction() and target:IsRealHero()
+  if not IsServer() then return end
+  return self.parent:IsUnderConstruction() or target:IsRealHero()
 end
 
 function modifier_restore_area_aura:GetAuraSearchType()
@@ -59,6 +60,12 @@ function modifier_restore_area:OnCreated()
 
   self.unit_regen = self.ability:GetSpecialValueFor("unit_regen")
   self.building_regen = self.ability:GetSpecialValueFor("building_regen")
+
+  if self.parent:HasModifier("modifier_building") then
+    self.regen = self.building_regen
+  else
+    self.regen = self.unit_regen
+  end
 end
 
 function modifier_restore_area:GetAttributes()
@@ -73,9 +80,5 @@ function modifier_restore_area:DeclareFunctions()
 end
 
 function modifier_restore_area:GetModifierConstantHealthRegen()
-  if IsCustomBuilding(self.parent) then
-    return self.building_regen
-  else
-    return self.unit_regen
-  end
+  return self.regen
 end

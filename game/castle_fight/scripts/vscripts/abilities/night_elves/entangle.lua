@@ -83,6 +83,7 @@ end
 function modifier_druid_entangle:CheckState()
   return { 
     [MODIFIER_STATE_ROOTED] = true,
+    [MODIFIER_STATE_DISARMED] = true,
   }
 end
 

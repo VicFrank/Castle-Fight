@@ -10,6 +10,7 @@ function dryad_summon_treants:OnSpellStart()
   local playerID = caster.playerID
 
   for i=1,2 do
-    CreateLaneUnit(unitName, position, team, playerID)
+    local treant = CreateLaneUnit(unitName, position, team, playerID)
+    treant:AddNewModifier(caster, ability, "modifier_kill", {duration = 30})
   end
 end

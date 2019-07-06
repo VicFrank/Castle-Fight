@@ -34,7 +34,7 @@ function thisEntity:AIThink()
 
   -- Keep abilities on cooldown until they're done building
   if not self.finishedConstruction then
-    if self:HasModifier("modifier_under_construction") then
+    if self.IsUnderConstruction() and self:IsUnderConstruction() then
       for _,ability in pairs(self.abilityList) do
         local cooldown = ability:GetCooldown(ability:GetLevel())
         ability:StartCooldown(cooldown)

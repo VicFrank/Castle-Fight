@@ -32,7 +32,8 @@ function modifier_frost_attack:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
-  if attacker == self.caster and not target:HasFlyMovementCapability() and self.chance >= RandomInt(1, 100) then
+  if attacker == self.caster and not target:HasFlyMovementCapability() and 
+    not IsCustomBuilding(target) and self.chance >= RandomInt(1, 100) then
     local debuffName = "modifier_frost_attack_freeze"
     target:AddNewModifier(self.caster, self.ability, debuffName, {duration = self.duration})
   end
@@ -47,6 +48,7 @@ end
 function modifier_frost_attack_freeze:CheckState()
   return {
     [MODIFIER_STATE_ROOTED] = true,
+    [MODIFIER_STATE_DISARMED] = true,
   }
 end
 

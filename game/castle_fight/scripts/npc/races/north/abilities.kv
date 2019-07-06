@@ -193,7 +193,7 @@
     "AbilityTextureName"          "phantom_assassin_coup_de_grace"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/generic/critical_strike"
-    "MaxLevel"                    "2"
+    "MaxLevel"                    "3"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -482,7 +482,9 @@
     "ScriptFile"                  "abilities/north/howl"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityCooldown"             "17.0"
     "AbilityManaCost"             "30"
 
@@ -493,7 +495,7 @@
     "precache"
     {
       "particle"  "particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
-      "particle"  "particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+      //"particle"  "particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
       "soundfile" "soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
     }
 

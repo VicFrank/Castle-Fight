@@ -54,6 +54,14 @@ function modifier_ice_queen_crystal_aura_buff:DeclareFunctions()
   return funcs
 end
 
+function modifier_ice_queen_crystal_aura_buff:OnCreated()
+  if self:GetAbility() then
+    self.mana_regen = self:GetAbility():GetSpecialValueFor("mana_per_second")
+  else
+    self.mana_regen = 0.5
+  end
+end
+
 function modifier_ice_queen_crystal_aura_buff:GetModifierConstantManaRegen()
-  return self:GetAbility():GetSpecialValueFor("mana_per_second")
+  return self.mana_regen
 end

@@ -26,7 +26,7 @@ function ice_queen_frost_nova:OnSpellStart()
   for _,enemy in pairs(enemies) do
     if not IsCustomBuilding(enemy) and not enemy:IsRealHero() then
       ApplyDamage({
-        victim = target,
+        victim = enemy,
         damage = damage,
         damage_type = DAMAGE_TYPE_MAGICAL,
         attacker = caster,
@@ -34,6 +34,8 @@ function ice_queen_frost_nova:OnSpellStart()
       })
 
       target:AddNewModifier(caster, ability, "modifier_ice_queen_frost_nova", {duration = duration})
+
+      print("Damaging unit")
     end
   end
 

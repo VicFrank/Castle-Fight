@@ -27,9 +27,11 @@ function keeper_treant_sprout:OnSpellStart()
   local angle = math.pi/4
 
   Timers:CreateTimer(duration, function() 
-    for i=1,4 do
+    for i=1,5 do
       local position = Vector(point.x+radius*math.sin(angle), point.y+radius*math.cos(angle), point.z)
-      CreateLaneUnit(unitName, position, team, playerID)
+      local treant = CreateLaneUnit(unitName, position, team, playerID)
+      treant:AddNewModifier(caster, ability, "modifier_kill", {duration = 30})
+
       angle = angle + math.pi/2
     end
   end)

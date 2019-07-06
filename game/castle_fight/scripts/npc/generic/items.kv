@@ -92,6 +92,30 @@
     }
   }
 
+  "item_building_self_destruct"
+  {
+    "ID"                          "2004"
+    "AbilityTextureName"          "self_destruct"
+    "BaseClass"                   "item_lua"
+    "ScriptFile"                  "abilities/buildings/self_destruct"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityCooldown"             "0.0"
+    "AbilityManaCost"             "0"
+
+    "ItemDroppable"               "0"
+    "ItemSellable"                "0"
+    "ItemKillable"                "0"
+
+    "ItemShareability"            "ITEM_NOT_SHAREABLE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+    }
+  }
+
   "item_apply_modifiers"
   {
     "ID"                          "2003"

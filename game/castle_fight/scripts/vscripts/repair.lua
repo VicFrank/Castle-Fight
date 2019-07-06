@@ -110,4 +110,9 @@ function BuildingHelper:OnRepairFinished(builder, building)
         ParticleManager:DestroyParticle(builder.gathering_particle, false)
         builder.gathering_particle = nil
     end
+
+    if building.construction_particle and BuildingHelper:GetNumBuildersRepairing(building) == 0 then 
+        ParticleManager:DestroyParticle(building.construction_particle, false)
+        building.construction_particle = nil
+    end
 end

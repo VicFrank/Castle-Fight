@@ -1,10 +1,12 @@
-building_self_destruct = class({})
+item_building_self_destruct = class({})
 
-function building_self_destruct:OnChannelFinish(interrupted)
-  if not IsServer() or interrupted then return end
+function item_building_self_destruct:OnSpellStart()
+  if not IsServer() then return end
 
   local caster = self:GetCaster()
   local ability = self
+
+  caster:EmitSound("Hero_Techies.LandMine.Detonate")
 
   local explosion_range = 100
 

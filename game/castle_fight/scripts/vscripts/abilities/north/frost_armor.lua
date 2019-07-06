@@ -65,8 +65,8 @@ end
 modifier_ice_troll_frost_armor_debuff = class({})
 
 function modifier_ice_troll_frost_armor_debuff:OnCreated()
-  self.move_slow = self:GetAbility():GetSpecialValueFor("move_slow")
-  self.attack_slow = self:GetAbility():GetSpecialValueFor("attack_slow")
+  self.move_slow = -self:GetAbility():GetSpecialValueFor("move_slow")
+  self.attack_slow = -self:GetAbility():GetSpecialValueFor("attack_slow")
 end
 
 function modifier_ice_troll_frost_armor_debuff:IsDebuff()
@@ -89,12 +89,13 @@ function modifier_ice_troll_frost_armor_debuff:DeclareFunctions()
     }
   return decFuns
 end
+
 function modifier_ice_troll_frost_armor_debuff:GetModifierMoveSpeedBonus_Percentage()
-  return -self.move_slow
+  return self.move_slow
 end
 
 function modifier_ice_troll_frost_armor_debuff:GetModifierAttackSpeedBonus_Constant()
-  return -self.attack_slow
+  return self.attack_slow
 end
 
 function modifier_ice_troll_frost_armor_debuff:GetEffectName()

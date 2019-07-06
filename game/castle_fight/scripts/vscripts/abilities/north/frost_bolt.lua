@@ -154,6 +154,7 @@ end
 function modifier_frost_bolt_freeze:CheckState()
   return {
     [MODIFIER_STATE_ROOTED] = true,
+    [MODIFIER_STATE_DISARMED] = true,
   }
 end
 

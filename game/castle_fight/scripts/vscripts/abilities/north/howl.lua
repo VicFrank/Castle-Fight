@@ -34,8 +34,8 @@ function modifier_wendigo_howl:IsDebuff() return true end
 function modifier_wendigo_howl:IsPurgable() return true end
 
 function modifier_wendigo_howl:OnCreated()
-  self.armor = ability:GetSpecialValueFor("armor")
-  self.damage_decrease = ability:GetSpecialValueFor("damage_decrease")
+  self.armor = self:GetAbility():GetSpecialValueFor("armor")
+  self.damage_decrease = self:GetAbility():GetSpecialValueFor("damage_decrease")
 end
 
 function modifier_wendigo_howl:DeclareFunctions()
@@ -56,5 +56,5 @@ function modifier_wendigo_howl:GetModifierBaseDamageOutgoing_Percentage()
 end
 
 function modifier_wendigo_howl:GetEffectName()
-  return "particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+  -- return "particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
 end
