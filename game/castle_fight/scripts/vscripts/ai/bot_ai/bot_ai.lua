@@ -67,11 +67,12 @@ function BotAI:GetNextBuildingToBuild(hero)
     local abilityData = AbilityData[abilityName]
     local lumber_cost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
     local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
+    local gold_cost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
 
     local interestToConsider = abilityData.interestToConsider
 
     if currentInterest >= interestToConsider and hero:GetLumber() >= lumber_cost and
-      hero:GetCheese() > cheese_cost then
+      hero:GetCheese() >= cheese_cost then
       table.insert(buildings, ability)
     end
   end
@@ -142,12 +143,13 @@ function BotAI:GetPlaceToBuild(hero)
 end
 
 function BotAI:CanBuildBuilding(hero, ability)
-  local gold_cost = ability:GetGoldCost(1) 
+  -- local gold_cost = ability:GetGoldCost(1) 
+  local gold_cost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
   local lumber_cost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
   local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
   local playerID = hero:GetPlayerID()
 
-  if PlayerResource:GetGold(playerID) < gold_cost or hero:GetLumber() < lumber_cost or
+  if hero:GetCustomGold() < gold_cost or hero:GetLumber() < lumber_cost or
     hero:GetCheese() < cheese_cost then
       return false
   end

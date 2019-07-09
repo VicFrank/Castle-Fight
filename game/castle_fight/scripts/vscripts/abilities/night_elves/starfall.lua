@@ -56,7 +56,10 @@ function StarfallDamage(ability, position)
       ParticleManager:ReleaseParticleIndex(particle)
        Timers:CreateTimer(0.4, function()
         if IsValidEntity(target) and target:IsAlive() then
-          print(damage)
+
+          if IsCustomBuilding(target) then
+            damage = damage * 0.4
+          end
 
           ApplyDamage({
             victim = target,

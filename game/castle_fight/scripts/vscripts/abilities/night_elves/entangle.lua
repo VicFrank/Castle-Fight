@@ -34,7 +34,7 @@ function druid_mass_entangle:OnSpellStart()
 
   local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
   for _,enemy in pairs(enemies) do
-    if not IsCustomBuilding(target) and not target:HasFlyMovementCapability() then
+    if not IsCustomBuilding(enemy) and not enemy:HasFlyMovementCapability() then
       table.insert(targets, enemy)
       if #targets >= num_targets then break end
     end

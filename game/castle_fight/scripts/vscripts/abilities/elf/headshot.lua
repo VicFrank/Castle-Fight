@@ -43,7 +43,7 @@ function modifier_archer_headshot:OnAttackLanded(params)
       ApplyDamage({
         victim = target,
         damage = self.damage,
-        damage_type = DAMAGE_TYPE_MAGICAL,
+        damage_type = DAMAGE_TYPE_PHYSICAL,
         attacker = caster,
         ability = ability
       })

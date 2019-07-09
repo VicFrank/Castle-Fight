@@ -5,7 +5,7 @@
     "AbilityTextureName"            "fighters_hall"
 
     "UnitName"                      "fighters_hall"
-    "AbilityGoldCost"               "110"
+    "GoldCost"                      "110"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -29,13 +29,22 @@
   "upgrade_advanced_fighters_hall"
   {
     "AbilityTextureName"            "advanced_fighters_hall"
-    "AbilityGoldCost"               "100"
+    "GoldCost"                      "100"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -44,7 +53,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -59,13 +67,22 @@
   "upgrade_superior_fighters_hall"
   {
     "AbilityTextureName"            "superior_fighters_hall"
-    "AbilityGoldCost"               "240"
+    "GoldCost"                      "240"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -74,7 +91,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -91,7 +107,7 @@
     "AbilityTextureName"            "shamanic_tent"
 
     "UnitName"                      "shamanic_tent"
-    "AbilityGoldCost"               "170"
+    "GoldCost"                      "170"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -117,7 +133,7 @@
     "AbilityTextureName"            "troll_hut"
 
     "UnitName"                      "troll_hut"
-    "AbilityGoldCost"               "200"
+    "GoldCost"                      "200"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -141,13 +157,22 @@
   "upgrade_trappers_hut"
   {
     "AbilityTextureName"            "trappers_hut"
-    "AbilityGoldCost"               "80"
+    "GoldCost"                      "80"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -156,7 +181,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -173,7 +197,7 @@
     "AbilityTextureName"            "falcon_clan_encampment"
 
     "UnitName"                      "falcon_clan_encampment"
-    "AbilityGoldCost"               "220"
+    "GoldCost"                      "220"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -199,7 +223,7 @@
     "AbilityTextureName"            "kodo_farm"
 
     "UnitName"                      "kodo_farm"
-    "AbilityGoldCost"               "260"
+    "GoldCost"                      "260"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -223,13 +247,22 @@
   "upgrade_offensive_kodo_farm"
   {
     "AbilityTextureName"            "offensive_kodo_farm"
-    "AbilityGoldCost"               "100"
+    "GoldCost"                      "100"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -238,7 +271,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -253,13 +285,22 @@
   "upgrade_defensive_kodo_farm"
   {
     "AbilityTextureName"            "defensive_kodo_farm"
-    "AbilityGoldCost"               "100"
+    "GoldCost"                      "100"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -268,7 +309,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -283,13 +323,22 @@
   "upgrade_spellbreaker_kodo_farm"
   {
     "AbilityTextureName"            "spellbreaker_kodo_farm"
-    "AbilityGoldCost"               "100"
+    "GoldCost"                      "100"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -298,7 +347,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -315,7 +363,7 @@
     "AbilityTextureName"            "orcish_siege_factory"
 
     "UnitName"                      "orcish_siege_factory"
-    "AbilityGoldCost"               "380"
+    "GoldCost"                      "380"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"

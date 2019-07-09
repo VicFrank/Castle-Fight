@@ -16,6 +16,8 @@ end
 modifier_rejuvenation = class({})
 
 function modifier_rejuvenation:OnCreated()
+  if not self:GetAbility() then return end
+  
   self.health = self:GetAbility():GetSpecialValueFor("health")
   self.duration = self:GetAbility():GetSpecialValueFor("duration")
   self.healthRegen = self.health / self.duration

@@ -84,12 +84,12 @@
       "01"
       {
         "var_type"                    "FIELD_INTEGER"
-        "ranged_repel_chance"         "50"
+        "ranged_repel_chance"         "30"
       }      
       "02"
       {
         "var_type"                    "FIELD_INTEGER"
-        "ranged_damage_reduction"     "40"
+        "ranged_damage_reduction"     "30"
       }
       "03"
       {
@@ -104,7 +104,7 @@
     "AbilityTextureName"            "barracks"
 
     "UnitName"                      "barracks"
-    "AbilityGoldCost"               "100"
+    "GoldCost"                      "100"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -128,13 +128,22 @@
   "upgrade_stronghold"
   {
     "AbilityTextureName"            "stronghold"
-    "AbilityGoldCost"               "100"
+    "GoldCost"                      "100"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -143,7 +152,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -223,7 +231,7 @@
     "AbilityTextureName"            "sniper_nest"
 
     "UnitName"                      "sniper_nest"
-    "AbilityGoldCost"               "140"
+    "GoldCost"                      "140"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -247,13 +255,22 @@
   "upgrade_gunners_hall"
   {
     "AbilityTextureName"            "gunners_hall"
-    "AbilityGoldCost"               "180"
+    "GoldCost"                      "180"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -262,7 +279,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -277,13 +293,22 @@
   "upgrade_marksmens_encampment"
   {
     "AbilityTextureName"            "marksmens_encampment"
-    "AbilityGoldCost"               "160"
+    "GoldCost"                      "160"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -292,7 +317,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -367,7 +391,7 @@
     "AbilityTextureName"            "weapon_lab"
 
     "UnitName"                      "weapon_lab"
-    "AbilityGoldCost"               "210"
+    "GoldCost"                      "210"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -414,7 +438,7 @@
     "AbilityTextureName"            "gryphon_rock"
 
     "UnitName"                      "gryphon_rock"
-    "AbilityGoldCost"               "250"
+    "GoldCost"                      "250"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -542,7 +566,7 @@
     "AbilityTextureName"            "cathedral"
 
     "UnitName"                      "chapel"
-    "AbilityGoldCost"               "280"
+    "GoldCost"                      "280"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -587,13 +611,22 @@
   "upgrade_church"
   {
     "AbilityTextureName"            "cathedral"
-    "AbilityGoldCost"               "245"
+    "GoldCost"                      "245"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -602,7 +635,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -827,7 +859,7 @@
     "AbilityTextureName"            "hjordhejmen"
 
     "UnitName"                      "hjordhejmen"
-    "AbilityGoldCost"               "300"
+    "GoldCost"                      "300"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -896,7 +928,7 @@
     "AbilityTextureName"            "gjallarhorn"
 
     "UnitName"                      "gjallarhorn"
-    "AbilityGoldCost"               "225"
+    "GoldCost"                      "225"
     "LumberCost"                    "750"
 
     "BaseClass"                     "ability_datadriven"
@@ -951,7 +983,7 @@
     "AbilityTextureName"            "artillery"
 
     "UnitName"                      "artillery"
-    "AbilityGoldCost"               "200"
+    "GoldCost"                      "200"
     "LumberCost"                    "360"
 
     "BaseClass"                     "ability_datadriven"
@@ -1010,7 +1042,7 @@
     "AbilityTextureName"            "watch_tower"
 
     "UnitName"                      "watch_tower"
-    "AbilityGoldCost"               "150"
+    "GoldCost"                      "150"
     "LumberCost"                    "300"
 
     "BaseClass"                     "ability_datadriven"
@@ -1036,7 +1068,7 @@
     "AbilityTextureName"            "heroic_shrine"
 
     "UnitName"                      "heroic_shrine"
-    "AbilityGoldCost"               "700"
+    "GoldCost"                      "700"
     "LumberCost"                    "1800"
     "IsLegendary"                   "1"
 

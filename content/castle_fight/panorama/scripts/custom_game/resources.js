@@ -10,7 +10,7 @@ var inventoryBot = inventoryContainer.FindChildTraverse("inventory_list2");
 var GeneratedItemPanels = [];
 var GeneratedAbilityPanels = [];
 
-function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost){
+function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost){
   var subContainer;
   if (itemSlot < 3) subContainer = inventoryTop;
   else subContainer = inventoryBot;
@@ -29,6 +29,19 @@ function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost){
     LumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
 
     GeneratedItemPanels.push(LumberCostLabel);
+  }
+
+  if (goldCost > 0) {
+    var goldCostLabel = $.CreatePanel("Label", button, "CustomGoldCost");
+    goldCostLabel.text = goldCost;
+    goldCostLabel.style.fontSize = "14px";
+    goldCostLabel.style.verticalAlign = "bottom";
+    goldCostLabel.style.horizontalAlign = "left";
+    goldCostLabel.style.fontWeight = "bold";
+    goldCostLabel.style.color = "#FFFF99";
+    goldCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
+
+    GeneratedItemPanels.push(goldCostLabel);
   }
 
   if (cheeseCost > 0) {
@@ -70,55 +83,75 @@ function UpdateItemsUI() {
     if (!itemCostData) continue;
 
     var lumberCost = itemCostData.lumberCost;
+    var goldCost = itemCostData.goldCost;
     var isLegendary = itemCostData.isLegendary;
 
     var cheeseCost = 0;
     if (isLegendary) cheeseCost = 1;
 
-    SetCustomItemCosts(i, lumberCost, cheeseCost)
+    SetCustomItemCosts(i, lumberCost, cheeseCost, goldCost)
   }
 }
 
 var AbilitiesContainer = newUI.FindChildTraverse("AbilitiesAndStatBranch").FindChildTraverse("abilities");
 
-function SetCustomAbilityCosts(abilityNumber, lumberCost, cheeseCost) {
+function SetCustomAbilityCosts(abilityNumber, lumberCost, cheeseCost, goldCost) {
   var AbilityPanel = AbilitiesContainer.FindChildTraverse("Ability" + abilityNumber);
   var AbilityButton = AbilityPanel.FindChildTraverse("ButtonAndLevel").FindChildTraverse("ButtonWithLevelUpTab").FindChildTraverse("ButtonWell").FindChildTraverse("ButtonSize");
 
-  var LumberCostLabel = $.CreatePanel("Label", AbilityButton, "LumberCost");
-  LumberCostLabel.text = lumberCost;
-  LumberCostLabel.style.fontSize = "14px";
-  LumberCostLabel.style.verticalAlign = "bottom";
-  LumberCostLabel.style.horizontalAlign = "right";
-  LumberCostLabel.style.fontWeight = "bold";
-  LumberCostLabel.style.color = "#22a543";
-  LumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
+  if (lumberCost > 0) {
+    var lumberCostLabel = $.CreatePanel("Label", AbilityButton, "LumberCost");
+    lumberCostLabel.text = lumberCost;
+    lumberCostLabel.style.fontSize = "14px";
+    lumberCostLabel.style.verticalAlign = "bottom";
+    lumberCostLabel.style.horizontalAlign = "right";
+    lumberCostLabel.style.fontWeight = "bold";
+    lumberCostLabel.style.color = "#22a543";
+    lumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";    
+  }
 
-  GeneratedAbilityPanels.push(LumberCostLabel);
+  GeneratedAbilityPanels.push(lumberCostLabel);
+
+  var goldCostLabel = $.CreatePanel("Label", AbilityButton, "CustomGoldCost");
+  goldCostLabel.text = goldCost;
+  goldCostLabel.style.fontSize = "14px";
+  goldCostLabel.style.verticalAlign = "bottom";
+  goldCostLabel.style.horizontalAlign = "left";
+  goldCostLabel.style.fontWeight = "bold";
+  goldCostLabel.style.color = "#FFFF99";
+  goldCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
+
+  GeneratedAbilityPanels.push(goldCostLabel);
 
   if (cheeseCost > 0) {
-    var CheeseCostLabel = $.CreatePanel("Label", AbilityButton, "CheeseCost");
-    CheeseCostLabel.text = cheeseCost;
-    CheeseCostLabel.style.fontSize = "16px";
-    CheeseCostLabel.style.verticalAlign = "top";
-    CheeseCostLabel.style.horizontalAlign = "right";
-    CheeseCostLabel.style.marginRight = "8px";
-    CheeseCostLabel.style.fontWeight = "bold";
-    CheeseCostLabel.style.color = "#7f22a5";
-    CheeseCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
+    var cheeseCostLabel = $.CreatePanel("Label", AbilityButton, "CheeseCost");
+    cheeseCostLabel.text = cheeseCost;
+    cheeseCostLabel.style.fontSize = "16px";
+    cheeseCostLabel.style.verticalAlign = "top";
+    cheeseCostLabel.style.horizontalAlign = "right";
+    cheeseCostLabel.style.marginRight = "8px";
+    cheeseCostLabel.style.fontWeight = "bold";
+    cheeseCostLabel.style.color = "#7f22a5";
+    cheeseCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
 
-    GeneratedAbilityPanels.push(CheeseCostLabel);
+    GeneratedAbilityPanels.push(cheeseCostLabel);
   }
 }
 
 function ClearCustomAbilityCosts() {
    GeneratedAbilityPanels.forEach(function(panel) {
-     panel.text = '';
-     // I don't think this actually works, but making the text '' seems to.
-     panel.RemoveAndDeleteChildren();
+     if (panel) {
+       panel.text = '';
+       // I don't think this actually works, but making the text '' seems to.
+       panel.RemoveAndDeleteChildren();
+     }     
    });
 
    GeneratedAbilityPanels = [];
+}
+
+function DelayedUpdateAbilityUI() {
+  $.Schedule(1, UpdateAbilityUI);
 }
 
 function UpdateAbilityUI() {
@@ -140,12 +173,13 @@ function UpdateAbilityUI() {
     if (!abilityCostData) continue;
 
     var lumberCost = abilityCostData.lumberCost;
+    var goldCost = abilityCostData.goldCost;
     var isLegendary = abilityCostData.isLegendary;
 
     var cheeseCost = 0;
     if (isLegendary) cheeseCost = 1;
 
-    SetCustomAbilityCosts(i, lumberCost, cheeseCost)
+    SetCustomAbilityCosts(i, lumberCost, cheeseCost, goldCost);
   }
 }
 
@@ -166,38 +200,32 @@ function GetPlayerIDToShow() {
     return LocalPlayerID;
 }
 
-function OnPlayerLumberChanged(table_name, key, data) {
-  UpdateLumber();
-}
-
 function UpdateResources() {
-  UpdateLumber();
-  UpdateCheese();
-}
-
-function UpdateLumber() {
   var playerID = GetPlayerIDToShow();
-  var data = CustomNetTables.GetTableValue("lumber", playerID);
-  if (data) $('#LumberText').text = data.value;
+  var data = CustomNetTables.GetTableValue("resources", playerID);
+
+  if (data) {
+    $('#GoldText').text = Math.floor(data.gold);
+    $('#CheeseText').text = Math.floor(data.cheese);
+    $('#LumberText').text = Math.floor(data.lumber);
+  }
 }
 
-function UpdateGold() {
-  var playerID = GetPlayerIDToShow();  
-  var gold = Players.GetGold(playerID);
-  $('#GoldText').text = gold;
-  $.Schedule(0.1, UpdateGold);
+function OnResourcesChange(table_name, key, data) {
+  // if(key == Players.GetLocalPlayer()) {
+  //   $('#GoldText').text = Math.floor(data.gold);
+  //   $('#LumberText').text = data.lumber;
+  //   $('#CheeseText').text = data.cheese;
+  // }
+  UpdateResources();
 }
 
-function OnPlayerCheeseChanged(table_name, key, data) {
-  if(key == Players.GetLocalPlayer())
-    $('#CheeseText').text = data.value;
-}
-
-function UpdateCheese() {
-  var playerID = GetPlayerIDToShow();
-  var data = CustomNetTables.GetTableValue("cheese", playerID);
-  if (data) $('#CheeseText').text = data.value;
-}
+// function UpdateGold() {
+//   var playerID = GetPlayerIDToShow();  
+//   var gold = Players.GetGold(playerID);
+//   $('#GoldText').text = gold;
+//   $.Schedule(0.1, UpdateGold);
+// }
 
 // this logic is also in income.lua
 function CalculateTreasureBoxMultiplier(numBoxes) {
@@ -254,7 +282,7 @@ function GenerateGoldTooltip() {
   var line3 = $.Localize("#interest_from_buildings") + ": <font color='#FFBF00'>" + 
     Math.floor(buildingInterest) + "</font>";
   var line4 = $.Localize("#treasure_chest_multiplier") + ": <font color='#00C400'>" +
-    Math.floor(treasureChestMultiplier * 100) + "%%</font>";
+    Math.floor(treasureChestMultiplier * 100) + "%</font>";
   var line5 = $.Localize("#taxes") + ": <font color='#C40000'>" +
     Math.floor(taxes) + "</font>";
   var line6 = $.Localize("#total_interest") + ": <font color='#FFBF00'>" +
@@ -274,10 +302,8 @@ $('#GoldLabelPanel').SetPanelEvent(
 );
 
 (function () {
-  UpdateGold();
   UpdateResources();
-  CustomNetTables.SubscribeNetTableListener("lumber", OnPlayerLumberChanged);
-  CustomNetTables.SubscribeNetTableListener("cheese", OnPlayerCheeseChanged);
+  CustomNetTables.SubscribeNetTableListener("resources", OnResourcesChange);
 
   UpdateItemsUI();
   GameEvents.Subscribe("dota_player_update_selected_unit", UpdateItemsUI);
@@ -287,7 +313,9 @@ $('#GoldLabelPanel').SetPanelEvent(
   GameEvents.Subscribe("dota_player_update_query_unit", UpdateResources);
   GameEvents.Subscribe("dota_player_update_selected_unit", UpdateResources);
 
+  DelayedUpdateAbilityUI();
   UpdateAbilityUI();
   GameEvents.Subscribe("dota_player_update_selected_unit", UpdateAbilityUI);
   GameEvents.Subscribe("dota_player_update_query_unit", UpdateAbilityUI);
+  GameEvents.Subscribe("round_started", UpdateAbilityUI);
 })();

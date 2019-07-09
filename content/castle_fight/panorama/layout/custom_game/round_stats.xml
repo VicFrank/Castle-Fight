@@ -75,8 +75,8 @@
         </Panel>
 
         <Panel hittest="false" class="HeaderRow">
-          <Label id="EastScore" class="TeamScoreScoreboard EastScore" text="2" />
-          <Label id="EasternForcesHeader" class="TeamNameLabel EastScore" text="#eastern_forces" />
+          <Label id="EastScore" class="TeamScoreScoreboard EastColor" text="2" />
+          <Label id="EasternForcesHeader" class="TeamNameLabel EastColor" text="#eastern_forces" />
           <Label class="ScoreboardHeader" text="income" />
           <Label class="ScoreboardHeader" text="units_trained" />
           <Label class="ScoreboardHeader" text="units_killed" />

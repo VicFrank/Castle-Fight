@@ -1,0 +1,316 @@
+"DOTAAbilities"
+{
+  // Destroys a random enemy building. Cannot destroy legendary buildings or the
+  // main castle. You don't gain bounty for the destroyed building.
+  "hells_fist"
+  {
+    "AbilityTextureName"          "doom_bringer_scorched_earth"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/hells_fist"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "35.0"
+    "AbilityManaCost"             "40"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "chance"             "20"
+      }
+    }
+  }
+
+  // Sends chaotic forces into a random enemy unit. These forces have one of the following effects:
+  //  - The unit explodes (no bounty)
+  //  - The unit dies (you gain bounty)
+  //  - The unit transforms into a mutation that fights for you
+  //  - The unit is hexed
+  //  - The unit recieves 500 damage
+  //  - The unit gets 400 bonus health and +25 damage and is fully healed
+  //  - The unit is stunned for 6 seconds and recieves 200 spell damage
+  //  - Nothing happens
+  "present_of_chaos"
+  {
+    "AbilityTextureName"          "nevermore_dark_lord"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/present_of_chaos"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "10.0"
+    "AbilityManaCost"             "10"
+  }
+
+  // Damages the area around a random enemy unit dealing 100 dps spell damage for
+  // 2.75 seconds.
+  // Cannot damage more than 6 units concurrently. Deals 40% damage to buildings
+  "eruption"
+  {
+    "AbilityTextureName"          "doom_bringer_infernal_blade"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/eruption"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "12.0"
+    "AbilityManaCost"             "12"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_tinker/tinker_laser.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "dps"           "100"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "duration"      "2.75"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "max_targets"   "6"
+      }
+    }
+  }
+
+  "eraser"
+  {
+    "AbilityTextureName"          "warlock_fatal_bonds"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/eraser"
+    "MaxLevel"                    "3"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "3.0"
+    "AbilityManaCost"             "100"
+  }
+
+  "quill_demon_bouncing_attack"
+  {
+    "AbilityTextureName"          "luna_moon_glaive"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/bouncing_attack"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "range"             "500"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "bounces"           "2"
+      }
+      "03"
+      {
+        "var_type"                  "FIELD_INTEGER"
+        "damage_reduction_percent"  "50"
+      }
+    }
+  }
+
+  "quill_demon_quill_aura"
+  {
+    "AbilityTextureName"          "centaur_return"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/quill_aura"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityCastRange"        "350"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "reflect"           "35"
+      }
+    }
+  }
+
+  "chaos_warrior_cleave"
+  {
+    "AbilityTextureName"          "sven_great_cleave"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/cleave"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "cleave_damage"         "25 35"
+      }      
+      "02"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "cleave_radius"         "200"
+      }
+    }
+  }
+
+  "chaos_warrior_critical_strike"
+  {
+    "AbilityTextureName"          "juggernaut_blade_dance"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "10"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "200"
+      }
+    }
+  }
+
+  // Increases the damage of all friendly units in 525 range by 25%. Lasts 20 seconds.
+  // CD 30 0 mana
+  "chaos_warrior_roar"
+  {
+    "AbilityTextureName"          "beastmaster_primal_roar"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/roar"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+
+    "AbilityCooldown"             "30.0"
+    "AbilityManaCost"             "0"
+
+    "AbilityCastRange"          "525"
+    "AbilityCastPoint"          "0.1"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_4"
+
+    "AbilitySound"          "Hero_Beastmaster.Primal_Roar"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_skywrath_mage/skywrath_mage_mystic_flare_ambient.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"        "525"
+      }
+      "02"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "damage_increase"    "25"
+      }
+      "03"
+      {
+        "var_type"         "FIELD_INTEGER"
+        "duration"           "20"
+      }
+    }
+  }
+
+  "succubus_curse"
+  {
+    "AbilityTextureName"          "queenofpain_shadow_strike"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/succubus_curse"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "6.5"
+    "AbilityManaCost"             "20"
+
+    "AbilityCastRange"          "600"
+    "AbilityCastPoint"          "0.3"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "miss"          "35"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "duration"      "45"
+      }
+    }
+  }
+
+  "blood_fiend_present_of_chaos"
+  {
+    "AbilityTextureName"          "chaos_knight_chaos_strike"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/random_armor"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  "infernal_immolation"
+  {
+    "AbilityTextureName"          "warlock_golem_permanent_immolation"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/chaos/immolation"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "dps"                    "33"
+      }
+      "02"
+      {
+        "var_type"               "FIELD_INTEGER"
+        "radius"                 "300"
+      }
+    }
+  }
+}

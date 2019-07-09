@@ -427,7 +427,7 @@
     "AbilityTextureName"          "dazzle_shadow_wave"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/elf/healing_wave"
-    "MaxLevel"                    "1"
+    "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -451,17 +451,17 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "heal"                    "150"
+        "heal"                    "150 300"
       }
       "02"
       {
         "var_type"        "FIELD_INTEGER"
-        "bounces"         "2"
+        "bounces"         "2 6"
       }
       "03"
       {
         "var_type"          "FIELD_INTEGER"
-        "health_loss"       "40"
+        "health_loss"       "40 30"
       }
     }
   }

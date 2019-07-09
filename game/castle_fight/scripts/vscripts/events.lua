@@ -67,7 +67,7 @@ function GameMode:OnHeroInGame(hero)
   -- Add bots to the playerids list
   local playerID = hero:GetPlayerOwnerID()
   if not TableContainsValue(GameRules.playerIDs, playerID) then
-    print("Didn't find playerID, inserting")    
+    print("Didn't find playerID, ", playerID, " inserting")    
     table.insert(GameRules.playerIDs, playerID)
   end
 
@@ -88,6 +88,7 @@ function GameMode:OnHeroInGame(hero)
   -- Initialize custom resource values
   SetLumber(playerID, 0)
   SetCheese(playerID, 0)
+  SetCustomGold(playerID, 0)
 
   -- Get rid of the tp scroll
   Timers:CreateTimer(.03, function()
@@ -102,7 +103,6 @@ function GameMode:OnHeroInGame(hero)
     local items = g_Race_Items[unitName]
     if items then
       for _,itemname in ipairs(items) do
-        print(itemname)
         hero:AddItem(CreateItem(itemname, hero, hero))
       end
     end
@@ -119,8 +119,7 @@ function GameMode:OnHeroInGame(hero)
     else
       spawnPositions = Entities:FindAllByClassname("info_player_start_badguys")
     end
-    print(spawnPositions)
-    print(#spawnPositions)
+
     local spawnPosition = GetRandomTableElement(spawnPositions):GetAbsOrigin()
     hero:SetAbsOrigin(spawnPosition)
 
@@ -156,18 +155,19 @@ function GameMode:OnEntityKilled(keys)
     return
   end
 
-  -- refresh selections for all players
-  PlayerResource:RefreshSelection()
-
   local bounty = killed:GetGoldBounty()
-  if killer and bounty and not killer:IsRealHero() and not DeepTableCompare(killer == killed, true) then
+  if killer and bounty and not DeepTableCompare(killer == killed, true) then
     -- when you use forcekill, it's the same as the unit killing itself
-    local killerPlayerID = killer.playerID
+    local killerPlayerID = killer.playerID or killer:GetPlayerOwnerID()
     if killerPlayerID and killerPlayerID >= 0 then
       local player = PlayerResource:GetPlayer(killerPlayerID)
 
-      SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, player)
-      PlayerResource:ModifyGold(killerPlayerID, bounty, false, DOTA_ModifyGold_CreepKill)
+      -- Don't show the message if it's going to show it anyway
+      if not (killer:GetPlayerOwnerID() and killer:GetPlayerOwnerID() >= 0) then
+        SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, player)
+      end
+      -- PlayerResource:ModifyGold(killerPlayerID, bounty, false, DOTA_ModifyGold_CreepKill)
+      ModifyCustomGold(killerPlayerID, bounty)
 
       GameRules.unitsKilled[killerPlayerID] = GameRules.unitsKilled[killerPlayerID] + 1
     else
@@ -202,8 +202,9 @@ function GameMode:OnConnectFull(keys)
   local playerID = ply:GetPlayerID()
   print(playerID .. " connected")
 
-  SetLumber(playerID, 0)
-  SetCheese(playerID, 0)
+  -- SetLumber(playerID, 0)
+  -- SetCheese(playerID, 0)
+  -- SetCustomGold(playerID, 0)
 
   table.insert(GameRules.playerIDs, playerID)
 end
@@ -220,12 +221,13 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
   local buildingType = building:GetBuildingType()
   local hero = building:GetOwner()
   local playerID = building:GetPlayerOwnerID()
-  local goldCost = ability:GetGoldCost(ability:GetLevel())
+  -- local goldCost = ability:GetGoldCost(ability:GetLevel())
+  local gold_cost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
 
   -- If this building produced units, give the player lumber
   if buildingType == "UnitTrainer" or buildingType == "SiegeTrainer" then
-    SendOverheadEventMessage(hero, OVERHEAD_ALERT_HEAL, building, goldCost, nil)
-    hero:GiveLumber(goldCost)
+    SendOverheadEventMessage(hero, OVERHEAD_ALERT_HEAL, building, gold_cost, nil)
+    hero:GiveLumber(gold_cost)
   end
 
   -- If the unit is a treasure box, increase the income for the team
@@ -244,7 +246,8 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
         numBuilt + 1 .. getNumberSuffix(numBuilt + 1) .. "</font> player to build a building."
       Notifications:Top(playerID, {text=rewardMessage, duration=8.0})
 
-      hero:ModifyGold(reward, false, DOTA_ModifyGold_Unspecified)
+      -- hero:ModifyGold(reward, false, DOTA_ModifyGold_Unspecified)
+      hero:ModifyCustomGold(reward)
     end
 
     GameRules.numPlayersBuilt = numBuilt + 1
@@ -252,7 +255,7 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
 
   GameRules.buildingsBuilt[playerID] = GameRules.buildingsBuilt[playerID] + 1
 
-  local increase = GameMode:GetIncomeIncreaseForBuilding(building, goldCost)
+  local increase = GameMode:GetIncomeIncreaseForBuilding(building, gold_cost)
 
   -- Track how much income this building is generating
   if isUpgrade then

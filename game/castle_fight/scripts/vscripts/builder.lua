@@ -4,7 +4,8 @@ function Build( event )
     local ability = event.ability
     local ability_name = ability:GetAbilityName()
     local building_name = ability:GetAbilityKeyValues()['UnitName']
-    local gold_cost = ability:GetGoldCost(1) 
+    -- local gold_cost = ability:GetGoldCost(1) 
+    local gold_cost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
     local lumber_cost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
     local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
     local hero = caster:IsRealHero() and caster or caster:GetOwner()
@@ -13,9 +14,9 @@ function Build( event )
     -- If the ability has an AbilityGoldCost, it's impossible to not have enough gold the first time it's cast
     -- Always refund the gold here, as the building hasn't been placed yet
 
-    if not PlayerResource:IsFakeClient(playerID) then
-        hero:ModifyGold(gold_cost, false, 0)
-    end
+    -- if not PlayerResource:IsFakeClient(playerID) then
+    --     hero:ModifyGold(gold_cost, false, 0)
+    -- end
 
     -- Makes a building dummy and starts panorama ghosting
     BuildingHelper:AddBuilding(event)
@@ -30,7 +31,7 @@ function Build( event )
         end
 
         -- If not enough resources to queue, stop
-        if PlayerResource:GetGold(playerID) < gold_cost then
+        if GetCustomGold(playerID) < gold_cost then
             print("Failed placement of " .. building_name .." - Not enough gold!")
             SendErrorMessage(playerID, "#error_not_enough_gold")
             return false
@@ -56,7 +57,8 @@ function Build( event )
     -- Position for a building was confirmed and valid
     event:OnBuildingPosChosen(function(vPos)
         -- Spend resources
-        hero:ModifyGold(-gold_cost, false, 0)
+        -- hero:ModifyGold(-gold_cost, false, 0)
+        hero:ModifyCustomGold(-gold_cost)
         hero:ModifyLumber(-lumber_cost)
         hero:ModifyCheese(-cheese_cost)
 
@@ -84,7 +86,8 @@ function Build( event )
 
         -- Refund resources for this cancelled work
         if work.refund then
-            hero:ModifyGold(gold_cost, false, 0)
+            -- hero:ModifyGold(gold_cost, false, 0)
+            hero:ModifyCustomGold(gold_cost)
             hero:ModifyLumber(lumber_cost)
             hero:ModifyCheese(cheese_cost)
         end
@@ -198,7 +201,8 @@ function CancelBuilding( keys )
 
     -- Refund here
     if building.gold_cost then
-        hero:ModifyGold(building.gold_cost * refundPercent, false, 0)
+        -- hero:ModifyGold(building.gold_cost * refundPercent, false, 0)
+        hero:ModifyCustomGold(building.gold_cost * refundPercent)
         hero:ModifyLumber(building.lumber_cost * refundPercent)
         hero:ModifyCheese(building.cheese_cost)
     end

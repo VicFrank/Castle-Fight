@@ -61,7 +61,7 @@ function OnAttemptPurchase(eventSourceIndex, args)
   end
 
   -- Make sure we have enough resources to buy this item
-  if hero:GetGold() < gold_cost then
+  if hero:GetCustomGold() < gold_cost then
     SendErrorMessage(playerID, "#error_not_enough_gold")
     return false
   end
@@ -80,7 +80,8 @@ function OnAttemptPurchase(eventSourceIndex, args)
   end
 
   -- Make the payment
-  hero:ModifyGold(-gold_cost, false, 0)
+  -- hero:ModifyGold(-gold_cost, false, 0)
+  hero:ModifyCustomGold(-gold_cost)
   hero:ModifyLumber(-lumber_cost)
 
   -- Successful purchase

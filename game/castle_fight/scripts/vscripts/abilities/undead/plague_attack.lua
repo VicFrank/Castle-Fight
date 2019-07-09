@@ -62,7 +62,7 @@ function modifier_plague_attack_debuff:OnCreated()
   if playerID < 0 then playerID = 0 end
   self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
 
-  self.move_speed_slow = self.ability:GetSpecialValueFor("move_speed_slow_pct")
+  self.move_speed_slow = -self.ability:GetSpecialValueFor("move_speed_slow_pct")
   self.dps = self.ability:GetSpecialValueFor("dps")
 
   self:StartIntervalThink(1)
@@ -86,7 +86,7 @@ function modifier_plague_attack_debuff:DamageTick()
 end
 
 function modifier_plague_attack_debuff:GetModifierMoveSpeedBonus_Percentage()
-  return -self.move_speed_slow
+  return self.move_speed_slow
 end
 
 function modifier_plague_attack_debuff:OnIntervalThink()

@@ -17,7 +17,7 @@ function keeper_treant_sprout:OnSpellStart()
     CreateTempTree(position, duration)
     angle = angle + math.pi/4
   end
-  -- Gives vision to the caster's team in a radius around the clicked point for the duration
+  -- Gives vision to the caster's team in a radius around the point for the duration
   AddFOWViewer(caster:GetTeam(), point, 450, duration, false)
 
   -- Spawn treants after the trees die

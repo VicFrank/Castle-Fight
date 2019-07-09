@@ -9,7 +9,7 @@ function item_rescue_strike:OnSpellStart()
   local sound = "Hero_Techies.BlastOff.Cast"
 
   -- making the radius a bit bigger than it shows
-  local radius = ability:GetSpecialValueFor("radius") + 100
+  local radius = ability:GetSpecialValueFor("radius")
 
   -- Can't use rescue strike before the first round starts
   if not GameRules.rescueStrikeDamage then
@@ -25,7 +25,7 @@ function item_rescue_strike:OnSpellStart()
   local damageDone = 0
   local enemiesKilled = 0
 
-  local enemies = FindEnemiesInRadius(caster, radius)
+  local enemies = FindEnemiesInRadius(caster, radius, target)
 
   for _,enemy in pairs(enemies) do
     damageDone = damageDone + enemy:GetHealth()

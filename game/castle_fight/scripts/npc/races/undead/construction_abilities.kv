@@ -5,7 +5,7 @@
     "AbilityTextureName"            "rotting_hay_cart"
 
     "UnitName"                      "rotting_hay_cart"
-    "AbilityGoldCost"               "120"
+    "GoldCost"                      "120"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -29,13 +29,22 @@
   "upgrade_tainted_farm"
   {
     "AbilityTextureName"            "tainted_farm"
-    "AbilityGoldCost"               "100"
+    "GoldCost"                      "100"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -44,7 +53,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -59,13 +67,22 @@
   "upgrade_defiled_granary"
   {
     "AbilityTextureName"            "defiled_granary"
-    "AbilityGoldCost"               "205"
+    "GoldCost"                      "205"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -74,7 +91,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -91,7 +107,7 @@
     "AbilityTextureName"            "temple_of_bone"
 
     "UnitName"                      "temple_of_bone"
-    "AbilityGoldCost"               "210"
+    "GoldCost"                      "210"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -115,13 +131,22 @@
   "upgrade_temple_of_necromancy"
   {
     "AbilityTextureName"            "temple_of_necromancy"
-    "AbilityGoldCost"               "170"
+    "GoldCost"                      "170"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -130,7 +155,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -145,7 +169,7 @@
   "upgrade_high_citadel_of_necromancy"
   {
     "AbilityTextureName"            "high_citadel_of_necromancy"
-    "AbilityGoldCost"               "370"
+    "GoldCost"                      "370"
     "LumberCost"                    "375"
     "IsLegendary"                   "1"
     "AbilityChannelTime"            "5"
@@ -171,7 +195,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -188,7 +211,7 @@
     "AbilityTextureName"            "crypt"
 
     "UnitName"                      "crypt"
-    "AbilityGoldCost"               "230"
+    "GoldCost"                      "230"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -212,13 +235,22 @@
   "upgrade_graveyard"
   {
     "AbilityTextureName"            "graveyard"
-    "AbilityGoldCost"               "260"
+    "GoldCost"                      "260"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -227,7 +259,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -244,7 +275,7 @@
     "AbilityTextureName"            "haunted_mine"
 
     "UnitName"                      "haunted_mine"
-    "AbilityGoldCost"               "290"
+    "GoldCost"                      "290"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -270,7 +301,7 @@
     "AbilityTextureName"            "slaughter_house"
 
     "UnitName"                      "slaughter_house"
-    "AbilityGoldCost"               "370"
+    "GoldCost"                      "370"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -296,7 +327,7 @@
     "AbilityTextureName"            "dragon_cemetary"
 
     "UnitName"                      "dragon_cemetary"
-    "AbilityGoldCost"               "500"
+    "GoldCost"                      "500"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -321,13 +352,22 @@
   "upgrade_skull_shrine"
   {
     "AbilityTextureName"            "skull_shrine"
-    "AbilityGoldCost"               "140"
+    "GoldCost"                      "140"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -336,7 +376,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"

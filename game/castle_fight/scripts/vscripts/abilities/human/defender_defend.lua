@@ -41,7 +41,7 @@ function modifier_defender_defend:GetModifierPhysical_ConstantBlock(keys)
 
   if distance > 250 and damage > 10 and attacker:IsAlive() then
     -- if it was a ranged attack, chance to repel it completely
-    if self.ranged_repel_chance > RandomInt(1,100) then
+    if self.ranged_repel_chance >= RandomInt(1,100) then
       local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, self.parent)
       ParticleManager:ReleaseParticleIndex(particle)
 

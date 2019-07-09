@@ -5,7 +5,7 @@
     "AbilityTextureName"            "snowy_rocks"
 
     "UnitName"                      "snowy_rocks"
-    "AbilityGoldCost"               "115"
+    "GoldCost"                      "115"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -29,13 +29,22 @@
   "upgrade_icy_rocks"
   {
     "AbilityTextureName"            "icy_rocks"
-    "AbilityGoldCost"               "125"
+    "GoldCost"                      "125"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -44,7 +53,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -59,13 +67,22 @@
   "upgrade_glacier"
   {
     "AbilityTextureName"            "glacier"
-    "AbilityGoldCost"               "250"
+    "GoldCost"                      "250"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -74,7 +91,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -91,7 +107,7 @@
     "AbilityTextureName"            "igloo"
 
     "UnitName"                      "igloo"
-    "AbilityGoldCost"               "160"
+    "GoldCost"                      "160"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -117,7 +133,7 @@
     "AbilityTextureName"            "ice_troll_hut"
 
     "UnitName"                      "ice_troll_hut"
-    "AbilityGoldCost"               "175"
+    "GoldCost"                      "175"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -141,13 +157,22 @@
   "upgrade_ice_troll_voodoo_hut"
   {
     "AbilityTextureName"            "ice_troll_voodoo_hut"
-    "AbilityGoldCost"               "150"
+    "GoldCost"                      "150"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -156,7 +181,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -173,7 +197,7 @@
     "AbilityTextureName"            "ice_claws"
 
     "UnitName"                      "ice_claws"
-    "AbilityGoldCost"               "275"
+    "GoldCost"                      "275"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -197,13 +221,22 @@
   "upgrade_frost_claws"
   {
     "AbilityTextureName"            "frost_claws"
-    "AbilityGoldCost"               "225"
+    "GoldCost"                      "225"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -212,7 +245,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -229,7 +261,7 @@
     "AbilityTextureName"            "azure_nest"
 
     "UnitName"                      "azure_nest"
-    "AbilityGoldCost"               "280"
+    "GoldCost"                      "280"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -255,7 +287,7 @@
     "AbilityTextureName"            "crystal_palace"
 
     "UnitName"                      "crystal_palace"
-    "AbilityGoldCost"               "400"
+    "GoldCost"                      "400"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -279,7 +311,7 @@
   "upgrade_greater_frost_launcher"
   {
     "AbilityTextureName"            "greater_frost_launcher"
-    "AbilityGoldCost"               "290"
+    "GoldCost"                      "290"
     "LumberCost"                    "575"
     "AbilityChannelTime"            "5"
 
@@ -287,6 +319,15 @@
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -295,7 +336,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"

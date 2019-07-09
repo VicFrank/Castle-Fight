@@ -30,6 +30,17 @@ function Spawn(keys)
       end
     end
 
+    local attacksAllowed = thisEntity:GetKeyValue("AttacksAllowed")
+    if attacksAllowed then
+      if attacksAllowed == "ground" then
+        canHitGround = true
+      elseif attacksAllowed == "flying" then
+        canHitFlying = true
+      else
+        print("Bad KV AttacksAllowed = " .. attacksAllowed .. " for " .. thisEntity:GetUnitName())
+      end
+    end
+
     local attackRange = thisEntity:GetKeyValue("AttackRange") or 0
     if attackRange == 0 then print(thisEntity:GetUnitName() .. " has no attack range") end
     local acquisitionRange = math.max(900, attackRange + 200)
@@ -68,7 +79,7 @@ function thisEntity:AIThink()
     -- print(self:GetUnitName() .. " is aggro'd onto " .. self.aiState.aggroTarget:GetUnitName())
     if UseAbility(self) then return 1.5 end
     AttackTarget(self)
-    return .3
+    return .5
   end
 
   MoveTowardsGoal(self)

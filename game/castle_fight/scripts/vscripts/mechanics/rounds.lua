@@ -6,7 +6,8 @@ end
 function GameMode:SetupHeroes()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     if hero:IsAlive() then
-      hero:ModifyGold(STARTING_GOLD - hero:GetGold(), false, 0)
+      -- hero:ModifyGold(STARTING_GOLD - hero:GetGold(), false, 0)
+      hero:SetCustomGold(STARTING_GOLD)
       hero:SetLumber(STARTING_LUMBER)
       hero:SetCheese(STARTING_CHEESE)
       hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})

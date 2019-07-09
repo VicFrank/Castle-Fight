@@ -4,7 +4,8 @@ function GameMode:PayIncome()
       local playerID = hero:GetPlayerOwnerID()
       local income = GameMode:GetIncomeForPlayer(playerID)
 
-      hero:ModifyGold(income, false, DOTA_ModifyGold_Unspecified)
+      -- hero:ModifyGold(income, false, DOTA_ModifyGold_Unspecified)
+      hero:ModifyCustomGold(income)
       SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, income, hero)
 
       hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})

@@ -5,7 +5,7 @@
     "AbilityTextureName"            "hunters_hall"
 
     "UnitName"                      "hunters_hall"
-    "AbilityGoldCost"               "150"
+    "GoldCost"                      "150"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -29,40 +29,8 @@
   "upgrade_rangers_hall"
   {
     "AbilityTextureName"            "rangers_hall"
-    "AbilityGoldCost"               "200"
+    "GoldCost"                      "200"
     "AbilityChannelTime"            "5"
-
-    "BaseClass"                     "ability_datadriven"
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "MaxLevel"                      "1"
-
-    "OnChannelInterrupted"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "abilities/buildings/upgrades.lua"
-        "Function"    "RefundUpgradePrice"
-      }
-    }
-
-    "OnChannelSucceeded"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "abilities/buildings/upgrades.lua"
-        "Function"    "UpgradeBuilding"
-        "UnitName"    "rangers_hall"
-      }
-    }
-  }
-
-  "upgrade_amazons_hall"
-  {
-    "AbilityTextureName"            "amazons_hall"
-    "AbilityGoldCost"               "400"
-    "LumberCost"                    "375"
-    "AbilityChannelTime"            "5"
-    "IsLegendary"                   "1"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -85,7 +53,48 @@
         "Function"    "RefundUpgradePrice"
       }
     }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "rangers_hall"
+      }
+    }
+  }
 
+  "upgrade_amazons_hall"
+  {
+    "AbilityTextureName"            "amazons_hall"
+    "GoldCost"                      "400"
+    "LumberCost"                    "375"
+    "AbilityChannelTime"            "5"
+    "IsLegendary"                   "1"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    
+    
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -102,7 +111,7 @@
     "AbilityTextureName"            "moon_shrine"
 
     "UnitName"                      "moon_shrine"
-    "AbilityGoldCost"               "190"
+    "GoldCost"                      "190"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -126,13 +135,22 @@
   "upgrade_moon_altar"
   {
     "AbilityTextureName"            "moon_altar"
-    "AbilityGoldCost"               "210"
+    "GoldCost"                      "210"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -141,7 +159,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -158,7 +175,7 @@
     "AbilityTextureName"            "house_of_shadows"
 
     "UnitName"                      "house_of_shadows"
-    "AbilityGoldCost"               "200"
+    "GoldCost"                      "200"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -182,13 +199,22 @@
   "upgrade_guild_of_shadows"
   {
     "AbilityTextureName"            "guild_of_shadows"
-    "AbilityGoldCost"               "175"
+    "GoldCost"                      "175"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -197,7 +223,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -214,7 +239,7 @@
     "AbilityTextureName"            "pillaged_hut"
 
     "UnitName"                      "pillaged_hut"
-    "AbilityGoldCost"               "230"
+    "GoldCost"                      "230"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -238,13 +263,22 @@
   "upgrade_scorched_mansion"
   {
     "AbilityTextureName"            "scorched_mansion"
-    "AbilityGoldCost"               "240"
+    "GoldCost"                      "240"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -253,7 +287,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -270,7 +303,7 @@
     "AbilityTextureName"            "fountain_of_wonders"
 
     "UnitName"                      "fountain_of_wonders"
-    "AbilityGoldCost"               "260"
+    "GoldCost"                      "260"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -296,7 +329,7 @@
     "AbilityTextureName"            "nightelf_siege_factory"
 
     "UnitName"                      "nightelf_siege_factory"
-    "AbilityGoldCost"               "285"
+    "GoldCost"                      "285"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"

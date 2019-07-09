@@ -10,7 +10,7 @@ require("libraries/animations")
 
 require("mechanics/units")
 require("mechanics/attacks")
-require("mechanics/lumber")
+require("mechanics/resources")
 require("mechanics/rounds")
 require("mechanics/income")
 require("mechanics/corpses")
@@ -190,6 +190,9 @@ function GameMode:InitGameMode()
   GameRules.precached = {}
   GameRules.income = {}
   GameRules.numBoxes = {}
+  GameRules.lumber = {}
+  GameRules.gold = {}
+  GameRules.cheese = {}
 
   GameRules.HeroSelectionTimer = ""
   GameRules.LoadingTimer = ""
@@ -209,12 +212,14 @@ function SetUpCustomItemCosts()
     for _,itemname in ipairs(item_names) do
       local item = CreateItem(itemname, nil, nil)
 
+      local goldCost = tonumber(item:GetAbilityKeyValues()['GoldCost']) or 0
       local lumberCost = tonumber(item:GetAbilityKeyValues()['LumberCost']) or 0
       local isLegendary = item:GetAbilityKeyValues()['IsLegendary'] ~= nil
 
       CustomNetTables:SetTableValue("item_costs", itemname, {
         lumberCost = lumberCost,
-        isLegendary = isLegendary
+        isLegendary = isLegendary,
+        goldCost = goldCost
       })
 
       item:RemoveSelf()
@@ -227,10 +232,12 @@ function SetupCustomAblityCosts()
   for _,abilityname in ipairs(g_Custom_Ability_Costs) do
     local ability = dummy:AddAbility(abilityname)
 
+    local goldCost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
     local lumberCost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
     local isLegendary = ability:GetAbilityKeyValues()['IsLegendary'] ~= nil
 
     CustomNetTables:SetTableValue("ability_costs", abilityname, {
+      goldCost = goldCost,
       lumberCost = lumberCost,
       isLegendary = isLegendary
     })

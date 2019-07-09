@@ -5,7 +5,7 @@
     "AbilityTextureName"            "archery_range"
 
     "UnitName"                      "archery_range"
-    "AbilityGoldCost"               "180"
+    "GoldCost"                      "180"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -29,13 +29,22 @@
   "upgrade_archery_tower"
   {
     "AbilityTextureName"            "archery_tower"
-    "AbilityGoldCost"               "200"
+    "GoldCost"                      "200"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -44,7 +53,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -61,7 +69,7 @@
     "AbilityTextureName"            "hall_of_honor"
 
     "UnitName"                      "hall_of_honor"
-    "AbilityGoldCost"               "220"
+    "GoldCost"                      "220"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -85,13 +93,22 @@
   "upgrade_hall_of_the_eldest"
   {
     "AbilityTextureName"            "hall_of_the_eldest"
-    "AbilityGoldCost"               "230"
+    "GoldCost"                      "230"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -100,7 +117,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -117,7 +133,7 @@
     "AbilityTextureName"            "bloodelf_war_academy"
 
     "UnitName"                      "bloodelf_war_academy"
-    "AbilityGoldCost"               "275"
+    "GoldCost"                      "275"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -143,7 +159,7 @@
     "AbilityTextureName"            "dragonhawk_portal"
 
     "UnitName"                      "dragonhawk_portal"
-    "AbilityGoldCost"               "310"
+    "GoldCost"                      "310"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -169,7 +185,7 @@
     "AbilityTextureName"            "highelf_siege_factory"
 
     "UnitName"                      "highelf_siege_factory"
-    "AbilityGoldCost"               "350"
+    "GoldCost"                      "350"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -195,7 +211,7 @@
     "AbilityTextureName"            "school_of_wizardry"
 
     "UnitName"                      "school_of_wizardry"
-    "AbilityGoldCost"               "360"
+    "GoldCost"                      "360"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -219,7 +235,7 @@
   "upgrade_tower_of_supreme_magic"
   {
     "AbilityTextureName"            "tower_of_supreme_magic"
-    "AbilityGoldCost"               "440"
+    "GoldCost"                      "440"
     "LumberCost"                    "400"
     "IsLegendary"                   "1"
     "AbilityChannelTime"            "5"
@@ -228,6 +244,15 @@
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -236,7 +261,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"

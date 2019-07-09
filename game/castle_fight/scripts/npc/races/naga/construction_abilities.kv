@@ -5,7 +5,7 @@
     "AbilityTextureName"            "murloc_hut"
 
     "UnitName"                      "murloc_hut"
-    "AbilityGoldCost"               "120"
+    "GoldCost"                      "120"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -29,13 +29,22 @@
   "upgrade_murloc_camp"
   {
     "AbilityTextureName"            "murloc_camp"
-    "AbilityGoldCost"               "130"
+    "GoldCost"                      "130"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -44,7 +53,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -59,13 +67,22 @@
   "upgrade_murloc_village"
   {
     "AbilityTextureName"            "murloc_village"
-    "AbilityGoldCost"               "150"
+    "GoldCost"                      "150"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -74,7 +91,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -89,13 +105,22 @@
   "upgrade_murloc_fortress"
   {
     "AbilityTextureName"            "murloc_fortress"
-    "AbilityGoldCost"               "200"
+    "GoldCost"                      "200"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -104,7 +129,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -121,7 +145,7 @@
     "AbilityTextureName"            "swamp_well"
 
     "UnitName"                      "swamp_well"
-    "AbilityGoldCost"               "175"
+    "GoldCost"                      "175"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -145,7 +169,7 @@
   "upgrade_lernaean_fountain"
   {
     "AbilityTextureName"            "lernaean_fountain"
-    "AbilityGoldCost"               "725"
+    "GoldCost"                      "725"
     "LumberCost"                    "450"
     "IsLegendary"                   "1"
     "AbilityChannelTime"            "10"
@@ -153,6 +177,8 @@
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
+
+    
 
     "OnSpellStart"
     {
@@ -162,7 +188,7 @@
         "Function"    "ResourceCheck"
       }
     }
-
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -171,7 +197,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -188,7 +213,7 @@
     "AbilityTextureName"            "temple_of_snakes"
 
     "UnitName"                      "temple_of_snakes"
-    "AbilityGoldCost"               "230"
+    "GoldCost"                      "230"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -214,7 +239,7 @@
     "AbilityTextureName"            "spawning_grounds"
 
     "UnitName"                      "spawning_grounds"
-    "AbilityGoldCost"               "250"
+    "GoldCost"                      "250"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -238,13 +263,22 @@
   "upgrade_royal_spawning_grounds"
   {
     "AbilityTextureName"            "royal_spawning_grounds"
-    "AbilityGoldCost"               "200"
+    "GoldCost"                      "200"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                      "1"
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -253,7 +287,6 @@
         "Function"    "RefundUpgradePrice"
       }
     }
-
     "OnChannelSucceeded"
     {
       "RunScript"
@@ -270,7 +303,7 @@
     "AbilityTextureName"            "reptile_pool"
 
     "UnitName"                      "reptile_pool"
-    "AbilityGoldCost"               "280"
+    "GoldCost"                      "280"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"
@@ -296,7 +329,7 @@
     "AbilityTextureName"            "naga_spring"
 
     "UnitName"                      "naga_spring"
-    "AbilityGoldCost"               "350"
+    "GoldCost"                      "350"
     "LumberCost"                    "0"
 
     "BaseClass"                     "ability_datadriven"

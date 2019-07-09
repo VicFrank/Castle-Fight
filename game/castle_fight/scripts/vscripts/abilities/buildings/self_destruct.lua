@@ -1,5 +1,11 @@
 item_building_self_destruct = class({})
 
+LinkLuaModifier("modifier_self_destruct", "abilities/buildings/self_destruct.lua", LUA_MODIFIER_MOTION_NONE)
+
+function item_building_self_destruct:GetIntrinsicModifierName()
+  return "modifier_self_destruct"
+end
+
 function item_building_self_destruct:OnSpellStart()
   if not IsServer() then return end
 
@@ -19,4 +25,23 @@ function item_building_self_destruct:OnSpellStart()
 
   caster:AddEffects(EF_NODRAW)
   caster:ForceKill(true)
+end
+
+modifier_self_destruct = class({})
+function modifier_self_destruct:IsHidden() return true end
+function modifier_self_destruct:IsDebuff() return false end
+function modifier_self_destruct:IsPurgable() return false end
+
+function modifier_self_destruct:DeclareFunctions()
+  return { MODIFIER_EVENT_ON_TAKEDAMAGE }
+end
+
+function modifier_self_destruct:OnTakeDamage( keys )
+  local ability = self:GetAbility()
+  local parent = self:GetParent()
+  local unit = keys.unit
+
+  if parent == unit and keys.attacker:GetTeam() ~= parent:GetTeam() then
+    ability:StartCooldown(5)
+  end
 end

@@ -107,11 +107,13 @@ function AttemptPurchase(itemname) {
   GameEvents.SendCustomGameEventToServer("attempt_purchase", {itemname: itemname})
 
   // See if we can buy the item on the client-side
-  var data = CustomNetTables.GetTableValue("lumber", localPlayerID);
+  var data = CustomNetTables.GetTableValue("resources", localPlayerID);
   var lumber = 0;
-  if (data && data.value) lumber = data.value;
-
-  var gold = Players.GetGold(localPlayerID);
+  var gold = 0;
+  if (data && data.lumber){
+    lumber = data.lumber;
+    gold = data.gold;
+  } 
 
   var key = itemname + localPlayerTeam;
   var itemData = CustomNetTables.GetTableValue("custom_shop", key);

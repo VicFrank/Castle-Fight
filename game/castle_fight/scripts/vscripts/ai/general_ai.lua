@@ -29,7 +29,7 @@ function FindAggro(self)
 
   local aggroTargets = FindEnemiesInRadius(self, searchRange)
 
-  local maxTargets = 10
+  local maxTargets = 7
 
   local target
   for _,potentialTarget in ipairs(aggroTargets) do
@@ -39,6 +39,11 @@ function FindAggro(self)
         target = potentialTarget
       else
         target = GetHigherPriorityTarget(self, target, potentialTarget)
+      end
+
+      -- This is the closest unit of the highest priority, so we'll always return it
+      if GetTargetPriority(target) == 3 then
+        break
       end
     end
 
@@ -73,6 +78,14 @@ function CanAttackTarget(self, target)
     return false
   elseif target:HasGroundMovementCapability() and not self.aiState.canHitGround then
     return false
+  end
+
+  -- If we can't reach the target
+  -- Note that we can never find path to a building
+  if self:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK and not IsCustomBuilding(target) then
+    if not GridNav:CanFindPath(self:GetAbsOrigin(), target:GetAbsOrigin()) then
+      return false
+    end
   end
 
   return true
@@ -122,14 +135,7 @@ function GetHigherPriorityTarget(self, unit1, unit2)
   elseif (unit2 == self.aiState.aggroTarget) then
     distance2 = distance2 - 200
   end
-
-  -- The castle is a big fat boy, so the distance from the center is misleading
-  if unit1:GetUnitName() == "castle" then
-    distance1 = distance1 - 100
-  elseif unit2:GetUnitName() == "castle" then
-    distance2 = distance2 - 100
-  end
-
+  
   -- print(unit1:GetUnitName(), unit1:GetUnitName(), unit2:GetUnitName())
   -- print(priority1, priority2)
   -- print(distance1, distance2)

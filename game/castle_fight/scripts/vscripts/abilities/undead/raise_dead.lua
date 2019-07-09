@@ -83,6 +83,7 @@ function RaiseDead(caster, skeletonTable, range)
 
   local skeleton = CreateLaneUnit(unitname, position, team, playerID)
 
+  skeleton:AddNewModifier(caster, nil, "modifier_kill", {duration = 45})
   skeleton:SetNoCorpse()
 
   return skeleton

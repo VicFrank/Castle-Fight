@@ -47,8 +47,14 @@ function modifier_ancient_of_wind_cyclone_aura:GetAuraEntityReject(target) retur
 modifier_ancient_of_wind_cyclone_debuff = class({})
 
 function modifier_ancient_of_wind_cyclone_debuff:IsDebuff() return true end
+function modifier_ancient_of_wind_cyclone_debuff:IsHidden() return true end
+
+function modifier_ancient_of_wind_cyclone_debuff:GetAttributes()
+  return MODIFIER_ATTRIBUTE_MULTIPLE
+end
 
 function modifier_ancient_of_wind_cyclone_debuff:OnCreated()
+  if not self:GetAbility() then return end
   self.dps = self:GetAbility():GetSpecialValueFor("dps")
 
   self.tick_rate = 0.2

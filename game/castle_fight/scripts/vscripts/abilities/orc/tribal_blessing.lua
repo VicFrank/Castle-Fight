@@ -14,6 +14,10 @@ function tribal_blessing:OnSpellStart()
 
   if not target then return end
 
+  caster:EmitSound("Hero_Dazzle.Shallow_Grave")
+
+  target:AddNewModifier(caster, ability, "modifier_tribal_blessing", {})
+
   local abilities = {
     "tribal_blessing_critical_strike",
     "tribal_blessing_evasion",
@@ -31,9 +35,8 @@ function tribal_blessing:OnSpellStart()
     end
   end
 
-  local ability = target:AddAbility(abilityToAdd)
-  ability:SetLevel(1)
-  target:AddNewModifier(caster, ability, "modifier_tribal_blessing", {})
+  local addedAbility = target:AddAbility(abilityToAdd)
+  addedAbility:SetLevel(1)
 end
 
 modifier_tribal_blessing = class({})
@@ -68,4 +71,16 @@ end
 
 function modifier_tribal_blessing:GetModifierBaseDamageOutgoing_Percentage()
   return self.damage_increase
+end
+
+function modifier_tribal_blessing:GetEffectName()
+  return "particles/econ/items/dazzle/dazzle_ti6_gold/dazzle_ti6_shallow_grave_gold_ground_ray.vpcf"
+end
+
+function modifier_tribal_blessing:GetTexture()
+  return "dazzle_bad_juju"
+end
+
+function modifier_tribal_blessing:IsPurgable()
+  return true
 end
