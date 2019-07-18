@@ -68,57 +68,101 @@
   visibility: visible;
 }
 
-#DrawButton
-{
-  horizontal-align: left;
-  width: fit-children;
-  margin-left: 1px;
+#DrawButton {
+    width: fit-children;
 
-  background-color: gradient( linear, 0% 0%, 0% 100%, from( #722217 ), to( #DD4A29 ) );
+    background-color: #000e;
+    background-repeat: no-repeat;
+    
+    vertical-align: middle;
+    horizontal-align: center;
+    
+
+    border-top: 2px solid #3b404777;
+    border-right: 2px solid #00000088;
+    border-left: 2px solid #4c434677;
+    border-bottom: 2px solid #00000088;
+    border: 1px solid #bcd6;
+    
+    transition-property: background-color, wash-color;
+    transition-delay: 0.0s;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    wash-color: #eb4b4b;
 }
 
-#DrawButton:Hover
+#DrawButton:hover
 {
-  brightness: 1.4;
+    border: 1px solid #bcd6;
+    background-color: #000d;
+    wash-color: white;
 }
 
-#DrawButtonLabel
+#DrawButton:active
 {
-  font-size: 24px;
-  letter-spacing: 1px;
-  color: white;
-  
-  text-align: center;
+    border: 1px solid #fff;
+    background-color: #000d;
+    wash-color: white;
+}
 
-  margin-top: 5px;
+#DrawButton Label
+{
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 1px;
+    align: center center;
+    margin-top: 5px;
+	padding-left: 2px;
+	padding-right: 2px;
+	font-family: Radiance;
 } 
 
-#ContinueButton
-{
-  horizontal-align: right;
-  width: fit-children;
-  margin-right: 1px;
+#ContinueButton {
+    width: fit-children;
 
-  visibility: collapse;
-
-  background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
+    background-color: #000e;
+    background-repeat: no-repeat;
+    
+    vertical-align: middle;
+    horizontal-align: right;
+    
+    border-top: 2px solid #3b404777;
+    border-right: 2px solid #00000088;
+    border-left: 2px solid #4c434677;
+    border-bottom: 2px solid #00000088;
+    border: 1px solid #bcd6;
+    
+    transition-property: background-color, wash-color;
+    transition-delay: 0.0s;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    wash-color: #ade55c;
 }
 
-#ContinueButton:Hover
+#ContinueButton:hover
 {
-  brightness: 1.4;
+    border: 1px solid #bcd6;
+    background-color: #000d;
+    wash-color: white;
 }
 
-#ContinueButtonLabel
+#ContinueButton:active
 {
-  font-size: 24px;
-  letter-spacing: 1px;
-  color: white;
-  
-  text-align: center;
-
-  margin-top: 5px;
+    border: 1px solid #fff;
+    background-color: #000d;
+    wash-color: white;
 }
+
+#ContinueButton Label
+{
+    font-size: 24px;
+    letter-spacing: 1px;
+	padding-left: 2px;
+	padding-right: 2px;
+    align: center center;
+    margin-top: 5px;
+	font-family: Radiance;
+} 
 
 .vote_in_progress #ContinueButton
 {
