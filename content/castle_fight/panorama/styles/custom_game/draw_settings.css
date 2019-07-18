@@ -10,7 +10,7 @@
   margin-bottom: 280px;
 
   width: 280px;
-  height: 150px;
+  height: 180px;
 
   flow-children: down;
 
@@ -36,6 +36,36 @@
   color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+#AcceptHeader
+{
+  margin-left: 75px;
+  width: 75px;
+}
+
+#RejectHeader
+{
+
+}
+
+.DrawVoteRow
+{
+  flow-children: right;
+}
+
+.TeamLabel
+{
+  width: 75px;
+}
+
+.AcceptVotes
+{
+  width: 75px;
+}
+.RejectVotes
+{
+  
 }
 
 .DrawVotes
@@ -69,98 +99,100 @@
 }
 
 #DrawButton {
-    width: fit-children;
+  width: fit-children;
 
-    background-color: #000e;
-    background-repeat: no-repeat;
-    
-    vertical-align: middle;
-    horizontal-align: center;
-    
+  background-color: #000e;
+  background-repeat: no-repeat;
+  
+  vertical-align: middle;
+  horizontal-align: center;
 
-    border-top: 2px solid #3b404777;
-    border-right: 2px solid #00000088;
-    border-left: 2px solid #4c434677;
-    border-bottom: 2px solid #00000088;
-    border: 1px solid #bcd6;
-    
-    transition-property: background-color, wash-color;
-    transition-delay: 0.0s;
-    transition-duration: 0.1s;
-    transition-timing-function: linear;
-    wash-color: #eb4b4b;
+  border-top: 2px solid #3b404777;
+  border-right: 2px solid #00000088;
+  border-left: 2px solid #4c434677;
+  border-bottom: 2px solid #00000088;
+  border: 1px solid #bcd6;
+  
+  transition-property: background-color, wash-color;
+  transition-delay: 0.0s;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+  wash-color: #eb4b4b;
 }
 
 #DrawButton:hover
 {
-    border: 1px solid #bcd6;
-    background-color: #000d;
-    wash-color: white;
+  border: 1px solid #bcd6;
+  background-color: #000d;
+  wash-color: white;
 }
 
 #DrawButton:active
 {
-    border: 1px solid #fff;
-    background-color: #000d;
-    wash-color: white;
+  border: 1px solid #fff;
+  background-color: #000d;
+  wash-color: white;
 }
 
 #DrawButton Label
 {
-    text-transform: uppercase;
-    font-size: 24px;
-    letter-spacing: 1px;
-    align: center center;
-    margin-top: 5px;
-	padding-left: 2px;
+  text-transform: uppercase;
+  font-size: 24px;
+  letter-spacing: 1px;
+  align: center center;
+  margin-top: 5px;
+	padding-left: 4px;
 	padding-right: 2px;
 	font-family: Radiance;
 } 
 
 #ContinueButton {
-    width: fit-children;
+  width: fit-children;
 
-    background-color: #000e;
-    background-repeat: no-repeat;
-    
-    vertical-align: middle;
-    horizontal-align: right;
-    
-    border-top: 2px solid #3b404777;
-    border-right: 2px solid #00000088;
-    border-left: 2px solid #4c434677;
-    border-bottom: 2px solid #00000088;
-    border: 1px solid #bcd6;
-    
-    transition-property: background-color, wash-color;
-    transition-delay: 0.0s;
-    transition-duration: 0.1s;
-    transition-timing-function: linear;
-    wash-color: #ade55c;
+  background-color: #000e;
+  background-repeat: no-repeat;
+  
+  vertical-align: middle;
+  horizontal-align: right;
+  
+  border-top: 2px solid #3b404777;
+  border-right: 2px solid #00000088;
+  border-left: 2px solid #4c434677;
+  border-bottom: 2px solid #00000088;
+  border: 1px solid #bcd6;
+  
+  transition-property: background-color, wash-color;
+  transition-delay: 0.0s;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+  wash-color: #ade55c;
+
+  visibility: collapse;
 }
 
 #ContinueButton:hover
 {
-    border: 1px solid #bcd6;
-    background-color: #000d;
-    wash-color: white;
+  border: 1px solid #bcd6;
+  background-color: #000d;
+  wash-color: white;
 }
 
 #ContinueButton:active
 {
-    border: 1px solid #fff;
-    background-color: #000d;
-    wash-color: white;
+  border: 1px solid #fff;
+  background-color: #000d;
+  wash-color: white;
 }
 
 #ContinueButton Label
 {
-    font-size: 24px;
-    letter-spacing: 1px;
+  font-size: 24px;
+  letter-spacing: 1px;
 	padding-left: 2px;
 	padding-right: 2px;
-    align: center center;
-    margin-top: 5px;
+  align: center center;
+  margin-left: 4px;
+  margin-top: 5px;
 	font-family: Radiance;
 } 
 

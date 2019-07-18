@@ -9,12 +9,14 @@ end
 --------------------------------------------------
 function ClearDrawSettings(canVote)
   for _,playerID in pairs(GameRules.playerIDs) do
-    GameRules.drawVotes[playerID] = false
+    GameRules.drawVotes[playerID] = nil
   end
 
   CustomNetTables:SetTableValue("settings", "draw_votes", {
     westDrawVotes = 0,
     eastDrawVotes = 0,
+    westNumReject = 0,
+    eastNumReject = 0,
   })
 
   CustomNetTables:SetTableValue("settings", "draw_vote_status", {
@@ -55,13 +57,16 @@ function OnDrawVoteChanged(playerID, vote)
   UpdateSettingsNetTable(playerID)
   CustomNetTables:SetTableValue("settings", "draw_vote_status", {
     inProgress = true,
+    canVote = true,
   })
 
   -- Check to see if we should end the round in a draw
   local westVotes = 0
   local eastVotes = 0
   local westNumVotes = 0
+  local westNumReject = 0
   local eastNumVotes = 0
+  local eastNumReject = 0
   for _,playerID in pairs(GameRules.playerIDs) do
     -- print(PlayerResource:GetTeam(playerID), playerID, GameRules.drawVotes[playerID])
     local team = PlayerResource:GetTeam(playerID)
@@ -82,14 +87,17 @@ function OnDrawVoteChanged(playerID, vote)
 
     if team == DOTA_TEAM_GOODGUYS then
       westVotes = westVotes + score
-      if vote then
+      if vote == true then
         westNumVotes = westNumVotes + 1
+      elseif not vote == nil and vote == false then
+        westNumReject = westNumReject + 1
       end
     elseif team == DOTA_TEAM_BADGUYS then
       eastVotes = eastVotes + score
-      if vote then
-        print(vote)
+      if vote == true then
         eastNumVotes = eastNumVotes + 1
+      elseif not vote == nil and vote == false then
+        eastNumReject = eastNumReject + 1
       end
     end
   end
@@ -97,6 +105,8 @@ function OnDrawVoteChanged(playerID, vote)
   CustomNetTables:SetTableValue("settings", "draw_votes", {
     westDrawVotes = westNumVotes,
     eastDrawVotes = eastNumVotes,
+    westNumReject = westNumReject,
+    eastNumReject = eastNumReject,
   })
 
   if westVotes >= 0 and eastVotes >= 0 then

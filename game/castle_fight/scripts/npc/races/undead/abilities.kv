@@ -658,4 +658,46 @@
       }
     }
   }
+
+  "skeleton_critical_strike"
+  {
+    "AbilityTextureName"            "skeleton_king_mortal_strike"
+    "BaseClass"                     "ability_lua"
+    "ScriptFile"                    "abilities/generic/critical_strike"
+    "MaxLevel"                      "1"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "crit_chance"   "10"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "crit_damage"   "200"
+      }
+    }
+  }
+
+  "skeleton_evasion"
+  {
+    "AbilityTextureName"          "phantom_assassin_blur"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "15"
+      }      
+    }
+  }
 }

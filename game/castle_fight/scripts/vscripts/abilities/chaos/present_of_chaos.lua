@@ -35,8 +35,16 @@ function present_of_chaos:OnSpellStart()
   print(option)
 
   if option == "EXPLODE" then
+    ParticleManager:ReleaseParticleIndex(
+    ParticleManager:CreateParticle(
+        "particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_bloody.vpcf",
+        PATTACH_ABSORIGIN_FOLLOW,
+        target 
+      )
+    )
     target:ForceKill(false)
   elseif option == "DEATH" then
+    PlayPACrit(caster, target)
     target:Kill(ability, caster)
   elseif option == "MUTATE" then
     CreateLaneUnit("mutation", target:GetAbsOrigin(), target:GetTeam(), caster:GetPlayerOwnerID())
@@ -66,6 +74,17 @@ function present_of_chaos:OnSpellStart()
   elseif option == "NOTHING" then
     -- nothing happens
   end
+end
+
+function PlayPACrit( hAttacker, hVictim )
+  local bloodEffect = "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+  local nFXIndex = ParticleManager:CreateParticle( bloodEffect, PATTACH_CUSTOMORIGIN, nil )
+  ParticleManager:SetParticleControlEnt( nFXIndex, 0, hVictim, PATTACH_POINT_FOLLOW, "attach_hitloc", hVictim:GetAbsOrigin(), true )
+  ParticleManager:SetParticleControl( nFXIndex, 1, hVictim:GetAbsOrigin() )
+  local flHPRatio = math.min( 1.0, hVictim:GetMaxHealth() / 200 )
+  ParticleManager:SetParticleControlForward( nFXIndex, 1, RandomFloat( 0.5, 1.0 ) * flHPRatio * ( hAttacker:GetAbsOrigin() - hVictim:GetAbsOrigin() ):Normalized() )
+  ParticleManager:SetParticleControlEnt( nFXIndex, 10, hVictim, PATTACH_ABSORIGIN_FOLLOW, "", hVictim:GetAbsOrigin(), true )
+  ParticleManager:ReleaseParticleIndex( nFXIndex )
 end
 
 modifier_present_of_chaos = class({})

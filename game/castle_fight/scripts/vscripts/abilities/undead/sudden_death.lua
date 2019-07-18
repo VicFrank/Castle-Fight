@@ -15,6 +15,5 @@ function sudden_death:OnSpellStart()
     ) 
   )
 
-
   target:Kill(ability, caster)
 end

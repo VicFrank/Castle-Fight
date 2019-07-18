@@ -26,6 +26,8 @@ tentacle_critical_strike = class({})
 function tentacle_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
 corrupted_treant_critical_strike = class({})
 function corrupted_treant_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+skeleton_critical_strike = class({})
+function skeleton_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
 
 modifier_critical_strike_custom = class({})
 

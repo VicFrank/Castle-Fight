@@ -18,6 +18,8 @@ archer_evasion = class({})
 function archer_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
 blademaster_evasion = class({})
 function blademaster_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
+skeleton_evasion = class({})
+function skeleton_evasion:GetIntrinsicModifierName() return "modifier_custom_evasion" end
 
 modifier_custom_evasion = class({})
 

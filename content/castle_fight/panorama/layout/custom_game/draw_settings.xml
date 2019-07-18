@@ -9,8 +9,20 @@
   <Panel class="DrawSettingsRoot" hittest="false">
     <Panel id="DrawStatusPanel">
       <Label id="DrawHeader" text="Draw Votes:" />
-      <Label id="WestDrawVotes" class="DrawVotes" text="" />
-      <Label id="EastDrawVotes" class="DrawVotes" text="" />
+      <Panel class="DrawVoteRow" >
+        <Label id="AcceptHeader" class="DrawVotes" text="Accept" />
+        <Label id="RejectHeader" class="DrawVotes" text="Reject" />
+      </Panel>
+      <Panel class="DrawVoteRow" >
+        <Label class="DrawVotes TeamLabel" text="West: " />
+        <Label id="WestDrawVotes" class="DrawVotes AcceptVotes" text="" />
+        <Label id="WestRejectVotes" class="DrawVotes RejectVotes" text="" />
+      </Panel>
+      <Panel class="DrawVoteRow" >
+        <Label class="DrawVotes TeamLabel" text="East: " />
+        <Label id="EastDrawVotes" class="DrawVotes AcceptVotes" text="" />
+        <Label id="EastRejectVotes" class="DrawVotes RejectVotes" text="" />
+      </Panel>
     </Panel>
 
     <Panel id="DrawButtonHolder">

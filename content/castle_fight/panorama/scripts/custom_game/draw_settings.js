@@ -29,8 +29,10 @@ function OnSettingsChanged(table_name, key, data) {
 
 		}
 	} else if (key == "draw_votes") {
-		$("#WestDrawVotes").text = "West:" + data.westDrawVotes;
-		$("#EastDrawVotes").text = "East:" + data.eastDrawVotes;
+		$("#WestDrawVotes").text = data.westDrawVotes;
+		$("#EastDrawVotes").text = data.eastDrawVotes;
+		$("#WestRejectVotes").text = data.westNumReject;
+		$("#EastRejectVotes").text = data.eastNumReject;
 	} else if (key == "draw_vote_status") {
 		$.GetContextPanel().SetHasClass("can_vote", data.canVote);
 		$.GetContextPanel().SetHasClass("vote_in_progress", data.inProgress);
