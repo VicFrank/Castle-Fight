@@ -12,6 +12,14 @@
       <Label id="BadGuysScore" class="TeamScore" text="0" />
     </Panel>
 
+    <Panel id="RoundTimer">
+      <Label id="RoundTime" text="" />
+    </Panel>
+
+    <Panel id="UnitCounter">
+      <Label id="NumUnits" text="" />
+    </Panel>
+
     <Panel id="ScoreboardHolder" class="ScoreboardHidden">
       <Label id="RoundWinner" text="" class="" />
       <Panel id="PostRoundScoreboard" hittest="false">

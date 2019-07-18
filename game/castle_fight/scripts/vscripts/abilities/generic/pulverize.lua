@@ -8,8 +8,12 @@ grunt_pulverize = class({})
 function grunt_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
 wendigo_pulverize = class({})
 function wendigo_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
+adamant_golem_pulverize = class({})
+function adamant_golem_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
 
 modifier_pulverize = class({})
+
+function modifier_pulverize:IsHidden() return true end
 
 function modifier_pulverize:OnCreated()
   self.caster = self:GetCaster()

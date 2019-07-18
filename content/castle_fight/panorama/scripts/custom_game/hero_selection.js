@@ -7,6 +7,8 @@ var RaceToHero = {
   orc: "npc_dota_hero_juggernaut",
   north: "npc_dota_hero_tusk",
   elves: "npc_dota_hero_invoker",
+  chaos: "npc_dota_hero_chaos_knight",
+  corrupted: "npc_dota_hero_grimstroke",
   random: "random",
 };
 
@@ -19,6 +21,8 @@ var RaceToPanelID = {
   orc: "juggernaut_selected",
   north: "tusk_selected",
   elves: "invoker_selected",
+  chaos: "chaos_knight_selected",
+  corrupted: "grimstroke_selected",
   random: "random_selected",
 };
 

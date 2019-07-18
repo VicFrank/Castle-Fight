@@ -4,6 +4,8 @@ passive_chain_lightning = class({})
 function passive_chain_lightning:GetIntrinsicModifierName() return "modifier_passive_chain_lightning" end
 sorceress_chain_lightning = class({})
 function sorceress_chain_lightning:GetIntrinsicModifierName() return "modifier_passive_chain_lightning" end
+energy_tower_energy_burst = class({})
+function energy_tower_energy_burst:GetIntrinsicModifierName() return "modifier_passive_chain_lightning" end
 
 modifier_passive_chain_lightning = class({})
 

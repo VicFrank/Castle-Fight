@@ -8,6 +8,8 @@ end
 
 modifier_troll_berserk = class({})
 
+function modifier_troll_berserk:IsHidden() return true end
+
 function modifier_troll_berserk:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_DEATH,

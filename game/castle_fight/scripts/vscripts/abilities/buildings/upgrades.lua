@@ -50,7 +50,7 @@ function UpgradeBuilding(keys)
   local ability = keys.ability
   local new_unit = keys.UnitName
   local playerID = caster:GetPlayerOwnerID()
-  local hero = caster:GetPlayerOwner()
+  local hero = caster:GetOwner()
   local currentHealthPercentage = caster:GetHealthPercent() * 0.01
 
   -- Keep the gridnav blockers, hull radius and orientation
@@ -69,7 +69,13 @@ function UpgradeBuilding(keys)
 
   -- If the building to ugprade is selected, change the selection to the new one
   if PlayerResource:IsUnitSelected(playerID, caster) then
-      PlayerResource:AddToSelection(playerID, building)
+    PlayerResource:AddToSelection(playerID, building)
+  end
+
+  -- If the old building was legendary, undo the cheese refund, and mark the new one as legendary
+  if caster:IsLegendary() then
+    hero:ModifyCheese(-1)
+    building.isLegendary = true
   end
       
   GameMode:OnConstructionCompleted(building, ability, true, caster.incomeValue)

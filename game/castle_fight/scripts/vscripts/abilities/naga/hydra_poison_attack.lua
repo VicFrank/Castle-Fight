@@ -6,6 +6,8 @@ function hydra_poison_attack:GetIntrinsicModifierName() return "modifier_hydra_p
 
 modifier_hydra_poison_attack = class({})
 
+function modifier_hydra_poison_attack:IsHidden() return true end
+
 function modifier_hydra_poison_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

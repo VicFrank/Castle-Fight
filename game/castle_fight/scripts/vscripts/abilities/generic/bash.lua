@@ -15,6 +15,10 @@ ancient_protector_bash = class({})
 function ancient_protector_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
 murloc_bash = class({})
 function murloc_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
+gyrocopter_bash = class({})
+function gyrocopter_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
+adamant_golem_bash = class({})
+function adamant_golem_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
 
 modifier_bash_chance_custom = class({})
 

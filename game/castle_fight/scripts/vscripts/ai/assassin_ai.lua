@@ -101,7 +101,7 @@ function thisEntity:FindAndAttackMage()
   local enemies = FindEnemiesInRadius(self, FIND_UNITS_EVERYWHERE)
 
   for _,enemy in ipairs(enemies) do
-    if enemy:GetMana() > 0 then
+    if enemy:GetMana() > 0 and not enemy:HasFlyMovementCapability() and not IsCustomBuilding(enemy) then
       self.aiState.aggroTarget = enemy
       AttackTarget(self)
       return true

@@ -44,14 +44,11 @@ end
 
 modifier_moon_shine_blessing = class({})
 
-function modifier_moon_shine_blessing:OnCreated()
-  if not IsServer() then return end
-  
+function modifier_moon_shine_blessing:OnCreated()  
   local ability = self:GetAbility()
+  if not ability then return end
 
   self.armor = ability:GetSpecialValueFor("armor")
-
-  local parent = self:GetParent()  
 end
 
 function modifier_moon_shine_blessing:DeclareFunctions()

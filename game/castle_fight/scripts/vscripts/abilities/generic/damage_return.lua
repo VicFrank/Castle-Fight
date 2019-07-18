@@ -7,6 +7,8 @@ function treant_thorns:GetIntrinsicModifierName() return "modifier_damage_return
 
 modifier_damage_return = class({})
 
+function modifier_damage_return:IsHidden() return true end
+
 function modifier_damage_return:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
@@ -27,6 +29,7 @@ function modifier_damage_return:OnAttackLanded(keys)
 
   local attacker = keys.attacker
   local target = keys.target
+  local damage = keys.damage
 
   if self.parent == target then
     local particleName = "particles/units/heroes/hero_centaur/centaur_return.vpcf"
@@ -38,7 +41,7 @@ function modifier_damage_return:OnAttackLanded(keys)
     local damageTable = {
       victim = attacker,
       attacker = self.parent,
-      damage = self.damage_return,
+      damage = damage * self.damage_return * 0.01,
       damage_type = DAMAGE_TYPE_PHYSICAL,
       damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_REFLECTION,
       ability = self.ability

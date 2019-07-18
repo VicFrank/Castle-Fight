@@ -10,6 +10,8 @@ function ice_queen_frost_attack:GetIntrinsicModifierName() return "modifier_fros
 
 modifier_frost_attack = class({})
 
+function modifier_frost_attack:IsHidden() return true end
+
 function modifier_frost_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

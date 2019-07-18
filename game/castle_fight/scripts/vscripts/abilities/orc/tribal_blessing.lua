@@ -35,8 +35,10 @@ function tribal_blessing:OnSpellStart()
     end
   end
 
-  local addedAbility = target:AddAbility(abilityToAdd)
-  addedAbility:SetLevel(1)
+  if abilityToAdd then 
+    local addedAbility = target:AddAbility(abilityToAdd)
+    addedAbility:SetLevel(1)
+  end
 end
 
 modifier_tribal_blessing = class({})
@@ -46,14 +48,17 @@ function modifier_tribal_blessing:OnCreated()
   self.attack_speed = self:GetAbility():GetSpecialValueFor("attack_speed")
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
   self.health = self:GetAbility():GetSpecialValueFor("health")
+
+  if not IsServer() then return end
+  Timers:CreateTimer(function() self:GetParent():Heal(self.health, self:GetCaster()) end)
 end
 
 function modifier_tribal_blessing:DeclareFunctions()
   return {
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
-    MODIFIER_PROPERTY_HEALTH_BONUS,
+    MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
     MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-    MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,
+    MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
   }
 end
 
@@ -61,7 +66,7 @@ function modifier_tribal_blessing:GetModifierPhysicalArmorBonus()
   return self.armor
 end
 
-function modifier_tribal_blessing:GetModifierHealthBonus()
+function modifier_tribal_blessing:GetModifierExtraHealthBonus()
   return self.health
 end
 
@@ -69,7 +74,7 @@ function modifier_tribal_blessing:GetModifierAttackSpeedBonus_Constant()
   return self.attack_speed
 end
 
-function modifier_tribal_blessing:GetModifierBaseDamageOutgoing_Percentage()
+function modifier_tribal_blessing:GetModifierPreAttack_BonusDamage()
   return self.damage_increase
 end
 

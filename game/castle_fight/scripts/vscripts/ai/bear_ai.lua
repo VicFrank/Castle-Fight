@@ -65,7 +65,7 @@ function thisEntity:AIThink()
   end
 
   if self.readyToSleep then
-    if (self:GetAbsOrigin() - self.aiState.spawnLocation):Length2D() < 100 then
+    if (self:GetAbsOrigin() - self.aiState.spawnLocation):Length2D() < 200 then
       -- If we're back to the spawn, just go to sleep now
       return self:CastSlumber()
     elseif GameRules:GetGameTime() > self.sleepTime then

@@ -1,8 +1,11 @@
-ballista_line_damage = class({})
-
 LinkLuaModifier("modifier_ballista_line_damage", "abilities/elf/line_damage.lua", LUA_MODIFIER_MOTION_NONE)
 
+ballista_line_damage = class({})
 function ballista_line_damage:GetIntrinsicModifierName()
+  return "modifier_ballista_line_damage"
+end
+flamegunner_line_damage = class({})
+function flamegunner_line_damage:GetIntrinsicModifierName()
   return "modifier_ballista_line_damage"
 end
 

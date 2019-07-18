@@ -64,6 +64,10 @@
   </script> 
 
   <Panel>
+    <CustomUIElement type="LoadingScreen" layoutfile="file://{resources}/layout/custom_game/custom_loading_screen.xml" />
+
+    <CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
+
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/selection.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />
@@ -72,5 +76,6 @@
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_shop.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/round_timer.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/round_stats.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/draw_settings.xml" />
   </Panel>
 </root>

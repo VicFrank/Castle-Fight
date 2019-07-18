@@ -2,8 +2,12 @@ LinkLuaModifier("modifier_damage_reduction", "abilities/generic/damage_reduction
 
 lobster_damage_reduction = class({})
 function lobster_damage_reduction:GetIntrinsicModifierName() return "modifier_damage_reduction" end
+tank_armor = class({})
+function tank_armor:GetIntrinsicModifierName() return "modifier_damage_reduction" end
 
 modifier_damage_reduction = class({})
+
+function modifier_damage_reduction:IsHidden() return true end
 
 function modifier_damage_reduction:OnCreated()
   self.caster = self:GetCaster()
@@ -24,7 +28,7 @@ end
 function modifier_damage_reduction:GetModifierPhysical_ConstantBlock()
   if not IsServer() then return end
 
-  if self.reduction_chance > RandomInt(1,100) then
+  if self.reduction_chance >= RandomInt(1,100) then
     return self.damage_reduced
   end
 end

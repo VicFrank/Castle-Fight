@@ -95,13 +95,17 @@ function OnRoundEnded(data) {
   $("#ScoreboardHolder").AddClass("ScoreboardVisible");
 
   var RoundWinnerPanel = $("#RoundWinner");
+  var roundNumber = data.roundNumber - 1; // get the round number of the last round
 
   if (data.winningTeam == DOTATeam_t.DOTA_TEAM_GOODGUYS) {
-    RoundWinnerPanel.text = $.Localize("western_forces") + " " + $.Localize("#victory") + "!";
+    RoundWinnerPanel.text = $.Localize("round") + " " + roundNumber + ": " + $.Localize("western_forces") + " " + $.Localize("#victory") + "!";
     RoundWinnerPanel.AddClass("WestColor");
-  } else {
-    RoundWinnerPanel.text = $.Localize("eastern_forces") + " " + $.Localize("#victory") + "!";
+  } else if (data.winningTeam == DOTATeam_t.DOTA_TEAM_BADGUYS) {
+    RoundWinnerPanel.text = $.Localize("round") + " " + roundNumber + ": " + $.Localize("eastern_forces") + " " + $.Localize("#victory") + "!";
     RoundWinnerPanel.AddClass("EastColor");
+  } else {
+    RoundWinnerPanel.text = $.Localize("round") + " " + roundNumber + ": " + $.Localize("#draw") + "!";
+    RoundWinnerPanel.AddClass("NeutralColor");
   }
 }
 
@@ -117,10 +121,26 @@ function OnHeroSelectStatusChanged(table_name, key, data) {
   UpdateScoreboardVisibility();
 }
 
+function OnNumUnitsChanged(data) {
+  var numUnits = data.numUnits;
+  $("#NumUnits").text = "Units: " + numUnits;
+}
+
+function OnRoundTimerChanged(data) {
+  var time = data.time.timer_minute_10 + "" +
+    data.time.timer_minute_01 + ":" +
+    data.time.timer_second_10 + "" +
+    data.time.timer_second_01;
+  $("#RoundTime").text = time;
+}
+
 (function () {
   CustomNetTables.SubscribeNetTableListener("round_score", OnRoundScoreChanged);
   UpdateRoundScores();
 
   GameEvents.Subscribe("round_ended", OnRoundEnded);
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
+
+  GameEvents.Subscribe("num_units_changed", OnNumUnitsChanged);
+  GameEvents.Subscribe("round_timer", OnRoundTimerChanged);
 })();

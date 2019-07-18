@@ -1,6 +1,6 @@
 function OnShopButtonPressed() {
   Game.EmitSound("ui_chat_slide_out")
-  $("#Items").ToggleClass("ShopVisible");
+  $("#Items").ToggleClass("ShopHidden");
 }
 
 var items = [
@@ -16,7 +16,7 @@ var items = [
 ];
 
 var localPlayerID = Players.GetLocalPlayer();
-var localPlayerTeam = Players.GetTeam(localPlayerID)
+var localPlayerTeam = Players.GetTeam(localPlayerID);
 
 var restockTimes = {};
 

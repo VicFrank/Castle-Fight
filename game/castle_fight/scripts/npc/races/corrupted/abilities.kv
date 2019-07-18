@@ -1,11 +1,11 @@
 "DOTAAbilities"
 {
-  // Deals 10 dps to all non-mechanical enemy units. Does not stack.
-  "city_of_decay_decay"
+  // Lowers the armor of all enemies by 6
+  "gaze_of_corruption"
   {
-    "AbilityTextureName"          "undying_decay"
+    "AbilityTextureName"          "medusa_stone_gaze"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/decay"
+    "ScriptFile"                  "abilities/corrupted/gaze_of_corruption"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -15,64 +15,18 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "dps"                     "10"
+        "armor"                   "-6"
       }      
     }
   }
 
-  // has a 5% chance to steal the soul of the unit it attacks, 
-  // instantly killing it.
-  "turret_of_souls_soul_steal"
+  // Creates 6 aggressive tentacles around a random enemy unit. raised tentacles
+  // have a lesser critical strike
+  "tentacle_prison"
   {
-    "AbilityTextureName"          "necrolyte_death_pulse"
+    "AbilityTextureName"          "tidehunter_ravage"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/soul_steal"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "chance"                  "5"
-      }      
-    }
-  }
-
-  // Reduces the armor of nearby enemy units by 3
-  "weaken_soul"
-  {
-    "AbilityTextureName"          "nevermore_dark_lord"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/weaken_soul"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCastRange"            "400"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "armor_reduction"         "3"
-      }
-      "02"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "range"                   "400"
-      }
-    }
-  }
-
-  // Raises a random skeleton from a random corpse
-  "skull_pile_raise_dead"
-  {
-    "AbilityTextureName"          "dark_troll_warlord_raise_dead"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/raise_dead"
+    "ScriptFile"                  "abilities/corrupted/tentacle_prison"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
@@ -80,111 +34,59 @@
     "AbilityManaCost"             "12"
   }
 
-  "skull_shrine_greater_raise_dead"
+  "tentacle_critical_strike"
   {
-    "AbilityTextureName"          "dark_troll_warlord_raise_dead"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/raise_dead"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"             "15.0"
-    "AbilityManaCost"             "15"
-  }
-
-  // Raises a skeleton
-  "necromancer_raise_dead"
-  {
-    "AbilityTextureName"          "dark_troll_warlord_raise_dead"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/raise_dead"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityCooldown"             "45.0"
-    "AbilityManaCost"             "75"
-
-    "AbilityCastRange"          "900"
-    "AbilityCastPoint"          "0.5"
-    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
-  }
-
-  // Raises a skeleton. Can also raise Greater Skeletons and Heros. (but no generals)
-  "necromancer_greater_raise_dead"
-  {
-    "AbilityTextureName"          "dark_troll_warlord_raise_dead"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/raise_dead"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityCooldown"             "30.0"
-    "AbilityManaCost"             "75"
-
-    "AbilityCastRange"          "900"
-    "AbilityCastPoint"          "0.5"
-    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
-  }
-
-  // Raises 2 greater skeletons. Skeletons raised this way have 3 bonus armor and 12 bonus damage.
-  // Cooldown 25, Mana Cost 100
-  "lich_ultimate_raise_dead"
-  {
-    "AbilityTextureName"          "dark_troll_warlord_raise_dead"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/raise_dead"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityCooldown"             "25.0"
-    "AbilityManaCost"             "100"
-
-    "AbilityCastRange"          "900"
-    "AbilityCastPoint"          "0.5"
-    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+    "AbilityTextureName"            "lycan_summon_wolves_critical_strike"
+    "BaseClass"                     "ability_lua"
+    "ScriptFile"                    "abilities/generic/critical_strike"
+    "MaxLevel"                      "1"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"      "FIELD_INTEGER"
-        "armor_bonus"      "3"
+        "crit_chance"   "10"
       }
       "02"
       {
         "var_type"      "FIELD_INTEGER"
-        "damage_bonus"    "12"
+        "crit_damage"   "200"
       }
     }
   }
 
-  // Kills a random enemy unit instantly
-  "sudden_death"
+  // Deals 200 damage to a random enemy.
+  "touch_of_pain"
   {
     "AbilityTextureName"          "lion_finger_of_death"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/sudden_death"
+    "ScriptFile"                  "abilities/corrupted/touch_of_pain"
     "MaxLevel"                    "1"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_lion/lion_spell_finger_of_death.vpcf"
+    }
+
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"             "15.0"
+    "AbilityCooldown"             "1.0"
+    "AbilityManaCost"             "4"
   }
 
-  // Damages organic enemies in range, dealing damage per second
-  "zombie_rot"
+  "corrupted_weakening_attack"
   {
-    "AbilityTextureName"          "pudge_rot"
+    "AbilityTextureName"          "bane_enfeeble"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/zombie_rot"
+    "ScriptFile"                  "abilities/corrupted/weakening_attack"
     "MaxLevel"                    "3"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     "precache"
     {
-      "particle"  "particles/units/heroes/hero_pudge/pudge_rot.vpcf"
-      "particle"  "particles/units/heroes/hero_pudge/pudge_rot_recipient.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+      "particle"  "particles/units/heroes/hero_bane/bane_enfeeble.vpcf"
     }
 
     "AbilitySpecial"
@@ -192,283 +94,201 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "dps"                     "8 12 20"
+        "damage"                  "-27 -55 -100"
       }
       "02"
       {
         "var_type"                "FIELD_INTEGER"
-        "radius"                  "250 290 350"
+        "duration"                "20"
       }
     }
   }
 
-  // Units hit by the Zombie get their ms reduced by 15% and receive 8 
-  // dps for 10 seconds
-  "zombie_plague_attack"
+  "corrupted_treant_cleave"
   {
-    "AbilityTextureName"          "undying_soul_rip"
+    "AbilityTextureName"          "sven_great_cleave"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/plague_attack"
+    "ScriptFile"                  "abilities/generic/cleave"
+    "MaxLevel"                    "3"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "cleave_damage"         "0 25 40"
+      }      
+      "02"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "cleave_radius"         "200"
+      }
+    }
+  }
+
+  "corrupted_treant_critical_strike"
+  {
+    "AbilityTextureName"            "lycan_summon_wolves_critical_strike"
+    "BaseClass"                     "ability_lua"
+    "ScriptFile"                    "abilities/generic/critical_strike"
+    "MaxLevel"                      "3"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "crit_chance"   "0 10 15"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "crit_damage"   "200"
+      }
+    }
+  }
+
+  "fan_of_spikes"
+  {
+    "AbilityTextureName"          "nyx_assassin_impale"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/corrupted/fan_of_spikes"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    "AbilityCooldown"             "15.0"
+    "AbilityManaCost"             "40"
+
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.4"
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_1"
+    "AbilitySound"            "Hero_NyxAssassin.Impale"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "width"         "125"
+      }
+      "02"
+      { 
+        "var_type"      "FIELD_FLOAT"
+        "duration"      "3.5"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "length"        "900"
+      }
+      "04"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "speed"         "1600"
+      }
+      "05"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage"        "250"
+      }
+    }
+  }
+
+  // (+7 dmg per hit) if the target dies, it explodes, dealing
+  // 80 spell damage to enemies in 150 aoe and half in 200 aoe
+  "void_walker_incinerate"
+  {
+    "AbilityTextureName"          "bane_brain_sap"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/corrupted/incinerate"
     "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-    "precache"
-    {
-      "particle"  "particles/units/heroes/hero_venomancer/venomancer_poison_debuff.vpcf"
-    }
-
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "dps"                     "8 15"
+        "damage_per_hit"          "7"
       }
       "02"
       {
         "var_type"                "FIELD_INTEGER"
-        "move_speed_slow_pct"     "15 30"
+        "explode_damage"          "80 160"
       }
       "03"
       {
         "var_type"                "FIELD_INTEGER"
-        "duration"                "10 15"
-      }
-    }
-  }
-
-  // 25% chance on attack to release a carrion swarm that deals
-  // 70 damage to all enemies in a cone.
-  "necromancer_carrion_swarm"
-  {
-    "AbilityTextureName"          "death_prophet_carrion_swarm"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/carrion_swarm"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "precache"
-    {
-      "particle"  "particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "chance"                  "25"
-      }
-      "02"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "damage"                  "70"
-      }
-      "03"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "start_radius"            "110"
+        "full_aoe"                "150"
       }
       "04"
       {
         "var_type"                "FIELD_INTEGER"
-        "end_radius"              "300"
-      }
-      "05"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "range"                   "810"
-      }
-      "06"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "speed"                   "1100"
+        "half_aoe"                "200"
       }
     }
   }
 
-  // Has a 15% chance to soul steal its target, killing it instantly and
-  // gaining 50% of its health, or a 10% chance to cast Death and Decay
-  // onto a 300 aoe around its target.
-  // 
-  // Death and Decay lasts 5 seconds, drains 8% of enemy's max health per
-  // second
-  "lich_decaying_attack"
+  "void_walker_corruption_aura"
   {
     "AbilityTextureName"          "enigma_midnight_pulse"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/decaying_attack"
-    "MaxLevel"                    "1"
+    "ScriptFile"                  "abilities/corrupted/corruption_aura"
+    "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-    "precache"
-    {
-      "particle"  "particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
-    }
+    "AbilityCastRange"            "400 650"
 
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "soul_steal_chance"       "15"
+        "armor"                   "-2 -4"
       }
       "02"
       {
         "var_type"                "FIELD_INTEGER"
-        "soul_steal_absorb"       "50"
-      }
-      "03"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "death_and_decay_chance"  "10"
-      }
-      "04"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "death_and_decay_aoe"      "300"
-      }
-      "05"
-      {
-        "var_type"                 "FIELD_INTEGER"
-        "death_and_decay_duration" "5"
-      }
-      "06"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "damage_percent"          "8"
+        "radius"                  "400 650"
       }
     }
   }
 
-  "raise_lesser_vampire"
+  // deals less damage to further targets
+  "nether_drake_splash_attack"
   {
-    "AbilityTextureName"          "night_stalker_hunter_in_the_night"
+    "AbilityTextureName"          "viper_poison_attack"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/raise_vampire"
-    "MaxLevel"                    "1"
+    "ScriptFile"                  "abilities/corrupted/nether_drake_splash_attack"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+
+    "AbilityManaCost"             "20"
 
     "precache"
     {
-      "particle"  "particles/econ/events/ti6/hero_levelup_ti6.vpcf"
-    }
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  }
-
-  "raise_vampire"
-  {
-    "AbilityTextureName"          "night_stalker_hunter_in_the_night"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/raise_vampire"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  }
-
-  "vampire_lifesteal_aura"
-  {
-    "AbilityTextureName"          "skeleton_king_vampiric_aura"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/lifesteal_aura"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCastRange"            "900"
-
-    "precache"
-    {
-      "particle"  "particles/units/heroes/hero_skeletonking/wraith_king_vampiric_aura_lifesteal.vpcf"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "radius"        "900"
-      }
-      "02"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "lifesteal"     "30"
-      }
-    }
-  }
-
-  "vampire_attack"
-  {
-    "AbilityTextureName"          "life_stealer_feast"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/vampire_attack"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "lifesteal"     "70 100"
-      }
-    }
-  }
-
-  // Decreases the damage output of all enemies in 450 range by 15%
-  "banshee_fear_aura"
-  {
-    "AbilityTextureName"          "death_prophet_spirit_siphon"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/fear_aura"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityCastRange"            "450"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "radius"         "450"
-      }
-      "02"
-      {
-        "var_type"           "FIELD_INTEGER"
-        "damage_decrease"    "15"
-      }
-    }
-  }
-
-  // Reduces movement and attack speed of target enemy by 30% for 35 seconds.
-  // 10 cd 25 mana 
-  "banshee_astral_chains"
-  {
-    "AbilityTextureName"          "ghost_frost_attack"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/astral_chains"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-    "AbilityCooldown"             "10.0"
-    "AbilityManaCost"             "25"
-
-    "AbilityCastRange"        "700"
-    "AbilityCastPoint"        "0.3"
-    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
-
-    "precache"
-    {
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+      "particle"  "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
     }
 
     "AbilitySpecial"
@@ -476,180 +296,115 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "move_slow"               "30"
+        "bonus_damage"            "20 25"
       }
       "02"
       {
         "var_type"                "FIELD_INTEGER"
-        "attack_slow"             "30"
-      }
-      "03"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "duration"                "35"
+        "radius"                  "250"
       }
     }
   }
 
-  // This unit deals 150% against buildings
-  "flesh_golem_demolish"
+  "felhound_haste_aura"
   {
-    "AbilityTextureName"          "lone_druid_spirit_bear_demolish"
+    "AbilityTextureName"          "spirit_breaker_empowering_haste"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/generic/demolish"
+    "ScriptFile"                  "abilities/corrupted/haste_aura"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "damage_pct"    "150"
-      }
-    }
-  }
-
-  // Grants a 33% chance on attack to hit all enemies in 150 range for
-  // 125 damage and all units in 250 range for half damage.
-  "flesh_golem_pulverize"
-  {
-    "AbilityTextureName"          "earthshaker_enchant_totem"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/generic/pulverize"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "precache"
-    {
-      "particle"  "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "chance"        "33"
-      }
-      "02"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "close_range"   "150"
-      }
-      "03"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "close_damage"  "125"
-      }
-      "04"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "far_range"     "250"
-      }
-      "05"
-      {
-        "var_type"      "FIELD_FLOAT"
-        "far_damage"    "62.5"
-      }
-    }
-  }
-
-  // All units hit get chilled for 5 seconds
-  "frost_wyrm_chilling_attack"
-  {
-    "AbilityTextureName"          "winter_wyvern_arctic_burn"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/chilling_attack"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "precache"
-    {
-      "particle"  "particles/generic_gameplay/generic_slowed_cold.vpcf"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "duration"      "5"
-      }
-      "02"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "move_slow"     "30"
-      }
-      "03"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "attack_slow"   "30"
-      }
-      "04"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "radius"        "250"
-      }
-    }
-  }
-
-  // Increases nearby allies damage by 20%
-  "skeleton_general_command_aura"
-  {
-    "AbilityTextureName"          "vengefulspirit_command_aura"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/undead/command_aura"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityCastRange"            "900"
 
     "AbilitySpecial"
     {
       "01"
       {
-        "var_type"      "FIELD_INTEGER"
-        "radius"        "900"
+        "var_type"                "FIELD_INTEGER"
+        "attack_speed"            "18"
       }
       "02"
       {
-        "var_type"             "FIELD_INTEGER"
-        "damage_increase"      "20"
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "900"
       }
     }
   }
 
-  "skeleton_warrior_bash"
+  // deals 100 damage to nearby units in 225 range. further targets take less damage
+  "infernal_detonate"
   {
-    "AbilityTextureName"          "roshan_bash"
+    "AbilityTextureName"          "techies_suicide"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/generic/bash"
-    "MaxLevel"                    "1"
+    "ScriptFile"                  "abilities/corrupted/detonate"
+    "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilityCastRange"            "225 275"
 
     "AbilitySpecial"
     {
       "01"
       {
-        "var_type"       "FIELD_INTEGER"
-        "bash_duration"  "2"
+        "var_type"                "FIELD_INTEGER"
+        "damage"                  "100 150"
       }
       "02"
       {
-        "var_type"       "FIELD_INTEGER"
-        "bash_chance"    "15"
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "225 275"
       }
-      "03"
+    }
+  }
+
+  // attacks do 60 additional damage to all units in a line
+  "infernal_line_damage"
+  {
+    "AbilityTextureName"          "gyrocopter_homing_missile"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/corrupted/line_damage"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
       {
-        "var_type"       "FIELD_INTEGER"
-        "bash_damage"    "25"
+        "var_type"                "FIELD_INTEGER"
+        "damage"                  "60"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "200"
+      }
+    }
+  }
+
+  // 10% chance on each attack to take control of the attacked unit
+  "incubus_overtake"
+  {
+    "AbilityTextureName"          "terrorblade_metamorphosis"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/corrupted/overtake"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "chance"                  "10"
       }
     }
   }

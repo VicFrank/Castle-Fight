@@ -7,9 +7,6 @@ var inventoryContainer = newUI.FindChildTraverse("inventory").FindChildTraverse(
 var inventoryTop = inventoryContainer.FindChildTraverse("inventory_list");
 var inventoryBot = inventoryContainer.FindChildTraverse("inventory_list2");
 
-var GeneratedItemPanels = [];
-var GeneratedAbilityPanels = [];
-
 function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost){
   var subContainer;
   if (itemSlot < 3) subContainer = inventoryTop;
@@ -18,7 +15,13 @@ function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost){
   var slotContainer = subContainer.FindChildTraverse("inventory_slot_" + itemSlot);
   var button = slotContainer.FindChildTraverse("ButtonAndLevel").FindChildTraverse("ButtonWithLevelUpTab").FindChildTraverse("ButtonWell").FindChildTraverse("ButtonSize");
 
-  if (lumberCost > 0) {
+  if (lumberCost == 0) lumberCost = "";
+  if (cheeseCost == 0) cheeseCost = "";
+  if (goldCost == 0) goldCost = "";
+
+  if (button.FindChildTraverse("LumberCost")) {
+    button.FindChildTraverse("LumberCost").text = lumberCost;
+  } else {
     var LumberCostLabel = $.CreatePanel("Label", button, "LumberCost");
     LumberCostLabel.text = lumberCost;
     LumberCostLabel.style.fontSize = "14px";
@@ -27,11 +30,11 @@ function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost){
     LumberCostLabel.style.fontWeight = "bold";
     LumberCostLabel.style.color = "#22a543";
     LumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
-
-    GeneratedItemPanels.push(LumberCostLabel);
   }
 
-  if (goldCost > 0) {
+  if (button.FindChildTraverse("CustomGoldCost")) {
+    button.FindChildTraverse("CustomGoldCost").text = goldCost;
+  } else {
     var goldCostLabel = $.CreatePanel("Label", button, "CustomGoldCost");
     goldCostLabel.text = goldCost;
     goldCostLabel.style.fontSize = "14px";
@@ -40,11 +43,11 @@ function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost){
     goldCostLabel.style.fontWeight = "bold";
     goldCostLabel.style.color = "#FFFF99";
     goldCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
-
-    GeneratedItemPanels.push(goldCostLabel);
   }
 
-  if (cheeseCost > 0) {
+  if (button.FindChildTraverse("CheeseCost")) {
+    button.FindChildTraverse("CheeseCost").text = cheeseCost;
+  } else {
     var CheeseCostLabel = $.CreatePanel("Label", button, "CheeseCost");
     CheeseCostLabel.text = cheeseCost;
     CheeseCostLabel.style.fontSize = "16px";
@@ -54,24 +57,10 @@ function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost){
     CheeseCostLabel.style.fontWeight = "bold";
     CheeseCostLabel.style.color = "#7f22a5";
     CheeseCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
-
-    GeneratedItemPanels.push(CheeseCostLabel);
   }
 }
 
-function ClearCustomItemCosts() {
-   GeneratedItemPanels.forEach(function(panel) {
-     panel.text = '';
-     // I don't think this actually works, but making the text '' seems to.
-     panel.RemoveAndDeleteChildren();
-   });
-
-   GeneratedItemPanels = [];
-}
-
 function UpdateItemsUI() {
-  ClearCustomItemCosts();
-
   var i;
   for(i=0; i<6; i++){
     var queryUnit = Players.GetLocalPlayerPortraitUnit();
@@ -79,8 +68,11 @@ function UpdateItemsUI() {
 
     var itemname = Abilities.GetAbilityName(item);
 
-    var itemCostData = CustomNetTables.GetTableValue("item_costs", itemname);
-    if (!itemCostData) continue;
+    var itemCostData = CustomNetTables.GetTableValue("ability_costs", itemname);
+    if (!itemCostData) {
+      SetCustomItemCosts(i, '', '', '');
+      continue;
+    }
 
     var lumberCost = itemCostData.lumberCost;
     var goldCost = itemCostData.goldCost;
@@ -89,7 +81,7 @@ function UpdateItemsUI() {
     var cheeseCost = 0;
     if (isLegendary) cheeseCost = 1;
 
-    SetCustomItemCosts(i, lumberCost, cheeseCost, goldCost)
+    SetCustomItemCosts(i, lumberCost, cheeseCost, goldCost);
   }
 }
 
@@ -97,9 +89,16 @@ var AbilitiesContainer = newUI.FindChildTraverse("AbilitiesAndStatBranch").FindC
 
 function SetCustomAbilityCosts(abilityNumber, lumberCost, cheeseCost, goldCost) {
   var AbilityPanel = AbilitiesContainer.FindChildTraverse("Ability" + abilityNumber);
+  if (!AbilityPanel) return;
   var AbilityButton = AbilityPanel.FindChildTraverse("ButtonAndLevel").FindChildTraverse("ButtonWithLevelUpTab").FindChildTraverse("ButtonWell").FindChildTraverse("ButtonSize");
 
-  if (lumberCost > 0) {
+  if (lumberCost == 0) lumberCost = "";
+  if (cheeseCost == 0) cheeseCost = "";
+  if (goldCost == 0) goldCost = "";
+
+  if (AbilityButton.FindChildTraverse("LumberCost")) {
+    AbilityButton.FindChildTraverse("LumberCost").text = lumberCost;
+  } else {
     var lumberCostLabel = $.CreatePanel("Label", AbilityButton, "LumberCost");
     lumberCostLabel.text = lumberCost;
     lumberCostLabel.style.fontSize = "14px";
@@ -107,23 +106,25 @@ function SetCustomAbilityCosts(abilityNumber, lumberCost, cheeseCost, goldCost) 
     lumberCostLabel.style.horizontalAlign = "right";
     lumberCostLabel.style.fontWeight = "bold";
     lumberCostLabel.style.color = "#22a543";
-    lumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";    
+    lumberCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
   }
 
-  GeneratedAbilityPanels.push(lumberCostLabel);
+  if (AbilityButton.FindChildTraverse("CustomGoldCost")) {
+    AbilityButton.FindChildTraverse("CustomGoldCost").text = goldCost;
+  } else {
+    var goldCostLabel = $.CreatePanel("Label", AbilityButton, "CustomGoldCost");
+    goldCostLabel.text = goldCost;
+    goldCostLabel.style.fontSize = "14px";
+    goldCostLabel.style.verticalAlign = "bottom";
+    goldCostLabel.style.horizontalAlign = "left";
+    goldCostLabel.style.fontWeight = "bold";
+    goldCostLabel.style.color = "#FFFF99";
+    goldCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
+  }
 
-  var goldCostLabel = $.CreatePanel("Label", AbilityButton, "CustomGoldCost");
-  goldCostLabel.text = goldCost;
-  goldCostLabel.style.fontSize = "14px";
-  goldCostLabel.style.verticalAlign = "bottom";
-  goldCostLabel.style.horizontalAlign = "left";
-  goldCostLabel.style.fontWeight = "bold";
-  goldCostLabel.style.color = "#FFFF99";
-  goldCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
-
-  GeneratedAbilityPanels.push(goldCostLabel);
-
-  if (cheeseCost > 0) {
+  if (AbilityButton.FindChildTraverse("CheeseCost")) {
+    AbilityButton.FindChildTraverse("CheeseCost").text = cheeseCost;
+  } else {
     var cheeseCostLabel = $.CreatePanel("Label", AbilityButton, "CheeseCost");
     cheeseCostLabel.text = cheeseCost;
     cheeseCostLabel.style.fontSize = "16px";
@@ -133,21 +134,7 @@ function SetCustomAbilityCosts(abilityNumber, lumberCost, cheeseCost, goldCost) 
     cheeseCostLabel.style.fontWeight = "bold";
     cheeseCostLabel.style.color = "#7f22a5";
     cheeseCostLabel.style.textShadow = "0px 0px 3px 3.0 #000000";
-
-    GeneratedAbilityPanels.push(cheeseCostLabel);
   }
-}
-
-function ClearCustomAbilityCosts() {
-   GeneratedAbilityPanels.forEach(function(panel) {
-     if (panel) {
-       panel.text = '';
-       // I don't think this actually works, but making the text '' seems to.
-       panel.RemoveAndDeleteChildren();
-     }     
-   });
-
-   GeneratedAbilityPanels = [];
 }
 
 function DelayedUpdateAbilityUI() {
@@ -155,8 +142,6 @@ function DelayedUpdateAbilityUI() {
 }
 
 function UpdateAbilityUI() {
-  ClearCustomAbilityCosts();
-
   var queryUnit = Players.GetLocalPlayerPortraitUnit();
 
   for (var i=0; i < Entities.GetAbilityCount(queryUnit); ++i) {
@@ -170,7 +155,10 @@ function UpdateAbilityUI() {
     var abilityname = Abilities.GetAbilityName(ability);
 
     var abilityCostData = CustomNetTables.GetTableValue("ability_costs", abilityname);
-    if (!abilityCostData) continue;
+    if (!abilityCostData) {
+      SetCustomAbilityCosts(i, "", "", "");
+      continue;
+    }
 
     var lumberCost = abilityCostData.lumberCost;
     var goldCost = abilityCostData.goldCost;
@@ -260,7 +248,7 @@ function GetPostTaxIncome(income){
 }
 
 function GenerateGoldTooltip() {
-  var playerID = Players.GetLocalPlayer();
+  var playerID = GetPlayerIDToShow();
   var incomeData = CustomNetTables.GetTableValue("player_income", playerID);
 
   var line1 = $.Localize("#gold_tip");

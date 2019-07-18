@@ -6,6 +6,8 @@ function zombie_plague_attack:GetIntrinsicModifierName() return "modifier_plague
 
 modifier_plague_attack = class({})
 
+function modifier_plague_attack:IsHidden() return true end
+
 function modifier_plague_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
@@ -52,18 +54,19 @@ function modifier_plague_attack_debuff:DeclareFunctions()
 end
 
 function modifier_plague_attack_debuff:OnCreated()
-  if not IsServer() then return end
-  
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
+  
+  self.move_speed_slow = -self.ability:GetSpecialValueFor("move_speed_slow_pct")
+  self.dps = self.ability:GetSpecialValueFor("dps")
+  
+  if not IsServer() then return end
 
   local playerID = self.caster.playerID or self.caster:GetPlayerOwnerID()
   if playerID < 0 then playerID = 0 end
   self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
 
-  self.move_speed_slow = -self.ability:GetSpecialValueFor("move_speed_slow_pct")
-  self.dps = self.ability:GetSpecialValueFor("dps")
 
   self:StartIntervalThink(1)
   self:DamageTick()

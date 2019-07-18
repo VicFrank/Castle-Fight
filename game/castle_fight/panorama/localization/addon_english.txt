@@ -72,8 +72,9 @@
   "total_interest"               "Total Interest"
   "race_selection"               "Race Selection"
   "loading"                      "Loading"
-
-
+  "offer_draw"                   "Offer Draw"
+  "draw"                         "Draw"
+  "reject"                       "Reject"
 
 
 }

@@ -6,8 +6,15 @@
 
 #ShopButton
 {
-  width: 140px;
   horizontal-align: right;
+  vertical-align: bottom;
+
+  margin-right: 131px;
+
+  width: fit-children;
+
+  flow-children: right;
+
   background-image: url("s2r://panorama/images/hud/reborn/bg_mainshop_psd.vtex");
 }
 
@@ -23,7 +30,7 @@
   text-transform: uppercase;
   horizontal-align: center;
   margin-top: 5px;
-  margin-left: 30px;
+  margin-right: 10px;
 }
 
 #ShopIcon
@@ -47,14 +54,8 @@
 
 .ShopHidden
 {
-  transition-property: transform;
-    transition-duration: 0.25s;
+  
   transform: translatex(300px);
-}
-
-.ShopVisible
-{
-  transform: translatex(0px);
 }
 
 #ShopHeader
@@ -73,6 +74,9 @@
   background-color: #000000da;
   background-image: url("s2r://panorama/images/hud/reborn/bg_mainshop_psd.vtex");
   background-size: cover;
+
+  transition-property: transform;
+    transition-duration: 0.25s;
 }
 
 .ItemRow

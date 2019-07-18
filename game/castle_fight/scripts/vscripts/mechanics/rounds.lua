@@ -77,11 +77,26 @@ function GameMode:RandomHero(playerID)
   PlayerResource:ReplaceHeroWith(playerID, hero, 0, 0)
 end
 
+function GameMode:StartRoundTimer()
+  local seconds = 0
+  GameRules.RoundTimer = Timers:CreateTimer(function()
+    CustomGameEventManager:Send_ServerToAllClients("round_timer",
+      {time = ConvertTimeToTable(seconds)})
+
+    seconds = seconds + 1
+
+    return 1
+  end)
+end
+
 function GameMode:StartHeroSelection()
   print("StartHeroSelection()")
 
   GameRules.InHeroSelection = true
   CustomNetTables:SetTableValue("hero_select", "status", {ongoing = true})
+
+  CustomGameEventManager:Send_ServerToAllClients("round_timer",
+    {time = ConvertTimeToTable(0)})
 
   GameRules.needToPick = 0
   for _,hero in pairs(HeroList:GetAllHeroes()) do
@@ -142,6 +157,9 @@ function GameMode:WaitToLoad()
 
   Timers:RemoveTimer(GameRules.LoadingTimer)
 
+  local announcerLine = RandomInt(1, 2)
+  EmitAnnouncerSound("announcer_ann_custom_round_begin_0" .. announcerLine)
+
   GameRules.LoadingTimer = Timers:CreateTimer(1, function()
     if GameRules.numToCache == 0 then
       -- Start the next round after we've finished precaching everything
@@ -193,11 +211,15 @@ function GameMode:StartRound()
     end
 
     print("Starting Round")
+    ClearDrawSettings()
+    GameMode:StartDrawVoteCountdown()
+
     GameMode:InitializeRoundStats()
     GameMode:SpawnCastles()
     GameMode:SetupHeroes()
     GameMode:SetupShops()
     GameMode:StartIncomeTimer()
+    GameMode:StartRoundTimer()
 
     Notifications:TopToAll({text="Round " .. GameRules.roundCount .. " started!", duration=3.0})
 
@@ -216,6 +238,8 @@ end
 function GameMode:EndRound(losingTeam)
   GameRules.roundInProgress = false
 
+  ClearDrawSettings()
+
   -- Record the winner
   local winningTeam  
   local losingCastlePosition
@@ -223,10 +247,14 @@ function GameMode:EndRound(losingTeam)
     winningTeam = DOTA_TEAM_GOODGUYS
     GameRules.leftRoundsWon = GameRules.leftRoundsWon + 1
     losingCastlePosition = GameRules.rightCastlePosition
-  else
+  elseif losingTeam == DOTA_TEAM_GOODGUYS then
     winningTeam = DOTA_TEAM_BADGUYS
     GameRules.rightRoundsWon = GameRules.rightRoundsWon + 1
     losingCastlePosition = GameRules.leftCastlePosition
+  else
+    -- game ended in a draw
+    winningTeam = DOTA_TEAM_NEUTRALS
+    losingCastlePosition = Vector(0,0,0)
   end
 
   AddFOWViewer(DOTA_TEAM_BADGUYS, losingCastlePosition, 1800, POST_ROUND_TIME, false)
@@ -288,6 +316,7 @@ function GameMode:EndRound(losingTeam)
   GameMode:PlayEndRoundAnimations(winningTeam)
 
   -- Wait to start the next round
+  Timers:RemoveTimer(GameRules.RoundTimer)
   Timers:RemoveTimer(GameRules.PostRoundTimer)
 
   GameRules.PostRoundTimer = Timers:CreateTimer(POST_ROUND_TIME, function()

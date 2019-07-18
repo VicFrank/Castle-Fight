@@ -8,6 +8,9 @@
 #base "races/orc/abilities.kv"
 #base "races/north/abilities.kv"
 #base "races/elf/abilities.kv"
+#base "races/corrupted/abilities.kv"
+#base "races/chaos/abilities.kv"
+#base "races/mech/abilities.kv"
 
 #base "races/naga/construction_abilities.kv"
 #base "races/nature/construction_abilities.kv"
@@ -16,6 +19,9 @@
 #base "races/orc/construction_abilities.kv"
 #base "races/north/construction_abilities.kv"
 #base "races/elf/construction_abilities.kv"
+#base "races/corrupted/construction_abilities.kv"
+#base "races/chaos/construction_abilities.kv"
+#base "races/mech/construction_abilities.kv"
 
 #base "races/naga/training_abilities.kv"
 #base "races/nature/training_abilities.kv"
@@ -24,6 +30,9 @@
 #base "races/orc/training_abilities.kv"
 #base "races/north/training_abilities.kv"
 #base "races/elf/training_abilities.kv"
+#base "races/corrupted/training_abilities.kv"
+#base "races/chaos/training_abilities.kv"
+#base "races/mech/training_abilities.kv"
 
 "DOTAAbilities"
 {
@@ -144,7 +153,7 @@
       "01"
       {
         "var_type"      "FIELD_INTEGER"
-        "damage"        "60"
+        "damage"        "40"
       }
     }
 

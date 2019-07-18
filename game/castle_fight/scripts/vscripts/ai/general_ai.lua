@@ -80,6 +80,11 @@ function CanAttackTarget(self, target)
     return false
   end
 
+  if target:HasModifier("modifier_ancient_guardian_banish") and
+   not self:HasModifier("modifier_attack_magic") then
+    return false
+  end
+
   -- If we can't reach the target
   -- Note that we can never find path to a building
   if self:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK and not IsCustomBuilding(target) then
@@ -213,11 +218,11 @@ function UseAbility(self)
     -- Don't cast an ability that applies the modifier we're going to apply anyway
     local modifierBlackList = g_AI_Modifier_Table[self:GetUnitName()]
 
-    target = FindFirstUnit(targets, function(target) 
-      local isValidTarget = not IsCustomBuilding(target)
+    target = FindFirstUnit(targets, function(potentialTarget) 
+      local isValidTarget = not IsCustomBuilding(potentialTarget)
 
       if modifierBlackList then
-        if target:HasModifier(modifierBlackList) then
+        if potentialTarget:HasModifier(modifierBlackList) then
           isValidTarget = false
         end
       end

@@ -11,4 +11,5 @@ g_AI_Modifier_Table = {
   giant_spider = "modifier_spider_web",
   brood_mother = "modifier_spider_web",
   bloodthirster = "modifier_bloodthirster_faerie_fire",
+  succubus = "modifier_succubus_curse",
 }

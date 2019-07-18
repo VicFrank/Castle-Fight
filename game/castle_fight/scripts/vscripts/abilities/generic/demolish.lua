@@ -7,6 +7,8 @@ function tribal_blessing_demolish:GetIntrinsicModifierName() return "modifier_de
 
 modifier_demolish = class({})
 
+function modifier_demolish:IsHidden() return true end
+
 function modifier_demolish:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

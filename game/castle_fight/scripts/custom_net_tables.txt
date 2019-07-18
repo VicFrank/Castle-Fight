@@ -7,11 +7,11 @@
     "construction_size",
     "building_settings",
     "resources",
-    "item_costs",
     "ability_costs",
     "player_income",
     "hero_select",
     "custom_shop",
-    "round_score"
+    "round_score",
+    "settings"
   ]
 } 

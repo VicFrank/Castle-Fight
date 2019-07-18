@@ -13,6 +13,8 @@ function blademaster_feedback:GetIntrinsicModifierName() return "modifier_feedba
 
 modifier_feedback_custom = class({})
 
+function modifier_feedback_custom:IsHidden() return true end
+
 function modifier_feedback_custom:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
@@ -35,7 +37,7 @@ function modifier_feedback_custom:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
-  if target:GetMaxMana() == 0 or target:IsMagicImmune() then
+  if target:GetMaxMana() == 0 or target:IsMagicImmune() or IsCustomBuilding(target) then
     return
   end
 

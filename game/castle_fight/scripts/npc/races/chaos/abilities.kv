@@ -13,6 +13,12 @@
     "AbilityCooldown"             "35.0"
     "AbilityManaCost"             "40"
 
+    "precache"
+    {
+      "particle"  "particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8_straighten_lvl2.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -28,7 +34,7 @@
   //  - The unit dies (you gain bounty)
   //  - The unit transforms into a mutation that fights for you
   //  - The unit is hexed
-  //  - The unit recieves 500 damage
+  //  - The unit receives 500 damage
   //  - The unit gets 400 bonus health and +25 damage and is fully healed
   //  - The unit is stunned for 6 seconds and recieves 200 spell damage
   //  - Nothing happens
@@ -47,7 +53,7 @@
   // Damages the area around a random enemy unit dealing 100 dps spell damage for
   // 2.75 seconds.
   // Cannot damage more than 6 units concurrently. Deals 40% damage to buildings
-  "eruption"
+  "volcano_eruption"
   {
     "AbilityTextureName"          "doom_bringer_infernal_blade"
     "BaseClass"                   "ability_lua"
@@ -60,8 +66,7 @@
 
     "precache"
     {
-      "particle"  "particles/units/heroes/hero_tinker/tinker_laser.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+      "particle"  "particles/econ/items/sand_king/sandking_barren_crown/sandking_rubyspire_burrowstrike_eruption.vpcf"
     }
 
     "AbilitySpecial"
@@ -81,15 +86,30 @@
         "var_type"      "FIELD_INTEGER"
         "max_targets"   "6"
       }
+      "04"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"        "400"
+      }
     }
   }
 
-  "eraser"
+  // Kills all enemy units of a random unit type that the enemy controls
+  // Cooldown 50, -12.5 seconds per upgrade
+  "erase"
   {
     "AbilityTextureName"          "warlock_fatal_bonds"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/chaos/eraser"
     "MaxLevel"                    "3"
+
+    "AbilityCooldown"        "3"
+    "AbilityManaCost"        "100"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+    }
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "3.0"
@@ -125,6 +145,8 @@
     }
   }
 
+  // Allies in 350 range gain a damage shield that deals 35% of melee damage
+  // taken back to the attacker
   "quill_demon_quill_aura"
   {
     "AbilityTextureName"          "centaur_return"
@@ -141,7 +163,12 @@
       "01"
       {
         "var_type"          "FIELD_INTEGER"
-        "reflect"           "35"
+        "damage_return"     "35"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "radius"            "350"
       }
     }
   }
@@ -210,7 +237,7 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 
     "AbilityCooldown"             "30.0"
     "AbilityManaCost"             "0"
@@ -223,8 +250,8 @@
 
     "precache"
     {
-      "particle"  "particles/units/heroes/hero_skywrath_mage/skywrath_mage_mystic_flare_ambient.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+      "particle"  "particles/units/heroes/hero_beastmaster/beastmaster_primal_roar.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
     }
 
     "AbilitySpecial"
@@ -255,7 +282,7 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     "AbilityCooldown"             "6.5"
@@ -265,12 +292,19 @@
     "AbilityCastPoint"          "0.3"
     "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
 
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_queenofpain/queen_shadow_strike.vpcf"
+      "particle"  "particles/units/heroes/hero_queenofpain/queen_shadow_strike_body.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"      "FIELD_INTEGER"
-        "miss"          "35"
+        "miss_rate"     "35"
       }
       "02"
       {
@@ -280,12 +314,14 @@
     }
   }
 
+  // Each blood fiend is spawned with different random abilities and armor type
+  // Abilities: Lifesteal, -Armor, Crit, Evasion
   "blood_fiend_present_of_chaos"
   {
     "AbilityTextureName"          "chaos_knight_chaos_strike"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/chaos/random_armor"
-    "MaxLevel"                    "2"
+    "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   }
@@ -297,7 +333,14 @@
     "ScriptFile"                  "abilities/chaos/immolation"
     "MaxLevel"                    "1"
 
+    "AbilityCastRange"        "300"
+
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_phoenix/phoenix_sunray_debuff.vpcf"
+    }
 
     "AbilitySpecial"
     {

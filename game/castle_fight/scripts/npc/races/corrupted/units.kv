@@ -4,6 +4,7 @@
   {
     "Model"            "models/items/furion/treant_stump.vmdl"
     "SoundSet"         "Furion_Treant"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ModelScale"       "0.7"
@@ -50,6 +51,7 @@
   {
     "Model"            "models/items/furion/treant/hallowed_horde/hallowed_horde.vmdl"
     "SoundSet"         "Furion_Treant"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "2"
     "ModelScale"       "0.8"
@@ -82,8 +84,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "7"
-    "BountyGoldMax"          "7"
+    "BountyGoldMin"          "8"
+    "BountyGoldMax"          "8"
 
     "AttackType"             "normal"
     "ArmorType"              "heavy"
@@ -101,7 +103,7 @@
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
     "BaseClass"        "npc_dota_creature"
-    "Level"            "3"
+    "Level"            "5"
     "ModelScale"       "1.0"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
@@ -135,8 +137,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "13"
-    "BountyGoldMax"          "13"
+    "BountyGoldMin"          "23"
+    "BountyGoldMax"          "23"
 
     "AttackType"             "normal"
     "ArmorType"              "heavy"
@@ -165,10 +167,10 @@
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
-    "vscripts"         "ai/necromancer_ai.lua"
+    "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "void_walker_incinerate"
-    "Ability2"                "corruption_aura"
+    "Ability2"                "void_walker_corruption_aura"
 
     "ArmorPhysical"           "2"
 
@@ -215,10 +217,10 @@
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
-    "vscripts"         "ai/necromancer_ai.lua"
+    "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "void_walker_incinerate"
-    "Ability2"                "corruption_aura"
+    "Ability2"                "void_walker_corruption_aura"
 
     "ArmorPhysical"           "4"
 
@@ -242,8 +244,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "12"
-    "BountyGoldMax"          "12"
+    "BountyGoldMin"          "13"
+    "BountyGoldMax"          "13"
 
     "AttackType"             "magic"
     "ArmorType"              "light"
@@ -266,23 +268,29 @@
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "25"
-    "vscripts"         "ai/necromancer_ai.lua"
+    "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "nether_drake_splash_attack"
 
     "ArmorPhysical"           "2"
 
-    "AttackCapabilities"      "DOTA_UNIT_CAP_MOVE_FLY"
+    "SplashFullRadius"          "35"
+    "SplashMediumRadius"        "70"
+    "SplashMediumDamage"        "0.4"
+    "SplashSmallRadius"         "210"
+    "SplashSmallDamage"         "0.25"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
     "AttackDamageMin"         "45"
     "AttackDamageMax"         "50"
     "AttackRate"              "1.8"
-    "AttackAnimationPoint"    "0.46"
+    "AttackAnimationPoint"    "0.33"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "500"
+    "AttackRange"             "400"
     "ProjectileModel"         "particles/units/heroes/hero_visage/visage_base_attack.vpcf"
     "ProjectileSpeed"         "900"
 
-    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_FLY"
     "MovementSpeed"          "290"
     "StatusHealth"           "425"
     "StatusHealthRegen"      "1.0"
@@ -292,8 +300,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "23"
-    "BountyGoldMax"          "23"
+    "BountyGoldMin"          "7"
+    "BountyGoldMax"          "7"
 
     "AttackType"             "magic"
     "ArmorType"              "medium"
@@ -322,13 +330,19 @@
 
     "ArmorPhysical"           "4"
 
+    "SplashFullRadius"          "35"
+    "SplashMediumRadius"        "70"
+    "SplashMediumDamage"        "0.4"
+    "SplashSmallRadius"         "210"
+    "SplashSmallDamage"         "0.25"
+
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
     "AttackDamageMin"         "80"
     "AttackDamageMax"         "85"
     "AttackRate"              "1.8"
     "AttackAnimationPoint"    "0.46"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "128"
+    "AttackRange"             "400"
     "ProjectileModel"         "particles/units/heroes/hero_visage/visage_base_attack.vpcf"
     "ProjectileSpeed"         "900"
 
@@ -342,8 +356,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "7"
-    "BountyGoldMax"          "7"
+    "BountyGoldMin"          "11"
+    "BountyGoldMax"          "11"
 
     "AttackType"             "magic"
     "ArmorType"              "medium"
@@ -356,11 +370,12 @@
 
   "felhound" 
   {
-    "Model"            "models/items/warlock/warlock_fourleg_demon.vmdl"
+    //"Model"            "models/items/warlock/warlock_fourleg_demon.vmdl"
+    "Model"            "models/items/warlock/golem/ahmhedoq/ahmhedoq.vmdl"
     "SoundSet"         "Hero_WarlockGolem"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
-    "ModelScale"       "0.5"
+    "ModelScale"       "0.6"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -388,8 +403,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "2"
-    "BountyGoldMax"          "2"
+    "BountyGoldMin"          "8"
+    "BountyGoldMax"          "8"
 
     "AttackType"             "pierce"
     "ArmorType"              "medium"
@@ -406,7 +421,7 @@
     "SoundSet"         "Creep_Good_Engine"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
-    "ModelScale"       "0.74"
+    "ModelScale"       "1.0"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -425,7 +440,7 @@
     "AttackRate"              "1.6"
     "AttackAnimationPoint"    "0.55"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "128"
+    "AttackRange"             "600"
     "ProjectileModel"         "particles/neutral_fx/ghost_base_attack.vpcf"
     "ProjectileSpeed"         "1200"
 
@@ -438,8 +453,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "15"
-    "BountyGoldMax"          "15"
+    "BountyGoldMin"          "10"
+    "BountyGoldMax"          "10"
 
     "AttackType"             "siege"
     "ArmorType"              "heavy"
@@ -456,7 +471,7 @@
     "SoundSet"         "Creep_Good_Engine"
     "BaseClass"        "npc_dota_creature"
     "Level"            "2"
-    "ModelScale"       "1.0"
+    "ModelScale"       "1.2"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -476,7 +491,7 @@
     "AttackRate"              "1.4"
     "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "420"
+    "AttackRange"             "600"
     "ProjectileModel"         "particles/neutral_fx/ghost_base_attack.vpcf"
     "ProjectileSpeed"         "1200"    
 
@@ -490,8 +505,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "9"
-    "BountyGoldMax"          "9"
+    "BountyGoldMin"          "15"
+    "BountyGoldMax"          "15"
 
     "AttackType"             "siege"
     "ArmorType"              "heavy"
@@ -547,11 +562,58 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "12"
-    "BountyGoldMax"          "12"
+    "BountyGoldMin"          "16"
+    "BountyGoldMax"          "16"
 
     "AttackType"             "chaos"
     "ArmorType"              "medium"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+
+  "tentacle_prison_tentacle" 
+  {
+    "Model"            "models/heroes/venomancer/venomancer_ward.vmdl"
+    "SoundSet"         "Hero_VenomancerWard"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_venomancer.vsndevts"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ModelScale"       "0.4"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "8"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "tentacle_critical_strike"
+
+    "ArmorPhysical"           "0"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"         "15"
+    "AttackDamageMax"         "27"
+    "AttackRate"              "1.0"
+    "AttackAnimationPoint"    "0.467"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "200"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "MovementSpeed"          "275"
+    "StatusHealth"           "225"
+    "StatusHealthRegen"      "0.5"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0.0"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "2"
+    "BountyGoldMax"          "2"
+
+    "AttackType"             "hero"
+    "ArmorType"              "unarmored"
 
     "Creature"
     {

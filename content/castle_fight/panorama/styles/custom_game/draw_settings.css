@@ -1,0 +1,126 @@
+.DrawSettingsRoot
+{
+  width: 100%;
+  height: 100%;
+}
+
+#DrawStatusPanel
+{
+  vertical-align: bottom;
+  margin-bottom: 280px;
+
+  width: 280px;
+  height: 150px;
+
+  flow-children: down;
+
+  border-color: gray;
+  border-style: solid;
+  border-width: 0.8px;
+  opacity: 1.2;
+  background-color: #000a;
+
+  visibility: collapse;
+}
+
+.vote_in_progress #DrawStatusPanel
+{
+  visibility: visible;
+}
+
+#DrawHeader
+{
+  font-size: 26px;
+  horizontal-align: center;
+
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.DrawVotes
+{
+  font-size: 22px;
+  margin-left: 10px;
+
+  color: white;
+}
+
+.MajorityColor
+{
+  color: green;
+}
+
+#DrawButtonHolder
+{
+  vertical-align: bottom;
+  margin-bottom: 281px;
+
+  width: 280px;
+
+  flow-children: right;
+
+  visibility: collapse;
+}
+
+.can_vote #DrawButtonHolder
+{
+  visibility: visible;
+}
+
+#DrawButton
+{
+  horizontal-align: left;
+  width: fit-children;
+  margin-left: 1px;
+
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #722217 ), to( #DD4A29 ) );
+}
+
+#DrawButton:Hover
+{
+  brightness: 1.4;
+}
+
+#DrawButtonLabel
+{
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: white;
+  
+  text-align: center;
+
+  margin-top: 5px;
+} 
+
+#ContinueButton
+{
+  horizontal-align: right;
+  width: fit-children;
+  margin-right: 1px;
+
+  visibility: collapse;
+
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #5Aa15E ), to( #87d69533 ) );
+}
+
+#ContinueButton:Hover
+{
+  brightness: 1.4;
+}
+
+#ContinueButtonLabel
+{
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: white;
+  
+  text-align: center;
+
+  margin-top: 5px;
+}
+
+.vote_in_progress #ContinueButton
+{
+  visibility: visible;
+}

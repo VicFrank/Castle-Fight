@@ -12,24 +12,6 @@ function GameMode:OnScriptReload()
   -- GameMode:StartHeroSelection()
 
   -- print(PlayerResource:GetGold(1))
-
-  local dummy = CreateUnitByName("dummy_unit", Vector(0,0,0), false, nil, nil, 0)
-  for _,abilityname in ipairs(g_Custom_Ability_Costs) do
-    local ability = dummy:AddAbility(abilityname)
-
-    local goldCost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
-    local lumberCost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
-    local isLegendary = ability:GetAbilityKeyValues()['IsLegendary'] ~= nil
-    
-    CustomNetTables:SetTableValue("ability_costs", abilityname, {
-      goldCost = goldCost,
-      lumberCost = lumberCost,
-      isLegendary = isLegendary
-    })
-
-    dummy:RemoveAbility(abilityname)
-  end
-  dummy:RemoveSelf()
 end
 
 function SpawnTestBuildings()
@@ -165,10 +147,10 @@ function GameMode:SpawnUnits(playerID, unitname, count)
 end
 
 function GameMode:Reset()
-  GameRules.leftRoundsWon = -1
+  GameRules.leftRoundsWon = 0
   GameRules.rightRoundsWon = 0
   GameRules.roundCount = 0
-  GameMode:EndRound(DOTA_TEAM_BADGUYS)
+  GameMode:EndRound(DOTA_TEAM_NEUTRALS)
 end
 
     

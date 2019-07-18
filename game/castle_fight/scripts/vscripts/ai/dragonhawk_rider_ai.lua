@@ -65,7 +65,15 @@ function thisEntity:AIThink()
   end
 
   if FindAggro(self) then
-    if self:CastSolarStrike() then return 0.5 end
+    if not self.aiState.foundTargetTime then
+      self:FindSolarStrikeTarget()
+    else
+      -- if it's been 2 seconds, and there's still a target, cast solar strike
+      if GameRules:GetGameTime() - self.aiState.foundTargetTime > 2 and
+        self:FindSolarStrikeTarget() then
+        if self:CastSolarStrike() then return 0.5 end
+      end
+    end
     AttackTarget(self)
     return .3
   end
@@ -74,7 +82,7 @@ function thisEntity:AIThink()
   return .3
 end
 
-function thisEntity:CastSolarStrike()
+function thisEntity:FindSolarStrikeTarget()
   local ability = self:FindAbilityByName("dragonhawk_rider_solar_strike")
 
   if not ability or not ability:IsFullyCastable() then return false end
@@ -100,8 +108,25 @@ function thisEntity:CastSolarStrike()
     end)
   end
 
+  if target and not self.aiState.foundTargetTime then
+    self.aiState.foundTargetTime = GameRules:GetGameTime()
+    return target
+  elseif not target then
+    self.aiState.foundTargetTime = nil
+    return nil
+  end
+
+  return target
+end
+
+function thisEntity:CastSolarStrike()
+  local ability = self:FindAbilityByName("dragonhawk_rider_solar_strike")
+
+  target = self:FindSolarStrikeTarget()
+
   if target then
-    self:CastAbilityNoTarget(ability, -1)
+      self:CastAbilityNoTarget(ability, -1)
+      self.aiState.foundTargetTime = nil
     return true
   end
 

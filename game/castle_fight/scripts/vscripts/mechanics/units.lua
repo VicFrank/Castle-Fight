@@ -20,6 +20,9 @@ function Units:Init( unit )
   local armor_type = unit:GetArmorType()
   if armor_type then
     ApplyModifier(unit, "modifier_armor_"..armor_type)
+    if armor_type == "divine" then
+      unit:SetBaseMagicalResistanceValue(40)
+    end
   end
 
   if unit:HasSplashAttack() then
@@ -34,6 +37,10 @@ function Units:Init( unit )
   if not bBuilding and collision_size then
     unit:SetHullRadius(collision_size)
   end
+end
+
+function CDOTA_BaseNPC:_GetMainControllingPlayer()
+  return self.issuer_player_id or self:GetMainControllingPlayer()
 end
 
 -- Returns Int
@@ -145,7 +152,6 @@ function FindAllUnits()
   local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_INVULNERABLE
   return FindUnitsInRadius(DOTA_TEAM_NEUTRALS, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, target_type, flags, FIND_ANY_ORDER, false)
 end
-
 
 function FindAllVisibleUnitsInRadius( team, radius, point )
   local position = point

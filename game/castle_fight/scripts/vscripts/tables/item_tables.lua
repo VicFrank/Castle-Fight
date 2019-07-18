@@ -50,4 +50,16 @@ g_Race_Items = {
     "item_build_arcane_tower",
     "item_build_golden_shrine_of_justice",
   },
+  npc_dota_hero_chaos_knight = {
+    "item_build_eraser_1",
+    "item_build_volcano",
+    "item_build_magic_tower_ruin",
+    "item_build_shrine_of_destruction",
+  },
+  npc_dota_hero_grimstroke = {
+    "item_build_well_of_pain",
+    "item_build_forgotten_one",
+    "item_build_corrupted_protector",
+    "item_build_eye_of_corruption",
+  },
 }

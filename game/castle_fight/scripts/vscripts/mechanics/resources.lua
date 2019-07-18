@@ -55,7 +55,11 @@ function CDOTA_BaseNPC:SetCheese(cheese)
 end
 
 function CDOTA_BaseNPC:ModifyCheese(value)
-  self:SetCheese(math.max(0, self:GetCheese() + value))
+  self:SetCheese(self:GetCheese() + value)
+end
+
+function ModifyCheese(playerID, cheese)
+  SetCheese(playerID, GetCheese(playerID) + cheese)
 end
 
 function SetCheese(playerID, cheese)
@@ -99,6 +103,8 @@ function GetCustomGold(playerID)
 end
 
 function SetCustomGold(playerID, gold)
+  -- update their real gold, for spectators
+  PlayerResource:SetGold(playerID, gold, false)
   local hero = PlayerResource:GetSelectedHeroEntity(playerID)
   if not hero then return end
   hero.gold = gold

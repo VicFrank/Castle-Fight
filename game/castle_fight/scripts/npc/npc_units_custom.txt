@@ -6,6 +6,9 @@
 #base "races/orc/buildings.kv"
 #base "races/north/buildings.kv"
 #base "races/elf/buildings.kv"
+#base "races/corrupted/buildings.kv"
+#base "races/chaos/buildings.kv"
+#base "races/mech/buildings.kv"
 
 #base "races/humans/units.kv"
 #base "races/naga/units.kv"
@@ -15,6 +18,9 @@
 #base "races/orc/units.kv"
 #base "races/north/units.kv"
 #base "races/elf/units.kv"
+#base "races/corrupted/units.kv"
+#base "races/chaos/units.kv"
+#base "races/mech/units.kv"
 
 #base "generic/buildings.kv"
 

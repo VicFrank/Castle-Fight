@@ -21,6 +21,11 @@ function OnRoundStarted(data) {
   $("#RoundLabel").text = $.Localize("#round") + " " + round;
 }
 
+function OnRoundEnded(data) {
+  var round = data.roundNumber;
+  $("#RoundLabel").text = $.Localize("#round") + " " + round;
+}
+
 function OnHeroSelectStarted(data) {
   $.Msg("OnHeroSelectStarted")
   $("#RoundStatusLabel").text = $.Localize("#race_selection");
@@ -49,6 +54,7 @@ function OnHeroSelectStatusChanged(table_name, key, data) {
 (function () {
   GameEvents.Subscribe("countdown", UpdateTimer);
   GameEvents.Subscribe("round_started", OnRoundStarted);
+  GameEvents.Subscribe("round_ended", OnRoundEnded);
   GameEvents.Subscribe("loading_started", OnLoadingStarted);
 
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);

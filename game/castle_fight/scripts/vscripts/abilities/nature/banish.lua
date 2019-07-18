@@ -21,7 +21,6 @@ modifier_ancient_guardian_banish = class({})
 function modifier_ancient_guardian_banish:CheckState()
     local state = {
     [MODIFIER_STATE_NO_UNIT_COLLISION] = true,
-    [MODIFIER_STATE_ATTACK_IMMUNE] = true,
     [MODIFIER_STATE_DISARMED] = true,
   }
   return state
@@ -30,7 +29,7 @@ end
 function modifier_ancient_guardian_banish:DeclareFunctions()
   funcs = {
         MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-        MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS
+        MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
       }
   return funcs
 end
@@ -39,8 +38,8 @@ function modifier_ancient_guardian_banish:GetModifierMoveSpeedBonus_Percentage()
   return -50
 end
 
-function modifier_ancient_guardian_banish:GetModifierMagicalResistanceBonus()
-  return -50
+function modifier_ancient_guardian_banish:GetModifierIncomingDamage_Percentage()
+  return 50
 end
 
 function modifier_ancient_guardian_banish:GetEffectName()

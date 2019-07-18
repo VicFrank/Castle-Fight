@@ -8,8 +8,8 @@ function control_enemy:OnSpellStart()
 
   local enemies = FindAllVisibleEnemies(caster:GetTeam())
   local target = FindFirstUnit(enemies, function(target) 
-      return not target:IsLegendary()
-    end)
+    return not target:IsLegendary()
+  end)
 
   if not target then return end
 

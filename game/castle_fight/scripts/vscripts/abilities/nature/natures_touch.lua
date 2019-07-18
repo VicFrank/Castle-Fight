@@ -13,6 +13,14 @@ end
 
 modifier_dryad_natures_touch = class({})
 
+function modifier_dryad_natures_touch:IsPurgable()
+  return true
+end
+
+function modifier_dryad_natures_touch:IsDebuff()
+  return false
+end
+
 function modifier_dryad_natures_touch:OnCreated()
   self.health_bonus = self:GetAbility():GetSpecialValueFor("health")
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
@@ -47,4 +55,8 @@ end
 
 function modifier_dryad_natures_touch:GetModifierPhysicalArmorBonus(keys)
   return self.armor
+end
+
+function modifier_dryad_natures_touch:GetTexture()
+  return "enchantress_untouchable"
 end

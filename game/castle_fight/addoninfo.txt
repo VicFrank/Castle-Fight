@@ -1,20 +1,16 @@
 "AddonInfo"
 {
   "TeamCount"           "2"
-  "maps"            "castle_fight"
+  "maps"            "castle_fight single_lane"
   "IsPlayable"        "1"
   
   "castle_fight"
   {
     "MaxPlayers"          "8"
   }
-  //"Default_Keys"
-  //{
-  //  "01"
-  //  {
-  //    "Key"       "SPACE"
-  //    "Command"   "CustomGameToggleLeaderboard"
-  //    "Name"      "Toggle Leaderboard"
-  //  }
-  //}
+
+  "single_lane"
+  {
+    "MaxPlayers"          "4"
+  }
 }

@@ -68,10 +68,6 @@ function modifier_restore_area:OnCreated()
   end
 end
 
-function modifier_restore_area:GetAttributes()
-  return MODIFIER_ATTRIBUTE_MULTIPLE
-end
-
 function modifier_restore_area:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,

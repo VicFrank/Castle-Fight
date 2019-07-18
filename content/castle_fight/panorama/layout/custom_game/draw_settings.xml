@@ -1,0 +1,26 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="s2r://panorama/styles/custom_game/draw_settings.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/draw_settings.js" />     
+  </scripts>
+  <Panel class="DrawSettingsRoot" hittest="false">
+    <Panel id="DrawStatusPanel">
+      <Label id="DrawHeader" text="Draw Votes:" />
+      <Label id="WestDrawVotes" class="DrawVotes" text="" />
+      <Label id="EastDrawVotes" class="DrawVotes" text="" />
+    </Panel>
+
+    <Panel id="DrawButtonHolder">
+      <Button id="DrawButton" onactivate="OnDrawButtonPressed()">
+        <Label id="DrawButtonLabel" text="#offer_draw" />
+      </Button>
+
+      <Button id="ContinueButton" onactivate="OnContinueButtonPressed()">
+        <Label id="ContinueButtonLabel" text="#reject" />
+      </Button>
+    </Panel>
+  </Panel>
+</root>

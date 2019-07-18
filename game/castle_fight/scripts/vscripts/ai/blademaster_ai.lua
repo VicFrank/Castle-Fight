@@ -83,7 +83,7 @@ function thisEntity:CastSpellSteal()
   local units = FindAllVisibleUnitsInRadius(self:GetTeam(), castRange, self:GetAbsOrigin())
 
   for _,unit in pairs(units) do
-    if HasModifierToSteal(unit) then
+    if HasModifierToSteal(self, unit) then
       self:CastAbilityOnTarget(unit, ability, -1)
       return true
     end
@@ -92,13 +92,12 @@ function thisEntity:CastSpellSteal()
   return false
 end
 
-function HasModifierToSteal(unit)
-  local targetIsFriendly = unit:GetTeam() == unit:GetTeam()
+function HasModifierToSteal(caster, unit)
+  local targetIsFriendly = caster:GetTeam() == unit:GetTeam()
   local modifiers = unit:FindAllModifiers()
 
   -- Get the modifier to remove
   local modifier
-
   for _,buff in pairs(modifiers) do
     -- if it's an ally, get a debuff
     if buff.IsDebuff then
@@ -109,6 +108,7 @@ function HasModifierToSteal(unit)
         end
       -- if it's an enemy, get a buff
       elseif not buff:IsDebuff() and buff:IsPurgable() then
+        print(buff, buff:IsDebuff(), buff:IsPurgable())
         modifier = buff
         return true
       end

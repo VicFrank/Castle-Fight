@@ -23,18 +23,21 @@ function modifier_crusader_blessing:OnCreated()
   self.armor_bonus = self.ability:GetSpecialValueFor("armor_bonus")
   self.regen_bonus = self.ability:GetSpecialValueFor("regen_bonus")
   self.health_bonus = self.ability:GetSpecialValueFor("health_bonus")
+
+  if not IsServer() then return end
+  Timers:CreateTimer(function() self:GetParent():Heal(self.health_bonus, self:GetCaster()) end)
 end
 
 function modifier_crusader_blessing:DeclareFunctions()
   local funcs = {
-    MODIFIER_PROPERTY_HEALTH_BONUS,
+    MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
     MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS
   }
   return funcs
 end
 
-function modifier_crusader_blessing:GetModifierHealthBonus()
+function modifier_crusader_blessing:GetModifierExtraHealthBonus()
   return self.health_bonus
 end
 

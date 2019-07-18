@@ -20,8 +20,16 @@ wolf_critical_strike = class({})
 function wolf_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
 blademaster_critical_strike = class({})
 function blademaster_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+chaos_warrior_critical_strike = class({})
+function chaos_warrior_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+tentacle_critical_strike = class({})
+function tentacle_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
+corrupted_treant_critical_strike = class({})
+function corrupted_treant_critical_strike:GetIntrinsicModifierName() return "modifier_critical_strike_custom" end
 
 modifier_critical_strike_custom = class({})
+
+function modifier_critical_strike_custom:IsHidden() return true end
 
 function modifier_critical_strike_custom:OnCreated()
   if not IsServer() then return end

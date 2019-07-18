@@ -43,8 +43,7 @@ function modifier_weaken_soul_aura:GetAuraSearchTeam()
 end
 
 function modifier_weaken_soul_aura:GetAuraEntityReject(target)
-  -- TODO, don't work on mechanical units
-  return IsCustomBuilding(target) or target:IsRealHero()
+  return IsCustomBuilding(target) or target:IsRealHero() or target:IsMechanical()
 end
 
 function modifier_weaken_soul_aura:GetAuraSearchType()

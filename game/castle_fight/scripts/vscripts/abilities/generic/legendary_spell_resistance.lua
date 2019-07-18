@@ -5,6 +5,8 @@ function legendary_spell_resistance:GetIntrinsicModifierName() return "modifier_
 
 modifier_legendary_spell_resist = class({})
 
+function modifier_legendary_spell_resist:IsHidden() return true end
+
 function modifier_legendary_spell_resist:OnCreated()
   self.magic_resist = self:GetAbility():GetSpecialValueFor("magic_resist")
   self.status_resist = self:GetAbility():GetSpecialValueFor("status_resist")

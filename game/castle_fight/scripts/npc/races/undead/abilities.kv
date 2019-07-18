@@ -15,7 +15,7 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "dps"                     "10"
+        "dps"                     "8"
       }      
     }
   }
@@ -165,6 +165,11 @@
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/sudden_death"
     "MaxLevel"                    "1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_bloody.vpcf"
+    }
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "15.0"

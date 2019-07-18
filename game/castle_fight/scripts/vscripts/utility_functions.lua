@@ -66,6 +66,23 @@ function GetDistanceBetweenTwoUnits(unit1, unit2)
   return (unit1:GetAbsOrigin() - unit2:GetAbsOrigin()):Length2D()
 end
 
+function ConvertTimeToTable(t)
+  local minutes = math.floor(t / 60)
+  local seconds = t - (minutes * 60)
+  local m10 = math.floor(minutes / 10)
+  local m01 = minutes - (m10 * 10)
+  local s10 = math.floor(seconds / 10)
+  local s01 = seconds - (s10 * 10)
+  local broadcast_gametimer = 
+    {
+        timer_minute_10 = m10,
+        timer_minute_01 = m01,
+        timer_second_10 = s10,
+        timer_second_01 = s01,
+    }
+  return broadcast_gametimer
+end
+
 -- 1st, 2nd, 3rd, 4th, ..., nth
 function getNumberSuffix(number)
   if number == 1 then

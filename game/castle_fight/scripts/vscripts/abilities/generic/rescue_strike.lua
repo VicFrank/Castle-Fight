@@ -28,11 +28,13 @@ function item_rescue_strike:OnSpellStart()
   local enemies = FindEnemiesInRadius(caster, radius, target)
 
   for _,enemy in pairs(enemies) do
-    damageDone = damageDone + enemy:GetHealth()
-    
-    enemy:Kill(ability, caster)
+    if not IsCustomBuilding(enemy) and not enemy:IsRealHero() then
+      damageDone = damageDone + enemy:GetHealth()
+      
+      enemy:Kill(ability, caster)
 
-    enemiesKilled = enemiesKilled + 1
+      enemiesKilled = enemiesKilled + 1
+    end
   end
 
   GameRules.rescueStrikeDamage[playerID] = damageDone

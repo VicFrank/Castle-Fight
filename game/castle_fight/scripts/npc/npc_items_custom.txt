@@ -8,6 +8,9 @@
 #base "races/orc/items.kv"
 #base "races/north/items.kv"
 #base "races/elf/items.kv"
+#base "races/corrupted/items.kv"
+#base "races/chaos/items.kv"
+#base "races/mech/items.kv"
 
 "DOTAAbilities"
 {
@@ -27,7 +30,7 @@
     "ItemCost"                  "150"
     "LumberCost"                "300"
     "InitialStock"              "1"
-    "RestockTime"               "300"
+    "RestockTime"               "360"
 
     "BaseClass"                     "item_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -42,7 +45,7 @@
       "01"
       {
         "var_type"      "FIELD_INTEGER"
-        "damage"        "60"
+        "damage"        "40"
       }
       "02"
       {

@@ -15,6 +15,7 @@ require("mechanics/rounds")
 require("mechanics/income")
 require("mechanics/corpses")
 require("mechanics/modifiers")
+require("mechanics/settings")
 
 require("tables/precache_tables")
 require("tables/item_tables")
@@ -26,7 +27,7 @@ require("items/custom_shop")
 require("ai/bot_ai/bot_ai")
 
 require('repair')
-require("damage")
+require("order_filters")
 require("testing")
 require("events")
 require("constants")
@@ -121,9 +122,15 @@ function GameMode:InitGameMode()
   GameRules:SetStartingGold(0)
   GameRules:SetGoldPerTick(0)
 
-  GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 4)
-  GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 4)
-
+  -- Adding Many Players
+  if GetMapName() == "castle_fight" then
+    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 4)
+    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 4)
+  elseif GetMapName() == "single_lane" then
+    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 2)
+    GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 2)
+  end
+  
   -- -- Set game mode rules
   mode = GameRules:GetGameModeEntity()        
   mode:DisableHudFlip(true)
@@ -156,9 +163,12 @@ function GameMode:InitGameMode()
   -- Custom Event Hooks
   CustomGameEventManager:RegisterListener('on_race_selected', OnRaceSelected)
   CustomGameEventManager:RegisterListener('attempt_purchase', OnAttemptPurchase)
+  CustomGameEventManager:RegisterListener('add_ai', OnAddAI)
+  CustomGameEventManager:RegisterListener('draw_vote', OnVoteDraw)
 
   -- Filters
   mode:SetDamageFilter(Dynamic_Wrap(GameMode, "FilterDamage"), self)
+  mode:SetExecuteOrderFilter(Dynamic_Wrap(GameMode, "OrderFilter"), self)
 
   -- Lua Modifiers
   LinkLuaModifier("modifier_disable_turning", "libraries/modifiers/modifier_disable_turning", LUA_MODIFIER_MOTION_NONE)
@@ -187,16 +197,20 @@ function GameMode:InitGameMode()
   GameRules.needToPick = 0
   GameRules.playerIDs = {}
   GameRules.numToCache = 0
+  GameRules.numUnits = 0
   GameRules.precached = {}
   GameRules.income = {}
   GameRules.numBoxes = {}
   GameRules.lumber = {}
   GameRules.gold = {}
   GameRules.cheese = {}
+  GameRules.drawVotes = {}
 
   GameRules.HeroSelectionTimer = ""
   GameRules.LoadingTimer = ""
   GameRules.PostRoundTimer = ""
+  GameRules.DrawTimer = ""
+  GameRules.RoundTimer = ""
 
   -- Modifier Applier
   GameRules.Applier = CreateItem("item_apply_modifiers", nil, nil)
@@ -205,6 +219,7 @@ function GameMode:InitGameMode()
 
   SetUpCustomItemCosts()
   SetupCustomAblityCosts()
+  CheckHeroPositions()
 end
 
 function SetUpCustomItemCosts()
@@ -216,7 +231,7 @@ function SetUpCustomItemCosts()
       local lumberCost = tonumber(item:GetAbilityKeyValues()['LumberCost']) or 0
       local isLegendary = item:GetAbilityKeyValues()['IsLegendary'] ~= nil
 
-      CustomNetTables:SetTableValue("item_costs", itemname, {
+      CustomNetTables:SetTableValue("ability_costs", itemname, {
         lumberCost = lumberCost,
         isLegendary = isLegendary,
         goldCost = goldCost
@@ -245,4 +260,25 @@ function SetupCustomAblityCosts()
     dummy:RemoveAbility(abilityname)
   end
   dummy:RemoveSelf()
+end
+
+function CheckHeroPositions()
+  -- Make sure heroes can't go to the other base
+  Timers:CreateTimer(function()
+    for _,hero in pairs(HeroList:GetAllHeroes()) do
+      if hero:IsAlive() then
+        if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
+          if hero:GetAbsOrigin().x > GameRules.leftBaseMaxBounds.x then
+            FindClearSpaceForUnit(hero, GameRules.leftCastlePosition, true)
+          end
+        elseif hero:GetTeam() == DOTA_TEAM_BADGUYS then
+          if hero:GetAbsOrigin().x < GameRules.rightBaseMinBounds.x then
+            FindClearSpaceForUnit(hero, GameRules.rightCastlePosition, true)
+          end
+        end
+      end
+    end
+
+    return 1
+  end)
 end

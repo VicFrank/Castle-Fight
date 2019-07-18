@@ -1,0 +1,14 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/team_select.css" />
+	</styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/team_select_empty.js" />
+  </scripts>
+	<Panel class="TeamSelectEmptySlot">
+		<Panel id="EmptySlotIcon" />
+		<Label id="PlayerName" text="#custom_game_team_select_empty_slot" />
+    <!-- <Button id="AddBotButton" onactivate="OnAddBotPressed()" />  -->
+	</Panel>
+</root>

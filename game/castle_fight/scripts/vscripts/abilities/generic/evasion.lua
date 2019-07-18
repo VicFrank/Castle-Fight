@@ -21,6 +21,8 @@ function blademaster_evasion:GetIntrinsicModifierName() return "modifier_custom_
 
 modifier_custom_evasion = class({})
 
+function modifier_custom_evasion:IsHidden() return true end
+
 function modifier_custom_evasion:OnCreated()
   self.evasion = self:GetAbility():GetSpecialValueFor("evasion")
 end

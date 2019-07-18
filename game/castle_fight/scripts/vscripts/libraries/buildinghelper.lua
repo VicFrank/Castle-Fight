@@ -683,7 +683,7 @@ function BuildingHelper:AddBuilding(keys)
     local event = { state = "active", size = size, scale = fMaxScale, builderIndex = builder:GetEntityIndex() }
 
     -- Set the active variables and callbacks
-    local playerID = builder:GetMainControllingPlayer()
+    local playerID = builder:_GetMainControllingPlayer()
     local player = PlayerResource:GetPlayer(playerID)
     local playerTable = BuildingHelper:GetPlayerTable(playerID)
     playerTable.activeBuilder = builder
@@ -1050,7 +1050,9 @@ end
 
 -- Creates the building and starts the construction process
 function BuildingHelper:StartBuilding(builder)
-    local playerID = builder:GetMainControllingPlayer()
+    -- VicFrank for controlling leavers, the constructed building should be owned by the hero
+    -- local playerID = builder:_GetMainControllingPlayer()
+    local playerID = builder:GetPlayerOwnerID()
     local work = builder.work
     local callbacks = work.callbacks
     local building = work.entity -- The building entity
@@ -1967,7 +1969,7 @@ end
 -- bQueued will be true if the command was done with shift pressed
 -- If bQueued is false, the queue is cleared and this building is put on top
 function BuildingHelper:AddToQueue(builder, location, bQueued)
-    local playerID = builder:GetMainControllingPlayer()
+    local playerID = builder:_GetMainControllingPlayer()
     local player = PlayerResource:GetPlayer(playerID)
     local playerTable = BuildingHelper:GetPlayerTable(playerID)
     local buildingName = playerTable.activeBuilding
@@ -2100,7 +2102,7 @@ function BuildingHelper:AddRepairToQueue(builder, building, bQueued)
     local bResult = self:OnPreRepair(builder, building)
     if not bResult then return end
 
-    local playerID = builder:GetMainControllingPlayer()
+    local playerID = builder:_GetMainControllingPlayer()
     local player = PlayerResource:GetPlayer(playerID)
     local playerTable = BuildingHelper:GetPlayerTable(playerID)
     local buildingName = building:GetUnitName()

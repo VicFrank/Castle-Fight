@@ -29,7 +29,12 @@ function GameMode:OnNPCSpawned(keys)
   local unitName = npc:GetUnitName()
   if unitName == "npc_dota_thinker" then return end
   if unitName == "npc_dota_units_base" then return end
+  if unitName == "dotacraft_corpse" then return end
   if unitName == "" then return end
+
+  GameRules.numUnits = GameRules.numUnits + 1
+  CustomGameEventManager:Send_ServerToAllClients("num_units_changed",
+    {numUnits = GameRules.numUnits})
 
   -- Level all of the unit's abilities to max
   if npc:IsHero() then
@@ -54,6 +59,8 @@ function GameMode:OnNPCSpawned(keys)
     npc:SetMaterialGroup("3")
   elseif npc:GetUnitName() == "azure_drake" then
     npc:SetMaterialGroup("2")
+  elseif npc:GetUnitName() == "red_dragon" then
+    npc:SetMaterialGroup("1")
   end
 
   Units:Init(npc)
@@ -147,6 +154,10 @@ function GameMode:OnEntityKilled(keys)
     killer = EntIndexToHScript( keys.entindex_attacker )
   end
 
+  GameRules.numUnits = GameRules.numUnits - 1
+  CustomGameEventManager:Send_ServerToAllClients("num_units_changed",
+    {numUnits = GameRules.numUnits})
+
   if killed:GetUnitName() == "castle" then
     if GameRules.roundInProgress then
       GameMode:EndRound(killed:GetTeam())
@@ -184,6 +195,11 @@ function GameMode:OnEntityKilled(keys)
 
     if killed:GetUnitName() == "item_build_treasure_box" then
       GameMode:ModifyNumBoxes(killedPlayerID, -1)
+    end
+
+    -- Refund Cheese when a legendary building dies
+    if killed:IsLegendary() then
+      ModifyCheese(killedPlayerID, 1)
     end
   end
 

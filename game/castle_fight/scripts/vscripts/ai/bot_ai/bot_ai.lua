@@ -54,6 +54,8 @@ function BotAI:OnThink(hero)
     return BotAI:RepairBuildings(hero)
   end
 
+  -- if IsInToolsMode() then return 1 end
+
   return BotAI:BuildNextBuilding(hero)
 end
 

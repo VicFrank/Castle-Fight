@@ -10,8 +10,14 @@ bear_cleave = class({})
 function bear_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
 polar_bear_cleave = class({})
 function polar_bear_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
+chaos_warrior_cleave = class({})
+function chaos_warrior_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
+corrupted_treant_cleave = class({})
+function corrupted_treant_cleave:GetIntrinsicModifierName() return "modifier_custom_cleave" end
 
 modifier_custom_cleave = class({})
+
+function modifier_custom_cleave:IsHidden() return true end
 
 function modifier_custom_cleave:OnCreated()
   self.caster = self:GetCaster()

@@ -6,7 +6,12 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/custom_shop.js" />     
   </scripts>
-  <Panel class="CustomShopRoot" hittest="false">    
+  <Panel class="CustomShopRoot" hittest="false">
+    <Button id="ShopButton" hittest="true" onactivate="OnShopButtonPressed()" oncontextmenu="OnShopButtonPressed()">
+      <Image id="ShopIcon" src="s2r://panorama/images/control_icons/shop_icon_main_psd.vtex" />
+      <Label id="ShopLabel" text="#shop" />
+    </Button>
+
     <Panel id="ShopHolder">
       <Panel id="Items" class="ShopHidden">
         <Label id="ShopHeader" text="#shop" />
@@ -138,11 +143,6 @@
           </Button>
         </Panel>
       </Panel>
-
-      <Button id="ShopButton" onactivate="OnShopButtonPressed()">
-		    <Image id="ShopIcon" src="s2r://panorama/images/control_icons/shop_icon_main_psd.vtex" />
-        <Label id="ShopLabel" text="#shop" />
-      </Button>
     </Panel>
   </Panel>
 </root>
