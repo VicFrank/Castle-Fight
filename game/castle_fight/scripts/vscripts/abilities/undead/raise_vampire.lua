@@ -13,6 +13,9 @@ end
 modifier_raise_lesser_vampire = class({})
 modifier_raise_vampire = class({})
 
+function modifier_raise_lesser_vampire:IsHidden() return true end
+function modifier_raise_vampire:IsHidden() return true end
+
 function modifier_raise_lesser_vampire:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_DEATH,

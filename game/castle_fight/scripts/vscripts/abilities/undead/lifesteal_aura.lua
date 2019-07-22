@@ -12,6 +12,10 @@ function modifier_vampire_lifesteal_aura:IsAura()
   return true
 end
 
+function modifier_vampire_lifesteal_aura:IsHidden()
+  return true
+end
+
 function modifier_vampire_lifesteal_aura:GetAuraDuration()
   return 0.5
 end

@@ -12,6 +12,10 @@ function modifier_fear_aura:IsAura()
   return true
 end
 
+function modifier_fear_aura:IsHidden()
+  return true
+end
+
 function modifier_fear_aura:GetAuraDuration()
   return 0.5
 end

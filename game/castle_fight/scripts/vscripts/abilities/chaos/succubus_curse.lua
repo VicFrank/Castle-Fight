@@ -51,11 +51,22 @@ end
 
 function modifier_succubus_curse:DeclareFunctions()
   local funcs = {
-    MODIFIER_PROPERTY_MISS_PERCENTAGE
+    MODIFIER_PROPERTY_MISS_PERCENTAGE,
+    MODIFIER_EVENT_ON_ATTACK_FAIL,
   }
   return funcs
 end
 
 function modifier_succubus_curse:GetModifierMiss_Percentage()
   return self.miss_rate
+end
+
+function modifier_succubus_curse:OnAttackFail(keys)
+  local fail_type = keys.fail_type
+  local target = keys.target
+  local attacker = keys.attacker
+
+  if attacker == self:GetParent() then
+    SendOverheadEventMessage(nil, OVERHEAD_ALERT_MISS, attacker, 0, nil)
+  end
 end

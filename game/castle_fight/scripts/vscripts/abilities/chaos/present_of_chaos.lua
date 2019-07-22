@@ -47,7 +47,7 @@ function present_of_chaos:OnSpellStart()
     PlayPACrit(caster, target)
     target:Kill(ability, caster)
   elseif option == "MUTATE" then
-    CreateLaneUnit("mutation", target:GetAbsOrigin(), target:GetTeam(), caster:GetPlayerOwnerID())
+    CreateLaneUnit("mutation", target:GetAbsOrigin(), caster:GetTeam(), caster:GetPlayerOwnerID())
     target:RemoveSelf()
   elseif option == "HEX" then
     target:AddNewModifier(caster, ability, "modifier_hexxed", {duration = 45})

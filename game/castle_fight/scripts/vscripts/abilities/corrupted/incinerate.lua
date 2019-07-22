@@ -77,13 +77,13 @@ function modifier_incinerate_debuff:OnCreated()
   self.explode_damage = self:GetAbility():GetSpecialValueFor("explode_damage")
   self.full_aoe = self:GetAbility():GetSpecialValueFor("full_aoe")
   self.half_aoe = self:GetAbility():GetSpecialValueFor("half_aoe")
-  self.team = self:GetCaster():GetTeam()
 
   if not IsServer() then return end
 
   local playerID = self:GetCaster().playerID or self:GetCaster():GetPlayerOwnerID()
   if playerID < 0 then playerID = 0 end
   self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
+  self.team = self.playerHero:GetTeam()
 end
 
 function modifier_incinerate_debuff:OnDeath(keys)

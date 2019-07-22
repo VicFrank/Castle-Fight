@@ -128,21 +128,51 @@ function greater_frost_bolt:OnProjectileHit(target, locationn)
 end
 
 function FreezeCooldowns(unit, duration)
+  local abilityList = {}
+
   for i = 0, 23 do
     local ability = unit:GetAbilityByIndex(i)
     if ability and not ability:IsCooldownReady() then
-      ability:StartCooldown(ability:GetCooldownTimeRemaining() + duration)
+      local abilityInfo = {
+        ability = ability,
+        cooldown = ability:GetCooldownTimeRemaining()
+      }
+      table.insert(abilityList, abilityInfo)
 
       if startsWith(ability:GetAbilityName(), "train_") and unit.progressParticle then
       -- Recreate the progress particle
         ParticleManager:DestroyParticle(unit.progressParticle, true)
         ParticleManager:ReleaseParticleIndex(unit.progressParticle)
-
-        unit.progressParticle = ParticleManager:CreateParticle(particleName, PATTACH_OVERHEAD_FOLLOW, unit)
-        ParticleManager:SetParticleControl(unit.progressParticle, 1, Vector(50, 1 / ability:GetCooldown(ability:GetLevel()), 1))
       end
     end
   end
+
+  Timers:CreateTimer(function()
+    if duration <= 0 then
+      for _,abilityInfo in pairs(abilityList) do
+        local ability = abilityInfo.ability
+        local cooldown = abilityInfo.cooldown
+
+        if startsWith(ability:GetAbilityName(), "train_") and not unit.progressParticle then
+          -- Recreate the progress particle
+          unit.progressParticle = ParticleManager:CreateParticle(particleName, PATTACH_OVERHEAD_FOLLOW, unit)
+          ParticleManager:SetParticleControl(unit.progressParticle, 1, Vector(50, 1 / cooldown, 1))
+        end
+      end
+      return 
+    end
+
+    for _,abilityInfo in pairs(abilityList) do
+      local ability = abilityInfo.ability
+      local cooldown = abilityInfo.cooldown
+
+      ability:StartCooldown(cooldown)
+    end
+
+    duration = duration - .1
+
+    return .1
+  end)
 end
 
 modifier_frost_bolt_freeze = class({})

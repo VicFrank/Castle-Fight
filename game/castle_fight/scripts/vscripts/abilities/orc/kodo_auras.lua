@@ -114,6 +114,7 @@ function modifier_kodo_armor_aura_buff:IsDebuff()
 end
 
 function modifier_kodo_armor_aura_buff:OnCreated()
+  if not self:GetAbility() then return end
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
 end
 

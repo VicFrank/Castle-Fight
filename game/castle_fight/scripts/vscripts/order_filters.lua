@@ -53,10 +53,11 @@ function GameMode:FilterDamage( filterTable )
     local armor_type = victim:GetArmorType()
     local multiplier = attacker:GetAttackFactorAgainstTarget(victim)
     local armor = victim:GetPhysicalArmorValue(false)
+    local wc3Reduction = (armor * 0.06) / (1 + (armor * 0.06))
 
-    damage = (attack_damage * (1 - reduction)) * multiplier
+    damage = (attack_damage * (1 - wc3Reduction)) * multiplier
 
-    --print(string.format("Damage (%s attack vs %.f %s armor): (%.f * %.2f) * %.2f = %.f", attack_type, armor, armor_type, attack_damage, 1-reduction, multiplier, damage))
+    -- print(string.format("Damage (%s attack vs %.f %s armor): (%.f * %.2f) * %.2f = %.f", attack_type, armor, armor_type, attack_damage, 1-reduction, multiplier, damage))
 
     -- Reassign the new damage
     filterTable["damage"] = damage

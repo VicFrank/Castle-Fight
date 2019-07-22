@@ -58,6 +58,8 @@ function modifier_haste_aura_buff:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
+  if not self.ability then return end
+
   self.attack_speed = self.ability:GetSpecialValueFor("attack_speed")
 end
 

@@ -88,7 +88,8 @@ function CanAttackTarget(self, target)
   -- If we can't reach the target
   -- Note that we can never find path to a building
   if self:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK and not IsCustomBuilding(target) then
-    if not GridNav:CanFindPath(self:GetAbsOrigin(), target:GetAbsOrigin()) then
+    local pathLength = GridNav:FindPathLength(self:GetAbsOrigin(), target:GetAbsOrigin())
+    if pathLength == -1 or pathLength > self.aiState.stopPursuitRange then
       return false
     end
   end
@@ -115,7 +116,7 @@ function GetTargetPriority(target)
     end
   else
     -- Is a regular unit
-    return 3
+    return 2
   end
 end
 

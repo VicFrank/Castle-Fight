@@ -30,7 +30,17 @@ function SplashAttackUnit(attacker, position)
   end
 
   for _,unit in pairs(splash_targets) do
-    if canHitFlying or not unit:HasFlyMovementCapability() then
+    local isValidTarget = true
+
+    if not canHitFlying and unit:HasFlyMovementCapability() then
+      isValidTarget = false
+    end
+
+    if unit:GetTeam() == attacker:GetTeam() then
+      isValidTarget = false
+    end
+    
+    if isValidTarget then
       local distance_from_impact = (unit:GetAbsOrigin() - position):Length2D()
       if distance_from_impact <= full_damage_radius then
         ApplyDamage({ victim = unit, attacker = attacker, damage = full_damage, ability = GameRules.Applier, damage_type = DAMAGE_TYPE_PHYSICAL})
