@@ -89,7 +89,7 @@ end
 function thisEntity:GoInvisible()
   local ability = self:FindAbilityByName("assassin_backstab")
 
-  if ability:IsFullyCastable() then
+  if ability:IsFullyCastable() and not self:IsInvisible() then
     self:CastAbilityNoTarget(ability, -1)
     return true
   end
