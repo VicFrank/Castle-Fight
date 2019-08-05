@@ -9,6 +9,7 @@ var RaceToHero = {
   elves: "npc_dota_hero_invoker",
   chaos: "npc_dota_hero_chaos_knight",
   corrupted: "npc_dota_hero_grimstroke",
+  mech: "npc_dota_hero_tinker",
   random: "random",
 };
 
@@ -23,6 +24,7 @@ var RaceToPanelID = {
   elves: "invoker_selected",
   chaos: "chaos_knight_selected",
   corrupted: "grimstroke_selected",
+  mech: "tinker_selected",
   random: "random_selected",
 };
 

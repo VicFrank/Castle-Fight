@@ -11,7 +11,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "gyrocopter_bash"
@@ -70,7 +70,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "gyrocopter_bash"
@@ -129,7 +129,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "tank_armor"
@@ -171,16 +171,16 @@
 
   "heavy_tank" 
   {
-    "Model"            "models/heroes/tinker/mom.vmdl"
+    "Model"            "models/items/courier/weta_automaton/weta_automaton.vmdl"
     "SoundSet"         "Hero_Tinker"
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
     "Level"            "3"
-    "ModelScale"       "2.0"
+    "ModelScale"       "1.4"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "tank_armor"
@@ -226,11 +226,11 @@
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
     "Level"            "3"
-    "ModelScale"       "2.0"
+    "ModelScale"       "0.75"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "tank_armor"
@@ -272,16 +272,16 @@
 
   "assault_tank" 
   {
-    "Model"            "models/items/tinker/rollermaw.vmdl"
+    "Model"            "models/items/courier/mole_messenger/mole_messenger_lvl2.vmdl"
     "SoundSet"         "Hero_Tinker"
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
     "Level"            "2"
-    "ModelScale"       "2.0"
+    "ModelScale"       "1.6"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "tank_armor"
@@ -332,17 +332,17 @@
 
   "mine_layer" 
   {
-    "Model"            "models/heroes/tinker/tinker.vmdl"
-    "SoundSet"         "Hero_Tinker"
+    "Model"            "models/items/broodmother/spiderling/ti9_cache_brood_mother_of_thousands_spiderling/ti9_cache_brood_mother_of_thousands_spiderling.vmdl"
+    "SoundSet"         "Hero_Rattletrap"
     "BaseClass"        "npc_dota_creature"
-    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_rattletrap.vsndevts"
     "Level"            "1"
-    "ModelScale"       "0.8"
+    "ModelScale"       "0.6"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "CollisionSize"    "18"
+    "vscripts"         "ai/mine_layer_ai.lua"
 
     "Ability1"                "tank_armor"
     "Ability2"                "mine_layer_lay_mine"
@@ -362,8 +362,8 @@
     "MovementSpeed"          "350"
     "StatusHealth"           "600"
     "StatusHealthRegen"      "2.15"
-    "StatusMana"             "0"
-    "StatusManaRegen"        "0"
+    "StatusMana"             "100"
+    "StatusManaRegen"        "2"
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -376,10 +376,6 @@
     "Creature"
     {
       "DisableClumpingBehavior" "1"
-      "AttachWearables"
-      {
-        "Wearable1"   { "ItemDef"  "466" }
-      }
     }
   }
 
@@ -390,12 +386,12 @@
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
-    "ModelScale"       "0.6"
+    "ModelScale"       "0.4"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
-    "vscripts"         "ai/generic_unit_ai.lua"
+    "CollisionSize"    "18"
+    "vscripts"         "ai/lunatic_goblin_ai.lua"
 
     "Ability1"                "lunatic_goblin_suicide"
     "Ability2"                "lunatic_goblin_detonate"
@@ -413,7 +409,7 @@
     "ProjectileSpeed"         "800"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
-    "MovementSpeed"          "325"
+    "MovementSpeed"          "350"
     "StatusHealth"           "175"
     "StatusHealthRegen"      "2.5"
     "StatusMana"             "0"
@@ -432,12 +428,12 @@
       "DisableClumpingBehavior" "1"
       "AttachWearables"
       {
-        "Wearable1"   { "ItemDef"  "394" }
-        "Wearable2"   { "ItemDef"  "487" }
-        "Wearable3"   { "ItemDef"  "489" }
-        "Wearable4"   { "ItemDef"  "491" }
-        "Wearable5"   { "ItemDef"  "492" }
-        //"Wearable1"   { "ItemDef"  "490" }
+        "Wearable1"   { "ItemDef"  "9961" } // arms
+        "Wearable2"   { "ItemDef"  "9962" } // weapon
+        "Wearable3"   { "ItemDef"  "9963" } // shoulder
+        "Wearable4"   { "ItemDef"  "9964" } // back
+        "Wearable5"   { "ItemDef"  "9965" } // head
+        "Wearable6"   { "ItemDef"  "9966" } // mount
       }
     }
   }
@@ -453,7 +449,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "flamegunner_line_damage"
@@ -467,7 +463,7 @@
     "AttackRate"              "0.9"
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "70"
+    "AttackRange"             "200"
     "ProjectileModel"         "particles/units/heroes/hero_batrider/batrider_base_attack.vpcf"
     "ProjectileSpeed"         "300"
 
@@ -511,7 +507,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "flamegunner_line_damage"
@@ -526,7 +522,7 @@
     "AttackRate"              "0.9"
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
-    "AttackRange"             "70"
+    "AttackRange"             "200"
     "ProjectileModel"         "particles/units/heroes/hero_batrider/batrider_base_attack.vpcf"
     "ProjectileSpeed"         "800"
 
@@ -562,14 +558,15 @@
   "iron_golem" 
   {
     "Model"            "models/creeps/darkreef/gaoler/darkreef_gaoler.vmdl"
-    "SoundSet"         "Creep_Good_Melee"
+    "SoundSet"         "Hero_Rattletrap"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_rattletrap.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ModelScale"       "0.6"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "iron_golem_spell_resistance"
@@ -611,14 +608,15 @@
   "adamant_golem" 
   {
     "Model"            "models/creeps/darkreef/gaoler/darkreef_gaoler.vmdl"
-    "SoundSet"         "Creep_Good_Melee"
+    "SoundSet"         "Hero_Rattletrap"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_rattletrap.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "5"
-    "ModelScale"       "1.0"
+    "ModelScale"       "1.2"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "iron_golem_spell_resistance"
@@ -639,7 +637,7 @@
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "300"
     "StatusHealth"           "950"
-    "StatusHealthRegen"      "3.0"
+    "StatusHealthRegen"      "0.5"
     "StatusMana"             "0"
     "StatusManaRegen"        "0.0"     
     "VisionDaytimeRange"     "1400"
@@ -668,7 +666,7 @@
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-    "CollisionSize"    "25"
+    "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
     "Ability1"                "goblin_shredder_inducted_rage"
@@ -714,6 +712,42 @@
         "Wearable6"   { "ItemDef"  "401" }
         "Wearable7"   { "ItemDef"  "402" }
         "Wearable8"   { "ItemDef"  "537" }
+      }
+    }
+  }
+
+  "gobbo_mechanist" 
+  {
+    "Model"            "models/heroes/rattletrap/rattletrap.vmdl"
+    "SoundSet"         "Hero_Rattletrap"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_rattletrap.vsndevts"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ModelScale"       "0.6"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "9"
+    "vscripts"         "ai/gobbo_mechanist_ai.lua"
+
+    "ArmorPhysical"           "0"
+    "UnitLabel"               "builder"
+
+    "AttackCapabilities"     "DOTA_UNIT_CAP_NO_ATTACK"
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "550"
+    "StatusHealth"           "1"
+    "StatusMana"             "0"  
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1"   { "ItemDef"  "231" }
+        "Wearable2"   { "ItemDef"  "446" }
+        "Wearable3"   { "ItemDef"  "484" }
+        "Wearable4"   { "ItemDef"  "485" }
       }
     }
   }

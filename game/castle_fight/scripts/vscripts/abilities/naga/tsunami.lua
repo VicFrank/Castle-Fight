@@ -39,7 +39,7 @@ end
 
 function tsunami:OnProjectileHit(target, location)
   if not IsServer() then return end
-  if not target or IsCustomBuilding(target) then return end
+  if not target or IsCustomBuilding(target) or target:HasFlyMovementCapability() then return end
 
   local damage = self:GetSpecialValueFor("damage")
 

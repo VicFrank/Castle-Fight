@@ -4,7 +4,9 @@ function sudden_death:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  local filter = function(target) return not target:IsLegendary() end
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
+
   if not target then return end
 
   ParticleManager:ReleaseParticleIndex(
@@ -14,6 +16,12 @@ function sudden_death:OnSpellStart()
       target 
     ) 
   )
+
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
 
   target:Kill(ability, caster)
 end

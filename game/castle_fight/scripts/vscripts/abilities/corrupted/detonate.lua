@@ -2,6 +2,8 @@ LinkLuaModifier("modifier_infernal_detonate", "abilities/corrupted/detonate.lua"
 
 infernal_detonate = class({})
 function infernal_detonate:GetIntrinsicModifierName() return "modifier_infernal_detonate" end
+lunatic_goblin_detonate = class({})
+function lunatic_goblin_detonate:GetIntrinsicModifierName() return "modifier_infernal_detonate" end
 
 modifier_infernal_detonate = class({})
 

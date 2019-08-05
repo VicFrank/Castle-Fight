@@ -6,14 +6,18 @@ function control_enemy:OnSpellStart()
 
   local particleName = "particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf"
 
-  local enemies = FindAllVisibleEnemies(caster:GetTeam())
-  local target = FindFirstUnit(enemies, function(target) 
-    return not target:IsLegendary()
-  end)
+  local filter = function(target) return not target:IsLegendary() end
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
 
   if not target then return end
 
   caster:EmitSound("Hero_Chen.HolyPersuasionCast")
+
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
 
   -- swap target for new unit under our control
   local hero = caster:GetOwner()

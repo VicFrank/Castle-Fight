@@ -1,4 +1,5 @@
 require("ai/general_ai")
+require("ai/ai_multipliers")
 
 function Spawn(keys)
   -- Wait one frame to do logic on a spawned unit
@@ -68,11 +69,11 @@ function thisEntity:AIThink()
   
   if FindAggro(self) then
     AttackTarget(self)
-    return .3
+    return GetAggroThinkTime()
   end
 
   MoveTowardsGoal(self)
-  return .3
+  return GetMoveToGoalThinkTime()
 end
 
 function thisEntity:CastHealAbility()

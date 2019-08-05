@@ -38,6 +38,21 @@ function GameMode:FilterDamage( filterTable )
   local value = filterTable["damage"] --Post reduction
   local damage, reduction = GameMode:GetPreMitigationDamage(value, victim, attacker, damagetype) --Pre reduction
 
+  -- Filter out cleave attacks on air units
+  if inflictor then
+    local ability = EntIndexToHScript(inflictor)
+    if ability.GetAbilityName then
+      local abilityName = ability:GetAbilityName()
+      local ending = "cleave"
+      local isCleave = abilityName:sub(-#ending) == ending
+      local dontCleave = victim:HasFlyMovementCapability() or IsCustomBuilding(victim)
+
+      if isCleave and dontCleave then
+        return false
+      end
+    end
+  end
+
   -- Physical attack damage filtering
   if damagetype == DAMAGE_TYPE_PHYSICAL then
     if victim == attacker and not inflictor then return end -- Self attack, for fake attack ground
@@ -57,7 +72,7 @@ function GameMode:FilterDamage( filterTable )
 
     damage = (attack_damage * (1 - wc3Reduction)) * multiplier
 
-    -- print(string.format("Damage (%s attack vs %.f %s armor): (%.f * %.2f) * %.2f = %.f", attack_type, armor, armor_type, attack_damage, 1-reduction, multiplier, damage))
+    -- print(string.format("Damage (%s attack vs %.f %s armor): (%.f * %.2f) * %.2f = %.f", attack_type, armor, armor_type, attack_damage, 1-wc3Reduction, multiplier, damage))
 
     -- Reassign the new damage
     filterTable["damage"] = damage

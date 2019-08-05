@@ -74,7 +74,6 @@ end
 --     25 gold - 20% = 20 gold; 
 --     As a result: 67.5 gold
 function GameMode:GetPostTaxIncome(income)
-  -- I wrote this when I was tired, but it works
   local sum = 0
   local multiplier = 0
 
@@ -99,6 +98,16 @@ function GameMode:GetIncomeForPlayer(playerID)
   local income = baseIncome + baseIncome * treasureBoxMultiplier
 
   return GameMode:GetPostTaxIncome(income)
+end
+
+function GameMode:GetTaxRateForPlayer(playerID)
+  local baseIncome = GameMode:GetIncome(playerID)
+  local numBoxes = GameMode:GetNumBoxes(playerID)
+
+  local treasureBoxMultiplier = GameMode:CalculateTreasureBoxMultiplier(numBoxes)
+  local income = baseIncome + baseIncome * treasureBoxMultiplier
+
+  return GameMode:GetPostTaxIncome(income) / income
 end
 
 --------------

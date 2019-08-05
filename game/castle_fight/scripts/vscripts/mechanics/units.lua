@@ -21,7 +21,7 @@ function Units:Init( unit )
   if armor_type then
     ApplyModifier(unit, "modifier_armor_"..armor_type)
     if armor_type == "divine" then
-      unit:SetBaseMagicalResistanceValue(40)
+      unit:SetBaseMagicalResistanceValue(75)
     end
   end
 
@@ -148,7 +148,7 @@ end
 
 function FindAllUnits()
   local position = Vector(0,0,0)
-  local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+  local target_type = DOTA_UNIT_TARGET_ALL
   local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_INVULNERABLE
   return FindUnitsInRadius(DOTA_TEAM_NEUTRALS, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, target_type, flags, FIND_ANY_ORDER, false)
 end
@@ -172,7 +172,7 @@ function FindAlliesInRadius( unit, radius, point )
   local team = unit:GetTeamNumber()
   local position = point or unit:GetAbsOrigin()
   local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
-  local flags = DOTA_UNIT_TARGET_FLAG_INVULNERABLE
+  local flags = DOTA_UNIT_TARGET_FLAG_NONE
   return FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, flags, FIND_CLOSEST, false)
 end
 
@@ -181,7 +181,7 @@ function FindOrganicAlliesInRadius( unit, radius, point )
   local team = unit:GetTeamNumber()
   local position = point or unit:GetAbsOrigin()
   local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
-  local flags = DOTA_UNIT_TARGET_FLAG_INVULNERABLE
+  local flags = DOTA_UNIT_TARGET_FLAG_NONE
   local allies = FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, flags, FIND_CLOSEST, false)
   local organic_allies = {}
   for _,ally in pairs(allies) do
@@ -219,12 +219,25 @@ function GetRandomVisibleEnemy(team)
   return GetRandomTableElement(enemies)
 end
 
+function GetRandomVisibleEnemyWithFilter(team, filter)
+  local enemies = FindAllVisibleEnemies(team)
+  local filteredEnemies = {}
+  for _,enemy in pairs(enemies) do
+    if filter(enemy) then
+      table.insert(filteredEnemies, enemy)
+    end
+  end  
+  return GetRandomTableElement(filteredEnemies)
+end
+
 function CreateLaneUnit(unitname, position, team, playerID)
   local unit = CreateUnitByName(unitname, position, true, nil, nil, team)
   unit.playerID = playerID
   if not playerID then
     print(unitname .. " created without playerID")
   end
+  -- local playerName = PlayerResource:GetPlayerName(playerID)
+  -- unit:SetCustomHealthLabel(playerName, 255, 255, 255)
   return unit
 end
 

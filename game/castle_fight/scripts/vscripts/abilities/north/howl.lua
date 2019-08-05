@@ -34,6 +34,7 @@ function modifier_wendigo_howl:IsDebuff() return true end
 function modifier_wendigo_howl:IsPurgable() return true end
 
 function modifier_wendigo_howl:OnCreated()
+  if not self:GetAbility() then return end
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
   self.damage_decrease = self:GetAbility():GetSpecialValueFor("damage_decrease")
 end

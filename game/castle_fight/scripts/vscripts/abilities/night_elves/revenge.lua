@@ -20,7 +20,7 @@ function modifier_revenge:OnDeath(params)
 
   if params.unit == self:GetParent() then
     local attacker = params.attacker
-    if attacker then
+    if attacker and not IsCustomBuilding(attacker) then
       local particleName = "particles/items_fx/necronomicon_warrior_last_will.vpcf"
       local particle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, self:GetParent())
       ParticleManager:SetParticleControl(particle, 1, attacker:GetAbsOrigin())

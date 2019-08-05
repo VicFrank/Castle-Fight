@@ -65,6 +65,7 @@ end
 modifier_ice_troll_frost_armor_debuff = class({})
 
 function modifier_ice_troll_frost_armor_debuff:OnCreated()
+  if not self:GetAbility() then return end
   self.move_slow = -self:GetAbility():GetSpecialValueFor("move_slow")
   self.attack_slow = -self:GetAbility():GetSpecialValueFor("attack_slow")
 end

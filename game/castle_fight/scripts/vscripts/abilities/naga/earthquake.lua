@@ -26,15 +26,13 @@ function earthquake:OnSpellStart()
   local earthquakeTargets = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
   for _,earthquakeTarget in pairs(earthquakeTargets) do
-    local damageTable = {
-        victim = earthquakeTarget,
-        damage = damage,
-        damage_type = DAMAGE_TYPE_MAGICAL,
-        attacker = caster,
-        ability = ability
-      }
-
-      ApplyDamage(damageTable)
+    ApplyDamage({
+      victim = earthquakeTarget,
+      damage = damage,
+      damage_type = DAMAGE_TYPE_MAGICAL,
+      attacker = caster,
+      ability = ability
+    })
 
     earthquakeTarget:AddNewModifier(caster, ability, "modifier_earthquake_slow", {duration = slow_duration})
   end
@@ -55,10 +53,14 @@ end
 function modifier_earthquake_slow:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+    MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
   }
   return funcs
 end
 
 function modifier_earthquake_slow:GetModifierMoveSpeedBonus_Percentage()
+  return -self.slow_pct
+end
+function modifier_earthquake_slow:GetModifierAttackSpeedBonus_Constant()
   return -self.slow_pct
 end

@@ -62,4 +62,10 @@ g_Race_Items = {
     "item_build_corrupted_protector",
     "item_build_eye_of_corruption",
   },
+  npc_dota_hero_tinker = {
+    "item_build_power_plant",
+    "item_build_spare_part_heap",
+    "item_build_energy_tower",
+    "item_build_blue_shield_generator",
+  },
 }

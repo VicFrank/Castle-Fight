@@ -67,7 +67,6 @@ function modifier_plague_attack_debuff:OnCreated()
   if playerID < 0 then playerID = 0 end
   self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
 
-
   self:StartIntervalThink(1)
   self:DamageTick()
 end

@@ -35,7 +35,7 @@ function volcano_eruption:OnSpellStart()
     -- Only damage the first 6 enemies
     local numHit = 0
     for _,enemy in pairs(enemies) do
-      if not enemy:IsRealHero() then
+      if not enemy:IsRealHero() and not enemy:HasFlyMovementCapability() then
         local damage = dps * tick_rate
         if IsCustomBuilding(enemy) then
           damage = damage * 0.4

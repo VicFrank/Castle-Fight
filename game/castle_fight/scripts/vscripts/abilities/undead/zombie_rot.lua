@@ -7,6 +7,10 @@ end
 
 modifier_zombie_rot_aura = class({})
 
+function modifier_zombie_rot_aura:GetTexture()
+  return "pudge_rot"
+end
+
 function modifier_zombie_rot_aura:IsDebuff()
   if self:GetCaster() == self:GetParent() then
     return false
@@ -21,6 +25,14 @@ function modifier_zombie_rot_aura:IsAura()
   end
   
   return false
+end
+
+function modifier_zombie_rot_aura:GetAuraDuration()
+  if self.abilityLevel == 3 then
+    return 999
+  else
+    return 0.5
+  end
 end
 
 function modifier_zombie_rot_aura:GetModifierAura()
@@ -60,6 +72,14 @@ function modifier_zombie_rot_aura:OnCreated(kv)
       self:AddParticle(nFXIndex, false, false, -1, false, false)
     end
 
+    local playerID = self:GetCaster().playerID or self:GetCaster():GetPlayerOwnerID()
+    if playerID < 0 then playerID = 0 end
+    self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
+
+    self.casterTeam = self:GetCaster():GetTeam()
+
+    self.abilityLevel = self:GetAbility():GetLevel()
+
     self:StartIntervalThink(self.rot_tick)
     self:OnIntervalThink()
   end
@@ -75,10 +95,10 @@ function modifier_zombie_rot_aura:OnIntervalThink()
   if IsServer() then
     local flDamagePerTick = self.rot_tick * self.dps
 
-    if self:GetCaster():IsAlive() and self:GetParent():GetTeam() ~= self:GetCaster():GetTeam() then
+    if self:GetParent():GetTeam() ~= self.casterTeam then
       ApplyDamage({
         victim = self:GetParent(),
-        attacker = self:GetCaster(),
+        attacker = self.playerHero,
         damage = flDamagePerTick,
         damage_type = DAMAGE_TYPE_MAGICAL,
         ability = self:GetAbility()

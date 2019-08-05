@@ -1,3 +1,5 @@
+LinkLuaModifier("modifier_power_buildings_creep_buff", "abilities/mech/power_buildings.lua", LUA_MODIFIER_MOTION_NONE)
+
 function SpawnUnits(keys)
   local caster = keys.caster
   local ability = keys.ability
@@ -8,7 +10,8 @@ function SpawnUnits(keys)
   if caster:IsNull() or not caster:IsAlive() then return end
 
   local cooldown = ability:GetCooldown(ability:GetLevel())
-  ability:StartCooldown(cooldown)
+  local increased_cooldown = math.floor(GameRules.roundSeconds / 150)
+  ability:StartCooldown(cooldown + increased_cooldown)
 
   local particleName = "particles/econ/generic/generic_timer/generic_timer.vpcf"
   local ringRadius = 50
@@ -33,6 +36,13 @@ function SpawnUnits(keys)
 
     if caster:IsLegendary() then
       spawned.isLegendary = true
+    end
+
+    if caster:HasModifier("modifier_power_buildings_aura_buff") then
+      -- buff the spawned unit
+      local powerBuildingsModifier = caster:FindModifierByName("modifier_power_buildings_aura_buff")
+      local powerBuildingsAbility = powerBuildingsModifier:GetAbility()
+      spawned:AddNewModifier(caster, powerBuildingsAbility, "modifier_power_buildings_creep_buff", {})
     end
   end
 end

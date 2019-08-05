@@ -6,7 +6,9 @@ function present_of_chaos:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  local filter = function(target) return not target:IsLegendary() end
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
+
   if not target then return end
 
   -- One of the following happens
@@ -18,6 +20,12 @@ function present_of_chaos:OnSpellStart()
   -- The unit gets 400 bonus health and +25 damage and is fully healed
   -- The unit is stunned for 6 seconds and recieves 200 spell damage
   -- Nothing happens
+
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
 
   local options = {
     "EXPLODE",

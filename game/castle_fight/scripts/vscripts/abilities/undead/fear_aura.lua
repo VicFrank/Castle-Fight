@@ -62,6 +62,7 @@ function modifier_fear_aura_buff:DeclareFunctions()
 end
 
 function modifier_fear_aura_buff:OnCreated()
+  if not self:GetAbility() then return end
   self.damage_decrease = -self:GetAbility():GetSpecialValueFor("damage_decrease")
 end
 

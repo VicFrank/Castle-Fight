@@ -7,7 +7,7 @@
   // Shields a random friendly unit with energy, giving it +4 armor. The next two
   // times the unit is hit by a negative building ability, the ability will have
   // no effect. In addition, the unit will gain +100 health.
-  "energy_shield"
+  "generator_energy_shield"
   {
     "AbilityTextureName"          "abaddon_aphotic_shield"
     "BaseClass"                   "ability_lua"
@@ -15,8 +15,14 @@
     "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"             "7.0"
+    "AbilityCooldown"             "1.0"
     "AbilityManaCost"             "7"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_abaddon/abaddon_aphotic_shield.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -123,8 +129,8 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"             "25.0"
-    "AbilityManaCost"             "0"
+    "AbilityCooldown"             "1.0"
+    "AbilityManaCost"             "25"
 
     "AbilitySpecial"
     {
@@ -148,7 +154,7 @@
     "AbilityTextureName"          "tinker_rearm"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/mech/power_buildings"
-    "MaxLevel"                    "2"
+    "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -159,7 +165,7 @@
       "01"
       {
         "var_type"              "FIELD_INTEGER"
-        "radius"                "180"
+        "radius"                "200"
       }      
       "02"
       {
@@ -287,16 +293,15 @@
     "ScriptFile"                  "abilities/mech/aa_rockets"
     "MaxLevel"                    "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
-
-    "AbilityCooldown"             "30.0"
-    "AbilityManaCost"             "0"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     "AbilityCastRange"          "850"
-    "AbilityCastPoint"          "0.1"
-    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_4"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -307,8 +312,8 @@
       }
       "02"
       {
-        "var_type"         "FIELD_INTEGER"
-        "num_rockets"      "3"
+        "var_type"    "FIELD_INTEGER"
+        "radius"      "850"
       }
     }
   }
@@ -324,11 +329,18 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
-    "AbilityCooldown"             "30.0"
-    "AbilityManaCost"             "0"
+    "AbilityCooldown"             "10.0"
+    "AbilityManaCost"             "40"
 
     "AbilityCastPoint"          "0.1"
     "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_4"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+      "model" "models/heroes/techies/fx_techiesfx_mine.vmdl"
+    }
 
     "AbilitySpecial"
     {
@@ -365,6 +377,14 @@
 
     "AbilityCastPoint"          "0.1"
 
+    "AbilityCastRange"        "300"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+    }
+
     "AbilitySpecial"
     {
       "01"
@@ -396,13 +416,10 @@
   {
     "AbilityTextureName"          "techies_focused_detonate"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/mech/detonate"
+    "ScriptFile"                  "abilities/corrupted/detonate"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "AbilityCooldown"             "30.0"
-    "AbilityManaCost"             "0"
 
     "AbilityCastRange"        "280"
 
@@ -441,7 +458,7 @@
       "02"
       {
         "var_type"                   "FIELD_INTEGER"
-        "attack_spill_width"         "150"
+        "attack_spill_width"         "250"
       }
     }
   }
@@ -456,15 +473,21 @@
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
-    "AbilityCooldown"             "6.5"
-    "AbilityManaCost"             "20"
+    "AbilityCooldown"             "15"
+    "AbilityManaCost"             "0"
 
     "AbilityCastRange"          "600"
     "AbilityCastPoint"          "0.3"
     "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+
+    "precache"
+    {
+      "particle"  "particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_ti_5.vpcf"
+      "particle"  "particles/generic_gameplay/generic_manaburn.vpcf"
+    }
 
     "AbilitySpecial"
     {
@@ -476,7 +499,7 @@
       "02"
       {
         "var_type"      "FIELD_INTEGER"
-        "mana_burn"      "100"
+        "mana_burn"     "100"
       }
       "03"
       {
@@ -510,7 +533,7 @@
       "01"
       {
         "var_type"                   "FIELD_INTEGER"
-        "magic_resistance"           "30 90"
+        "magic_resistance"           "30 65"
       }
       "02"
       {

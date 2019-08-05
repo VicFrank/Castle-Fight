@@ -91,7 +91,3 @@ end
 modifier_catapult_burning_ammo_debuff = class({})
 
 function modifier_catapult_burning_ammo_debuff:IsDebuff() return true end
-
-
-
-

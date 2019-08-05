@@ -62,7 +62,7 @@ function lich_ultimate_raise_dead:OnSpellStart()
   for i=1,2 do
     local skeleton = RaiseDead(self:GetCaster(), greaterSkeletons, 900)
     if skeleton then
-      skeleton:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_ultimate_raise_dead", {})
+      skeleton:AddNewModifier(self:GetCaster(), self, "modifier_ultimate_raise_dead", {})
     end
   end
 end
@@ -95,6 +95,8 @@ function modifier_ultimate_raise_dead:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
+
+  if not self.ability then return end
 
   self.armor_bonus = self.ability:GetSpecialValueFor("armor_bonus")
   self.damage_bonus = self.ability:GetSpecialValueFor("damage_bonus")

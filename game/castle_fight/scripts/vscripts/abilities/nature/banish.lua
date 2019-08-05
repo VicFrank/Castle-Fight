@@ -13,6 +13,12 @@ function ancient_guardian_banish:OnSpellStart()
 
   target:EmitSound("Hero_Pugna.Decrepify")
 
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
+
   target:AddNewModifier(caster, ability, "modifier_ancient_guardian_banish", {duration = duration})
 end
 

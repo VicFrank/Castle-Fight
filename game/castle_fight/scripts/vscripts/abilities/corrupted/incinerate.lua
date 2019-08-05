@@ -35,7 +35,7 @@ function modifier_incinerate:OnAttackLanded(keys)
 
     if target:HasModifier(debuffName) then
       local stackCount = target:GetModifierStackCount(debuffName, self.target)
-      -- target:SetModifierStackCount(debuffName, self.target, stackCount + 1)
+      target:SetModifierStackCount(debuffName, self.target, stackCount + 1)
       target:SetModifierStackCount(debuffName, self.target, 1)
 
       local damageTable = {

@@ -8,7 +8,7 @@ end
 
 function item_building_self_destruct:OnSpellStart()
   if not IsServer() then return end
-
+  
   local caster = self:GetCaster()
   local ability = self
 

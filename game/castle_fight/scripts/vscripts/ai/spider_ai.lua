@@ -64,8 +64,9 @@ function thisEntity:AIThink()
     return 0.1
   end
 
+  if self:CastWeb() then return 0.6 end
+
   if FindAggro(self) then
-    if self:CastWeb() then return 0.6 end
     if self:CastInfest() then return 0.6 end
     AttackTarget(self)
     return .3
@@ -85,16 +86,7 @@ function thisEntity:CastWeb()
   local target
 
   if castRange then
-    local targets = FindUnitsInRadius(
-      self:GetTeam(),
-      self:GetAbsOrigin(),
-      nil, 
-      castRange,
-      ability:GetAbilityTargetTeam(),
-      ability:GetAbilityTargetType(),
-      ability:GetAbilityTargetFlags(),
-      FIND_ANY_ORDER,
-      false)
+    local targets = FindEnemiesInRadius(self, castRange)
 
     target = FindFirstUnit(targets, function(target) 
       return not IsCustomBuilding(target) and target:HasFlyMovementCapability()

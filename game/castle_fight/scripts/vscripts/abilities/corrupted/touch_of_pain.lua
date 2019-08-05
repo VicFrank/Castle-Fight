@@ -15,7 +15,13 @@ function touch_of_pain:OnSpellStart()
   ParticleManager:SetParticleControlEnt(particle_finger_fx, 0, caster, PATTACH_POINT_FOLLOW, "attach_attack2", caster:GetAbsOrigin(), true)
   ParticleManager:SetParticleControl(particle_finger_fx, 1, target:GetAbsOrigin())
   ParticleManager:SetParticleControl(particle_finger_fx, 2, target:GetAbsOrigin())
-  ParticleManager:ReleaseParticleIndex(particle_finger_fx)   
+  ParticleManager:ReleaseParticleIndex(particle_finger_fx)  
+
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end 
 
   ApplyDamage({
     victim = target,

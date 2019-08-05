@@ -12,7 +12,7 @@ end
 -- Right before starting to move towards the target
 function BuildingHelper:OnPreRepair(builder, target)
     -- Custom repair target rules
-    local bValidRepair = target:GetClassname() == "npc_dota_creature" and IsCustomBuilding(target) and target:GetHealthPercent() < 100
+    local bValidRepair = target:GetClassname() == "npc_dota_creature" and (IsCustomBuilding(target) or target:IsMechanical()) and target:GetHealthPercent() < 100
 
     -- Return false to stop the repair process
     return bValidRepair

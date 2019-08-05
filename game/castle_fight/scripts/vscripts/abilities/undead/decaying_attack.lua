@@ -11,6 +11,10 @@ function modifier_decaying_attack:IsPurgable()
   return false
 end
 
+function modifier_decaying_attack:IsHidden()
+  return true
+end
+
 function modifier_decaying_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
@@ -63,7 +67,7 @@ function modifier_death_and_decay:OnCreated()
   if not IsServer() then return end
 
   self.ability = self:GetAbility()
-  self.caster = self:GetAbility()
+  self.caster = self:GetCaster()
   self.parent = self:GetParent()
 
   self.radius = self.ability:GetSpecialValueFor("death_and_decay_aoe")
@@ -90,11 +94,10 @@ function modifier_death_and_decay:OnIntervalThink()
   local enemies = FindEnemiesInRadiusFromTeam(self.team, self.radius, self.parent:GetAbsOrigin())
   for _,enemy in pairs(enemies) do
     if not IsCustomBuilding(enemy) then
-      ApplyDamage({
+      local damage = ApplyDamage({
         victim = enemy,
         damage = enemy:GetMaxHealth() * self.damage,
         damage_type = DAMAGE_TYPE_PURE,
-        damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION,
         attacker = self.caster,
         ability = self.ability
       })

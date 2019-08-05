@@ -10,8 +10,6 @@ function GameMode:OnScriptReload()
   -- KillAllUnits()
   -- KillAllBuildings()
   -- GameMode:StartHeroSelection()
-
-  -- print(PlayerResource:GetGold(1))
 end
 
 function SpawnTestBuildings()
@@ -72,9 +70,7 @@ function SpawnRandomBuilding()
 end
 
 function KillAllUnits()
-  local units = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
-
-  for _,unit in pairs(units) do
+  for _,unit in pairs(FindAllUnits()) do
     if not IsCustomBuilding(unit) and not unit:IsHero() then
       unit:ForceKill(false)
     end
@@ -82,9 +78,7 @@ function KillAllUnits()
 end
 
 function KillAllBuildings()
-  local units = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
-
-  for _,unit in pairs(units) do
+  for _,unit in pairs(FindAllUnits()) do
     if IsCustomBuilding(unit) and unit:GetUnitName() ~= "castle" then
       unit:ForceKill(false)
     end
@@ -92,9 +86,7 @@ function KillAllBuildings()
 end
 
 function KillEverything()
-  local allUnits = FindAllUnitsInRadius(FIND_UNITS_EVERYWHERE, Vector(0,0,0))
-
-  for _,unit in pairs(allUnits) do
+  for _,unit in pairs(FindAllUnits()) do
     if not unit:IsHero() then
       unit:ForceKill(false)
     end

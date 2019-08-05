@@ -49,6 +49,8 @@ function modifier_quill_aura_buff:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
+  if not self.ability then return end
+
   self.damage_return = self.ability:GetSpecialValueFor("damage_return")
 end
 

@@ -65,7 +65,7 @@ end
 function thisEntity:UseAutoCastAbility()
   local ability = GetRandomTableElement(self.abilityList)
 
-  if ability:IsFullyCastable() and ability:GetAutoCastState() and
+  if ability and ability:IsFullyCastable() and ability:GetAutoCastState() and
     not self:IsChanneling() and hasbit(ability:GetBehavior(), DOTA_ABILITY_BEHAVIOR_AUTOCAST) then
     self:CastAbilityNoTarget(ability, -1)
   end

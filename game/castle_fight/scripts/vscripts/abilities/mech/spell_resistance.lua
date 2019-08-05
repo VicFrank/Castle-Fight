@@ -5,6 +5,8 @@ function iron_golem_spell_resistance:GetIntrinsicModifierName() return "modifier
 
 modifier_iron_golem_spell_resistance = class({})
 
+function modifier_iron_golem_spell_resistance:IsHidden() return true end
+
 function modifier_iron_golem_spell_resistance:OnCreated()
   self.magic_resistance = self:GetAbility():GetSpecialValueFor("magic_resistance")
   self.status_resistance = self:GetAbility():GetSpecialValueFor("status_resistance")

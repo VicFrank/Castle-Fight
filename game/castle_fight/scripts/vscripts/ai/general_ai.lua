@@ -149,9 +149,10 @@ function GetHigherPriorityTarget(self, unit1, unit2)
   if distance1 < distance2 then return unit1
   -- Because we search in order from closest to farthest, unit1 will always
   -- be closer than unit2 (in absolute terms)
-  elseif distance1 == distance2 then 
-    if self.aiState.aggroTarget and IsCustomBuilding(self.aiState.aggroTarget) then
-      return self.aiState.aggroTarget
+  elseif distance1 == distance2 then
+    local currentTarget = self.aiState.aggroTarget
+    if currentTarget and not currentTarget:IsNull() and IsCustomBuilding(currentTarget) then
+      return currentTarget
     end
     return unit1
   else return unit2

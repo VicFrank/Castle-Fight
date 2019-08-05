@@ -31,15 +31,17 @@ function chamber_of_darkness:OnSpellStart()
     local targets = FindEnemiesInRadius(caster, radius)
 
     for _,unit in pairs(targets) do
-      local damageTable = {
-        victim = unit,
-        damage = damage,
-        damage_type = DAMAGE_TYPE_MAGICAL,
-        attacker = caster,
-        ability = ability
-      }
+      if not IsCustomBuilding(unit) then
+        local damageTable = {
+          victim = unit,
+          damage = damage,
+          damage_type = DAMAGE_TYPE_MAGICAL,
+          attacker = caster,
+          ability = ability
+        }
 
-      ApplyDamage(damageTable)
+        ApplyDamage(damageTable)
+      end
     end
   end)
 end

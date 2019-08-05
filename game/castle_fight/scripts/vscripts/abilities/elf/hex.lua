@@ -6,10 +6,18 @@ function city_of_magic_hex:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  local filter = function(target) return not target:IsLegendary() end
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
+
   if not target then return end
 
   caster:EmitSound("Hero_ShadowShaman.Hex.Target")
+
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
 
   local duration = ability:GetSpecialValueFor("duration")
 

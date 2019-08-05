@@ -37,7 +37,7 @@ function OnRightButtonPressed()
         if (!pressedShift) SendCancelCommand()
 
         // Repair rightclick
-        if (right_click_repair && IsCustomBuilding(targetIndex) && Entities.GetHealthPercent(targetIndex) < 100 && IsAlliedUnit(targetIndex, mainSelected)) {
+        if (right_click_repair && (IsCustomBuilding(targetIndex) || IsMechanical(targetIndex)) && Entities.GetHealthPercent(targetIndex) < 100 && IsAlliedUnit(targetIndex, mainSelected)) {
             GameEvents.SendCustomGameEventToServer( "building_helper_repair_command", {targetIndex: targetIndex, queue: pressedShift})
             return true
         }
@@ -53,6 +53,10 @@ function OnLeftButtonPressed() {
 
 function IsCustomBuilding(entIndex) {
     return HasModifier(entIndex, "modifier_building") || (Entities.GetUnitLabel( entIndex ) == "castle")
+}
+
+function IsMechanical(entIndex) {
+    return (Entities.GetUnitLabel(entIndex).indexOf("mechanical") != -1)
 }
 
 function IsBuilder(entIndex) {

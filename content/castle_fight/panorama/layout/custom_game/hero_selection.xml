@@ -25,6 +25,7 @@
         <Panel class="HeroRow">
           <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_tusk.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( #north )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('north')" />
           <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_invoker.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( #elves )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('elves')" />
+          <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_tinker.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( #mech )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('mech')" />
           <!-- Wisp is my stand in for "random" because I couldn't find a picture for it -->
           <MoviePanel class="HeroImage" src="file://{resources}/videos/heroes/npc_dota_hero_wisp.webm" repeat="true" autoplay="onload" onmouseover="UIShowTextTooltip( #random )"  onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected('random')" />
         </Panel>
@@ -41,6 +42,7 @@
           <MoviePanel id="invoker_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_invoker.webm" repeat="true" autoplay="onload"/>
           <MoviePanel id="chaos_knight_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_chaos_knight.webm" repeat="true" autoplay="onload"/>
           <MoviePanel id="grimstroke_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_grimstroke.webm" repeat="true" autoplay="onload"/>
+          <MoviePanel id="tinker_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_tinker.webm" repeat="true" autoplay="onload"/>
           <MoviePanel id="random_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_wisp.webm" repeat="true" autoplay="onload"/>
         </Panel>
         <Panel id="RaceDescription" text="">

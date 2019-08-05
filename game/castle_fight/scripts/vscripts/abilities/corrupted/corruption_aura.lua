@@ -64,6 +64,8 @@ function modifier_corruption_aura_debuff:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
+  if not self.ability then return end
+
   self.armor = self.ability:GetSpecialValueFor("armor")
 end
 

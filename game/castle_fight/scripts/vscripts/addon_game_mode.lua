@@ -191,6 +191,7 @@ function GameMode:InitGameMode()
   GameRules.leftRoundsWon = 0
   GameRules.rightRoundsWon = 0
   GameRules.roundCount = 1
+  GameRules.roundSeconds = 0
   GameRules.roundInProgress = false
   GameRules.InHeroSelection = false
   GameRules.roundStartTime = 0

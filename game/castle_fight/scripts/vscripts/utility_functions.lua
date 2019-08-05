@@ -13,9 +13,10 @@ function startsWith(str, start)
 end
 
 function GetRandomTableElement( table )
+  if #table == 0 then return nil end
   local nRandomIndex = RandomInt( 1, #table )
-    local randomElement = table[ nRandomIndex ]
-    return randomElement
+  local randomElement = table[ nRandomIndex ]
+  return randomElement
 end
 
 function TableContainsValue( t, value )

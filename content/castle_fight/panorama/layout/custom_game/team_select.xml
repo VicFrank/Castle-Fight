@@ -13,6 +13,15 @@
 			<!--Empty space to let the loading screen and chat be visible-->
 			<Panel hittest="false" id="TeamsSelectEmptySpace" />
 
+			<!--Settings List, left hand panel-->
+			<!-- <Panel id="SettingsList" >
+				<Panel id="SettingsListGroup" >
+					<Button id="EnableBotsButton" class="ButtonBevel" onactivate="EnableBotsButtonPressed()">
+						<Label text="#enable_bots" />
+					</Button>
+				</Panel>
+			</Panel> -->
+
 			<!--Teams List, left hand panel-->
 			<Panel id="TeamsList" >
 				<Panel id="TeamsListGroup" >

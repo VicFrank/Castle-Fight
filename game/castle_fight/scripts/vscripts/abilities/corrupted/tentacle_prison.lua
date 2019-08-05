@@ -4,7 +4,11 @@ function tentacle_prison:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  local enemies = FindAllVisibleEnemies(caster:GetTeam())
+  local target = FindFirstUnit(enemies, function(target) 
+    return not target:HasFlyMovementCapability()
+  end)
+
   if not target then return end
 
   local unitName = "tentacle_prison_tentacle"

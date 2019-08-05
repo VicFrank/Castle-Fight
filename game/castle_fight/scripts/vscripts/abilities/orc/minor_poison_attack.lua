@@ -7,6 +7,7 @@ function wyvern_minor_poison_attack:GetIntrinsicModifierName() return "modifier_
 modifier_wyvern_minor_poison_attack = class({})
 
 function modifier_wyvern_minor_poison_attack:IsPurgable() return false end
+function modifier_wyvern_minor_poison_attack:IsHidden() return true end
 
 function modifier_wyvern_minor_poison_attack:OnCreated()
   self.caster = self:GetCaster()

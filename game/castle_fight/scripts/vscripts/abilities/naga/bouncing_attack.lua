@@ -67,7 +67,7 @@ function winged_serpent_bouncing_attack:OnProjectileHit_ExtraData(target, positi
       local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
       for _,enemy in pairs(enemies) do
-        if not extraData[tostring(enemy:GetEntityIndex())] then
+        if not extraData[tostring(enemy:GetEntityIndex())] and not IsCustomBuilding(enemy) then
           local extraData = {
             damage =  damage * reduction,
             bounces = bounces - 1
@@ -139,7 +139,7 @@ function bloodthirster_bouncing_attack:OnProjectileHit_ExtraData(target, positio
       local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
       for _,enemy in pairs(enemies) do
-        if not extraData[tostring(enemy:GetEntityIndex())] then
+        if not extraData[tostring(enemy:GetEntityIndex())] and not IsCustomBuilding(enemy) then
           local extraData = {
             damage =  damage * reduction,
             bounces = bounces - 1
@@ -211,7 +211,7 @@ function quill_demon_bouncing_attack:OnProjectileHit_ExtraData(target, position,
       local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
       for _,enemy in pairs(enemies) do
-        if not extraData[tostring(enemy:GetEntityIndex())] then
+        if not extraData[tostring(enemy:GetEntityIndex())] and not IsCustomBuilding(enemy) then
           local extraData = {
             damage =  damage * reduction,
             bounces = bounces - 1
@@ -283,7 +283,7 @@ function energy_tower_bouncing_attack:OnProjectileHit_ExtraData(target, position
       local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
       for _,enemy in pairs(enemies) do
-        if not extraData[tostring(enemy:GetEntityIndex())] then
+        if not extraData[tostring(enemy:GetEntityIndex())] and not IsCustomBuilding(enemy) then
           local extraData = {
             damage =  damage * reduction,
             bounces = bounces - 1

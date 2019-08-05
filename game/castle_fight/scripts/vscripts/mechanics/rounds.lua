@@ -69,6 +69,9 @@ function GameMode:RandomHero(playerID)
     "npc_dota_hero_juggernaut",
     "npc_dota_hero_tusk",
     "npc_dota_hero_invoker",
+    "npc_dota_hero_chaos_knight",
+    "npc_dota_hero_grimstroke",
+    "npc_dota_hero_tinker",
   }
 
   -- Randomly select a hero from the pool
@@ -78,12 +81,12 @@ function GameMode:RandomHero(playerID)
 end
 
 function GameMode:StartRoundTimer()
-  local seconds = 0
+  GameRules.roundSeconds = 0
   GameRules.RoundTimer = Timers:CreateTimer(function()
     CustomGameEventManager:Send_ServerToAllClients("round_timer",
-      {time = ConvertTimeToTable(seconds)})
+      {time = ConvertTimeToTable(GameRules.roundSeconds)})
 
-    seconds = seconds + 1
+    GameRules.roundSeconds = GameRules.roundSeconds + 1
 
     return 1
   end)

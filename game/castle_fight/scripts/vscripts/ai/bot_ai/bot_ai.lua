@@ -1,4 +1,5 @@
 local AbilityData = require("ai/bot_ai/ai_values")
+local BuildingData = require("ai/bot_ai/building_values")
 
 if not BotAI then
   BotAI = class({})
@@ -45,9 +46,9 @@ function BotAI:OnThink(hero)
   if hero:IsNull() or not hero or not hero:IsAlive() then return end
   if hero:IsStunned() then return 0.1 end
 
+
   if BotAI:LookingForNextBuilding(hero) then
-    hero.nextBuilding = BotAI:GetNextBuildingToBuild(hero)
-    print("Next building is: ", hero.nextBuilding:GetAbilityName())
+    BotAI:GetNextBuildingToBuild(hero)
   end
 
   if BotAI:WaitingToBuild(hero) then
@@ -62,24 +63,54 @@ end
 function BotAI:GetNextBuildingToBuild(hero)
   local currentInterest = GameMode:GetIncome(hero:GetPlayerOwnerID())
 
+  local currentBuildings = BuildingHelper:GetBuildings(hero:GetPlayerOwnerID())
+
+  -- If we can upgrade a building, do so
+  for _,building in pairs(currentBuildings) do
+    if not building:IsNull() and building:IsAlive() then
+      local buildingName = building:GetUnitName()
+      local buildingData = BuildingData[buildingName]
+      local upgrades = buildingData.upgrades
+      if upgrades then
+        local nextUpgrade = GetRandomTableElement(upgrades)
+        local upgradeAbility = building:FindAbilityByName(nextUpgrade)
+        local hasEnoughSpecialResources = BotAI:HasEnoughSpecialResources(hero, upgradeAbility)
+
+        if hasEnoughSpecialResources and not building:IsChanneling() then
+          hero.nextUpgrade = {
+            building = building,
+            ability = upgradeAbility,
+          }
+          print("Next building (upgrade) is: ", upgradeAbility:GetAbilityName())
+          return
+        end
+      end
+    end
+  end
+
   local buildings = {}
 
   for _,ability in pairs(hero.abilityList) do
     local abilityName = ability:GetAbilityName()
-    local abilityData = AbilityData[abilityName]
-    local lumber_cost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
-    local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
-    local gold_cost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
-
+    local abilityData = AbilityData[abilityName]    
     local interestToConsider = abilityData.interestToConsider
+    local hasEnoughSpecialResources = BotAI:HasEnoughSpecialResources(hero, ability)
 
-    if currentInterest >= interestToConsider and hero:GetLumber() >= lumber_cost and
-      hero:GetCheese() >= cheese_cost then
+    if currentInterest >= interestToConsider and hasEnoughSpecialResources then
       table.insert(buildings, ability)
     end
   end
 
-  return GetRandomTableElement(buildings)
+  local nextBuilding = GetRandomTableElement(buildings)
+  hero.nextBuilding = nextBuilding
+  print("Next building is: ", nextBuilding:GetAbilityName())
+end
+
+function BotAI:HasEnoughSpecialResources(hero, ability)
+  local lumber_cost = tonumber(ability:GetAbilityKeyValues()['LumberCost']) or 0
+  local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
+
+  return hero:GetLumber() >= lumber_cost and hero:GetCheese() >= cheese_cost
 end
 
 function BotAI:GetPlaceToBuild(hero)
@@ -160,7 +191,7 @@ function BotAI:CanBuildBuilding(hero, ability)
 end
 
 function BotAI:LookingForNextBuilding(hero)
-  return not hero.nextBuilding
+  return not hero.nextBuilding and not hero.nextUpgrade
 end
 
 function BotAI:WaitingToBuild(hero)
@@ -177,9 +208,41 @@ function BotAI:WaitingToBuild(hero)
   return false
 end
 
--- TODO: Repair buildings while we're waiting to build
+function BotAI:GetBuildingToRepair(hero)
+  local allies = FindAlliesInRadius(hero, FIND_UNITS_EVERYWHERE)
+
+  local lowestHealthBuilding
+  local minHealthPercent = 100
+
+  for _,ally in pairs(allies) do
+    if IsCustomBuilding(ally) then
+      local healthPercentage = ally:GetHealthPercent()
+      if healthPercentage < minHealthPercent then
+        minHealthPercent = healthPercentage
+        lowestHealthBuilding = ally
+      end
+    end
+  end
+
+  return lowestHealthBuilding
+end
+
 function BotAI:RepairBuildings(hero)
-  return 0.1
+  local building = BotAI:GetBuildingToRepair(hero)
+
+  if hero.currentRepair and hero.currentRepair == building then
+    return 0.3
+  end
+
+  hero.currentRepair = building
+
+  if building == nil then
+    return 0.1
+  end
+
+  BuildingHelper:AddRepairToQueue(hero, building, false)
+
+  return 0.3
 end
 
 function BotAI:CanBuildAtPosition(hero, position)
@@ -192,6 +255,27 @@ end
 
 function BotAI:BuildNextBuilding(hero)
   local state = hero.state
+
+  if hero.nextUpgrade then
+    -- upgrade the next building
+    local nextUpgrade = hero.nextUpgrade
+    local building = nextUpgrade.building
+    local ability = nextUpgrade.ability
+
+    if building:IsNull() or ability:IsNull() or not building:IsAlive() then
+      hero.nextUpgrade = nil
+      return 0.5
+    end
+
+    if BotAI:CanBuildBuilding(hero, ability) then
+      building:CastAbilityNoTarget(ability, hero:GetPlayerOwnerID())
+      hero.nextUpgrade = nil
+      print("Upgrading " .. ability:GetAbilityName())
+      return 0.5
+    else
+      return 1
+    end
+  end
 
   if not hero.nextBuilding and state == "idle" then
     -- If we've finished our building queue, start looking for our next building

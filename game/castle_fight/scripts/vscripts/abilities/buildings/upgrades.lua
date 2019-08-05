@@ -68,7 +68,7 @@ function UpgradeBuilding(keys)
   building:AddItem(self_destruct_item)
   building:SwapItems(0,1)
 
-  -- If the building to ugprade is selected, change the selection to the new one
+  -- If the building to upgrade is selected, change the selection to the new one
   if PlayerResource:IsUnitSelected(playerID, caster) then
     PlayerResource:AddToSelection(playerID, building)
   end

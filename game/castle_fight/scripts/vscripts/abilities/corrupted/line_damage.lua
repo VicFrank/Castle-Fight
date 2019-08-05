@@ -5,6 +5,7 @@ function infernal_line_damage:GetIntrinsicModifierName() return "modifier_infern
 
 function infernal_line_damage:OnProjectileHit(target, location)
   if not target then return end
+  if IsCustomBuilding(target) or target:HasFlyMovementCapability() then return end
 
   local damage = self:GetSpecialValueFor("damage")
 

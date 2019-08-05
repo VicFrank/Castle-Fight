@@ -17,6 +17,67 @@
     width: fill-parent-flow(1);
 }
 
+#SettingsList
+{
+    width: 400px;
+    height: 100%;
+    flow-children: down;    
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: 16px;
+    background-color: gradient( linear, 100% 0%, 100% 100%, from( #111111 ), color-stop( 0.01, #202327 ), color-stop( 0.2, #141619ff ), to( #000000dd ) );
+    box-shadow: black -4px -4px 8px 8px;
+}
+
+#SettingsListGroup
+{
+    width: 100%;
+    vertical-align: center;
+    flow-children: down;  
+}
+
+#EnableBotsButton
+{    
+    height: 32px;
+    background-color: #2b2f30;
+
+    visibility: visible;
+}
+
+#EnableBotsButton:hover
+{    
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #4c5561 ), to( #6c7d88 ) );
+    border-top-color: #aaaaaa77;
+    border-left-color: #aaaaaa33;
+    border-bottom-color: #333333;
+    border-right-color: #404040;
+}
+
+.player_has_host_privileges #ShuffleTeamAssignmentButton
+{
+    visibility: visible;
+}
+
+#ShuffleTeamAssignmentButton Label
+{
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-top: 2px;
+    margin-right: 5px;
+    color: #6e6f6f;
+    vertical-align: center;
+}
+
+#ShuffleTeamAssignmentButton:hover Label
+{
+    color: white;
+}
+
+#ShuffleTeamAssignmentButton:active
+{
+    sound: "ui_team_select_shuffle";
+}
+
 #TeamsList
 {
     width: 400px;
@@ -673,6 +734,11 @@ DOTAAvatarImage
     background-position: 50% 50%;
     margin: 4px;
         
+    visibility: collapse;
+}
+
+.player_has_host_privileges #AddBotButton
+{
     visibility: visible;
 }
 

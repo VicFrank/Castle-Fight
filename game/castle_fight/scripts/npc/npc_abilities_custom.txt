@@ -52,11 +52,10 @@
     "AbilityManaCost"             "0"
     "AbilityCastPoint"            "0.3"
 
-    "AbilityCastRange"            "1200"
-
     "precache"
     {
-      "particle"  "particles/items_fx/chain_lightning.vpcf"
+      "particle"  "particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
     }
 
     "AbilitySpecial"
@@ -74,7 +73,7 @@
       "03"
       {
         "var_type"                 "FIELD_FLOAT"
-        "jump_damage_reduction"    "0.25"
+        "jump_damage_reduction"    "0.10"
       }
       "04"
       {

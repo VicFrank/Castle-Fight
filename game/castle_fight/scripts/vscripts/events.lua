@@ -32,9 +32,13 @@ function GameMode:OnNPCSpawned(keys)
   if unitName == "dotacraft_corpse" then return end
   if unitName == "" then return end
 
-  GameRules.numUnits = GameRules.numUnits + 1
-  CustomGameEventManager:Send_ServerToAllClients("num_units_changed",
-    {numUnits = GameRules.numUnits})
+  Timers:CreateTimer(.1, function()
+    if not npc:IsNull() and not IsCustomBuilding(npc) and not npc.BHDUMMY then
+      GameRules.numUnits = GameRules.numUnits + 1
+      CustomGameEventManager:Send_ServerToAllClients("num_units_changed",
+        {numUnits = GameRules.numUnits})
+    end
+  end)
 
   -- Level all of the unit's abilities to max
   if npc:IsHero() then
@@ -54,13 +58,16 @@ function GameMode:OnNPCSpawned(keys)
     GameMode:OnHeroInGame(npc)
   end
 
-  -- handle dragon knight material sets
+  -- handle unique material sets and animations
   if npc:GetUnitName() == "frost_wyrm" then
     npc:SetMaterialGroup("3")
   elseif npc:GetUnitName() == "azure_drake" then
     npc:SetMaterialGroup("2")
   elseif npc:GetUnitName() == "red_dragon" then
     npc:SetMaterialGroup("1")
+  elseif npc:GetUnitName() == "energy_tower" then
+    npc:SetMaterialGroup("dire_level6")
+    StartAnimation(npc, {duration=-1, activity=ACT_DOTA_CONSTANT_LAYER, rate=0.8, translate="level6"})
   end
 
   Units:Init(npc)
@@ -154,9 +161,11 @@ function GameMode:OnEntityKilled(keys)
     killer = EntIndexToHScript( keys.entindex_attacker )
   end
 
-  GameRules.numUnits = GameRules.numUnits - 1
-  CustomGameEventManager:Send_ServerToAllClients("num_units_changed",
-    {numUnits = GameRules.numUnits})
+  if not IsCustomBuilding(killed) and not killed.BHDUMMY then
+    GameRules.numUnits = GameRules.numUnits - 1
+    CustomGameEventManager:Send_ServerToAllClients("num_units_changed",
+      {numUnits = GameRules.numUnits})
+  end
 
   if killed:GetUnitName() == "castle" then
     if GameRules.roundInProgress then
@@ -171,6 +180,9 @@ function GameMode:OnEntityKilled(keys)
     -- when you use forcekill, it's the same as the unit killing itself
     local killerPlayerID = killer.playerID or killer:GetPlayerOwnerID()
     if killerPlayerID and killerPlayerID >= 0 then
+      -- Tax the bounty
+      bounty = bounty * GameMode:GetTaxRateForPlayer(killerPlayerID)
+
       local player = PlayerResource:GetPlayer(killerPlayerID)
 
       -- Don't show the message if it's going to show it anyway

@@ -110,4 +110,18 @@ g_Custom_Ability_Costs = {
   "upgrade_shadow_ancient",
   "upgrade_hells_portal",
 
+  "build_aircraft_factory",
+  "upgrade_bomber_factory",
+  "build_tank_factory",
+  "upgrade_heavy_tank_factory",
+  "upgrade_rocket_tank_factory",
+  "upgrade_assault_tank_factory",
+  "upgrade_mine_layer_factory",
+  "build_demolition_lab",
+  "build_gun_smith",
+  "upgrade_arsenal",
+  "build_golem_factory",
+  "upgrade_precious_golem_factory",
+  "build_lumber_mill",
+  "upgrade_red_shield_generator",
 }

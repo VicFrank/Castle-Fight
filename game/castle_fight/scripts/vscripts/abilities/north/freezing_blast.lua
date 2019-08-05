@@ -48,6 +48,13 @@ function freezing_blast:OnProjectileHit(target, location)
 
   if target then
     target:EmitSound("Hero_Winter_Wyvern.SplinterBlast.Target")
+
+    for _,modifier in pairs(target:FindAllModifiers()) do
+      if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+        return
+      end
+    end
+  
     target:AddNewModifier(caster, self, "modifier_freezing_blast", {duration = duration})
 
     local damage = self:GetSpecialValueFor("damage")

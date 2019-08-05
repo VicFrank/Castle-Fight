@@ -1,4 +1,5 @@
 require("ai/general_ai")
+require("ai/ai_multipliers")
 
 function Spawn(keys)
   -- Wait one frame to do logic on a spawned unit
@@ -79,9 +80,9 @@ function thisEntity:AIThink()
     -- print(self:GetUnitName() .. " is aggro'd onto " .. self.aiState.aggroTarget:GetUnitName())
     if UseAbility(self) then return 1.5 end
     AttackTarget(self)
-    return .5
+    return GetAggroThinkTime()
   end
 
   MoveTowardsGoal(self)
-  return .3
+  return GetMoveToGoalThinkTime()
 end
