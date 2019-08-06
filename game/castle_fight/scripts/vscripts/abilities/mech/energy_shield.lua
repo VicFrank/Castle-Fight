@@ -39,16 +39,7 @@ function modifier_generator_energy_shield:OnCreated()
 
   local shield_size = self:GetParent():GetModelRadius() * 0.7
 
-  local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_abaddon/abaddon_aphotic_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
-  local common_vector = Vector(shield_size, 0, shield_size)
-  ParticleManager:SetParticleControl(particle, 1, common_vector)
-  ParticleManager:SetParticleControl(particle, 2, common_vector)
-  ParticleManager:SetParticleControl(particle, 4, common_vector)
-  ParticleManager:SetParticleControl(particle, 5, Vector(shield_size, 0, 0))
-
-  -- Proper Particle attachment courtesy of BMD. Only PATTACH_POINT_FOLLOW will give the proper shield position
-  ParticleManager:SetParticleControlEnt(particle, 0, self:GetParent(), PATTACH_POINT_FOLLOW, attach_hitloc, self:GetParent():GetAbsOrigin(), true)
-  self:AddParticle(particle, false, false, -1, false, false)
+  self.particle = ParticleManager:CreateParticle("particles/items_fx/immunity_sphere_buff.vpcf", PATTACH_CENTER_FOLLOW, self:GetParent()) 
 end
 
 function modifier_generator_energy_shield:DeclareFunctions()
@@ -80,5 +71,7 @@ end
 function modifier_generator_energy_shield:OnDestroy()
   if IsServer() then
     self:GetParent():EmitSound("Hero_Abaddon.AphoticShield.Destroy")
+    ParticleManager:DestroyParticle(self.particle, true)
+    ParticleManager:ReleaseParticleIndex(self.particle)
   end
 end

@@ -347,8 +347,9 @@
 
   "wyvern_rider" 
   {
-    "Model"            "models/creeps/neutral_creeps/n_creep_harpy_a/n_creep_harpy_a.vmdl"
-    "SoundSet"         "Creep_Bad_Range"
+    "Model"            "models/heroes/batrider/batrider.vmdl"
+    "SoundSet"         "Hero_Batrider"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ModelScale"       "0.6"
@@ -366,7 +367,7 @@
     "AttackDamageMin"         "30"
     "AttackDamageMax"         "30"
     "AttackRate"              "1.0"
-    "AttackAnimationPoint"    "0.6"
+    "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "400"
     "ProjectileModel"         "particles/econ/items/necrolyte/necronub_base_attack/necrolyte_base_attack_ka.vpcf"
@@ -390,6 +391,14 @@
     "Creature"
     {
       "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1"   { "ItemDef"  "12290" } // mount
+        "Wearable2"   { "ItemDef"  "375" }
+        "Wearable3"   { "ItemDef"  "376" }
+        "Wearable4"   { "ItemDef"  "377" }
+        "Wearable5"   { "ItemDef"  "378" }
+      }
     }
   }
 

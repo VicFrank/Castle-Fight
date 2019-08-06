@@ -48,3 +48,20 @@ end
 function modifier_shaman_buff:GetModifierPhysicalArmorBonus(keys)
   return self.armor
 end
+
+function modifier_shaman_buff:GetEffectName()
+  return "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodrage.vpcf"
+end
+
+function modifier_shaman_buff:GetEffectAttachType()
+  return PATTACH_ABSORIGIN_FOLLOW
+end
+
+function modifier_shaman_buff:PlayEffects()
+  -- Get Resources
+  local particle_cast = "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath.vpcf"
+
+  -- Create Particle
+  local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN_FOLLOW, target )
+  ParticleManager:ReleaseParticleIndex( effect_cast )
+end

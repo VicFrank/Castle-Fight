@@ -67,9 +67,7 @@ function thisEntity:AIThink()
 
   --While invisible, seek out and kill a mage, or wait for one to appear
   if self:IsInvisible() then
-    if self:FindAndAttackMage() then
-      return .3
-    end
+    return self:FindAndAttackMage()
   end
 
   if self:GoInvisible() then
@@ -100,13 +98,36 @@ end
 function thisEntity:FindAndAttackMage()
   local enemies = FindEnemiesInRadius(self, FIND_UNITS_EVERYWHERE)
 
+  -- Find a ranged unit with mana to attack
   for _,enemy in ipairs(enemies) do
-    if enemy:GetMana() > 0 and not enemy:HasFlyMovementCapability() and not IsCustomBuilding(enemy) then
+    if enemy:GetMana() > 0 and not enemy:HasFlyMovementCapability()
+     and not IsCustomBuilding(enemy) and enemy:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
       self.aiState.aggroTarget = enemy
       AttackTarget(self)
-      return true
+      return 0.3
     end
   end
 
-  return false
+  -- Failing that, just find a ranged unit to attack
+  for _,enemy in ipairs(enemies) do
+    if not enemy:HasFlyMovementCapability() and not IsCustomBuilding(enemy)
+     and enemy:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
+      self.aiState.aggroTarget = enemy
+      AttackTarget(self)
+      return 0.3
+    end
+  end
+
+  -- Ok, none of those either... I guess we can settle for a unit with mana
+  for _,enemy in ipairs(enemies) do
+    if not enemy:HasFlyMovementCapability() and not IsCustomBuilding(enemy)
+     and enemy:GetMana() > 0 then
+      self.aiState.aggroTarget = enemy
+      AttackTarget(self)
+      return 0.3
+    end
+  end
+
+  -- They're all melee units with no mana? Let's just chill until something shows up
+  return 0.3
 end

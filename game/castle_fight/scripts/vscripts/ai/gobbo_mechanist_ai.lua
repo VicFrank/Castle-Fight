@@ -81,7 +81,7 @@ end
 
 function thisEntity:RepairBuildings()
   if self.currentRepair and not self.currentRepair:IsNull() and self.currentRepair:IsAlive() and self.currentRepair:GetHealthPercent() < 100 then
-    return
+    return 0.3
   end
 
   local repairTarget = self:GetUnitToRepair()
@@ -111,7 +111,18 @@ function thisEntity:GetUnitToRepair()
     if IsCustomBuilding(ally) or ally:IsMechanical() then
       local distance = GetDistanceBetweenTwoUnits(self, ally)
       local healthPercentage = ally:GetHealthPercent()
-      if distance < 4000 and healthPercentage < minHealthPercent then
+      local underConstruction = not ally:GetUnitName() == "castle" and ally:IsUnderConstruction()
+      local hasTakenDamage = false
+      if underConstruction then
+        local constructionHealth = ally.initialHealth + ally.addedHealth
+        if ally:GetHealth() < constructionHealth then
+          hasTakenDamage = true
+        end
+      else
+        hasTakenDamage = healthPercentage < minHealthPercent
+      end
+
+      if distance < 4000 and hasTakenDamage then
         minHealthPercent = healthPercentage
         lowestHealthAlly = ally
       end

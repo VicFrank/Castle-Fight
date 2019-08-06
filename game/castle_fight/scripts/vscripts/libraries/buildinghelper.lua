@@ -1487,10 +1487,7 @@ function BuildingHelper:StartRepair(builder, target)
             else
                 --VicFrank
                 -- local nHealthInterval = target:GetMaxHealth() / (buildTime*buildTimeFactor / fserverFrameRate)
-                local repairHealRate = REPAIR_HEAL_RATE
-                if not builder:IsRealHero() then
-                    repairHealRate = repairHealRate / 2
-                end
+                local repairHealRate = REPAIR_HEAL_RATE * (builderCount-1) + REPAIR_HEAL_RATE / (2 ^ (builderCount-1))
                 local nHealthInterval = repairHealRate * fserverFrameRate
                 local fSmallHealthInterval = nHealthInterval - math.floor(nHealthInterval) --floating point component
                 nHealthInterval = math.floor(nHealthInterval)

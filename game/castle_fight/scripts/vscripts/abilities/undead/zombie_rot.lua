@@ -40,7 +40,7 @@ function modifier_zombie_rot_aura:GetModifierAura()
 end
 
 function modifier_zombie_rot_aura:GetAuraEntityReject(target)
-  return IsCustomBuilding(target) or target:IsRealHero() or target:IsMechanical()
+  return IsCustomBuilding(target) or target:IsRealHero() or target:IsMechanical() == "mechanical"
 end
 
 function modifier_zombie_rot_aura:GetAuraSearchTeam()

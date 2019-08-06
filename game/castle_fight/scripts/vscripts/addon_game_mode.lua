@@ -132,7 +132,7 @@ function GameMode:InitGameMode()
   end
   
   -- -- Set game mode rules
-  mode = GameRules:GetGameModeEntity()        
+  mode = GameRules:GetGameModeEntity()
   mode:DisableHudFlip(true)
   mode:SetBuybackEnabled(false)
   mode:SetFogOfWarDisabled(false)

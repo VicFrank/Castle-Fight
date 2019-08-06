@@ -260,8 +260,13 @@ function GameMode:EndRound(losingTeam)
     losingCastlePosition = Vector(0,0,0)
   end
 
-  AddFOWViewer(DOTA_TEAM_BADGUYS, losingCastlePosition, 1800, POST_ROUND_TIME, false)
-  AddFOWViewer(DOTA_TEAM_GOODGUYS, losingCastlePosition, 1800, POST_ROUND_TIME, false)
+  -- Reveal the map
+  AddFOWViewer(DOTA_TEAM_BADGUYS, Vector(0,0,0), 9999, POST_ROUND_TIME, false)
+  AddFOWViewer(DOTA_TEAM_BADGUYS, GameRules.rightCastlePosition, 9999, POST_ROUND_TIME, false)
+  AddFOWViewer(DOTA_TEAM_BADGUYS, GameRules.leftCastlePosition, 9999, POST_ROUND_TIME, false)
+  AddFOWViewer(DOTA_TEAM_GOODGUYS, Vector(0,0,0), 9999, POST_ROUND_TIME, false)
+  AddFOWViewer(DOTA_TEAM_GOODGUYS, GameRules.rightCastlePosition, 9999, POST_ROUND_TIME, false)
+  AddFOWViewer(DOTA_TEAM_GOODGUYS, GameRules.leftCastlePosition, 9999, POST_ROUND_TIME, false)
 
   CustomNetTables:SetTableValue("round_score", "score", {
     left_score = GameRules.leftRoundsWon,
