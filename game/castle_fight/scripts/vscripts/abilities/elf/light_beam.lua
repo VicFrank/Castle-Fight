@@ -17,12 +17,6 @@ function obelisk_of_light_light_beam:OnSpellStart()
   
   ParticleManager:ReleaseParticleIndex(particle)
 
-  for _,modifier in pairs(target:FindAllModifiers()) do
-    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
-      return
-    end
-  end
-
   local damage = ability:GetSpecialValueFor("damage")
 
   ApplyDamage({

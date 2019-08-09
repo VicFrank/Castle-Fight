@@ -19,36 +19,40 @@ function lunatic_goblin_suicide:OnSpellStart()
 
   local enemies = FindEnemiesInRadius(caster, far_radius)
   for _,enemy in pairs(enemies) do
-    local damage = far_damage
+    if not enemy:HasFlyMovementCapability() then
+      local damage = far_damage
 
-    if IsCustomBuilding(enemy) then
-      damage = damage * 0.75
+      if IsCustomBuilding(enemy) then
+        damage = damage * 0.75
+      end
+
+      ApplyDamage({
+        victim = enemy,
+        damage = damage,
+        damage_type = DAMAGE_TYPE_MAGICAL,
+        attacker = caster,
+        ability = ability
+      })
     end
-
-    ApplyDamage({
-      victim = enemy,
-      damage = damage,
-      damage_type = DAMAGE_TYPE_MAGICAL,
-      attacker = caster,
-      ability = ability
-    })
   end
 
   local close_enemies = FindEnemiesInRadius(caster, close_radius)
   for _,enemy in pairs(close_enemies) do
-    local damage = full_damage - far_damage
+    if not enemy:HasFlyMovementCapability() then
+      local damage = full_damage - far_damage
 
-    if IsCustomBuilding(enemy) then
-      damage = damage * 0.75
+      if IsCustomBuilding(enemy) then
+        damage = damage * 0.75
+      end
+
+      ApplyDamage({
+        victim = enemy,
+        damage = damage,
+        damage_type = DAMAGE_TYPE_MAGICAL,
+        attacker = caster,
+        ability = ability
+      })
     end
-
-    ApplyDamage({
-      victim = enemy,
-      damage = damage,
-      damage_type = DAMAGE_TYPE_MAGICAL,
-      attacker = caster,
-      ability = ability
-    })
   end
 
   caster:Kill(ability, caster)

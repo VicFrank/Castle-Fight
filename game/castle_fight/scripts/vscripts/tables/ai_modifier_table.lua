@@ -12,4 +12,5 @@ g_AI_Modifier_Table = {
   brood_mother = "modifier_spider_web",
   bloodthirster = "modifier_bloodthirster_faerie_fire",
   succubus = "modifier_succubus_curse",
+  shaman = "modifier_shaman_buff",
 }
