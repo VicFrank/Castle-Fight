@@ -21,7 +21,21 @@
 					</Button>
 				</Panel>
 			</Panel> -->
-
+			<Panel id="StartGameCountdownTimer">
+				<Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
+				<Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
+				<Label id="TeamSelectTimer" text="#custom_game_team_select_timer" />
+				<Panel id="TimerLabelBox" >
+					<Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
+					<Label id="TimerLabelGameStart" text="#custom_game_team_select_starting" />
+				</Panel>
+			</Panel>
+			<Panel class="AutoAssignButtonNew" hittest="true" onactivate="OnAutoAssignPressed()">
+				<Label id="AssignLabel" text="Auto Assign" />
+			</Panel>
+			<Panel class="ShuffleTeamAssignmentButtonNew" hittest="true" onactivate="OnShufflePlayersPressed()">
+				<Label id="AssignLabel" text="Shuffle Teams" />
+			</Panel>
 			<!--Teams List, left hand panel-->
 			<Panel id="TeamsList" >
 				<Panel id="TeamsListGroup" >
@@ -30,10 +44,37 @@
 						<Image id="TeamListLockedIcon" src="file://{images}/control_icons/lock_small.png" />
 					</Panel>
 					<Panel id="TeamsListRoot" />
-					<Button id="ShuffleTeamAssignmentButton" onactivate="OnShufflePlayersPressed()">
-						<Label text="#custom_game_team_select_shuffle" />
-						<Image src="file://{images}/control_icons/shuffle.psd" />
-					</Button>
+				<Panel id="OptionList">
+                    <Panel id="OptionListGroup">
+                        <Label id="OptionTitle" text="#Vote_Options" />
+						<Panel id="OptionDivider" />
+						<Panel id="OptionDivider2" />
+                        <Panel id="Options">
+							<DropDown id="VoteOptionRounds" oninputsubmit="VoteOptionClickedRound()">
+							  <Label text="Rounds to Win: 2 Rounds (Default)" id="2RoundWin"/>
+							  <Label text="Rounds to Win: 1 Round" id="1RoundWin"/>
+							  <Label text="Rounds to Win: 3 Rounds" id="3RoundWin"/>
+							  <Label text="Rounds to Win: 4 Rounds" id="4RoundWin"/>
+							  <Label text="Rounds to Win: 5 Rounds" id="5RoundWin"/>
+							</DropDown>
+							<DropDown id="VoteOptionsTickTİme" oninputsubmit="VoteOptionClickedTickTime()">
+							  <Label text="Income Tick Time: 10 (Default)" id="Tick10"/>
+							  <Label text="Income Tick Time: 5" id="Tick5"/>
+							  <Label text="Income Tick Time: 15" id="Tick15"/>
+							  <Label text="Income Tick Time: 25" id="Tick25"/>
+							  <Label text="Income Tick Time: 50" id="Tick50"/>
+							  <Label text="Income Tick Time: 100" id="Tick100"/>
+							</DropDown>
+							
+							<DropDown id="VoteOptionsDraftMode" oninputsubmit="VoteOptionClickedDraftMode()">
+							  <Label text="Draft Mode: All Pick (Default)" id="AllPick"/>
+							  <Label text="Draft Mode: All Random" id="AllRandom"/>
+							  <Label text="Draft Mode: All Random Same Hero" id="AllRandomSameHero"/>
+							</DropDown>
+						</Panel>
+						 <Label id="Advanced" text="#Advanced" onactivate="OnAdvancedOptionsPressed()"/>
+					</Panel>
+				</Panel>			
 				</Panel>
 			</Panel>
 
@@ -48,19 +89,7 @@
 					</Panel>
 					<Panel id="MapInfo">
 						<Label id="MapInfoLabel" text="#LoadingScreenMapInfo" />
-					</Panel>
-					
-					<!--Countdown timer-->
-					<Panel id="StartGameCountdownTimer">
-						<Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
-						<Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
-						<Label id="TeamSelectTimer" text="#custom_game_team_select_timer" />
-						<Panel id="TimerLabelBox" >
-							<Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
-							<Label id="TimerLabelGameStart" text="#custom_game_team_select_starting" />
-						</Panel>
-					</Panel>
-					
+					</Panel>					
 				</Panel>
 
 				<!--Unassigned players-->
@@ -72,11 +101,6 @@
 						<Panel id="UnassignedPlayersDivider" />
 						<Panel id="UnassignedPlayersContainer" />
 					</Button>		
-				
-					<Button id="AutoAssignButton" onactivate="OnAutoAssignPressed()">
-						<Image src="file://{images}/control_icons/double_arrow_left.png" />
-						<Label text="#custom_game_team_select_auto_assign" />
-					</Button>
 				</Panel>
 				
 				<!--Start and lock button-->

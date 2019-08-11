@@ -70,3 +70,21 @@
     transform: translateX( 0px ) translateY( -200px );
   }
 }
+
+#OptionListAdvanced {
+	width: 400px;
+	height: 230px;
+    flow-children: down;
+    animation-name: TeamsListAppear;
+    animation-duration: 0.75s;
+	background-color: #000000BA;
+	border-radius: 8px;
+}
+
+#OptionListGroupAdvanced {
+	width: 100%;
+    height: 100%;
+    padding: 8px;
+    vertical-align: middle;
+	border-radius: 8px;
+}

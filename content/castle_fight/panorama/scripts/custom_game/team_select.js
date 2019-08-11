@@ -9,6 +9,31 @@ var g_PlayerPanels = [];
 
 var g_TEAM_SPECATOR = 1;
 
+
+
+function OnAdvancedOptionsPressed()
+{
+	Game.EmitSound("ui.profile_close")
+}
+
+function VoteOptionClickedRound()
+{
+	
+}
+
+function VoteOptionClickedTickTime()
+{
+	
+}
+
+function VoteOptionClickedDraftMode()
+{
+	
+}
+
+
+
+
 //--------------------------------------------------------------------------------------------------
 // Handeler for when the unssigned players panel is clicked that causes the player to be reassigned
 // to the unssigned players team
@@ -60,6 +85,7 @@ function OnAutoAssignPressed()
 	// Assign all of the currently unassigned players to a team, trying
 	// to keep any players that are in a party on the same team.
 	Game.AutoAssignPlayersToTeams();
+	Game.EmitSound( "ui_team_select_pick_team" );
 }
 
 
@@ -71,7 +97,8 @@ function OnShufflePlayersPressed()
 	// Shuffle the team assignments of any players which are assigned to a team, 
 	// this will not assign any players to a team which are currently unassigned. 
 	// This will also not attempt to keep players in a party on the same team.
-	Game.ShufflePlayerTeamAssignments();
+	Game.ShufflePlayerTeamAssignments()
+	Game.EmitSound( "ui_team_select_pick_team" );
 }
 
 
