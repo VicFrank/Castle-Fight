@@ -80,11 +80,13 @@
 		<Panel id="CreditsPanel">
 			<Label class="CreditsLabel" text="#Credits" />	
 			<Label class="List CreditsDescription" text="#Credits_Description" />
+			<Label class="List" text="#Credits_VicFrank" />
 			<Label class="List" text="#Credits_Flam3s" onactivate="ExternalBrowserGoToURL('https://steamcommunity.com/id/Flam3sDota/');"/>
 			<Label class="List" text="#Credits_Myll" />
 			<Label class="List" text="#Credits_Noya" />
 			<Label class="List" text="#Credits_GeFire" />
 			<Label class="List" text="#Credits_東風谷早苗" />
+			<Label class="List" text="#Credits_Radar"	onactivate="ExternalBrowserGoToURL('https://battleshipsdota.com/');"/>
 		</Panel>
 		
   </Panel>

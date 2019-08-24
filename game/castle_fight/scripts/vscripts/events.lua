@@ -21,7 +21,6 @@ function GameMode:OnGameInProgress()
     return .3
   end)
 end
-
 function GameMode:OnNPCSpawned(keys)
   local npc = EntIndexToHScript(keys.entindex)
 
@@ -33,7 +32,7 @@ function GameMode:OnNPCSpawned(keys)
   if unitName == "" then return end
 
   Timers:CreateTimer(.1, function()
-    if not npc:IsNull() and not IsCustomBuilding(npc) and not npc.BHDUMMY then
+    if not npc:IsNull() and not IsCustomBuilding(npc) and npc.IsUnderConstruction == nil and not npc.BHDUMMY then
       GameRules.numUnits = GameRules.numUnits + 1
       CustomGameEventManager:Send_ServerToAllClients("num_units_changed",
         {numUnits = GameRules.numUnits})

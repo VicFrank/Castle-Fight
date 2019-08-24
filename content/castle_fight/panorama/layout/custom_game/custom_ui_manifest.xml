@@ -58,6 +58,8 @@
     //RadarAndGlyphContainer
      NoGlyphAndRadar.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
 
+    //Quick Stats
+    HUD.FindChildTraverse("stackable_side_panels").FindChildTraverse("quickstats").style.visibility = "collapse";
     //Tertiary Ability Container (blocks modifiers)
     newUI.FindChildrenWithClassTraverse("TertiaryAbilityContainer")[0].style.visibility = "collapse";
 	

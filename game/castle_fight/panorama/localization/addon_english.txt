@@ -90,6 +90,8 @@
   "Credits_Noya"                 "Noya: Dotacraft"
   "Credits_GeFire"               "GeFire: Russian Translation"
   "Credits_東風谷早苗"            "東風谷早苗: Chinese Translation"
+  "Credits_VicFrank"             "VicFrank: Primary Author"
+  "Credits_Radar"                "radar: Added Vicfrank to credits"
 
   "Tips_1"                       "- You earn income every 10 seconds. You can increase your income by constructing buildings."
   "Tips_2"                       "- You earn lumber by making or upgrading buildings that train units (your hero's abilities). Lumber earned equals the cost."
