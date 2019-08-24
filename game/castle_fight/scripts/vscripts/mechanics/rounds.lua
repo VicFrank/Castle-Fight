@@ -327,10 +327,13 @@ function GameMode:EndRound(losingTeam)
   Timers:RemoveTimer(GameRules.RoundTimer)
   Timers:RemoveTimer(GameRules.PostRoundTimer)
 
+  local pointsToWin = tonumber(CustomNetTables:GetTableValue("settings", "num_rounds")["numRounds"])
+  print(pointsToWin)
+
   GameRules.PostRoundTimer = Timers:CreateTimer(POST_ROUND_TIME, function()
     -- Clear the map
 
-    if GameRules.leftRoundsWon >= POINTS_TO_WIN or GameRules.rightRoundsWon >= POINTS_TO_WIN then
+    if GameRules.leftRoundsWon >= pointsToWin or GameRules.rightRoundsWon >= pointsToWin then
       GameMode:EndGame(winningTeam)
     else
       -- Go into the next round preparation phase

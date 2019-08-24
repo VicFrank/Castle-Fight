@@ -10,7 +10,7 @@ end
 function GameMode:OnGameInProgress()
   local numPlayers = TableCount(GameRules.playerIDs)
 
-  -- Wait for all the heroes to load in
+  --Wait for all the heroes to load in
   Timers:CreateTimer(function()
     if TableCount(HeroList:GetAllHeroes()) >= numPlayers then
       GameMode:StartHeroSelection()
@@ -49,7 +49,7 @@ function GameMode:OnNPCSpawned(keys)
     local ability = npc:GetAbilityByIndex(i)
     if ability then
       local level = math.min(ability:GetMaxLevel(), npc:GetLevel())
-      ability:SetLevel(level) 
+      ability:SetLevel(level)
     end
   end
 
@@ -81,7 +81,7 @@ function GameMode:OnHeroInGame(hero)
   -- Add bots to the playerids list
   local playerID = hero:GetPlayerOwnerID()
   if not TableContainsValue(GameRules.playerIDs, playerID) then
-    print("Didn't find playerID, ", playerID, " inserting")    
+    print("Didn't find playerID, ", playerID, " inserting")
     table.insert(GameRules.playerIDs, playerID)
   end
 
@@ -137,18 +137,22 @@ function GameMode:OnHeroInGame(hero)
     local spawnPosition = GetRandomTableElement(spawnPositions):GetAbsOrigin()
     hero:SetAbsOrigin(spawnPosition)
 
+    -- Only precache if the game has actually started
+    -- This is so we don't needlessly precache the heroes the bots random
+    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
     -- Precache this race
-    if not GameRules.precached[unitName] and g_Precache_Tables[unitName] then
-      for _,unit in ipairs(g_Precache_Tables[unitName]) do
-        GameRules.numToCache = GameRules.numToCache + 1
+      if not GameRules.precached[unitName] and g_Precache_Tables[unitName] then
+        for _,unit in ipairs(g_Precache_Tables[unitName]) do
+          GameRules.numToCache = GameRules.numToCache + 1
 
-        PrecacheUnitByNameAsync(unit, function(unit)
-          GameRules.numToCache = GameRules.numToCache - 1
-          print(GameRules.numToCache)
-         end)
+          PrecacheUnitByNameAsync(unit, function(unit)
+            GameRules.numToCache = GameRules.numToCache - 1
+            print(GameRules.numToCache)
+           end)
+        end
+
+        GameRules.precached[unitName] = true
       end
-
-      GameRules.precached[unitName] = true
     end
   end) 
 end
@@ -186,7 +190,7 @@ function GameMode:OnEntityKilled(keys)
       local player = PlayerResource:GetPlayer(killerPlayerID)
 
       -- Don't show the message if it's going to show it anyway
-      if not (killer:GetPlayerOwnerID() and killer:GetPlayerOwnerID() >= 0) then
+      if not (killer:GetPlayerOwnerID() and killer:GetPlayerOwnerID() >= 0) and player then
         SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, killed, bounty, player)
       end
       -- PlayerResource:ModifyGold(killerPlayerID, bounty, false, DOTA_ModifyGold_CreepKill)
@@ -234,7 +238,19 @@ function GameMode:OnConnectFull(keys)
   -- SetCheese(playerID, 0)
   -- SetCustomGold(playerID, 0)
 
-  table.insert(GameRules.playerIDs, playerID)
+  if not TableContainsValue(GameRules.playerIDs, playerID) then
+    table.insert(GameRules.playerIDs, playerID)
+    -- initialize settings vote values
+    CustomNetTables:SetTableValue("settings", "num_rounds_vote", {
+      playerID = 2,
+    })
+    CustomNetTables:SetTableValue("settings", "allow_bots_vote", {
+      playerID = false,
+    })
+    CustomNetTables:SetTableValue("settings", "num_rounds", {
+      numRounds = 2,
+    })
+  end
 end
 
 function GameMode:OnPlayerReconnect(keys)

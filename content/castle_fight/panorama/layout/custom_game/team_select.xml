@@ -1,118 +1,112 @@
 <root>
-	<styles>
-		<include src="file://{resources}/styles/dotastyles.css" />
-		<include src="file://{resources}/styles/battle_pass/current_battle_pass.css" />	
-		<include src="file://{resources}/styles/play.css" />
-		<include src="file://{resources}/styles/custom_game/team_select.css" />
-	</styles>
-	<scripts>
-		<include src="file://{resources}/scripts/custom_game/team_select.js" />
-	</scripts>
-	<Panel hittest="false" class="TeamSelect">
-		<Panel hittest="false" id="TeamSelectContainer" selectionpos="auto">`
-			<!--Empty space to let the loading screen and chat be visible-->
-			<Panel hittest="false" id="TeamsSelectEmptySpace" />
+  <styles>
+    <include src="file://{resources}/styles/dotastyles.css" />
+    <include src="file://{resources}/styles/battle_pass/current_battle_pass.css" /> 
+    <include src="file://{resources}/styles/play.css" />
+    <include src="file://{resources}/styles/custom_game/team_select.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/team_select.js" />
+  </scripts>
+  <Panel hittest="false" class="TeamSelect">
+    <Panel hittest="false" id="TeamSelectContainer" selectionpos="auto">`
+      <!--Empty space to let the loading screen and chat be visible-->
+      <Panel hittest="false" id="TeamsSelectEmptySpace" />
 
-			<!--Settings List, left hand panel-->
-			<!-- <Panel id="SettingsList" >
-				<Panel id="SettingsListGroup" >
-					<Button id="EnableBotsButton" class="ButtonBevel" onactivate="EnableBotsButtonPressed()">
-						<Label text="#enable_bots" />
-					</Button>
-				</Panel>
-			</Panel> -->
-			<Panel id="StartGameCountdownTimer">
-				<Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
-				<Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
-				<Label id="TeamSelectTimer" text="#custom_game_team_select_timer" />
-				<Panel id="TimerLabelBox" >
-					<Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
-					<Label id="TimerLabelGameStart" text="#custom_game_team_select_starting" />
-				</Panel>
-			</Panel>
-			<Panel class="AutoAssignButtonNew" hittest="true" onactivate="OnAutoAssignPressed()">
-				<Label id="AssignLabel" text="Auto Assign" />
-			</Panel>
-			<Panel class="ShuffleTeamAssignmentButtonNew" hittest="true" onactivate="OnShufflePlayersPressed()">
-				<Label id="AssignLabel" text="Shuffle Teams" />
-			</Panel>
-			<!--Teams List, left hand panel-->
-			<Panel id="TeamsList" >
-				<Panel id="TeamsListGroup" >
-					<Panel id="TeamListHeader">
-						<Label id="TeamListHeaderLabel" text="#custom_game_team_select" />
-						<Image id="TeamListLockedIcon" src="file://{images}/control_icons/lock_small.png" />
-					</Panel>
-					<Panel id="TeamsListRoot" />
-				<Panel id="OptionList">
-                    <Panel id="OptionListGroup">
-                        <Label id="OptionTitle" text="#Vote_Options" />
-						<Panel id="OptionDivider" />
-						<Panel id="OptionDivider2" />
-                        <Panel id="Options">
-							<DropDown id="VoteOptionRounds" oninputsubmit="VoteOptionClickedRound()">
-							  <Label text="Rounds to Win: 2 Rounds (Default)" id="2RoundWin"/>
-							  <Label text="Rounds to Win: 1 Round" id="1RoundWin"/>
-							  <Label text="Rounds to Win: 3 Rounds" id="3RoundWin"/>
-							  <Label text="Rounds to Win: 4 Rounds" id="4RoundWin"/>
-							  <Label text="Rounds to Win: 5 Rounds" id="5RoundWin"/>
-							</DropDown>
-							<DropDown id="VoteOptionsTickTİme" oninputsubmit="VoteOptionClickedTickTime()">
-							  <Label text="Income Tick Time: 10 (Default)" id="Tick10"/>
-							  <Label text="Income Tick Time: 5" id="Tick5"/>
-							  <Label text="Income Tick Time: 15" id="Tick15"/>
-							  <Label text="Income Tick Time: 25" id="Tick25"/>
-							  <Label text="Income Tick Time: 50" id="Tick50"/>
-							  <Label text="Income Tick Time: 100" id="Tick100"/>
-							</DropDown>
-							
-							<DropDown id="VoteOptionsDraftMode" oninputsubmit="VoteOptionClickedDraftMode()">
-							  <Label text="Draft Mode: All Pick (Default)" id="AllPick"/>
-							  <Label text="Draft Mode: All Random" id="AllRandom"/>
-							  <Label text="Draft Mode: All Random Same Hero" id="AllRandomSameHero"/>
-							</DropDown>
-						</Panel>
-						 <Label id="Advanced" text="#Advanced" onactivate="OnAdvancedOptionsPressed()"/>
-					</Panel>
-				</Panel>			
-				</Panel>
-			</Panel>
+      <!--Settings List, left hand panel-->
+      <Panel id="StartGameCountdownTimer">
+        <Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
+        <Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
+        <Label id="TeamSelectTimer" text="#custom_game_team_select_timer" />
+        <Panel id="TimerLabelBox" >
+          <Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
+          <Label id="TimerLabelGameStart" text="#custom_game_team_select_starting" />
+        </Panel>
+      </Panel>
+      <Panel class="AutoAssignButtonNew" hittest="true" onactivate="OnAutoAssignPressed()">
+        <Label id="AssignLabel" text="Auto Assign" />
+      </Panel>
+      <Panel class="ShuffleTeamAssignmentButtonNew" hittest="true" onactivate="OnShufflePlayersPressed()">
+        <Label id="AssignLabel" text="Shuffle Teams" />
+      </Panel>
+      <!--Teams List, left hand panel-->
+      <Panel id="TeamsList" >
+        <Panel id="TeamsListGroup" >
+          <Panel id="TeamListHeader">
+            <Label id="TeamListHeaderLabel" text="#custom_game_team_select" />
+            <Image id="TeamListLockedIcon" src="file://{images}/control_icons/lock_small.png" />
+          </Panel>
+          <Panel id="TeamsListRoot" />
+          <Panel id="OptionList">
+            <Panel id="OptionListGroup">
+              <Label id="OptionTitle" text="#Vote_Options" />
+              <Panel id="OptionDivider" />
+              <Panel id="Options">
+                <Panel class="OptionsContainer">
+                  <Label text="#Rounds_to_win"/>
+                  <DropDown id="NumRoundsDropdown" oninputsubmit="VoteOptionClickedRound()">
+                    <Label text="1 Round" id="1"/>
+                    <Label text="2 Rounds" id="2"/>
+                    <Label text="3 Rounds" id="3"/>
+                  </DropDown>
+                </Panel>
+                <Panel class="OptionsContainer">
+                  <Label text="#Enable_bots"/>
+                  <DropDown id="EnableBotsDropdown" oninputsubmit="VoteOptionClickedBots()">
+                    <Label text="No" id="2"/>
+                    <Label text="Yes" id="1"/>
+                  </DropDown>   
+                </Panel>
+                <!-- <Panel id="DraftModeVote" class="OptionsContainer">
+                  <Label text="Draft Mode"/>
+                  <DropDown oninputsubmit="VoteOptionClickedDraftMode()">
+                    <Label text="All Pick" id="1"/>
+                    <Label text="All Random" id="2"/>
+                  </DropDown>
+                </Panel> -->
+              </Panel>
+              <Panel id="OptionDivider" />
+              <Label id="Advanced" text="#Advanced" onactivate="OnAdvancedOptionsPressed()"/>
+            </Panel>
+          </Panel>      
+        </Panel>
+      </Panel>
 
-			<!--Game Info and Unassigned players, right hand panel-->
-			<Panel id="GameAndPlayersRoot">
-				
-				<Panel id="GameInfoPanel" >
-					
-					<!--Game mode and map-->
-					<Panel id="CustomGameModeName">
-						<Label id="GameModeNameLabel" text="#addon_game_name" />
-					</Panel>
-					<Panel id="MapInfo">
-						<Label id="MapInfoLabel" text="#LoadingScreenMapInfo" />
-					</Panel>					
-				</Panel>
+      <!--Game Info and Unassigned players, right hand panel-->
+      <Panel id="GameAndPlayersRoot">
+        
+        <Panel id="GameInfoPanel" >
+          
+          <!--Game mode and map-->
+          <Panel id="CustomGameModeName">
+            <Label id="GameModeNameLabel" text="#addon_game_name" />
+          </Panel>
+          <Panel id="MapInfo">
+            <Label id="MapInfoLabel" text="#LoadingScreenMapInfo" />
+          </Panel>          
+        </Panel>
 
-				<!--Unassigned players-->
-				<Panel id="UnassignedPlayerPanel" >
-					<Button id="UnassignedPlayersButton" onactivate="OnLeaveTeamPressed()">
-						<Panel id="UnassignedPlayersHeader">
-							<Label text="#custom_game_team_select_unassigned_players" />
-						</Panel>
-						<Panel id="UnassignedPlayersDivider" />
-						<Panel id="UnassignedPlayersContainer" />
-					</Button>		
-				</Panel>
-				
-				<!--Start and lock button-->
-				<Button id="LockAndStartButton" class="PlayButton" onactivate="OnLockAndStartPressed()">
-					<Label text="#custom_game_team_select_lock_start" />
-				</Button>
-				<Button id="CancelAndUnlockButton" class="PlayButton" onactivate="OnCancelAndUnlockPressed()">
-					<Label text="#custom_game_team_select_cancel_unlock" />
-				</Button>
-				
-			</Panel>
-		</Panel>
-	</Panel>
+        <!--Unassigned players-->
+        <Panel id="UnassignedPlayerPanel" >
+          <Button id="UnassignedPlayersButton" onactivate="OnLeaveTeamPressed()">
+            <Panel id="UnassignedPlayersHeader">
+              <Label text="#custom_game_team_select_unassigned_players" />
+            </Panel>
+            <Panel id="UnassignedPlayersDivider" />
+            <Panel id="UnassignedPlayersContainer" />
+          </Button>   
+        </Panel>
+        
+        <!--Start and lock button-->
+        <Button id="LockAndStartButton" class="PlayButton" onactivate="OnLockAndStartPressed()">
+          <Label text="#custom_game_team_select_lock_start" />
+        </Button>
+        <Button id="CancelAndUnlockButton" class="PlayButton" onactivate="OnCancelAndUnlockPressed()">
+          <Label text="#custom_game_team_select_cancel_unlock" />
+        </Button>
+        
+      </Panel>
+    </Panel>
+  </Panel>
 </root>
 

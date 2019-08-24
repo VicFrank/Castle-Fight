@@ -66,24 +66,15 @@
 	border-radius: 8px;
 }
 
-#OptionDivider 
+.OptionDivider 
 {	
-    width: 100%;
-	height: 2px;
-    margin-left: 8px;
-    margin-right: 8px;
-	margin-top: 0px;
-	background-color: gray;
-}
-
-#OptionDivider2
-{	
-    width: 100%;
-	height: 2px;
-    margin-left: 8px;
-    margin-right: 8px;
-	margin-top: 204px;
-	background-color: gray;
+  width: 80%;
+  height: 2px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 0px;
+  background-color: gray;
+  horizontal-align: center;
 }
 
 #Options {
@@ -95,6 +86,44 @@
 	margin-left: 5px;
 }
 
+#SettingsPanel {
+  width: 500px;
+  height: 670px;
+  background-color: #000000BA;
+  margin-left: 55px;
+  margin-top: 100px;
+  border-style: solid;
+    border-width: 1px;
+    border-color: #444444;
+  border-radius: 7px;
+  flow-children: down;
+}
+
+.SettingsRow {
+  flow-children: right;
+  width: 80%;
+  horizontal-align: center;
+
+  margin: 4px 0 4px 0;
+  background-color: #141616;
+
+}
+
+.SettingsRow Label {
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: #AABBBB;
+
+  padding: 3px;
+}
+
+.SettingsRowLeft {
+  horizontal-align: left;
+}
+
+.SettingsRowRight {
+  horizontal-align: right;
+}
 
 #InfoPanel {
 	width: 500px;
@@ -106,6 +135,8 @@
     border-width: 1px;
     border-color: #444444;
 	border-radius: 7px;
+  visibility: collapse;
+	flow-children: down;
 }
 
 #TipsPanel {
@@ -119,6 +150,7 @@
     border-color: #444444;
 	border-radius: 7px;
 	visibility: collapse;
+	flow-children: down;
 }
 
 #CreditsPanel {
@@ -132,6 +164,7 @@
     border-color: #444444;
 	border-radius: 7px;
 	visibility: collapse;
+	flow-children: down;
 }
 
 
@@ -163,6 +196,7 @@
 {
 	margin-top: 15px;
 	margin-left: 15px;
+	margin-bottom: 10px;
 	horizontal-align: center;
 	font-size: 55px;
 	color: orangered;
@@ -171,10 +205,9 @@
 	text-transform: uppercase;
 }
 
-.Tips1
+.Tips
 {
 	padding-bottom: 15px;
-	margin-top: 85px;
 	margin-left: 15px;
 	text-align: left;
 	font-size: 20px;
@@ -182,102 +215,19 @@
 	text-shadow: 2px 2px 2px #000000;
 	horizontal-align: left;
 }
-
-.Tips2
-{
-	padding-bottom: 5px;
-	margin-top: 155px;
-	margin-left: 15px;
-	text-align: left;
-	horizontal-align: left;
-	font-size: 20px;
-	color: white;
-	text-shadow: 2px 2px 2px #000000;
-}
-
-.Tips3
-{
-	padding-bottom: 5px;
-	margin-top: 225px;
-	margin-left: 15px;
-	text-align: left;
-	horizontal-align: left;
-	font-size: 20px;
-	color: white;
-	text-shadow: 2px 2px 2px #000000;
-}
-
-
-
 
 .List
 {
-	padding-bottom: 5px;
-	margin-top: 85px;
+	padding-bottom: 5px;	
 	padding-left: 5px;
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 	color: white;
 	text-shadow: 2px 2px 2px #000000;
 	horizontal-align: center;
+	width: 80%;
 }
 
-.List2
-{
-	padding-bottom: 5px;
-	margin-top: 155px;
-	padding-left: 5px;
-	text-align: center;
-	horizontal-align: center;
-	font-size: 20px;
-	color: white;
-	text-shadow: 2px 2px 2px #000000;
-}
-
-.List3
-{
-	padding-bottom: 5px;
-	margin-top: 225px;
-	padding-left: 5px;
-	text-align: center;
-	horizontal-align: center;
-	font-size: 20px;
-	color: white;
-	text-shadow: 2px 2px 2px #000000;
-}
-
-.List4
-{
-	padding-bottom: 5px;
-	margin-top: 295px;
-	padding-left: 5px;
-	text-align: center;
-	horizontal-align: center;
-	font-size: 20px;
-	color: white;
-	text-shadow: 2px 2px 2px #000000;
-}
-
-.List5
-{
-	padding-bottom: 5px;
-	margin-top: 365px;
-	padding-left: 5px;
-	text-align: center;
-	horizontal-align: center;
-	font-size: 20px;
-	color: white;
-	text-shadow: 2px 2px 2px #000000;
-}
-
-.List6
-{
-	padding-bottom: 5px;
-	margin-top: 435px;
-	padding-left: 5px;
-	text-align: center;
-	horizontal-align: center;
-	font-size: 20px;
-	color: white;
-	text-shadow: 2px 2px 2px #000000;
+.CreditsDescription {
+	margin-bottom: 20px;
 }

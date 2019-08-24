@@ -31,6 +31,10 @@ function modifier_goblin_shredder_inducted_rage:OnBuildingTarget()
     self:SetStackCount(self.max_stacks)
   end
 
+  -- Also set the stack count for detonate
+  local detonateModifier = self:GetParent():FindModifierByName("modifier_goblin_shredder_detonate")
+  detonateModifier:SetStackCount(self:GetStackCount())
+
   if RollPercentage(self.block_chance) then
     return true
   end

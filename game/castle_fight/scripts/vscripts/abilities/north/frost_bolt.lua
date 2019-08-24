@@ -100,7 +100,7 @@ function greater_frost_bolt:OnSpellStart()
   ProjectileManager:CreateTrackingProjectile(projectile)
 end
 
-function greater_frost_bolt:OnProjectileHit(target, locationn)
+function greater_frost_bolt:OnProjectileHit(target, location)
   local caster = self:GetCaster()
   local duration = self:GetSpecialValueFor("duration")
 
@@ -110,7 +110,10 @@ function greater_frost_bolt:OnProjectileHit(target, locationn)
     local damage = self:GetSpecialValueFor("damage")
     local radius = self:GetSpecialValueFor("radius")
 
-    local enemies = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
+    local team = caster:GetTeamNumber()
+    local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+    local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
+    local enemies = FindUnitsInRadius(team, location, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_ANY_ORDER, false)
 
     for _,enemy in pairs(enemies) do
       enemy:AddNewModifier(caster, self, "modifier_frost_bolt_freeze", {duration = duration})

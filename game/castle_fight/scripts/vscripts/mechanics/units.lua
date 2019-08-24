@@ -173,7 +173,7 @@ function FindAlliesInRadius( unit, radius, point )
   local position = point or unit:GetAbsOrigin()
   local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
   local flags = DOTA_UNIT_TARGET_FLAG_NONE
-  return FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, flags, FIND_CLOSEST, false)
+  return FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, flags, FIND_ANY_ORDER, false)
 end
 
 -- Filters buildings and mechanical units
@@ -342,6 +342,7 @@ end
 function CDOTA_BaseNPC_Creature:IncreaseMaxHealth(bonus)
   local newHP = self:GetMaxHealth() + bonus
   local relativeHP = self:GetHealthPercent() * 0.01
+  if relativeHP == 0 then return end
   self:SetMaxHealth(newHP)
   self:SetBaseMaxHealth(newHP)
   self:SetHealth(newHP * relativeHP)

@@ -24,17 +24,18 @@ function modifier_goblin_shredder_detonate:OnCreated()
   self:SetStackCount(1)
 end
 
-function goblin_shredder_detonate:OnBuildingTarget()
-  if not IsServer() then return end
+-- Currently this is set in inducted rage so it will work even when the ability is blocked
+-- function modifier_goblin_shredder_detonate:OnBuildingTarget()
+--   if not IsServer() then return end
 
-  self:IncrementStackCount()
+--   self:IncrementStackCount()
 
-  if self:GetStackCount() > self.max_stacks then
-    self:SetStackCount(self.max_stacks)
-  end
+--   if self:GetStackCount() > self.max_stacks then
+--     self:SetStackCount(self.max_stacks)
+--   end
 
-  return false
-end
+--   return false
+-- end
 
 function modifier_goblin_shredder_detonate:OnDeath(keys)
   if not IsServer() then return nil end

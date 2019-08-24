@@ -68,6 +68,7 @@ function modifier_power_buildings_aura_buff:GetTexture()
 end
 
 function modifier_power_buildings_aura_buff:OnCreated()
+  if not self:GetAbility() then return end
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
   self.tower_damage = self:GetAbility():GetSpecialValueFor("tower_damage")
   self.mana_regen = self:GetAbility():GetSpecialValueFor("mana_regen")

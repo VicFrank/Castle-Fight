@@ -9,6 +9,6 @@
 	<Panel class="TeamSelectEmptySlot">
 		<Panel id="EmptySlotIcon" />
 		<Label id="PlayerName" text="#custom_game_team_select_empty_slot" />
-    <!-- <Button id="AddBotButton" onactivate="OnAddBotPressed()" />  -->
+    <Button id="AddBotButton" onactivate="OnAddBotPressed()" /> 
 	</Panel>
 </root>

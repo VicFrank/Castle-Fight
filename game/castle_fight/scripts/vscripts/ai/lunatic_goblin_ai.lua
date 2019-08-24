@@ -12,36 +12,6 @@ function Spawn(keys)
       goal = GameRules.leftCastlePosition - Vector(300,128,0)
     end
 
-    local canHitFlying = true
-    local canHitGround = true
-
-    -- melee units can't hit flying
-    if thisEntity:GetAttackCapability() == 1 then
-      canHitFlying = false
-    end
-
-    local attacksDisallowed = thisEntity:GetKeyValue("AttacksDisallowed")
-    if attacksDisallowed then
-      if attacksDisallowed == "ground" then
-        canHitGround = false
-      elseif attacksDisallowed == "flying" then
-        canHitFlying = false
-      else
-        print("Bad KV AttacksDisallowed = " .. attacksDisallowed .. " for " .. thisEntity:GetUnitName())
-      end
-    end
-
-    local attacksAllowed = thisEntity:GetKeyValue("AttacksAllowed")
-    if attacksAllowed then
-      if attacksAllowed == "ground" then
-        canHitGround = true
-      elseif attacksAllowed == "flying" then
-        canHitFlying = true
-      else
-        print("Bad KV AttacksAllowed = " .. attacksAllowed .. " for " .. thisEntity:GetUnitName())
-      end
-    end
-
     local attackRange = thisEntity:GetKeyValue("AttackRange") or 0
     if attackRange == 0 then print(thisEntity:GetUnitName() .. " has no attack range") end
     local acquisitionRange = math.max(900, attackRange)
@@ -51,8 +21,8 @@ function Spawn(keys)
       targetAcquisitionRange = acquisitionRange,
       stopPursuitRange = 1600,
       goal = goal,
-      canHitFlying = canHitFlying,
-      canHitGround = canHitGround,
+      canHitFlying = false,
+      canHitGround = true,
     }
 
     -- Get all of the unit's abilities

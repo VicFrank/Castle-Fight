@@ -7,7 +7,6 @@ end
 
 function BotAI:Init(hero)
   Timers:CreateTimer(1, function()
-
     hero.abilityList = {}
     for i=0,15 do
       local ability = hero:GetAbilityByIndex(i)
@@ -17,8 +16,12 @@ function BotAI:Init(hero)
     end
     for i=0,15 do
       local item = hero:GetItemInSlot(i)
-      if item and not item:GetAbilityName() == "item_rescue_strike" then
-        table.insert(hero.abilityList, item)
+      if item then
+        if item:GetAbilityName() == "item_rescue_strike" then
+          hero.rescueStrikeAbility = item
+        else
+          table.insert(hero.abilityList, item)
+        end
       end
     end
 
@@ -37,7 +40,9 @@ function BotAI:Init(hero)
     else
       hero.sideToBuild = "NORTH"
     end
+  end)
 
+  Timers:CreateTimer(1, function()
     return BotAI:OnThink(hero)
   end)
 end
@@ -52,6 +57,9 @@ function BotAI:OnThink(hero)
   end
 
   if BotAI:WaitingToBuild(hero) then
+    -- if BotAI:WantsToRescueStrike(hero) then
+    --   BotAI:PrepareRescueStrike(hero)
+    -- end
     return BotAI:RepairBuildings(hero)
   end
 
@@ -304,4 +312,10 @@ function BotAI:PlaceBuilding(hero, ability, position)
 
   print("Place Building ", position)
   BuildingHelper:OrderBuildingConstruction(hero, ability, position)
+end
+
+function BotAI:UseRescueStrike(hero, position)
+  local ability = hero.rescueStrikeAbility
+
+  hero:CastAbilityOnPosition(position, ability, -1)
 end

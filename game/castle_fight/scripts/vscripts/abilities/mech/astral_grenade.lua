@@ -54,6 +54,7 @@ end
 modifier_astral_grenade = class({})
 
 function modifier_astral_grenade:OnCreated()
+  if not self:GetAbility() then return end
   self.move_slow = self:GetAbility():GetSpecialValueFor("move_slow")
 end
 function modifier_astral_grenade:DeclareFunctions()

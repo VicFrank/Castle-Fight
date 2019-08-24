@@ -95,39 +95,72 @@ function thisEntity:GoInvisible()
   return false
 end
 
-function thisEntity:FindAndAttackMage()
+function thisEntity:GetInvisTargetPriority(enemy)
+  -- units with mana and light armor
+  if enemy:GetMana() > 0 and enemy:HasModifier("modifier_armor_light") then
+    return 0
+  end
+  -- units with mana unarmored
+  if enemy:GetMana() > 0 and enemy:HasModifier("modifier_armor_unarmored") then
+    return 1
+  end
+  -- units with less than some hp amount (350)
+  if enemy:GetHealth() < 350 then
+    return 2
+  end
+  -- units with mana another armor type
+  if enemy:GetMana() > 0 then
+    return 3
+  end
+  -- units with light armor
+  if enemy:HasModifier("modifier_armor_light") then
+    return 4
+  end
+  -- units unarmored
+  if enemy:HasModifier("modifier_armor_unarmored") then
+    return 5
+  end
+  -- units with other armor type and lot of hp
+  return 6
+end
+
+function thisEntity:FindTarget()
   local enemies = FindEnemiesInRadius(self, FIND_UNITS_EVERYWHERE)
 
-  -- Find a ranged unit with mana to attack
+  -- filter out buildings
+  local notBuildings = {}
   for _,enemy in ipairs(enemies) do
-    if enemy:GetMana() > 0 and not enemy:HasFlyMovementCapability()
-     and not IsCustomBuilding(enemy) and enemy:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
-      self.aiState.aggroTarget = enemy
-      AttackTarget(self)
-      return 0.3
+    if not IsCustomBuilding(enemy) and not enemy:HasFlyMovementCapability() then
+      table.insert(notBuildings, enemy)
+    end
+  end
+  enemies = notBuildings
+
+  local target
+  local currentTargetPriority = 999
+
+  for _,enemy in ipairs(enemies) do
+    local priority = self:GetInvisTargetPriority(enemy)
+    if priority == 0 then
+      return enemy
+    end
+    if priority < currentTargetPriority then
+      target = enemy
+      currentTargetPriority = priority
     end
   end
 
-  -- Failing that, just find a ranged unit to attack
-  for _,enemy in ipairs(enemies) do
-    if not enemy:HasFlyMovementCapability() and not IsCustomBuilding(enemy)
-     and enemy:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
-      self.aiState.aggroTarget = enemy
-      AttackTarget(self)
-      return 0.3
-    end
+  return target
+end
+
+function thisEntity:FindAndAttackMage()
+  local target = self:FindTarget()
+
+  if target then
+    self.aiState.aggroTarget = target
+    AttackTarget(self)
+    return 0.3
   end
 
-  -- Ok, none of those either... I guess we can settle for a unit with mana
-  for _,enemy in ipairs(enemies) do
-    if not enemy:HasFlyMovementCapability() and not IsCustomBuilding(enemy)
-     and enemy:GetMana() > 0 then
-      self.aiState.aggroTarget = enemy
-      AttackTarget(self)
-      return 0.3
-    end
-  end
-
-  -- They're all melee units with no mana? Let's just chill until something shows up
-  return 0.3
+  return 0.5
 end

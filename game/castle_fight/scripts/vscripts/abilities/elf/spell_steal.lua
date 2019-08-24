@@ -15,7 +15,7 @@ function blademaster_spell_steal:OnSpellStart()
   for _,buff in pairs(modifiers) do
     -- if it's an ally, get a debuff
     -- only works on lua modifiers
-    if buff.IsDebuff then
+    if buff.IsDebuff and buff.IsPurgable then
       if targetIsFriendly then
         if buff:IsDebuff() and buff:IsPurgable() then
           modifier = buff
@@ -33,14 +33,17 @@ function blademaster_spell_steal:OnSpellStart()
   local unitToBuff
 
   local radius = ability:GetSpecialValueFor("radius")
+  local buildingFilter = function(unit) return not IsCustomBuilding(unit) end
 
   if targetIsFriendly then
     -- give the debuff to an enemy
     local enemies = FindEnemiesInRadius(caster, radius)
+    enemies = FilterTable(enemies, buildingFilter)
     unitToBuff = GetRandomTableElement(enemies)
   else
     -- give the buff to an ally
     local allies = FindAlliesInRadius(caster, radius)
+    allies = FilterTable(allies, buildingFilter)
     unitToBuff = GetRandomTableElement(allies)
   end
 

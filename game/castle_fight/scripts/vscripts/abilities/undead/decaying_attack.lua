@@ -42,7 +42,7 @@ function modifier_decaying_attack:OnAttackLanded(keys)
   local target = keys.target
 
   if attacker == self.caster and not IsCustomBuilding(target) then
-    if self.soul_steal_chance >= RandomInt(1,100) then
+    if self.soul_steal_chance >= RandomInt(1,100) and not target:IsLegendary() then
       -- Instantly kill the target, gain 50% of its health
       local healAmount = target:GetHealth() * self.soul_steal_absorb * 0.01
       target:Kill(self.ability, self.parent)

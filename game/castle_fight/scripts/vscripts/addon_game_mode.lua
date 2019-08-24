@@ -165,6 +165,9 @@ function GameMode:InitGameMode()
   CustomGameEventManager:RegisterListener('attempt_purchase', OnAttemptPurchase)
   CustomGameEventManager:RegisterListener('add_ai', OnAddAI)
   CustomGameEventManager:RegisterListener('draw_vote', OnVoteDraw)
+  CustomGameEventManager:RegisterListener('num_rounds_vote', OnNumRoundsVote)
+  CustomGameEventManager:RegisterListener('bots_vote', OnAllowBotsVote)
+  CustomGameEventManager:RegisterListener('draft_mode_vote', OnDraftModeVote)
 
   -- Filters
   mode:SetDamageFilter(Dynamic_Wrap(GameMode, "FilterDamage"), self)
@@ -205,7 +208,9 @@ function GameMode:InitGameMode()
   GameRules.lumber = {}
   GameRules.gold = {}
   GameRules.cheese = {}
+
   GameRules.drawVotes = {}
+  GameRules.numRoundsVotes = {}
 
   GameRules.HeroSelectionTimer = ""
   GameRules.LoadingTimer = ""
@@ -221,6 +226,10 @@ function GameMode:InitGameMode()
   SetUpCustomItemCosts()
   SetupCustomAblityCosts()
   CheckHeroPositions()
+
+  CustomNetTables:SetTableValue("settings", "num_rounds", {
+    num_rounds = 2
+  })
 end
 
 function SetUpCustomItemCosts()

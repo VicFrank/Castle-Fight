@@ -7,7 +7,7 @@
     <include src="file://{resources}/scripts/custom_game/round_stats.js" />     
   </scripts>
   <Panel class="RoundScoresRoot" hittest="false">
-    <Panel id="RoundScoresContainer" onmouseover="UIShowTextTooltip(Need to win 2 rounds to win)" onmouseout="UIHideTextTooltip()">
+    <Panel id="RoundScoresContainer">
       <Label id="GoodGuysScore" class="TeamScore" text="0" />
       <Label id="BadGuysScore" class="TeamScore" text="0" />
     </Panel>
@@ -24,7 +24,10 @@
       <Label id="RoundWinner" text="" class="" />
       <Panel id="PostRoundScoreboard" hittest="false">
         <Panel hittest="false" class="HeaderRow">
-          <Label id="WestScore" class="WestColor TeamScoreScoreboard" text="3" />
+          <Panel class="ScoreHolder">
+            <Label id="WestScore" class="BigScore WestColor" text="1" />
+            <Label id="NumRoundsWest" class="SmallScore WestColor" text="/2" />
+          </Panel>
           <Label id="WesternForcesHeader" class="TeamNameLabel WestColor" text="#western_forces" />
           <Label class="ScoreboardHeader" text="#income" />
           <Label class="ScoreboardHeader" text="#units_trained" />
@@ -83,7 +86,10 @@
         </Panel>
 
         <Panel hittest="false" class="HeaderRow">
-          <Label id="EastScore" class="TeamScoreScoreboard EastColor" text="2" />
+          <Panel class="ScoreHolder">
+            <Label id="EastScore" class="BigScore EastColor" text="0" />
+            <Label id="NumRoundsEast" class="SmallScore EastColor" text="/2" />
+          </Panel>
           <Label id="EasternForcesHeader" class="TeamNameLabel EastColor" text="#eastern_forces" />
           <Label class="ScoreboardHeader" text="income" />
           <Label class="ScoreboardHeader" text="units_trained" />

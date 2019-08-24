@@ -100,7 +100,7 @@ function HasModifierToSteal(caster, unit)
   local modifier
   for _,buff in pairs(modifiers) do
     -- if it's an ally, get a debuff
-    if buff.IsDebuff then
+    if buff.IsDebuff and buff.IsPurgable then
       if targetIsFriendly then
         if buff:IsDebuff() and buff:IsPurgable() then
           modifier = buff

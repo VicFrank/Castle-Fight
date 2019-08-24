@@ -18,17 +18,24 @@ function OnAdvancedOptionsPressed()
 
 function VoteOptionClickedRound()
 {
-	
+	var panel = $("#NumRoundsDropdown");
+	var id = panel.GetSelected().id;
+	GameEvents.SendCustomGameEventToServer("num_rounds_vote", {numRounds: id});
 }
 
-function VoteOptionClickedTickTime()
+function VoteOptionClickedBots()
 {
-	
+	var panel = $("#EnableBotsDropdown");
+	var id = panel.GetSelected().id;
+	var allowBots = id == 1;
+	GameEvents.SendCustomGameEventToServer("bots_vote", {allowBots: allowBots});
 }
 
 function VoteOptionClickedDraftMode()
 {
-	
+	var panel = $("#DraftModeVote");
+	var id = panel.GetSelected().id;
+	GameEvents.SendCustomGameEventToServer("draft_mode_vote", {id: id});
 }
 
 
@@ -281,7 +288,6 @@ function CheckForHostPrivileges()
 	$.GetContextPanel().SetHasClass( "player_has_host_privileges", playerInfo.player_has_host_privileges );
 }
 
-
 //--------------------------------------------------------------------------------------------------
 // Update the state for the transition timer periodically
 //--------------------------------------------------------------------------------------------------
@@ -318,12 +324,19 @@ function UpdateTimer()
 	$.Schedule( 0.1, UpdateTimer );
 }
 
+function OnSettingsChanged() {
+	var botsEnabled = CustomNetTables.GetTableValue("settings", "bots_enabled")["botsEnabled"];
+	$.GetContextPanel().SetHasClass("bots_not_enabled", botsEnabled == 0);
+}
 
 //--------------------------------------------------------------------------------------------------
 // Entry point called when the team select panel is created
 //--------------------------------------------------------------------------------------------------
 (function()
 {
+	$.GetContextPanel().SetHasClass("bots_not_enabled", true);
+	CustomNetTables.SubscribeNetTableListener("settings", OnSettingsChanged);
+
 	var bShowSpectatorTeam = false;
 	var bAutoAssignTeams = true;
 
@@ -341,7 +354,10 @@ function UpdateTimer()
 		}
 	}
 
-	$( "#TeamSelectContainer" ).SetAcceptsFocus( true ); // Prevents the chat window from taking focus by default
+	$("#NumRoundsDropdown").SetSelected(2);
+
+	if ($( "#TeamSelectContainer" ))
+		$( "#TeamSelectContainer" ).SetAcceptsFocus( true ); // Prevents the chat window from taking focus by default
 	var teamsListRootNode = $( "#TeamsListRoot" );
 
 	// Construct the panels for each team

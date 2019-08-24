@@ -19,7 +19,7 @@
     </Panel>
 	<Panel class="GameInformationPanel">
 		<Panel id="TopBarMainNav" class="LeftRightFlow" hittest="false">
-			<RadioButton id="TopBarHome" backgroundcamera="shot_cameraA" backgroundcameralerptime="1.2" group="DashboardMainTabs" selected="true"/>
+			<RadioButton id="TopBarHome" backgroundcamera="shot_cameraA" backgroundcameralerptime="1.2" group="DashboardMainTabs" selected="true" onactivate="OnHomeClicked();"/>
 			<RadioButton id="TopBarHeroes" backgroundcamera="shot_cameraB" backgroundcameralerptime="1.2" group="DashboardMainTabs" class="TopBarMenuItem"  onactivate="OnInfoClicked();">
 				<Label class="TitleFont" text="#Info" />
 			</RadioButton>
@@ -38,43 +38,53 @@
 		</Panel>
 		<Panel id="StatLine" class="LeftRightFlow">
 			<Panel id="MonthlyPlayersContainer" class="StatLineContainer">
-				<Label class="StatLineNumber" text="#Latest_Update:"/>
-				<Label text="#Latest_Update_Date" onactivate="ExternalBrowserGoToURL('https://steamcommunity.com/sharedfiles/filedetails/changelog/1757281740');"/>
+				<Label class="StatLineNumber" text="#Latest_Update"/>
+				<Label id="LatestUpdate" onactivate="ExternalBrowserGoToURL('https://steamcommunity.com/sharedfiles/filedetails/changelog/1757281740');"/>
 			</Panel>
 		</Panel>
 	</Panel>	
 		<Panel id="OptionListAdvanced">
 			<Panel id="OptionListGroupAdvanced">
-				<Panel id="OptionDivider" />
-				<Panel id="OptionDivider2" />
-                <Panel id="Options">
-				
+				<Panel class="OptionDivider" />
+				<Panel class="OptionDivider" />
+            <Panel id="Options">				
 				</Panel>
 			</Panel>
 		</Panel>
+		<Panel id="SettingsPanel">
+			<Label class="InfoLabel" text="#Settings" />
+			<Panel class="OptionDivider" />
+			<Panel class="SettingsRow">
+				<Label class="SettingsRowLeft" text="#Rounds_to_win" />
+				<Label class="SettingsRowRight" id="RoundsToWinLabel" text="2" />
+			</Panel>
+			<Panel class="SettingsRow">
+				<Label class="SettingsRowLeft" text="#Enable_bots" />
+				<Label class="SettingsRowRight" id="AllowBotsLabel" text="#no" />
+			</Panel>
+		</Panel>	
+
 		<Panel id="InfoPanel">
 			<Label class="InfoLabel" text="#Info" />
-			<Label class="List" text="#Info_Description" />	
-			<Label class="List3" text="#Info_Description2" />
-			<Label class="List4" text="#Info_Description3" />
-			<Label class="List6" text="#Info_Description4" />
+			<Label class="List" text="#Info_Description1" />	
+			<Label class="List" text="#Info_Description2" />
 		</Panel>	
 
 		<Panel id="TipsPanel">
 			<Label class="TipsLabel" text="#Tips" />
-			<Label class="Tips1" text="#Tips_1" />
-			<Label class="Tips2" text="#Tips_2"/>
-			<Label class="Tips3" text="#Tips_3" />			
+			<Label class="Tips" text="#Tips_1" />
+			<Label class="Tips" text="#Tips_2"/>
+			<Label class="Tips" text="#Tips_3" />			
 		</Panel>
 		
 		<Panel id="CreditsPanel">
 			<Label class="CreditsLabel" text="#Credits" />	
-			<Label class="List" text="#Credits_Description" />
-			<Label class="List2" text="#Credits_Flam3s" onactivate="ExternalBrowserGoToURL('https://steamcommunity.com/id/Flam3sDota/');"/>
-			<Label class="List3" text="#Credits_Myll/Noya" />
-			<Label class="List4" text="#Credits_Noya" />
-			<Label class="List5" text="#Credits_GeFire" />
-			<Label class="List6" text="#Credits_東風谷早苗" />
+			<Label class="List CreditsDescription" text="#Credits_Description" />
+			<Label class="List" text="#Credits_Flam3s" onactivate="ExternalBrowserGoToURL('https://steamcommunity.com/id/Flam3sDota/');"/>
+			<Label class="List" text="#Credits_Myll" />
+			<Label class="List" text="#Credits_Noya" />
+			<Label class="List" text="#Credits_GeFire" />
+			<Label class="List" text="#Credits_東風谷早苗" />
 		</Panel>
 		
   </Panel>

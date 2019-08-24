@@ -19,6 +19,16 @@ function GetRandomTableElement( table )
   return randomElement
 end
 
+function FilterTable(inputTable, filter)
+  local newTable = {}
+  for _,v in pairs(inputTable) do
+    if filter(v) then
+      table.insert(newTable, v)
+    end
+  end
+  return newTable
+end
+
 function TableContainsValue( t, value )
   for _, v in pairs( t ) do
     if v == value then

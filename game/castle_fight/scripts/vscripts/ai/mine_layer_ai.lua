@@ -53,7 +53,11 @@ function Spawn(keys)
       goal = goal,
       canHitFlying = canHitFlying,
       canHitGround = canHitGround,
+      canUseMine = false,
     }
+
+    -- wait 3 seconds before we can use the mine
+    Timers:CreateTimer(3, function() thisEntity.aiState.canUseMine = true end)
 
     -- Get all of the unit's abilities
     thisEntity.abilityList = {}
@@ -76,7 +80,7 @@ function thisEntity:AIThink()
     return 0.1
   end
 
-  if UseAbility(self) then return 1.5 end
+  if self.aiState.canUseMine and UseAbility(self) then return 1.5 end
 
   if FindAggro(self) then
     -- print(self:GetUnitName() .. " is aggro'd onto " .. self.aiState.aggroTarget:GetUnitName())

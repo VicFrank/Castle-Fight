@@ -122,13 +122,22 @@
   margin-top: 4px;
 }
 
-.TeamScoreScoreboard
+.ScoreHolder
 {
   width: 80px;
-  vertical-align: center;
+  flow-children: right;
+}
 
-  font-size: 38px;
-  text-align: center;
+.BigScore
+{
+  font-size: 36px;
+  margin-left: 16px;
+}
+
+.SmallScore
+{
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 .TeamNameLabel

@@ -42,7 +42,7 @@ function FindAggro(self)
       end
 
       -- This is the closest unit of the highest priority, so we'll always return it
-      if GetTargetPriority(target) == 3 then
+      if GetTargetPriority(self, target) == 3 then
         break
       end
     end
@@ -105,18 +105,22 @@ end
 -- 2 - Target is a building that can attack
 -- 1 - Target is a building
 --------------------------------------------------------------------------------
-function GetTargetPriority(target)
+function GetTargetPriority(self, target)
   if IsCustomBuilding(target) then
     if target:HasAttackCapability() then
       -- Is a building that can attack
-      return 2
+      if self:HasModifier("modifier_attack_siege") then
+        return 3
+      else
+        return 2
+      end
     else
       -- Is a regular building
       return 1
     end
   else
     -- Is a regular unit
-    return 2
+    return 3
   end
 end
 
@@ -126,8 +130,8 @@ end
 -- Ties are broken using distance
 --------------------------------------------------------------------------------
 function GetHigherPriorityTarget(self, unit1, unit2)
-  local priority1 = GetTargetPriority(unit1)
-  local priority2 = GetTargetPriority(unit2)
+  local priority1 = GetTargetPriority(self, unit1)
+  local priority2 = GetTargetPriority(self, unit2)
 
   if priority1 > priority2 then return unit1 end
   if priority2 > priority1 then return unit2 end
@@ -184,7 +188,7 @@ function AttackTarget(self)
 end
 
 --------------------------------------------------------------------------------
--- CastSpellOnTarget
+-- UseAbility
 -- Attempt to use a random ability
 -- Returns true if the ability is cast
 --------------------------------------------------------------------------------
@@ -213,7 +217,7 @@ function UseAbility(self)
       castRange,
       ability:GetAbilityTargetTeam(),
       ability:GetAbilityTargetType(),
-      ability:GetAbilityTargetFlags(),
+      ability:GetAbilityTargetFlags() + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS,
       FIND_ANY_ORDER,
       false)
 

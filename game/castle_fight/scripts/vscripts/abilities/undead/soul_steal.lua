@@ -29,8 +29,7 @@ function modifier_soul_steal:OnAttackLanded(keys)
   local target = keys.target
 
   if attacker == self.caster then
-    if self.chance >= RandomInt(1,100) then
-      -- Instantly kill the target
+    if self.chance >= RandomInt(1,100) and not target:IsLegendary() then
       target:Kill(self.ability, self.parent)
     end
   end

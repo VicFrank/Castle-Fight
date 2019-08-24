@@ -10,6 +10,4 @@ function OnAddBotPressed()
 	// Game.PlayerJoinTeam( 5 ); // 5 == unassigned ( DOTA_TEAM_NOTEAM )
 	var teamID = $.GetContextPanel().GetAttributeInt("team_id", -1);
 	GameEvents.SendCustomGameEventToServer("add_ai", {team: teamID});
-
-	// Game.ShufflePlayerTea  mAssignments();
 }

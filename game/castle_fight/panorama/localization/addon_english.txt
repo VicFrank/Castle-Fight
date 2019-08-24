@@ -76,5 +76,25 @@
   "draw"                         "Draw"
   "reject"                       "Reject"
 
+  "Latest_Update"                "Latest Update"
+  "Vote_Options"                 "Vote Options"
+  "Enable_bots"                  "Enable Bots"
+  "Yes"                          "Yes"
+  "No"                           "No"
+  "Rounds_to_win"                "Rounds to Win"
 
+  "Credits"                      "Credits"
+  "Credits_Description"          "Thanks to the following people for contributing to Castle Fight"
+  "Credits_Flam3s"               "Flam3s: UI"
+  "Credits_Myll"                 "Noya/Myll: Building Helper"
+  "Credits_Noya"                 "Noya: Dotacraft"
+  "Credits_GeFire"               "GeFire: Russian Translation"
+  "Credits_東風谷早苗"            "東風谷早苗: Chinese Translation"
+
+  "Tips_1"                       "- You earn income every 10 seconds. You can increase your income by constructing buildings."
+  "Tips_2"                       "- You earn lumber by making or upgrading buildings that train units (your hero's abilities). Lumber earned equals the cost."
+  "Tips_3"                       "- You can repair structures by right clicking them."
+
+  "Info_Description1"            "Build buildings that train units to fight off the enemy forces. Destroy the enemy castle to win the round."
+  "Info_Description2"            "There can be multiple rounds, so make sure not to leave after the first round!"
 }

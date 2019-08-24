@@ -26,7 +26,8 @@ function CDOTA_Buff:Transfer(unit, caster)
     if ability.ApplyDataDrivenModifier then
       ability:ApplyDataDrivenModifier(caster, unit, self:GetName(), {duration = duration})
     else
-      unit:AddNewModifier(caster, ability, self:GetName(), {duration = duration})
+      print(unit:GetUnitName(), caster:GetUnitName(), ability:GetAbilityName(), self:GetName(), duration)
+      caster:AddNewModifier(unit, ability, self:GetName(), {duration = duration})
     end
     self:Destroy()
     return true

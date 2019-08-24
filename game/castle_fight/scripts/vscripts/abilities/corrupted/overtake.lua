@@ -28,10 +28,11 @@ function modifier_overtake:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
-  if attacker == self.caster and not IsCustomBuilding(target) then
+  if attacker == self.caster and not IsCustomBuilding(target) and not target:IsLegendary() then
     if self.chance >= RandomInt(1, 100) then
       local position = target:GetAbsOrigin()
       local relative_health = target:GetHealthPercent() * 0.01
+      if relative_health == 0 then return end
       local fv = target:GetForwardVector()
       local unitName = target:GetUnitName()
       local playerID = self.parent.playerID

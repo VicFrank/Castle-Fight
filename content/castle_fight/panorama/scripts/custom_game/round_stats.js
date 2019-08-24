@@ -1,11 +1,15 @@
 function UpdateRoundScores() {  
   var scoreData = CustomNetTables.GetTableValue("round_score", "score");
+  var numRounds = CustomNetTables.GetTableValue("settings", "num_rounds")["numRounds"];
   if (scoreData) {
     $("#GoodGuysScore").text = scoreData.left_score;
     $("#BadGuysScore").text = scoreData.right_score;
 
     $("#WestScore").text = scoreData.left_score;
     $("#EastScore").text = scoreData.right_score;
+
+    $("#NumRoundsWest").text = "/" + numRounds;
+    $("#NumRoundsEast").text = "/" + numRounds;
   }
 }
 

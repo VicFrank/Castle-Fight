@@ -140,7 +140,81 @@ function OnVoteDraw(eventSourceIndex, args)
   OnDrawVoteChanged(playerID, vote)
 end
 
-function OnVoteNumRounds(eventSourceIndex, args)
+function OnNumRoundsVote(eventSourceIndex, args)
+  local playerID = args.PlayerID
+  local numRoundsVote = args.numRounds
+
+  CustomNetTables:SetTableValue("settings", "num_rounds_vote", {
+    playerID = numRoundsVote,
+  })
+  
+  local defaultNumRounds = 2
+  local result = GetVoteResult("num_rounds_vote", 2)
+
+  CustomNetTables:SetTableValue("settings", "num_rounds", {
+    numRounds = result
+  })
+  print(result)
+end
+
+function OnAllowBotsVote(eventSourceIndex, args)
+  local playerID = args.PlayerID
+  local allowBots = args.allowBots == 1
+
+  CustomNetTables:SetTableValue("settings", "allow_bots_vote", {
+    playerID = allowBots,
+  })
+  
+  local result = GetVoteResult("allow_bots_vote", false)
+  
+  CustomNetTables:SetTableValue("settings", "bots_enabled", {
+    botsEnabled = result
+  })
+end
+
+function OnDraftModeVote(eventSourceIndex, args)
   local playerID = args.PlayerID
 
+end
+
+--------------------------------------------------
+-- Vote Utility
+--------------------------------------------------
+
+function GetVoteResult(key, default)
+  local votesNetTable = CustomNetTables:GetTableValue("settings", key)
+
+  local votes = {}
+
+  for playerID,vote in pairs(votesNetTable) do
+    if not votes[vote] then
+      votes[vote] = 1
+    else
+      votes[vote] = votes[vote] + 1
+    end
+  end
+
+  return GetPluralityVoteOutcome(votes, 2)
+end
+
+function GetPluralityVoteOutcome(votes, default)
+  local winners = {}
+  local maxVotes = 0
+
+  for vote,numVotes in pairs(votes) do
+    if numVotes > maxVotes then
+      winners = {vote}
+      maxVotes = numVotes
+    elseif numVotes == maxVotes then
+      table.insert(winners, vote)
+    end
+  end
+
+  for _,winner in pairs(winners) do
+    if winner == default then
+      return winner
+    end
+  end
+
+  return GetRandomTableElement(winners)
 end
