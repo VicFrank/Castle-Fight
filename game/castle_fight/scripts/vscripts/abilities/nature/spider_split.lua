@@ -8,6 +8,8 @@ function brood_mother_split:GetIntrinsicModifierName() return "modifier_brood_mo
 
 modifier_giant_spider_split = class({})
 
+function modifier_giant_spider_split:IsHidden() return true end
+
 function modifier_giant_spider_split:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_DEATH,
@@ -30,6 +32,8 @@ function modifier_giant_spider_split:OnDeath(keys)
 end
 
 modifier_brood_mother_split = class({})
+
+function modifier_brood_mother_split:IsHidden() return true end
 
 function modifier_brood_mother_split:DeclareFunctions()
   local funcs = {

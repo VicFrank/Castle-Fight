@@ -23,6 +23,7 @@ function modifier_shaman_buff:IsPurgable()
 end
 
 function modifier_shaman_buff:OnCreated()
+  if not self:GetAbility() then return end
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
   self.damage_increase = self:GetAbility():GetSpecialValueFor("damage_increase")
   self.health_per_second = self:GetAbility():GetSpecialValueFor("health_per_second")

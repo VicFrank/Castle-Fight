@@ -8,6 +8,36 @@ function GetOpposingTeam(team)
   return DOTA_TEAM_NEUTRALS
 end
 
+function heroToRace(heroname)
+  if heroname == "npc_dota_hero_kunkka" then
+    return "Human"
+  elseif heroname == "npc_dota_hero_slark" then
+    return "Naga"
+  elseif heroname == "npc_dota_hero_treant" then
+    return "Nature"
+  elseif heroname == "npc_dota_hero_vengefulspirit" then
+    return "Night Elf"
+  elseif heroname == "npc_dota_hero_abaddon" then
+    return "Undead"
+  elseif heroname == "npc_dota_hero_juggernaut" then
+    return "Orc"
+  elseif heroname == "npc_dota_hero_tusk" then
+    return "North"
+  elseif heroname == "npc_dota_hero_invoker" then
+    return "High Elf"
+  elseif heroname == "npc_dota_hero_wisp" then
+    return "Wisp"
+  elseif heroname == "npc_dota_hero_grimstroke" then
+    return "Corrupted"
+  elseif heroname == "npc_dota_hero_chaos_knight" then
+    return "Chaos"
+  elseif heroname == "npc_dota_hero_tinker" then
+    return "Mech"
+  else
+    return "Invalid Hero"
+  end
+end
+
 function startsWith(str, start)
   return str:sub(1, #start) == start
 end

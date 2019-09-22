@@ -7,6 +7,8 @@ require('libraries/notifications')
 require('libraries/selection')
 require("libraries/buildinghelper")
 require("libraries/animations")
+GameRules.JSON = require("libraries/json")
+require("libraries/stat_tracking")
 
 require("mechanics/units")
 require("mechanics/attacks")
@@ -211,12 +213,20 @@ function GameMode:InitGameMode()
 
   GameRules.drawVotes = {}
   GameRules.numRoundsVotes = {}
+  GameRules.allowBotsVote = {}
 
   GameRules.HeroSelectionTimer = ""
   GameRules.LoadingTimer = ""
   GameRules.PostRoundTimer = ""
   GameRules.DrawTimer = ""
   GameRules.RoundTimer = ""
+
+  GameRules.GameData = {}
+  GameRules.GameData.playerInfo = {}
+  GameRules.GameData.settings = {}
+  GameRules.GameData.rounds = {}
+
+  GameRules.buildOrders = {}
 
   -- Modifier Applier
   GameRules.Applier = CreateItem("item_apply_modifiers", nil, nil)
@@ -228,7 +238,10 @@ function GameMode:InitGameMode()
   CheckHeroPositions()
 
   CustomNetTables:SetTableValue("settings", "num_rounds", {
-    num_rounds = 2
+    numRounds = 2
+  })
+  CustomNetTables:SetTableValue("settings", "bots_enabled", {
+    botsEnabled = false
   })
 end
 

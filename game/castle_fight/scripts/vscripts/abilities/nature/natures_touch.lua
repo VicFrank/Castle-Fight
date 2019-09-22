@@ -29,7 +29,7 @@ function modifier_dryad_natures_touch:OnCreated()
 
   local parent = self:GetParent()
 
-  local particleName = "particles/econ/items/treant_protector/ti7_shoulder/treant_ti7_crimson_livingarmor.vpcf"
+  local particleName = "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
 
   parent.NaturesTouchParticle = ParticleManager:CreateParticle(particleName, PATTACH_POINT_FOLLOW, parent)
   ParticleManager:SetParticleControlEnt(parent.NaturesTouchParticle, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)

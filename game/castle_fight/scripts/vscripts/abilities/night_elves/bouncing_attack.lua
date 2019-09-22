@@ -78,6 +78,10 @@ end
 
 modifier_glaive_thrower_bouncing_attack = class({})
 
+function modifier_glaive_thrower_bouncing_attack:IsHidden()
+  return true
+end
+
 function modifier_glaive_thrower_bouncing_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

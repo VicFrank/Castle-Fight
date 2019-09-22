@@ -6,6 +6,8 @@ function bear_feral_rage:GetIntrinsicModifierName() return "modifier_bear_feral_
 
 modifier_bear_feral_rage = class({})
 
+function modifier_bear_feral_rage:IsHidden() return true end
+
 function modifier_bear_feral_rage:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

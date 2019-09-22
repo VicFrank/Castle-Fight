@@ -8,6 +8,10 @@ function arcane_tower_multishot:GetIntrinsicModifierName() return "modifier_rang
 
 modifier_ranger_split_shot = class({})
 
+function modifier_ranger_split_shot:IsHidden()
+  return true
+end
+
 function modifier_ranger_split_shot:OnCreated()
   self.ability = self:GetAbility()
 

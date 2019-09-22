@@ -6,6 +6,10 @@ function avenging_spirit_corrosive_attack:GetIntrinsicModifierName() return "mod
 
 modifier_avenging_spirit_corrosive_attack = class({})
 
+function modifier_avenging_spirit_corrosive_attack:IsHidden()
+  return true
+end
+
 function modifier_avenging_spirit_corrosive_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

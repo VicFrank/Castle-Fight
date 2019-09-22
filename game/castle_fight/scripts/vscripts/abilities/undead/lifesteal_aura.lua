@@ -66,7 +66,7 @@ function modifier_vampire_lifesteal_aura_buff:OnAttackLanded(params)
   local ability = self:GetAbility()
   local damage = params.damage
 
-  if attacker == parent and not IsCustomBuilding(target) then
+  if attacker == parent and not IsCustomBuilding(target) and not target:IsMechanical() then
     local lifesteal = ability:GetSpecialValueFor("lifesteal")
     attacker:Heal(damage * lifesteal * 0.01, attacker)
 

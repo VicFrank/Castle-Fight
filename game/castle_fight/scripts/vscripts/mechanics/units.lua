@@ -22,6 +22,8 @@ function Units:Init( unit )
     ApplyModifier(unit, "modifier_armor_"..armor_type)
     if armor_type == "divine" then
       unit:SetBaseMagicalResistanceValue(75)
+    elseif armor_type == "hero" then
+      unit:SetBaseMagicalResistanceValue(60)
     end
   end
 
@@ -135,6 +137,15 @@ function FindEnemiesInRadiusFromTeam( team, radius, point )
   local position = point
   local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
   local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS
+  return FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_CLOSEST, false)
+end
+
+-- Includes enemies that aren't visible
+function FindAllEnemiesInRadius( unit, radius, point )
+  local team = unit:GetTeamNumber()
+  local position = point or unit:GetAbsOrigin()
+  local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+  local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
   return FindUnitsInRadius(team, position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_CLOSEST, false)
 end
 

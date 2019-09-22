@@ -1,34 +1,38 @@
-  avenging_spirit_heal_on_kill = class({})
+avenging_spirit_heal_on_kill = class({})
 
-  LinkLuaModifier("modifier_heal_on_kill", "abilities/night_elves/heal_on_kill.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_heal_on_kill", "abilities/night_elves/heal_on_kill.lua", LUA_MODIFIER_MOTION_NONE)
 
-  function avenging_spirit_heal_on_kill:GetIntrinsicModifierName()
-    return "modifier_heal_on_kill"
-  end
+function avenging_spirit_heal_on_kill:IsHidden()
+  return true
+end
 
-  modifier_heal_on_kill = class({})
+function avenging_spirit_heal_on_kill:GetIntrinsicModifierName()
+  return "modifier_heal_on_kill"
+end
 
-  function modifier_heal_on_kill:DeclareFunctions()
-    local funcs = {
-      MODIFIER_EVENT_ON_DEATH,
-    }
-    return funcs
-  end
+modifier_heal_on_kill = class({})
 
-  function modifier_heal_on_kill:OnDeath(params)
-    if not IsServer() then return end
+function modifier_heal_on_kill:DeclareFunctions()
+  local funcs = {
+    MODIFIER_EVENT_ON_DEATH,
+  }
+  return funcs
+end
 
-    if params.attacker == self:GetParent() then
-      local target = params.unit
-      if target then
-        local heal_pct = self:GetAbility():GetSpecialValueFor("heal_pct")
+function modifier_heal_on_kill:OnDeath(params)
+  if not IsServer() then return end
 
-        local heal = target:GetMaxHealth() * heal_pct * 0.01
+  if params.attacker == self:GetParent() then
+    local target = params.unit
+    if target then
+      local heal_pct = self:GetAbility():GetSpecialValueFor("heal_pct")
 
-        if self:GetParent():IsAlive() then
-          self:GetParent():Heal(heal, self:GetParent())
-          SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, self:GetParent(), heal, nil)
-        end
+      local heal = target:GetMaxHealth() * heal_pct * 0.01
+
+      if self:GetParent():IsAlive() then
+        self:GetParent():Heal(heal, self:GetParent())
+        SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, self:GetParent(), heal, nil)
       end
     end
   end
+end

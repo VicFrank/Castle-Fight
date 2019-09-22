@@ -14,7 +14,8 @@ function earthquake:OnSpellStart()
   local radius = ability:GetSpecialValueFor("radius")
 
   -- Choose a random enemy unit
-  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  local filter = function(target) return not target:HasFlyMovementCapability() end
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
   if not target then return end
 
   local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, target)
@@ -26,15 +27,17 @@ function earthquake:OnSpellStart()
   local earthquakeTargets = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
   for _,earthquakeTarget in pairs(earthquakeTargets) do
-    ApplyDamage({
-      victim = earthquakeTarget,
-      damage = damage,
-      damage_type = DAMAGE_TYPE_MAGICAL,
-      attacker = caster,
-      ability = ability
-    })
+    if not earthquakeTarget:HasFlyMovementCapability() then
+      ApplyDamage({
+        victim = earthquakeTarget,
+        damage = damage,
+        damage_type = DAMAGE_TYPE_MAGICAL,
+        attacker = caster,
+        ability = ability
+      })
 
-    earthquakeTarget:AddNewModifier(caster, ability, "modifier_earthquake_slow", {duration = slow_duration})
+      earthquakeTarget:AddNewModifier(caster, ability, "modifier_earthquake_slow", {duration = slow_duration})
+    end
   end
 end
 

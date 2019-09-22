@@ -168,6 +168,10 @@ function LeavesCorpse(unit)
   elseif unit:IsSummoned() then
     return false
 
+  -- Mines
+  elseif unit:GetUnitName() == "npc_dota_techies_land_mine" then
+    return false
+
   -- Read the LeavesCorpse KV
   else
     -- local leavesCorpse = unit:GetKeyValue("LeavesCorpse")

@@ -10,6 +10,7 @@ function GameMode:OnScriptReload()
   -- KillAllUnits()
   -- KillAllBuildings()
   -- GameMode:StartHeroSelection()
+
 end
 
 function SpawnTestBuildings()
@@ -159,18 +160,31 @@ CHEAT_CODES = {
   ["spawn"] = function(...) GameMode:SpawnUnits(...) end,                  -- "Spawns some units."
 }
 
+GAME_COMMANDS = {
+  ["ff"] = function(...) GameMode:VoteGG(...) end,
+}
+
 function GameMode:OnPlayerChat(keys)
   local text = keys.text
   local userID = keys.userid
   local playerID = self.vUserIds[userID] and self.vUserIds[userID]:GetPlayerID()
   if not playerID then return end
 
+  if StringStartsWith(text, "!") then
+    text = string.sub(text, 2, string.len(text))
+    local input = split(text)
+    local command = input[1]
+    if GAME_COMMANDS[command] then
+      GAME_COMMANDS[command](playerID, input[2])
+    end
+  end
+
   -- Cheats are only available in the tools
   if not GameRules:IsCheatMode() then return end
 
   -- Handle '-command'
   if StringStartsWith(text, "-") then
-      text = string.sub(text, 2, string.len(text))
+    text = string.sub(text, 2, string.len(text))
   end
 
   local input = split(text)

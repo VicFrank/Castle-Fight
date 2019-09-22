@@ -90,10 +90,17 @@ function thisEntity:CastWeb()
 
     target = FindFirstUnit(targets, function(target) 
       return not IsCustomBuilding(target) and target:HasFlyMovementCapability()
+        and not target.markedForWeb
     end)
   end
 
   if target then
+    target.markedForWeb = true
+    Timers:CreateTimer(2, function()
+      if IsValidAlive(target) then
+        target.markedForWeb = false
+      end
+    end)
     self:CastAbilityOnTarget(target, ability, -1)
     return true
   end

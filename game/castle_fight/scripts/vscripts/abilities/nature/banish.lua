@@ -6,7 +6,9 @@ function ancient_guardian_banish:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  local filter = function(target) return not target:IsLegendary() end
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
+
   if not target then return end
 
   local duration = self:GetSpecialValueFor("duration")

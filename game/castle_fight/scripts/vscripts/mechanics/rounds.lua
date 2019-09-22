@@ -1,6 +1,6 @@
 function GameMode:SpawnCastles()
-  local leftCastle = BuildingHelper:PlaceBuilding(nil, "castle", GameRules.leftCastlePosition, 2, 2, 0, DOTA_TEAM_GOODGUYS)
-  local rightCastle = BuildingHelper:PlaceBuilding(nil, "castle", GameRules.rightCastlePosition, 2, 2, 0, DOTA_TEAM_BADGUYS)
+  GameRules.leftCastle = BuildingHelper:PlaceBuilding(nil, "castle", GameRules.leftCastlePosition, 2, 2, 0, DOTA_TEAM_GOODGUYS)
+  GameRules.rightCastle = BuildingHelper:PlaceBuilding(nil, "castle", GameRules.rightCastlePosition, 2, 2, 0, DOTA_TEAM_BADGUYS)
 end
 
 function GameMode:SetupHeroes()
@@ -40,6 +40,7 @@ function GameMode:InitializeRoundStats()
     GameRules.numUnitsTrained[playerID] = 0
     GameRules.rescueStrikeDamage[playerID] = 0
     GameRules.rescueStrikeKills[playerID] = 0
+    GameRules.buildOrders[playerID] = {}
   end
 
   GameMode:ResetIncome()
@@ -302,7 +303,7 @@ function GameMode:EndRound(losingTeam)
   end
 
   -- Send round info to the clients
-  local roundDuration = GameRules:GetGameTime() - GameRules.roundStartTime
+  local roundDuration = math.floor(GameRules:GetGameTime() - GameRules.roundStartTime)
   GameRules.roundCount = GameRules.roundCount + 1
 
   CustomGameEventManager:Send_ServerToAllClients("round_ended", {
@@ -328,11 +329,8 @@ function GameMode:EndRound(losingTeam)
   Timers:RemoveTimer(GameRules.PostRoundTimer)
 
   local pointsToWin = tonumber(CustomNetTables:GetTableValue("settings", "num_rounds")["numRounds"])
-  print(pointsToWin)
 
   GameRules.PostRoundTimer = Timers:CreateTimer(POST_ROUND_TIME, function()
-    -- Clear the map
-
     if GameRules.leftRoundsWon >= pointsToWin or GameRules.rightRoundsWon >= pointsToWin then
       GameMode:EndGame(winningTeam)
     else
@@ -342,6 +340,34 @@ function GameMode:EndRound(losingTeam)
     end
   end)
 
+  -- Record the round stats for stat tracking
+  local playerStats = {}
+
+  for _,playerID in pairs(GameRules.playerIDs) do
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+    local playerRoundData = {
+      playerID = playerID,
+      race = heroToRace(hero:GetUnitName()),
+      team = hero:GetTeam(),
+      unitsKilled = GameRules.unitsKilled[playerID],
+      unitsSpawned = GameRules.numUnitsTrained[playerID],
+      abandoned = hero:HasOwnerAbandoned(),
+      income = math.floor(GameMode:GetIncomeForPlayer(playerID)),
+      buildOrder = GameRules.buildOrders[playerID],
+    }
+
+    table.insert(playerStats, playerRoundData)
+  end
+
+  local roundData = {
+    roundNumber = GameRules.roundCount,
+    duration = roundDuration,
+    winner = winningTeam,
+    playerStats = playerStats,
+  }
+
+  table.insert(GameRules.GameData.rounds, roundData)
 end
 
 function GameMode:EndGame(team)
@@ -351,5 +377,11 @@ function GameMode:EndGame(team)
     Notifications:TopToAll({text="Eastern Forces Victory!", duration=30})
   end
 
+  -- Send the game's stats to the server
+  GameRules.GameData.winner = team
+  
+  SendGameStatsToServer()
+
   GameRules:SetGameWinner(team)
 end
+

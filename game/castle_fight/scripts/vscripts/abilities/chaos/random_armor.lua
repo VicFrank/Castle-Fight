@@ -4,6 +4,7 @@ LinkLuaModifier("modifier_present_of_chaos_armor", "abilities/chaos/random_armor
 LinkLuaModifier("modifier_present_of_chaos_evasion", "abilities/chaos/random_armor.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_present_of_chaos_crit", "abilities/chaos/random_armor.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_present_of_chaos_lifesteal", "abilities/chaos/random_armor.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_present_of_chaos_corruption", "abilities/chaos/random_armor.lua", LUA_MODIFIER_MOTION_NONE)
 
 blood_fiend_present_of_chaos = class({})
 function blood_fiend_present_of_chaos:GetIntrinsicModifierName() return "modifier_random_armor" end
@@ -37,7 +38,7 @@ function modifier_random_armor:OnCreated()
   }
 
   local modifiers = {
-    "modifier_present_of_chaos_armor",
+    "modifier_present_of_chaos_corruption",
     "modifier_present_of_chaos_evasion",
     "modifier_present_of_chaos_crit",
     "modifier_present_of_chaos_lifesteal",
@@ -56,9 +57,31 @@ function modifier_random_armor:OnCreated()
   parent:AddNewModifier(parent, ability, modifier, {})
 end
 
+modifier_present_of_chaos_corruption = class({})
+
+function modifier_present_of_chaos_corruption:IsPurgable() return false end
+
+function modifier_present_of_chaos_corruption:DeclareFunctions()
+  local funcs = {
+    MODIFIER_EVENT_ON_ATTACK_LANDED
+  }
+  return funcs
+end
+
+function modifier_present_of_chaos_corruption:OnAttackLanded(keys)
+  if not IsServer() then return end
+
+  local attacker = keys.attacker
+  local target = keys.target
+
+  if attacker == self:GetParent() then
+    target:AddNewModifier(attacker, self:GetAbility(), "modifier_present_of_chaos_armor", {duration = 3})
+  end
+end
+
 modifier_present_of_chaos_armor = class({})
 
-function modifier_present_of_chaos_armor:IsPurgable() return false end
+function modifier_present_of_chaos_armor:IsPurgable() return true end
 
 function modifier_present_of_chaos_armor:DeclareFunctions()
   return {MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS}

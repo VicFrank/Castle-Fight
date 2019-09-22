@@ -6,6 +6,10 @@ function emerald_dragon_corrosive_breath:GetIntrinsicModifierName() return "modi
 
 modifier_emerald_dragon_corrosive_breath = class({})
 
+function modifier_emerald_dragon_corrosive_breath:IsHidden()
+  return true
+end
+
 function modifier_emerald_dragon_corrosive_breath:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

@@ -5,6 +5,8 @@ function dryad_spell_resist:GetIntrinsicModifierName() return "modifier_dryad_sp
 
 modifier_dryad_spell_resist = class({})
 
+function modifier_dryad_spell_resist:IsHidden() return true end
+
 function modifier_dryad_spell_resist:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_STATUS_RESISTANCE,

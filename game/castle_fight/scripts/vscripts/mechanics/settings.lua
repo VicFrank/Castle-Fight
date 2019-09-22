@@ -7,7 +7,7 @@ end
 --------------------------------------------------
 -- Draws
 --------------------------------------------------
-function ClearDrawSettings(canVote)
+function ClearDrawSettings()
   for _,playerID in pairs(GameRules.playerIDs) do
     GameRules.drawVotes[playerID] = nil
   end
@@ -51,7 +51,10 @@ function EndDrawVoting()
 end
 
 function OnDrawVoteChanged(playerID, vote)
-  local voteChanged = GameRules.drawVotes[playerID] == vote
+  local voteChanged = GameRules.drawVotes[playerID] == nil or GameRules.drawVotes[playerID] == vote
+
+  print(voteChanged)
+  if not voteChanged then return end
 
   GameRules.drawVotes[playerID] = vote
   UpdateSettingsNetTable(playerID)
@@ -67,6 +70,8 @@ function OnDrawVoteChanged(playerID, vote)
   local westNumReject = 0
   local eastNumVotes = 0
   local eastNumReject = 0
+  local eastNumVoters = 0
+  local westNumVoters = 0
   for _,playerID in pairs(GameRules.playerIDs) do
     -- print(PlayerResource:GetTeam(playerID), playerID, GameRules.drawVotes[playerID])
     local team = PlayerResource:GetTeam(playerID)
@@ -83,6 +88,12 @@ function OnDrawVoteChanged(playerID, vote)
     if not PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED
     or PlayerResource:IsFakeClient(playerID) then
       score = 0
+    else
+      if team == DOTA_TEAM_GOODGUYS then
+        westNumVoters = westNumVoters + 1
+      elseif team == DOTA_TEAM_BADGUYS then
+        eastNumVoter = eastNumVoters + 1
+      end
     end
 
     if team == DOTA_TEAM_GOODGUYS then
@@ -96,7 +107,7 @@ function OnDrawVoteChanged(playerID, vote)
       eastVotes = eastVotes + score
       if vote == true then
         eastNumVotes = eastNumVotes + 1
-      elseif not vote == nil and vote == false then
+      elseif vote == false then
         eastNumReject = eastNumReject + 1
       end
     end
@@ -108,6 +119,10 @@ function OnDrawVoteChanged(playerID, vote)
     westNumReject = westNumReject,
     eastNumReject = eastNumReject,
   })
+
+  if westNumReject == westNumVoters or eastNumReject == eastNumVoters then
+    EndDrawVoting()
+  end
 
   if westVotes >= 0 and eastVotes >= 0 then
     DrawRound()
@@ -128,7 +143,6 @@ function OnAddAI(eventSourceIndex, args)
   local playerID = args.PlayerID
   local team = args.team
   local teamBool = team == DOTA_TEAM_GOODGUYS
-  print(team == DOTA_TEAM_GOODGUYS)
 
   Tutorial:AddBot("npc_dota_hero_wisp", "", "", teamBool)
 end
@@ -144,28 +158,22 @@ function OnNumRoundsVote(eventSourceIndex, args)
   local playerID = args.PlayerID
   local numRoundsVote = args.numRounds
 
-  CustomNetTables:SetTableValue("settings", "num_rounds_vote", {
-    playerID = numRoundsVote,
-  })
+  GameRules.numRoundsVotes[playerID] = numRoundsVote
   
-  local defaultNumRounds = 2
-  local result = GetVoteResult("num_rounds_vote", 2)
+  local result = GetVoteResult(GameRules.numRoundsVotes, 2)
 
   CustomNetTables:SetTableValue("settings", "num_rounds", {
     numRounds = result
   })
-  print(result)
 end
 
 function OnAllowBotsVote(eventSourceIndex, args)
   local playerID = args.PlayerID
   local allowBots = args.allowBots == 1
 
-  CustomNetTables:SetTableValue("settings", "allow_bots_vote", {
-    playerID = allowBots,
-  })
-  
-  local result = GetVoteResult("allow_bots_vote", false)
+  GameRules.allowBotsVote[playerID] = allowBots
+
+  local result = GetVoteResult(GameRules.allowBotsVote, false)
   
   CustomNetTables:SetTableValue("settings", "bots_enabled", {
     botsEnabled = result
@@ -177,16 +185,18 @@ function OnDraftModeVote(eventSourceIndex, args)
 
 end
 
+function GameMode:VoteGG(playerID)
+  Say(nil, "playerID: " .. playerID .. " voted to forfeit", false)
+end
+
 --------------------------------------------------
 -- Vote Utility
 --------------------------------------------------
 
-function GetVoteResult(key, default)
-  local votesNetTable = CustomNetTables:GetTableValue("settings", key)
-
+function GetVoteResult(voteTable, default)
   local votes = {}
 
-  for playerID,vote in pairs(votesNetTable) do
+  for playerID,vote in pairs(voteTable) do
     if not votes[vote] then
       votes[vote] = 1
     else
@@ -194,7 +204,7 @@ function GetVoteResult(key, default)
     end
   end
 
-  return GetPluralityVoteOutcome(votes, 2)
+  return GetPluralityVoteOutcome(votes, default)
 end
 
 function GetPluralityVoteOutcome(votes, default)

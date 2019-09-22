@@ -325,6 +325,7 @@ function UpdateTimer()
 }
 
 function OnSettingsChanged() {
+	$.Msg(CustomNetTables.GetTableValue("settings", "bots_enabled"))
 	var botsEnabled = CustomNetTables.GetTableValue("settings", "bots_enabled")["botsEnabled"];
 	$.GetContextPanel().SetHasClass("bots_not_enabled", botsEnabled == 0);
 }

@@ -13,6 +13,16 @@ function GameMode:OnGameInProgress()
   --Wait for all the heroes to load in
   Timers:CreateTimer(function()
     if TableCount(HeroList:GetAllHeroes()) >= numPlayers then
+      -- Record the game settings for stat tracking purposes
+      local roundsToWin = tonumber(CustomNetTables:GetTableValue("settings", "num_rounds")["numRounds"])
+      local botsEnabled = CustomNetTables:GetTableValue("settings", "bots_enabled")["botsEnabled"]
+      local cheatsEnabled = GameRules:IsCheatMode()
+      GameRules.GameData.settings = {
+        roundsToWin = roundsToWin,
+        allowBots = botsEnabled,
+        cheatsEnabled = cheatsEnabled,
+      }
+
       GameMode:StartHeroSelection()
       return
     end
@@ -21,6 +31,7 @@ function GameMode:OnGameInProgress()
     return .3
   end)
 end
+
 function GameMode:OnNPCSpawned(keys)
   local npc = EntIndexToHScript(keys.entindex)
 
@@ -238,17 +249,20 @@ function GameMode:OnConnectFull(keys)
   -- SetCustomGold(playerID, 0)
 
   if not TableContainsValue(GameRules.playerIDs, playerID) then
+    -- insert player data for stat tracking
+    local playerData = {
+      playerID = playerID,
+      steamID = tostring(PlayerResource:GetSteamID(playerID)),
+      username = PlayerResource:GetPlayerName(playerID),
+    }
+    table.insert(GameRules.GameData.playerInfo, playerData)
+
+    -- insert playerID to list of playerIDs
     table.insert(GameRules.playerIDs, playerID)
+
     -- initialize settings vote values
-    CustomNetTables:SetTableValue("settings", "num_rounds_vote", {
-      playerID = 2,
-    })
-    CustomNetTables:SetTableValue("settings", "allow_bots_vote", {
-      playerID = false,
-    })
-    CustomNetTables:SetTableValue("settings", "num_rounds", {
-      numRounds = 2,
-    })
+    GameRules.numRoundsVotes[playerID] = 2
+    GameRules.allowBotsVote[playerID] = false
   end
 end
 
@@ -308,6 +322,13 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
   end
 
   GameMode:ModifyIncome(playerID, building.incomeValue)
+
+  -- Add to build order for stat tracking
+  local buildTime = math.floor(GameRules:GetGameTime() - GameRules.roundStartTime)
+  table.insert(GameRules.buildOrders[playerID], {
+    building = building:GetUnitName(),
+    buildTime = buildTime,
+  })
 end
 
 function OnRaceSelected(eventSourceIndex, args)

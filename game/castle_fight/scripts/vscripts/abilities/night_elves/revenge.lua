@@ -15,6 +15,10 @@ function modifier_revenge:DeclareFunctions()
   return funcs
 end
 
+function modifier_revenge:IsHidden()
+  return true
+end
+
 function modifier_revenge:OnDeath(params)
   if not IsServer() then return end
 

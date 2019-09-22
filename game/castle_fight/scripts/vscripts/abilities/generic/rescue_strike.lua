@@ -25,7 +25,7 @@ function item_rescue_strike:OnSpellStart()
   local damageDone = 0
   local enemiesKilled = 0
 
-  local enemies = FindEnemiesInRadius(caster, radius, target)
+  local enemies = FindAllEnemiesInRadius(caster, radius, target)
 
   for _,enemy in pairs(enemies) do
     if not IsCustomBuilding(enemy) and not enemy:IsRealHero() then

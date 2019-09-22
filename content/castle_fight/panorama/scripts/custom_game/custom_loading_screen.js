@@ -30,7 +30,7 @@ function OnCreditsClicked()
 }
 
 function SetUpdateDate() {
-  var lastUpdate = "8/20/2019";
+  var lastUpdate = "9/22/2019";
 
   $("#LatestUpdate").text = lastUpdate;
 }

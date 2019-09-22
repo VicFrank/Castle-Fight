@@ -5,6 +5,8 @@ function mountain_giant_resistant_skin:GetIntrinsicModifierName() return "modifi
 
 mountain_giant_resistant_skin = class({})
 
+function mountain_giant_resistant_skin:IsHidden() return true end
+v
 function mountain_giant_resistant_skin:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_STATUS_RESISTANCE,

@@ -15,3 +15,7 @@ end
 function modifier_avenging_spirit_spell_reduction:GetModifierStatusResistance(keys)
   return self:GetAbility():GetSpecialValueFor("resistance")
 end
+
+function modifier_avenging_spirit_spell_reduction:IsHidden()
+  return true
+end

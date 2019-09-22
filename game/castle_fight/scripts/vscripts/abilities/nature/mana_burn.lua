@@ -5,6 +5,8 @@ function furbolg_mana_burn:GetIntrinsicModifierName() return modifier_furbolg_ma
 
 modifier_furbolg_mana_burn = class({})
 
+function modifier_furbolg_mana_burn:IsHidden() return true end
+
 function modifier_furbolg_mana_burn:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED,

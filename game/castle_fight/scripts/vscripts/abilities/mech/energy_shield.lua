@@ -33,10 +33,6 @@ modifier_generator_energy_shield = class({})
 function modifier_generator_energy_shield:OnCreated()
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
 
-  if IsServer() then
-    self:GetParent():IncreaseMaxHealth(100)
-  end
-
   local shield_size = self:GetParent():GetModelRadius() * 0.7
 
   self.particle = ParticleManager:CreateParticle("particles/items_fx/immunity_sphere_buff.vpcf", PATTACH_CENTER_FOLLOW, self:GetParent()) 
@@ -61,7 +57,9 @@ function modifier_generator_energy_shield:OnBuildingTarget()
 
   parent:SetModifierStackCount("modifier_generator_energy_shield", parent, currentStacks - 1)
 
-  if currentStacks <= 1 then
+  if currentStacks == 2 then
+    self:GetParent():IncreaseMaxHealth(100)
+  elseif currentStacks <= 1 then
     self:Destroy()
   end
 

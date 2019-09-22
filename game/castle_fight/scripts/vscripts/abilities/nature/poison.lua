@@ -6,6 +6,8 @@ function spider_poison:GetIntrinsicModifierName() return "modifier_spider_poison
 
 modifier_spider_poison = class({})
 
+function modifier_spider_poison:IsHidden() return true end
+
 function modifier_spider_poison:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()

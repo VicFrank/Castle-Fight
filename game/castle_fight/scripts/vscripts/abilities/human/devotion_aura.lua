@@ -64,7 +64,9 @@ function modifier_devotion_aura_buff:DeclareFunctions()
 end
 
 function modifier_devotion_aura_buff:GetModifierPhysicalArmorBonus()
-    return self:GetAbility():GetSpecialValueFor("armor_bonus")
+    if self:GetAbility() then
+        return self:GetAbility():GetSpecialValueFor("armor_bonus")
+    end
 end
 
 function modifier_devotion_aura_buff:IsPurgable()

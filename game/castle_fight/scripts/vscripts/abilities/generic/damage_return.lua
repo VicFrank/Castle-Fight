@@ -31,7 +31,7 @@ function modifier_damage_return:OnAttackLanded(keys)
   local target = keys.target
   local damage = keys.damage
 
-  if self.parent == target then
+  if self.parent == target and attacker:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then
     local particleName = "particles/units/heroes/hero_centaur/centaur_return.vpcf"
     local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, self.parent)
     ParticleManager:SetParticleControlEnt(particle, 0, self.parent, PATTACH_POINT_FOLLOW, "attach_hitloc", self.parent:GetAbsOrigin(), true)
