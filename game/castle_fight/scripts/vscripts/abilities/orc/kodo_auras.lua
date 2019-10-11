@@ -1,9 +1,12 @@
 kodo_melee_damage_aura = class({})
 kodo_armor_aura = class({})
+kodo_magic_resist_aura = class({})
 LinkLuaModifier("modifier_kodo_melee_damage_aura", "abilities/orc/kodo_auras.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_kodo_melee_damage_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_kodo_armor_aura", "abilities/orc/kodo_auras.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_kodo_armor_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_kodo_magic_resist_aura", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_kodo_magic_resist_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE )
 
 function kodo_melee_damage_aura:GetIntrinsicModifierName()
   return "modifier_kodo_melee_damage_aura"
@@ -11,10 +14,17 @@ end
 function kodo_armor_aura:GetIntrinsicModifierName()
   return "modifier_kodo_armor_aura"
 end
+function kodo_magic_resist_aura:GetIntrinsicModifierName()
+  return "modifier_kodo_magic_resist_aura"
+end
 
 modifier_kodo_melee_damage_aura = class({})
 
 function modifier_kodo_melee_damage_aura:IsAura()
+  return true
+end
+
+function modifier_kodo_melee_damage_aura:IsHidden()
   return true
 end
 
@@ -47,7 +57,7 @@ function modifier_kodo_melee_damage_aura:IsAuraActiveOnDeath()
 end
 
 function modifier_kodo_melee_damage_aura:GetAuraEntityReject(target)
-  return IsCustomBuilding(target) or target:IsRealHero() or target:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK
+  return IsCustomBuilding(target) or target:IsRealHero()
 end
 
 modifier_kodo_melee_damage_aura_buff = class({})
@@ -72,6 +82,10 @@ end
 modifier_kodo_armor_aura = class({})
 
 function modifier_kodo_armor_aura:IsAura()
+  return true
+end
+
+function modifier_kodo_armor_aura:IsHidden()
   return true
 end
 
@@ -127,4 +141,68 @@ end
 
 function modifier_kodo_armor_aura_buff:GetModifierPhysicalArmorBonus()
   return self.armor
+end
+
+modifier_kodo_magic_resist_aura = class({})
+
+function modifier_kodo_magic_resist_aura:IsHidden()
+  return true
+end
+
+function modifier_kodo_magic_resist_aura:IsAura()
+  return true
+end
+
+function modifier_kodo_magic_resist_aura:GetAuraDuration()
+  return 0.5
+end
+
+function modifier_kodo_magic_resist_aura:GetAuraRadius()
+  return self:GetAbility():GetSpecialValueFor("radius")
+end
+
+function modifier_kodo_magic_resist_aura:GetAuraSearchFlags()
+  return DOTA_UNIT_TARGET_FLAG_INVULNERABLE
+end
+
+function modifier_kodo_magic_resist_aura:GetAuraSearchTeam()
+  return DOTA_UNIT_TARGET_TEAM_FRIENDLY
+end
+
+function modifier_kodo_magic_resist_aura:GetAuraSearchType()
+  return DOTA_UNIT_TARGET_ALL
+end
+
+function modifier_kodo_magic_resist_aura:GetModifierAura()
+  return "modifier_kodo_magic_resist_aura_buff"
+end
+
+function modifier_kodo_magic_resist_aura:IsAuraActiveOnDeath()
+  return false
+end
+
+function modifier_kodo_magic_resist_aura:GetAuraEntityReject(target)
+  return IsCustomBuilding(target) or target:IsRealHero()
+end
+
+modifier_kodo_magic_resist_aura_buff = class({})
+
+function modifier_kodo_magic_resist_aura_buff:IsDebuff()
+  return false
+end
+
+function modifier_kodo_magic_resist_aura_buff:OnCreated()
+  if not self:GetAbility() then return end
+  self.magic_resistance = self:GetAbility():GetSpecialValueFor("magic_resistance")
+end
+
+function modifier_kodo_magic_resist_aura_buff:DeclareFunctions()
+  local funcs = {
+    MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS
+  }
+  return funcs
+end
+
+function modifier_kodo_magic_resist_aura_buff:GetModifierMagicalResistanceBonus()
+  return self.magic_resistance
 end

@@ -199,6 +199,7 @@ function GameMode:InitGameMode()
   GameRules.roundSeconds = 0
   GameRules.roundInProgress = false
   GameRules.InHeroSelection = false
+  GameRules.CheckingForLeavers = false
   GameRules.roundStartTime = 0
   GameRules.needToPick = 0
   GameRules.playerIDs = {}
@@ -214,11 +215,14 @@ function GameMode:InitGameMode()
   GameRules.drawVotes = {}
   GameRules.numRoundsVotes = {}
   GameRules.allowBotsVote = {}
+  GameRules.ggVote = {}
 
   GameRules.HeroSelectionTimer = ""
   GameRules.LoadingTimer = ""
   GameRules.PostRoundTimer = ""
   GameRules.DrawTimer = ""
+  GameRules.GGTimerWest = ""
+  GameRules.GGTimerEast = ""
   GameRules.RoundTimer = ""
 
   GameRules.GameData = {}

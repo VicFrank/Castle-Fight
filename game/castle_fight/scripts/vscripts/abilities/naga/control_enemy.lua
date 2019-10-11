@@ -35,7 +35,7 @@ function control_enemy:OnSpellStart()
   new_unit:SetForwardVector(fv)
   FindClearSpaceForUnit(new_unit, position, true)
 
-  target:RemoveSelf()
+  target:CustomRemoveSelf()
 
   new_unit:EmitSound("Hero_Chen.HolyPersuasionEnemy")
 

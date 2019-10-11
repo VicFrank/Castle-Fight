@@ -34,8 +34,10 @@ function modifier_generator_energy_shield:OnCreated()
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
 
   local shield_size = self:GetParent():GetModelRadius() * 0.7
+end
 
-  self.particle = ParticleManager:CreateParticle("particles/items_fx/immunity_sphere_buff.vpcf", PATTACH_CENTER_FOLLOW, self:GetParent()) 
+function modifier_generator_energy_shield:GetEffectName()
+    return "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
 end
 
 function modifier_generator_energy_shield:DeclareFunctions()
@@ -53,13 +55,14 @@ function modifier_generator_energy_shield:OnBuildingTarget()
   if not IsServer() then return end
 
   local parent = self:GetParent()
-  local currentStacks = parent:GetModifierStackCount("modifier_generator_energy_shield", parent)
 
-  parent:SetModifierStackCount("modifier_generator_energy_shield", parent, currentStacks - 1)
-
-  if currentStacks == 2 then
+  if self:GetStackCount() == 2 then
     self:GetParent():IncreaseMaxHealth(100)
-  elseif currentStacks <= 1 then
+  end
+
+  self:DecrementStackCount()
+
+  if self:GetStackCount() <= 0 then
     self:Destroy()
   end
 
@@ -69,7 +72,5 @@ end
 function modifier_generator_energy_shield:OnDestroy()
   if IsServer() then
     self:GetParent():EmitSound("Hero_Abaddon.AphoticShield.Destroy")
-    ParticleManager:DestroyParticle(self.particle, true)
-    ParticleManager:ReleaseParticleIndex(self.particle)
   end
 end

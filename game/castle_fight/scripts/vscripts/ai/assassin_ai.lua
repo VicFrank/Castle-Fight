@@ -140,13 +140,15 @@ function thisEntity:FindTarget()
   local currentTargetPriority = 999
 
   for _,enemy in ipairs(enemies) do
-    local priority = self:GetInvisTargetPriority(enemy)
-    if priority == 0 then
-      return enemy
-    end
-    if priority < currentTargetPriority then
-      target = enemy
-      currentTargetPriority = priority
+    if GridNav:CanFindPath(self:GetAbsOrigin(), enemy:GetAbsOrigin()) then
+      local priority = self:GetInvisTargetPriority(enemy)
+      if priority == 0 then
+        return enemy
+      end
+      if priority < currentTargetPriority then
+        target = enemy
+        currentTargetPriority = priority
+      end
     end
   end
 

@@ -1,14 +1,12 @@
 function GameMode:PayIncome()
-  for _,hero in pairs(HeroList:GetAllHeroes()) do
-    if hero:IsAlive() then
-      local playerID = hero:GetPlayerOwnerID()
-      local income = GameMode:GetIncomeForPlayer(playerID)
+  for _,playerID in pairs(GameRules.playerIDs) do
+    local income = GameMode:GetIncomeForPlayer(playerID)
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-      SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, income, hero)
+    SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, income, hero)
 
-      hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
-      hero:ModifyCustomGold(income)
-    end
+    hero:AddNewModifier(hero, nil, "income_modifier", {duration=10})
+    hero:ModifyCustomGold(income)
   end
 end
 

@@ -10,6 +10,8 @@ function UpdateRoundScores() {
 
     $("#NumRoundsWest").text = "/" + numRounds;
     $("#NumRoundsEast").text = "/" + numRounds;
+    $("#NumRoundsWestTop").text = "/" + numRounds;
+    $("#NumRoundsEastTop").text = "/" + numRounds;
   }
 }
 

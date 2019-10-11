@@ -176,6 +176,10 @@ var IsSpectator = !Players.IsValidPlayerID(Players.GetLocalPlayer());
 var LocalPlayerID = Players.GetLocalPlayer();
 var LocalPlayerTeam = Players.GetTeam(LocalPlayerID);
 
+var DefaultPlayerID = 0;
+if (!IsSpectator)
+  DefaultPlayerID = LocalPlayerID;
+
 function GetPlayerIDToShow() {
   var queryUnit = Players.GetLocalPlayerPortraitUnit();
   var queryUnitTeam = Entities.GetTeamNumber(queryUnit);
@@ -185,7 +189,7 @@ function GetPlayerIDToShow() {
   else if (IsSpectator && queryUnitPlayerOwnerID >= 0)
     return queryUnitPlayerOwnerID;
   else
-    return LocalPlayerID;
+    return DefaultPlayerID;
 }
 
 function UpdateResources() {

@@ -4,13 +4,14 @@ local SERVER_KEY = "v1";
 function SendGameStatsToServer()
   -- Check if we're ranked before sending
   GameRules.GameData.ranked = GameMode:IsRanked()
-  DeepPrintTable(GameRules.GameData)
+  -- DeepPrintTable(GameRules.GameData)
 
   local data = GameRules.GameData
 
   local raw_json_text = json.encode(data)
 
-  local request_url = SERVER_URL .. "/games"
+  local request_url = SERVER_URL .. "/api/games"
+  print(request_url)
   local req = CreateHTTPRequestScriptVM("POST", request_url)
   req:SetHTTPRequestGetOrPostParameter(
     "server_key",
@@ -21,7 +22,7 @@ function SendGameStatsToServer()
     raw_json_text
   )
   req:Send(function(res)
-    if not res.StatusCode == 200 then
+    if not res.StatusCode == 201 then
       print("Failed SendGameStatsToServer error: " .. res.StatusCode)
       return
     end
@@ -37,6 +38,8 @@ function GameMode:IsRanked()
   elseif CustomNetTables:GetTableValue("settings", "bots_enabled")["botsEnabled"] == 1 then
     return false
   elseif not GameMode:AreTeamsEven() then
+    return false
+  elseif TableCount(GameRules.playerIDs) < 4 then
     return false
   end
 

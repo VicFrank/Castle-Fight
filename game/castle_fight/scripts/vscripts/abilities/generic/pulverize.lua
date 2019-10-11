@@ -42,12 +42,20 @@ function modifier_pulverize:OnAttackLanded(keys)
 
   if attacker == self.caster and not IsCustomBuilding(target) then
     if self.chance >= RandomInt(1,100) then
-      self.caster:EmitSound("Hero_EarthShaker.Totem.Attack")
+      if attacker:GetUnitName() == "axemaster" then
+        local particle = ParticleManager:CreateParticle("particles/econ/items/axe/axe_weapon_bloodchaser/axe_attack_blur_counterhelix_bloodchaser.vpcf", PATTACH_CUSTOMORIGIN, self.caster)
+        ParticleManager:SetParticleControl(particle, 0, self.caster:GetOrigin())
+        ParticleManager:ReleaseParticleIndex(particle)
 
-      local particleName = "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
-      local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, self.parent)
-      ParticleManager:SetParticleControl(particle, 1, Vector(self.far_range, self.far_range, self.far_range))
-      ParticleManager:ReleaseParticleIndex(particle)
+        self.caster:EmitSound("Hero_Axe.CounterHelix_Blood_Chaser")
+      else
+        local particleName = "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
+        local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, self.parent)
+        ParticleManager:SetParticleControl(particle, 1, Vector(self.far_range, self.far_range, self.far_range))
+        ParticleManager:ReleaseParticleIndex(particle)
+
+        self.caster:EmitSound("Hero_EarthShaker.Totem.Attack")
+      end
 
       local enemies = FindEnemiesInRadius(attacker, self.far_range)
 

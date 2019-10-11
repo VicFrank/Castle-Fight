@@ -34,7 +34,7 @@ end
 function fan_of_spikes:OnProjectileHit(target, location)
   if not IsServer() then return end
   if not target then return end
-  if IsCustomBuilding(target) or target:IsRealHero() then return end
+  if IsCustomBuilding(target) or target:IsRealHero() or target:HasFlyMovementCapability() then return end
 
   local caster = self:GetCaster()
   local ability = self

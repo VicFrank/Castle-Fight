@@ -10,7 +10,7 @@ function GameMode:OnScriptReload()
   -- KillAllUnits()
   -- KillAllBuildings()
   -- GameMode:StartHeroSelection()
-
+  -- SendGameStatsToServer()
 end
 
 function SpawnTestBuildings()
@@ -162,6 +162,7 @@ CHEAT_CODES = {
 
 GAME_COMMANDS = {
   ["ff"] = function(...) GameMode:VoteGG(...) end,
+  ["gg"] = function(...) GameMode:VoteGG(...) end,
 }
 
 function GameMode:OnPlayerChat(keys)

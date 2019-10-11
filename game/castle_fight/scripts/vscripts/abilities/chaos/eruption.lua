@@ -4,7 +4,9 @@ function volcano_eruption:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local target = GetRandomVisibleEnemy(caster:GetTeam())
+  local filter = function(target) return not target:HasFlyMovementCapability() end
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
+
   if not target then return end
 
   local position = target:GetAbsOrigin()

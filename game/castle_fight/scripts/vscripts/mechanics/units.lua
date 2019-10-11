@@ -277,7 +277,7 @@ function ReplaceUnit( unit, new_unit_name )
 
   -- Remove replaced unit from the game
   Players:RemoveUnit(playerID, unit)
-  unit:RemoveSelf()
+  unit:CustomRemoveSelf()
 
   return new_unit
 end
@@ -347,6 +347,14 @@ function CDOTA_BaseNPC:GetAttackFactorAgainstTarget( unit )
   local armor_type = unit:GetArmorType()
   local damageTable = GameRules.Damage
   return damageTable[attack_type] and damageTable[attack_type][armor_type] or 1
+end
+
+-- Calls remove self and also decrements the unit counter
+function CDOTA_BaseNPC:CustomRemoveSelf()
+  self:RemoveSelf()
+  GameRules.numUnits = GameRules.numUnits - 1
+  CustomGameEventManager:Send_ServerToAllClients("num_units_changed",
+    {numUnits = GameRules.numUnits})
 end
 
 -- MODIFIER_PROPERTY_HEALTH_BONUS doesn't work on npc_dota_creature

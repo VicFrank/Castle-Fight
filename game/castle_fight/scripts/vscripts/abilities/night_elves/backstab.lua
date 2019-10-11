@@ -57,7 +57,7 @@ function modifier_assassin_backstab:GetModifierInvisibilityLevel()
 end
 
 function modifier_assassin_backstab:GetModifierMoveSpeedBonus_Percentage()
-  return 30
+  return 40
 end
 
 function modifier_assassin_backstab:OnAttackLanded(keys)

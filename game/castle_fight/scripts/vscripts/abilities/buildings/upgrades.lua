@@ -53,6 +53,7 @@ function UpgradeBuilding(keys)
   local hero = caster:GetOwner()
   local currentHealthPercentage = caster:GetHealthPercent() * 0.01
   local cheese_cost = tonumber(ability:GetAbilityKeyValues()['IsLegendary']) or 0
+  local gold_cost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
 
   -- Keep the gridnav blockers, hull radius and orientation
   local blockers = caster.blockers
@@ -72,6 +73,9 @@ function UpgradeBuilding(keys)
   if PlayerResource:IsUnitSelected(playerID, caster) then
     PlayerResource:AddToSelection(playerID, building)
   end
+
+  -- Add the gold cost for refund purposes on self destruct
+  building.gold_cost = caster.gold_cost + gold_cost
 
   if cheese_cost == 1 then
     building.isLegendary = true

@@ -233,6 +233,24 @@ function UseAbility(self)
         end
       end
 
+      -- Don't buff summons or lunatic goblins
+      if self:GetTeam() == potentialTarget:GetTeam() then
+        if potentialTarget:HasModifier("modifier_kill") then
+          isValidTarget = false
+        end
+
+        if potentialTarget:GetUnitName() == "lunatic_goblin" then
+          isValidTarget = false
+        end
+      end
+
+      -- if the ability can't hit flying units, don't use it
+      if self:GetUnitName() == "corrupted_annihilator" then
+        if potentialTarget:HasFlyMovementCapability() then
+          isValidTarget = false
+        end
+      end
+
       return isValidTarget
     end)
 

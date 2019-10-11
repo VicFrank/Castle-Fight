@@ -48,7 +48,7 @@ end
 function modifier_troll_berserk_buff:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-    MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
     MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
   }
   return funcs
@@ -58,7 +58,7 @@ function modifier_troll_berserk_buff:GetModifierAttackSpeedBonus_Constant(keys)
   return self.attack_speed
 end
 
-function modifier_troll_berserk_buff:GetModifierMoveSpeedBonus_Constant(keys)
+function modifier_troll_berserk_buff:GetModifierMoveSpeedBonus_Percentage(keys)
   return self.move_speed
 end
 

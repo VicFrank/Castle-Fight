@@ -40,7 +40,9 @@ function present_of_chaos:OnSpellStart()
 
   local option = GetRandomTableElement(options)
 
-  print(option)
+  local particle = ParticleManager:CreateParticle("particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf", PATTACH_CUSTOMORIGIN, nil)
+  ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
+  ParticleManager:ReleaseParticleIndex(particle)
 
   if option == "EXPLODE" then
     ParticleManager:ReleaseParticleIndex(
@@ -56,7 +58,7 @@ function present_of_chaos:OnSpellStart()
     target:Kill(ability, caster)
   elseif option == "MUTATE" then
     CreateLaneUnit("mutation", target:GetAbsOrigin(), caster:GetTeam(), caster:GetPlayerOwnerID())
-    target:RemoveSelf()
+    target:CustomRemoveSelf()
   elseif option == "HEX" then
     target:AddNewModifier(caster, ability, "modifier_hexxed", {duration = 45})
   elseif option == "DAMAGE" then

@@ -43,7 +43,7 @@ function modifier_overtake:OnAttackLanded(keys)
       new_unit:SetForwardVector(fv)
       FindClearSpaceForUnit(new_unit, position, true)
 
-      target:RemoveSelf()
+      target:CustomRemoveSelf()
     end
   end
 end

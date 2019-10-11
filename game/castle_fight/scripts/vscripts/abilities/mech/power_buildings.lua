@@ -107,6 +107,7 @@ function modifier_power_buildings_creep_buff:GetTexture()
 end
 
 function modifier_power_buildings_creep_buff:OnCreated()
+  if not self:GetAbility() then return end
   self.creep_health = self:GetAbility():GetSpecialValueFor("creep_health")
   self.creep_armor = self:GetAbility():GetSpecialValueFor("creep_armor")
   self.creep_damage = self:GetAbility():GetSpecialValueFor("creep_damage")

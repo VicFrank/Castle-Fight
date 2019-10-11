@@ -51,7 +51,7 @@ function modifier_custom_cleave:OnAttackLanded(params)
 
     if target ~= nil and target:GetTeamNumber() ~= self.parent:GetTeamNumber() then
       local cleaveDamage = (self.cleave_damage * params.damage) / 100.0
-      DoCleaveAttack(self.parent, target, self.ability, cleaveDamage, self.cleave_radius, self.cleave_radius * 2, self.cleave_radius * 2, particleName)
+      DoCleaveAttack(self.parent, target, self.ability, cleaveDamage, self.cleave_radius, self.cleave_radius * 2.25, self.cleave_radius * 2.25, particleName)
     end
   end
 end

@@ -203,6 +203,59 @@ function GameMode:PlayEndRoundAnimations(winningTeam)
   end
 end
 
+function GameMode:CheckLeavers()
+  -- Don't check for leavers in cheat mode
+  if GameRules:IsCheatMode() then return end
+  -- if all players on a team have been disconnected for 10 seconds
+  -- automatically end the round, and the game  
+  Timers:CreateTimer(function()
+    local goodConnected, badConnected = GameMode:CheckFullTeamDisconnect()
+    local bothTeamsConnected = goodConnected and badConnected
+    if not bothTeamsConnected and not GameRules.CheckingForLeavers then
+      GameRules.CheckingForLeavers = true
+      Timers:CreateTimer(10, function()
+        GameRules.CheckingForLeavers = false
+        local goodConnected, badConnected = GameMode:CheckFullTeamDisconnect()
+        if not goodConnected and not badConnected then
+          GameMode:EndRound(DOTA_TEAM_NEUTRALS)
+          GameMode:EndGame(DOTA_TEAM_NEUTRALS)
+        elseif not goodConnected then
+          GameMode:EndRound(DOTA_TEAM_GOODGUYS)
+          GameMode:EndGame(DOTA_TEAM_BADGUYS)
+        elseif not badConnected then
+          GameMode:EndRound(DOTA_TEAM_BADGUYS)
+          GameMode:EndGame(DOTA_TEAM_GOODGUYS)
+        end
+      end)
+    end
+    return 1
+  end)
+end
+
+function GameMode:CheckFullTeamDisconnect()
+  local radiantConnected = false
+  local direConnected = false
+  for _,playerID in pairs(GameRules.playerIDs) do
+    if PlayerResource:IsFakeClient(playerID) then
+      -- If there is a bot player, always return that both teams are connected
+      return true, true
+    end
+
+    local team = PlayerResource:GetTeam(playerID)
+    local connected = PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED
+
+    if connected then
+      if team == DOTA_TEAM_GOODGUYS then
+        radiantConnected = true
+      elseif team == DOTA_TEAM_BADGUYS then
+        direConnected = true
+      end
+    end
+  end
+
+  return radiantConnected, direConnected
+end
+
 --------------------------------------------------------
 -- Start Round
 --------------------------------------------------------
@@ -216,7 +269,9 @@ function GameMode:StartRound()
 
     print("Starting Round")
     ClearDrawSettings()
-    GameMode:StartDrawVoteCountdown()
+    ClearGGVote(DOTA_TEAM_GOODGUYS)
+    ClearGGVote(DOTA_TEAM_BADGUYS)
+    GameMode:StartDrawVoteCountdown(DRAW_VOTE_DELAY)
 
     GameMode:InitializeRoundStats()
     GameMode:SpawnCastles()
@@ -240,9 +295,14 @@ end
 -- End Round
 --------------------------------------------------------
 function GameMode:EndRound(losingTeam)
+  if not GameRules.roundInProgress then return end
   GameRules.roundInProgress = false
 
   ClearDrawSettings()
+
+  -- Clear timers
+  Timers:RemoveTimer(GameRules.GGTimerWest)
+  Timers:RemoveTimer(GameRules.GGTimerEast)
 
   -- Record the winner
   local winningTeam  
@@ -269,6 +329,36 @@ function GameMode:EndRound(losingTeam)
   AddFOWViewer(DOTA_TEAM_GOODGUYS, GameRules.rightCastlePosition, 9999, POST_ROUND_TIME, false)
   AddFOWViewer(DOTA_TEAM_GOODGUYS, GameRules.leftCastlePosition, 9999, POST_ROUND_TIME, false)
 
+  -- Record the round stats for stat tracking
+  local playerStats = {}
+
+  for _,playerID in pairs(GameRules.playerIDs) do
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+    local playerRoundData = {
+      playerID = playerID,
+      race = heroToRace(hero:GetUnitName()),
+      team = hero:GetTeam(),
+      unitsKilled = GameRules.unitsKilled[playerID],
+      unitsSpawned = GameRules.numUnitsTrained[playerID],
+      abandoned = hero:HasOwnerAbandoned(),
+      income = math.floor(GameMode:GetIncomeForPlayer(playerID)),
+      buildOrder = GameRules.buildOrders[playerID],
+    }
+
+    table.insert(playerStats, playerRoundData)
+  end
+
+  local roundData = {
+    roundNumber = GameRules.roundCount,
+    duration = roundDuration,
+    winner = winningTeam,
+    playerStats = playerStats,
+  }
+
+  table.insert(GameRules.GameData.rounds, roundData)
+
+  -- update the client for the end round scoreboard
   CustomNetTables:SetTableValue("round_score", "score", {
     left_score = GameRules.leftRoundsWon,
     right_score = GameRules.rightRoundsWon,
@@ -339,49 +429,24 @@ function GameMode:EndRound(losingTeam)
       GameMode:StartHeroSelection()
     end
   end)
-
-  -- Record the round stats for stat tracking
-  local playerStats = {}
-
-  for _,playerID in pairs(GameRules.playerIDs) do
-    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-
-    local playerRoundData = {
-      playerID = playerID,
-      race = heroToRace(hero:GetUnitName()),
-      team = hero:GetTeam(),
-      unitsKilled = GameRules.unitsKilled[playerID],
-      unitsSpawned = GameRules.numUnitsTrained[playerID],
-      abandoned = hero:HasOwnerAbandoned(),
-      income = math.floor(GameMode:GetIncomeForPlayer(playerID)),
-      buildOrder = GameRules.buildOrders[playerID],
-    }
-
-    table.insert(playerStats, playerRoundData)
-  end
-
-  local roundData = {
-    roundNumber = GameRules.roundCount,
-    duration = roundDuration,
-    winner = winningTeam,
-    playerStats = playerStats,
-  }
-
-  table.insert(GameRules.GameData.rounds, roundData)
 end
 
-function GameMode:EndGame(team)
-  if team == DOTA_TEAM_GOODGUYS then
+function GameMode:EndGame(winningTeam)
+  if GameRules.GameEnded then return end
+
+  GameRules.GameEnded = true
+
+  if winningTeam == DOTA_TEAM_GOODGUYS then
     Notifications:TopToAll({text="Western Forces Victory!", duration=30})
-  else
+  elseif winningTeam == DOTA_TEAM_BADGUYS then
     Notifications:TopToAll({text="Eastern Forces Victory!", duration=30})
   end
 
   -- Send the game's stats to the server
-  GameRules.GameData.winner = team
+  GameRules.GameData.winner = winningTeam
   
   SendGameStatsToServer()
 
-  GameRules:SetGameWinner(team)
+  GameRules:SetGameWinner(winningTeam)
 end
 

@@ -22,6 +22,7 @@ function modifier_dryad_natures_touch:IsDebuff()
 end
 
 function modifier_dryad_natures_touch:OnCreated()
+  if not self:GetAbility() then return end
   self.health_bonus = self:GetAbility():GetSpecialValueFor("health")
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
 

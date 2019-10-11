@@ -23,7 +23,13 @@ function GameMode:OnGameInProgress()
         cheatsEnabled = cheatsEnabled,
       }
 
+      CustomNetTables:SetTableValue("round_score", "score", {
+        left_score = GameRules.leftRoundsWon,
+        right_score = GameRules.rightRoundsWon,
+      })
+
       GameMode:StartHeroSelection()
+      GameMode:CheckLeavers()
       return
     end
 
@@ -236,12 +242,14 @@ function GameMode:OnConnectFull(keys)
   local entIndex = keys.index+1
   -- The Player entity of the joining user
   local ply = EntIndexToHScript(entIndex)
+  -- The Player ID of the joining player
+  local playerID = ply:GetPlayerID()
   local userID = keys.userid
+
+  if playerID < 0 then return end
 
   self.vUserIds = self.vUserIds or {}
   self.vUserIds[userID] = ply
-  -- The Player ID of the joining player
-  local playerID = ply:GetPlayerID()
   print(playerID .. " connected")
 
   -- SetLumber(playerID, 0)
@@ -299,7 +307,7 @@ function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previous
     local reward = 20 - numBuilt * 5
 
     if reward > 0 then
-      local rewardMessage = "You received <font color='FFBF00'>" .. reward .. "</font> gold for being the <font color='#00C400'>" .. 
+      local rewardMessage = "You received <font color='#FFBF00'>" .. reward .. "</font> gold for being the <font color='#00C400'>" .. 
         numBuilt + 1 .. getNumberSuffix(numBuilt + 1) .. "</font> player to build a building."
       Notifications:Top(playerID, {text=rewardMessage, duration=8.0})
 

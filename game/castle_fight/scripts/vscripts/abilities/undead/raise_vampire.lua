@@ -26,7 +26,7 @@ end
 function modifier_raise_lesser_vampire:OnDeath(params)
   if not IsServer() then return end
 
-  if params.attacker == self:GetParent() then
+  if params.attacker == self:GetParent() and not params.unit:IsMechanical() then
     local unitname = "lesser_vampire"
     local position = params.unit:GetAbsOrigin()
     local team = self:GetParent():GetTeam()
@@ -50,7 +50,7 @@ end
 function modifier_raise_vampire:OnDeath(params)
   if not IsServer() then return end
 
-  if params.attacker == self:GetParent() then
+  if params.attacker == self:GetParent() and not params.unit:IsMechanical() then
     local unitname = "vampire"
     local position = params.unit:GetAbsOrigin()
     local team = self:GetParent():GetTeam()

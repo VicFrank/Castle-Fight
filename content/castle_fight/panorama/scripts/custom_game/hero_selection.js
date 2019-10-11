@@ -90,7 +90,7 @@ function ShowHeroSelect() {
 
 // Dota TV Spectators have PlayerID of -1
 var IsSpectator = !Players.IsValidPlayerID(Players.GetLocalPlayer());
-
+var IsSpectator = false;
 function UpdateHeroSelectVisibility() {
   $.Msg("UpdateHeroSelectVisibility");
 

@@ -27,7 +27,7 @@ function modifier_aa_rockets:IsHidden() return true end
 function modifier_aa_rockets:OnCreated()
   self.radius = self:GetAbility():GetSpecialValueFor("radius")
 
-  self:StartIntervalThink(1)
+  self:StartIntervalThink(1.5)
 end
 
 function modifier_aa_rockets:OnIntervalThink()

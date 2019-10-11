@@ -11,6 +11,8 @@
   horizontal-align: center;
   vertical-align: top;
   tooltip-position: bottom;
+
+  flow-children: right;
 }
 
 #RoundTimer
@@ -36,24 +38,29 @@
   text-shadow: 1px 1px 0px 2.0 #00000011;
 }
 
-#GoodGuysScore
+.TopScoreContainer
 {
-  horizontal-align: left;
-}
-#BadGuysScore
-{
-  horizontal-align: right;
+  background-color: black;
+  width: 50px;
+  padding-left: 9px;
+  flow-children: right;
 }
 
-.TeamScore
+.AlignRight
 {
-  width: 50px;
-  height: 40px;
+  horizontal-align: right;  
+}
+
+.TeamScoreBig
+{
 
   font-size: 32px;
-  text-align: center;
+}
 
-  background-color: black;
+.TeamScoreSmall
+{
+  font-size: 16px;
+  margin-top: 16px;
 }
 
 #UnitCounter

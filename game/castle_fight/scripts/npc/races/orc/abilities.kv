@@ -36,8 +36,8 @@
 
     "precache"
     {
-      "particle"  "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+      "particle"  "particles/econ/items/axe/axe_weapon_bloodchaser/axe_attack_blur_counterhelix_bloodchaser.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
     }
 
     "AbilitySpecial"
@@ -156,7 +156,7 @@
       "04"
       {
         "var_type"                "FIELD_INTEGER"
-        "duration"                "6"
+        "duration"                "7"
       }
     }
   }
@@ -262,7 +262,6 @@
     }
   }
 
-  // look up aoe
   "kodo_armor_aura"
   {
     "AbilityTextureName"          "enraged_wildkin_toughness_aura"
@@ -288,21 +287,27 @@
     }
   }
 
-  "kodo_spell_resistance"
+  "kodo_magic_resist_aura"
   {
     "AbilityTextureName"          "antimage_counterspell"
     "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/orc/spell_resistance"
+    "ScriptFile"                  "abilities/orc/kodo_auras"
     "MaxLevel"                    "1"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCastRange"            "900"
 
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "magic_resistance"        "80"
+        "magic_resistance"        "30"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "900"
       }
     }
   }

@@ -8,8 +8,15 @@
   </scripts>
   <Panel class="RoundScoresRoot" hittest="false">
     <Panel id="RoundScoresContainer">
-      <Label id="GoodGuysScore" class="TeamScore" text="0" />
-      <Label id="BadGuysScore" class="TeamScore" text="0" />
+      <!-- <Label id="GoodGuysScore" class="TeamScore" text="0" /> -->
+      <Panel class="AlignLeft TopScoreContainer">
+        <Label id="GoodGuysScore" class="TeamScoreBig WestColor" text="" />
+        <Label id="NumRoundsWestTop" class="TeamScoreSmall WestColor" text="" />
+      </Panel>
+      <Panel class="AlignRight TopScoreContainer">
+        <Label id="BadGuysScore" class="TeamScoreBig EastColor" text="" />
+        <Label id="NumRoundsEastTop" class="TeamScoreSmall EastColor" text="" />
+    </Panel>
     </Panel>
 
     <Panel id="RoundTimer">

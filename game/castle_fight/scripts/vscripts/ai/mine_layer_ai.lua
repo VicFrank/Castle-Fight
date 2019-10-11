@@ -56,8 +56,8 @@ function Spawn(keys)
       canUseMine = false,
     }
 
-    -- wait 3 seconds before we can use the mine
-    Timers:CreateTimer(3, function() thisEntity.aiState.canUseMine = true end)
+    -- wait 5 seconds before we can use the mine
+    Timers:CreateTimer(5, function() thisEntity.aiState.canUseMine = true end)
 
     -- Get all of the unit's abilities
     thisEntity.abilityList = {}

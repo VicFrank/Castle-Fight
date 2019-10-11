@@ -74,6 +74,7 @@ function modifier_incinerate_debuff:DeclareFunctions()
 end
 
 function modifier_incinerate_debuff:OnCreated()
+  if not self:GetAbility() then return end
   self.explode_damage = self:GetAbility():GetSpecialValueFor("explode_damage")
   self.full_aoe = self:GetAbility():GetSpecialValueFor("full_aoe")
   self.half_aoe = self:GetAbility():GetSpecialValueFor("half_aoe")

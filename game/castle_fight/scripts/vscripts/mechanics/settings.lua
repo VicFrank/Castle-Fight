@@ -27,8 +27,8 @@ function ClearDrawSettings()
   Timers:RemoveTimer(GameRules.DrawTimer)
 end
 
-function GameMode:StartDrawVoteCountdown()
-  GameRules.DrawTimer = Timers:CreateTimer(DRAW_VOTE_DELAY, function()
+function GameMode:StartDrawVoteCountdown(delay)
+  GameRules.DrawTimer = Timers:CreateTimer(delay, function()
     AllowDrawVotes()
   end)
 end
@@ -46,8 +46,8 @@ end
 
 function EndDrawVoting()
   ClearDrawSettings()
-  AllowDrawVotes()
-  EmitAnnouncerSound("announcer_ann_custom_vote_complete")
+  -- hide the vote after it's been rejected
+  GameMode:StartDrawVoteCountdown(100)
 end
 
 function OnDrawVoteChanged(playerID, vote)
@@ -185,8 +185,77 @@ function OnDraftModeVote(eventSourceIndex, args)
 
 end
 
+function ClearGGVote(team)
+  for _,playerID in pairs(GameRules.playerIDs) do
+    GameRules.drawVotes[playerID] = false
+  end
+end
+
+function GameMode:CountGGVotes(team)
+  local votes = 0
+  local numPlayers = 0
+
+  for _,playerID in pairs(GameRules.playerIDs) do
+    local playerTeam = PlayerResource:GetTeam(playerID)
+    local vote = GameRules.ggVote[playerID]
+
+    if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED
+      and not PlayerResource:IsFakeClient(playerID) then
+        if playerTeam == team then
+          numPlayers = numPlayers + 1
+          if vote then
+            votes = votes + 1
+          end
+        end
+    end
+  end
+
+  return votes, numPlayers
+end
+
 function GameMode:VoteGG(playerID)
-  Say(nil, "playerID: " .. playerID .. " voted to forfeit", false)
+  if not GameRules.roundInProgress then
+    return
+  end
+
+  local roundDuration = GameRules:GetGameTime() - GameRules.roundStartTime
+  if roundDuration < 500 then
+    Say(nil, "It is too early to concede", false)
+    return
+  end
+
+  GameRules.ggVote[playerID] = true
+  local team = PlayerResource:GetTeam(playerID)
+  local votes, numPlayers = GameMode:CountGGVotes(team)
+
+  local teamString = ""
+  if team == DOTA_TEAM_GOODGUYS then
+    teamString = "West"
+  elseif team == DOTA_TEAM_BADGUYS then
+    teamString = "East"
+  end
+
+  local voteStatus = votes .. "/" .. numPlayers .. " " .. teamString
+    .. " players voted to forfeit!"
+  Say(nil, voteStatus, false)
+
+  if votes == numPlayers then
+    GameMode:EndRound(team)
+  else
+    if team == DOTA_TEAM_GOODGUYS then
+      Timers:RemoveTimer(GameRules.GGTimerWest)
+      GameRules.GGTimerWest = Timers:CreateTimer(90, function()
+        Say(nil, "GG vote failed for West", false)
+        ClearGGVote(team)
+      end)
+    elseif team == DOTA_TEAM_BADGUYS then
+      Timers:RemoveTimer(GameRules.GGTimerEast)
+      GameRules.GGTimerEast = Timers:CreateTimer(90, function()
+        Say(nil, "GG vote failed for East", false)
+        ClearGGVote(team)
+      end)
+    end
+  end
 end
 
 --------------------------------------------------

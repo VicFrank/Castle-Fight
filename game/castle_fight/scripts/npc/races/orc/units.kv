@@ -143,7 +143,7 @@
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "320"
-    "StatusHealth"           "900"
+    "StatusHealth"           "1000"
     "StatusHealthRegen"      "2.25"
     "StatusMana"             "0"
     "StatusManaRegen"        "0.0"     
@@ -280,10 +280,9 @@
       "AttachWearables"
       {
         "Wearable1"   { "ItemDef"  "373"  }
-        "Wearable2"   { "ItemDef"  "374"  }
-        "Wearable5"   { "ItemDef"  "410"  }
-        "Wearable6"   { "ItemDef"  "411"  }
-        "Wearable7"   { "ItemDef"  "412"  }
+        "Wearable2"   { "ItemDef"  "410"  }
+        "Wearable3"   { "ItemDef"  "411"  }
+        "Wearable4"   { "ItemDef"  "412"  }
       }
     }
   }
@@ -555,14 +554,14 @@
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
 
-    "Ability1"                "kodo_spell_resistance"
+    "Ability1"                "kodo_magic_resist_aura"
 
     "ArmorPhysical"           "7"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
     "AttackDamageMin"         "30"
     "AttackDamageMax"         "50"
-    "AttackRate"              "1.35"
+    "AttackRate"              "1.2"
     "AttackAnimationPoint"    "0.85"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "200"
@@ -612,10 +611,10 @@
     "ArmorPhysical"           "5"
 
     "SplashAttack"              "1"
-    "SplashFullRadius"          "37"
-    "SplashMediumRadius"        "75"
+    "SplashFullRadius"          "45"
+    "SplashMediumRadius"        "100"
     "SplashMediumDamage"        "0.4"
-    "SplashSmallRadius"         "225"
+    "SplashSmallRadius"         "175"
     "SplashSmallDamage"         "0.25"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
