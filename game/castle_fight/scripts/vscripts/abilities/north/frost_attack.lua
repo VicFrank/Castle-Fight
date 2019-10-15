@@ -62,9 +62,7 @@ function modifier_frost_attack_freeze:OnCreated( kv )
 
     self.dps = self:GetAbility():GetSpecialValueFor("dps")
 
-    local playerID = self.caster.playerID or self.caster:GetPlayerOwnerID()
-    if playerID < 0 then playerID = 0 end
-    self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
+    self.playerHero = self:GetCaster():GetPlayerHero()
 
     self:StartIntervalThink(1)
   end

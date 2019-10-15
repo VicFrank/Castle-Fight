@@ -120,7 +120,12 @@ function GetTargetPriority(self, target)
     end
   else
     -- Is a regular unit
-    return 3
+    if target:HasModifier("modifier_frost_attack_freeze") then
+      -- Don't attack units that are already frozen
+      return 2.9
+    else
+      return 3
+    end
   end
 end
 
@@ -210,6 +215,26 @@ function UseAbility(self)
   local castRange = ability:GetCastRange(self:GetAbsOrigin(), self)
 
   if castRange and castRange > 0 then
+    -- We should wait a bit before casting an aoe no-target ability
+    if string.sub(getBinaryValues(ability:GetBehavior()),3,3) == "1" then
+      --DOTA_ABILITY_BEHAVIOR_NO_TARGET
+
+      if self.aiState.waitToCast then
+        return false
+      end
+
+      if not self.aiState.canCast then
+        self.aiState.waitToCast = true
+
+        Timers:CreateTimer(2, function()
+          self.aiState.waitToCast = false
+          self.aiState.canCast = true
+        end)
+
+        return false
+      end
+    end
+
     local targets = FindUnitsInRadius(
       self:GetTeam(),
       self:GetAbsOrigin(),
@@ -262,6 +287,9 @@ function UseAbility(self)
   if string.sub(getBinaryValues(ability:GetBehavior()),3,3) == "1" then
     --DOTA_ABILITY_BEHAVIOR_NO_TARGET
     self:CastAbilityNoTarget(ability, -1)
+    if self.aiState.canCast then
+      self.aiState.canCast = false
+    end
   elseif string.sub(getBinaryValues(ability:GetBehavior()),4,4) == "1" then
   --DOTA_ABILITY_BEHAVIOR_UNIT_TARGET
     self:CastAbilityOnTarget(target, ability, -1)

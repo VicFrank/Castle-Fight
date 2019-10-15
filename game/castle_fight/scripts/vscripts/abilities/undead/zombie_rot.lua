@@ -72,10 +72,7 @@ function modifier_zombie_rot_aura:OnCreated(kv)
       self:AddParticle(nFXIndex, false, false, -1, false, false)
     end
 
-    local playerID = self:GetCaster().playerID or self:GetCaster():GetPlayerOwnerID()
-    if playerID < 0 then playerID = 0 end
-    self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
-
+    self.playerHero = self:GetCaster():GetPlayerHero()
     self.casterTeam = self:GetCaster():GetTeam()
 
     self.abilityLevel = self:GetAbility():GetLevel()

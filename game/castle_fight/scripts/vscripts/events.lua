@@ -108,6 +108,7 @@ function GameMode:OnHeroInGame(hero)
   end
 
   PlayerResource:SetDefaultSelectionEntity(playerID, hero)
+  GameRules.heroList[playerID] = hero
 
   -- Move the camera to the hero
   PlayerResource:SetCameraTarget(playerID, hero)

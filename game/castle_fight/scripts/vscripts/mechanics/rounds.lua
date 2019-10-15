@@ -206,6 +206,7 @@ end
 function GameMode:CheckLeavers()
   -- Don't check for leavers in cheat mode
   if GameRules:IsCheatMode() then return end
+  if TableCount(GameRules.playerIDs) < 3 then return end
   -- if all players on a team have been disconnected for 10 seconds
   -- automatically end the round, and the game  
   Timers:CreateTimer(function()
@@ -347,6 +348,11 @@ function GameMode:EndRound(losingTeam)
     }
 
     table.insert(playerStats, playerRoundData)
+
+    -- While we're at it, reduce their resources to 0
+    SetLumber(playerID, 0)
+    SetCheese(playerID, 0)
+    SetCustomGold(playerID, 0)
   end
 
   local roundData = {

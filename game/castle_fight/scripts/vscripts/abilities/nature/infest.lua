@@ -79,9 +79,7 @@ function modifier_brood_mother_infest:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
-  local playerID = self.caster.playerID or self.caster:GetPlayerOwnerID()
-  if playerID < 0 then playerID = 0 end
-  self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
+  self.playerHero = self:GetCaster():GetPlayerHero()
 
   self.dps = self.ability:GetSpecialValueFor("dps")
 

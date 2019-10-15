@@ -203,6 +203,7 @@ function GameMode:InitGameMode()
   GameRules.roundStartTime = 0
   GameRules.needToPick = 0
   GameRules.playerIDs = {}
+  GameRules.heroList = {}
   GameRules.numToCache = 0
   GameRules.numUnits = 0
   GameRules.precached = {}

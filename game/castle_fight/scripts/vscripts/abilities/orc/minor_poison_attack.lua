@@ -69,10 +69,7 @@ function modifier_wyvern_minor_poison_attack_debuff:OnCreated()
 
   if not IsServer() then return end
 
-  local playerID = self.caster.playerID or self.caster:GetPlayerOwnerID()
-  if playerID < 0 then playerID = 0 end
-  self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
-
+  self.playerHero = self:GetCaster():GetPlayerHero()
 
   self:StartIntervalThink(1)
   self:DamageTick()

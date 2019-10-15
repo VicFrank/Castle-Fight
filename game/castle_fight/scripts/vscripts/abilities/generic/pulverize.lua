@@ -48,6 +48,7 @@ function modifier_pulverize:OnAttackLanded(keys)
         ParticleManager:ReleaseParticleIndex(particle)
 
         self.caster:EmitSound("Hero_Axe.CounterHelix_Blood_Chaser")
+        self.caster:StartGesture(ACT_DOTA_CAST_ABILITY_3)
       else
         local particleName = "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
         local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, self.parent)

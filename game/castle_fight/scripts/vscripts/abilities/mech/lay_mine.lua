@@ -21,9 +21,7 @@ function modifier_mine:OnCreated(table)
       self:StartIntervalThink(FrameTime())
     end)
 
-    local playerID = self:GetCaster().playerID or self:GetCaster():GetPlayerOwnerID()
-    if playerID < 0 then playerID = 0 end
-    self.playerHero = PlayerResource:GetPlayer(playerID):GetAssignedHero()
+    self.playerHero = self:GetCaster():GetPlayerHero()
 
     self.damage = self:GetAbility():GetSpecialValueFor("damage")
     self.close_radius = self:GetAbility():GetSpecialValueFor("close_radius")

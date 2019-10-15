@@ -357,6 +357,19 @@ function CDOTA_BaseNPC:CustomRemoveSelf()
     {numUnits = GameRules.numUnits})
 end
 
+function CDOTA_BaseNPC:CustomGetPlayerOwnerID()
+  return self.playerID or self:GetPlayerOwnerID()
+end
+
+function CDOTA_BaseNPC:GetPlayerHero()
+  local playerID = self:CustomGetPlayerOwnerID()
+
+  if playerID < 0 then playerID = 0 end
+  if not playerID then return nil end
+
+  return GameRules.heroList[playerID]
+end
+
 -- MODIFIER_PROPERTY_HEALTH_BONUS doesn't work on npc_dota_creature
 function CDOTA_BaseNPC_Creature:IncreaseMaxHealth(bonus)
   local newHP = self:GetMaxHealth() + bonus
