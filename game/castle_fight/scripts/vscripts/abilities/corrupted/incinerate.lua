@@ -63,7 +63,11 @@ end
 
 function modifier_incinerate_debuff:GetTexture()
   return "bane_brain_sap"
-end 
+end
+
+function modifier_incinerate_debuff:GetEffectName()
+  return "particles/units/heroes/hero_enigma/enigma_malefice.vpcf"
+end
 
 function modifier_incinerate_debuff:DeclareFunctions()
   local decFuns =
@@ -122,5 +126,12 @@ function modifier_incinerate_debuff:OnDeath(keys)
         ApplyDamage(damageTable)
       end
     end
+
+    local target = self:GetParent()
+    local particleName = "particles/econ/items/sand_king/sandking_ti7_arms/sandking_ti7_caustic_finale_explode_mist.vpcf"
+    local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, target)
+    ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
+    ParticleManager:ReleaseParticleIndex(particle)
+    target:EmitSound("Ability.SandKing_CausticFinale")
   end
 end
