@@ -74,18 +74,18 @@ function modifier_death_and_decay:OnCreated()
   self.damage = self.ability:GetSpecialValueFor("damage_percent") / 100
 
   self.team = self.caster:GetTeam()
-  
+
   self:StartIntervalThink(1)
 
-  local particleName = "particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
+  local particleName = "particles/econ/items/necrolyte/necro_ti9_immortal/necro_ti9_immortal_shroud.vpcf"
   local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, self.parent)
   ParticleManager:SetParticleControl(particle, 1, Vector(self.radius, 1, 1))
   self:AddParticle(particle, false, false, 0, false, false)
-  self:GetParent():EmitSound("Hero_Enigma.Midnight_Pulse")
+  self:GetParent():EmitSound("Hero_Necrolyte.SpiritForm.Cast")
 end
 
 function modifier_death_and_decay:OnDestroy()
-  if IsServer() then self.parent:StopSound("Hero_Enigma.Midnight_Pulse") end
+  --if IsServer() then self.parent:StopSound("Hero_Necrolyte.SpiritForm.Cast") end
 end
 
 function modifier_death_and_decay:OnIntervalThink()
