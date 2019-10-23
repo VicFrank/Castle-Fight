@@ -59,9 +59,13 @@ function modifier_astral_grenade:OnCreated()
 end
 function modifier_astral_grenade:DeclareFunctions()
   return {
-    MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+    MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
   }
 end
 function modifier_astral_grenade:GetModifierMoveSpeedBonus_Percentage()
+  return -self.move_slow
+end
+function modifier_astral_grenade:GetModifierAttackSpeedBonus_Constant()
   return -self.move_slow
 end

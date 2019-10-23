@@ -81,7 +81,6 @@ function thisEntity:CastWeb()
 
   if not ability or not ability:IsFullyCastable() then return false end
   
-  -- see if there's a target for web
   local castRange = ability:GetCastRange(self:GetAbsOrigin(), self)
   local target
 

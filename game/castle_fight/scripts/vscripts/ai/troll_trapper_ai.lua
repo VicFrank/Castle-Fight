@@ -79,28 +79,25 @@ function thisEntity:CastEnsnare()
 
   if not ability or not ability:IsFullyCastable() then return false end
   
-  -- see if there's a target for web
   local castRange = ability:GetCastRange(self:GetAbsOrigin(), self)
   local target
 
   if castRange then
-    local targets = FindUnitsInRadius(
-      self:GetTeam(),
-      self:GetAbsOrigin(),
-      nil, 
-      castRange,
-      ability:GetAbilityTargetTeam(),
-      ability:GetAbilityTargetType(),
-      ability:GetAbilityTargetFlags(),
-      FIND_ANY_ORDER,
-      false)
+    local targets = FindEnemiesInRadius(self, castRange)
 
     target = FindFirstUnit(targets, function(target) 
       return not IsCustomBuilding(target) and target:HasFlyMovementCapability()
+        and not target.markedForWeb
     end)
   end
 
   if target then
+    target.markedForWeb = true
+    Timers:CreateTimer(2, function()
+      if IsValidAlive(target) then
+        target.markedForWeb = false
+      end
+    end)
     self:CastAbilityOnTarget(target, ability, -1)
     return true
   end

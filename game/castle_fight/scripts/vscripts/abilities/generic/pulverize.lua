@@ -61,22 +61,24 @@ function modifier_pulverize:OnAttackLanded(keys)
       local enemies = FindEnemiesInRadius(attacker, self.far_range)
 
       for _,enemy in pairs(enemies) do
-        local distance = (attacker:GetAbsOrigin() - enemy:GetAbsOrigin()):Length2D()
-        local damage 
+        if not enemy:HasFlyMovementCapability() then
+          local distance = (attacker:GetAbsOrigin() - enemy:GetAbsOrigin()):Length2D()
+          local damage 
 
-        if distance <= self.close_range then
-          damage = self.close_damage
-        else
-          damage = self.far_damage
+          if distance <= self.close_range then
+            damage = self.close_damage
+          else
+            damage = self.far_damage
+          end
+
+          ApplyDamage({
+            victim = enemy,
+            attacker = attacker,
+            damage = damage,
+            damage_type = DAMAGE_TYPE_PHYSICAL,
+            ability = self.ability,
+          })
         end
-
-        ApplyDamage({
-          victim = enemy,
-          attacker = attacker,
-          damage = damage,
-          damage_type = DAMAGE_TYPE_PHYSICAL,
-          ability = self.ability,
-        })
       end
     end
   end

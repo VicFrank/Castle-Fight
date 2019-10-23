@@ -440,6 +440,8 @@ end
 function GameMode:EndGame(winningTeam)
   if GameRules.GameEnded then return end
 
+  CustomGameEventManager:Send_ServerToAllClients("game_ended", {})
+
   GameRules.GameEnded = true
 
   if winningTeam == DOTA_TEAM_GOODGUYS then

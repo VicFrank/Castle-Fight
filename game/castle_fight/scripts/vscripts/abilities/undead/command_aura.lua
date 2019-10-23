@@ -62,6 +62,7 @@ function modifier_command_aura_buff:DeclareFunctions()
 end
 
 function modifier_command_aura_buff:GetModifierBaseDamageOutgoing_Percentage()
+  if not self:GetAbility() then return end
   return self:GetAbility():GetSpecialValueFor("damage_increase")
 end
 

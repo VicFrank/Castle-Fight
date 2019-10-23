@@ -33,7 +33,8 @@ end
 function modifier_assassin_backstab:CheckState()
   local state = {
     [MODIFIER_STATE_INVISIBLE] = true,
-    [MODIFIER_STATE_NO_UNIT_COLLISION] = true
+    [MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+    [MODIFIER_STATE_CANNOT_MISS] = true,
   }
   return state
 end

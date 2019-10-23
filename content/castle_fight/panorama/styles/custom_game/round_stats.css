@@ -15,6 +15,35 @@
   flow-children: right;
 }
 
+#CloseButton
+{
+  horizontal-align: right;
+  vertical-align: center;
+
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #722217 ), to( #DD4A29 ) );
+
+  margin-top: 10px;
+  padding: 4px 12px 4px 12px;
+
+  min-width: 180px;
+  min-height: 48px;
+
+  border-top: 1px solid #ffffff05;
+  border-right: 1px solid #00000088;
+  border-left: 1px solid #ffffff05;
+  border-bottom: 1px solid #00000088;
+}
+
+#CloseButton Label
+{
+  horizontal-align: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 26px;
+
+  color: white;
+}
+
 #RoundTimer
 {
   horizontal-align: center;
@@ -53,7 +82,6 @@
 
 .TeamScoreBig
 {
-
   font-size: 32px;
 }
 

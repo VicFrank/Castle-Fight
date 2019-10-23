@@ -12,7 +12,9 @@ function generator_energy_shield:OnSpellStart()
 
   local potentialTargets = {}
   for _,ally in pairs(allies) do
-    if not ally:IsRealHero() and not IsCustomBuilding(ally) and not ally:HasModifier("modifier_generator_energy_shield") then
+    if not ally:IsRealHero() and not IsCustomBuilding(ally) and
+      not ally:HasModifier("modifier_generator_energy_shield") and
+      not ally:GetUnitName() == "tentacle_prison_tentacle" then
       table.insert(potentialTargets, ally)
     end
   end

@@ -9,7 +9,7 @@ function modifier_azure_drake_attack:IsHidden() return true end
 
 function modifier_azure_drake_attack:DeclareFunctions()
   local funcs = {
-    MODIFIER_EVENT_ON_ATTACK_LANDED,
+    MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND,
   }
   return funcs
 end

@@ -93,8 +93,6 @@ function OnRoundScoreChanged(table_name, key, data) {
 }
 
 function OnRoundEnded(data) {
-  $.Msg("OnRoundEnded");
-
   var cameraTarget = data.losingCastlePosition;
   GameUI.SetCameraTargetPosition(cameraTarget, 1);
 
@@ -113,6 +111,11 @@ function OnRoundEnded(data) {
     RoundWinnerPanel.text = $.Localize("round") + " " + roundNumber + ": " + $.Localize("#draw") + "!";
     RoundWinnerPanel.AddClass("NeutralColor");
   }
+}
+
+function OnGameEnded() {
+  $("#ScoreboardHolder").AddClass("ScoreboardVisible");
+  $("#CloseButton").AddClass("ScoreboardVisible");
 }
 
 function UpdateScoreboardVisibility() {
@@ -145,6 +148,7 @@ function OnRoundTimerChanged(data) {
   UpdateRoundScores();
 
   GameEvents.Subscribe("round_ended", OnRoundEnded);
+  GameEvents.Subscribe("game_ended", OnGameEnded);
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
 
   GameEvents.Subscribe("num_units_changed", OnNumUnitsChanged);

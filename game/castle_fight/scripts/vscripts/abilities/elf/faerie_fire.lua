@@ -51,6 +51,18 @@ function modifier_bloodthirster_faerie_fire:DeclareFunctions()
   return funcs
 end
 
+function modifier_bloodthirster_faerie_fire:GetModifierProvidesFOWVision()
+  return 1
+end
+
+function modifier_bloodthirster_faerie_fire:CheckState()
+  local state = {
+    [MODIFIER_STATE_INVISIBLE] = false,
+  }
+
+  return state
+end
+
 function modifier_bloodthirster_faerie_fire:GetModifierPhysicalArmorBonus()
   return -self.armor
 end
