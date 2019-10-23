@@ -73,6 +73,6 @@ end
 
 function modifier_generator_energy_shield:OnDestroy()
   if IsServer() then
-    self:GetParent():EmitSound("Hero_Abaddon.AphoticShield.Destroy")
+    self:GetParent():EmitSound("General.MorphOut")
   end
 end

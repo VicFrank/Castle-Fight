@@ -10,7 +10,7 @@ function crusader_blessing:OnSpellStart()
 
   target:AddNewModifier(caster, ability, "modifier_crusader_blessing", {duration = duration})
 
-  target:EmitSound("DOTA_Item.Buckler.Activate")
+  target:EmitSound("Hero_Chen.PenitenceImpact")
 end
 
 modifier_crusader_blessing = class({})

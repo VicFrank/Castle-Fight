@@ -16,7 +16,7 @@
       {
         "var_type"                "FIELD_INTEGER"
         "armor"                   "-6"
-      }      
+      }
     }
   }
 
@@ -124,7 +124,7 @@
       {
         "var_type"              "FIELD_INTEGER"
         "cleave_damage"         "0 25 40"
-      }      
+      }
       "02"
       {
         "var_type"              "FIELD_INTEGER"
@@ -189,7 +189,7 @@
         "width"         "125"
       }
       "02"
-      { 
+      {
         "var_type"      "FIELD_FLOAT"
         "duration"      "3.5"
       }
@@ -221,6 +221,13 @@
     "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_enigma/enigma_malefice.vpcf"
+      "particle"  "particles/econ/items/sand_king/sandking_ti7_arms/sandking_ti7_caustic_finale_explode_mist.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_sandking.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -276,7 +283,7 @@
   // deals less damage to further targets
   "nether_drake_splash_attack"
   {
-    "AbilityTextureName"          "viper_poison_attack"
+    "AbilityTextureName"          "abaddon_death_coil"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/corrupted/nether_drake_splash_attack"
     "MaxLevel"                    "2"
@@ -287,8 +294,8 @@
 
     "precache"
     {
-      "particle"  "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
+      "particle"  "particles/units/heroes/hero_visage/visage_base_attack.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
     }
 
     "AbilitySpecial"
