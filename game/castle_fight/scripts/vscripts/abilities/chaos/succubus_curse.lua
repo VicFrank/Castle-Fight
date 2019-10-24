@@ -7,8 +7,6 @@ function succubus_curse:OnSpellStart()
   local ability = self
   local target = self:GetCursorTarget()
 
-  local duration = ability:GetSpecialValueFor("duration")
-
   caster:EmitSound("Hero_QueenOfPain.ShadowStrike")
 
   local caster_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_queenofpain/queen_shadow_strike_body.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
@@ -16,8 +14,6 @@ function succubus_curse:OnSpellStart()
   ParticleManager:SetParticleControl(caster_pfx, 1, target:GetAbsOrigin())
   ParticleManager:SetParticleControl(caster_pfx, 3, Vector(900, 0, 0))
   ParticleManager:ReleaseParticleIndex(caster_pfx)
-
-  print(target:GetUnitName())
 
   local projectile =
   {
@@ -40,6 +36,7 @@ function succubus_curse:OnSpellStart()
 end
 
 function succubus_curse:OnProjectileHit(target, location)
+  local duration = ability:GetSpecialValueFor("duration")
   target:AddNewModifier(self:GetCaster(), self, "modifier_succubus_curse", {duration = duration})
 end
 

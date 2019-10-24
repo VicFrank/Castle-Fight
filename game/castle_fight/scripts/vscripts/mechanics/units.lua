@@ -218,7 +218,7 @@ function FindAllVisibleEnemies(team)
   local enemies = FindUnitsInRadius(team, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, flags, FIND_ANY_ORDER, false)
   local notBuildings = {}  
   for _,enemy in pairs(enemies) do
-    if not IsCustomBuilding(enemy) and not enemy:GetUnitName() == "tentacle_prison_tentacle" then
+    if not IsCustomBuilding(enemy) and not (enemy:GetUnitName() == "tentacle_prison_tentacle") then
       table.insert(notBuildings, enemy)
     end
   end

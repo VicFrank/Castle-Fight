@@ -11,7 +11,7 @@ function resistance_of_the_wilderness:OnSpellStart()
   local target
   for _,ally in pairs(allies) do
     if not ally:IsRealHero() and not ally:HasModifier("modifier_resistance_of_the_wilderness")
-      and not ally:GetUnitName() == "tentacle_prison_tentacle" then
+      and not (ally:GetUnitName() == "tentacle_prison_tentacle") then
       target = ally
       break
     end
