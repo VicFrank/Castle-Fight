@@ -106,7 +106,8 @@ function GameMode:StartHeroSelection()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     if hero:IsAlive() then
       hero.hasPicked = false
-      hero:AddNewModifier(hero, nil, "modifier_hide_hero", {})
+      local dummy = PlayerResource:ReplaceHeroWith(hero:GetPlayerOwnerID(), "npc_dota_hero_wisp", 0, 0)
+      dummy:AddNewModifier(dummy, nil, "modifier_hide_hero", {})
     end
   end
 
@@ -208,7 +209,7 @@ function GameMode:CheckLeavers()
   if GameRules:IsCheatMode() then return end
   if TableCount(GameRules.playerIDs) < 3 then return end
   -- if all players on a team have been disconnected for 10 seconds
-  -- automatically end the round, and the game  
+  -- automatically end the round, and the game
   Timers:CreateTimer(function()
     local goodConnected, badConnected = GameMode:CheckFullTeamDisconnect()
     local bothTeamsConnected = goodConnected and badConnected
@@ -285,7 +286,7 @@ function GameMode:StartRound()
 
     EmitGlobalSound("GameStart.RadiantAncient")
 
-    CustomGameEventManager:Send_ServerToAllClients("round_started", 
+    CustomGameEventManager:Send_ServerToAllClients("round_started",
       {round = GameRules.roundCount})
 
     GameRules.roundInProgress = true
@@ -306,7 +307,7 @@ function GameMode:EndRound(losingTeam)
   Timers:RemoveTimer(GameRules.GGTimerEast)
 
   -- Record the winner
-  local winningTeam  
+  local winningTeam
   local losingCastlePosition
   if losingTeam == DOTA_TEAM_BADGUYS then
     winningTeam = DOTA_TEAM_GOODGUYS
@@ -380,7 +381,7 @@ function GameMode:EndRound(losingTeam)
     maxIncome = math.max(maxIncome, GameMode:GetIncomeForPlayer(playerID))
   end
 
-  for _,playerID in pairs(GameRules.playerIDs) do    
+  for _,playerID in pairs(GameRules.playerIDs) do
     CustomNetTables:SetTableValue("round_score", tostring(playerID), {
       unitsKilled = GameRules.unitsKilled[playerID],
       buildingsBuilt = GameRules.buildingsBuilt[playerID],
@@ -452,9 +453,8 @@ function GameMode:EndGame(winningTeam)
 
   -- Send the game's stats to the server
   GameRules.GameData.winner = winningTeam
-  
+
   SendGameStatsToServer()
 
   GameRules:SetGameWinner(winningTeam)
 end
-
