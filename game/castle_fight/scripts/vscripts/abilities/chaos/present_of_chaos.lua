@@ -40,7 +40,7 @@ function present_of_chaos:OnSpellStart()
 
   local option = GetRandomTableElement(options)
 
-  local particle = ParticleManager:CreateParticle("particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf", PATTACH_CUSTOMORIGIN, nil)
+  local particle = ParticleManager:CreateParticle("particles/econ/items/chaos_knight/chaos_knight_ti9_weapon/chaos_knight_ti9_weapon_crit_tgt.vpcf", PATTACH_CUSTOMORIGIN, nil)
   ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
   ParticleManager:ReleaseParticleIndex(particle)
 
@@ -49,7 +49,7 @@ function present_of_chaos:OnSpellStart()
     ParticleManager:CreateParticle(
         "particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_bloody.vpcf",
         PATTACH_ABSORIGIN_FOLLOW,
-        target 
+        target
       )
     )
     target:ForceKill(false)
