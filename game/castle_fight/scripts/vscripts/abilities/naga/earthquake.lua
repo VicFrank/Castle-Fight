@@ -6,8 +6,8 @@ function earthquake:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local sound = "Hero_EarthShaker.IdleSlam"
-  local particleName = "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock.vpcf"
+  local sound = "Hero_Kunkka.Tidebringer.Attack"
+  local particleName = "particles/units/heroes/hero_slardar/slardar_crush.vpcf"
 
   local damage = ability:GetSpecialValueFor("damage")
   local slow_duration = ability:GetSpecialValueFor("slow_duration")
@@ -66,4 +66,8 @@ function modifier_earthquake_slow:GetModifierMoveSpeedBonus_Percentage()
 end
 function modifier_earthquake_slow:GetModifierAttackSpeedBonus_Constant()
   return -self.slow_pct
+end
+
+function modifier_earthquake_slow:GetEffectName()
+  return "particles/units/heroes/hero_siren/naga_siren_riptide_debuff.vpcf"
 end
