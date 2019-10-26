@@ -62,7 +62,7 @@ function modifier_incinerate_debuff:IsDebuff()
 end
 
 function modifier_incinerate_debuff:GetTexture()
-  return "bane_brain_sap"
+  return "spawnlord_master_stomp"
 end
 
 function modifier_incinerate_debuff:GetEffectName()
