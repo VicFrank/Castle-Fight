@@ -1,4 +1,5 @@
 LinkLuaModifier("modifier_earthquake_slow", "abilities/naga/earthquake.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_earthquake_fx", "abilities/naga/earthquake.lua", LUA_MODIFIER_MOTION_NONE)
 
 earthquake = class({})
 
@@ -41,6 +42,8 @@ function earthquake:OnSpellStart()
   end
 end
 
+----------------------------------------------------------------------------------------------------
+
 modifier_earthquake_slow = class({})
 
 function modifier_earthquake_slow:IsDebuff() return true end
@@ -51,6 +54,14 @@ function modifier_earthquake_slow:OnCreated()
   self.parent = self:GetParent()
 
   self.slow_pct = self.ability:GetSpecialValueFor("slow_pct")
+
+  -- Status effect and visaul effect doesn't combine for some reason
+  -- Moving effects to separate modifiers helps
+  -- But it requires some additional control, to make them behave as a signle modifier
+  -- Thus, one modifier becomes parent to another and makes it replicate all changes
+  if IsServer() then
+    self.parent:AddNewModifier(self.caster, self:GetAbility(), "modifier_earthquake_fx", {duration = self:GetDuration()})
+  end
 end
 
 function modifier_earthquake_slow:DeclareFunctions()
@@ -68,6 +79,36 @@ function modifier_earthquake_slow:GetModifierAttackSpeedBonus_Constant()
   return -self.slow_pct
 end
 
-function modifier_earthquake_slow:GetEffectName()
+function modifier_earthquake_slow:GetStatusEffectName()
+  return "particles/status_fx/status_effect_naga_riptide.vpcf"
+end
+
+function modifier_earthquake_slow:OnDestroy()
+  if IsServer() then
+    self.parent:RemoveModifierByName("modifier_earthquake_fx")
+  end
+end
+
+----------------------------------------------------------------------------------------------------
+
+modifier_earthquake_fx = class({})
+
+function modifier_earthquake_fx:DeclareFunctions()
+  return {}
+end
+
+function modifier_earthquake_fx:IsHidden()
+  return true
+end
+
+function modifier_earthquake_fx:IsDebuff()
+  return false
+end
+
+function modifier_earthquake_fx:IsPurgable()
+  return false
+end
+
+function modifier_earthquake_fx:GetEffectName()
   return "particles/units/heroes/hero_siren/naga_siren_riptide_debuff.vpcf"
 end
