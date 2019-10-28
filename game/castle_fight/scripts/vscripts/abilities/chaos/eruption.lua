@@ -23,6 +23,7 @@ function volcano_eruption:OnSpellStart()
   local particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
   ParticleManager:SetParticleControl(particle, 0, position)
   ParticleManager:ReleaseParticleIndex(particle)
+  EmitSoundOnLocationWithCaster(position,"Hero_EarthShaker.EchoSlamSmall",caster)
 
   Timers:CreateTimer(function()
     local enemies = FindEnemiesInRadius(caster, radius, position)
@@ -31,6 +32,7 @@ function volcano_eruption:OnSpellStart()
     particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
     ParticleManager:SetParticleControl(particle, 0, position)
     ParticleManager:ReleaseParticleIndex(particle)
+    EmitSoundOnLocationWithCaster(position,"Hero_EarthShaker.EchoSlamSmall",caster)
 
     -- Only damage the first 6 enemies
     local numHit = 0
