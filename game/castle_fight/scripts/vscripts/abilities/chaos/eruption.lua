@@ -22,7 +22,6 @@ function volcano_eruption:OnSpellStart()
   local particleName = "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
   local particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
   ParticleManager:SetParticleControl(particle, 0, position)
-  ParticleManager:SetParticleControl(particle, 1, position)
   ParticleManager:ReleaseParticleIndex(particle)
 
   Timers:CreateTimer(function()
@@ -31,7 +30,6 @@ function volcano_eruption:OnSpellStart()
     particleName = "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
     particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
     ParticleManager:SetParticleControl(particle, 0, position)
-    ParticleManager:SetParticleControl(particle, 1, position)
     ParticleManager:ReleaseParticleIndex(particle)
 
     -- Only damage the first 6 enemies
