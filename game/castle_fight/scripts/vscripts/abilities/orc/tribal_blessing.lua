@@ -35,7 +35,7 @@ function tribal_blessing:OnSpellStart()
     end
   end
 
-  if abilityToAdd then 
+  if abilityToAdd then
     local addedAbility = target:AddAbility(abilityToAdd)
     addedAbility:SetLevel(1)
   end
@@ -49,6 +49,15 @@ function modifier_tribal_blessing:OnCreated()
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
   self.health = self:GetAbility():GetSpecialValueFor("health")
 
+  local particleNameA = "particles/econ/items/ogre_magi/ogre_ti8_immortal_weapon/ogre_ti8_immortal_bloodlust_buff_base_b.vpcf"
+  local particleNameB = "particles/econ/items/ogre_magi/ogre_ti8_immortal_weapon/ogre_ti8_immortal_bloodlust_buff_base.vpcf"
+  self.particleA = ParticleManager:CreateParticle(particleNameA, PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+  self.particleB = ParticleManager:CreateParticle(particleNameB, PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+  self:AddParticle(self.partcleA, false, false, 0, false, false)
+  self:AddParticle(self.partcleB, false, false, 0, false, false)
+  -- ParticleManager:ReleaseParticleIndex(self.particleA)
+  -- ParticleManager:ReleaseParticleIndex(self.particleB)
+
   if not IsServer() then return end
   Timers:CreateTimer(function() self:GetParent():Heal(self.health, self:GetCaster()) end)
 end
@@ -58,7 +67,7 @@ function modifier_tribal_blessing:DeclareFunctions()
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
     MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
     MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-    MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
+    MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE
   }
 end
 
@@ -78,12 +87,18 @@ function modifier_tribal_blessing:GetModifierPreAttack_BonusDamage()
   return self.damage_increase
 end
 
-function modifier_tribal_blessing:GetEffectName()
-  return "particles/econ/items/dazzle/dazzle_ti6_gold/dazzle_ti6_shallow_grave_gold_ground_ray.vpcf"
+-- function modifier_tribal_blessing:GetEffectName()
+--   return "particles/econ/items/ogre_magi/ogre_ti8_immortal_weapon/ogre_ti8_immortal_bloodlust_buff_base.vpcf"
+-- end
+
+function modifier_tribal_blessing:OnDestroy()
+  -- if not IsServer() then return end
+  -- ParticleManager:DestroyParticle(self.particleA, false)
+  -- ParticleManager:DestroyParticle(self.particleB, false)
 end
 
 function modifier_tribal_blessing:GetTexture()
-  return "dazzle_bad_juju"
+  return "ogre_magi_bloodlust"
 end
 
 function modifier_tribal_blessing:IsPurgable()
