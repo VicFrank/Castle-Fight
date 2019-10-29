@@ -22,6 +22,22 @@ rem Thus, asking steam is much more reliable
 
 
 
+if exist update_script_confirmation.cfg goto checks
+echo ==========================!!!WARNING!!!==========================
+echo This script will now replace castle-fight files in dota directory
+echo  with the ones in this folder, or visa versa, depending on passed
+echo                            parameters
+echo                  THIS MAY RESULT IN A LOSS OF WORK
+echo                  Are you sure you want to proceed?
+echo  This is a one time check and you won't receive this message after
+echo     confirmation or until delete update_script_confirmation.cfg
+set /p confirmation=Type 'yes' to continue:
+if "%confirmation%" neq "yes" exit /b
+echo *>update_script_confirmation.cfg
+
+
+
+:checks
 echo Checking registry for a sign of dota
 set steamfolder=""
 
@@ -30,7 +46,7 @@ FOR /F delims^=^"^ tokens^=2 %%i ^
 IN ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\uninstall\Steam App 570" /v UninstallString')^
 DO set steamfolder=%%i
 
-if "%steamfolder%"=="" (echo Couldn't find an active installation of dota & pause & exit /b)
+if "%steamfolder%"=="" (echo Couldn't find an active installation of dota & exit /b)
 set steamfolder=%steamfolder:~0,-9%
 Echo Detected dota is present
 
@@ -42,7 +58,7 @@ Echo Checking self location
 set missing=0
 if not exist %~dp0game echo Missing 'game' folder & set missing=1
 if not exist %~dp0content echo Missing 'content' folder & set missing=1
-if %missing%==1 echo Are you sure I'm in castle-fight repo folder? & pause & exit /b
+if %missing%==1 echo Are you sure I'm in castle-fight repo folder? & exit /b
 echo Location is fine, i'm in repo
 
 
@@ -54,13 +70,12 @@ echo Looking for dota in steam folder
 set dotafolder=%steamfolder%%dotapath%
 if exist "%dotafolder%" goto work
 echo Didn't find dota in steam folder, looking for library folders
-if not exist "%steamfolder%%librarydatapath%" (echo Couldn't find steam library data & pause & exit /b)
+if not exist "%steamfolder%%librarydatapath%" (echo Couldn't find steam library data & exit /b)
 
-FOR /F %%i IN ('type "%steamfolder%%librarydatapath%"') DO^
-if exist "%%~i%dotapath%" set dotafolder=%%~i%dotapath% & goto work
+FOR /F "tokens=2" %%i IN ('type "%steamfolder%%librarydatapath%"') DO ^
+if exist "%%~fi\%dotapath%" set dotafolder=%%~fi\%dotapath% & goto work
 
 echo Couldn't find library, containing dota ):
-pause
 exit /b
 
 
@@ -121,4 +136,3 @@ if %scripts%==1 (set adr1="%~dp0game\castle_fight\scripts\*") & (set adr2="%dota
 
 :end
 echo Done
-timeout /t 3
