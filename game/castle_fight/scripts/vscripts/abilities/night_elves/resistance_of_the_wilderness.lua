@@ -27,24 +27,16 @@ modifier_resistance_of_the_wilderness = class({})
 
 function modifier_resistance_of_the_wilderness:OnCreated()
   if not IsServer() then return end
-  
+
   local ability = self:GetAbility()
 
   self.chance = ability:GetSpecialValueFor("chance")
   self.spell_resistance = ability:GetSpecialValueFor("spell_resistance")
   self.attack_damage_reduction = ability:GetSpecialValueFor("attack_damage_reduction")
-
-  local parent = self:GetParent()
-
-  parent.WildernessParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_treant/treant_livingarmor.vpcf", PATTACH_POINT_FOLLOW, parent)
-  ParticleManager:SetParticleControlEnt(parent.WildernessParticle, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
-  ParticleManager:SetParticleControlEnt(parent.WildernessParticle, 1, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
 end
 
-function modifier_resistance_of_the_wilderness:OnDestroy()
-  if not IsServer() then return end
-  if not self:GetParent().WildernessParticle then return end
-  ParticleManager:DestroyParticle(self:GetParent().WildernessParticle, true)
+function modifier_resistance_of_the_wilderness:GetEffectName()
+  return "particles/units/heroes/hero_oracle/oracle_purifyingflames.vpcf"
 end
 
 function modifier_resistance_of_the_wilderness:DeclareFunctions()
