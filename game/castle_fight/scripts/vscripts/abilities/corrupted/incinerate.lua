@@ -128,10 +128,9 @@ function modifier_incinerate_debuff:OnDeath(keys)
     end
 
     local target = self:GetParent()
-    local particleName = "particles/econ/items/sand_king/sandking_ti7_arms/sandking_ti7_caustic_finale_explode_mist.vpcf"
+    local particleName = "particles/econ/events/ti9/blink_dagger_ti9_end.vpcf"
     local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, target)
-    ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
     ParticleManager:ReleaseParticleIndex(particle)
-    target:EmitSound("Ability.SandKing_CausticFinale")
+    target:EmitSound("Hero_Alchemist.UnstableConcoction.Stun")
   end
 end
