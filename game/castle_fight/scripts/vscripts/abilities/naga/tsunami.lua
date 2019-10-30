@@ -43,10 +43,6 @@ function tsunami:OnProjectileHit(target, location)
 
   local damage = self:GetSpecialValueFor("damage")
 
-  local particleName = "particles/units/heroes/hero_tidehunter/tidehunter_gush_splash_water7_mid.vpcf"
-  local particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, target)
-  ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
-  ParticleManager:ReleaseParticleIndex(particle)
   target:EmitSound("Ability.GushImpact")
 
   local damageTable = {
