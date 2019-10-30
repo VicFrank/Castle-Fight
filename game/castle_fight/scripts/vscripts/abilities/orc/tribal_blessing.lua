@@ -49,17 +49,13 @@ function modifier_tribal_blessing:OnCreated()
   self.armor = self:GetAbility():GetSpecialValueFor("armor")
   self.health = self:GetAbility():GetSpecialValueFor("health")
 
+  if not IsServer() then return end
+  Timers:CreateTimer(function() self:GetParent():Heal(self.health, self:GetCaster()) end)
+
   local particleNameA = "particles/econ/items/ogre_magi/ogre_ti8_immortal_weapon/ogre_ti8_immortal_bloodlust_buff_base_b.vpcf"
   local particleNameB = "particles/econ/items/ogre_magi/ogre_ti8_immortal_weapon/ogre_ti8_immortal_bloodlust_buff_base.vpcf"
   self.particleA = ParticleManager:CreateParticle(particleNameA, PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
   self.particleB = ParticleManager:CreateParticle(particleNameB, PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
-  self:AddParticle(self.partcleA, false, false, 0, false, false)
-  self:AddParticle(self.partcleB, false, false, 0, false, false)
-  -- ParticleManager:ReleaseParticleIndex(self.particleA)
-  -- ParticleManager:ReleaseParticleIndex(self.particleB)
-
-  if not IsServer() then return end
-  Timers:CreateTimer(function() self:GetParent():Heal(self.health, self:GetCaster()) end)
 end
 
 function modifier_tribal_blessing:DeclareFunctions()
@@ -92,9 +88,11 @@ end
 -- end
 
 function modifier_tribal_blessing:OnDestroy()
-  -- if not IsServer() then return end
-  -- ParticleManager:DestroyParticle(self.particleA, false)
-  -- ParticleManager:DestroyParticle(self.particleB, false)
+  if not IsServer() then return end
+  ParticleManager:DestroyParticle(self.particleA, false)
+  ParticleManager:DestroyParticle(self.particleB, false)
+  ParticleManager:ReleaseParticleIndex(self.particleA)
+  ParticleManager:ReleaseParticleIndex(self.particleB)
 end
 
 function modifier_tribal_blessing:GetTexture()
