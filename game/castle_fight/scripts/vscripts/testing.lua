@@ -134,6 +134,63 @@ function GameMode:SpawnUnits(playerID, unitname, count)
     team = GetOpposingTeam(team)
   end
 
+  if unitname == "fly" or unitname == "bird" or unitname == "dragon" or unitname == "air" then
+    local birds = {
+      "red_dragon",
+      "gryphon_rider",
+      "azure_drake",
+      "wyvern_rider",
+      "dragonhawk_rider",
+      "faerie_dragon",
+      "nether_drake",
+      "shadow_drake",
+      "winged_serpent",
+      "emerald_dragon",
+      "frost_wyrm",
+    }
+    unitname = GetRandomTableElement(birds)
+  end
+
+  if unitname == "melle" or
+      unitname == "melee" or
+      unitname == "mele" or
+      unitname == "mellee" or
+      unitname == "ground" or
+      unitname == "gnd" or
+      unitname == "walk" or
+      unitname == "walker" or
+      unitname == "run" or
+      unitname == "runner" or
+      unitname == "runer" then
+    local walkers = {
+      "crusader",
+      "paladin",
+      "defender",
+      "felhound",
+    }
+    unitname = GetRandomTableElement(walkers)
+  end
+
+  if unitname == "range" or
+      unitname == "ranged" or
+      unitname == "rng" or
+      unitname == "guner" or
+      unitname == "gunner" or
+      unitname == "shooter" or
+      unitname == "shoot" or
+      unitname == "ranger" or
+      unitname == "archer" then
+    local ranges = {
+      "mighty_necromancer",
+      "banshee",
+      "master_archer",
+      "naga_siren",
+      "ranger",
+      "void_keeper"
+    }
+    unitname = GetRandomTableElement(ranges)
+  end
+
   for i=1,count do
     CreateUnitByName(unitname, position, true, nil, nil, team)
   end
@@ -205,6 +262,25 @@ function GameMode:RemoveFogOfWar(playerID)
   AddFOWViewer(team, GameRules.rightCastlePosition, r, duration, false)
 end
 
+function GameMode:RefreshSelectedUnits(playerID)
+  local entities = PlayerResource:GetSelectedEntities(playerID)
+  for _,entityIndex in pairs(entities) do
+    local unit = EntIndexToHScript(entityIndex)
+    unit:SetMana(unit:GetMaxMana())
+    for i=0,15 do
+      local ability = unit:GetAbilityByIndex(i)
+      if ability then
+        ability:EndCooldown()
+      end
+    end
+  end
+end
+
+function GameMode:BeginTesting(playerID)
+  GameMode:RemoveFogOfWar(playerID)
+  GameMode:RichCheat(playerID)
+end
+
 function GameMode:Reset()
   GameRules.leftRoundsWon = 0
   GameRules.rightRoundsWon = 0
@@ -227,11 +303,14 @@ CHEAT_CODES = {
 
   ["nofog"] = function(...) GameMode:RemoveFogOfWar(...) end,              -- "Removes fog of var
   ["clean"] = function(...) KillAllUnits() end,                            -- "Synonym for killallunits"
+  ["clear"] = function(...) KillAllUnits() end,                            -- "Synonym for killallunits"
   ["cheese"] = function(...) GameMode:SetCheeseCheat(...) end,             -- "Synonym for setcheese"
   ["gold"] = function(...) GameMode:GoldCheat(...) end,                    -- "Sets your gold to X"
   ["vs"] = function(...) GameMode:EncounterUnits(...) end,                 -- "Cleans map, creates a fight in its middle"
   ["rich"] = function(...) GameMode:RichCheat(...) end,                    -- "Gives you 10000 gold and lumber, 100 cheese"
   ["land"] = function(...) GameMode:LandUnits(...) end,                    -- "Lands a number of units on enemy castle"
+  ["test"] = function(...) GameMode:BeginTesting(...) end,                 -- "Fast call to 'nofog' and 'rich'"
+  ["now"] = function(...) GameMode:RefreshSelectedUnits(...) end,          -- "Refreshes all abilities of all selected units"
 }
 
 GAME_COMMANDS = {
