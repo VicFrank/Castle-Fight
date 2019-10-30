@@ -9,7 +9,7 @@ function troll_ensnare:OnSpellStart()
 
   caster:EmitSound("Hero_NagaSiren.Ensnare.Cast")
 
-  local particleName = "particles/units/heroes/hero_siren/siren_net_projectile.vpcf"
+  local particleName = "particles/neutral_fx/dark_troll_ensnare_proj.vpcf"
 
   local projectile = {
     Target = target,
@@ -42,7 +42,7 @@ function modifier_troll_ensnare:IsDebuff()
 end
 
 function modifier_troll_ensnare:CheckState()
-  return { 
+  return {
     [MODIFIER_STATE_ROOTED] = true,
   }
 end
@@ -60,7 +60,7 @@ function modifier_troll_ensnare:OnDestroy()
 end
 
 function modifier_troll_ensnare:GetEffectName()
-  return "particles/units/heroes/hero_siren/siren_net.vpcf"
+  return "particles/neutral_fx/dark_troll_ensnare.vpcf"
 end
 
 function modifier_troll_ensnare:GetEffectAttachType()
