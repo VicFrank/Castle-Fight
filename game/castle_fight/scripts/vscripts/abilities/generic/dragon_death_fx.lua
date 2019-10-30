@@ -37,24 +37,20 @@ function dragon_death_fx:OnDeath(params)
     -- Just collapse with given frequency and speed
 
     local tickInterval = 0.1
-    local deltaScale = 0.1
+    local deltaScale = 0.05
 
-    print("Dragon died")
-    -- print("Dragon died, death animation will take " .. numUpdates .. " ticks per " .. collapseTime .. " seconds")
-
-    -- local particleName = "particles/econ/items/nyx_assassin/nyx_ti9_immortal/nyx_ti9_carapace_hit_blood.vpcf"
-    local particleName = "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf"
+    local particleName = "particles/econ/items/nyx_assassin/nyx_ti9_immortal/nyx_ti9_carapace_hit_blood.vpcf"
     local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, dragon)
-    ParticleManager:SetParticleControl(particle, 0, dragon:GetAbsOrigin())
+    ParticleManager:SetParticleControlEnt(particle, 1, dragon, PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetOrigin(), true)
     ParticleManager:ReleaseParticleIndex(particle)
+
 
     Timers:CreateTimer(function()
         local newScale = dragon:GetModelScale() - deltaScale
-        print("Setting dragon scale to " .. newScale)
         if newScale <=0 then
-            -- Adjust
+            -- Adjust and prevent further flapping sound
             dragon:SetModelScale(0)
-            print("Dragon death animation ended, timer is destoyed now")
+            dragon:StopAnimation()
         else
             dragon:SetModelScale(newScale)
             return tickInterval
