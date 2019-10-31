@@ -6,59 +6,6 @@ function nether_drake_splash_attack:GetIntrinsicModifierName()
   return "modifier_nether_drake_splash"
 end
 
--- function nether_drake_splash_attack:GetCastRange(location, target)
---    local caster = self:GetCaster()
---    return caster:Script_GetAttackRange()
--- end
-
--- function nether_drake_splash_attack:OnSpellStart()
---   -- Ability properties
---   local caster = self:GetCaster()
---   local ability = self
---   local target = self:GetCursorTarget()
---   local particle_projectile = "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
---   local sound_cast = "hero_viper.poisonAttack.Cast"
-
---   -- Ability specials
---   local projectile_speed = 900
---   local vision_radius = 100
-
---   -- Play attack sound
---   EmitSoundOn(sound_cast, caster)
-
---   -- Launch projectile on target
---   local projectile = {
---     Target = target,
---     Source = caster,
---     Ability = ability,
---     EffectName = particle_projectile,
---     iMoveSpeed = projectile_speed,
---     bDodgeable = true,
---     bVisibleToEnemies = true,
---     bReplaceExisting = false,
---     bProvidesVision = true,
---     iVisionRadius = vision_radius,
---     iVisionTeamNumber = caster:GetTeamNumber()
---   }
-
---   ProjectileManager:CreateTrackingProjectile(projectile)
--- end
-
--- function nether_drake_splash_attack:OnProjectileHit(target, location)
---   if IsServer() then
---     -- Ability properties
---     local caster = self:GetCaster()
---     local ability = self
---     local sound_hit = "hero_viper.poisonAttack.Impact"
-
---     -- Play hit sound
---     EmitSoundOn(sound_hit, target)
-
---     caster:PerformAttack(target, false, true, true, false, false, false, true)
---     SplashAttackUnit(caster, target:GetAbsOrigin())
---   end
--- end
-
 modifier_nether_drake_splash = class({})
 
 function modifier_nether_drake_splash:IsHidden() return true end
@@ -174,7 +121,7 @@ function modifier_nether_drake_splash:OnAttackLanded(keys)
     local attacker = keys.attacker
     local target = keys.target
 
-    if self.caster == attacker then
+    if self.caster == attacker and self.splash_attack then
       NetherDrakeSplashAttackUnit(attacker, target:GetAbsOrigin(), target)
     end
   end

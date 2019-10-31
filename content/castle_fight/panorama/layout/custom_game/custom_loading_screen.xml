@@ -81,6 +81,7 @@
 			<Label class="CreditsLabel" text="#Credits" />	
 			<Label class="List CreditsDescription" text="#Credits_Description" />
 			<Label class="List" text="#Credits_VicFrank" />
+			<Label class="List" text="#Credits_sim" />
 			<Label class="List" text="#Credits_Flam3s" onactivate="ExternalBrowserGoToURL('https://steamcommunity.com/id/Flam3sDota/');"/>
 			<Label class="List" text="#Credits_Myll" />
 			<Label class="List" text="#Credits_Noya" />
