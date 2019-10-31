@@ -86,9 +86,10 @@ function Activate()
   GameMode.Initialized = true
 
   if IsInToolsMode() then
-    Timers:CreateTimer(2, function()
+    Timers:CreateTimer(1, function()
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
+      Tutorial:AddBot("npc_dota_hero_wisp", "", "", true)
     end)
   end
 end
@@ -113,7 +114,7 @@ function GameMode:InitGameMode()
   GameRules:SetUseUniversalShopMode(false)
   GameRules:SetHeroRespawnEnabled(false)
   GameRules:SetSafeToLeave(true)
-  GameRules:SetCustomGameSetupAutoLaunchDelay(IsInToolsMode() and 3 or 30)
+  GameRules:SetCustomGameSetupAutoLaunchDelay(30)
   GameRules:SetCustomGameEndDelay(0)
   GameRules:SetHeroSelectionTime(0)
   GameRules:SetPreGameTime(0)

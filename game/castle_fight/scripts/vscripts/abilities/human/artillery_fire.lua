@@ -44,9 +44,9 @@ end
 
 function modifier_artillery_fire:OnIntervalThink()
   if not IsServer() then return end
-
+  if not self.caster:IsAlive() then return end
+    
   FireCannon(self.ability, self)
-
 end
 
 function FireCannon(ability, modifier)

@@ -9,7 +9,7 @@ end
 function rocket_tank_aa_rockets:OnProjectileHit(target, position)
   local damage = self:GetSpecialValueFor("damage")
 
-  target:EmitSoundParams("Hero_Tinker.Heat-Seeking_Missile.Impact", 0, 0.5, 0)
+  target:EmitSoundParams("Hero_Tinker.Heat-Seeking_Missile.Impact", 0, 0.25, 0)
 
   ApplyDamage({
     victim = target,

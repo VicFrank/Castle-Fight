@@ -36,7 +36,7 @@ function succubus_curse:OnSpellStart()
 end
 
 function succubus_curse:OnProjectileHit(target, location)
-  local duration = ability:GetSpecialValueFor("duration")
+  local duration = self:GetSpecialValueFor("duration")
   target:AddNewModifier(self:GetCaster(), self, "modifier_succubus_curse", {duration = duration})
 end
 

@@ -75,8 +75,16 @@ function GameMode:RandomHero(playerID)
     "npc_dota_hero_tinker",
   }
 
+  local botHeroes = {
+    "npc_dota_hero_kunkka",
+  }
+
   -- Randomly select a hero from the pool
   local hero = GetRandomTableElement(heroes)
+
+  if PlayerResource:IsFakeClient(playerID) then
+    hero = GetRandomTableElement(botHeroes)
+  end
 
   PlayerResource:ReplaceHeroWith(playerID, hero, 0, 0)
 end

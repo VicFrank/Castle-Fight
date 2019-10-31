@@ -1,4 +1,4 @@
-﻿﻿"addon"
+﻿"addon"
 {
   "addon_game_name"                "Castle Fight"
   "DOTA_GameMode_15"               "Castle Fight"
@@ -72,9 +72,31 @@
   "total_interest"               "Итоговый доход"
   "race_selection"               "Выбор расы"
   "loading"                      "Загрузка"
-  "offer_draw"                   "Предложить ничью"
+  "offer_draw"                   "Ничья"
   "draw"                         "Ничья"
   "reject"                       "Отказаться"
 
+  "Latest_Update"                "Последнее обновление"
+  "Vote_Options"                 "Настройки голосования"
+  "Enable_bots"                  "Включить ботов"
+  "Yes"                          "Да"
+  "No"                           "Нет"
+  "Rounds_to_win"                "Раундов для победы"
 
+  "Credits"                      "Credits"
+  "Credits_Description"          "Благодарность следующим людям за вклад в Castle Fight"
+  "Credits_Flam3s"               "Flam3s: UI"
+  "Credits_Myll"                 "Noya/Myll: Building Helper"
+  "Credits_Noya"                 "Noya: Dotacraft"
+  "Credits_GeFire"               "GeFire: Перевод на русский язык"
+  "Credits_東風谷早苗"            "東風谷早苗: Перевод на китайский язык"
+  "Credits_VicFrank"             "VicFrank: Главный разработчик"
+  "Credits_Radar"                "radar: Добавил Vicfrank в credits"
+
+  "Tips_1"                       "- Вам начисляется доход каждые 10 секунд. Он увеличивается за постройку зданий."
+  "Tips_2"                       "- Дерево зарабатывается путем строительства или улучшения зданий, призывающих юнитов. Начисляемое дерево равно стоимости здания."
+  "Tips_3"                       "- Вы можете чинить здания нажав по нему правой кнопкой мыши."
+
+  "Info_Description1"            "Стройте здания которые производят юнитов, чтобы отбить атаки оппонента. Уничтожьте вражеский замок для победы."
+  "Info_Description2"            "Раундов может быть несколько, так что не покидайте игру после первого раунда!"
 }

@@ -92,7 +92,9 @@ end
 function GameMode:OnHeroInGame(hero)
   print("Hero Spawned")
 
-  hero.hasPicked = true
+  if hero:GetUnitName() ~= "npc_dota_hero_wisp" then
+    hero.hasPicked = true
+  end
 
   -- Add bots to the playerids list
   local playerID = hero:GetPlayerOwnerID()
