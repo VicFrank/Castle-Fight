@@ -40,8 +40,7 @@ function present_of_chaos:OnSpellStart()
 
   local option = GetRandomTableElement(options)
 
-  local particle = ParticleManager:CreateParticle("particles/econ/items/chaos_knight/chaos_knight_ti9_weapon/chaos_knight_ti9_weapon_crit_tgt.vpcf", PATTACH_CUSTOMORIGIN, nil)
-  ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
+  local particle = ParticleManager:CreateParticle("particles/econ/items/chaos_knight/chaos_knight_ti9_weapon/chaos_knight_ti9_weapon_crit_tgt.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
   ParticleManager:ReleaseParticleIndex(particle)
 
   if option == "EXPLODE" then
