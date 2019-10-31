@@ -33,7 +33,7 @@ function tsunami:OnSpellStart()
     vVelocity = speed * direction,
     bProvidesVision = false,
   }
-    
+
   self.projectile = ProjectileManager:CreateLinearProjectile(linear_projectile)
 end
 

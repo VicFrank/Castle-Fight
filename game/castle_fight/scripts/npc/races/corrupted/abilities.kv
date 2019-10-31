@@ -16,7 +16,7 @@
       {
         "var_type"                "FIELD_INTEGER"
         "armor"                   "-6"
-      }      
+      }
     }
   }
 
@@ -24,7 +24,7 @@
   // have a lesser critical strike
   "tentacle_prison"
   {
-    "AbilityTextureName"          "tidehunter_ravage"
+    "AbilityTextureName"          "venomancer_plague_ward"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/corrupted/tentacle_prison"
     "MaxLevel"                    "1"
@@ -124,7 +124,7 @@
       {
         "var_type"              "FIELD_INTEGER"
         "cleave_damage"         "0 25 40"
-      }      
+      }
       "02"
       {
         "var_type"              "FIELD_INTEGER"
@@ -189,7 +189,7 @@
         "width"         "125"
       }
       "02"
-      { 
+      {
         "var_type"      "FIELD_FLOAT"
         "duration"      "3.5"
       }
@@ -215,12 +215,19 @@
   // 80 spell damage to enemies in 150 aoe and half in 200 aoe
   "void_walker_incinerate"
   {
-    "AbilityTextureName"          "bane_brain_sap"
+    "AbilityTextureName"          "spawnlord_master_stomp"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/corrupted/incinerate"
     "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_enigma/enigma_malefice.vpcf"
+      "particle"  "particles/econ/events/ti9/blink_dagger_ti9_end.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+    }
 
     "AbilitySpecial"
     {
@@ -276,7 +283,7 @@
   // deals less damage to further targets
   "nether_drake_splash_attack"
   {
-    "AbilityTextureName"          "viper_poison_attack"
+    "AbilityTextureName"          "abaddon_death_coil"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/corrupted/nether_drake_splash_attack"
     "MaxLevel"                    "2"
@@ -287,8 +294,8 @@
 
     "precache"
     {
-      "particle"  "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
+      "particle"  "particles/units/heroes/hero_visage/visage_base_attack.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
     }
 
     "AbilitySpecial"
@@ -362,7 +369,7 @@
   // attacks do 60 additional damage to all units in a line
   "infernal_line_damage"
   {
-    "AbilityTextureName"          "gyrocopter_homing_missile"
+    "AbilityTextureName"          "lion_impale"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/corrupted/line_damage"
     "MaxLevel"                    "1"

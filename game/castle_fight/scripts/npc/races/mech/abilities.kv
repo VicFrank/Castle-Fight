@@ -21,7 +21,7 @@
     "precache"
     {
       "particle"  "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+      "soundfile" "soundevents/game_sounds.vsndevts"
     }
 
     "AbilitySpecial"
@@ -41,7 +41,7 @@
 
   "energy_tower_bouncing_attack"
   {
-    "AbilityTextureName"          "luna_moon_glaive"
+    "AbilityTextureName"          "harpy_storm_chain_lightning"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/naga/bouncing_attack"
     "MaxLevel"                    "1"
@@ -70,7 +70,7 @@
 
   "energy_tower_energy_burst"
   {
-    "AbilityTextureName"             "harpy_storm_chain_lightning"
+    "AbilityTextureName"             "zuus_arc_lightning"
     "BaseClass"                      "ability_lua"
     "ScriptFile"                     "abilities/human/passive_chain_lightning"
     "MaxLevel"                       "1"
@@ -110,7 +110,7 @@
       {
         "var_type"           "FIELD_INTEGER"
         "jump_range"         "500"
-      }      
+      }
       "06"
       {
         "var_type"           "FIELD_FLOAT"
@@ -142,7 +142,7 @@
     }
   }
 
-  // Powers all buildings in 180 range, giving them +2 armor. 
+  // Powers all buildings in 180 range, giving them +2 armor.
   // Empowered buildings have a chance to get negative buffs removed from them.
   // In addition, towers gain +25%% damage and special buildings gain +0.25 mana/sec.
   // Creep producing structures train stronger creeps.
@@ -166,7 +166,7 @@
       {
         "var_type"              "FIELD_INTEGER"
         "radius"                "200"
-      }      
+      }
       "02"
       {
         "var_type"              "FIELD_INTEGER"
@@ -202,7 +202,7 @@
 
   "gyrocopter_bash"
   {
-    "AbilityTextureName"          "slardar_bash"
+    "AbilityTextureName"          "gyrocopter_flak_cannon"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/generic/bash"
     "MaxLevel"                    "2"
@@ -232,7 +232,7 @@
 
   "adamant_golem_bash"
   {
-    "AbilityTextureName"          "slardar_bash"
+    "AbilityTextureName"          "sven_storm_bolt"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/generic/bash"
     "MaxLevel"                    "1"
@@ -414,7 +414,7 @@
   // stacks with suicide
   "lunatic_goblin_detonate"
   {
-    "AbilityTextureName"          "techies_focused_detonate"
+    "AbilityTextureName"          "rattletrap_battery_assault"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/corrupted/detonate"
     "MaxLevel"                    "1"
@@ -441,7 +441,7 @@
   // hits all units 150 range behind its attacks
   "flamegunner_line_damage"
   {
-    "AbilityTextureName"          "templar_assassin_psi_blades"
+    "AbilityTextureName"          "dragon_knight_breathe_fire"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/elf/line_damage"
     "MaxLevel"                    "1"
@@ -467,7 +467,7 @@
   // mana burned as damage. Slows units by 50%% for 3 seconds. 300 AoE
   "flamegunner_astral_grenade"
   {
-    "AbilityTextureName"          "gyrocopter_rocket_barrage"
+    "AbilityTextureName"          "antimage_mana_void"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/mech/astral_grenade"
     "MaxLevel"                    "1"
@@ -545,7 +545,7 @@
 
   "adamant_golem_pulverize"
   {
-    "AbilityTextureName"          "earthshaker_enchant_totem"
+    "AbilityTextureName"          "gyrocopter_call_down"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/generic/pulverize"
     "MaxLevel"                    "2"
@@ -593,7 +593,7 @@
   // Attack speed bonus is capped at 200%%
   "goblin_shredder_inducted_rage"
   {
-    "AbilityTextureName"          "shredder_reactive_armor"
+    "AbilityTextureName"          "rattletrap_power_cogs"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/mech/inducted_rage"
     "MaxLevel"                    "1"
@@ -625,7 +625,7 @@
   // gets doubled. Max of 4 hits.
   "goblin_shredder_detonate"
   {
-    "AbilityTextureName"          "techies_focused_detonate"
+    "AbilityTextureName"          "rattletrap_battery_assault"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/mech/detonate"
     "MaxLevel"                    "1"
@@ -657,7 +657,7 @@
   // each hit does full damage to units in 160 range in front of this unit
   "goblin_shredder_attack"
   {
-    "AbilityTextureName"          "shredder_timber_chain"
+    "AbilityTextureName"          "shredder_whirling_death"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/mech/shredder_attack"
     "MaxLevel"                    "1"

@@ -72,7 +72,7 @@ function Precache( context )
   PrecacheItemByNameSync("orb_of_lightning", context)
   PrecacheItemByNameSync("scroll_of_stone", context)
   PrecacheItemByNameSync("building_self_destruct", context)
-  
+
   -- Human Precaches
   -- for _,unitname in ipairs(g_Human_Precache) do
   --   PrecacheUnitByNameSync(unitname, context)
@@ -87,7 +87,6 @@ function Activate()
 
   if IsInToolsMode() then
     Timers:CreateTimer(2, function()
-      Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
     end)
@@ -114,7 +113,7 @@ function GameMode:InitGameMode()
   GameRules:SetUseUniversalShopMode(false)
   GameRules:SetHeroRespawnEnabled(false)
   GameRules:SetSafeToLeave(true)
-  GameRules:SetCustomGameSetupAutoLaunchDelay(30)
+  GameRules:SetCustomGameSetupAutoLaunchDelay(IsInToolsMode() and 3 or 30)
   GameRules:SetCustomGameEndDelay(0)
   GameRules:SetHeroSelectionTime(0)
   GameRules:SetPreGameTime(0)
@@ -132,7 +131,7 @@ function GameMode:InitGameMode()
     GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 2)
     GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 2)
   end
-  
+
   -- -- Set game mode rules
   mode = GameRules:GetGameModeEntity()
   mode:DisableHudFlip(true)
@@ -184,7 +183,7 @@ function GameMode:InitGameMode()
   LinkLuaModifier("modifier_end_round", "abilities/modifiers/modifier_end_round", LUA_MODIFIER_MOTION_NONE)
 
   self.vUserIds = {}
-  
+
   -- Setup Global Values
   GameRules.leftCastlePosition = Entities:FindByName(nil, "left_ancient_position"):GetAbsOrigin()
   GameRules.rightCastlePosition = Entities:FindByName(nil, "right_ancient_position"):GetAbsOrigin()

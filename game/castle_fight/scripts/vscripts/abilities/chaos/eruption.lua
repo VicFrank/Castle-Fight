@@ -19,20 +19,20 @@ function volcano_eruption:OnSpellStart()
 
   local duration = 0
 
-  local particleName = "particles/econ/items/sand_king/sandking_barren_crown/sandking_rubyspire_burrowstrike_eruption.vpcf"
+  local particleName = "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
   local particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
   ParticleManager:SetParticleControl(particle, 0, position)
-  ParticleManager:SetParticleControl(particle, 1, position)
   ParticleManager:ReleaseParticleIndex(particle)
+  EmitSoundOnLocationWithCaster(position,"Hero_EarthShaker.EchoSlamSmall",caster)
 
   Timers:CreateTimer(function()
     local enemies = FindEnemiesInRadius(caster, radius, position)
 
-    particleName = "particles/econ/items/sand_king/sandking_barren_crown/sandking_rubyspire_burrowstrike_eruption.vpcf"
+    particleName = "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
     particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
     ParticleManager:SetParticleControl(particle, 0, position)
-    ParticleManager:SetParticleControl(particle, 1, position)
     ParticleManager:ReleaseParticleIndex(particle)
+    EmitSoundOnLocationWithCaster(position,"Hero_EarthShaker.EchoSlamSmall",caster)
 
     -- Only damage the first 6 enemies
     local numHit = 0

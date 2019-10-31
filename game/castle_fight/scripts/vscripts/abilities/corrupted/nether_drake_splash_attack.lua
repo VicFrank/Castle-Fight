@@ -2,14 +2,14 @@ LinkLuaModifier("modifier_nether_drake_splash", "abilities/corrupted/nether_drak
 
 nether_drake_splash_attack = class({})
 
-function nether_drake_splash_attack:GetIntrinsicModifierName()    
+function nether_drake_splash_attack:GetIntrinsicModifierName()
   return "modifier_nether_drake_splash"
 end
 
 -- function nether_drake_splash_attack:GetCastRange(location, target)
 --    local caster = self:GetCaster()
 --    return caster:Script_GetAttackRange()
--- end 
+-- end
 
 -- function nether_drake_splash_attack:OnSpellStart()
 --   -- Ability properties
@@ -24,7 +24,7 @@ end
 --   local vision_radius = 100
 
 --   -- Play attack sound
---   EmitSoundOn(sound_cast, caster)    
+--   EmitSoundOn(sound_cast, caster)
 
 --   -- Launch projectile on target
 --   local projectile = {
@@ -33,12 +33,12 @@ end
 --     Ability = ability,
 --     EffectName = particle_projectile,
 --     iMoveSpeed = projectile_speed,
---     bDodgeable = true, 
+--     bDodgeable = true,
 --     bVisibleToEnemies = true,
 --     bReplaceExisting = false,
---     bProvidesVision = true,        
+--     bProvidesVision = true,
 --     iVisionRadius = vision_radius,
---     iVisionTeamNumber = caster:GetTeamNumber()      
+--     iVisionTeamNumber = caster:GetTeamNumber()
 --   }
 
 --   ProjectileManager:CreateTrackingProjectile(projectile)
@@ -96,8 +96,8 @@ function modifier_nether_drake_splash:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
-  self.sound_cast = "hero_viper.poisonAttack.Cast"
-  self.splash_attack_particle = "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
+  self.sound_cast = "Hero_Visage.preAttack"
+  self.splash_attack_particle = "particles/units/heroes/hero_visage/visage_base_attack.vpcf"
   self.bonus_damage = self:GetAbility():GetSpecialValueFor("bonus_damage")
 
   if not IsServer() then return end
@@ -216,7 +216,7 @@ function NetherDrakeSplashAttackUnit(attacker, position, target)
     if unit == target then
       isValidTarget = false
     end
-    
+
     if isValidTarget then
       local distance_from_impact = (unit:GetAbsOrigin() - position):Length2D()
       if distance_from_impact <= full_damage_radius then

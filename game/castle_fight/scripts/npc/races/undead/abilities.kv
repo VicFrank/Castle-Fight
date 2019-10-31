@@ -16,11 +16,11 @@
       {
         "var_type"                "FIELD_INTEGER"
         "dps"                     "8"
-      }      
+      }
     }
   }
 
-  // has a 5% chance to steal the soul of the unit it attacks, 
+  // has a 5% chance to steal the soul of the unit it attacks,
   // instantly killing it.
   "turret_of_souls_soul_steal"
   {
@@ -37,7 +37,7 @@
       {
         "var_type"                "FIELD_INTEGER"
         "chance"                  "5"
-      }      
+      }
     }
   }
 
@@ -161,7 +161,7 @@
   // Kills a random enemy unit instantly
   "sudden_death"
   {
-    "AbilityTextureName"          "lion_finger_of_death"
+    "AbilityTextureName"          "necrolyte_death_pulse"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/sudden_death"
     "MaxLevel"                    "1"
@@ -208,7 +208,7 @@
     }
   }
 
-  // Units hit by the Zombie get their ms reduced by 15% and receive 8 
+  // Units hit by the Zombie get their ms reduced by 15% and receive 8
   // dps for 10 seconds
   "zombie_plague_attack"
   {
@@ -299,12 +299,12 @@
   // Has a 15% chance to soul steal its target, killing it instantly and
   // gaining 50% of its health, or a 10% chance to cast Death and Decay
   // onto a 300 aoe around its target.
-  // 
+  //
   // Death and Decay lasts 5 seconds, drains 8% of enemy's max health per
   // second
   "lich_decaying_attack"
   {
-    "AbilityTextureName"          "enigma_midnight_pulse"
+    "AbilityTextureName"          "necrolyte_heartstopper_aura"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/decaying_attack"
     "MaxLevel"                    "1"
@@ -313,8 +313,8 @@
 
     "precache"
     {
-      "particle"  "particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+      "particle"  "particles/econ/items/necrolyte/necro_ti9_immortal/necro_ti9_immortal_shroud.vpcf"
+      "soundfile" "game_sounds_necrolyte.vsndevts"
     }
 
     "AbilitySpecial"
@@ -379,7 +379,7 @@
 
   "vampire_lifesteal_aura"
   {
-    "AbilityTextureName"          "skeleton_king_vampiric_aura"
+    "AbilityTextureName"          "life_stealer_feast"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/lifesteal_aura"
     "MaxLevel"                    "1"
@@ -429,7 +429,7 @@
   // Decreases the damage output of all enemies in 450 range by 15%
   "banshee_fear_aura"
   {
-    "AbilityTextureName"          "death_prophet_spirit_siphon"
+    "AbilityTextureName"          "arc_warden_spark_wraith"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/fear_aura"
     "MaxLevel"                    "1"
@@ -453,10 +453,10 @@
   }
 
   // Reduces movement and attack speed of target enemy by 30% for 35 seconds.
-  // 10 cd 25 mana 
+  // 10 cd 25 mana
   "banshee_astral_chains"
   {
-    "AbilityTextureName"          "ghost_frost_attack"
+    "AbilityTextureName"          "visage_grave_chill"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/astral_chains"
     "MaxLevel"                    "1"
@@ -698,7 +698,7 @@
       {
         "var_type"                "FIELD_INTEGER"
         "evasion"                 "15"
-      }      
+      }
     }
   }
 }

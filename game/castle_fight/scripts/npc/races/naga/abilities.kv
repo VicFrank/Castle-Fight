@@ -6,7 +6,7 @@
   // CD: 7
   "earthquake"
   {
-    "AbilityTextureName"          "earthshaker_echo_slam"
+    "AbilityTextureName"          "slardar_slithereen_crush"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/naga/earthquake"
     "MaxLevel"                    "1"
@@ -17,8 +17,10 @@
 
     "precache"
     {
-      "particle"  "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+      "particle"  "particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+      "particle"  "particles/units/heroes/hero_siren/naga_siren_riptide_debuff.vpcf"
+      "particle"  "particles/status_fx/status_effect_naga_riptide.vpcf"
+      "soundfile" "game_sounds_kunkka.vsndevts"
     }
 
     "AbilitySpecial"
@@ -102,7 +104,7 @@
 
   // Throws a huge wave in the direction of a random enemy unit.
   // The wave deals 270 damage to all ground enemy units in its path.
-  //  Recharge time: 15 seconds 
+  //  Recharge time: 15 seconds
   "tsunami"
   {
     "AbilityTextureName"          "tidehunter_gush"
@@ -187,7 +189,7 @@
       }
     }
   }
-  
+
   "murloc_evasion"
   {
     "AbilityTextureName"          "phantom_assassin_blur"
@@ -203,7 +205,7 @@
       {
         "var_type"                "FIELD_INTEGER"
         "evasion"                 "8 8 8 15"
-      }      
+      }
     }
   }
 
@@ -271,7 +273,7 @@
 
   "hydra_poison_attack"
   {
-    "AbilityTextureName"          "viper_poison_attack"
+    "AbilityTextureName"          "venomancer_poison_sting"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/naga/hydra_poison_attack"
     "MaxLevel"                    "1"
@@ -310,7 +312,7 @@
 
   "ancient_hydra_split"
   {
-    "AbilityTextureName"          "venomancer_plague_ward"
+    "AbilityTextureName"          "venomancer_poison_nova"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/naga/hydra_split"
     "MaxLevel"                    "1"
@@ -320,7 +322,7 @@
 
   "hydra_split"
   {
-    "AbilityTextureName"          "venomancer_plague_ward"
+    "AbilityTextureName"          "venomancer_poison_nova"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/naga/hydra_split"
     "MaxLevel"                    "1"
@@ -330,7 +332,7 @@
 
   "winged_serpent_bouncing_attack"
   {
-    "AbilityTextureName"          "luna_moon_glaive"
+    "AbilityTextureName"          "harpy_storm_chain_lightning"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/naga/bouncing_attack"
     "MaxLevel"                    "1"
@@ -407,7 +409,7 @@
 
   "dragon_turtle_bash"
   {
-    "AbilityTextureName"          "slardar_bash"
+    "AbilityTextureName"          "tidehunter_gush"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/generic/bash"
     "MaxLevel"                    "1"

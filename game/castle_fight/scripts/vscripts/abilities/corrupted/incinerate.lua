@@ -62,8 +62,12 @@ function modifier_incinerate_debuff:IsDebuff()
 end
 
 function modifier_incinerate_debuff:GetTexture()
-  return "bane_brain_sap"
-end 
+  return "spawnlord_master_stomp"
+end
+
+function modifier_incinerate_debuff:GetEffectName()
+  return "particles/units/heroes/hero_enigma/enigma_malefice.vpcf"
+end
 
 function modifier_incinerate_debuff:DeclareFunctions()
   local decFuns =
@@ -122,5 +126,11 @@ function modifier_incinerate_debuff:OnDeath(keys)
         ApplyDamage(damageTable)
       end
     end
+
+    local target = self:GetParent()
+    local particleName = "particles/econ/events/ti9/blink_dagger_ti9_end.vpcf"
+    local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, target)
+    ParticleManager:ReleaseParticleIndex(particle)
+    target:EmitSound("Hero_Alchemist.UnstableConcoction.Stun")
   end
 end
