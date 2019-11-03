@@ -22,6 +22,10 @@ function dragon_death_fx:IsHidden()
     return true
 end
 
+function dragon_death_fx:IsDebuff()
+    return false
+end
+
 function dragon_death_fx:OnDeath(params)
     if not IsServer() then return end
 

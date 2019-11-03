@@ -1,6 +1,6 @@
 "DOTAUnits"
 {
-  "snowy_rocks" 
+  "snowy_rocks"
   {
     "Model"            "models/north/cliff_wall005_snow.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -11,7 +11,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -40,7 +41,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "icy_rocks" 
+  "icy_rocks"
   {
     "Model"            "models/north/ice_spike_lrg.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -51,7 +52,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -80,7 +80,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "glacier" 
+  "glacier"
   {
     "Model"            "models/north/crystal_maiden_ice.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -91,7 +91,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -119,7 +118,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "igloo" 
+  "igloo"
   {
     "Model"            "models/north/frostivus_igloo.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -130,6 +129,7 @@
     "HealthBarOffset"  "140"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -157,7 +157,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "ice_troll_hut" 
+  "ice_troll_hut"
   {
     "Model"            "models/north/tuskhouse01.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -195,7 +195,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "ice_troll_voodoo_hut" 
+  "ice_troll_voodoo_hut"
   {
     "Model"            "models/items/witchdoctor/wd_ward/ribbitar_ward/ribbitar_ward.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -206,6 +206,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotation"    "270"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -233,7 +235,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "ice_claws" 
+  "ice_claws"
   {
     "Model"            "models/north/pedestal_cm_arcana.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -245,6 +247,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "ModelOffset"      "30"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -273,7 +276,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "frost_claws" 
+  "frost_claws"
   {
     "Model"            "models/north/crystal_ring01.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -311,7 +314,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "azure_nest" 
+  "azure_nest"
   {
     "Model"            "models/north/frostivus_ancient_bare.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -322,6 +325,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -349,7 +353,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "crystal_palace" 
+  "crystal_palace"
   {
     "Model"            "models/north/crystal_ball.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -361,6 +365,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "ModelOffset"      "50"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -388,7 +393,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "frost_launcher" 
+  "frost_launcher"
   {
     "Model"            "models/items/wards/frozen_formation/frozen_formation.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -429,7 +434,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "greater_frost_launcher" 
+  "greater_frost_launcher"
   {
     "Model"            "models/items/wards/crystal_maiden_ward/crystal_maiden_ward.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -469,7 +474,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "chilling_mushroom" 
+  "chilling_mushroom"
   {
     "Model"            "models/items/witchdoctor/wd_ward/ti8_wd_spore_gardener_spore_abomination_ti8/ti8_wd_spore_gardener_spore_abomination_ti8.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -480,6 +485,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotation"    "300"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -509,7 +516,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "icy_tower" 
+  "icy_tower"
   {
     "Model"            "models/north/frostivus_snowman.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -521,7 +528,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
 
     "BuildTime"        "30"
     "BuildingType"     "Tower"
@@ -567,7 +574,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "world_freezer" 
+  "world_freezer"
   {
     "Model"            "models/north/kings_chair.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -577,6 +584,7 @@
     "RingRadius"       "100"
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "ModelRotationMode"       "RANDOM"
     "CollisionSize"    "40"
     "vscripts"         "ai/generic_building_ai.lua"
 

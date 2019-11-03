@@ -1,5 +1,7 @@
 BH_VERSION = "1.2.9"
 
+MAX_MODEL_ROTATION_RANDOMIZATION_STEPS = 359
+
 --[[
     For installation, usage and implementation examples check the wiki:
         https://github.com/MNoya/BuildingHelper/wiki
@@ -702,7 +704,7 @@ function BuildingHelper:AddBuilding(keys)
     event.entindex = mgd:GetEntityIndex()
 
     -- Range overlay
-    -- simona added 'else' block for vizualization of auras
+    -- [simona] added 'else' block for vizualization of auras
     -- based on radius precached in BuildingHelper:GetOrCreateDummy
     if mgd:HasAttackCapability() then
         event.range = buildingTable:GetVal("AttackRange", "number") + mgd:GetHullRadius()
@@ -724,6 +726,7 @@ function BuildingHelper:AddBuilding(keys)
 
     -- Adjust the Model Orientation
     local yaw = buildingTable:GetVal("ModelRotation", "float")
+    print("#1 applied rotation "..yaw)
     mgd:SetAngles(0, -yaw, 0)
 
     CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", event)
@@ -901,12 +904,37 @@ function BuildingHelper:SetupBuildingTable(abilityName, builderHandle)
     end
     buildingTable:SetVal("MaxScale", fMaxScale)
 
-    local fModelRotation = buildingTable:GetVal("ModelRotation", "float")
-    if not fModelRotation then
-        -- If no defined, check the Units KeyValue. Otherwise just default to 0
-        fModelRotation = GetUnitKV(unitName, "ModelRotation") or 0
+    -- local fModelRotation = buildingTable:GetVal("ModelRotation", "float")
+    -- if not fModelRotation then
+    --     -- If no defined, check the Units KeyValue. Otherwise just default to 0
+    --     fModelRotation = GetUnitKV(unitName, "ModelRotation") or 0
+    -- end
+
+    -- [simona] added "AdditionalRotationData" field to buildingTable
+    -- Extracted query function from original code above
+    local GetValFromTableOrUnit = function(valueName, valueType)
+        local value = buildingTable:GetVal(valueName, valueType)
+        if not value then
+            -- If not defined, check the Units KeyValue
+            value = GetUnitKV(unitName, valueName)
+        end
+        return value
     end
+
+    local fModelRotation = GetValFromTableOrUnit("ModelRotation", "float") or 0
     buildingTable:SetVal("ModelRotation", fModelRotation)
+    local modelRotationMode = GetValFromTableOrUnit("ModelRotationMode")
+    if modelRotationMode == "FACE_ENEMY_BASE" then
+        buildingTable:SetVal("AdditionalRotationData", modelRotationMode)
+    elseif modelRotationMode == "RANDOM" then
+        local additionalRotationData = GetValFromTableOrUnit("ModelRandomRotationStep") or 1
+        -- Make sure value is big enough for a chance of doing a ~359-degrees leap
+        if additionalRotationData < (360/(MAX_MODEL_ROTATION_RANDOMIZATION_STEPS + 1)) then
+            additionalRotationData = 360/(MAX_MODEL_ROTATION_RANDOMIZATION_STEPS + 1)
+        end
+        buildingTable:SetVal("AdditionalRotationData", additionalRotationData)
+    end
+    -- [simona] end of new block
 
     return buildingTable
 end
@@ -980,7 +1008,29 @@ function BuildingHelper:UpgradeBuilding(building, newName)
     print("Upgrading Building: "..oldBuildingName.." -> "..newName)
     local playerID = building:GetPlayerOwnerID()
     local position = building:GetAbsOrigin()
-    local angle = GetUnitKV(newName, "ModelRotation") or -building:GetAngles().y
+    -- local angle = GetUnitKV(newName, "ModelRotation") or -building:GetAngles().y
+    -- [simona] added initial control rotation
+    local angle = 0
+    local basicRotation = GetUnitKV(newName, "ModelRotation")
+    if basicRotation then
+        angle = basicRotation
+        local modelRotationMode = GetUnitKV(newName, "ModelRotationMode")
+        if modelRotationMode == "FACE_ENEMY_BASE" then
+            -- GOODGUYS face enemy base by default
+            if building:GetOwner():GetTeam() == DOTA_TEAM_BADGUYS then
+                angle = angle + 180
+            end
+        elseif modelRotationMode == "RANDOM" then
+            local rotationRandomizationStep = GetUnitKV(newName, "ModelRandomRotationStep") or 1
+            if rotationRandomizationStep < (360/(MAX_MODEL_ROTATION_RANDOMIZATION_STEPS + 1)) then
+                rotationRandomizationStep = 360/(MAX_MODEL_ROTATION_RANDOMIZATION_STEPS + 1)
+            end
+            angle = angle + (RandomInt(0, MAX_MODEL_ROTATION_RANDOMIZATION_STEPS) * rotationRandomizationStep)
+        end
+    else
+        angle = -building:GetAngles().y
+    end
+    -- end of new block
 
     local old_offset = GetUnitKV(oldBuildingName, "ModelOffset") or 0
     position.z = position.z - old_offset
@@ -1094,8 +1144,11 @@ function BuildingHelper:StartBuilding(builder)
 
     -- For overriden ghosts we need to create another unit
     if building:GetUnitName() ~= unitName then
+        -- [simona] Copy angles, set by AddToQueue, to new entity
+        local angles = building:GetAnglesAsVector()
         building = CreateUnitByName(unitName, location, false, playersHero, player, builder:GetTeam())
         building:SetNeverMoveToClearSpace(false)
+        building:SetAngles(angles.x, angles.y, angles.z)
     else
         building:RemoveModifierByName("modifier_out_of_world")
         building:RemoveEffects(EF_NODRAW)
@@ -1116,9 +1169,10 @@ function BuildingHelper:StartBuilding(builder)
     building.buildingTable = buildingTable
     self:AddBuildingToPlayerTable(playerID, building, true)
 
+    -- [simona] model orientation allready set by AddToQueue
     -- Adjust the Model Orientation
-    local yaw = buildingTable:GetVal("ModelRotation", "float")
-    building:SetAngles(0, -yaw, 0)
+    -- local yaw = buildingTable:GetVal("ModelRotation", "float")
+    -- building:SetAngles(0, -yaw, 0)
 
     -- Building Settings
     BuildingHelper:AddModifierBuilding(building)
@@ -2075,7 +2129,23 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
         end
 
         -- Adjust the Model Orientation
+        -- [simona] added initial rotation control, based on table, passed from AddBuilding
+        -- through playerTable.activeBuildingTable
         local yaw = buildingTable:GetVal("ModelRotation", "float")
+        -- new block
+        local additionalRotationData = buildingTable:GetVal("AdditionalRotationData")
+        if additionalRotationData then
+            if additionalRotationData == "FACE_ENEMY_BASE" then
+                -- GOODGUYS face enemy base by default
+                if player:GetTeam() == DOTA_TEAM_BADGUYS then
+                    yaw = yaw + 180
+                end
+            else
+                additionalRotationData = tonumber(additionalRotationData)
+                yaw = yaw + (RandomInt(0, MAX_MODEL_ROTATION_RANDOMIZATION_STEPS) * additionalRotationData)
+            end
+        end
+        -- new block ending
         entity:SetAngles(0, -yaw, 0)
 
         -- If the ability wasn't queued, override the building queue

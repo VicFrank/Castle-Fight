@@ -1,6 +1,6 @@
 "DOTAUnits"
 {
-  "archery_range" 
+  "archery_range"
   {
     "Model"            "models/elf/archery_range.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -39,7 +39,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "archery_tower" 
+  "archery_tower"
   {
     "Model"            "models/elf/archery_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -50,7 +50,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -78,7 +77,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "hall_of_honor" 
+  "hall_of_honor"
   {
     "Model"            "models/items/juggernaut/ward/dc_wardupate/dc_wardupate.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -89,7 +88,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode""FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -118,7 +117,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "hall_of_the_eldest" 
+  "hall_of_the_eldest"
   {
     "Model"            "models/items/juggernaut/ward/healing_gills_of_the_lost_isles/healing_gills_of_the_lost_isles.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -156,7 +155,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "bloodelf_war_academy" 
+  "bloodelf_war_academy"
   {
     "Model"            "models/elf/ancient_caldron001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -167,7 +166,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -195,7 +195,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "dragonhawk_portal" 
+  "dragonhawk_portal"
   {
     "Model"            "models/elf/temple_portal001.vmdl.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -206,7 +206,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -234,7 +235,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "highelf_siege_factory" 
+  "highelf_siege_factory"
   {
     "Model"            "models/elf/driller_tip_01.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -245,6 +246,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -272,7 +274,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "school_of_wizardry" 
+  "school_of_wizardry"
   {
     "Model"            "models/elf/post_asian001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -283,6 +285,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -311,7 +315,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "tower_of_supreme_magic" 
+  "tower_of_supreme_magic"
   {
     "Model"            "maps/cavern_assets/models/crystals/crystal05.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -349,7 +353,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "city_of_magic" 
+  "city_of_magic"
   {
     "Model"            "models/items/witchdoctor/wd_ward/teller_of_the_auspice_ability/teller_of_the_auspice_ability.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -361,7 +365,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
     "vscripts"         "ai/generic_building_ai.lua"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "RANDOM"
 
     "BuildTime"        "5"
     "BuildingType"     "Support"
@@ -390,7 +394,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "obelisk_of_light" 
+  "obelisk_of_light"
   {
     "Model"            "models/items/wards/ti7_lure_ward/ti7_lure_ward_gold.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -401,6 +405,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -430,7 +435,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "arcane_tower" 
+  "arcane_tower"
   {
     "Model"            "models/props_structures/tower_upgrade/tower_upgrade.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -442,7 +447,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
 
     "BuildTime"        "30"
     "BuildingType"     "Tower"
@@ -480,7 +486,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "golden_shrine_of_justice" 
+  "golden_shrine_of_justice"
   {
     "Model"            "models/props_structures/radiant_fountain002_gold.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -491,6 +497,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
 
     "BuildTime"        "5"
     "BuildingType"     "Support"

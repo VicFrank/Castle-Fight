@@ -281,6 +281,14 @@ function GameMode:BeginTesting(playerID)
   GameMode:RichCheat(playerID)
 end
 
+function GameMode:RotateSelectedUnits(playerID)
+  local entities = PlayerResource:GetSelectedEntities(playerID)
+  for _,entityIndex in pairs(entities) do
+    local unit = EntIndexToHScript(entityIndex)
+    unit:SetForwardVector(RandomVector(1))
+  end
+end
+
 function GameMode:Reset()
   GameRules.leftRoundsWon = 0
   GameRules.rightRoundsWon = 0
@@ -311,6 +319,7 @@ CHEAT_CODES = {
   ["land"] = function(...) GameMode:LandUnits(...) end,                    -- "Lands a number of units on enemy castle"
   ["test"] = function(...) GameMode:BeginTesting(...) end,                 -- "Fast call to 'nofog' and 'rich'"
   ["now"] = function(...) GameMode:RefreshSelectedUnits(...) end,          -- "Refreshes all abilities of all selected units"
+  ["rotate"] = function(...) GameMode:RotateSelectedUnits(...) end,
 }
 
 GAME_COMMANDS = {

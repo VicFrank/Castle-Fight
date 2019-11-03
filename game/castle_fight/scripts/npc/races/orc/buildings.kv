@@ -1,6 +1,6 @@
 "DOTAUnits"
 {
-  "fighters_hall" 
+  "fighters_hall"
   {
     "Model"            "models/heroes/juggernaut/jugg_healing_ward.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -11,6 +11,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -39,7 +40,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "advanced_fighters_hall" 
+  "advanced_fighters_hall"
   {
     "Model"            "models/items/wards/knightstatue_ward/knightstatue_ward.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -50,7 +51,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -79,7 +79,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "superior_fighters_hall" 
+  "superior_fighters_hall"
   {
     "Model"            "models/items/juggernaut/ward_foo.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -90,7 +90,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -118,7 +117,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "shamanic_tent" 
+  "shamanic_tent"
   {
     "Model"            "models/heroes/witchdoctor/witchdoctor_ward.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -129,6 +128,7 @@
     "HealthBarOffset"  "140"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -156,7 +156,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "troll_hut" 
+  "troll_hut"
   {
     "Model"            "models/orc/sniper_hut.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -167,7 +167,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -196,7 +197,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "trappers_hut" 
+  "trappers_hut"
   {
     "Model"            "models/orc/sniper_hut.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -207,7 +208,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -235,7 +235,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "falcon_clan_encampment" 
+  "falcon_clan_encampment"
   {
     "Model"            "models/heroes/disruptor/disruptor_thunderator.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -246,6 +246,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "ModelOffset"      "50"
     "vscripts"         "ai/generic_building_ai.lua"
 
@@ -274,7 +276,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "kodo_farm" 
+  "kodo_farm"
   {
     "Model"            "models/orc/horse_statue_white.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -285,6 +287,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotation"    "270"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -315,7 +319,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "offensive_kodo_farm" 
+  "offensive_kodo_farm"
   {
     "Model"            "models/items/keeper_of_the_light/the_one_horn_new/the_one_horn_new.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -326,7 +330,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotation"    "0"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -354,7 +359,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "defensive_kodo_farm" 
+  "defensive_kodo_farm"
   {
     "Model"            "models/items/keeper_of_the_light/horse_foretold_new/horse_foretold_new.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -365,7 +370,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotation"    "0"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -393,7 +399,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "spellbreaker_kodo_farm" 
+  "spellbreaker_kodo_farm"
   {
     "Model"            "models/items/keeper_of_the_light/horse_roehringods_new/horse_roehringods_new.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -404,7 +410,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotation"    "0"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -432,7 +439,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "orcish_siege_factory" 
+  "orcish_siege_factory"
   {
     "Model"            "models/orc/mine_statue.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -443,7 +450,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "ModelOffset"      "80"
     "vscripts"         "ai/generic_building_ai.lua"
 
@@ -472,7 +479,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "serpent_rock" 
+  "serpent_rock"
   {
     "Model"            "models/items/shadowshaman/serpent_ward/dotapit_s3_wild_tempest_wards/dotapit_s3_wild_tempest_wards.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -483,8 +490,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
-    "ModelRotation"    "90"
 
     "BuildTime"        "5"
     "BuildingType"     "Killing"
@@ -513,7 +520,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "ceremonial_totem" 
+  "ceremonial_totem"
   {
     "Model"            "models/items/earthshaker/totem_dragon_wall/fissure_body.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -526,6 +533,8 @@
     "CollisionSize"    "40"
     "vscripts"         "ai/generic_building_ai.lua"
     "ModelRotation"    "-50"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "180"
 
     "BuildTime"        "5"
     "BuildingType"     "Support"
@@ -554,7 +563,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "anti_air_tower" 
+  "anti_air_tower"
   {
     "Model"            "models/orc/wooden_sentry_tower001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -566,7 +575,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/anti_air_ai.lua"
 
     "BuildTime"        "30"
@@ -605,7 +615,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "stasis_totem" 
+  "stasis_totem"
   {
     "Model"            "models/heroes/techies/fx_techiesfx_stasis.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -616,6 +626,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"

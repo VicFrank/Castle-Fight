@@ -1,6 +1,6 @@
 "DOTAUnits"
 {
-  "barracks" 
+  "barracks"
   {
     "Model"            "models/props_structures/radiant_melee_barracks001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -11,17 +11,21 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
     "BuildingType"     "UnitTrainer"
 
-    // DestructionEffect   .vpcf String    The particle effect to play when the building is destroyed
-    // FireEffect          .vpcf String    The particle effect to play when the building is below the FIRE_EFFECT_FACTOR (0.5 default)
-    // ModelRotation        Angle Number   Rotates the building by a certain amount for particle ghost and placement.
-    // ModelOffset          Number         Positions the building at a height offset from the ground.
-    // PedestalModel       .vmdl String    Puts a model prop at the buildings feet.
-    // PedestalModelScale   Number         Defines the model scale of the pedestal
+    // DestructionEffect        .vpcf String    The particle effect to play when the building is destroyed
+    // FireEffect               .vpcf String    The particle effect to play when the building is below the FIRE_EFFECT_FACTOR (0.5 default)
+    // ModelRotation             Angle Number   Rotates the building by a certain amount for particle ghost and placement.
+    // ModelOffset               Number         Positions the building at a height offset from the ground.
+    // PedestalModel            .vmdl String    Puts a model prop at the buildings feet.
+    // PedestalModelScale        Number         Defines the model scale of the pedestal
+    // ModelRotationMode        String          Can be RANDOM or FACE_ENEMY_BASE or not defined
+    // ModelRandomRotationStep  Number          Defines size of steps, random number of which will be added to each building's rotation; default is 1
 
     "Ability1"                "train_footman"
     "Ability2"                "upgrade_stronghold"
@@ -46,7 +50,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "stronghold" 
+  "stronghold"
   {
     "Model"            "models/props_structures/good_barracks_melee001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -84,7 +88,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "sniper_nest" 
+  "sniper_nest"
   {
     "Model"            "models/props_structures/radiant_ranged_barracks001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -95,6 +99,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -124,7 +130,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "gunners_hall" 
+  "gunners_hall"
   {
     "Model"            "models/props_structures/tent_dk_large.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -135,7 +141,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -163,7 +168,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "marksmens_encampment" 
+  "marksmens_encampment"
   {
     "Model"            "models/props_structures/tent_dk_med.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -212,6 +217,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -250,6 +256,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -367,6 +374,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -405,6 +413,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -443,6 +452,7 @@
     "ModelScale"       "0.8"
     "RingRadius"       "100"
     "HealthBarOffset"  "160"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
 
@@ -498,6 +508,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "50"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
 
     "BuildTime"        "20"
     "BuildingType"     "Tower"
@@ -513,7 +524,7 @@
     "AttackAnimationPoint"      "0.3"
     "AttackAcquisitionRange"    "950"
     "AttackRange"               "950"
-    "ProjectileModel"           "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf"    
+    "ProjectileModel"           "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf"
     "ProjectileSpeed"           "1800"
 
     "ArmorPhysical"             "8"
