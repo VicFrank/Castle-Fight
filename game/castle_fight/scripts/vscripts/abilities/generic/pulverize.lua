@@ -49,6 +49,12 @@ function modifier_pulverize:OnAttackLanded(keys)
 
         self.caster:EmitSound("Hero_Axe.CounterHelix_Blood_Chaser")
         self.caster:StartGesture(ACT_DOTA_CAST_ABILITY_3)
+      elseif attacker:GetUnitName() == "flesh_golem" then
+        local particleName = "particles/econ/items/undying/undying_pale_augur/undying_pale_augur_decay.vpcf"
+        local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, self.caster)
+        ParticleManager:ReleaseParticleIndex(particle)
+        self.caster:EmitSound("Hero_Undying.Decay.Cast")
+        self.caster:EmitSound("Hero_Undying.Decay.Target")
       else
         local particleName = "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
         local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, self.parent)
@@ -63,7 +69,7 @@ function modifier_pulverize:OnAttackLanded(keys)
       for _,enemy in pairs(enemies) do
         if not enemy:HasFlyMovementCapability() then
           local distance = (attacker:GetAbsOrigin() - enemy:GetAbsOrigin()):Length2D()
-          local damage 
+          local damage
 
           if distance <= self.close_range then
             damage = self.close_damage
@@ -83,4 +89,3 @@ function modifier_pulverize:OnAttackLanded(keys)
     end
   end
 end
-
