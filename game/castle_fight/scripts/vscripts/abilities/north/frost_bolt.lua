@@ -2,6 +2,7 @@ frost_bolt = class({})
 greater_frost_bolt = class({})
 
 LinkLuaModifier("modifier_frost_bolt_freeze", "abilities/north/frost_bolt.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_frost_bolt_freeze_fx", "abilities/north/frost_bolt.lua", LUA_MODIFIER_MOTION_NONE)
 
 function frost_bolt:OnSpellStart()
   local caster = self:GetCaster()
@@ -61,6 +62,8 @@ function frost_bolt:OnProjectileHit(target, locationn)
     })
   end
 end
+
+----------------------------------------------------------------------------------------------------
 
 function greater_frost_bolt:OnSpellStart()
   local caster = self:GetCaster()
@@ -162,7 +165,7 @@ function FreezeCooldowns(unit, duration)
           ParticleManager:SetParticleControl(unit.progressParticle, 1, Vector(50, 1 / cooldown, 1))
         end
       end
-      return 
+      return
     end
 
     for _,abilityInfo in pairs(abilityList) do
@@ -177,6 +180,8 @@ function FreezeCooldowns(unit, duration)
     return .1
   end)
 end
+
+----------------------------------------------------------------------------------------------------
 
 modifier_frost_bolt_freeze = class({})
 
@@ -193,8 +198,13 @@ end
 
 function modifier_frost_bolt_freeze:OnCreated( kv )
   if IsServer() then
-    --Play sound
-    self:GetParent():EmitSound("Hero_Crystal.Frostbite")
+    local parent = self:GetParent()
+    parent:EmitSound("Hero_Crystal.Frostbite")
+    local particleNameA = "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+    local particleNameB = "particles/generic_gameplay/generic_slowed_cold.vpcf"
+    self.particleA = ParticleManager:CreateParticle(particleNameA, PATTACH_ABSORIGIN_FOLLOW, parent)
+    self.particleB = ParticleManager:CreateParticle(particleNameB, PATTACH_POINT_FOLLOW, parent)
+    parent:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_frost_bolt_freeze_fx", {duration = self:GetDuration()})
   end
 end
 
@@ -209,5 +219,40 @@ function modifier_frost_bolt_freeze:GetModifierProvidesFOWVision()
   return 1
 end
 
-function modifier_frost_bolt_freeze:GetEffectName() return "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf" end
-function modifier_frost_bolt_freeze:GetEffectAttachType() return PATTACH_ABSORIGIN_FOLLOW end
+function modifier_frost_bolt_freeze:OnDestroy()
+  if IsServer() then
+    self:GetParent():RemoveModifierByName("modifier_frost_bolt_freeze_fx")
+    ParticleManager:DestroyParticle(self.particleA, false)
+    ParticleManager:DestroyParticle(self.particleB, false)
+    ParticleManager:ReleaseParticleIndex(self.particleA)
+    ParticleManager:ReleaseParticleIndex(self.particleB)
+  end
+end
+
+----------------------------------------------------------------------------------------------------
+
+modifier_frost_bolt_freeze_fx = class ({})
+
+function modifier_frost_bolt_freeze_fx:DeclareFunctions()
+  return {}
+end
+
+function modifier_frost_bolt_freeze_fx:GetStatusEffectName()
+  return "particles/status_fx/status_effect_frost.vpcf"
+end
+
+function modifier_frost_bolt_freeze_fx:StatusEffectPriority()
+  return FX_PRIORITY_CHILLED
+end
+
+function modifier_frost_bolt_freeze_fx:IsHidden()
+  return true
+end
+
+function modifier_frost_bolt_freeze_fx:IsDebuff()
+  return false
+end
+
+function modifier_frost_bolt_freeze_fx:IsPurgable()
+  return false
+end

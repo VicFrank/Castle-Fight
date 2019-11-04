@@ -83,6 +83,10 @@ function modifier_earthquake_slow:GetStatusEffectName()
   return "particles/status_fx/status_effect_naga_riptide.vpcf"
 end
 
+function modifier_earthquake_slow:StatusEffectPriority()
+  return FX_PRIORITY_NAGA_EARTHQUAKE
+end
+
 function modifier_earthquake_slow:OnDestroy()
   if IsServer() then
     self.parent:RemoveModifierByName("modifier_earthquake_fx")

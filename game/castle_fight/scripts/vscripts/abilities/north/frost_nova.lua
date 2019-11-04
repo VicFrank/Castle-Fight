@@ -1,6 +1,7 @@
 ice_queen_frost_nova = class({})
 
 LinkLuaModifier("modifier_ice_queen_frost_nova", "abilities/north/frost_nova.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_ice_queen_frost_nova_fx", "abilities/north/frost_nova.lua", LUA_MODIFIER_MOTION_NONE)
 
 function ice_queen_frost_nova:OnSpellStart()
   local caster = self:GetCaster()
@@ -34,8 +35,6 @@ function ice_queen_frost_nova:OnSpellStart()
       })
 
       target:AddNewModifier(caster, ability, "modifier_ice_queen_frost_nova", {duration = duration})
-
-      print("Damaging unit")
     end
   end
 
@@ -48,6 +47,8 @@ function ice_queen_frost_nova:OnSpellStart()
     ability = ability
   })
 end
+
+----------------------------------------------------------------------------------------------------
 
 modifier_ice_queen_frost_nova = class({})
 
@@ -71,6 +72,10 @@ function modifier_ice_queen_frost_nova:OnCreated()
 
   self.move_slow = self.ability:GetSpecialValueFor("slow")
   self.attack_slow = self.ability:GetSpecialValueFor("slow")
+
+  if IsServer() then
+    self.parent:AddNewModifier(self.caster, self:GetAbility(), "modifier_ice_queen_frost_nova_fx", {duration = self:GetDuration()})
+  end
 end
 
 
@@ -82,10 +87,44 @@ function modifier_ice_queen_frost_nova:GetModifierAttackSpeedBonus_Constant()
   return -self.attack_slow
 end
 
-function modifier_ice_queen_frost_nova:GetEffect()
+function modifier_ice_queen_frost_nova:GetStatusEffectName()
+  return "particles/status_fx/status_effect_frost.vpcf"
+end
+
+function modifier_ice_queen_frost_nova:StatusEffectPriority()
+  return FX_PRIORITY_CHILLED
+end
+
+function modifier_ice_queen_frost_nova:OnDestroy()
+  if IsServer() then
+    self.parent:RemoveModifierByName("modifier_ice_queen_frost_nova_fx")
+  end
+end
+
+----------------------------------------------------------------------------------------------------
+
+modifier_ice_queen_frost_nova_fx = class ({})
+
+function modifier_ice_queen_frost_nova_fx:DeclareFunctions()
+  return {}
+end
+
+function modifier_ice_queen_frost_nova_fx:GetEffectName()
   return "particles/generic_gameplay/generic_slowed_cold.vpcf"
 end
 
-function modifier_ice_queen_frost_nova:GetEffectAttachType()
+function modifier_ice_queen_frost_nova_fx:GetEffectAttachType()
   return PATTACH_ABSORIGIN_FOLLOW
+end
+
+function modifier_ice_queen_frost_nova_fx:IsHidden()
+  return true
+end
+
+function modifier_ice_queen_frost_nova_fx:IsDebuff()
+  return false
+end
+
+function modifier_ice_queen_frost_nova_fx:IsPurgable()
+  return false
 end
