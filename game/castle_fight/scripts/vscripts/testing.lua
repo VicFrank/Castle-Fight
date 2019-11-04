@@ -327,6 +327,8 @@ GAME_COMMANDS = {
   ["gg"] = function(...) GameMode:VoteGG(...) end,
 }
 
+LAST_COMMAND = ""
+
 function GameMode:OnPlayerChat(keys)
   local text = keys.text
   local userID = keys.userid
@@ -344,6 +346,12 @@ function GameMode:OnPlayerChat(keys)
 
   -- Cheats are only available in the tools
   if not GameRules:IsCheatMode() then return end
+
+  if text == "repeat" or text == "rep" then
+    text = LAST_COMMAND
+  else
+    LAST_COMMAND = text
+  end
 
   -- Handle '-command'
   if StringStartsWith(text, "-") then
