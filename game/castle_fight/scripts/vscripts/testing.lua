@@ -100,6 +100,67 @@ function GiveLumberToAllPlayers(value)
   end
 end
 
+-- Return unit of given type, if correct type passed, returns passed string otherwise
+function UnitTypeToUnitName(typename)
+  if typename == "fly" or typename == "bird" or typename == "dragon" or typename == "air" then
+    local birds = {
+      "red_dragon",
+      "gryphon_rider",
+      "azure_drake",
+      "wyvern_rider",
+      "dragonhawk_rider",
+      "faerie_dragon",
+      "nether_drake",
+      "shadow_drake",
+      "winged_serpent",
+      "emerald_dragon",
+      "frost_wyrm",
+    }
+    return GetRandomTableElement(birds)
+  end
+
+  if typename == "melle" or
+  typename == "melee" or
+  typename == "mele" or
+  typename == "mellee" or
+  typename == "ground" or
+  typename == "gnd" or
+  typename == "walk" or
+  typename == "walker" or
+  typename == "run" or
+  typename == "runner" or
+  typename == "runer" then
+    local walkers = {
+      "crusader",
+      "paladin",
+      "defender",
+      "felhound",
+    }
+    return GetRandomTableElement(walkers)
+  end
+
+  if typename == "range" or
+  typename == "ranged" or
+  typename == "rng" or
+  typename == "guner" or
+  typename == "gunner" or
+  typename == "shooter" or
+  typename == "shoot" or
+  typename == "ranger" or
+  typename == "archer" then
+    local ranges = {
+      "mighty_necromancer",
+      "banshee",
+      "master_archer",
+      "naga_siren",
+      "ranger",
+      "void_keeper"
+    }
+    return GetRandomTableElement(ranges)
+  end
+  return typename
+end
+
 function GameMode:GreedIsGood(playerID, value)
   value = tonumber(value) or 500
   for _,hero in pairs(HeroList:GetAllHeroes()) do
@@ -134,62 +195,7 @@ function GameMode:SpawnUnits(playerID, unitname, count)
     team = GetOpposingTeam(team)
   end
 
-  if unitname == "fly" or unitname == "bird" or unitname == "dragon" or unitname == "air" then
-    local birds = {
-      "red_dragon",
-      "gryphon_rider",
-      "azure_drake",
-      "wyvern_rider",
-      "dragonhawk_rider",
-      "faerie_dragon",
-      "nether_drake",
-      "shadow_drake",
-      "winged_serpent",
-      "emerald_dragon",
-      "frost_wyrm",
-    }
-    unitname = GetRandomTableElement(birds)
-  end
-
-  if unitname == "melle" or
-      unitname == "melee" or
-      unitname == "mele" or
-      unitname == "mellee" or
-      unitname == "ground" or
-      unitname == "gnd" or
-      unitname == "walk" or
-      unitname == "walker" or
-      unitname == "run" or
-      unitname == "runner" or
-      unitname == "runer" then
-    local walkers = {
-      "crusader",
-      "paladin",
-      "defender",
-      "felhound",
-    }
-    unitname = GetRandomTableElement(walkers)
-  end
-
-  if unitname == "range" or
-      unitname == "ranged" or
-      unitname == "rng" or
-      unitname == "guner" or
-      unitname == "gunner" or
-      unitname == "shooter" or
-      unitname == "shoot" or
-      unitname == "ranger" or
-      unitname == "archer" then
-    local ranges = {
-      "mighty_necromancer",
-      "banshee",
-      "master_archer",
-      "naga_siren",
-      "ranger",
-      "void_keeper"
-    }
-    unitname = GetRandomTableElement(ranges)
-  end
+  unitname = UnitTypeToUnitName(unitname)
 
   for i=1,count do
     CreateUnitByName(unitname, position, true, nil, nil, team)
@@ -210,6 +216,8 @@ function GameMode:LandUnits(playerID, unitname, count)
     count = count * -1
     team = GetOpposingTeam(team)
   end
+
+  unitname = UnitTypeToUnitName(unitname)
 
   for i=1,count do
     CreateUnitByName(unitname, castlePosition, true, nil, nil, team)
@@ -233,12 +241,13 @@ function GameMode:EncounterUnits(playerID, unitname1, unitname2, count1, count2)
 
   GameMode:RemoveFogOfWar(playerID)
 
+  unitname1 = UnitTypeToUnitName(unitname1)
+  unitname2 = UnitTypeToUnitName(unitname2)
+
   for i=1,count1 do
-    print("spawning "..unitname1.." number " .. tostring(i))
     CreateUnitByName(unitname1, position, true, nil, nil, team)
   end
   for i=1,count2 do
-    print("spawning "..unitname2.." number " .. tostring(i))
     CreateUnitByName(unitname2, position, true, nil, nil, GetOpposingTeam(team))
   end
 end
@@ -262,18 +271,26 @@ function GameMode:RemoveFogOfWar(playerID)
   AddFOWViewer(team, GameRules.rightCastlePosition, r, duration, false)
 end
 
-function GameMode:RefreshSelectedUnits(playerID)
+function GameMode:RefreshSelectedUnits(playerID, numTimes)
   local entities = PlayerResource:GetSelectedEntities(playerID)
-  for _,entityIndex in pairs(entities) do
-    local unit = EntIndexToHScript(entityIndex)
-    unit:SetMana(unit:GetMaxMana())
-    for i=0,15 do
-      local ability = unit:GetAbilityByIndex(i)
-      if ability then
-        ability:EndCooldown()
+  numTimes = tonumber(numTimes)
+  local timesDone = 0
+  Timers:CreateTimer(function()
+    for _,entityIndex in pairs(entities) do
+      local unit = EntIndexToHScript(entityIndex)
+      unit:SetMana(unit:GetMaxMana())
+      for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability then
+          ability:EndCooldown()
+        end
       end
     end
-  end
+    timesDone = timesDone + 1
+    if timesDone < numTimes then
+      return 0.2
+    end
+  end)
 end
 
 function GameMode:BeginTesting(playerID)
@@ -281,11 +298,19 @@ function GameMode:BeginTesting(playerID)
   GameMode:RichCheat(playerID)
 end
 
-function GameMode:RotateSelectedUnits(playerID)
+function GameMode:RotateSelectedUnits(playerID, angle)
   local entities = PlayerResource:GetSelectedEntities(playerID)
-  for _,entityIndex in pairs(entities) do
-    local unit = EntIndexToHScript(entityIndex)
-    unit:SetForwardVector(RandomVector(1))
+  if angle then
+    for _,entityIndex in pairs(entities) do
+      local unit = EntIndexToHScript(entityIndex)
+      local angles = unit:GetAnglesAsVector()
+      unit:SetAngles(angles.x, tonumber(angle), angles.z)
+    end
+  else
+    for _,entityIndex in pairs(entities) do
+      local unit = EntIndexToHScript(entityIndex)
+      unit:SetForwardVector(RandomVector(1))
+    end
   end
 end
 
