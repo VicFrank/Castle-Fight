@@ -132,7 +132,6 @@ function UnitTypeToUnitName(typename)
   typename == "runer" then
     local walkers = {
       "crusader",
-      "paladin",
       "defender",
       "felhound",
     }
@@ -228,7 +227,8 @@ function GameMode:EncounterUnits(playerID, unitname1, unitname2, count1, count2)
   if unitname1 == nil and unitname2 == nil then return end
   if unitname2 == nil then unitname2 = unitname1 end
 
-  local position = Vector(0,0,0)
+  local posleft = Vector(-512,0,0)
+  local posright = Vector(512,0,0)
   count1 = tonumber(count1) or 1
   count2 = tonumber(count2) or 1
   if count1 < 0 then count1 = -count1 end
@@ -245,10 +245,10 @@ function GameMode:EncounterUnits(playerID, unitname1, unitname2, count1, count2)
   unitname2 = UnitTypeToUnitName(unitname2)
 
   for i=1,count1 do
-    CreateUnitByName(unitname1, position, true, nil, nil, team)
+    CreateUnitByName(unitname1, posleft, true, nil, nil, team)
   end
   for i=1,count2 do
-    CreateUnitByName(unitname2, position, true, nil, nil, GetOpposingTeam(team))
+    CreateUnitByName(unitname2, posright, true, nil, nil, GetOpposingTeam(team))
   end
 end
 
@@ -273,7 +273,7 @@ end
 
 function GameMode:RefreshSelectedUnits(playerID, numTimes)
   local entities = PlayerResource:GetSelectedEntities(playerID)
-  numTimes = tonumber(numTimes)
+  numTimes = tonumber(numTimes) or 1
   local timesDone = 0
   Timers:CreateTimer(function()
     for _,entityIndex in pairs(entities) do

@@ -67,10 +67,11 @@ function lich_ultimate_raise_dead:OnSpellStart()
   end
 end
 
+----------------------------------------------------------------------------------------------------
 
 function RaiseDead(caster, skeletonTable, range)
   local corpses = Corpses:FindVisibleInRadius(caster:GetTeam(), caster:GetAbsOrigin(), range)
-  
+
   if #corpses == 0 then return end
 
   local corpse = GetRandomTableElement(corpses)
@@ -85,6 +86,13 @@ function RaiseDead(caster, skeletonTable, range)
 
   skeleton:AddNewModifier(caster, nil, "modifier_kill", {duration = 45})
   skeleton:SetNoCorpse()
+
+  --Spawn effect a moment later, game didn't find clear place for new unit yet
+  Timers:CreateTimer(1/30,function()
+    local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_WORLDORIGIN, skeleton)
+    ParticleManager:SetParticleControl(particle, 0, skeleton:GetAbsOrigin())
+    ParticleManager:ReleaseParticleIndex(particle)
+  end)
 
   return skeleton
 end
