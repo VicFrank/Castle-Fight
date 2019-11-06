@@ -36,7 +36,7 @@ function modifier_ancient_protector_animations:OnCreated()
   local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf", PATTACH_ABSORIGIN, self:GetParent())
   ParticleManager:ReleaseParticleIndex(pfx)
 
-  -- self:SetStackCount(self:GetCaster():GetTeamNumber())
+  -- self:SetStackCount(self:GetCaster():GetTeamNumber()) --??
 end
 
 function sign(value)
@@ -45,15 +45,17 @@ function sign(value)
   return 0
 end
 
-TOWER_TARGET_TRACKING_INTERVAL = 1/30 --Somewhere in building helper, it's told server fps is 30
+-- Don't litter global namesapce
+function modifier_ancient_protector_animations:GetTrackingInterval()
+  return 1/30 --Somewhere in building helper, it's told server fps is 30
+end
 
 function modifier_ancient_protector_animations:ShouldEndTracking()
-  if not self.target:IsAlive then
+  if not self.target:IsAlive() then
     self.target = nil
-    print("Reached desired rotation, target died - end tracking")
     return
   end
-  return TOWER_TARGET_TRACKING_INTERVAL
+  return self:GetTrackingInterval()
 end
 
 function modifier_ancient_protector_animations:TrackTarget()
@@ -63,12 +65,11 @@ function modifier_ancient_protector_animations:TrackTarget()
   -- Keep tracking as long as we should and can, to try to finish movement so it looks natural
   if not IsValidEntity(self.target) then
     self.target = nil
-    print("Target invalidated, couldn't finish tracking")
     return
   end
 
-  local rotationSpeed = 360 / (1 / TOWER_TARGET_TRACKING_INTERVAL) -- Do a full flip per 1 second
-  local angleTolerance = 0.25
+  local rotationSpeed = 360 / (1 / self:GetTrackingInterval()) -- Do a full flip per 1 second
+  local angleTolerance = 0.25 -- Target location can slightly fluctuate for some reason, causing useless updates
 
   local parent = self:GetParent()
 
@@ -78,29 +79,25 @@ function modifier_ancient_protector_animations:TrackTarget()
   local myYaw = VectorToAngles(myForwardVector).y
 
   -- Find shortest path
-  if math.abs(myYaw - (desiredYaw - 360)) < desiredYaw then
+  local currentPathLength = math.abs(myYaw - desiredYaw)
+  if math.abs(myYaw - (desiredYaw - 360)) < currentPathLength then
     desiredYaw = desiredYaw - 360
-  elseif math.abs(myYaw - (desiredYaw + 360)) < desiredYaw then
+  elseif math.abs(myYaw - (desiredYaw + 360)) < currentPathLength then
     desiredYaw = desiredYaw + 360
   end
 
-  print("Desired yaw is "..desiredYaw)
-  print("My yaw is "..myYaw)
-  print("Delta yaw is "..math.abs(myYaw - desiredYaw))
-
   if math.abs(myYaw - desiredYaw) <= angleTolerance then
-    print("Delta fits tolerance, skip rotation update")
     return self:ShouldEndTracking()
   end
 
   local direction = (desiredYaw > myYaw) and 1 or -1
   local newYaw = myYaw + rotationSpeed * direction
-  if sign(newYaw - desiredYaw) == direction then
+  if sign(newYaw - desiredYaw) == direction then -- if we got to target value and beyond
     parent:SetAngles(0, desiredYaw, 0)
     return self:ShouldEndTracking()
   else
     parent:SetAngles(0, newYaw, 0)
-    return TOWER_TARGET_TRACKING_INTERVAL
+    return self:GetTrackingInterval()
   end
 end
 
@@ -111,13 +108,13 @@ function modifier_ancient_protector_animations:OnAttackStart(keys)
     self:GetParent():StartGestureWithPlaybackRate(ACT_DOTA_CUSTOM_TOWER_ATTACK, self:GetParent():GetAttacksPerSecond())
 
     -- If no track target, setup target and start tracking
+    -- Do first update now, the rest on demand
     -- Else only update target
     if not self.target then
       self.target = keys.target
-      print("Begin tracking")
-      local nextUpdateTimer = self:TrackTarget()
-      if nextUpdateTimer then
-        Timers:CreateTimer(nextUpdateTimer, function ()
+      local tilNextUpdate = self:TrackTarget()
+      if tilNextUpdate then
+        Timers:CreateTimer(tilNextUpdate, function ()
           return self:TrackTarget()
         end)
       end
