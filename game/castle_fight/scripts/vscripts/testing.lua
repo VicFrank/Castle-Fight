@@ -223,6 +223,23 @@ function GameMode:LandUnits(playerID, unitname, count)
   end
 end
 
+function GameMode:GetUnits(playerID, unitname, count)
+  if not unitname then return end
+
+  unitname = UnitTypeToUnitName(unitname)
+  local team = PlayerResource:GetTeam(playerID)
+  count = tonumber(count) or 1
+  if count < 0 then
+    count = -count
+    team = GetOpposingTeam(team)
+  end
+  local location = PlayerResource:GetPlayer(playerID):GetAssignedHero():GetAbsOrigin()
+
+  for i=1,count do
+    CreateUnitByName(unitname, location, true, nil, nil, team)
+  end
+end
+
 function GameMode:EncounterUnits(playerID, unitname1, unitname2, count1, count2)
   if unitname1 == nil and unitname2 == nil then return end
   if unitname2 == nil then unitname2 = unitname1 end
@@ -345,6 +362,7 @@ CHEAT_CODES = {
   ["test"] = function(...) GameMode:BeginTesting(...) end,                 -- "Fast call to 'nofog' and 'rich'"
   ["now"] = function(...) GameMode:RefreshSelectedUnits(...) end,          -- "Refreshes all abilities of all selected units"
   ["rotate"] = function(...) GameMode:RotateSelectedUnits(...) end,
+  ["get"] = function(...) GameMode:GetUnits(...) end,
 }
 
 GAME_COMMANDS = {

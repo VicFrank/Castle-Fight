@@ -726,7 +726,6 @@ function BuildingHelper:AddBuilding(keys)
 
     -- Adjust the Model Orientation
     local yaw = buildingTable:GetVal("ModelRotation", "float")
-    print("#1 applied rotation "..yaw)
     mgd:SetAngles(0, -yaw, 0)
 
     CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", event)
