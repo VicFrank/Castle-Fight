@@ -1,5 +1,7 @@
 control_enemy = class({})
 
+LinkLuaModifier("modifier_control_enemy_fx", "abilities/naga/control_enemy.lua", LUA_MODIFIER_MOTION_NONE)
+
 function control_enemy:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
@@ -42,4 +44,49 @@ function control_enemy:OnSpellStart()
   local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, new_unit)
   ParticleManager:SetParticleControl(particle, 1, new_unit:GetAbsOrigin())
   ParticleManager:ReleaseParticleIndex(particle)
+
+  new_unit:AddNewModifier(caster, ability, "modifier_control_enemy_fx", {duration = -1})
+end
+
+----------------------------------------------------------------------------------------------------
+
+modifier_control_enemy_fx = class ({})
+
+function modifier_control_enemy_fx:OnCreated(table)
+  self.isOvertakeEffect = true
+
+  local modifiers = self:GetParent():FindAllModifiers()
+  for _,modifier in pairs(modifiers) do
+    if modifier.isOvertakeEffect and modifier ~= self then
+      UTIL_Remove(modifier)
+    end
+  end
+end
+
+function modifier_control_enemy_fx:DeclareFunctions()
+  return {}
+end
+
+function modifier_control_enemy_fx:IsHidden()
+  return true
+end
+
+function modifier_control_enemy_fx:IsDebuff()
+  return false
+end
+
+function modifier_control_enemy_fx:IsPurgable()
+  return false
+end
+
+function modifier_control_enemy_fx:GetStatusEffectName()
+  return "particles/status_fx/status_effect_morphling_morph_target.vpcf"
+end
+
+function modifier_control_enemy_fx:RemoveOnDeath()
+  return false
+end
+
+function modifier_control_enemy_fx:StatusEffectPriority()
+  return FX_PRIORITY_CONTROLLED
 end
