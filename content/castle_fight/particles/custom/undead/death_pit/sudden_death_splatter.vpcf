@@ -35,7 +35,7 @@
 			_class = "C_OP_InterpolateRadius"
 			m_flStartTime = 0.05
 			m_flEndTime = 16.0
-			m_flEndScale = 1.5
+			m_flEndScale = 3.0
 			m_flBias = 0.975
 		},
 		{
@@ -81,9 +81,9 @@
 		{
 			_class = "C_INIT_RemapScalar"
 			m_flOutputMin = 0.5
-			m_flInputMax = 2.0
+			m_flInputMax = 1.35
 			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
-			m_flOutputMax = 3.0
+			m_flOutputMax = 1.5
 			m_flStartTime = 0.0
 			m_flEndTime = 1.0
 		},
@@ -145,33 +145,34 @@
 					m_spline = 
 					[
 						{
-							x = 1.006611
-							y = 9.619048
-							m_flSlopeIncoming = 12298.398438
-							m_flSlopeOutgoing = 12298.398438
+							x = 0.91728
+							y = 71.047569
+							m_flSlopeIncoming = -10406.337891
+							m_flSlopeOutgoing = -165.104004
 						},
 						{
-							x = 1.301476
-							y = -0.0
-							m_flSlopeIncoming = -10406.336914
-							m_flSlopeOutgoing = 0.0
+							x = 1.3476
+							y = 0.0
+							m_flSlopeIncoming = -29365.058594
+							m_flSlopeOutgoing = -29365.058594
 						},
 					]
 					m_tangents = 
 					[
 						{
 							m_nIncomingTangent = "CURVE_TANGENT_FREE"
-							m_nOutgoingTangent = "CURVE_TANGENT_MIRROR"
+							m_nOutgoingTangent = "CURVE_TANGENT_LINEAR"
 						},
 						{
 							m_nIncomingTangent = "CURVE_TANGENT_FREE"
-							m_nOutgoingTangent = "CURVE_TANGENT_LINEAR"
+							m_nOutgoingTangent = "CURVE_TANGENT_MIRROR"
 						},
 					]
 					m_vDomainMins = [ 0.0, 0.0 ]
 					m_vDomainMaxs = [ 3.0, 1000.0 ]
 				}
 			}
+			m_Notes = "0.92 start pick"
 		},
 	]
 	m_nBehaviorVersion = 5
