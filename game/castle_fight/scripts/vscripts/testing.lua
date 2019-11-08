@@ -390,7 +390,7 @@ function GameMode:OnPlayerChat(keys)
   -- Cheats are only available in the tools
   if not GameRules:IsCheatMode() then return end
 
-  if text == "repeat" or text == "rep" then
+  if (text == "repeat" or text == "rep") and not (LAST_COMMAND == "clear" or LAST_COMMAND == "clean") then
     text = LAST_COMMAND
   else
     LAST_COMMAND = text
