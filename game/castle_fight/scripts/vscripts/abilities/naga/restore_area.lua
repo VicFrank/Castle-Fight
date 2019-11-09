@@ -12,6 +12,20 @@ function modifier_restore_area_aura:OnCreated()
   self.parent = self:GetParent()
 
   self.radius = self.ability:GetSpecialValueFor("radius")
+
+  if not IsServer() then return end
+
+  -- Doesn't work properly if spawned immediately
+  Timers:CreateTimer(1/30,function()
+    self.particle = ParticleManager:CreateParticle("particles/radiant_fx2/good_ancient001_ambient.vpcf", PATTACH_WORLDORIGIN, self.caster)
+    ParticleManager:SetParticleControl(self.particle, 0, self.parent:GetAbsOrigin() + Vector(0,0,10))
+  end)
+end
+
+function modifier_restore_area_aura:OnDestroy()
+  if not IsServer() then return end
+  ParticleManager:DestroyParticle(self.particle, false)
+  ParticleManager:ReleaseParticleIndex(self.particle)
 end
 
 function modifier_restore_area_aura:IsAura()
@@ -50,6 +64,8 @@ end
 function modifier_restore_area_aura:GetAuraDuration()
   return 0.5
 end
+
+----------------------------------------------------------------------------------------------------
 
 modifier_restore_area = class({})
 
