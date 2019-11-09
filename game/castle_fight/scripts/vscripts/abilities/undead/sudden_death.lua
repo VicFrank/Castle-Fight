@@ -17,8 +17,8 @@ function sudden_death:OnSpellStart()
   else
     target:EmitSound("hero_bloodseeker.bloodRite.silence")
 
-    local particle = ParticleManager:CreateParticle("particles/custom/undead/death_pit/sudden_death.vpcf", PATTACH_WORLDORIGIN, target)
-    ParticleManager:SetParticleControl(particle, 4, target:GetAbsOrigin())
+    local particle = ParticleManager:CreateParticle("particles/custom/undead/death_pit/sudden_death.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+    ParticleManager:SetParticleControlEnt(particle, 4, target, PATTACH_ABSORIGIN_FOLLOW, "", target:GetAbsOrigin(), true)
     ParticleManager:ReleaseParticleIndex(particle)
   end
 
