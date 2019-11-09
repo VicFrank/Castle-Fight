@@ -42,7 +42,7 @@ local noGeneralSkeletons = {
 }
 
 function skull_pile_raise_dead:OnSpellStart()
-  local range = self:GetSpecialValueFor("range")
+  -- local range = self:GetSpecialValueFor("range") ??
   RaiseDead(self:GetCaster(), basicSkeletons, FIND_UNITS_EVERYWHERE)
 end
 
@@ -52,13 +52,16 @@ end
 
 function necromancer_raise_dead:OnSpellStart()
   RaiseDead(self:GetCaster(), basicSkeletons, 900)
+  self:GetCaster():EmitSound("Hero_Necrolyte.DeathPulse")
 end
 
 function necromancer_greater_raise_dead:OnSpellStart()
   RaiseDead(self:GetCaster(), noGeneralSkeletons, 900)
+  self:GetCaster():EmitSound("Hero_Necrolyte.DeathPulse")
 end
 
 function lich_ultimate_raise_dead:OnSpellStart()
+  self:GetCaster():EmitSound("Hero_Necrolyte.DeathPulse")
   for i=1,2 do
     local skeleton = RaiseDead(self:GetCaster(), greaterSkeletons, 900)
     if skeleton then
@@ -87,10 +90,12 @@ function RaiseDead(caster, skeletonTable, range)
   skeleton:AddNewModifier(caster, nil, "modifier_kill", {duration = 45})
   skeleton:SetNoCorpse()
 
-  --Spawn effect a moment later, game didn't find clear place for new unit yet
+  -- Spawn effect a moment later, game didn't find clear place for new unit yet
+  -- Rings doesn't follow target, i guess this requires effect fix
   Timers:CreateTimer(1/30,function()
-    local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_WORLDORIGIN, skeleton)
-    ParticleManager:SetParticleControl(particle, 0, skeleton:GetAbsOrigin())
+    local particle = ParticleManager:CreateParticle("particles/econ/items/necrolyte/necro_sullen_harvest/necro_ti7_immortal_scythe_impact.vpcf", PATTACH_POINT_FOLLOW, skeleton)
+    ParticleManager:SetParticleControlEnt(particle, 0, skeleton, PATTACH_POINT_FOLLOW, "attach_hitloc", Vector(0,0,0), true)
+    ParticleManager:SetParticleControl(particle, 1, position)
     ParticleManager:ReleaseParticleIndex(particle)
   end)
 
