@@ -85,7 +85,7 @@ function Activate()
   GameRules.GameMode:InitGameMode()
   GameMode.Initialized = true
 
-  if IsInToolsMode() and false then
+  if IsInToolsMode() then
     Timers:CreateTimer(1, function()
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
@@ -230,6 +230,8 @@ function GameMode:InitGameMode()
   GameRules.GameData.playerInfo = {}
   GameRules.GameData.settings = {}
   GameRules.GameData.rounds = {}
+
+  GameRules.PlayerOrderTime = {}
 
   GameRules.buildOrders = {}
 

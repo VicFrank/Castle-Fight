@@ -6,6 +6,10 @@ function GameMode:OrderFilter(filterTable)
   local issuer_player_id_const = filterTable["issuer_player_id_const"]
   local units = filterTable["units"]
 
+  -- Record the time of the order
+  GameRules.PlayerOrderTime[issuer_player_id_const] = GameRules:GetGameTime()
+
+  -- Get the source of the command so we can properly use leavers to build buildings
   for _,entindex in pairs(units) do
     local unit = EntIndexToHScript(entindex)
     if issuer_player_id_const < 0 then

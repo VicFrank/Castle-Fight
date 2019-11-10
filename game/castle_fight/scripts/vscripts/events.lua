@@ -30,6 +30,7 @@ function GameMode:OnGameInProgress()
 
       GameMode:StartHeroSelection()
       GameMode:CheckLeavers()
+      GameMode:DetectAFK()
       return
     end
 
@@ -271,6 +272,9 @@ function GameMode:OnConnectFull(keys)
     -- insert playerID to list of playerIDs
     table.insert(GameRules.playerIDs, playerID)
 
+    -- Insert into list of actions
+    GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
+
     -- initialize settings vote values
     GameRules.numRoundsVotes[playerID] = 2
     GameRules.allowBotsVote[playerID] = false
@@ -282,7 +286,8 @@ function GameMode:OnPlayerReconnect(keys)
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local playerHero = player:GetAssignedHero()
   
-  -- Do necessary UI rebuilding here
+  -- Reconnecting counts as an action
+  GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
 end
 
 function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previousIncomeValue)

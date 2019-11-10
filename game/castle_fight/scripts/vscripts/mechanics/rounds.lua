@@ -212,6 +212,9 @@ function GameMode:PlayEndRoundAnimations(winningTeam)
   end
 end
 
+--------------------------------------------------------
+-- Constantly checking game status
+--------------------------------------------------------
 function GameMode:CheckLeavers()
   -- Don't check for leavers in cheat mode
   if GameRules:IsCheatMode() then return end
@@ -266,6 +269,38 @@ function GameMode:CheckFullTeamDisconnect()
   return radiantConnected, direConnected
 end
 
+function GameMode:DetectAFK()
+  -- if GameRules:IsCheatMode() then return end
+  -- if GameRules:IsInToolsMode() then return end
+
+  local DisconnectTime = 60
+
+  Timers:CreateTimer(function()
+    if not GameRules.roundInProgress then return 1 end
+
+    for playerID, lastOrderTime in pairs(GameRules.PlayerOrderTime) do
+      local timeSinceLastOrder = GameRules:GetGameTime() - lastOrderTime
+
+      local connected = PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED
+      local isBot = PlayerResource:IsFakeClient(playerID)
+
+      if connected and not isBot and timeSinceLastOrder > DisconnectTime then
+        print("player" .. playerID .. " is afk for " .. timeSinceLastOrder .. " seconds")
+      end
+    end
+
+    return 1
+  end)
+  
+end
+
+function GameMode:RefreshOrderTimes()
+  -- Act as though each player just issued an order
+  for _,playerID in pairs(GameRules.playerIDs) do
+    GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
+  end
+end
+
 --------------------------------------------------------
 -- Start Round
 --------------------------------------------------------
@@ -289,6 +324,7 @@ function GameMode:StartRound()
     GameMode:SetupShops()
     GameMode:StartIncomeTimer()
     GameMode:StartRoundTimer()
+    GameMode:RefreshOrderTimes()
 
     Notifications:TopToAll({text="Round " .. GameRules.roundCount .. " started!", duration=3.0})
 
