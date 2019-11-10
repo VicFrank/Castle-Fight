@@ -1,6 +1,6 @@
 "DOTAUnits"
 {
-  "hunters_hall" 
+  "hunters_hall"
   {
     "Model"            "models/nightelf/armadillo_school.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -40,7 +40,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "rangers_hall" 
+  "rangers_hall"
   {
     "Model"            "models/nightelf/armadillo_house.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -80,7 +80,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "amazons_hall" 
+  "amazons_hall"
   {
     "Model"            "models/nightelf/armadillo_church.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -119,7 +119,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "moon_shrine" 
+  "moon_shrine"
   {
     "Model"            "models/nightelf/good_statue010.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -130,7 +130,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode""RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -159,7 +159,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "moon_altar" 
+  "moon_altar"
   {
     "Model"            "models/nightelf/radiant_statue002.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -170,7 +170,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -198,7 +197,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "house_of_shadows" 
+  "house_of_shadows"
   {
     "Model"            "models/nightelf/armadillo_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -209,6 +208,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -237,7 +238,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "guild_of_shadows" 
+  "guild_of_shadows"
   {
     "Model"            "models/nightelf/armadillo_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -275,7 +276,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "pillaged_hut" 
+  "pillaged_hut"
   {
     "Model"            "models/tent_01a.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -286,6 +287,9 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    //It is then passed to scorched_mansion, that looks better at 90 degree randomization
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -314,7 +318,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "scorched_mansion" 
+  "scorched_mansion"
   {
     "Model"            "models/tent_03a.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -325,7 +329,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "270"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -353,7 +356,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "fountain_of_wonders" 
+  "fountain_of_wonders"
   {
     "Model"            "models/nightelf/journey_fountain.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -364,6 +367,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode""RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -391,7 +395,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "nightelf_siege_factory" 
+  "nightelf_siege_factory"
   {
     "Model"            "models/nightelf/barking_dog.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -402,7 +406,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -430,7 +435,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "silver_glade" 
+  "silver_glade"
   {
     "Model"            "models/nightelf/kapok_001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -441,12 +446,14 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode""RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
     "BuildingType"     "Support"
 
     "Ability1"                "moon_shine_blessing"
+    //"Ability2"                "building_face_direction_random"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0"
@@ -470,7 +477,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "obelisk_of_wilderness" 
+  "obelisk_of_wilderness"
   {
     "Model"            "models/nightelf/journey_stoneforest02.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -481,12 +488,14 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode""RANDOM"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
     "BuildingType"     "Support"
 
     "Ability1"                "resistance_of_the_wilderness"
+    "Ability2"                "building_face_direction_random"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0"
@@ -510,7 +519,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "elunes_lantern" 
+  "elunes_lantern"
   {
     "Model"            "models/nightelf/chinese_lantern002.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -521,6 +530,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
 
     "BuildTime"        "22"
     "BuildingType"     "Tower"
@@ -557,7 +568,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "starfall_obelisk" 
+  "starfall_obelisk"
   {
     "Model"            "models/nightelf/obelisk001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -568,6 +579,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"

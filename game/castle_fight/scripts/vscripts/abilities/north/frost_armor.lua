@@ -61,6 +61,11 @@ function modifier_ice_troll_frost_armor:GetStatusEffectName()
   return "particles/status_fx/status_effect_frost_armor.vpcf"
 end
 
+function modifier_ice_troll_frost_armor:StatusEffectPriority()
+  return FX_PRIORITY_CHILLED
+end
+
+----------------------------------------------------------------------------------------------------
 
 modifier_ice_troll_frost_armor_debuff = class({})
 
@@ -99,6 +104,10 @@ function modifier_ice_troll_frost_armor_debuff:GetModifierAttackSpeedBonus_Const
   return self.attack_slow
 end
 
-function modifier_ice_troll_frost_armor_debuff:GetEffectName()
+function modifier_ice_troll_frost_armor_debuff:GetStatusEffectName()
   return "particles/status_fx/status_effect_frost.vpcf"
+end
+
+function modifier_ice_troll_frost_armor_debuff:StatusEffectPriority()
+  return FX_PRIORITY_CHILLED
 end

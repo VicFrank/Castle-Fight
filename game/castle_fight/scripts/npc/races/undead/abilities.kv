@@ -75,6 +75,12 @@
     "ScriptFile"                  "abilities/undead/raise_dead"
     "MaxLevel"                    "1"
 
+    "precache"
+    {
+      "particle"  "particles/econ/items/necrolyte/necro_sullen_harvest/necro_ti7_immortal_scythe_impact.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+    }
+
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "12.0"
     "AbilityManaCost"             "12"
@@ -86,6 +92,12 @@
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/raise_dead"
     "MaxLevel"                    "1"
+
+    "precache"
+    {
+      "particle"  "particles/econ/items/necrolyte/necro_sullen_harvest/necro_ti7_immortal_scythe_impact.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+    }
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "15.0"
@@ -99,6 +111,12 @@
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/raise_dead"
     "MaxLevel"                    "1"
+
+    "precache"
+    {
+      "particle"  "particles/econ/items/necrolyte/necro_sullen_harvest/necro_ti7_immortal_scythe_impact.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+    }
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityCooldown"             "45.0"
@@ -116,6 +134,12 @@
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/raise_dead"
     "MaxLevel"                    "1"
+
+    "precache"
+    {
+      "particle"  "particles/econ/items/necrolyte/necro_sullen_harvest/necro_ti7_immortal_scythe_impact.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+    }
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityCooldown"             "30.0"
@@ -135,13 +159,19 @@
     "ScriptFile"                  "abilities/undead/raise_dead"
     "MaxLevel"                    "1"
 
+    "precache"
+    {
+      "particle"  "particles/econ/items/necrolyte/necro_sullen_harvest/necro_ti7_immortal_scythe_impact.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+    }
+
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityCooldown"             "25.0"
     "AbilityManaCost"             "100"
 
     "AbilityCastRange"          "900"
     "AbilityCastPoint"          "0.5"
-    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
+    "AbilityCastAnimation"      "ACT_DOTA_CAST2_STATUE"
 
     "AbilitySpecial"
     {
@@ -168,7 +198,10 @@
 
     "precache"
     {
-      "particle"  "particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_bloody.vpcf"
+      "particle"  "particles/custom/undead/death_pit/sudden_death.vpcf"
+      "particle"  "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
     }
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
@@ -361,7 +394,9 @@
 
     "precache"
     {
-      "particle"  "particles/econ/events/ti6/hero_levelup_ti6.vpcf"
+      "particle"  "particles/units/heroes/hero_night_stalker/nightstalker_loadout_bats.vpcf"
+      "particle"  "particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
     }
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -373,6 +408,13 @@
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/undead/raise_vampire"
     "MaxLevel"                    "1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_night_stalker/nightstalker_loadout_bats.vpcf"
+      "particle"  "particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+    }
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   }
@@ -474,7 +516,8 @@
 
     "precache"
     {
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
+      "particle"  "particles/units/heroes/hero_visage/visage_grave_chill_tgt.vpcf"
     }
 
     "AbilitySpecial"
@@ -521,7 +564,7 @@
   // 125 damage and all units in 250 range for half damage.
   "flesh_golem_pulverize"
   {
-    "AbilityTextureName"          "earthshaker_enchant_totem"
+    "AbilityTextureName"          "undying_decay"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/generic/pulverize"
     "MaxLevel"                    "1"
@@ -530,8 +573,8 @@
 
     "precache"
     {
-      "particle"  "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_aftershock_v2.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+      "particle"  "particles/econ/items/undying/undying_pale_augur/undying_pale_augur_decay.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
     }
 
     "AbilitySpecial"
@@ -576,7 +619,7 @@
 
     "precache"
     {
-      "particle"  "particles/generic_gameplay/generic_slowed_cold.vpcf"
+      "particle"  "particles/units/heroes/hero_abaddon/abaddon_frost_slow.vpcf"
     }
 
     "AbilitySpecial"

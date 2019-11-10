@@ -53,16 +53,26 @@ function modifier_generator_energy_shield:GetModifierPhysicalArmorBonus()
   return self.armor
 end
 
+function modifier_generator_energy_shield:PlayChargeConsumptionEffects()
+  local parent = self:GetParent()
+  parent:EmitSound("General.MorphOut")
+  particle = ParticleManager:CreateParticle("particles/generic_gameplay/illusion_killed.vpcf", PATTACH_ABSORIGIN, parent)
+  ParticleManager:ReleaseParticleIndex(particle)
+end
+
 function modifier_generator_energy_shield:OnBuildingTarget()
   if not IsServer() then return end
 
   local parent = self:GetParent()
 
   if self:GetStackCount() == 2 then
-    self:GetParent():IncreaseMaxHealth(100)
+    parent:IncreaseMaxHealth(100)
+    self:PlayChargeConsumptionEffects()
   end
 
   self:DecrementStackCount()
+
+
 
   if self:GetStackCount() <= 0 then
     self:Destroy()
@@ -73,6 +83,6 @@ end
 
 function modifier_generator_energy_shield:OnDestroy()
   if IsServer() then
-    self:GetParent():EmitSound("General.MorphOut")
+    self:PlayChargeConsumptionEffects()
   end
 end

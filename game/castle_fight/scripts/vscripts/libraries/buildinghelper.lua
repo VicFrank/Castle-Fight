@@ -1,5 +1,7 @@
 BH_VERSION = "1.2.9"
 
+MAX_MODEL_ROTATION_RANDOMIZATION_STEPS = 359
+
 --[[
     For installation, usage and implementation examples check the wiki:
         https://github.com/MNoya/BuildingHelper/wiki
@@ -160,7 +162,7 @@ end
 
 function BuildingHelper:LoadSettings()
     BuildingHelper.Settings = LoadKeyValues("scripts/kv/building_settings.kv")
-    
+
     BuildingHelper.Settings["TESTING"] = tobool(BuildingHelper.Settings["TESTING"])
     BuildingHelper.Settings["RECOLOR_BUILDING_PLACED"] = tobool(BuildingHelper.Settings["RECOLOR_BUILDING_PLACED"])
     BuildingHelper.Settings["UPDATE_TREES"] = tobool(BuildingHelper.Settings["UPDATE_TREES"])
@@ -257,7 +259,7 @@ function BuildingHelper:OnEntityKilled(keys)
                         BuildingHelper:RemoveGridType(v.Radius, location, grid_type, "radius")
                     elseif (v.Square) then
                         BuildingHelper:RemoveGridType(v.Square, location, grid_type)
-                    end                
+                    end
                 end
             end
         end
@@ -309,7 +311,7 @@ function BuildingHelper:InitGNV()
     local boundX2 = GridNav:WorldToGridPosX(worldMax.x)
     local boundY1 = GridNav:WorldToGridPosY(worldMin.y)
     local boundY2 = GridNav:WorldToGridPosY(worldMax.y)
-   
+
     print("Max World Bounds: ")
     print(GetWorldMinX()..' '..GetWorldMaxX()..' '..GetWorldMinY()..' '..GetWorldMaxY())
     print(boundX1..' '..boundX2..' '..boundY1..' '..boundY2)
@@ -391,7 +393,7 @@ function BuildingHelper:InitGNV()
     end
 
     local gnv_string = table.concat(gnv,'')
-    
+
      -- Running-length encoding
     local last
     local count = 0
@@ -504,7 +506,7 @@ function BuildingHelper:RepairCommand(args)
         if IsBuilder(unit) then
             -- Cancel current action
             if not queue then
-                ExecuteOrderFromTable({UnitIndex = entityIndex, OrderType = DOTA_UNIT_ORDER_STOP, Queue = false}) 
+                ExecuteOrderFromTable({UnitIndex = entityIndex, OrderType = DOTA_UNIT_ORDER_STOP, Queue = false})
             end
 
             -- Repair added to the queue
@@ -516,7 +518,7 @@ end
 function BuildingHelper:OnSelectionUpdate(event)
     local playerID = event.PlayerID
     if not playerID then return end
-    
+
     -- This is for Building Helper to know which is the currently active builder
     local mainSelected = PlayerResource:GetMainSelectedEntity(playerID)
     if not mainSelected then return end
@@ -536,7 +538,7 @@ function BuildingHelper:OnSelectionUpdate(event)
 end
 
 function BuildingHelper:OrderFilter(order)
-    local ret = true    
+    local ret = true
 
     if BuildingHelper.nextFilter then
         ret = BuildingHelper.nextFilter(BuildingHelper.nextContext, order)
@@ -570,7 +572,7 @@ function BuildingHelper:OrderFilter(order)
         if unit and IsBuilder(unit) then --Hold Stops instead
             order.order_type = DOTA_UNIT_ORDER_STOP
         end
-        for n, unit_index in pairs(units) do 
+        for n, unit_index in pairs(units) do
             local unit = EntIndexToHScript(unit_index)
             if IsBuilder(unit) then
                 BuildingHelper:ClearQueue(unit)
@@ -587,11 +589,11 @@ function BuildingHelper:OrderFilter(order)
 
         -- Repair Multi Order
         if order_type == DOTA_UNIT_ORDER_CAST_TARGET and BuildingHelper:GetRepairAbility(unit) then
-            local ability = EntIndexToHScript(abilityIndex) 
+            local ability = EntIndexToHScript(abilityIndex)
             local abilityName = ability:GetAbilityName()
             local target_handle = EntIndexToHScript(targetIndex)
             local target_name = target_handle:GetUnitName()
-            
+
             if self:OnPreRepair(target_handle, unit) then
                 print("Order: Repair "..target_handle:GetUnitName())
 
@@ -618,7 +620,7 @@ function BuildingHelper:OrderFilter(order)
 
 
     return ret
-end    
+end
 
 -- Manages each workers build queue. Will run once per builder
 function BuildingHelper:InitializeBuilder(builder)
@@ -650,7 +652,7 @@ function BuildingHelper:AddBuilding(keys)
     buildingTable:SetVal("AbilityHandle", ability)
 
     -- Prepare the builder, if it hasn't already been done
-    if not builder.buildingQueue then  
+    if not builder.buildingQueue then
         BuildingHelper:InitializeBuilder(builder)
     end
 
@@ -702,8 +704,12 @@ function BuildingHelper:AddBuilding(keys)
     event.entindex = mgd:GetEntityIndex()
 
     -- Range overlay
+    -- [simona] added 'else' block for vizualization of auras
+    -- based on radius precached in BuildingHelper:GetOrCreateDummy
     if mgd:HasAttackCapability() then
         event.range = buildingTable:GetVal("AttackRange", "number") + mgd:GetHullRadius()
+    elseif mgd.auraRadius then
+        event.range = mgd.auraRadius
     end
 
     -- Make a pedestal dummy if required
@@ -721,7 +727,7 @@ function BuildingHelper:AddBuilding(keys)
     -- Adjust the Model Orientation
     local yaw = buildingTable:GetVal("ModelRotation", "float")
     mgd:SetAngles(0, -yaw, 0)
-                        
+
     CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", event)
 end
 
@@ -785,7 +791,7 @@ function BuildingHelper:SetupBuildingTable(abilityName, builderHandle)
                 return nil
             end
         end
-        
+
         -- Handle empty values
         local sVal = tostring(val)
         if sVal == "" then
@@ -897,19 +903,44 @@ function BuildingHelper:SetupBuildingTable(abilityName, builderHandle)
     end
     buildingTable:SetVal("MaxScale", fMaxScale)
 
-    local fModelRotation = buildingTable:GetVal("ModelRotation", "float")
-    if not fModelRotation then
-        -- If no defined, check the Units KeyValue. Otherwise just default to 0
-        fModelRotation = GetUnitKV(unitName, "ModelRotation") or 0
+    -- local fModelRotation = buildingTable:GetVal("ModelRotation", "float")
+    -- if not fModelRotation then
+    --     -- If no defined, check the Units KeyValue. Otherwise just default to 0
+    --     fModelRotation = GetUnitKV(unitName, "ModelRotation") or 0
+    -- end
+
+    -- [simona] added "AdditionalRotationData" field to buildingTable
+    -- Extracted query function from original code above
+    local GetValFromTableOrUnit = function(valueName, valueType)
+        local value = buildingTable:GetVal(valueName, valueType)
+        if not value then
+            -- If not defined, check the Units KeyValue
+            value = GetUnitKV(unitName, valueName)
+        end
+        return value
     end
+
+    local fModelRotation = GetValFromTableOrUnit("ModelRotation", "float") or 0
     buildingTable:SetVal("ModelRotation", fModelRotation)
+    local modelRotationMode = GetValFromTableOrUnit("ModelRotationMode")
+    if modelRotationMode == "FACE_ENEMY_BASE" then
+        buildingTable:SetVal("AdditionalRotationData", modelRotationMode)
+    elseif modelRotationMode == "RANDOM" then
+        local additionalRotationData = GetValFromTableOrUnit("ModelRandomRotationStep") or 1
+        -- Make sure value is big enough for a chance of doing a ~359-degrees leap
+        if additionalRotationData < (360/(MAX_MODEL_ROTATION_RANDOMIZATION_STEPS + 1)) then
+            additionalRotationData = 360/(MAX_MODEL_ROTATION_RANDOMIZATION_STEPS + 1)
+        end
+        buildingTable:SetVal("AdditionalRotationData", additionalRotationData)
+    end
+    -- [simona] end of new block
 
     return buildingTable
 end
 
 -- Sends a builder to start the construction of a building
 function BuildingHelper:OrderBuildingConstruction(builder, ability, position)
-    ExecuteOrderFromTable({UnitIndex = builder:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_STOP, Queue = false}) 
+    ExecuteOrderFromTable({UnitIndex = builder:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_STOP, Queue = false})
     Build({caster=builder, ability=ability})
     BuildingHelper:AddToQueue(builder, position, false)
 end
@@ -935,7 +966,7 @@ function BuildingHelper:PlaceBuilding(player, name, location, construction_size,
         local playerID = type(player)=="number" and player or player:GetPlayerID() --accept pass player ID or player Handle
         local player = PlayerResource:GetPlayer(playerID)
         local playersHero = PlayerResource:GetSelectedHeroEntity(playerID)
-        print("PlaceBuilding for playerID ".. playerID)       
+        print("PlaceBuilding for playerID ".. playerID)
 
         -- Spawn the building
         building = CreateUnitByName(name, model_location, false, playersHero, player, playersHero:GetTeamNumber())
@@ -976,8 +1007,30 @@ function BuildingHelper:UpgradeBuilding(building, newName)
     print("Upgrading Building: "..oldBuildingName.." -> "..newName)
     local playerID = building:GetPlayerOwnerID()
     local position = building:GetAbsOrigin()
-    local angle = GetUnitKV(newName, "ModelRotation") or -building:GetAngles().y
-    
+    -- local angle = GetUnitKV(newName, "ModelRotation") or -building:GetAngles().y
+    -- [simona] added initial control rotation
+    local angle = 0
+    local basicRotation = GetUnitKV(newName, "ModelRotation")
+    if basicRotation then
+        angle = basicRotation
+        local modelRotationMode = GetUnitKV(newName, "ModelRotationMode")
+        if modelRotationMode == "FACE_ENEMY_BASE" then
+            -- GOODGUYS face enemy base by default
+            if building:GetOwner():GetTeam() == DOTA_TEAM_BADGUYS then
+                angle = angle + 180
+            end
+        elseif modelRotationMode == "RANDOM" then
+            local rotationRandomizationStep = GetUnitKV(newName, "ModelRandomRotationStep") or 1
+            if rotationRandomizationStep < (360/(MAX_MODEL_ROTATION_RANDOMIZATION_STEPS + 1)) then
+                rotationRandomizationStep = 360/(MAX_MODEL_ROTATION_RANDOMIZATION_STEPS + 1)
+            end
+            angle = angle + (RandomInt(0, MAX_MODEL_ROTATION_RANDOMIZATION_STEPS) * rotationRandomizationStep)
+        end
+    else
+        angle = -building:GetAngles().y
+    end
+    -- end of new block
+
     local old_offset = GetUnitKV(oldBuildingName, "ModelOffset") or 0
     position.z = position.z - old_offset
 
@@ -985,7 +1038,7 @@ function BuildingHelper:UpgradeBuilding(building, newName)
     building:AddEffects(EF_NODRAW) --Hide it, so that it's still accessible after this script
     building.upgraded = true --Skips visual effects
     building:ForceKill(true) --This will call RemoveBuilding
-    
+
     -- Create the new building
     local new_building = BuildingHelper:PlaceBuilding(playerID, newName, position, BuildingHelper:GetConstructionSize(newName), BuildingHelper:GetBlockPathingSize(newName), angle)
 
@@ -1066,7 +1119,7 @@ function BuildingHelper:StartBuilding(builder)
 
     -- Check gridnav and cancel if invalid
     if not BuildingHelper:ValidPosition(construction_size, location, builder, callbacks) then
-        
+
         -- Remove the model particle and Advance Queue
         BuildingHelper:AdvanceQueue(builder)
         BuildingHelper:ClearWorkParticles(work)
@@ -1090,8 +1143,11 @@ function BuildingHelper:StartBuilding(builder)
 
     -- For overriden ghosts we need to create another unit
     if building:GetUnitName() ~= unitName then
+        -- [simona] Copy angles, set by AddToQueue, to new entity
+        local angles = building:GetAnglesAsVector()
         building = CreateUnitByName(unitName, location, false, playersHero, player, builder:GetTeam())
         building:SetNeverMoveToClearSpace(false)
+        building:SetAngles(angles.x, angles.y, angles.z)
     else
         building:RemoveModifierByName("modifier_out_of_world")
         building:RemoveEffects(EF_NODRAW)
@@ -1112,9 +1168,10 @@ function BuildingHelper:StartBuilding(builder)
     building.buildingTable = buildingTable
     self:AddBuildingToPlayerTable(playerID, building, true)
 
+    -- [simona] model orientation allready set by AddToQueue
     -- Adjust the Model Orientation
-    local yaw = buildingTable:GetVal("ModelRotation", "float")
-    building:SetAngles(0, -yaw, 0)
+    -- local yaw = buildingTable:GetVal("ModelRotation", "float")
+    -- building:SetAngles(0, -yaw, 0)
 
     -- Building Settings
     BuildingHelper:AddModifierBuilding(building)
@@ -1169,7 +1226,7 @@ function BuildingHelper:StartBuilding(builder)
     local fScaleInterval = (fMaxScale-fInitialModelScale) / (buildTime / fserverFrameRate) -- scale to add every frame, distributed by build time
     local fCurrentScale = fInitialModelScale -- start the building at the initial model scale
     local bScaling = false -- Keep tracking if we're currently model scaling.
-    
+
     -- Set initial scale
     if bScale then
         building:SetModelScale(fCurrentScale)
@@ -1243,7 +1300,7 @@ function BuildingHelper:StartBuilding(builder)
 
                     -- Eject Builder
                     if bBuilderInside then
-                    
+
                         -- Consume Builder
                         if bConsumesBuilder then
                             builder:ForceKill(true)
@@ -1254,7 +1311,7 @@ function BuildingHelper:StartBuilding(builder)
                         -- Advance Queue
                         BuildingHelper:AdvanceQueue(builder)
                     end
-                
+
                     return
                 end
             else
@@ -1272,7 +1329,7 @@ function BuildingHelper:StartBuilding(builder)
                 return nil
             end
             return fUpdateHealthInterval
-        end)    
+        end)
     else
         -- The building will have to be assisted through a repair ability
         local repair_ability = BuildingHelper:GetRepairAbility(builder)
@@ -1302,7 +1359,7 @@ function BuildingHelper:StartBuilding(builder)
                         end
                     end
                 else
-                    
+
                     print("Scale was off by: "..(fMaxScale - fCurrentScale))
                     building:SetModelScale(fMaxScale)
                     return
@@ -1311,7 +1368,7 @@ function BuildingHelper:StartBuilding(builder)
                 -- not valid ent
                 return
             end
-            
+
             return fserverFrameRate
         end)
     end
@@ -1335,7 +1392,7 @@ function BuildingHelper:StartBuilding(builder)
                         building.fireEffectParticle = ParticleManager:CreateParticle(fireEffect, PATTACH_ABSORIGIN_FOLLOW, building)
                     end
                 end
-            
+
                 callbacks.onBelowHalfHealth(building)
                 building.onBelowHalfHealthProc = true
             elseif not belowThreshold and building.onBelowHalfHealthProc and building.state == "complete" then
@@ -1520,7 +1577,7 @@ function BuildingHelper:StartRepair(builder, target)
                 hpGain = hpGain * 42
                 buildCostFactor = buildCostFactor * 42
             end
-            
+
             if hpGain > 0 then
                 if target.missingHealthToComplete then
                     target.missingHealthToComplete = target.missingHealthToComplete - hpGain
@@ -1529,7 +1586,7 @@ function BuildingHelper:StartRepair(builder, target)
                 if buildCostFactor > 0 then
                     bCanPayResource = self:OnRepairTick(target, hpGain, buildCostFactor) ~= false
                 end
-                
+
                 if bCanPayResource then
                     --print("Repaired "..target:GetUnitName().." with "..builderCount.." builders for "..hpGain.." | Time Factor: "..buildTimeFactor.." | Cost Factor: "..buildCostFactor)
                     target:SetHealth(target:GetHealth() + hpGain)
@@ -1602,7 +1659,7 @@ end
 
 -- Blocks a square of certain construction and pathing size at a location on the server grid
 -- construction_size: square of grid points to block from construction
--- pathing_size: square of pathing obstructions that will be spawned 
+-- pathing_size: square of pathing obstructions that will be spawned
 function BuildingHelper:BlockGridSquares(construction_size, pathing_size, location)
     BuildingHelper:RemoveGridType(construction_size, location, "BUILDABLE")
     BuildingHelper:AddGridType(construction_size, location, "BLOCKED")
@@ -1700,7 +1757,7 @@ function BuildingHelper:SetGridType(size, location, grid_type, option)
     local upperBoundY = math.max(boundY1, boundY2)
 
     print('Pos x: ' .. originX .. ' y: ' .. originY)
-    
+
     -- Adjust even size
     if (size % 2) == 0 then
         upperBoundX = upperBoundX-1
@@ -1739,7 +1796,7 @@ function BuildingHelper:SetGridType(size, location, grid_type, option)
                 end
             end
         end
-    end     
+    end
 end
 
 -- Alternative with radius
@@ -1806,7 +1863,7 @@ function BuildingHelper:SetGridTypeRadius(radius, location, grid_type, option)
                 end
             end
         end
-    end     
+    end
 end
 
 -- Returns a string with each of the grid types of the cell, mostly to debug
@@ -1870,7 +1927,7 @@ function BuildingHelper:ValidPosition(size, location, unit, callbacks)
                 callbacks.onConstructionFailed()
             end
             return false
-        end      
+        end
     end
 
     return true
@@ -1889,7 +1946,7 @@ end
 
 function BuildingHelper:EnemyIsInsideBuildingArea(enemy_location, building_location, size)
     local bBounds = BuildingHelper:GetBounds(building_location, size * 32)
-    
+
     -- Enemy covers 2x2 squares
     BuildingHelper:SnapToGrid(2, enemy_location)
     local eBounds = BuildingHelper:GetBounds(enemy_location, 64)
@@ -1996,7 +2053,7 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
     end
 
     print("AddToQueue "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> location "..VectorString(location))
-    
+
     -- Make the new work entry
     local work = {["location"] = location, ["name"] = buildingName, ["buildingTable"] = buildingTable, ["callbacks"] = callbacks}
 
@@ -2044,7 +2101,7 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
 
         local modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_CUSTOMORIGIN, nil, player)
         ParticleManager:SetParticleControl(modelParticle, 0, model_location)
-        ParticleManager:SetParticleControlEnt(modelParticle, 1, entity, 1, "attach_hitloc", entity:GetAbsOrigin(), true) -- Model attach          
+        ParticleManager:SetParticleControlEnt(modelParticle, 1, entity, 1, "attach_hitloc", entity:GetAbsOrigin(), true) -- Model attach
         ParticleManager:SetParticleControl(modelParticle, 3, Vector(BuildingHelper.Settings["MODEL_ALPHA"],0,0)) -- Alpha
         ParticleManager:SetParticleControl(modelParticle, 4, Vector(fMaxScale,0,0)) -- Scale
         work.particleIndex = modelParticle
@@ -2071,7 +2128,23 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
         end
 
         -- Adjust the Model Orientation
+        -- [simona] added initial rotation control, based on table, passed from AddBuilding
+        -- through playerTable.activeBuildingTable
         local yaw = buildingTable:GetVal("ModelRotation", "float")
+        -- new block
+        local additionalRotationData = buildingTable:GetVal("AdditionalRotationData")
+        if additionalRotationData then
+            if additionalRotationData == "FACE_ENEMY_BASE" then
+                -- GOODGUYS face enemy base by default
+                if player:GetTeam() == DOTA_TEAM_BADGUYS then
+                    yaw = yaw + 180
+                end
+            else
+                additionalRotationData = tonumber(additionalRotationData)
+                yaw = yaw + (RandomInt(0, MAX_MODEL_ROTATION_RANDOMIZATION_STEPS) * additionalRotationData)
+            end
+        end
+        -- new block ending
         entity:SetAngles(0, -yaw, 0)
 
         -- If the ability wasn't queued, override the building queue
@@ -2111,7 +2184,7 @@ function BuildingHelper:AddRepairToQueue(builder, building, bQueued)
     local callbacks = playerTable.activeCallbacks
 
     print("AddRepairToQueue "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> building "..building:GetUnitName())
-    
+
     -- Make the new work entry
     local work = {["building"] = building, ["name"] = buildingName, ["buildingTable"] = buildingTable, ["callbacks"] = callbacks, isRepair = true}
 
@@ -2149,7 +2222,7 @@ function BuildingHelper:AdvanceQueue(builder)
             -- Repair Queued
             if not IsValidEntity(work.building) or not work.building:IsAlive() then
                 print("Queued Repair "..work.name.." but it was removed, continue with the queue")
-                self:AdvanceQueue(builder)                
+                self:AdvanceQueue(builder)
             else
                 local building = work.building
                 local callbacks = work.callbacks
@@ -2162,18 +2235,18 @@ function BuildingHelper:AdvanceQueue(builder)
                 print("AdvanceQueue: Repair "..work.name.." "..work.building:GetEntityIndex())
 
                 -- Move towards the building until close range
-                ExecuteOrderFromTable({UnitIndex = builder:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Queue = false}) 
+                ExecuteOrderFromTable({UnitIndex = builder:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Queue = false})
                 builder.move_to_build_timer = Timers:CreateTimer(function()
                     if not IsValidEntity(builder) or not builder:IsAlive() then return end -- End if killed
                     if not IsValidEntity(building) or not building:IsAlive() then return end -- End if killed
-                    
+
                     local distance = (building:GetAbsOrigin() - builder:GetAbsOrigin()):Length()
                     if distance > castRange then
                         return 0.03
                     else
                         print("Reached building, start the Repair process!")
                         --builder:Stop()
-                        
+
                         builder.repairRange = castRange
                         BuildingHelper:StartRepair(builder, building)
                         return
@@ -2200,7 +2273,7 @@ function BuildingHelper:AdvanceQueue(builder)
                     return 0.03
                 else
                     builder:Stop()
-                    
+
                     -- Self placement goes directly to the OnConstructionStarted callback
                     if work.name == builder:GetUnitName() then
                         local callbacks = work.callbacks
@@ -2261,14 +2334,14 @@ function BuildingHelper:ClearQueue(builder)
 
    print("ClearQueue "..builder:GetUnitName().." "..builder:GetEntityIndex())
 
-    -- Main work  
+    -- Main work
     if work then
         BuildingHelper:ClearWorkParticles(work)
         if work.entity then BuildingHelper:RemoveEntity(work.entity.prop) end
 
         -- Only refund work that hasn't been placed yet
         -- VicFrank: Also classified work types as repair, so it won't refund when
-        -- you cancel a repair 
+        -- you cancel a repair
         if not work.inProgress and not work.isRepair then
             BuildingHelper:RemoveEntity(work.entity)
             work.refund = true
@@ -2311,7 +2384,7 @@ end
 -- Stop panorama ghost
 function BuildingHelper:StopGhost(builder)
     local player = builder:GetPlayerOwner()
-    
+
     CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_end", {})
 end
 
@@ -2376,7 +2449,15 @@ function BuildingHelper:GetOrCreateDummy(unitName)
         mgd.BHDUMMY = true -- Skip removing this entity
         for i=0,16 do
             local ability = mgd:GetAbilityByIndex(i)
-            if ability then ability:SetLevel(0) end
+            if ability then
+                --simona added precachning of aura radius for ghost visualization
+                -- precaching must be done before ability:SetLevel(0)
+                -- as it resets all special values, retreived trough GetSpecialValueFor, to 0
+                if ability:GetAbilityKeyValues()["BuildingHelperPreview"] == "1" then
+                    mgd.auraRadius = ability:GetSpecialValueFor("radius")
+                end
+                ability:SetLevel(0)
+            end
         end
         return mgd
     end
@@ -2438,7 +2519,7 @@ end
 function BuildingHelper:GetAllBuildings(playerID)
     local buildings = {}
     local finished = self:GetBuildings(playerID)
-    local construction = self:GetBuildingsUnderConstruction(playerID) 
+    local construction = self:GetBuildingsUnderConstruction(playerID)
     for k,v in pairs(finished) do
         table.insert(buildings, v)
     end
@@ -2577,7 +2658,7 @@ function BuildingHelper:FindClosestEmptyPositionNearby(location, construction_si
                         else
                             towerPos = pos
                             closestDistance = distance
-                        end                        
+                        end
                     end
                 end
             end
@@ -2686,14 +2767,14 @@ function DrawGridSquare(x, y, color, duration)
     duration = duration or 10
     BuildingHelper:SnapToGrid(1, pos)
     pos = GetGroundPosition(pos, nil)
-        
+
     local particle = ParticleManager:CreateParticle("particles/buildinghelper/square_overlay.vpcf", PATTACH_CUSTOMORIGIN, nil)
     ParticleManager:SetParticleControl(particle, 0, pos)
     ParticleManager:SetParticleControl(particle, 1, Vector(32,0,0))
     ParticleManager:SetParticleControl(particle, 2, color)
     ParticleManager:SetParticleControl(particle, 3, Vector(90,0,0))
 
-    Timers:CreateTimer(duration, function() 
+    Timers:CreateTimer(duration, function()
         ParticleManager:DestroyParticle(particle, true)
     end)
 end

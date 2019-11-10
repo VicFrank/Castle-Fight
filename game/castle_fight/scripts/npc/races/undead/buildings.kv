@@ -1,6 +1,6 @@
 "DOTAUnits"
 {
-  "rotting_hay_cart" 
+  "rotting_hay_cart"
   {
     "Model"            "models/heroes/undying/undying_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -11,7 +11,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -40,7 +40,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "tainted_farm" 
+  "tainted_farm"
   {
     "Model"            "models/items/undying/idol_of_ruination/idol_tower.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -51,7 +51,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -80,7 +79,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "defiled_granary" 
+  "defiled_granary"
   {
     "Model"            "models/items/undying/idol_of_ruination/idol_tower_gold.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -91,7 +90,6 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -119,7 +117,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "temple_of_bone" 
+  "temple_of_bone"
   {
     "Model"            "models/props_structures/bad_statue001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -130,6 +128,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "3"
@@ -158,7 +158,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "temple_of_necromancy" 
+  "temple_of_necromancy"
   {
     "Model"            "models/props_structures/bad_barracks001_ranged.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -169,6 +169,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "180"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -197,7 +199,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "high_citadel_of_necromancy" 
+  "high_citadel_of_necromancy"
   {
     "Model"            "models/undead/bad_ancient001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -208,6 +210,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotation"    "0"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -235,7 +238,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "crypt" 
+  "crypt"
   {
     "Model"            "models/undead/gravestone005.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -274,7 +277,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "graveyard" 
+  "graveyard"
   {
     "Model"            "models/undead/tombstonea01.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -312,7 +315,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "haunted_mine" 
+  "haunted_mine"
   {
     "Model"            "models/undead/buffer_stop002.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -323,6 +326,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -350,7 +354,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "slaughter_house" 
+  "slaughter_house"
   {
     "Model"            "models/props_structures/bad_barracks001_melee.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -361,6 +365,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -388,7 +393,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "dragon_cemetary" 
+  "dragon_cemetary"
   {
     "Model"            "models/props_structures/tower_dragon_black.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -399,7 +404,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "270"
+    "ModelRotation"    "180"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -427,7 +433,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "death_pit" 
+  "death_pit"
   {
     "Model"            "models/undead/well_skull.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -438,6 +444,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -467,7 +474,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "skull_pile" 
+  "skull_pile"
   {
     "Model"            "models/undead/skeleton_design002.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -478,6 +485,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
     "vscripts"         "ai/generic_building_ai.lua"
 
     "BuildTime"        "5"
@@ -507,7 +515,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "skull_shrine" 
+  "skull_shrine"
   {
     "Model"            "models/undead/skeleton_design001.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -546,7 +554,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "turret_of_souls" 
+  "turret_of_souls"
   {
     "Model"            "models/props_structures/tower_bad.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -558,7 +566,8 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
-    "ModelRotation"    "90"
+    "ModelRotation"    "180"
+    "ModelRotationMode"       "FACE_ENEMY_BASE"
 
     "BuildTime"        "20"
     "BuildingType"     "Tower"
@@ -597,7 +606,7 @@
     "BlockPathingSize"       "2"
   }
 
-  "city_of_decay" 
+  "city_of_decay"
   {
     "Model"            "models/props_structures/bad_ancient002.vmdl"
     "BaseClass"        "npc_dota_creature"
@@ -608,6 +617,7 @@
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
 
     "BuildTime"        "5"
     "BuildingType"     "Killing"

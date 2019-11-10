@@ -8,7 +8,7 @@ function banshee_astral_chains:OnSpellStart()
 
   local duration = ability:GetSpecialValueFor("duration")
 
-  caster:EmitSound("Hero_Lich.IceAge")
+  caster:EmitSound("Hero_Visage.GraveChill.Target")
 
   target:AddNewModifier(caster, ability, "modifier_astral_chains_debuff", {duration = duration})
 end
@@ -25,6 +25,10 @@ function modifier_astral_chains_debuff:OnCreated()
 
   self.move_slow = self.ability:GetSpecialValueFor("move_slow")
   self.attack_slow = self.ability:GetSpecialValueFor("attack_slow")
+
+  if not IsServer() then return end
+  self.particle = ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_grave_chill_tgt.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
+  ParticleManager:SetParticleControlEnt(self.particle, 2, self.parent, PATTACH_ABSORIGIN_FOLLOW, "", Vector(0,0,0), true)
 end
 
 function modifier_astral_chains_debuff:DeclareFunctions()
@@ -43,10 +47,8 @@ function modifier_astral_chains_debuff:GetModifierAttackSpeedBonus_Constant()
   return -self.attack_slow;
 end
 
-function modifier_astral_chains_debuff:GetEffectName()
-  return "particles/generic_gameplay/generic_slowed_cold.vpcf"
-end
-
-function modifier_astral_chains_debuff:GetEffectAttachType()
-  return PATTACH_ABSORIGIN_FOLLOW
+function modifier_astral_chains_debuff:OnDestroy()
+  if not IsServer() then return end
+  ParticleManager:DestroyParticle(self.particle, false)
+  ParticleManager:ReleaseParticleIndex(self.particle)
 end

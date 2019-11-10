@@ -2,6 +2,7 @@ onset_of_winter = class({})
 
 LinkLuaModifier("modifier_north_chilling_attack_debuff", "abilities/north/chilling_attack.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_frost_attack_freeze", "abilities/north/frost_attack.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_onset_of_winter_fx", "abilities/north/onset_of_winter.lua", LUA_MODIFIER_MOTION_NONE)
 
 -- Sends out three frost orbs that fly in a random direction, attacking random
 -- enemies for 60dps spell damage, stunning random air units, freezing random
@@ -29,7 +30,7 @@ function onset_of_winter:OnSpellStart()
     local direction = (goal - caster:GetAbsOrigin()):Normalized()
     direction = (direction + RandomVector(0.4)):Normalized()
     direction = Vector(direction.x, direction.y, 0)
-    
+
     local projectile = {
       Ability       = self,
       EffectName      = "particles/custom/north/lich/lich_chain_frost_2.vpcf",
@@ -68,6 +69,7 @@ function onset_of_winter:OnProjectileThink_ExtraData(location, ExtraData)
 
   for _,enemy in pairs(enemies) do
     enemy:AddNewModifier(caster, ability, "modifier_north_chilling_attack_debuff", {duration = 1})
+    enemy:AddNewModifier(caster, ability, "modifier_onset_of_winter_fx", {duration = 1})
   end
 
   if #enemies == 0 then return end
@@ -99,4 +101,32 @@ function onset_of_winter:OnProjectileHit(target, location)
   else
     target:AddNewModifier(caster, ability, "modifier_frost_attack_freeze", {duration = 3})
   end
+end
+
+----------------------------------------------------------------------------------------------------
+
+modifier_onset_of_winter_fx = class ({})
+
+function modifier_onset_of_winter_fx:DeclareFunctions()
+  return {}
+end
+
+function modifier_onset_of_winter_fx:GetEffectName()
+  return "particles/units/heroes/hero_ancient_apparition/ancient_apparition_cold_feet.vpcf"
+end
+
+function modifier_onset_of_winter_fx:GetEffectAttachType()
+  return PATTACH_OVERHEAD_FOLLOW
+end
+
+function modifier_onset_of_winter_fx:IsHidden()
+  return true
+end
+
+function modifier_onset_of_winter_fx:IsDebuff()
+  return false
+end
+
+function modifier_onset_of_winter_fx:IsPurgable()
+  return false
 end

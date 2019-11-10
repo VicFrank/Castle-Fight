@@ -7,6 +7,11 @@ function holy_power:OnSpellStart()
 
   local radius = ability:GetSpecialValueFor("radius")
 
+  local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_omniknight/omniknight_purification.vpcf", PATTACH_ABSORIGIN, caster)
+  ParticleManager:SetParticleControl(particle, 1, Vector(350,1,radius))
+  ParticleManager:ReleaseParticleIndex(particle)
+  caster:EmitSound("Hero_Omniknight.Purification")
+
   local allies = FindAlliesInRadius(caster, radius)
 
   for _,unit in pairs(allies) do
@@ -15,6 +20,8 @@ function holy_power:OnSpellStart()
     end
   end
 end
+
+----------------------------------------------------------------------------------------------------
 
 modifier_holy_power = class({})
 
@@ -25,7 +32,10 @@ function modifier_holy_power:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
-  self.attack_speed = self.ability:GetSpecialValueFor("attack_speed")  
+  self.attack_speed = self.ability:GetSpecialValueFor("attack_speed")
+
+  local particle = ParticleManager:CreateParticle("particles/neutral_fx/roshan_spawn.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
+  ParticleManager:ReleaseParticleIndex(particle)
 end
 
 function modifier_holy_power:DeclareFunctions()
@@ -34,4 +44,8 @@ end
 
 function modifier_holy_power:GetModifierAttackSpeedBonus_Constant()
   return self.attack_speed
+end
+
+function modifier_holy_power:GetEffectName()
+  return "particles/units/heroes/hero_omniknight/omniknight_heavenly_grace_beam.vpcf"
 end

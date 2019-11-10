@@ -33,10 +33,13 @@ function modifier_raise_lesser_vampire:OnDeath(params)
     local playerID = self:GetParent().playerID
 
     local vampire = CreateLaneUnit(unitname, position, team, playerID)
-
-    local particle = ParticleManager:CreateParticle("particles/econ/events/ti6/hero_levelup_ti6.vpcf", PATTACH_ABSORIGIN_FOLLOW, vampire)
-    ParticleManager:SetParticleControl(particle, 0, vampire:GetAbsOrigin())
-    vampire:EmitSound("ui.trophy_levelup")
+    ParticleManager:CreateParticle("particles/units/heroes/hero_night_stalker/nightstalker_loadout_bats.vpcf", PATTACH_ABSORIGIN_FOLLOW, vampire)
+    local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf", PATTACH_ABSORIGIN_FOLLOW, vampire)
+    Timers:CreateTimer(0.5, function()
+      ParticleManager:DestroyParticle(particle, false)
+      ParticleManager:ReleaseParticleIndex(particle)
+    end)
+    vampire:EmitSound("Hero_Nightstalker.Void")
   end
 end
 
@@ -55,11 +58,15 @@ function modifier_raise_vampire:OnDeath(params)
     local position = params.unit:GetAbsOrigin()
     local team = self:GetParent():GetTeam()
     local playerID = self:GetParent().playerID
-    
+
     local vampire = CreateLaneUnit(unitname, position, team, playerID)
 
-    local particle = ParticleManager:CreateParticle("particles/econ/events/ti6/hero_levelup_ti6.vpcf", PATTACH_ABSORIGIN_FOLLOW, vampire)
-    ParticleManager:SetParticleControl(particle, 0, vampire:GetAbsOrigin())
-    vampire:EmitSound("ui.trophy_levelup")
+    ParticleManager:CreateParticle("particles/units/heroes/hero_night_stalker/nightstalker_loadout_bats.vpcf", PATTACH_ABSORIGIN_FOLLOW, vampire)
+    local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf", PATTACH_ABSORIGIN_FOLLOW, vampire)
+    Timers:CreateTimer(0.5, function()
+      ParticleManager:DestroyParticle(particle, false)
+      ParticleManager:ReleaseParticleIndex(particle)
+    end)
+    vampire:EmitSound("Hero_Nightstalker.Void")
   end
 end

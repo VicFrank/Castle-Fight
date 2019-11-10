@@ -940,7 +940,7 @@
   // Increases the attack speed of nearby allied units by 66%. 7 mana, CD: 7
   "holy_power"
   {
-    "AbilityTextureName"             "huskar_inner_fire"
+    "AbilityTextureName"             "omniknight_purification"
     "BaseClass"                      "ability_lua"
     "ScriptFile"                     "abilities/human/holy_power"
     "MaxLevel"                       "1"
@@ -950,6 +950,15 @@
     "AbilityCooldown"                "1.0"
     "AbilityManaCost"                "7"
     "AbilityCastRange"               "800"
+
+    "BuildingHelperPreview"          "1"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+      "particle"  "particles/neutral_fx/roshan_spawn.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+    }
 
     "AbilitySpecial"
     {

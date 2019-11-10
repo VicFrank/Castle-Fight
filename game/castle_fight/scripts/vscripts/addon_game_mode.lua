@@ -85,7 +85,7 @@ function Activate()
   GameRules.GameMode:InitGameMode()
   GameMode.Initialized = true
 
-  if IsInToolsMode() then
+  if IsInToolsMode() and false then
     Timers:CreateTimer(1, function()
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
       Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
