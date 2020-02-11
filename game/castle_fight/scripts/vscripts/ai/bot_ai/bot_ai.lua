@@ -10,7 +10,7 @@ function BotAI:Init(hero)
     hero.abilityList = {}
     for i=0,15 do
       local ability = hero:GetAbilityByIndex(i)
-      if ability then
+      if ability and ability:GetAbilityName() ~= "ability_capture" then
         table.insert(hero.abilityList, ability)
       end
     end
@@ -100,13 +100,18 @@ function BotAI:GetNextBuildingToBuild(hero)
 
   for _,ability in pairs(hero.abilityList) do
     local abilityName = ability:GetAbilityName()
-    local abilityData = AbilityData[abilityName]    
-    local interestToConsider = abilityData.interestToConsider
-    local hasEnoughSpecialResources = BotAI:HasEnoughSpecialResources(hero, ability)
+    local abilityData = AbilityData[abilityName]
 
-    if currentInterest >= interestToConsider and hasEnoughSpecialResources then
-      table.insert(buildings, ability)
-    end
+    if abilityData then
+      local interestToConsider = abilityData.interestToConsider
+      local hasEnoughSpecialResources = BotAI:HasEnoughSpecialResources(hero, ability)
+
+      if currentInterest >= interestToConsider and hasEnoughSpecialResources then
+        table.insert(buildings, ability)
+      end
+    else
+      print("Data for ability " .. abilityName .. " not found")
+    end    
   end
 
   local nextBuilding = GetRandomTableElement(buildings)

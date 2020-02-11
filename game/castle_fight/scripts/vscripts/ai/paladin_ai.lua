@@ -83,9 +83,9 @@ function thisEntity:UseAbility()
   radius = 900
   local corpses = Corpses:FindAlliedInRadius(self:GetTeam(), self:GetAbsOrigin(), radius)
 
-  if resurrection:IsFullyCastable() and #corpses > 0 then
+  if resurrection:IsFullyCastable() and (not self:IsSilenced()) and #corpses > 0 then
     local corpseToRevive = GetRandomTableElement(corpses)
-    if not corpseToRevive.isLegendary then
+    if not corpseToRevive.isLegendary and corpseToRevive.unit_name ~= "paladin" then
       self:CastResurrection(corpseToRevive)
       return true
     end

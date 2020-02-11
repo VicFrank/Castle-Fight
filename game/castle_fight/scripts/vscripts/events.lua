@@ -126,7 +126,7 @@ function GameMode:OnHeroInGame(hero)
 
   -- Get rid of the tp scroll
   Timers:CreateTimer(.03, function()
-    for i=0,15 do
+    for i=0,16 do
       local item = hero:GetItemInSlot(i)
       if item ~= nil then
         item:RemoveSelf()

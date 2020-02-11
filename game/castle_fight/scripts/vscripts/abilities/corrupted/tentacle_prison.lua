@@ -24,6 +24,7 @@ function tentacle_prison:OnSpellStart()
       local tentacle = CreateLaneUnit(unitName, position, team, playerID)
       tentacle:AddNewModifier(caster, ability, "modifier_kill", {duration = 10})
       tentacle.isLegendary = true
+      tentacle:SetNoCorpse()
 
       angle = angle + math.pi/3
     end
