@@ -1,0 +1,103 @@
+"addon"
+{
+  "addon_game_name"                "城堡战争"
+  "DOTA_GameMode_15"               "城堡战争"
+  "addonname"                      "城堡战争"
+
+  "DOTA_GoodGuys"                  "西方势力"
+  "DOTA_BadGuys"                   "东方势力"
+
+  "human"           "人类"
+  "naga"            "娜迦"
+  "nature"          "自然"
+  "night_elves"     "暗夜精灵"
+  "undead"          "亡灵"
+  "orc"             "兽人"
+  "north"           "北方"
+  "elves"           "高等精灵"
+  "chaos"           "混沌"
+  "mech"            "机械"
+  "corrupted"       "堕落"
+  "elementals"      "元素"
+
+  "human_description"           "人类擅长制造廉价的单位来击溃敌人。他们拥有高射炮和防御塔。"
+
+  "naga_description"            "娜迦的生命恢复能力非常出色。他们拥有许多特殊建筑，除了防御塔。"
+
+  "nature_description"          "自然之力为它们的主人而战。专精于强大但昂贵的单位和法术。"
+
+  "night_elves_description"     "暗夜精灵被精灵联盟驱逐，为月神而战。看似脆弱的单位却能闪避攻击和反制法术。防御塔能燃烧法力。"
+
+  "undead_description"          "亡灵通过唤醒死者来增强战力，他们带来瘟疫和死亡。拥有防御塔。"
+
+  "orc_description"             "部落培养出强壮的战士，并用萨满之力辅助。他们的斧王被所有敌人惧怕。兽人可以建造防空塔。"
+
+  "north_description"           "北方的栖息者团结起来抵抗外来者对冰原的侵略。北方拥有许多冰冻敌人的法术。防御塔造成溅射伤害。"
+
+  "elves_description"          "高等精灵为保卫王国而战。他们拥有强大的攻城武器和能多重攻击的防御塔。"
+
+  "chaos_description"          "混沌势力召唤出可怕的恶魔，用毁灭性法术消灭敌人。他们的单位拥有混沌攻击，但没有防御塔。"
+
+  "corrupted_description"      "因受到诅咒，这些原本和平的生灵堕入了黑暗。防御塔造成溅射伤害。"
+
+  "mech_description"          "聪明的工匠和哥布林技师组建了自己的军队。他们的单位拥有强大的溅射攻击和护甲，但没有魔法和远程单位。防御塔可以攻击多个单位。"
+
+  "elementals_description"     "元素是自宇宙之处最古老的种族。他们的单位强大但昂贵。可以缩短训练单位的时间。拥有防御塔。"
+
+  "random_description"         "随机选择种族。"
+
+  "shop"                     "商店"
+  "resources"                "资源"
+  "western_forces"           "西方势力"
+  "eastern_forces"           "东方势力"
+  "income"                   "收入"
+  "units_trained"            "训练单位"
+  "units_killed"             "击杀单位"
+  "buildings_built"          "建造建筑"
+  "rs_damage"                "爆炸伤害"
+  "choose_your_race"         "选择你的种族"
+  "select"                   "选择"
+  "lumber"                   "木材"
+  "gold"                     "金币"
+  "cheese"                   "奶酪"
+  "cheese_tip"               "奶酪用于建造传奇建筑。"
+  "lumber_tip"               "木材通过建造训练单位的建筑来获得。"
+  "gold_tip"                 "金币从击杀敌人而来和利息而来。"
+  "round"                        "回合"
+  "victory"                      "胜利"
+  "base_interest"                "基本利息"
+  "interest_from_buildings"      "建筑利息"
+  "treasure_chest_multiplier"    "宝箱系数"
+  "taxes"                        "税"
+  "total_interest"               "总利息"
+  "race_selection"               "种族选择"
+  "loading"                      "读取中"
+  "offer_draw"                   "提议和局"
+  "draw"                         "和局"
+  "reject"                       "拒绝"
+
+  "Latest_Update"                "最近更新"
+  "Vote_Options"                 "投票选项"
+  "Enable_bots"                  "允许机器人"
+  "Yes"                          "是"
+  "No"                           "否"
+  "Rounds_to_win"                "胜利所需回合"
+
+  "Credits"                      "Credits"
+  "Credits_Description"          "感谢以下人员对城堡战争的贡献"
+  "Credits_Flam3s"               "Flam3s: UI"
+  "Credits_Myll"                 "Noya/Myll: Building Helper"
+  "Credits_Noya"                 "Noya: Dotacraft"
+  "Credits_GeFire"               "GeFire: Russian Translation"
+  "Credits_東風谷早苗"            "東風谷早苗, 赵怜: Chinese translation"
+  "Credits_VicFrank"             "VicFrank"
+  "Credits_Radar"                "radar: Play Battleships"
+  "Credits_sim"                  "sim<>n[a]: Many cosmetic changes"
+
+  "Tips_1"                       "- 每10秒都能获得金币。你可以通过建造来提高收入。"
+  "Tips_2"                       "- 你可以通过建造训练单位的建筑来获得木材（英雄技能里的建筑），获得木材等于建造所用的金币。"
+  "Tips_3"                       "- 你可以通过右键点击来修理建造。"
+
+  "Info_Description1"            "建造建筑并训练单位来击败敌人。摧毁敌人的城堡来赢得胜利。"
+  "Info_Description2"            "游戏有很多回合，请不要在第一回合结束就离开！"
+}
