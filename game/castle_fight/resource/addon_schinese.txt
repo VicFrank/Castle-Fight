@@ -81,7 +81,7 @@
 
     "DOTA_Tooltip_modifier_train_unit"                             "训练单位。。。"
     "DOTA_Tooltip_income_modifier"                    "收入"
-    "DOTA_Tooltip_income_modifier_Description"        "周期性获得收入。收入根据建筑造价的比例提升。<br><br><font color='#62bc25'>兵营: 2%%</font><br><font color='#995a0a'>攻城兵营: 1。8%%</font><br><font color='#a3098c'>炮塔塔: 0。8%%</font><br><font color='#FFBF00'>辅助建筑: 1。2%%</font><br><font color='#C40000'>击杀: 0。9%%</font>"
+    "DOTA_Tooltip_income_modifier_Description"        "定期获得收入。该收入为所有建筑建造价格的一定比例之和。<br><br><font color='#62bc25'>兵营: 2%%</font><br><font color='#995a0a'>攻城兵营: 1.8%%</font><br><font color='#a3098c'>防御塔: 0.8%%</font><br><font color='#FFBF00'>辅助建筑: 1.2%%</font><br><font color='#C40000'>击杀收益: 0.9%%</font>"
     "DOTA_Tooltip_income_modifier_enemy"              "敌军收入"
     "DOTA_Tooltip_income_modifier_enemy_Description"  "敌军每十秒获得收入。"
 
@@ -91,17 +91,17 @@
     "Dota_Tooltip_modifier_builder_repairing_Description"   "正在修理一个建筑。"
 
     "DOTA_Tooltip_modifier_legendary_spell_resist"          "传奇技能免疫"
-    "DOTA_Tooltip_modifier_hexxed"          "已被诅咒"
+    "DOTA_Tooltip_modifier_hexxed"          "已被法术影响"
 
     // 城堡战争 护甲/伤害类型
-    //            无甲    轻甲  重甲  神圣  英雄
-    //  普通  105%    70% 175%    100%    50% 25% 60%
-    //  穿刺  105%    175%    100%    70% 45% 25% 60%
-    //  魔法  105%    100%    70% 175%    40%         25%         60%
-    //  混沌  100%    100%    100%    100%    100%        100%        100%
-    //  攻城  100%    70% 70%     70%     160%        20%         40%
-    //  英雄  110%    110%    110%    110%    60%         40%     60%
-    //  技能  100%    100%    100%    100%    25%         25%     60%
+    //        无甲    轻甲     中甲    重甲     城墙       神圣    英雄
+    //  普通  105%    70%     175%    100%    50%       25%     60%
+    //  穿刺  105%    175%    100%    70%     45%       25%     60%
+    //  魔法  105%    100%    70%     175%    40%       25%     60%
+    //  混沌  100%    100%    100%    100%    100%      100%    100%
+    //  攻城  100%    70%     70%     70%     160%      20%     40%
+    //  英雄  110%    110%    110%    110%    60%       40%     60%
+    //  技能  100%    100%    100%    100%    25%       25%     60%
 
 
     "DOTA_Tooltip_modifier_attack_normal"                          "攻击类型：普通"
@@ -123,14 +123,14 @@
     "DOTA_Tooltip_modifier_attack_chaos_Description"               "伤害克制：<br><font color='#E5DE23'>重甲: 100%%</font><br><font color='#E5DE23'>无甲: 100%%</font><br><font color='#E5DE23'>轻甲: 100%%</font><br><font color='#E5DE23'>中甲: 100%%</font><br><font color='#E5DE23'>城墙: 100%%</font><br><font color='#E5DE23'>神圣: 100%%</font>"
 
     // Castle Fight 护甲/Weapon
-    //          无甲  轻甲  中甲      重甲  城墙      神圣  英雄
-    //  普通  105%    70%     175%        100%    50%     25%         60%
-    //  穿刺  105%    175%    100%        70%     45%        25%      60%
-    //  魔法   105%   100%    70%         175%    40%        25%      60%
-    //  混沌   100%   100%    100%        100%    100%      100%      100%
-    //  攻城   100%   70%     70%         70%     160%      20%       40%
-    //  英雄    110%  110%    110%        110%    60%        40%      60%
-    //  法术s  100%   100%    100%        100%    25%        25%      60%
+    //       无甲     轻甲     中甲      重甲     城墙       神圣     英雄
+    //  普通  105%    70%     175%      100%    50%       25%      60%
+    //  穿刺  105%    175%    100%      70%     45%       25%      60%
+    //  魔法  105%    100%    70%       175%    40%       25%      60%
+    //  混沌  100%    100%    100%      100%    100%      100%     100%
+    //  攻城  100%    70%     70%       70%     160%      20%      40%
+    //  英雄  110%    110%    110%      110%    60%       40%      60%
+    //  法术  100%    100%    100%      100%    25%       25%      60%
                                                                    
     "DOTA_Tooltip_modifier_armor_unarmored"                        "护甲类型：无甲"
     "DOTA_Tooltip_modifier_armor_unarmored_Description"            "伤害类型:<br><font color='#E5DE23'>英雄: 110%%</font><br><font color='#E5DE23'>普通: 105%%</font><br><font color='#E5DE23'>穿刺: 105%%</font><br><font color='#E5DE23'>魔法: 105%%</font><br><font color='#E5DE23'>混沌: 100%%</font><br><font color='#E5DE23'>攻城: 100%%</font>"
@@ -166,7 +166,7 @@
     "DOTA_Tooltip_modifier_bash_chance_custom_Description"         "这个单位每次攻击都有机会击晕敌人。"
 
     "DOTA_Tooltip_modifier_critical_strike_custom"                 "致命一击"
-    "DOTA_Tooltip_modifier_critical_strike_custom_Description"     "这个单位每次购机都有机会造成额外伤害。"
+    "DOTA_Tooltip_modifier_critical_strike_custom_Description"     "这个单位每次攻击都有机会造成额外伤害。"
 
     "DOTA_Tooltip_modifier_bash_custom"                            "眩晕"
     "DOTA_Tooltip_modifier_bash_custom_Description"                "这个单位被击晕了。"
@@ -203,15 +203,15 @@
     // 人类建筑物
     "barracks"             "兵营"
     "stronghold"           "要塞"
-    "sniper_nest"          "狙击巢穴"
+    "sniper_nest"          "狙击手据点"
     "gunners_hall"         "火枪手大厅"
     "marksmens_encampment" "神射手营地"
     "weapon_lab"           "武器实验室"
     "gryphon_rock"         "狮鹫之丘"
     "chapel"               "礼拜堂"
     "church"               "教堂"
-    "hjordhejmen"          "军鼓台"
-    "gjallarhorn"          "军乐台"
+    "hjordhejmen"          "战鼓台"
+    "gjallarhorn"          "号角台"
     "artillery"            "高射炮"
     "watch_tower"          "暸望塔"
     "heroic_shrine"        "英雄神殿"
@@ -230,15 +230,15 @@
 
     // Generic Items
     "DOTA_Tooltip_Ability_item_build_treasure_box"             "建造宝箱"
-    "DOTA_Tooltip_Ability_item_build_treasure_box_Description" "<font color='#FFBF00'>辅助建筑</font>\nGives 25%% 提供25%额外收入，更多的宝箱会逐渐降低收入(25%%，21。5%%，18。06%%)。"
+    "DOTA_Tooltip_Ability_item_build_treasure_box_Description" "<font color='#FFBF00'>辅助建筑</font>\n提供25%额外收入，更多的宝箱会降低15%的收入增加效益(25%%，21.5%%，18.06%%以此类推)。"
     "DOTA_Tooltip_Ability_treasure_box_income"                  "宝箱收入"
-    "DOTA_Tooltip_Ability_treasure_box_income_Description"     "<font color='#FFBF00'>辅助建筑</font>\nGives 25%% 提供25%额外收入，更多的宝箱会逐渐降低收入(25%%，21。5%%，18。06%%)。"
+    "DOTA_Tooltip_Ability_treasure_box_income_Description"     "<font color='#FFBF00'>辅助建筑</font>\n提供25%额外收入，更多的宝箱会降低15%的收入增加效益(25%%，21.5%%，18.06%%以此类推)。"
 
     "DOTA_Tooltip_Ability_item_rescue_strike"                  "救援轰炸"
     "DOTA_Tooltip_Ability_item_rescue_strike_Description"      "立刻杀死大范围内敌人，一次性用品。"
 
     "DOTA_Tooltip_Ability_item_building_self_destruct"             "拆除"
-    "DOTA_Tooltip_Ability_item_building_self_destruct_Description" "摧毁这个建筑。 \n\n <font color='#C40000'>不会回收任何资源</font>"
+    "DOTA_Tooltip_Ability_item_building_self_destruct_Description" "摧毁这个建筑，返还一般的建造金币。 \n\n 如建筑收到损害则不可使用。"
 
     // Human 建造Abilities
     "DOTA_Tooltip_Ability_train_footman"                        "训练步兵"
@@ -255,9 +255,9 @@
     
     "DOTA_Tooltip_Ability_build_gryphon_rock"                   "建造狮鹫之丘"
     "DOTA_Tooltip_Ability_build_gryphon_rock_Lore"              "升级: 0"
-    "DOTA_Tooltip_Ability_build_gryphon_rock_Description"       "<font color='#62bc25'>单位训练</font>\n<h1>狮鹫骑士</h1>攻击：魔法 (450射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 飞行<br>- 闪电链 (10%，150伤害)<br> - 重击 (15%，25伤害，2 sec)"
+    "DOTA_Tooltip_Ability_build_gryphon_rock_Description"       "<font color='#62bc25'>单位训练</font>\n<h1>狮鹫骑士</h1>攻击：魔法 (450射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 飞行<br>- 闪电链 (10%，150伤害)<br> - 重击 (15%，25伤害，2秒)"
     "DOTA_Tooltip_Ability_train_gryphon_rider"                  "训练狮鹫骑士"
-    "DOTA_Tooltip_Ability_train_gryphon_rider_Description"      "<h1>狮鹫骑士</h1>攻击：魔法 (450射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 飞行<br>- 闪电链 (10%，150伤害)<br> - 重击 (15%，25伤害，2 sec)"
+    "DOTA_Tooltip_Ability_train_gryphon_rider_Description"      "<h1>狮鹫骑士</h1>攻击：魔法 (450射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 飞行<br>- 闪电链 (10%，150伤害)<br> - 重击 (15%，25伤害，2秒)"
     
 
     "DOTA_Tooltip_Ability_build_sniper_nest"                          "建造狙击手据点"
@@ -288,12 +288,12 @@
 
     "DOTA_Tooltip_Ability_build_chapel"                  "建造礼拜堂" 
     "DOTA_Tooltip_Ability_build_chapel_Lore"             "升级: 1" 
-    "DOTA_Tooltip_Ability_build_chapel_Description"      "<font color='#62bc25'>单位训练</font>\n<h1>十字军</h1>攻击：英雄（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 分裂 (25%%)<br>- 重击 (20%%，25dmg，2sec)<br>- 祝福 (+6护甲，+16hp/sec，+100hp)" 
+    "DOTA_Tooltip_Ability_build_chapel_Description"      "<font color='#62bc25'>单位训练</font>\n<h1>十字军</h1>攻击：英雄（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 分裂 (25%%)<br>- 重击 (20%%，25dmg，2秒)<br>- 祝福 (+6护甲，+16hp/秒，+100hp)" 
     "DOTA_Tooltip_Ability_train_crusader"                "训练十字军" 
-    "DOTA_Tooltip_Ability_train_crusader_Description"    "<h1>十字军</h1>攻击：英雄（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 分裂 (25%%)<br>- 重击 (20%，25dmg，2sec)<br>- 祝福 (+6护甲，+16hp/sec，+100hp)" 
+    "DOTA_Tooltip_Ability_train_crusader_Description"    "<h1>十字军</h1>攻击：英雄（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 分裂 (25%%)<br>- 重击 (20%，25dmg，2秒)<br>- 祝福 (+6护甲，+16hp/秒，+100hp)" 
     "DOTA_Tooltip_Ability_upgrade_church"                "升级成教堂" 
     "DOTA_Tooltip_Ability_upgrade_church_Lore"           "升级: 0" 
-    "DOTA_Tooltip_Ability_upgrade_church_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>圣骑士</h1>攻击：英雄（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 分裂 (25%%)<br>- 重击 (20%%，25dmg，2sec)<br>- 祝福 (+9护甲，+24hp/sec，+100hp)<br>- 复活 (复活一个非传奇友军)<br>- 护甲光环 (+3)" 
+    "DOTA_Tooltip_Ability_upgrade_church_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>圣骑士</h1>攻击：英雄（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 分裂 (25%%)<br>- 重击 (20%%，25dmg，2秒)<br>- 祝福 (+9护甲，+24hp/秒，+100hp)<br>- 复活 (复活一个非传奇友军)<br>- 护甲光环 (+3)" 
     "DOTA_Tooltip_Ability_train_paladin"                 "训练圣骑士" 
     "DOTA_Tooltip_Ability_train_paladin_Description"     "<h1>圣骑士</h1>攻击：英雄（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 分裂 (25%%)<br>- 重击 (20%，25dmg，2秒)<br>- 祝福 (+9护甲，+24每秒生命恢复，+100hp)<br>- 复活 (复活一个非传奇友军)<br>- 护甲光环 (+3)" 
 
@@ -393,7 +393,7 @@
     //////////////////////
     // Naga Race
     //////////////////////
-    "murloc"                   "鱼人"
+    "murloc"                   "小鱼人"
     "murloc_warrior"           "鱼人战士"
     "murloc_champion"          "鱼人勇士"
     "murloc_assassin"          "鱼人刺客"
@@ -429,7 +429,7 @@
     "DOTA_Tooltip_Ability_build_murloc_hut"                  "建造鱼人帐篷"
     "DOTA_Tooltip_Ability_build_murloc_hut_Lore"             "升级: 3"
     "DOTA_Tooltip_Ability_build_murloc_hut_Description"      "<font color='#62bc25'>单位训练</font>\n<h1>鱼人 (2x)</h1>攻击：普通（近战）<br>护甲类型：无甲"
-    "DOTA_Tooltip_Ability_train_murloc"                      "训练鱼人"
+    "DOTA_Tooltip_Ability_train_murloc"                      "训练小鱼人"
     "DOTA_Tooltip_Ability_train_murloc_Description"          "<h1>鱼人 (2x)</h1>攻击：普通（近战）<br>护甲类型：无甲"
 
     "DOTA_Tooltip_Ability_upgrade_murloc_camp"               "升级成鱼人营地"
@@ -445,25 +445,25 @@
     "DOTA_Tooltip_Ability_train_murloc_champion_Description"     "<h1>鱼人勇士(2x)</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (10%%，2x)<br>- 分裂 (25%%)<br>- 闪避 (8%%)"
 
     "DOTA_Tooltip_Ability_upgrade_murloc_fortress"               "升级成鱼人要塞"
-    "DOTA_Tooltip_Ability_upgrade_murloc_fortress_Description"   "<font color='#62bc25'>单位训练</font>\n<h1>鱼人刺客(2x)</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (20%%，2x)<br>- 分裂 (30%%)<br>- 闪避 (15%%)<br>- 重击 (15%，25伤害，2 sec)<br>- 反馈 (25 mana)"
+    "DOTA_Tooltip_Ability_upgrade_murloc_fortress_Description"   "<font color='#62bc25'>单位训练</font>\n<h1>鱼人刺客(2x)</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (20%%，2x)<br>- 分裂 (30%%)<br>- 闪避 (15%%)<br>- 重击 (15%，25伤害，2秒)<br>- 反馈 (25 mana)"
     "DOTA_Tooltip_Ability_train_murloc_assassin"                 "训练鱼人刺客"
-    "DOTA_Tooltip_Ability_train_murloc_assassin_Description"     "<h1>鱼人刺客(2x)</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (20%%，2x)<br>- 分裂 (30%%)<br>- 闪避 (15%%)<br>- 重击 (15%，25伤害，2 sec)<br>- 反馈 (25 mana)"
+    "DOTA_Tooltip_Ability_train_murloc_assassin_Description"     "<h1>鱼人刺客(2x)</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (20%%，2x)<br>- 分裂 (30%%)<br>- 闪避 (15%%)<br>- 重击 (15%，25伤害，2秒)<br>- 反馈 (25 mana)"
 
     "DOTA_Tooltip_Ability_build_swamp_well"                      "建造沼泽地"
     "DOTA_Tooltip_Ability_build_swamp_well_Lore"                 "升级: 1"
-    "DOTA_Tooltip_Ability_build_swamp_well_Description"          "<font color='#62bc25'>单位训练</font>\n<h1>Suupmolk</h1>攻击：普通 (325射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 毒性攻击 (35%%减速，4dps，2s)"
+    "DOTA_Tooltip_Ability_build_swamp_well_Description"          "<font color='#62bc25'>单位训练</font>\n<h1>Suupmolk</h1>攻击：普通 (325射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 毒性攻击 (35%%减速，4点每秒伤害，2秒)"
     "DOTA_Tooltip_Ability_train_suupmolk"                        "训练苏普摩克"
-    "DOTA_Tooltip_Ability_train_suupmolk_Description"            "<h1>Suupmolk</h1>攻击：普通 (325射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 毒性攻击 (35%%减速，4dps，2s)"
+    "DOTA_Tooltip_Ability_train_suupmolk_Description"            "<h1>Suupmolk</h1>攻击：普通 (325射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 毒性攻击 (35%%减速，4点每秒伤害，2秒)"
 
     "DOTA_Tooltip_Ability_upgrade_lernaean_fountain"             "升级成海神温泉"
-    "DOTA_Tooltip_Ability_upgrade_lernaean_fountain_Description" "<font color='#62bc25'>单位训练</font>\n<h1>远古九头蛇</h1>攻击：混沌 (500射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 毒性攻击 (35%%减速，4dps，2s)<br>- 溅射伤害<br>- 传奇技能免疫<br>- 分裂 (死亡时分裂成2只九头蛇)"
+    "DOTA_Tooltip_Ability_upgrade_lernaean_fountain_Description" "<font color='#62bc25'>单位训练</font>\n<h1>远古九头蛇</h1>攻击：混沌 (500射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 毒性攻击 (35%%减速，4点每秒伤害，2s)<br>- 溅射伤害<br>- 传奇技能免疫<br>- 分裂 (死亡时分裂成2只九头蛇)"
     "DOTA_Tooltip_Ability_train_ancient_hydra"                   "训练远古九头蛇"
-    "DOTA_Tooltip_Ability_train_ancient_hydra_Description"       "<h1>远古九头蛇</h1>攻击：混沌 (500射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 毒性攻击 (35%%减速，4dps，2s)<br>- 溅射伤害<br>- 传奇技能免疫<br>- 分裂 (死亡时分裂成2只九头蛇)"
+    "DOTA_Tooltip_Ability_train_ancient_hydra_Description"       "<h1>远古九头蛇</h1>攻击：混沌 (500射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 毒性攻击 (35%%减速，4点每秒伤害，2秒)<br>- 溅射伤害<br>- 传奇技能免疫<br>- 分裂 (死亡时分裂成2只九头蛇)"
 
     "DOTA_Tooltip_Ability_build_temple_of_snakes"                "建造巨蛇神殿"
-    "DOTA_Tooltip_Ability_build_temple_of_snakes_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>羽蛇</h1>攻击：魔法 (420射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 弹射 (3目标，每次减伤30%%)"
+    "DOTA_Tooltip_Ability_build_temple_of_snakes_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>羽蛇</h1>攻击：魔法 (420射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 弹射 (3目标，每次降低30%%伤害)"
     "DOTA_Tooltip_Ability_train_winged_serpent"                  "训练羽蛇"
-    "DOTA_Tooltip_Ability_train_winged_serpent_Description"      "<h1>羽蛇</h1>攻击：魔法 (420射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 弹射 (3目标，每次减伤30%%)"
+    "DOTA_Tooltip_Ability_train_winged_serpent_Description"      "<h1>羽蛇</h1>攻击：魔法 (420射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 弹射 (3目标，每次降低30%%伤害)"
 
     "DOTA_Tooltip_Ability_build_spawning_grounds"                "建造起源之地"
     "DOTA_Tooltip_Ability_build_spawning_grounds_Lore"           "升级: 1"
@@ -477,9 +477,9 @@
     "DOTA_Tooltip_Ability_train_royal_guard_Description"      "<h1>皇家卫士</h1>攻击：穿刺（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 分裂 (50%%)<br>- 致命一击 (10%%，2x)"
 
     "DOTA_Tooltip_Ability_build_reptile_pool"                 "建造冷血栖息地"
-    "DOTA_Tooltip_Ability_build_reptile_pool_Description"     "<font color='#995a0a'>攻城 Trainer</font>\n<h1>龙龟</h1>攻击：攻城 (550射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 重击 (15%，25伤害，2s)<br>- 反伤 (35%%)"
+    "DOTA_Tooltip_Ability_build_reptile_pool_Description"     "<font color='#995a0a'>攻城 Trainer</font>\n<h1>龙龟</h1>攻击：攻城 (550射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 重击 (15%，25伤害，2秒)<br>- 反伤 (35%%)"
     "DOTA_Tooltip_Ability_train_dragon_turtle"                "训练龙龟"
-    "DOTA_Tooltip_Ability_train_dragon_turtle_Description"    "<h1>龙龟</h1>攻击：攻城 (550射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 重击 (15%，25伤害，2s)<br>- 反伤 (35%%)"
+    "DOTA_Tooltip_Ability_train_dragon_turtle_Description"    "<h1>龙龟</h1>攻击：攻城 (550射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 重击 (15%，25伤害，2秒)<br>- 反伤 (35%%)"
     
     "DOTA_Tooltip_Ability_build_naga_spring"                  "建造娜迦之泉"
     "DOTA_Tooltip_Ability_build_naga_spring_Description"      "<font color='#62bc25'>单位训练</font>\n<h1>娜迦海妖</h1>攻击：混沌 (400射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 净化 <br>- 召唤龙虾怪"
@@ -511,7 +511,7 @@
     "DOTA_Tooltip_Ability_restore_area"                         "范围回复"
     "DOTA_Tooltip_Ability_restore_area_Description"             "增加附近友军单位每秒7.5生命恢复，建筑单位每秒2.5生命恢复。"
     "DOTA_Tooltip_Ability_tsunami"                              "海啸"
-    "DOTA_Tooltip_Ability_tsunami_Description"                  "T朝随机敌人的方向射出一道巨浪。 对行进路线上所有敌人造成270伤害。"
+    "DOTA_Tooltip_Ability_tsunami_Description"                  "朝随机敌人的方向射出一道巨浪。 对行进路线上的所有地面敌人造成270伤害。"
     "DOTA_Tooltip_Ability_murloc_critical_strike"               "致命一击"
     "DOTA_Tooltip_Ability_murloc_critical_strike_Description"   "攻击时有概率造成致命一击。"
     "DOTA_Tooltip_Ability_murloc_critical_strike_crit_chance"   "%暴击概率:"
@@ -905,14 +905,14 @@
 
 "DOTA_Tooltip_Ability_build_house_of_shadows"                "建造暗影小屋"
 "DOTA_Tooltip_Ability_build_house_of_shadows_Lore"           "升级: 1"
-"DOTA_Tooltip_Ability_build_house_of_shadows_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>刺客</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 闪避 (15%%)<br>- 反馈 (40魔法，x1。7)<br>- 背刺 (150伤害，风行)"
+"DOTA_Tooltip_Ability_build_house_of_shadows_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>刺客</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 闪避 (15%%)<br>- 反馈 (40魔法，x1.7)<br>- 背刺 (150伤害，风行)"
 "DOTA_Tooltip_Ability_train_assassin"                "训练刺客"
-"DOTA_Tooltip_Ability_train_assassin_Description"    "<h1>刺客</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 闪避 (15%%)<br>- 反馈 (40魔法，x1。7)<br>- 背刺 (150伤害，风行)"
+"DOTA_Tooltip_Ability_train_assassin_Description"    "<h1>刺客</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 闪避 (15%%)<br>- 反馈 (40魔法，x1.7)<br>- 背刺 (150伤害，风行)"
 
 "DOTA_Tooltip_Ability_upgrade_guild_of_shadows"                "升级成暗影公会"
-"DOTA_Tooltip_Ability_upgrade_guild_of_shadows_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>皇家刺客</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 闪避 (25%%)<br>- 反馈 (60魔法，x2。2)<br>- 背刺 (300伤害，风行)"
+"DOTA_Tooltip_Ability_upgrade_guild_of_shadows_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>皇家刺客</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 闪避 (25%%)<br>- 反馈 (60魔法，x2.2)<br>- 背刺 (300伤害，风行)"
 "DOTA_Tooltip_Ability_train_royal_assassin"                "训练皇家刺客"
-"DOTA_Tooltip_Ability_train_royal_assassin_Description"    "<h1>皇家刺客</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 闪避 (25%%)<br>- 反馈 (60魔法，x2。2)<br>- 背刺 (300伤害，风行)"
+"DOTA_Tooltip_Ability_train_royal_assassin_Description"    "<h1>皇家刺客</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 闪避 (25%%)<br>- 反馈 (60魔法，x2.2)<br>- 背刺 (300伤害，风行)"
 
 "DOTA_Tooltip_Ability_build_pillaged_hut"                "建造劫掠小屋"
 "DOTA_Tooltip_Ability_build_pillaged_hut_Lore"           "升级: 1"
@@ -926,9 +926,9 @@
 "DOTA_Tooltip_Ability_train_avatar_of_vengeance_Description"    "<h1>复仇女神</h1>攻击：魔法（近战）<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 腐蚀攻击 (-7护甲)<br>- 法术减伤<br>-击杀回血(14%%)<br>- 闪避 (40%%)<br>- 复仇 (350伤害)"
 
 "DOTA_Tooltip_Ability_build_fountain_of_wonders"                "建造奇迹源泉"
-"DOTA_Tooltip_Ability_build_fountain_of_wonders_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>精灵龙</h1>攻击：魔法 (350射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 治疗 (175)<br>- 反馈 (25魔法，x1。0伤害)"
+"DOTA_Tooltip_Ability_build_fountain_of_wonders_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>精灵龙</h1>攻击：魔法 (350射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 治疗 (175)<br>- 反馈 (25魔法，x1.0伤害)"
 "DOTA_Tooltip_Ability_train_faerie_dragon"                "训练精灵龙"
-"DOTA_Tooltip_Ability_train_faerie_dragon_Description"    "<h1>精灵龙</h1>攻击：魔法 (350射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 治疗 (175)<br>- 反馈 (25魔法，x1。0伤害)"
+"DOTA_Tooltip_Ability_train_faerie_dragon_Description"    "<h1>精灵龙</h1>攻击：魔法 (350射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 治疗 (175)<br>- 反馈 (25魔法，x1.0伤害)"
 
 "DOTA_Tooltip_Ability_build_nightelf_siege_factory"                "建造暗夜精灵攻城工厂"
 "DOTA_Tooltip_Ability_build_nightelf_siege_factory_Description"    "<font color='#995a0a'>攻城 Trainer</font>\n<h1>投刃车</h1>攻击：攻城 (1000射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 弹射 (4目标)<br>- <font color='#C40000'>无法对空</font>"
@@ -945,7 +945,7 @@
 "DOTA_Tooltip_Ability_item_build_elunes_lantern_Description"    "<font color='#a3098c'>防御塔</font>\n攻击：魔法 (850射程)<br>护甲类型：城墙\n\n<h1>技能：</h1>- 反馈 (35魔法)"
 
 "DOTA_Tooltip_Ability_item_build_starfall_obelisk"                "建造星落圣碑"
-"DOTA_Tooltip_Ability_item_build_starfall_obelisk_Description"    "<font color='#C40000'>杀戮建筑</font>\n技能: 星落\n群星坠落到一个随机敌人的附近，10秒对范围内所有敌人造成50伤害。"
+"DOTA_Tooltip_Ability_item_build_starfall_obelisk_Description"    "<font color='#C40000'>杀戮建筑</font>\n技能: 星落\n群星坠落到一个随机敌人的附近，10秒对范围内所有敌人造成每秒50点伤害。"
 
 
 
@@ -1074,19 +1074,19 @@
 
 
 "DOTA_Tooltip_Ability_build_spider_egg_clutch"                "建造蜘蛛蛋堆"
-"DOTA_Tooltip_Ability_build_spider_egg_clutch_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>黑蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹(10%减速，每秒5伤害)"
+"DOTA_Tooltip_Ability_build_spider_egg_clutch_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>黑蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹(10%减速，每秒5点伤害)"
 "DOTA_Tooltip_Ability_train_black_spiders"                "训练黑蜘蛛 (2x)"
-"DOTA_Tooltip_Ability_train_black_spiders_Description"    "<h1>黑蜘蛛s (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹(10%减速，每秒5伤害)"
+"DOTA_Tooltip_Ability_train_black_spiders_Description"    "<h1>黑蜘蛛s (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹(10%减速，每秒5点伤害)"
 
 "DOTA_Tooltip_Ability_upgrade_spider_egg_nest"                "升级成蜘蛛巢穴"
-"DOTA_Tooltip_Ability_upgrade_spider_egg_nest_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>巨型蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹(15%减速，每秒8伤害)<br>- 分裂 (2只森林蜘蛛)"
+"DOTA_Tooltip_Ability_upgrade_spider_egg_nest_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>巨型蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹(15%减速，每秒8点伤害)<br>- 分裂 (2只森林蜘蛛)"
 "DOTA_Tooltip_Ability_train_giant_spiders"                "训练巨型蜘蛛 (2x)"
-"DOTA_Tooltip_Ability_train_giant_spiders_Description"    "<h1>巨型蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹(15%减速，每秒8伤害)<br>- 分裂 (2只森林蜘蛛)"
+"DOTA_Tooltip_Ability_train_giant_spiders_Description"    "<h1>巨型蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹(15%减速，每秒8点伤害)<br>- 分裂 (2只森林蜘蛛)"
 
 "DOTA_Tooltip_Ability_upgrade_spider_egg_hatchery"                "升级成蜘蛛孵化场"
-"DOTA_Tooltip_Ability_upgrade_spider_egg_hatchery_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>育母蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹 (25%减速，每秒12伤害)<br>- 分裂 (1只巨型蜘蛛)<br>- 感染 (100伤害，每秒20伤害，杀死的单位孵化2只森林蜘蛛)<br> - 蛛网 (将飞行单位拖向地面)"
+"DOTA_Tooltip_Ability_upgrade_spider_egg_hatchery_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>育母蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹 (25%减速，每秒12点伤害)<br>- 分裂 (1只巨型蜘蛛)<br>- 感染 (100伤害，每秒20点伤害，杀死的单位孵化2只森林蜘蛛)<br> - 蛛网 (将飞行单位拖向地面)"
 "DOTA_Tooltip_Ability_train_brood_mothers"                "训练育母蜘蛛 (2x)"
-"DOTA_Tooltip_Ability_train_brood_mothers_Description"    "<h1>育母蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹 (25%减速，每秒12伤害)<br>- 分裂 (1只巨型蜘蛛)<br>- 感染 (100伤害，每秒20伤害，杀死的单位孵化2只森林蜘蛛)<br> - 蛛网 (将飞行单位拖向地面)"
+"DOTA_Tooltip_Ability_train_brood_mothers_Description"    "<h1>育母蜘蛛 (2x)</h1>攻击：穿刺（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>-麻痹 (25%减速，每秒12点伤害)<br>- 分裂 (1只巨型蜘蛛)<br>- 感染 (100伤害，每秒20点伤害，杀死的单位孵化2只森林蜘蛛)<br> - 蛛网 (将飞行单位拖向地面)"
 
 "DOTA_Tooltip_Ability_build_furbolg_hut"                "建造萨满小屋"
 "DOTA_Tooltip_Ability_build_furbolg_hut_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>萨满</h1>攻击：魔法 (400射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 回春 (10秒内回复200生命)"
@@ -1099,14 +1099,14 @@
 "DOTA_Tooltip_Ability_train_furbolg_elder_shaman_Description"    "<h1>大萨满</h1>攻击：魔法 (450射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 回春 (10秒内回复400生命)<br>- 法力燃烧 (15%%概率燃烧150魔法)"
 
 "DOTA_Tooltip_Ability_build_ancient_of_growth"                "建造成长遗迹"
-"DOTA_Tooltip_Ability_build_ancient_of_growth_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>森林女神</h1>攻击：穿刺 (500射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (15%%)<br>- 魔法抗性 (15%%)<br>- 自然之触 (75hp，2护甲)"
+"DOTA_Tooltip_Ability_build_ancient_of_growth_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>森林女神</h1>攻击：穿刺 (500射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (15%%)<br>- 魔法抗性 (15%%)<br>- 自然之触 (75hp，2点护甲)"
 "DOTA_Tooltip_Ability_train_dryad"                "训练森林女神"
-"DOTA_Tooltip_Ability_train_dryad_Description"    "<h1>森林女神</h1>攻击：穿刺 (500射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (15%%)<br>- 魔法抗性 (15%%)<br>- 自然之触 (75hp，2护甲)"
+"DOTA_Tooltip_Ability_train_dryad_Description"    "<h1>森林女神</h1>攻击：穿刺 (500射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (15%%)<br>- 魔法抗性 (15%%)<br>- 自然之触 (75hp，2点护甲)"
 
 "DOTA_Tooltip_Ability_upgrade_ancient_of_life"                "升级成生命遗迹"
-"DOTA_Tooltip_Ability_upgrade_ancient_of_life_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>森林守望者</h1>攻击：穿刺 (525射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (20%%)<br>- 魔法抗性 (20%%)<br>- 自然之触 (150hp，3护甲)<br>召唤树人 (2)"
+"DOTA_Tooltip_Ability_upgrade_ancient_of_life_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>森林守望者</h1>攻击：穿刺 (525射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (20%%)<br>- 魔法抗性 (20%%)<br>- 自然之触 (150hp，3点护甲)<br>召唤树人 (2)"
 "DOTA_Tooltip_Ability_train_keeper_of_the_grove"                "训练森林守望者"
-"DOTA_Tooltip_Ability_train_keeper_of_the_grove_Description"    "<h1>森林守望者</h1>攻击：穿刺 (525射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (20%%)<br>- 魔法抗性 (20%%)<br>- 自然之触 (150hp，3护甲)<br>召唤树人 (2)"
+"DOTA_Tooltip_Ability_train_keeper_of_the_grove_Description"    "<h1>森林守望者</h1>攻击：穿刺 (525射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (20%%)<br>- 魔法抗性 (20%%)<br>- 自然之触 (150hp，3点护甲)<br>召唤树人 (2)"
 
 "DOTA_Tooltip_Ability_upgrade_ancient_of_eternity"                "升级成永恒遗迹"
 "DOTA_Tooltip_Ability_upgrade_ancient_of_eternity_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>远古守望者</h1>攻击：混沌 (550射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 除魔 (25%%)<br>- 传奇技能免疫<br>- 自然光环 (每秒15hp，350 AoE)<br>- 树人发芽 (5)<br>- 无形 (25%% 闪避)"
@@ -1121,7 +1121,7 @@
 "DOTA_Tooltip_Ability_upgrade_ancient_of_hibernation"                "升级冬眠遗迹"
 "DOTA_Tooltip_Ability_upgrade_ancient_of_hibernation_Description"    "<font color='#62bc25'>单位训练</font>\n"
 "DOTA_Tooltip_Ability_train_ancient_bear"                "训练远古熊"
-"DOTA_Tooltip_Ability_train_ancient_bear_Description"    "<h1>远古熊</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 野性狂怒 (50%%概率，提高20%%伤害和攻速)<br>- 分裂 (35%%)<br>- 致命一击 (30%%，2x)<br>- 重击 (30%%，1秒，65伤害)<br>- 睡眠"
+"DOTA_Tooltip_Ability_train_ancient_bear_Description"    "<h1>远古熊</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 野性狂怒 (50%%概率，提高20%%伤害和攻速)<br>- 分裂 (35%%)<br>- 致命一击 (30%%，2x)<br>- 重击 (30%%，1秒，65点伤害)<br>- 睡眠"
 
 "DOTA_Tooltip_Ability_build_emerald_dragon_roost"                "建造绿宝石龙谷"
 "DOTA_Tooltip_Ability_build_emerald_dragon_roost_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>绿宝石龙</h1>攻击：混沌 (250射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- <br>- 腐蚀吐息 (每次攻击-2护甲，最多-6)<br>- 飞行"
@@ -1339,36 +1339,36 @@
 "DOTA_Tooltip_Ability_train_polar_bear_Description"     "<h1>北极熊</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (10%%，x2)<br>- 分裂 (27%%，200射程)"
 
 "DOTA_Tooltip_Ability_upgrade_glacier"                 "升级成冰川"
-"DOTA_Tooltip_Ability_upgrade_glacier_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>半人猛犸勇士</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (15%%，x3)<br>- 分裂 (40%%，200射程)<br>- 踩踏 (3.5秒，75伤害)"
+"DOTA_Tooltip_Ability_upgrade_glacier_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>半人猛犸勇士</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (15%%，x3)<br>- 分裂 (40%%，200射程)<br>- 踩踏 (3.5秒，75点伤害)"
 "DOTA_Tooltip_Ability_train_magnataur"                 "训练半人猛犸勇士"
-"DOTA_Tooltip_Ability_train_magnataur_Description"     "<h1>半人猛犸勇士</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (15%%，x3)<br>- 分裂 (40%%，200射程)<br>- 踩踏 (3.5秒，75伤害)"
+"DOTA_Tooltip_Ability_train_magnataur_Description"     "<h1>半人猛犸勇士</h1>攻击：普通（近战）<br>护甲类型：无甲\n\n<h1>技能：</h1>- 致命一击 (15%%，x3)<br>- 分裂 (40%%，200射程)<br>- 踩踏 (3.5秒，75点伤害)"
 
 "DOTA_Tooltip_Ability_build_igloo"                 "建造冰屋"
-"DOTA_Tooltip_Ability_build_igloo_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>海象勇士</h1>攻击：穿刺 (380射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 冰冻攻击 (5%% 7秒 每秒15伤害)"
+"DOTA_Tooltip_Ability_build_igloo_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>海象勇士</h1>攻击：穿刺 (380射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 冰冻攻击 (5%% 7秒 每秒15点伤害)"
 "DOTA_Tooltip_Ability_train_hrimthrusa"                 "训练海象勇士"
-"DOTA_Tooltip_Ability_train_hrimthrusa_Description"     "<h1>海象勇士</h1>攻击：穿刺 (380射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 冰冻攻击 (5%% 7秒 每秒15伤害)"
+"DOTA_Tooltip_Ability_train_hrimthrusa_Description"     "<h1>海象勇士</h1>攻击：穿刺 (380射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 冰冻攻击 (5%% 7秒 每秒15点伤害)"
 
 "DOTA_Tooltip_Ability_build_ice_troll_hut"                 "建造冰巨魔小屋"
 "DOTA_Tooltip_Ability_build_ice_troll_hut_Lore"            "升级: 1"
-"DOTA_Tooltip_Ability_build_ice_troll_hut_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>巨魔暗影牧师</h1>攻击：魔法 (350射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 冰冻攻击 (10%% 7秒 每秒15伤害)<br>- 寒霜护甲 (+3.5)"
+"DOTA_Tooltip_Ability_build_ice_troll_hut_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>巨魔暗影牧师</h1>攻击：魔法 (350射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 冰冻攻击 (10%% 7秒 每秒15点伤害)<br>- 寒霜护甲 (+3.5)"
 "DOTA_Tooltip_Ability_train_troll_shadow_priest"                 "训练巨魔暗影牧师"
-"DOTA_Tooltip_Ability_train_troll_shadow_priest_Description"     "<h1>巨魔暗影牧师</h1>攻击：魔法 (350射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 冰冻攻击 (10%% 7秒 每秒15伤害)<br>- 寒霜护甲 (+3.5)"
+"DOTA_Tooltip_Ability_train_troll_shadow_priest_Description"     "<h1>巨魔暗影牧师</h1>攻击：魔法 (350射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 冰冻攻击 (10%% 7秒 每秒15点伤害)<br>- 寒霜护甲 (+3.5)"
 
 "DOTA_Tooltip_Ability_upgrade_ice_troll_voodoo_hut"                 "升级成冰巨魔巫毒小屋"
-"DOTA_Tooltip_Ability_upgrade_ice_troll_voodoo_hut_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>冰巨魔巫医</h1>攻击：魔法 (370射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 冰冻攻击 (10%% 10秒 每秒20伤害)<br>- 寒霜护甲 (+7)<br>- 寒冷攻击"
+"DOTA_Tooltip_Ability_upgrade_ice_troll_voodoo_hut_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>冰巨魔巫医</h1>攻击：魔法 (370射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 冰冻攻击 (10%% 10秒 每秒20点伤害)<br>- 寒霜护甲 (+7)<br>- 寒冷攻击"
 "DOTA_Tooltip_Ability_train_ice_troll_witch_doctor"                 "训练冰巨魔巫医"
-"DOTA_Tooltip_Ability_train_ice_troll_witch_doctor_Description"     "<h1>冰巨魔巫医</h1>攻击：魔法 (370射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 冰冻攻击 (10%% 10秒 每秒20伤害)<br>- 寒霜护甲 (+7)<br>- 寒冷攻击"
+"DOTA_Tooltip_Ability_train_ice_troll_witch_doctor_Description"     "<h1>冰巨魔巫医</h1>攻击：魔法 (370射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 冰冻攻击 (10%% 10秒 每秒20点伤害)<br>- 寒霜护甲 (+7)<br>- 寒冷攻击"
 
 "DOTA_Tooltip_Ability_build_ice_claws"                 "建造冰爪"
 "DOTA_Tooltip_Ability_build_ice_claws_Lore"            "升级: 1"
-"DOTA_Tooltip_Ability_build_ice_claws_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>雪怪</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 粉碎 (25%%，80伤害)"
+"DOTA_Tooltip_Ability_build_ice_claws_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>雪怪</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 粉碎 (25%%，80点伤害)"
 "DOTA_Tooltip_Ability_train_wendigo"                 "训练雪怪"
-"DOTA_Tooltip_Ability_train_wendigo_Description"     "<h1>雪怪</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 粉碎 (25%%，80伤害)"
+"DOTA_Tooltip_Ability_train_wendigo_Description"     "<h1>雪怪</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 粉碎 (25%%，80点伤害)"
 
 "DOTA_Tooltip_Ability_upgrade_frost_claws"                 "升级成霜爪"
-"DOTA_Tooltip_Ability_upgrade_frost_claws_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>远古雪怪</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 粉碎 (30%%，140伤害)<br>- 嚎叫 (-4护甲，-30伤害)"
+"DOTA_Tooltip_Ability_upgrade_frost_claws_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>远古雪怪</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 粉碎 (30%%，140点伤害)<br>- 嚎叫 (-4护甲，-30伤害)"
 "DOTA_Tooltip_Ability_train_ancient_wendigo"                 "训练远古雪怪"
-"DOTA_Tooltip_Ability_train_ancient_wendigo_Description"     "<h1>远古雪怪</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 粉碎 (30%%，140伤害)<br>- 嚎叫 (-4护甲，-30伤害)"
+"DOTA_Tooltip_Ability_train_ancient_wendigo_Description"     "<h1>远古雪怪</h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 粉碎 (30%%，140点伤害)<br>- 嚎叫 (-4护甲，-30伤害)"
 
 "DOTA_Tooltip_Ability_build_azure_nest"                 "建造碧蓝巢穴"
 "DOTA_Tooltip_Ability_build_azure_nest_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>碧蓝龙</h1>攻击：混沌 (250射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 溅射伤害<br>- 寒冷攻击<br>- 飞行"
@@ -1376,28 +1376,28 @@
 "DOTA_Tooltip_Ability_train_azure_drake_Description"     "<h1>碧蓝龙</h1>攻击：混沌 (250射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 溅射伤害<br>- 寒冷攻击<br>- 飞行"
 
 "DOTA_Tooltip_Ability_build_crystal_palace"                 "建造水晶宫"
-"DOTA_Tooltip_Ability_build_crystal_palace_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>冰霜女皇</h1>攻击：混沌 (450射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 冰冻新星(150伤害)<br>- 冰冻攻击 (20%%，12.5秒，每秒30伤害)<br>- 奥术光环 (+0.5每秒魔法恢复)"
+"DOTA_Tooltip_Ability_build_crystal_palace_Description"     "<font color='#62bc25'>单位训练</font>\n<h1>冰霜女皇</h1>攻击：混沌 (450射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 冰冻新星(150点伤害)<br>- 冰冻攻击 (20%%，12.5秒，每秒30点伤害)<br>- 奥术光环 (+0.5每秒魔法恢复)"
 "DOTA_Tooltip_Ability_train_ice_queen"                 "训练冰霜女皇"
-"DOTA_Tooltip_Ability_train_ice_queen_Description"     "<h1>冰霜女皇</h1>攻击：混沌 (450射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 冰冻新星(150伤害)<br>- 冰冻攻击 (20%%，12.5秒，每秒30伤害)<br>- 奥术光环 (+0.5每秒魔法恢复)"
+"DOTA_Tooltip_Ability_train_ice_queen_Description"     "<h1>冰霜女皇</h1>攻击：混沌 (450射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 冰冻新星(150点伤害)<br>- 冰冻攻击 (20%%，12.5秒，每秒30点伤害)<br>- 奥术光环 (+0.5每秒魔法恢复)"
 
 
 "DOTA_Tooltip_Ability_item_build_frost_launcher"              "建造急冻炮"
-"DOTA_Tooltip_Ability_item_build_frost_launcher_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 寒冰箭\n对随机敌方建筑射出一枚寒冰箭。 命中后冰冻10秒并造成50纯粹伤害。"
+"DOTA_Tooltip_Ability_item_build_frost_launcher_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 寒冰箭\n对随机敌方建筑射出一枚寒冰箭。 命中后冰冻10秒并造成50点纯粹伤害。"
 "DOTA_Tooltip_Ability_upgrade_greater_frost_launcher"              "升级成大型急冻炮"
-"DOTA_Tooltip_Ability_upgrade_greater_frost_launcher_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 高级寒冰箭\n对随机敌方建筑射出一枚高级寒冰箭。命中后冰冻附近250范围内所有单位12秒并造成100纯粹伤害。"
+"DOTA_Tooltip_Ability_upgrade_greater_frost_launcher_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 高级寒冰箭\n对随机敌方建筑射出一枚高级寒冰箭。命中后冰冻附近250范围内所有单位12秒并造成100点纯粹伤害。"
 "DOTA_Tooltip_Ability_item_build_chilling_mushroom"              "建造寒冷蘑菇"
-"DOTA_Tooltip_Ability_item_build_chilling_mushroom_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 冰霜爆破\n冰冻一个飞行单位，眩晕5秒并造成200伤害"
+"DOTA_Tooltip_Ability_item_build_chilling_mushroom_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 冰霜爆破\n冰冻一个飞行单位，眩晕5秒并造成200点伤害"
 "DOTA_Tooltip_Ability_item_build_icy_tower"              "建造寒冰塔"
 "DOTA_Tooltip_Ability_item_build_icy_tower_Description"  "<font color='#a3098c'>防御塔</font>\n攻击：普通 (750射程)\n护甲类型：城墙\n\n<h1>技能：</h1>- 溅射伤害\n- 寒冷攻击"
 "DOTA_Tooltip_Ability_item_build_world_freezer"              "建造世界冷冻机"
-"DOTA_Tooltip_Ability_item_build_world_freezer_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 凛冬将至\n朝随机方向射出3枚寒冰法球，对敌人每秒造成100魔法伤害，眩晕飞行单位，冰冻地面单位并使附近单位寒冷。"
+"DOTA_Tooltip_Ability_item_build_world_freezer_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 凛冬将至\n朝随机方向射出3枚寒冰法球，对随机敌人每秒造成100点魔法伤害，眩晕飞行单位，冰冻地面建筑及其附近训练单位。"
 
 
 // Abilities
 
 
 "DOTA_Tooltip_Ability_onset_of_winter"                "凛冬将至"
-"DOTA_Tooltip_Ability_onset_of_winter_Description"    "朝随机方向射出3枚寒冰法球，对敌人每秒造成%dps%魔法伤害，眩晕飞行单位，冰冻地面单位并使附近单位寒冷。"
+"DOTA_Tooltip_Ability_onset_of_winter_Description"    "朝随机方向射出3枚寒冰法球，对敌人每秒造成%dps%魔法伤害，眩晕飞行单位，冰冻地面建筑及其附近训练单位。"
 "DOTA_Tooltip_Ability_north_chilling_attack"                "寒冰塔寒冷攻击"
 "DOTA_Tooltip_Ability_north_chilling_attack_Description"    "攻击时使目标寒冷。"
 "DOTA_Tooltip_Ability_freezing_blast"                "冰霜爆破"
@@ -1518,26 +1518,29 @@
 
 
 "DOTA_Tooltip_Ability_build_fighters_hall"                "建造战士大厅"
+"DOTA_Tooltip_Ability_build_fighters_hall_Lore"           "升级: 2"
 "DOTA_Tooltip_Ability_build_fighters_hall_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>兽人战士</h1>攻击：普通（近战）<br>护甲类型：重甲"
 "DOTA_Tooltip_Ability_train_grunt"                "训练兽人战士"
 "DOTA_Tooltip_Ability_train_grunt_Description"    "<h1>兽人战士</h1>攻击：普通（近战）<br>护甲类型：重甲"
 
 "DOTA_Tooltip_Ability_upgrade_advanced_fighters_hall"                "升级成高阶战士大厅"
+"DOTA_Tooltip_Ability_upgrade_advanced_fighters_hall_Lore"                "升级: 1"
 "DOTA_Tooltip_Ability_upgrade_advanced_fighters_hall_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>兽人战士长</h1>攻击：普通（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 致命一击 (25%%，x2)"
 "DOTA_Tooltip_Ability_train_veteran_grunt"                "训练兽人战士长"
 "DOTA_Tooltip_Ability_train_veteran_grunt_Description"    "<h1>兽人战士长</h1>攻击：普通（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 致命一击 (25%%，x2)"
 
 "DOTA_Tooltip_Ability_upgrade_superior_fighters_hall"                "升级成精英战士大厅"
-"DOTA_Tooltip_Ability_upgrade_superior_fighters_hall_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>斧王</h1>攻击：普通（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 致命一击 (30%%，x3)<br>- 粉碎 (35%%，130伤害)"
+"DOTA_Tooltip_Ability_upgrade_superior_fighters_hall_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>斧王</h1>攻击：普通（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 致命一击 (30%%，x3)<br>- 粉碎 (35%%，130点伤害)"
 "DOTA_Tooltip_Ability_train_axemaster"                "训练斧王"
-"DOTA_Tooltip_Ability_train_axemaster_Description"    "<h1>斧王</h1>攻击：普通（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 致命一击 (30%%，x3)<br>- 粉碎 (35%%，130伤害)"
+"DOTA_Tooltip_Ability_train_axemaster_Description"    "<h1>斧王</h1>攻击：普通（近战）<br>护甲类型：重甲\n\n<h1>技能：</h1>- 致命一击 (30%%，x3)<br>- 粉碎 (35%%，130点伤害)"
 
 "DOTA_Tooltip_Ability_build_shamanic_tent"                "建造萨满帐篷"
-"DOTA_Tooltip_Ability_build_shamanic_tent_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>萨满</h1>攻击：魔法 (350射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 萨满祝福 (+4护甲，+33%%伤害，每秒3生命恢复)"
+"DOTA_Tooltip_Ability_build_shamanic_tent_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>萨满</h1>攻击：魔法 (350射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 萨满祝福 (+4护甲，+33%%伤害，每秒点3生命恢复)"
 "DOTA_Tooltip_Ability_train_shaman"                "训练萨满"
-"DOTA_Tooltip_Ability_train_shaman_Description"    "<h1>萨满</h1>攻击：魔法 (350射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 萨满祝福 (+4护甲，+33%%伤害，每秒3生命恢复)"
+"DOTA_Tooltip_Ability_train_shaman_Description"    "<h1>萨满</h1>攻击：魔法 (350射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 萨满祝福 (+4护甲，+33%%伤害，每秒3点生命恢复)"
 
 "DOTA_Tooltip_Ability_build_troll_hut"                "建造巨魔小屋"
+"DOTA_Tooltip_Ability_build_troll_hut_Lore"           "升级: 1"
 "DOTA_Tooltip_Ability_build_troll_hut_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>巨魔</h1>攻击：普通 (300射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 狂战 (+200%%)"
 "DOTA_Tooltip_Ability_train_troll"                "训练巨魔"
 "DOTA_Tooltip_Ability_train_troll_Description"    "<h1>巨魔</h1>攻击：普通 (300射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 狂战 (+200%%)"
@@ -1553,6 +1556,7 @@
 "DOTA_Tooltip_Ability_train_wyvern_rider_Description"    "<h1>飞龙骑手</h1>攻击：穿刺 (400射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 次级毒性攻击 (20% 减速)<br>- 飞行"
 
 "DOTA_Tooltip_Ability_build_kodo_farm"                "建造科多兽农场"
+"DOTA_Tooltip_Ability_build_kodo_farm_Lore"           "升级: 3"
 "DOTA_Tooltip_Ability_build_kodo_farm_Description"    "<font color='#62bc25'>单位训练</font>\n<h1>科多兽</h1>攻击：穿刺（近战）<br>护甲类型：轻甲"
 "DOTA_Tooltip_Ability_train_kodo"                "训练科多兽"
 "DOTA_Tooltip_Ability_train_kodo_Description"    "<h1>科多兽</h1>攻击：穿刺（近战）<br>护甲类型：轻甲"
@@ -1579,7 +1583,7 @@
 
 
 "DOTA_Tooltip_Ability_item_build_serpent_rock"                "建造巨蟒石"
-"DOTA_Tooltip_Ability_item_build_serpent_rock_Description"    "<font color='#C40000'>杀戮建筑</font>\n技能: 范围猛毒\n对随机敌人的附近射出猛毒。 被猛毒命中的单位护甲-5，攻速和移速减20%，每秒受到30伤害，持续5秒。"
+"DOTA_Tooltip_Ability_item_build_serpent_rock_Description"    "<font color='#C40000'>杀戮建筑</font>\n技能: 范围猛毒\n对随机敌人的附近射出猛毒。 被猛毒命中的单位护甲-5，攻速和移速减少20%，每秒受到30伤害，持续5秒。"
 
 "DOTA_Tooltip_Ability_item_build_ceremonial_totem"                "建造仪式图腾"
 "DOTA_Tooltip_Ability_item_build_ceremonial_totem_Description"    "<font color='#FFBF00'>辅助建筑</font>\n技能: 部落祝福\n给予一个随机友方永久+20伤害，+20攻速，+3护甲，200生命。 同时得到以下一种加成\n- 摧毁 (x1.5)<br>- 致命一击 (25%%，x2)<br>- 闪避 (30%%)"
@@ -1688,9 +1692,13 @@
 "DOTA_Tooltip_modifier_kodo_melee_damage_aura_buff"               "近战伤害增益"
 "DOTA_Tooltip_modifier_kodo_melee_damage_aura_buff_Description"   "伤害提高。"
 "DOTA_Tooltip_modifier_kodo_armor_aura"               "科多兽护甲光环"
-"DOTA_Tooltip_modifier_kodo_armor_aura_Description"   "附近友军获得护甲。"
+"DOTA_Tooltip_modifier_kodo_armor_aura_Description"   "附近友军获得额外护甲。"
 "DOTA_Tooltip_modifier_kodo_armor_aura_buff"               "科多兽护甲"
 "DOTA_Tooltip_modifier_kodo_armor_aura_buff_Description"   "护甲提高。"
+"DOTA_Tooltip_modifier_kodo_magic_resist_aura"               "科多兽魔抗光环"
+"DOTA_Tooltip_modifier_kodo_magic_resist_aura_Description"   "附近友军获得额外魔抗"
+"DOTA_Tooltip_modifier_kodo_magic_resist_aura_buff"               "科多兽魔抗"
+"DOTA_Tooltip_modifier_kodo_magic_resist_aura_buff_Description"   "魔抗提高。"
 "DOTA_Tooltip_modifier_tribal_blessing"               "部落祝福"
 "DOTA_Tooltip_modifier_tribal_blessing_Description"   "永久提高伤害，护甲，攻速，血量。"
 
@@ -1729,14 +1737,14 @@
 
 "DOTA_Tooltip_Ability_build_archery_range"              "建造靶场"
 "DOTA_Tooltip_Ability_build_archery_range_Lore"         "升级: 1"
-"DOTA_Tooltip_Ability_build_archery_range_Description"  "<font color='#62bc25'>单位训练</font>\n<h1>弓箭手</h1>攻击：穿刺 (450射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 爆头 (10%%，50伤害)<br>- 闪避 (15%%)"
+"DOTA_Tooltip_Ability_build_archery_range_Description"  "<font color='#62bc25'>单位训练</font>\n<h1>弓箭手</h1>攻击：穿刺 (450射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 爆头 (10%%，50点伤害)<br>- 闪避 (15%%)"
 "DOTA_Tooltip_Ability_train_archer"              "训练弓箭手"
-"DOTA_Tooltip_Ability_train_archer_Description"  "<h1>弓箭手</h1>攻击：穿刺 (450射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 爆头 (10%%，50伤害)<br>- 闪避 (15%%)"
+"DOTA_Tooltip_Ability_train_archer_Description"  "<h1>弓箭手</h1>攻击：穿刺 (450射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 爆头 (10%%，50点伤害)<br>- 闪避 (15%%)"
 
 "DOTA_Tooltip_Ability_upgrade_archery_tower"              "升级成射手之塔"
-"DOTA_Tooltip_Ability_upgrade_archery_tower_Description"  "<font color='#62bc25'>单位训练</font>\n<h1>大师弓箭手</h1>攻击：穿刺 (500射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 爆头 (20%%，125伤害)<br>- 闪避 (25%%)"
+"DOTA_Tooltip_Ability_upgrade_archery_tower_Description"  "<font color='#62bc25'>单位训练</font>\n<h1>大师弓箭手</h1>攻击：穿刺 (500射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 爆头 (20%%，125点伤害)<br>- 闪避 (25%%)"
 "DOTA_Tooltip_Ability_train_master_archer"              "训练大师弓箭手"
-"DOTA_Tooltip_Ability_train_master_archer_Description"  "<h1>大师弓箭手</h1>攻击：穿刺 (500射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 爆头 (20%%，125伤害)<br>- 闪避 (25%%)"
+"DOTA_Tooltip_Ability_train_master_archer_Description"  "<h1>大师弓箭手</h1>攻击：穿刺 (500射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 爆头 (20%%，125点伤害)<br>- 闪避 (25%%)"
 
 "DOTA_Tooltip_Ability_build_hall_of_honor"              "建造荣耀大厅"
 "DOTA_Tooltip_Ability_build_hall_of_honor_Lore"         "升级: 1"
@@ -1766,14 +1774,14 @@
 
 "DOTA_Tooltip_Ability_build_school_of_wizardry"              "建造巫师学院"
 "DOTA_Tooltip_Ability_build_school_of_wizardry_Lore"         "升级: 1"
-"DOTA_Tooltip_Ability_build_school_of_wizardry_Description"  "<font color='#62bc25'>单位训练</font>\n<h1>女巫</h1>攻击：魔法 (500射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 治疗波 (150生命，2目标)<br>- 闪电链 (25%%，150伤害)"
+"DOTA_Tooltip_Ability_build_school_of_wizardry_Description"  "<font color='#62bc25'>单位训练</font>\n<h1>女巫</h1>攻击：魔法 (500射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 治疗波 (150生命，2目标)<br>- 闪电链 (25%%，150点伤害)"
 "DOTA_Tooltip_Ability_train_sorceress"              "训练女巫"
-"DOTA_Tooltip_Ability_train_sorceress_Description"  "<h1>女巫</h1>攻击：魔法 (500射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 治疗波 (150生命，2目标)<br>- 闪电链 (25%%，150伤害)"
+"DOTA_Tooltip_Ability_train_sorceress_Description"  "<h1>女巫</h1>攻击：魔法 (500射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 治疗波 (150生命，2目标)<br>- 闪电链 (25%%，150点伤害)"
 
 "DOTA_Tooltip_Ability_upgrade_tower_of_supreme_magic"              "升级至高魔法高塔"
-"DOTA_Tooltip_Ability_upgrade_tower_of_supreme_magic_Description"  "<font color='#62bc25'>单位训练</font>\n<h1>男巫</h1>攻击：混沌 (650射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 治疗波 (300生命，6目标)<br>- 闪电链 (25%%，150伤害)<br>- 燃烧弹 (75伤害)<br>- 传奇技能免疫"
+"DOTA_Tooltip_Ability_upgrade_tower_of_supreme_magic_Description"  "<font color='#62bc25'>单位训练</font>\n<h1>男巫</h1>攻击：混沌 (650射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 治疗波 (300生命，6目标)<br>- 闪电链 (25%%，150点伤害)<br>- 燃烧弹 (75点伤害)<br>- 传奇技能免疫"
 "DOTA_Tooltip_Ability_train_wizard"              "训练男巫"
-"DOTA_Tooltip_Ability_train_wizard_Description"  "<h1>男巫</h1>攻击：混沌 (650射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 治疗波 (300生命，6目标)<br>- 闪电链 (25%%，150伤害)<br>- 燃烧弹 (75伤害)<br>- 传奇技能免疫"
+"DOTA_Tooltip_Ability_train_wizard_Description"  "<h1>男巫</h1>攻击：混沌 (650射程)<br>护甲类型：无甲\n\n<h1>技能：</h1>- 治疗波 (300生命，6目标)<br>- 闪电链 (25%%，150点伤害)<br>- 燃烧弹 (75点伤害)<br>- 传奇技能免疫"
 
 
 // Abilities
@@ -1812,7 +1820,9 @@
 "DOTA_Tooltip_Ability_blademaster_evasion_evasion"      "%闪避:"
 "DOTA_Tooltip_Ability_blademaster_evasion_Description"  "拥有闪避攻击的机会"
 "DOTA_Tooltip_Ability_blademaster_critical_strike"              "致命一击"
-"DOTA_Tooltip_Ability_blademaster_critical_strike_Description"  ""
+"DOTA_Tooltip_Ability_blademaster_critical_strike_crit_chance"  "触发几率:"
+"DOTA_Tooltip_Ability_blademaster_critical_strike_crit_damage"  "%伤害:"
+"DOTA_Tooltip_Ability_blademaster_critical_strike_Description"  "攻击有几率暴击"
 "DOTA_Tooltip_Ability_blademaster_spell_resist"              "魔法抗性"
 "DOTA_Tooltip_Ability_blademaster_spell_resist_magic_resist"    "魔法抗性:"
 "DOTA_Tooltip_Ability_blademaster_spell_resist_Description"  "剑圣的魔法抗性提高"
@@ -1871,17 +1881,17 @@
 // 混沌
 //////////////////////
 
-"lesser_demon_cage"  "次级恶魔之牢"
-"greater_demon_cage"  "上级恶魔之牢"
+"lesser_demon_cage"  "低级恶魔之牢"
+"greater_demon_cage"  "高级恶魔之牢"
 "chaos_citadel"  "混沌堡垒"
-"greater_chaos_citadel"  "至高混沌堡垒"
+"greater_chaos_citadel"  "高级混沌堡垒"
 "altar_of_greed"  "贪婪祭坛"
 "fountain_of_blood"  "血池"
 "dragon_nest"  "巨龙巢穴"
 "demon_gate"  "恶魔之门"
-"eraser_1"  "抹杀者 1"
-"eraser_2"  "抹杀者 2"
-"eraser_3"  "抹杀者 3"
+"eraser_1"  "抹杀者 I"
+"eraser_2"  "抹杀者 II"
+"eraser_3"  "抹杀者 III"
 "volcano"  "火山"
 "magic_tower_ruin"  "魔塔遗址"
 "shrine_of_destruction"  "毁灭圣殿"
@@ -1896,13 +1906,13 @@
 "mutation"  "异变"
 
 
-"DOTA_Tooltip_Ability_build_lesser_demon_cage"   "建造次级恶魔之牢"
+"DOTA_Tooltip_Ability_build_lesser_demon_cage"   "建造低级恶魔之牢"
 "DOTA_Tooltip_Ability_build_lesser_demon_cage_Lore"   "升级: 1"
 "DOTA_Tooltip_Ability_build_lesser_demon_cage_Description"   "<h1>Satyr</h1>攻击：普通 (275射程)<br>护甲类型：轻甲"
 "DOTA_Tooltip_Ability_train_satyr"   "训练萨特"
 "DOTA_Tooltip_Ability_train_satyr_Description"   "<h1>Satyr</h1>攻击：普通 (275射程)<br>护甲类型：轻甲"
 
-"DOTA_Tooltip_Ability_upgrade_greater_demon_cage"   "升级成上级恶魔之牢"
+"DOTA_Tooltip_Ability_upgrade_greater_demon_cage"   "升级成高级恶魔之牢"
 "DOTA_Tooltip_Ability_upgrade_greater_demon_cage_Description"   "<h1>荆棘恶魔</h1>攻击：普通 (310射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 弹射 (2目标)<br>- 荆棘光环 (35%% 近战反伤)"
 "DOTA_Tooltip_Ability_train_quill_demon"   "训练荆棘恶魔"
 "DOTA_Tooltip_Ability_train_quill_demon_Description"   "<h1>荆棘恶魔</h1>攻击：普通 (310射程)<br>护甲类型：轻甲\n\n<h1>技能：</h1>- 弹射 (2目标)<br>- 荆棘光环 (35%% 近战反伤)"
@@ -1913,7 +1923,7 @@
 "DOTA_Tooltip_Ability_train_chaos_warrior"   "训练混沌战士"
 "DOTA_Tooltip_Ability_train_chaos_warrior_Description"   "<h1>混沌战士</h1>攻击：普通（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 分裂 (25%%)"
 
-"DOTA_Tooltip_Ability_upgrade_greater_chaos_citadel"   "升级成至高混沌堡垒"
+"DOTA_Tooltip_Ability_upgrade_greater_chaos_citadel"   "升级成高级混沌堡垒"
 "DOTA_Tooltip_Ability_upgrade_greater_chaos_citadel_Description"   "<h1>混沌勇士n</h1>攻击：普通（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 分裂 (35%%)<br>- 致命一击 (10%%，x2)<br>- 战吼 (+25%%伤害)"
 "DOTA_Tooltip_Ability_train_chaos_champion"   "训练混沌勇士"
 "DOTA_Tooltip_Ability_train_chaos_champion_Description"   "<h1>混沌勇士n</h1>攻击：普通（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 分裂 (35%%)<br>- 致命一击 (10%%，x2)<br>- 战吼 (+25%%伤害)"
@@ -1940,27 +1950,27 @@
 
 
 
-"DOTA_Tooltip_Ability_item_build_eraser_1"  "建造抹杀者 1"
+"DOTA_Tooltip_Ability_item_build_eraser_1"  "建造抹杀者 I"
 "DOTA_Tooltip_Ability_item_build_eraser_1_Lore"  "升级: 2"
 "DOTA_Tooltip_Ability_item_build_eraser_1_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 抹杀\n杀死一个随机类型的所有敌方单位\n冷却：50秒，每次升级-12.5秒。"
-"DOTA_Tooltip_Ability_upgrade_eraser_2"  "升级成抹杀者 2"
+"DOTA_Tooltip_Ability_upgrade_eraser_2"  "升级成抹杀者 II"
 "DOTA_Tooltip_Ability_upgrade_eraser_2_Lore"  "升级: 1"
 "DOTA_Tooltip_Ability_upgrade_eraser_2_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 抹杀\n杀死一个随机类型的所有敌方单位\n冷却：37.5秒，每次升级-12.5秒。"
-"DOTA_Tooltip_Ability_upgrade_eraser_3"  "升级成抹杀者 3"
+"DOTA_Tooltip_Ability_upgrade_eraser_3"  "升级成抹杀者 III"
 "DOTA_Tooltip_Ability_upgrade_eraser_3_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 抹杀\n杀死一个随机类型的所有敌方单位\n冷却：25秒。"
 "DOTA_Tooltip_Ability_item_build_volcano"  "建造火山"
 "DOTA_Tooltip_Ability_item_build_volcano_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 火山爆发\n对一个敌方单位附近区域每秒造成100魔法伤害，持续2.75秒。最多同时影响6个单位。对建筑造成40%%伤害。"
 "DOTA_Tooltip_Ability_item_build_magic_tower_ruin"  "建造魔塔遗址"
 "DOTA_Tooltip_Ability_item_build_magic_tower_ruin_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 混沌馈赠\n给予随机敌人混沌之力。造成以下效果之一:<br>- 自爆 (无赏金)<br>- 死亡 (有赏金)<br>- 异变成你的单位<br>- 变羊<br>- 受到500伤害<br>- 获得额外400血量和+25伤害，恢复至满血<br>- 眩晕6秒，受到200魔法伤害<br>- 无效果"
 "DOTA_Tooltip_Ability_item_build_shrine_of_destruction"  "建造毁灭圣殿"
-"DOTA_Tooltip_Ability_item_build_shrine_of_destruction_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: Hell's Fist\nDestroys a random enemy building。 Cannot destroy legendary 建筑or the main castle。 You don't gain bounty for the destroyed building。"
+"DOTA_Tooltip_Ability_item_build_shrine_of_destruction_Description"  "<font color='#C40000'>杀戮建筑</font>\n技能: 地狱之拳\n随机毁灭敌方建筑。不可毁灭传奇建筑以及基地。毁灭不会得到赏金"
 
 
-"DOTA_Tooltip_Ability_hells_fist"  "Hell's Fist"
-"DOTA_Tooltip_Ability_hells_fist_Description"  "Destroys a random enemy building。 Cannot destroy legendary 建筑or the main castle。 You don't gain bounty for the destroyed building。"
+"DOTA_Tooltip_Ability_hells_fist"  "地狱之拳"
+"DOTA_Tooltip_Ability_hells_fist_Description"  "随机毁灭敌方建筑。不可毁灭传奇建筑以及基地。毁灭不会得到赏金"
 "DOTA_Tooltip_Ability_present_of_chaos"  "混沌馈赠"
 "DOTA_Tooltip_Ability_present_of_chaos_Description"  "给予随机敌人混沌之力。造成以下效果之一:<br>- 自爆 (无赏金)<br>- 死亡 (有赏金)<br>- 异变成你的单位<br>- 变羊<br>- 受到500伤害<br>- 获得额外400血量和+25伤害，恢复至满血<br>- 眩晕6秒，受到200魔法伤害<br>- 无效果"
-"DOTA_Tooltip_Ability_volcano_eruption"  "Eruption"
+"DOTA_Tooltip_Ability_volcano_eruption"  "火山喷发"
 "DOTA_Tooltip_Ability_volcano_eruption_Description"  "对一个敌方单位附近区域每秒造成100魔法伤害，持续2.75秒。最多同时影响6个单位。对建筑造成40%%伤害。"
 "DOTA_Tooltip_Ability_erase"  "抹杀"
 "DOTA_Tooltip_Ability_erase_Description"  "杀死一个随机类型的所有敌方单位\n冷却：50秒，每次升级-12.5秒。"
@@ -2063,9 +2073,9 @@
 "DOTA_Tooltip_Ability_train_shadow_drake_Description"    "<h1>影龙</h1>攻击：魔法 (400射程)<br>护甲类型：中甲\n\n<h1>技能：</h1>- 飞行<br>- 溅射攻击 (+25伤害)"
 
 "DOTA_Tooltip_Ability_build_felhound_shrine"    "建造魔犬营地"
-"DOTA_Tooltip_Ability_build_felhound_shrine_Description"    "<h1>魔犬/h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 急速光环 (+18%%)"
+"DOTA_Tooltip_Ability_build_felhound_shrine_Description"    "<h1>魔犬/h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 急速光环 (+18%%攻速)"
 "DOTA_Tooltip_Ability_train_felhound"    "训练魔犬"
-"DOTA_Tooltip_Ability_train_felhound_Description"    "<h1>魔犬/h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 急速光环 (+18%%)"
+"DOTA_Tooltip_Ability_train_felhound_Description"    "<h1>魔犬/h1>攻击：穿刺（近战）<br>护甲类型：中甲\n\n<h1>技能：</h1>- 急速光环 (+18%%攻速)"
 
 "DOTA_Tooltip_Ability_build_hells_gate"    "建造地狱之门"
 "DOTA_Tooltip_Ability_build_hells_gate_Description"    "<h1>地狱机车</h1>攻击：攻城 (600射程)<br>护甲类型：重甲\n\n<h1>技能：</h1>- 无法对空<br>- 引爆 (100伤害)"
@@ -2168,6 +2178,17 @@
 "DOTA_Tooltip_modifier_present_of_chaos_Description"   "伤害输出和治疗提升了。"
 "DOTA_Tooltip_modifier_infernal_immolation_debuff"   "献祭"
 "DOTA_Tooltip_modifier_infernal_immolation_debuff_Description"   "持续受到献祭伤害"
+"DOTA_Tooltip_modifier_present_of_chaos_armor"   "混沌馈赠"
+"DOTA_Tooltip_modifier_present_of_chaos_armor_Description"   "降低10点护甲"
+"DOTA_Tooltip_modifier_present_of_chaos_corruption"   "腐败"
+"DOTA_Tooltip_modifier_present_of_chaos_corruption_Description"   "你的攻击可以降低敌方单位10点护甲，持续3秒"
+"DOTA_Tooltip_modifier_present_of_chaos_evasion"   "混沌馈赠"
+"DOTA_Tooltip_modifier_present_of_chaos_evasion_Description"   "30%% 闪避"
+"DOTA_Tooltip_modifier_present_of_chaos_crit"   "混沌馈赠"
+"DOTA_Tooltip_modifier_present_of_chaos_crit_Description"   "拥有20%%概率进行2倍暴击"
+"DOTA_Tooltip_modifier_present_of_chaos_lifesteal"   "混沌馈赠"
+"DOTA_Tooltip_modifier_present_of_chaos_lifesteal_Description"   "30%%吸血"
+
 
 //////////////////////
 // Mech
@@ -2208,29 +2229,32 @@
 
 
 "DOTA_Tooltip_Ability_build_aircraft_factory"                "建造飞行器工厂"
-"DOTA_Tooltip_Ability_build_aircraft_factory_Description"    "<h1>直升机</h1>攻击: 穿刺 (500 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 不能对地<br>- 重击 (30%%，40伤害，1.2秒)"
+"DOTA_Tooltip_Ability_build_aircraft_factory_Lore"            "升级: 1"
+"DOTA_Tooltip_Ability_build_aircraft_factory_Description"    "<h1>直升机</h1>攻击: 穿刺 (500 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 不能对地<br>- 重击 (30%%，40点伤害，1.2秒)"
 "DOTA_Tooltip_Ability_train_roterothopter"                "训练直升机"
-"DOTA_Tooltip_Ability_train_roterothopter_Description"    "<h1>直升机</h1>攻击: 穿刺 (500 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 不能对地<br>- 重击 (30%%，40伤害，1.2秒)"
+"DOTA_Tooltip_Ability_train_roterothopter_Description"    "<h1>直升机</h1>攻击: 穿刺 (500 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 不能对地<br>- 重击 (30%%，40点伤害，1.2秒)"
 
 "DOTA_Tooltip_Ability_upgrade_bomber_factory"                "升级成轰炸机工厂"
-"DOTA_Tooltip_Ability_upgrade_bomber_factory_Description"    "<h1>轰炸直升机</h1>攻击: 穿刺 (500 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 不能对地<br>- 重击 (50%%，60伤害，1.2秒)"
+"DOTA_Tooltip_Ability_upgrade_bomber_factory_Description"    "<h1>轰炸直升机</h1>攻击: 穿刺 (500 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 不能对地<br>- 重击 (50%%，60点伤害，1.2秒)"
 "DOTA_Tooltip_Ability_train_gyrocopter"                "训练轰炸直升机"
-"DOTA_Tooltip_Ability_train_gyrocopter_Description"    "<h1>轰炸直升机</h1>攻击: 穿刺 (500 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 不能对地<br>- 重击 (50%%，60伤害，1.2秒)"
+"DOTA_Tooltip_Ability_train_gyrocopter_Description"    "<h1>轰炸直升机</h1>攻击: 穿刺 (500 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 飞行<br>- 不能对地<br>- 重击 (50%%，60点伤害，1.2秒)"
 
 "DOTA_Tooltip_Ability_build_tank_factory"                "建造坦克工厂"
+"DOTA_Tooltip_Ability_build_tank_factory_Lore"           "升级: 4"
 "DOTA_Tooltip_Ability_build_tank_factory_Description"    "<h1>轻型坦克</h1>攻击: 普通 (375 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 轻型坦克装甲 (-12伤害)"
 "DOTA_Tooltip_Ability_train_light_tank"                "训练轻型坦克"
 "DOTA_Tooltip_Ability_train_light_tank_Description"    "<h1>轻型坦克</h1>攻击: 普通 (375 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 轻型坦克装甲 (-12伤害)"
 
 "DOTA_Tooltip_Ability_upgrade_heavy_tank_factory"                "升级成重型坦克工厂"
+"DOTA_Tooltip_Ability_upgrade_heavy_tank_factory_Lore"            "升级: 1"
 "DOTA_Tooltip_Ability_upgrade_heavy_tank_factory_Description"    "<h1>重型坦克</h1>攻击: 普通 (400 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 重型坦克装甲(-24伤害)"
 "DOTA_Tooltip_Ability_train_heavy_tank"                "训练重型坦克"
 "DOTA_Tooltip_Ability_train_heavy_tank_Description"    "<h1>重型坦克</h1>攻击: 普通 (400 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 重型坦克装甲(-24伤害)"
 
 "DOTA_Tooltip_Ability_upgrade_rocket_tank_factory"                "升级成火箭坦克工厂"
-"DOTA_Tooltip_Ability_upgrade_rocket_tank_factory_Description"    "<h1>火箭坦克</h1>攻击: 普通 (400 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 重型坦克装甲(-24伤害)<br>- AA型火箭 (75伤害，每秒1颗，对空)"
+"DOTA_Tooltip_Ability_upgrade_rocket_tank_factory_Description"    "<h1>火箭坦克</h1>攻击: 普通 (400 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 重型坦克装甲(-24伤害)<br>- AA型火箭 (75点伤害，每秒1颗，对空)"
 "DOTA_Tooltip_Ability_train_rocket_tank"                "训练火箭坦克"
-"DOTA_Tooltip_Ability_train_rocket_tank_Description"    "<h1>火箭坦克</h1>攻击: 普通 (400 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 重型坦克装甲(-24伤害)<br>- AA型火箭 (75伤害，每秒1颗，对空)"
+"DOTA_Tooltip_Ability_train_rocket_tank_Description"    "<h1>火箭坦克</h1>攻击: 普通 (400 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 重型坦克装甲(-24伤害)<br>- AA型火箭 (75点伤害，每秒1颗，对空)"
 
 "DOTA_Tooltip_Ability_upgrade_assault_tank_factory"                "升级成强袭坦克工厂"
 "DOTA_Tooltip_Ability_upgrade_assault_tank_factory_Description"    "<h1>强袭坦克</h1>攻击: 混沌 (550 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 中型坦克装甲(-18伤害)<br>- 溅射伤害"
@@ -2238,16 +2262,17 @@
 "DOTA_Tooltip_Ability_train_assault_tank_Description"    "<h1>强袭坦克</h1>攻击: 混沌 (550 射程)<br>护甲: 重甲\n\n<h1>技能：</h1>- 不能对空<br>- 中型坦克装甲(-18伤害)<br>- 溅射伤害"
 
 "DOTA_Tooltip_Ability_upgrade_mine_layer_factory"                "升级成地雷坦克工厂"
-"DOTA_Tooltip_Ability_upgrade_mine_layer_factory_Description"    "<h1>地雷坦克</h1>攻击: 普通 (近战)<br>护甲: 重甲\n\n<h1>技能：</h1>- 轻型坦克装甲(-12伤害)<br>- 埋雷 (250伤害)"
+"DOTA_Tooltip_Ability_upgrade_mine_layer_factory_Description"    "<h1>地雷坦克</h1>攻击: 普通 (近战)<br>护甲: 重甲\n\n<h1>技能：</h1>- 轻型坦克装甲(-12伤害)<br>- 埋雷 (250点伤害)"
 "DOTA_Tooltip_Ability_train_mine_layer"                "训练地雷坦克"
-"DOTA_Tooltip_Ability_train_mine_layer_Description"    "<h1>地雷坦克</h1>攻击: 普通 (近战)<br>护甲: 重甲\n\n<h1>技能：</h1>- 轻型坦克装甲(-12伤害)<br>- 埋雷 (250伤害)"
+"DOTA_Tooltip_Ability_train_mine_layer_Description"    "<h1>地雷坦克</h1>攻击: 普通 (近战)<br>护甲: 重甲\n\n<h1>技能：</h1>- 轻型坦克装甲(-12伤害)<br>- 埋雷 (250点伤害)"
 
 "DOTA_Tooltip_Ability_build_demolition_lab"                "建造引爆实验室"
-"DOTA_Tooltip_Ability_build_demolition_lab_Description"    "<h1>炸弹人</h1>不能攻击<br>护甲: 无甲\n\n<h1>技能：</h1>-自爆 (275伤害)<br>- 引爆 (150伤害)"
+"DOTA_Tooltip_Ability_build_demolition_lab_Description"    "<h1>炸弹人</h1>不能攻击<br>护甲: 无甲\n\n<h1>技能：</h1>-自爆 (275点伤害)<br>- 引爆 (150点伤害)"
 "DOTA_Tooltip_Ability_train_lunatic_goblin"                "训练炸弹人"
-"DOTA_Tooltip_Ability_train_lunatic_goblin_Description"    "<h1>炸弹人</h1>不能攻击<br>护甲: 无甲\n\n<h1>技能：</h1>-自爆 (275伤害)<br>- 引爆 (150伤害)"
+"DOTA_Tooltip_Ability_train_lunatic_goblin_Description"    "<h1>炸弹人</h1>不能攻击<br>护甲: 无甲\n\n<h1>技能：</h1>-自爆 (275点伤害)<br>- 引爆 (150点伤害)"
 
 "DOTA_Tooltip_Ability_build_gun_smith"                "建造枪械铺"
+"DOTA_Tooltip_Ability_build_gun_smith_Lore"           "升级: 1"
 "DOTA_Tooltip_Ability_build_gun_smith_Description"    "<h1>喷火兵</h1>攻击: 混沌 (200 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 不能对空<br>- 直线伤害"
 "DOTA_Tooltip_Ability_train_flame_gunner"                "训练喷火兵"
 "DOTA_Tooltip_Ability_train_flame_gunner_Description"    "<h1>喷火兵</h1>攻击: 混沌 (200 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 不能对空<br>- 直线伤害"
@@ -2258,14 +2283,15 @@
 "DOTA_Tooltip_Ability_train_flamegunner_sergeant_Description"    "<h1>喷火兵队长</h1>攻击: 混沌 (200 射程)<br>护甲：轻甲\n\n<h1>技能：</h1>- 不能对空<br>- 直线伤害<br>- 榴弹"
 
 "DOTA_Tooltip_Ability_build_golem_factory"                "建造机甲工厂"
-"DOTA_Tooltip_Ability_build_golem_factory_Description"    "<h1>铁皮机甲</h1>攻击: 英雄 (近战)<br>护甲: 中型\n\n<h1>技能：</h1>- 魔法抗性 (30%%)<br>- 重击 (15%%，40伤害，2秒)<br>- 粉碎 (25%%，60伤害)"
+"DOTA_Tooltip_Ability_build_golem_factory_Lore"           "升级: 1"
+"DOTA_Tooltip_Ability_build_golem_factory_Description"    "<h1>铁皮机甲</h1>攻击: 英雄 (近战)<br>护甲: 中型\n\n<h1>技能：</h1>- 魔法抗性 (30%%)<br>- 重击 (15%%，40点伤害，2秒)<br>- 粉碎 (25%%，60点伤害)"
 "DOTA_Tooltip_Ability_train_iron_golem"                "训练铁皮机甲"
-"DOTA_Tooltip_Ability_train_iron_golem_Description"    "<h1>铁皮机甲</h1>攻击: 英雄 (近战)<br>护甲: 中型\n\n<h1>技能：</h1>- 魔法抗性 (30%%)<br>- 重击 (15%%，40伤害，2秒)<br>- 粉碎 (25%%，60伤害)"
+"DOTA_Tooltip_Ability_train_iron_golem_Description"    "<h1>铁皮机甲</h1>攻击: 英雄 (近战)<br>护甲: 中型\n\n<h1>技能：</h1>- 魔法抗性 (30%%)<br>- 重击 (15%%，40点伤害，2秒)<br>- 粉碎 (25%%，60点伤害)"
 
-"DOTA_Tooltip_Ability_upgrade_precious_golem_factory"                "升级成特种机甲工厂"
-"DOTA_Tooltip_Ability_upgrade_precious_golem_factory_Description"    "<h1>磁石机甲</h1>攻击: 英雄 (近战)<br>护甲: 神圣\n\n<h1>技能：</h1>- 终极魔法抗性 (90%%)<br>- 重击 (50%%，100伤害，2秒)<br>- 粉碎 (40%%，150伤害)"
-"DOTA_Tooltip_Ability_train_adamant_golem"                "训练磁石机甲"
-"DOTA_Tooltip_Ability_train_adamant_golem_Description"    "<h1>磁石机甲</h1>攻击: 英雄 (近战)<br>护甲: 神圣\n\n<h1>技能：</h1>- 终极魔法抗性 (90%%)<br>- 重击 (50%%，100伤害，2秒)<br>- 粉碎 (40%%，150伤害)"
+"DOTA_Tooltip_Ability_upgrade_precious_golem_factory"                "升级成金人工厂"
+"DOTA_Tooltip_Ability_upgrade_precious_golem_factory_Description"    "<h1>金人</h1>攻击: 英雄 (近战)<br>护甲: 神圣\n\n<h1>技能：</h1>- 终极魔法抗性 (90%%)<br>- 重击 (50%%，100伤害，2秒)<br>- 粉碎 (40%%，150伤害)"
+"DOTA_Tooltip_Ability_train_adamant_golem"                "训练金人"
+"DOTA_Tooltip_Ability_train_adamant_golem_Description"    "<h1>金人</h1>攻击: 英雄 (近战)<br>护甲: 神圣\n\n<h1>技能：</h1>- 终极魔法抗性 (90%%)<br>- 重击 (50%%，100伤害，2秒)<br>- 粉碎 (40%%，150伤害)"
 
 "DOTA_Tooltip_Ability_build_lumber_mill"                "建造伐木场"
 "DOTA_Tooltip_Ability_build_lumber_mill_Description"    "<h1>哥布林撕裂者</h1>攻击: 穿刺 (melee)<br>护甲: 中型\n\n<h1>技能：</h1>- 激怒 <br>- 引爆 (50伤害)<br>-撕裂"
@@ -2283,6 +2309,7 @@
 "DOTA_Tooltip_Ability_item_build_energy_tower_Description"   "攻击: 混沌 (600 射程)<h1>技能：</h1>- 弹射 (3目标，30%%伤害递减)<br>- 能量爆破 (20%%，8目标，80伤害，20%%伤害递减)"
 
 "DOTA_Tooltip_Ability_item_build_blue_shield_generator"   "建造蓝盾生成器"
+"DOTA_Tooltip_Ability_item_build_blue_shield_generator_Lore"     "升级: 1"
 "DOTA_Tooltip_Ability_item_build_blue_shield_generator_Description"   "<h1>能量盾</h1>给予随机友方单位能量盾，护甲+2。能抵消一次负面建筑能力。"
 
 "DOTA_Tooltip_Ability_upgrade_red_shield_generator"   "升级成红盾生成器"
@@ -2291,24 +2318,24 @@
 "DOTA_Tooltip_Ability_generator_energy_shield"   "能量盾"
 "DOTA_Tooltip_Ability_generator_energy_shield_Description"   "予随机友方单位能量盾，护甲+%armor%。 能抵消%initial_stacks%次负面建筑能力。"
 "DOTA_Tooltip_Ability_energy_tower_bouncing_attack"   "弹射"
-"DOTA_Tooltip_Ability_energy_tower_bouncing_attack_bounces"   "弹射次数："
+"DOTA_Tooltip_Ability_energy_tower_bouncing_attack_bounces"   "弹射次数:"
 "DOTA_Tooltip_Ability_energy_tower_bouncing_attack_damage_reduction_percent"   "%伤害递减:"
 "DOTA_Tooltip_Ability_energy_tower_bouncing_attack_Description"   "攻击时弹射附近敌人"
 "DOTA_Tooltip_Ability_energy_tower_energy_burst"   "能量爆破"
 "DOTA_Tooltip_Ability_energy_tower_energy_burst_Description"   "有%trigger_chance%%%概率释放巨大的能量，弹射最多%max_targets%个敌人。造成%initial_damage%初始伤害，20%%伤害递减。"
-"DOTA_Tooltip_Ability_assemble_gobbo_mechanist"   "组装："
+"DOTA_Tooltip_Ability_assemble_gobbo_mechanist"   "组装:"
 "DOTA_Tooltip_Ability_assemble_gobbo_mechanist_Description"   "每25秒组装一个哥布林工匠，持续%duration%秒。自动维修建筑。"
 "DOTA_Tooltip_Ability_power_buildings"   "供能"
 "DOTA_Tooltip_Ability_power_buildings_Description"   "为%radius%范围的内建筑供能，护甲+%armor%。 被供能的建筑有概率去除负面效果。防御塔提升%tower_damage%%%伤害，特殊建筑每秒魔法恢复提升%mana_regen%。生产建筑训练更强的单位。/n- %creep_health%额外生命<br>- %creep_armor%额外护甲<br>- %creep_damage%%%额外伤害"
 "DOTA_Tooltip_Ability_gyrocopter_bash"   "重击"
-"DOTA_Tooltip_Ability_gyrocopter_bash_bash_duration"   "击晕时间："
+"DOTA_Tooltip_Ability_gyrocopter_bash_bash_duration"   "击晕时间:"
 "DOTA_Tooltip_Ability_gyrocopter_bash_bash_chance"   "%触发概率"
-"DOTA_Tooltip_Ability_gyrocopter_bash_bash_damage"   "伤害："
+"DOTA_Tooltip_Ability_gyrocopter_bash_bash_damage"   "伤害:"
 "DOTA_Tooltip_Ability_gyrocopter_bash_Description"   "攻击时有概率击晕敌人。"
 "DOTA_Tooltip_Ability_adamant_golem_bash"   "重击"
-"DOTA_Tooltip_Ability_adamant_golem_bash_bash_duration"   "击晕时间："
+"DOTA_Tooltip_Ability_adamant_golem_bash_bash_duration"   "击晕时间:"
 "DOTA_Tooltip_Ability_adamant_golem_bash_bash_chance"   "%触发概率"
-"DOTA_Tooltip_Ability_adamant_golem_bash_bash_damage"   "伤害："
+"DOTA_Tooltip_Ability_adamant_golem_bash_bash_damage"   "伤害:"
 "DOTA_Tooltip_Ability_adamant_golem_bash_Description"   "攻击时有概率击晕敌人。"
 "DOTA_Tooltip_Ability_tank_armor"   "坦克装甲"
 "DOTA_Tooltip_Ability_tank_armor_damage_reduced"   "伤害减免："
@@ -2330,8 +2357,8 @@
 "DOTA_Tooltip_Ability_iron_golem_spell_resistance_status_resistance"   "%状态抗性："
 "DOTA_Tooltip_Ability_iron_golem_spell_resistance_Description"   "机甲对大部分魔法免疫。"
 "DOTA_Tooltip_Ability_adamant_golem_pulverize"   "粉碎"
-"DOTA_Tooltip_Ability_adamant_golem_pulverize_chance"   "%触发概率："
-"DOTA_Tooltip_Ability_adamant_golem_pulverize_close_damage"   "伤害："
+"DOTA_Tooltip_Ability_adamant_golem_pulverize_chance"   "%触发概率:"
+"DOTA_Tooltip_Ability_adamant_golem_pulverize_close_damage"   "伤害:"
 "DOTA_Tooltip_Ability_adamant_golem_pulverize_Description"   "攻击时有概率粉碎大地，对附近敌人造成伤害，对更远处的敌人伤害减少。"
 "DOTA_Tooltip_Ability_goblin_shredder_inducted_rage"   "激怒"
 "DOTA_Tooltip_Ability_goblin_shredder_inducted_rage_Description"   "撕裂者每次被负面特殊建筑命中都能永久提升%attack_speed%%%攻速并有%block_chance%%%概率抵挡法术。最多叠加%max_stacks%层。"
