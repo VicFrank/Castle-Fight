@@ -62,10 +62,10 @@ function modifier_infernal_immolation_debuff:OnIntervalThink()
   })
 end
 
-function modifier_infernal_immolation:GetEffectName()
+function modifier_infernal_immolation_debuff:GetEffectName()
   return "particles/units/heroes/hero_phoenix/phoenix_sunray_debuff.vpcf"
 end
 
-function modifier_infernal_immolation:IsDebuff()
+function modifier_infernal_immolation_debuff:IsDebuff()
   return true
 end

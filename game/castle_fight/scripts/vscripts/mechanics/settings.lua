@@ -219,7 +219,7 @@ function GameMode:VoteGG(playerID)
   end
 
   local roundDuration = GameRules:GetGameTime() - GameRules.roundStartTime
-  if roundDuration < 500 then
+  if roundDuration < 400 then
     Say(nil, "It is too early to concede", false)
     return
   end

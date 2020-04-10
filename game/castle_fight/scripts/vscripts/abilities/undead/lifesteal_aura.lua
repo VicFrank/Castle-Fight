@@ -79,5 +79,5 @@ function modifier_vampire_lifesteal_aura_buff:OnAttackLanded(params)
 end
 
 function modifier_vampire_lifesteal_aura_buff:IsDebuff()
-    return false
+  return false
 end

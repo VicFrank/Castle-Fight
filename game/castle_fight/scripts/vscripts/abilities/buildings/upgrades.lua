@@ -9,8 +9,15 @@ function ResourceCheck(keys)
   local gold_cost = tonumber(ability:GetAbilityKeyValues()['GoldCost']) or 0
 
   -- If not enough resources to upgrade, stop
+
+  -- If this isn't the main selected unit, don't show error messages
+  local mainSelection = CDOTA_PlayerResource:GetMainSelectedEntity(playerID)
+  local showErrors = mainSelection == caster:entindex()
+
   if hero:GetLumber() < lumber_cost then
-    SendErrorMessage(playerID, "#error_not_enough_lumber")
+    if showErrors then
+      SendErrorMessage(playerID, "#error_not_enough_lumber")
+    end
     ability:EndChannel(true)
     Timers:CreateTimer(.03, function()
       ability:EndChannel(true)
@@ -20,7 +27,9 @@ function ResourceCheck(keys)
   end
 
   if hero:GetCustomGold() < gold_cost then
-    SendErrorMessage(playerID, "#error_not_enough_gold")
+    if showErrors then
+      SendErrorMessage(playerID, "#error_not_enough_gold")
+    end
     ability:EndChannel(true)
     Timers:CreateTimer(.03, function()
       ability:EndChannel(true)
@@ -30,7 +39,9 @@ function ResourceCheck(keys)
   end
 
   if hero:GetCheese() < cheese_cost then
-    SendErrorMessage(playerID, "#error_not_enough_cheese")
+    if showErrors then
+      SendErrorMessage(playerID, "#error_not_enough_cheese")
+    end
     ability:EndChannel(true)
     Timers:CreateTimer(.03, function()
       ability:EndChannel(true)
@@ -43,6 +54,8 @@ function ResourceCheck(keys)
   hero:ModifyLumber(-lumber_cost)
   hero:ModifyCheese(-cheese_cost)
   ability.refund = true
+
+  return true
 end
 
 function UpgradeBuilding(keys)

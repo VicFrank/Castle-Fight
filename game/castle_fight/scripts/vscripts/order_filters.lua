@@ -1,21 +1,74 @@
+require('abilities/buildings/upgrades')
+
 function GameMode:OrderFilter(filterTable)
   -- for k, v in pairs( filterTable ) do
   --  print("Order: " .. k .. " " .. tostring(v) )
   -- end
 
-  local issuer_player_id_const = filterTable["issuer_player_id_const"]
+  local playerID = filterTable["issuer_player_id_const"]
   local units = filterTable["units"]
+  local orderType = filterTable["order_type"]
+  local entindex_ability = filterTable["entindex_ability"]
+  local ability = nil
+
+  if entindex_ability ~= nil then
+    ability = EntIndexToHScript(entindex_ability)
+  end
+
+  local selectedEntities = PlayerResource:GetSelectedEntities(playerID)
+  local mainSelectedEntity = PlayerResource:GetMainSelectedEntity(playerID)
+  local firstUnit = nil
+
+  if mainSelectedEntity ~= nil then
+    firstUnit = EntIndexToHScript(mainSelectedEntity)
+  end
 
   -- Record the time of the order
-  GameRules.PlayerOrderTime[issuer_player_id_const] = GameRules:GetGameTime()
+  GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
 
   -- Get the source of the command so we can properly use leavers to build buildings
   for _,entindex in pairs(units) do
     local unit = EntIndexToHScript(entindex)
-    if issuer_player_id_const < 0 then
+
+    if playerID < 0 then
       unit.issuer_player_id = nil
     else
-      unit.issuer_player_id = issuer_player_id_const
+      unit.issuer_player_id = playerID
+    end
+
+    -- Handle group commands
+
+    if orderType == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO then
+      -- toggle all selected buildings to match the main one
+      local autoCastState = not ability:GetAutoCastState()
+
+      for _,selectedUnitEntindex in pairs(selectedEntities) do
+        local selectedUnit = EntIndexToHScript(selectedUnitEntindex)
+        local abilityToToggle = selectedUnit:GetAbilityByIndex(ability:GetAbilityIndex())
+
+        if abilityToToggle:GetAutoCastState() ~= autoCastState then
+          abilityToToggle:ToggleAutoCast()
+        end
+      end
+
+      -- We did the toggle above, return here so we don't double toggle
+      return false
+    elseif orderType == DOTA_UNIT_ORDER_CAST_NO_TARGET then
+      -- if the ability is an upgrade ability
+      -- upgrade as many buildings of the same type as possible
+      local abilityName = ability:GetAbilityName()
+      local isUpgradeAbility = startsWith(abilityName, "upgrade_")
+
+      if isUpgradeAbility then
+        for i,selectedUnitEntindex in pairs(selectedEntities) do
+          local selectedUnit = EntIndexToHScript(selectedUnitEntindex)
+          local abilityToCast = selectedUnit:GetAbilityByIndex(ability:GetAbilityIndex())
+          -- Skip the main unit (we're already issuing this order)
+          if not i ~= "0" and selectedUnit:GetUnitName() == unit:GetUnitName() then
+            selectedUnit:CastAbilityNoTarget(abilityToCast, playerID)
+          end
+        end
+      end
     end
   end
 

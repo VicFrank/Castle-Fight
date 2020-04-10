@@ -48,9 +48,13 @@ function modifier_random_armor:OnCreated()
   -- ApplyModifier(parent, "modifier_attack_"..attack_type)
 
   local armor_type = GetRandomTableElement(armorTypes)
-  ApplyModifier(parent, "modifier_armor_"..armor_type)
+
+  parent:SetArmorType(armor_type)
+  
   if armor_type == "divine" then
-    parent:SetBaseMagicalResistanceValue(40)
+    parent:SetBaseMagicalResistanceValue(75)
+  elseif armor_type == "hero" then
+    parent:SetBaseMagicalResistanceValue(60)
   end
 
   local modifier = GetRandomTableElement(modifiers)
@@ -125,11 +129,16 @@ function modifier_present_of_chaos_crit:DeclareFunctions()
 end
 
 function modifier_present_of_chaos_crit:GetModifierPreAttack_CriticalStrike(params)
-    if RollPercentage(20) then
-      return 200
-    else
-      return nil
-    end
+  if not IsServer() then return end
+
+  local target = params.target
+  if IsCustomBuilding(target) then return end
+
+  if RollPercentage(20) then
+    return 200
+  else
+    return nil
+  end
 end
 
 modifier_present_of_chaos_lifesteal = class({})

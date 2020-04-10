@@ -336,7 +336,9 @@ end
 -- Changes the ArmorType and current visual tooltip of the unit
 function CDOTA_BaseNPC:SetArmorType( armor_type )
   local current_armor_type = self:GetArmorType()
-  self:RemoveModifierByName("modifier_armor_"..current_armor_type)
+  if current_armor_type then
+    self:RemoveModifierByName("modifier_armor_"..current_armor_type)
+  end
   self.ArmorType = armor_type
   ApplyModifier(self, "modifier_armor_"..armor_type)
 end

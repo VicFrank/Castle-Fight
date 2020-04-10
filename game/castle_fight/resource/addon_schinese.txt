@@ -1,5 +1,4 @@
 "lang"
-{"lang"
 {
   "Language"        "schinese"
   "Tokens"
