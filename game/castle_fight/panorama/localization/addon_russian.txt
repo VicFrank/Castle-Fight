@@ -88,13 +88,13 @@
   "Credits_Flam3s"               "Flam3s: UI"
   "Credits_Myll"                 "Noya/Myll: Building Helper"
   "Credits_Noya"                 "Noya: Dotacraft"
-  "Credits_GeFire"               "GeFire: Перевод на русский язык"
-  "Credits_東風谷早苗"            "東風谷早苗: Перевод на китайский язык"
+  "Credits_GeFire"               "GeFiretzin: Перевод на русский язык"
+  "Credits_東風谷早苗"            "東風谷早苗, 赵怜: Перевод на китайский язык"
   "Credits_VicFrank"             "VicFrank: Главный разработчик"
-  "Credits_Radar"                "radar: Добавил Vicfrank в credits"
-  "Credits_sim"                  "sim<>n[a]: Many cosmetic changes"
+  "Credits_Radar"                "radar: Battleships"
+  "Credits_sim"                  "sim<>n[a]: Косметические изменения"
 
-  "Tips_1"                       "- Вам начисляется доход каждые 10 секунд. Он увеличивается за постройку зданий."
+  "Tips_1"                       "- Каждые 10 секунд вам начисляется доход в виде золота. Он увеличивается от каждого построенного здания."
   "Tips_2"                       "- Дерево зарабатывается путем строительства или улучшения зданий, призывающих юнитов. Начисляемое дерево равно стоимости здания."
   "Tips_3"                       "- Вы можете чинить здания нажав по нему правой кнопкой мыши."
 
