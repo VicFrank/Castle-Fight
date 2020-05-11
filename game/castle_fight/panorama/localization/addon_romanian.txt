@@ -1,0 +1,103 @@
+﻿"addon"
+{
+  "addon_game_name"                "Castle Fight - Razboiul Castelelor"
+  "DOTA_GameMode_15"               "Castle Fight - Razboiul Castelelor"
+  "addonname"                      "Castle Fight - Razboiul Castelelor"
+
+  "DOTA_GoodGuys"                  "Regatul de Vest"
+  "DOTA_BadGuys"                   "Regatul de Est"
+
+  "human"           "Imperiul Uman"
+  "naga"            "Naga"
+  "nature"          "Fortele Naturii"
+  "night_elves"     "Elfii de noapte"
+  "undead"          "Legiunea moarta"
+  "orc"             "Orcii"
+  "north"           "Alianta din Nord"
+  "elves"           "Inaltul Consiliul al Elfilor"
+  "chaos"           "Fortele Haosului"
+  "mech"            "Mech -  Tehnicienii"
+  "corrupted"       "Corruptii"
+  "elementals"      "Elementalii"
+
+  "human_description"           "Oamenii isi coplesesc inamicii cu soldatii lor ieftini. Buni cunoscatori ai artileriei, pot bombarda de la distanta baza inamica atunci cand un atac direct se dovedeste dificil. Oamenii stiu sa construiasca si un turn de aparare."
+
+  "naga_description"            "Luptatorii Naga sunt atletici si puternici peste medie, iar sangele de reptila le ofera o regenerare rapida. Au la dispozitie multe cladiri speciale, dar scumpe. Naga nu dispun insa de un turn de aparare."
+
+  "nature_description"          "Fortele Naturii insasi se aduna pentru batalie. Natura dispune de unitati si vraji puternice, in genere mai scumpe decat al celorlalte rase, dar si mai bune."
+
+  "night_elves_description"     "Elfii de noapte s-au separat din Uniunea Elfilor si traiesc sub semnul zeitei Eluna. Aceste creaturi relativ fragile stiu cum sa se fereasca de o lovitura inamica si pot neutraliza vrajile adversarilor. Elfii de noapte pot construi un turn care arde mana inamicilor."
+
+  "undead_description"          "Din spiritele mortilor se ridica o intreaga Legiune care aduce boala si moarte tuturor celor care se opun. Legiunea poate construi un turn al spiritelor pentru aparare."
+
+  "orc_description"          "Hoarda de orci are luptatori exceptional de rezistenti si puternici, temuti si respectati pe orica camp de batalie. In ajutorul lor vin samanii si vrajile lor. Orcii au la dispozitie un turn foarte bun contra unitatilor aeriene"
+
+  "north_description"          "Creaturile care traiesc in muntii din nord au facut intotdeauna front comun oricarei invazii inamice. Sunt adepti ai magiilor care incetinesc sau ingeata inamicii. Se apara construind un turn care pulverizeaza gheata pe grupuri de inamici."
+
+  "elves_description"          "Inaltul Consiliul al Elfilor s-a adunat pentru a-si apara regatele. Sunt excelenti cunoscatori ai magiei cu care isi slabesc adversarii si isi ajuta aliatii. Se folosesc de masini de asediu si pot construi un turn care trage simultan in grupuri de inamici."
+
+  "chaos_description"          "Fortele Haosului invoca demoni teribili si folosesc magii distructive pentru a-si invinge inamicii. Nu au masini de asediu, in schimb au multe unitati puternice cu atac haos.\nAceasta rasa nu are turnuri."
+
+  "corrupted_description"      "Blestemati de demoni, aceste creaturi candva prietenoase au devenit discipoli ai intunericului. Coruptii folosesc magia neagra pentru a-si slabi oponentii. Pot construi un turn care loveste mai multi inamici deodata."
+
+  "mech_description"          "Acesti mici goblini, mecanici ingeniosi si buni tehnicieni s-au adunat sa isi construiasca propria armata. Unitatile lor dispun de armura foarte buna si lovesc mai multi inamici deodata, dar le lipseste atacul magic si in general atacul de la distanta. Tehnicienii au perfectionat un excelent turn care loveste inamici multipli."
+
+  "elementals_description"     "Elementalii sunt cea mai veche rasa de pe pamant si exista inca de la crearea universului. Unitatile lor sunt puternice, dar relativ scumpe. Elementalii se folosesc de elementele primare pentru a-si infrange inamicii si folosesc magie primara pentru a-si intari aliatii. Sunt capabili sa reduca timpul de productie al unitatilor. Au la dispozitie un turn de aparare"
+
+  "random_description"         "Alege o rasa la intamplare."
+
+  "shop"                     "Atelier"
+  "resources"                "Resurse"
+  "western_forces"           "Regatul de Vest"
+  "eastern_forces"           "Regatul de Est"
+  "income"                   "Venit"
+  "units_trained"            "Unitati produse"
+  "units_killed"             "Unitati distruse"
+  "buildings_built"          "Cladiri construite"
+  "rs_damage"                "RS Damage"
+  "choose_your_race"         "Alege Rasa"
+  "select"                   "Selecteaza"
+  "lumber"                   "Lemn"
+  "gold"                     "Aur"
+  "cheese"                   "Triughi de branza"
+  "cheese_tip"               "Triunghiul de branza e necesar pentru construirea cladirilor legendare."
+  "lumber_tip"               "Lemnul se castiga construind cladiri de trupe."
+  "gold_tip"                 "Aurul este castigat omorand unitatile inamice, si din venitul periodic."
+  "round"                        "Runda"
+  "victory"                      "Victorie"
+  "base_interest"                "Dobanda de baza"
+  "interest_from_buildings"      "Dobanda de la cladiri"
+  "treasure_chest_multiplier"    "Multiplicatorul de la Banci"
+  "taxes"                        "Taxe"
+  "total_interest"               "Dabanda totala"
+  "race_selection"               "Selectia rasei"
+  "loading"                      "Timpul de incarcare"
+  "offer_draw"                   "Ofera Remiza"
+  "draw"                         "Remiza"
+  "reject"                       "Refuza"
+
+  "Latest_Update"                "Ultimul Update"
+  "Vote_Options"                 "Optiunile de vot"
+  "Enable_bots"                  "Permite accesul Botilor (AI)"
+  "Yes"                          "Da"
+  "No"                           "Nu"
+  "Rounds_to_win"                "Runde necesare pentru victorie"
+
+  "Credits"                      "Credite catre"
+  "Credits_Description"          "Multumiri urmatoarelor persoane pentru contributia lor la Castle Fight"
+  "Credits_Flam3s"               "Flam3s: UI"
+  "Credits_Myll"                 "Noya/Myll: Building Helper"
+  "Credits_Noya"                 "Noya: Dotacraft"
+  "Credits_GeFire"               "GeFire: Russian Translation"
+  "Credits_東風谷早苗"            "東風谷早苗, 赵怜: Chinese Translation"
+  "Credits_VicFrank"             "VicFrank"
+  "Credits_Radar"                "radar: Play Battleships"
+  "Credits_sim"                  "sim<>n[a]: Many cosmetic changes"
+
+  "Tips_1"                       "- Venitul este livrat la fiecare 10 secunde. Venitul creste construind cladiri si upgradand pe cele existente"
+  "Tips_2"                       "- Lemnul se obtine construind sau upgradand cladiri de trupe. Lemnul livrat este egal cu valoarea constructiei/upgrade-ului."
+  "Tips_3"                       "- Poti repara cladirile si castelul folosind al doilea buton de mouse."
+
+  "Info_Description1"            "Construieste cladiri care iti vor antrena trupele necesare pentru batalie cu fortele inamice. Distruge castelul inamic pentru a castiga runda."
+  "Info_Description2"            "Jocul are mai multe runde, deci continua sa joci dupa prima runda!"
+}

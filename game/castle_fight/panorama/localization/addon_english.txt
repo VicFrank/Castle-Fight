@@ -89,7 +89,7 @@
   "Credits_Myll"                 "Noya/Myll: Building Helper"
   "Credits_Noya"                 "Noya: Dotacraft"
   "Credits_GeFire"               "GeFire: Russian Translation"
-  "Credits_東風谷早苗"            "東風谷早苗, 赵怜: Chinese Translation"
+  "Credits_東風谷早苗"            "東風谷早苗, 赵怜, 玄武: Chinese Translation"
   "Credits_VicFrank"             "VicFrank"
   "Credits_Radar"                "radar: Play Battleships"
   "Credits_sim"                  "sim<>n[a]: Many cosmetic changes"
