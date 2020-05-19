@@ -32,7 +32,7 @@ function modifier_power_buildings_aura:GetAuraRadius()
   if not IsServer() then return end
   local parent = self:GetParent()
   if parent:GetTeam() == DOTA_TEAM_NEUTRALS or parent:PassivesDisabled() then
-    radius = 0
+    return 0
   end
   return self.radius
 end

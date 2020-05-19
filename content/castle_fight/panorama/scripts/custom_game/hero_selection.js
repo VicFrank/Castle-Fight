@@ -92,8 +92,6 @@ function ShowHeroSelect() {
 var IsSpectator = !Players.IsValidPlayerID(Players.GetLocalPlayer());
 var IsSpectator = false;
 function UpdateHeroSelectVisibility() {
-  $.Msg("UpdateHeroSelectVisibility");
-
   if (IsSpectator) return;
   
   var data = CustomNetTables.GetTableValue("hero_select", "status");

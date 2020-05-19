@@ -8,7 +8,6 @@ function item_rescue_strike:OnSpellStart()
   local particleName = "particles/abilities/generic/rescue_strike/rescue_strike.vpcf"
   local sound = "Hero_Techies.BlastOff.Cast"
 
-  -- making the radius a bit bigger than it shows
   local radius = ability:GetSpecialValueFor("radius")
 
   -- Can't use rescue strike before the first round starts

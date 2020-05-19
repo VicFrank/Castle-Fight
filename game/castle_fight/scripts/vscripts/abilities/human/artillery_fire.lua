@@ -34,7 +34,7 @@ function modifier_artillery_fire:OnCreated()
     -- Wait to finish building
     Timers:CreateTimer(1, function()
       if not self.caster:IsAlive() then return end
-      if self.caster:IsSilenced() then return .1 end
+      if self.caster:IsSilenced() or self.caster:PassivesDisabled() then return .1 end
 
       FireCannon(self.ability, self)
       self:StartIntervalThink(self.fire_delay)
@@ -44,7 +44,7 @@ end
 
 function modifier_artillery_fire:OnIntervalThink()
   if not IsServer() then return end
-  if not self.caster:IsAlive() then return end
+  if not IsValidAlive(self.caster) then return end
     
   FireCannon(self.ability, self)
 end

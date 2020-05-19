@@ -51,9 +51,8 @@ function EndDrawVoting()
 end
 
 function OnDrawVoteChanged(playerID, vote)
-  local voteChanged = GameRules.drawVotes[playerID] == nil or GameRules.drawVotes[playerID] == vote
+  local voteChanged = GameRules.drawVotes[playerID] == nil or GameRules.drawVotes[playerID] ~= vote
 
-  print(voteChanged)
   if not voteChanged then return end
 
   GameRules.drawVotes[playerID] = vote

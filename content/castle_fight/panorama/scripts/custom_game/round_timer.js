@@ -27,23 +27,40 @@ function OnRoundEnded(data) {
 }
 
 function OnHeroSelectStarted(data) {
-  $.Msg("OnHeroSelectStarted")
   $("#RoundStatusLabel").text = $.Localize("#race_selection");
   ShowTimer();
 }
 
 function OnLoadingStarted(data) {
-  $.Msg("OnLoadingStarted")
   $("#RoundStatusLabel").text = $.Localize("#loading") + "...";
   $("#CountdownTimer").text = "";
 }
 
-function UpdateHeroSelectState() {
-  $.Msg("UpdateHeroSelectVisibility");
-  
+var localTeam = Players.GetTeam(Players.GetLocalPlayer());
+
+function HideEnemyPicks() {
+  if (localTeam == DOTATeam_t.DOTA_TEAM_GOODGUYS) {
+    $("#DirePickHider").AddClass("RoundTimerVisible");
+  } else {
+    $("#RadiantPickHider").AddClass("RoundTimerVisible");
+  }
+}
+
+function ShowEnemyPicks() {
+  if (localTeam == DOTATeam_t.DOTA_TEAM_GOODGUYS) {
+    $("#DirePickHider").RemoveClass("RoundTimerVisible");
+  } else {
+    $("#RadiantPickHider").RemoveClass("RoundTimerVisible");
+  }
+}
+
+function UpdateHeroSelectState() {  
   var data = CustomNetTables.GetTableValue("hero_select", "status");
   if (data && data.ongoing) {
     OnHeroSelectStarted();
+    HideEnemyPicks()
+  } else if (data && !data.ongoing) {
+    ShowEnemyPicks()
   }
 }
 

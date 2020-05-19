@@ -4,6 +4,30 @@
   height: 100%;
 }
 
+#RadiantPickHider
+{
+  horizontal-align: center;
+  vertical-align: top;
+
+  margin-right: 500px;
+}
+
+#DirePickHider
+{
+  horizontal-align: center;
+  vertical-align: top;
+
+  margin-left: 500px;
+}
+
+.PickHider
+{
+  height: 41px;
+  width: 400px;
+  background-color: #000000;
+  background-size: 100%;
+}
+
 #RoundTimerContainer
 {
   width: 300px;

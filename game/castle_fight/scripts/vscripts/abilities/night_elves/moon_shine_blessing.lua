@@ -10,7 +10,7 @@ function moon_shine_blessing:OnSpellStart()
 
   local target
   for _,ally in pairs(allies) do
-    if not ally:IsRealHero() then
+    if not ally:IsRealHero() and not ally:HasModifier("modifier_moon_shine_blessing") then
       if target == nil or ally:GetHealth() < ally:GetMaxHealth() then
         target = ally
       end
@@ -28,7 +28,10 @@ function moon_shine_blessing:OnSpellStart()
 
   local units = FindOrganicAlliesInRadius(target, radius)
   for _,unit in pairs(units) do
-    if not IsCustomBuilding(unit) and not unit:IsRealHero() then
+    local isCreep = not IsCustomBuilding(unit) and not unit:IsRealHero()
+    local hasModifier = unit:HasModifier("modifier_moon_shine_blessing")
+
+    if isCreep and not hasModifier then
       unit:Heal(health_restored, caster)
       SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, unit, health_restored, nil)
 
