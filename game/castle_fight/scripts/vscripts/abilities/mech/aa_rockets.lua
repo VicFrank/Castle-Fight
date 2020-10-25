@@ -25,8 +25,6 @@ modifier_aa_rockets = class({})
 function modifier_aa_rockets:IsHidden() return true end
 
 function modifier_aa_rockets:OnCreated()
-  self.radius = self:GetAbility():GetSpecialValueFor("radius")
-
   self:StartIntervalThink(1.5)
 end
 
@@ -34,7 +32,7 @@ function modifier_aa_rockets:OnIntervalThink()
   if not IsServer() then return end
   if not self:GetParent():IsAlive() then return end
 
-  local enemies = FindEnemiesInRadius(self:GetParent(), self.radius)
+  local enemies = FindEnemiesInRadius(self:GetParent(), self:GetAbility():GetSpecialValueFor("radius"))
 
   local flyingEnemies = {}
 

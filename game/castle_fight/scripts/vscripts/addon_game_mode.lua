@@ -64,6 +64,8 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_magnataur/magnus_dust_hit.vpcf", context) -- splash attack
   PrecacheResource("particle", "particles/abilities/generic/quad_damage/rune_quaddamage_owner.vpcf", context) -- quad damage
   PrecacheResource("particle", "particles/econ/generic/generic_timer/generic_timer.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_antimage/antimage_blink_start.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_antimage/antimage_blink_end.vpcf", context)
 
   -- Precache the heroes
 
@@ -71,7 +73,7 @@ function Precache( context )
   PrecacheItemByNameSync("item_blast_staff", context)
   PrecacheItemByNameSync("orb_of_lightning", context)
   PrecacheItemByNameSync("scroll_of_stone", context)
-  PrecacheItemByNameSync("building_self_destruct", context)
+  PrecacheItemByNameSync("item_building_self_destruct", context)
 
   -- Human Precaches
   -- for _,unitname in ipairs(g_Human_Precache) do

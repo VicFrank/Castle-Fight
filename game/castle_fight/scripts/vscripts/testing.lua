@@ -194,7 +194,7 @@ function GameMode:SpawnUnits(playerID, unitname, count)
     team = GetOpposingTeam(team)
   end
 
-  unitname = UnitTypeToUnitName(unitname)
+  -- unitname = UnitTypeToUnitName(unitname)
 
   for i=1,count do
     CreateUnitByName(unitname, position, true, nil, nil, team)

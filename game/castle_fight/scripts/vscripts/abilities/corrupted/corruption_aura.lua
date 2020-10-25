@@ -12,6 +12,10 @@ function modifier_corruption_aura:OnCreated()
   self.radius = self:GetAbility():GetSpecialValueFor("radius")
 end
 
+function modifier_corruption_aura:OnRefresh()
+  self.radius = self:GetAbility():GetSpecialValueFor("radius")
+end
+
 function modifier_corruption_aura:IsAura()
   return true
 end

@@ -17,6 +17,11 @@ function modifier_incinerate:OnCreated()
   self.damage_per_hit = self:GetAbility():GetSpecialValueFor("damage_per_hit")
 end
 
+function modifier_incinerate:OnRefresh()
+  self.duration = self.ability:GetSpecialValueFor("duration")
+  self.damage_per_hit = self:GetAbility():GetSpecialValueFor("damage_per_hit")
+end
+
 function modifier_incinerate:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED,

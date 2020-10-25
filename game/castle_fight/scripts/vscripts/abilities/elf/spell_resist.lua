@@ -5,10 +5,6 @@ function blademaster_spell_resist:GetIntrinsicModifierName() return "modifier_bl
 
 modifier_blademaster_spell_resist = class({})
 
-function modifier_blademaster_spell_resist:OnCreated()
-  self.magic_resist = self:GetAbility():GetSpecialValueFor("magic_resist")
-end
-
 function modifier_blademaster_spell_resist:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
@@ -17,5 +13,5 @@ function modifier_blademaster_spell_resist:DeclareFunctions()
 end
 
 function modifier_blademaster_spell_resist:GetModifierMagicalResistanceBonus(keys)
-  return self.magic_resist
+  return self:GetAbility():GetSpecialValueFor("magic_resist")
 end

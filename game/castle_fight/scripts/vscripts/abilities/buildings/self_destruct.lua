@@ -17,12 +17,12 @@ function item_building_self_destruct:OnSpellStart()
   local hero =  PlayerResource:GetSelectedHeroEntity(playerId)
   hero:ModifyCustomGold(caster.gold_cost * .5)
   SendOverheadEventMessage(
-                        PlayerResource:GetPlayer(playerId),
-                        OVERHEAD_ALERT_GOLD,
-                        caster,
-                        caster.gold_cost * .5,
-                        PlayerResource:GetPlayer(playerId)
-                    )
+    PlayerResource:GetPlayer(playerId),
+    OVERHEAD_ALERT_GOLD,
+    caster,
+    caster.gold_cost * .5,
+    PlayerResource:GetPlayer(playerId)
+  )
                     
   local explosion_range = 100
 

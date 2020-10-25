@@ -312,6 +312,13 @@ function modifier_winged_serpent_bouncing_attack:OnCreated()
   self.damage_reduction_percent = self.ability:GetSpecialValueFor("damage_reduction_percent")
 end
 
+function modifier_winged_serpent_bouncing_attack:OnRefresh()
+  self.range = self.ability:GetSpecialValueFor("range")
+  self.bounces = self.ability:GetSpecialValueFor("bounces")
+  self.range = self.ability:GetSpecialValueFor("range")
+  self.damage_reduction_percent = self.ability:GetSpecialValueFor("damage_reduction_percent")
+end
+
 function modifier_winged_serpent_bouncing_attack:DeclareFunctions()
   return {MODIFIER_EVENT_ON_TAKEDAMAGE}
 end

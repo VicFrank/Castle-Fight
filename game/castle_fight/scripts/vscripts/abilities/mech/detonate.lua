@@ -24,6 +24,12 @@ function modifier_goblin_shredder_detonate:OnCreated()
   self:SetStackCount(1)
 end
 
+function modifier_goblin_shredder_detonate:OnRefresh()
+  self.base_damage = self:GetAbility():GetSpecialValueFor("base_damage")
+  self.max_stacks = self:GetAbility():GetSpecialValueFor("max_stacks")
+  self.radius = self:GetAbility():GetSpecialValueFor("radius")
+end
+
 -- Currently this is set in inducted rage so it will work even when the ability is blocked
 -- function modifier_goblin_shredder_detonate:OnBuildingTarget()
 --   if not IsServer() then return end

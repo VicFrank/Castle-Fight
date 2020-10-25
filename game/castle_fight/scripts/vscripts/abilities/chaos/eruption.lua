@@ -5,7 +5,7 @@ function volcano_eruption:OnSpellStart()
   local ability = self
 
   local filter = function(target) return not target:HasFlyMovementCapability() end
-  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
+  local target = GetRandomEnemy(caster:GetTeam(), filter)
 
   if not target then return end
 
@@ -26,7 +26,7 @@ function volcano_eruption:OnSpellStart()
   EmitSoundOnLocationWithCaster(position,"Hero_EarthShaker.EchoSlamSmall",caster)
 
   Timers:CreateTimer(function()
-    local enemies = FindEnemiesInRadius(caster, radius, position)
+    local enemies = FindAllEnemiesInRadius(caster, radius, position)
 
     particleName = "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
     particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)

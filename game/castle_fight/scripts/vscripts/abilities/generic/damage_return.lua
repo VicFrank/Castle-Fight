@@ -13,8 +13,6 @@ function modifier_damage_return:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
-
-  self.damage_return = self.ability:GetSpecialValueFor("damage_return")
 end
 
 function modifier_damage_return:DeclareFunctions()
@@ -41,7 +39,7 @@ function modifier_damage_return:OnAttackLanded(keys)
     local damageTable = {
       victim = attacker,
       attacker = self.parent,
-      damage = damage * self.damage_return * 0.01,
+      damage = damage * self.ability:GetSpecialValueFor("damage_return") * 0.01,
       damage_type = DAMAGE_TYPE_PHYSICAL,
       damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_REFLECTION,
       ability = self.ability

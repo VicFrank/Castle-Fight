@@ -24,6 +24,15 @@ function modifier_passive_chain_lightning:OnCreated()
   self.jump_delay = self.ability:GetSpecialValueFor("jump_delay")
 end
 
+function modifier_passive_chain_lightning:OnRefresh()
+  self.trigger_chance = self.ability:GetSpecialValueFor("trigger_chance")
+  self.initial_damage = self.ability:GetSpecialValueFor("initial_damage")
+  self.max_targets = self.ability:GetSpecialValueFor("max_targets")
+  self.jump_damage_reduction = self.ability:GetSpecialValueFor("jump_damage_reduction")
+  self.jump_range = self.ability:GetSpecialValueFor("jump_range")
+  self.jump_delay = self.ability:GetSpecialValueFor("jump_delay")
+end
+
 function modifier_passive_chain_lightning:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,

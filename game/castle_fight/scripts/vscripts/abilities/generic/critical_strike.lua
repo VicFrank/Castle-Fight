@@ -44,6 +44,13 @@ function modifier_critical_strike_custom:OnCreated()
   self.crit_damage = self.ability:GetSpecialValueFor("crit_damage")
 end
 
+function modifier_critical_strike_custom:OnRefresh()
+  if not IsServer() then return end
+  
+  self.crit_chance = self.ability:GetSpecialValueFor("crit_chance")
+  self.crit_damage = self.ability:GetSpecialValueFor("crit_damage")
+end
+
 function modifier_critical_strike_custom:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE,

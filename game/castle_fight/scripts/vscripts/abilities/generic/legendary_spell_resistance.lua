@@ -7,11 +7,6 @@ modifier_legendary_spell_resist = class({})
 
 function modifier_legendary_spell_resist:IsHidden() return true end
 
-function modifier_legendary_spell_resist:OnCreated()
-  self.magic_resist = self:GetAbility():GetSpecialValueFor("magic_resist")
-  self.status_resist = self:GetAbility():GetSpecialValueFor("status_resist")
-end
-
 function modifier_legendary_spell_resist:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
@@ -21,9 +16,9 @@ function modifier_legendary_spell_resist:DeclareFunctions()
 end
 
 function modifier_legendary_spell_resist:GetModifierMagicalResistanceBonus()
-  return self.magic_resist
+  return self:GetAbility():GetSpecialValueFor("magic_resist")
 end
 
 function modifier_legendary_spell_resist:GetModifierStatusResistance()
-  return self.status_resist
+  return self:GetAbility():GetSpecialValueFor("status_resist")
 end

@@ -28,6 +28,11 @@ function modifier_custom_cleave:OnCreated()
   self.cleave_radius = self.ability:GetSpecialValueFor("cleave_radius")
 end
 
+function modifier_custom_cleave:OnRefresh()
+  self.cleave_damage = self.ability:GetSpecialValueFor("cleave_damage")
+  self.cleave_radius = self.ability:GetSpecialValueFor("cleave_radius")
+end
+
 function modifier_custom_cleave:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED

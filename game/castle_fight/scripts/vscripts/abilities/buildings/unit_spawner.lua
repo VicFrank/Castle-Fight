@@ -10,7 +10,7 @@ function SpawnUnits(keys)
   if caster:IsNull() or not caster:IsAlive() then return end
 
   local cooldown = ability:GetCooldown(ability:GetLevel())
-  local increased_cooldown = math.floor(GameRules.roundSeconds / 150)
+  local increased_cooldown = math.floor(GameRules.roundSeconds / 125)
   ability:StartCooldown(cooldown + increased_cooldown)
 
   local particleName = "particles/econ/generic/generic_timer/generic_timer.vpcf"

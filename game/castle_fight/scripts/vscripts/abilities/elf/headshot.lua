@@ -20,6 +20,14 @@ function modifier_archer_headshot:OnCreated()
   self.damage = self.ability:GetSpecialValueFor("damage")
 end
 
+function modifier_archer_headshot:OnRefresh()
+  if not IsServer() then return end
+  
+  self.chance = self.ability:GetSpecialValueFor("chance")
+  self.stun_duration = self.ability:GetSpecialValueFor("stun_duration")
+  self.damage = self.ability:GetSpecialValueFor("damage")
+end
+
 function modifier_archer_headshot:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED

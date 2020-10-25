@@ -19,16 +19,14 @@ function modifier_infernal_detonate:DeclareFunctions()
   return decFuns
 end
 
-function modifier_infernal_detonate:OnCreated()
-  self.damage = self:GetAbility():GetSpecialValueFor("damage")
-  self.radius = self:GetAbility():GetSpecialValueFor("radius")
-end
-
 function modifier_infernal_detonate:OnDeath(keys)
   if not IsServer() then return nil end
 
   if keys.unit == self:GetParent() then
     -- explode
+    self.damage = self:GetAbility():GetSpecialValueFor("damage")
+    self.radius = self:GetAbility():GetSpecialValueFor("radius")
+
     local damage = self.damage
     local enemies = FindEnemiesInRadius(self:GetParent(), self.radius)
 

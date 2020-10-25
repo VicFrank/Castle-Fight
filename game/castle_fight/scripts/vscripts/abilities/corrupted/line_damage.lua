@@ -3,11 +3,14 @@ LinkLuaModifier("modifier_infernal_line_damage", "abilities/corrupted/line_damag
 infernal_line_damage = class({})
 function infernal_line_damage:GetIntrinsicModifierName() return "modifier_infernal_line_damage" end
 
-function infernal_line_damage:OnProjectileHit(target, location)
+function infernal_line_damage:OnProjectileHit_ExtraData(target, location, extraData)
   if not target then return end
   if IsCustomBuilding(target) or target:HasFlyMovementCapability() then return end
 
   local damage = self:GetSpecialValueFor("damage")
+  local attackTarget = extraData.attackTarget
+
+  if target:GetEntityIndex() == attackTarget then return end
 
   ApplyDamage({
     victim = target,
@@ -62,11 +65,14 @@ function modifier_infernal_line_damage:OnAttackStart(keys)
       Source = attacker,
       bHasFrontalCone = false,
       bReplaceExisting = false,
-      iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,              
-      iUnitTargetType = DOTA_UNIT_TARGET_ALL,              
+      iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
+      iUnitTargetType = DOTA_UNIT_TARGET_ALL,
       bDeleteOnHit = false,
       vVelocity = velocity,
-      bProvidesVision = false,              
+      bProvidesVision = false,
+      ExtraData = {
+        attackTarget = target:GetEntityIndex()
+      },
     }
 
     ProjectileManager:CreateLinearProjectile(projectile)

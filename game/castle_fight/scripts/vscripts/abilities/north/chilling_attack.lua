@@ -11,8 +11,6 @@ function modifier_north_chilling_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
-
-  self.duration = self.ability:GetSpecialValueFor("duration")
 end
 
 function modifier_north_chilling_attack:DeclareFunctions()
@@ -31,7 +29,7 @@ function modifier_north_chilling_attack:OnAttackLanded(keys)
   if attacker == self.caster then
     local debuffName = "modifier_north_chilling_attack_debuff"
 
-    target:AddNewModifier(self.caster, self.ability, debuffName, {duration = self.duration})
+    target:AddNewModifier(self.caster, self.ability, debuffName, {duration = self.ability:GetSpecialValueFor("duration")})
   end
 end
 

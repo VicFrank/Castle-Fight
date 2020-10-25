@@ -28,7 +28,7 @@ function modifier_zombie_rot_aura:IsAura()
 end
 
 function modifier_zombie_rot_aura:GetAuraDuration()
-  if self.abilityLevel == 3 then
+  if self:GetAbility():GetLevel() == 3 then
     return 999
   else
     return 0.5
@@ -74,8 +74,6 @@ function modifier_zombie_rot_aura:OnCreated(kv)
 
     self.playerHero = self:GetCaster():GetPlayerHero()
     self.casterTeam = self:GetCaster():GetTeam()
-
-    self.abilityLevel = self:GetAbility():GetLevel()
 
     self:StartIntervalThink(self.rot_tick)
     self:OnIntervalThink()

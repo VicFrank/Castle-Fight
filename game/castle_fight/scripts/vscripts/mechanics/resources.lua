@@ -30,7 +30,7 @@ end
 
 function GetLumber(playerID)
   local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-  if not hero then return end
+  if not hero then return 0 end
   if not hero.lumber then
     hero.lumber = 0
   end
@@ -95,7 +95,7 @@ end
 
 function GetCustomGold(playerID)
   local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-  if not hero then return end
+  if not hero then return 0 end
   if not hero.gold then
     hero.gold = 0
   end

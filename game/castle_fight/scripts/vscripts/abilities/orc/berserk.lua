@@ -41,8 +41,12 @@ function modifier_troll_berserk_buff:OnCreated()
   self.attack_speed = self:GetAbility():GetSpecialValueFor("attack_speed")
   self.move_speed = self:GetAbility():GetSpecialValueFor("move_speed")
   self.damage_increase = self:GetAbility():GetSpecialValueFor("damage_increase")
+end
 
-  print("OnCreated")
+function modifier_troll_berserk_buff:OnRefresh()
+  self.attack_speed = self:GetAbility():GetSpecialValueFor("attack_speed")
+  self.move_speed = self:GetAbility():GetSpecialValueFor("move_speed")
+  self.damage_increase = self:GetAbility():GetSpecialValueFor("damage_increase")
 end
 
 function modifier_troll_berserk_buff:DeclareFunctions()

@@ -93,7 +93,8 @@ function GameMode:FilterDamage( filterTable )
   local inflictor = filterTable["entindex_inflictor_const"]
 
   local value = filterTable["damage"] --Post reduction
-  local damage, reduction = GameMode:GetPreMitigationDamage(value, victim, attacker, damagetype) --Pre reduction
+  -- local damage, reduction = GameMode:GetPreMitigationDamage(value, victim, attacker, damagetype) --Pre reduction
+  local damage = value
 
   -- Filter out cleave attacks on air units
   if inflictor then
@@ -127,7 +128,10 @@ function GameMode:FilterDamage( filterTable )
     local armor = victim:GetPhysicalArmorValue(false)
     local wc3Reduction = (armor * 0.06) / (1 + (armor * 0.06))
 
-    damage = (attack_damage * (1 - wc3Reduction)) * multiplier
+    -- They reverted back to the wc3 armor formula
+    -- damage = (attack_damage * (1 - wc3Reduction)) * multiplier
+
+    damage = damage * multiplier
 
     -- print(string.format("Damage (%s attack vs %.f %s armor): (%.f * %.2f) * %.2f = %.f", attack_type, armor, armor_type, attack_damage, 1-wc3Reduction, multiplier, damage))
 

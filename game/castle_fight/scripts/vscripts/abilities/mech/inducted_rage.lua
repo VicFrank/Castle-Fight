@@ -22,6 +22,12 @@ function modifier_goblin_shredder_inducted_rage:OnCreated()
   self:SetStackCount(1)
 end
 
+function modifier_goblin_shredder_inducted_rage:OnRefresh()
+  self.block_chance = self:GetAbility():GetSpecialValueFor("block_chance")
+  self.attack_speed = self:GetAbility():GetSpecialValueFor("attack_speed")
+  self.max_stacks = self:GetAbility():GetSpecialValueFor("max_stacks")
+end
+
 function modifier_goblin_shredder_inducted_rage:OnBuildingTarget()
   if not IsServer() then return end
 

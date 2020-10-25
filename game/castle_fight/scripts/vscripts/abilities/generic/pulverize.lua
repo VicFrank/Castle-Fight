@@ -27,6 +27,14 @@ function modifier_pulverize:OnCreated()
   self.far_damage = self.ability:GetSpecialValueFor("far_damage")
 end
 
+function modifier_pulverize:OnRefresh()
+  self.chance = self.ability:GetSpecialValueFor("chance")
+  self.close_range = self.ability:GetSpecialValueFor("close_range")
+  self.close_damage = self.ability:GetSpecialValueFor("close_damage")
+  self.far_range = self.ability:GetSpecialValueFor("far_range")
+  self.far_damage = self.ability:GetSpecialValueFor("far_damage")
+end
+
 function modifier_pulverize:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED,

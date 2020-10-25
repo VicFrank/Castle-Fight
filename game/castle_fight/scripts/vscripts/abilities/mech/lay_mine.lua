@@ -29,6 +29,14 @@ function modifier_mine:OnCreated(table)
   end
 end
 
+function modifier_mine:OnRefresh()
+  if IsServer() then
+    self.damage = self:GetAbility():GetSpecialValueFor("damage")
+    self.close_radius = self:GetAbility():GetSpecialValueFor("close_radius")
+    self.far_radius = self:GetAbility():GetSpecialValueFor("far_radius")
+  end
+end
+
 function modifier_mine:OnIntervalThink()
   if not IsServer() then return end
 

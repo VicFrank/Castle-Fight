@@ -55,10 +55,6 @@ function modifier_hydra_poison_attack_debuff:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
-  self.attack_slow = self.ability:GetSpecialValueFor("attack_slow")
-  self.move_speed_slow = self.ability:GetSpecialValueFor("move_speed_slow")
-  self.dps = self.ability:GetSpecialValueFor("dps")
-
   if not IsServer() then return end
   
   self.playerHero = self:GetCaster():GetPlayerHero()
@@ -73,7 +69,7 @@ function modifier_hydra_poison_attack_debuff:DamageTick()
       attacker = self.playerHero,
       victim = self.parent,
       ability = self.ability,
-      damage = self.dps,
+      damage = self.ability:GetSpecialValueFor("dps"),
       damage_type = DAMAGE_TYPE_MAGICAL,
       damage_flags = DOTA_DAMAGE_FLAG_HPLOSS
     })
@@ -83,11 +79,11 @@ function modifier_hydra_poison_attack_debuff:DamageTick()
 end
 
 function modifier_hydra_poison_attack_debuff:GetModifierMoveSpeedBonus_Percentage()
-  return -self.move_speed_slow
+  return -self.ability:GetSpecialValueFor("move_speed_slow")
 end
 
 function modifier_hydra_poison_attack_debuff:GetModifierAttackSpeedBonus_Constant()
-  return -self.attack_slow;
+  return -self.ability:GetSpecialValueFor("attack_slow")
 end
 
 function modifier_hydra_poison_attack_debuff:OnIntervalThink()

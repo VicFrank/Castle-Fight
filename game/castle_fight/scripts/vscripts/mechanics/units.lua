@@ -225,8 +225,26 @@ function FindAllVisibleEnemies(team)
   return notBuildings
 end
 
+-- Same as Find All Visible Enemies, but includes those in fog
+function FindAllEnemies(team)
+  local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NO_INVIS
+  local enemies = FindUnitsInRadius(team, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, flags, FIND_ANY_ORDER, false)
+  local notBuildings = {}  
+  for _,enemy in pairs(enemies) do
+    if not IsCustomBuilding(enemy) and not (enemy:GetUnitName() == "tentacle_prison_tentacle") then
+      table.insert(notBuildings, enemy)
+    end
+  end
+  return notBuildings
+end
+
 function GetRandomVisibleEnemy(team)
   local enemies = FindAllVisibleEnemies(team)
+  return GetRandomTableElement(enemies)
+end
+
+function GetRandomEnemy(team)
+  local enemies = FindAllEnemies(team)
   return GetRandomTableElement(enemies)
 end
 

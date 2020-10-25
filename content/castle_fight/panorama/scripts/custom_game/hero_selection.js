@@ -106,9 +106,31 @@ function OnHeroSelectStatusChanged(table_name, key, data) {
   UpdateHeroSelectVisibility();
 }
 
+function HideHeroesInScoreboard() {
+  var HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
+  var scoreboard = HUD.FindChildTraverse("HUDElements").FindChildTraverse("scoreboard");
+
+  var heroImages = scoreboard.FindChildrenWithClassTraverse("ScoreboardHeroImage");
+  var heroNames = scoreboard.FindChildrenWithClassTraverse("HeroNameLabel");
+
+  heroImages.forEach(
+    function(panel) {
+      panel.style.visibility = "collapse";
+    }
+   );
+
+  heroNames.forEach(
+    function(panel) {
+      panel.style.visibility = "collapse";
+    }
+   );
+}
+
 (function () {
   // ShowHeroSelect();
   UpdateHeroDetails(CurrentRace);
+
+  $.Schedule(1, HideHeroesInScoreboard);
 
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
   UpdateHeroSelectVisibility();

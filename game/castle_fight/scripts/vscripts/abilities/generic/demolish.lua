@@ -13,8 +13,6 @@ function modifier_demolish:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
-
-  self.damage_pct = self.ability:GetSpecialValueFor("damage_pct")
 end
 
 function modifier_demolish:DeclareFunctions()
@@ -32,7 +30,7 @@ function modifier_demolish:OnAttackLanded(keys)
 
   if attacker == self.caster and IsCustomBuilding(target) then
     local damage = keys.damage
-    damage = damage * (self.damage_pct - 100) * 0.01
+    damage = damage * (self.ability:GetSpecialValueFor("damage_pct") - 100) * 0.01
 
     ApplyDamage({
       victim = target,

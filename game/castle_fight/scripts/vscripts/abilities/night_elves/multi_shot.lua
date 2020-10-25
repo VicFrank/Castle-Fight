@@ -19,6 +19,11 @@ function modifier_ranger_split_shot:OnCreated()
   self.arrow_count = self.ability:GetSpecialValueFor("arrow_count")
 end
 
+function modifier_ranger_split_shot:OnRefresh()
+  self.damage_modifier = self.ability:GetSpecialValueFor("damage_modifier")
+  self.arrow_count = self.ability:GetSpecialValueFor("arrow_count")
+end
+
 function modifier_ranger_split_shot:DeclareFunctions()
   local decFuncs = {
     MODIFIER_EVENT_ON_ATTACK,

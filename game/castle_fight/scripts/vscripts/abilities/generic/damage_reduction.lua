@@ -10,12 +10,7 @@ modifier_damage_reduction = class({})
 function modifier_damage_reduction:IsHidden() return true end
 
 function modifier_damage_reduction:OnCreated()
-  self.caster = self:GetCaster()
   self.ability = self:GetAbility()
-  self.parent = self:GetParent()
-
-  self.damage_reduced = self.ability:GetSpecialValueFor("damage_reduced")
-  self.reduction_chance = self.ability:GetSpecialValueFor("reduction_chance")
 end
 
 function modifier_damage_reduction:DeclareFunctions()
@@ -28,8 +23,8 @@ end
 function modifier_damage_reduction:GetModifierPhysical_ConstantBlock()
   if not IsServer() then return end
 
-  if self.reduction_chance >= RandomInt(1,100) then
-    return self.damage_reduced
+  if self.ability:GetSpecialValueFor("reduction_chance") >= RandomInt(1,100) then
+    return self.ability:GetSpecialValueFor("damage_reduced")
   end
 end
 

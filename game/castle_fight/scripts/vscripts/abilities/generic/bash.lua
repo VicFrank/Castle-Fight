@@ -34,6 +34,12 @@ function modifier_bash_chance_custom:OnCreated()
   self.bash_damage = self.ability:GetSpecialValueFor("bash_damage")
 end
 
+function modifier_bash_chance_custom:OnRefresh()
+  self.bash_duration = self.ability:GetSpecialValueFor("bash_duration")
+  self.bash_chance = self.ability:GetSpecialValueFor("bash_chance")
+  self.bash_damage = self.ability:GetSpecialValueFor("bash_damage")
+end
+
 function modifier_bash_chance_custom:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED,

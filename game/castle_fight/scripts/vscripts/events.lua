@@ -142,6 +142,7 @@ function GameMode:OnHeroInGame(hero)
     end
 
     hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
+    hero:AddItem(CreateItem("item_custom_blink", hero, hero))
 
     -- Stun the hero until the round starts
     hero:AddNewModifier(hero, nil, "modifier_stunned_custom", {})

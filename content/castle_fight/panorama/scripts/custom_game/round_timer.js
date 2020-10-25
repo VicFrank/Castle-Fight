@@ -68,11 +68,17 @@ function OnHeroSelectStatusChanged(table_name, key, data) {
   UpdateHeroSelectState();
 }
 
+function KickAFK() {
+  $.Msg("Kick AFK")
+  Game.Disconnect();
+}
+
 (function () {
   GameEvents.Subscribe("countdown", UpdateTimer);
   GameEvents.Subscribe("round_started", OnRoundStarted);
   GameEvents.Subscribe("round_ended", OnRoundEnded);
   GameEvents.Subscribe("loading_started", OnLoadingStarted);
+  GameEvents.Subscribe("kick_afk", KickAFK);
 
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
   UpdateHeroSelectState();

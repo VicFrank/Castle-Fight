@@ -22,6 +22,11 @@ function modifier_frost_attack:OnCreated()
   self.chance = self.ability:GetSpecialValueFor("chance")
 end
 
+function modifier_frost_attack:OnRefresh()
+  self.duration = self.ability:GetSpecialValueFor("duration")
+  self.chance = self.ability:GetSpecialValueFor("chance")
+end
+
 function modifier_frost_attack:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED,

@@ -7,11 +7,6 @@ modifier_iron_golem_spell_resistance = class({})
 
 function modifier_iron_golem_spell_resistance:IsHidden() return true end
 
-function modifier_iron_golem_spell_resistance:OnCreated()
-  self.magic_resistance = self:GetAbility():GetSpecialValueFor("magic_resistance")
-  self.status_resistance = self:GetAbility():GetSpecialValueFor("status_resistance")
-end
-
 function modifier_iron_golem_spell_resistance:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
@@ -21,8 +16,8 @@ function modifier_iron_golem_spell_resistance:DeclareFunctions()
 end
 
 function modifier_iron_golem_spell_resistance:GetModifierMagicalResistanceBonus(keys)
-  return self.magic_resistance
+  return self:GetAbility():GetSpecialValueFor("magic_resistance")
 end
 function modifier_iron_golem_spell_resistance:GetModifierStatusResistance(keys)
-  return self.status_resistance
+  return self:GetAbility():GetSpecialValueFor("status_resistance")
 end

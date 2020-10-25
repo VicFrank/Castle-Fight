@@ -38,6 +38,12 @@ function modifier_defender_defend:OnCreated()
   self.spell_damage_reduction = self.ability:GetSpecialValueFor("spell_damage_reduction")
 end
 
+function modifier_defender_defend:OnRefresh()
+  self.ranged_repel_chance = self.ability:GetSpecialValueFor("ranged_repel_chance")
+  self.ranged_damage_reduction = self.ability:GetSpecialValueFor("ranged_damage_reduction")
+  self.spell_damage_reduction = self.ability:GetSpecialValueFor("spell_damage_reduction")
+end
+
 function modifier_defender_defend:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,

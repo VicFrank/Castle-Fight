@@ -23,6 +23,8 @@ function hells_fist:OnSpellStart()
   caster:EmitSound("Hero_Lion.FingerOfDeath")
   target:EmitSound("Hero_Lion.FingerOfDeathImpact")
 
+  caster:AddNewModifier(caster, ability, "modifier_provide_vision", {duration = 0.1})
+
   local particle_finger = "particles/econ/items/lion/lion_ti8/lion_spell_finger_ti8_straighten_lvl2.vpcf"
   local particle_finger_fx = ParticleManager:CreateParticle(particle_finger, PATTACH_OVERHEAD_FOLLOW, caster)
 

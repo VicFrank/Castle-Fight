@@ -25,10 +25,6 @@ modifier_custom_evasion = class({})
 
 function modifier_custom_evasion:IsHidden() return true end
 
-function modifier_custom_evasion:OnCreated()
-  self.evasion = self:GetAbility():GetSpecialValueFor("evasion")
-end
-
 function modifier_custom_evasion:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_EVASION_CONSTANT,
@@ -38,7 +34,7 @@ function modifier_custom_evasion:DeclareFunctions()
 end
 
 function modifier_custom_evasion:GetModifierEvasion_Constant()
-  return self.evasion
+  return self:GetAbility():GetSpecialValueFor("evasion")
 end
 
 function modifier_custom_evasion:OnAttackFail(keys)

@@ -40,6 +40,14 @@ function modifier_carrion_swarm:OnCreated()
   self.speed = self.ability:GetSpecialValueFor("speed")
 end
 
+function modifier_carrion_swarm:OnRefresh()
+  self.chance = self.ability:GetSpecialValueFor("chance")
+  self.start_radius = self.ability:GetSpecialValueFor("start_radius")
+  self.end_radius = self.ability:GetSpecialValueFor("end_radius")
+  self.range = self.ability:GetSpecialValueFor("range")
+  self.speed = self.ability:GetSpecialValueFor("speed")
+end
+
 function modifier_carrion_swarm:DeclareFunctions()
   local funcs = {
     MODIFIER_EVENT_ON_ATTACK_LANDED,

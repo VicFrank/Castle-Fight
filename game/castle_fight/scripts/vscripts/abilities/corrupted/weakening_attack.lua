@@ -12,8 +12,6 @@ function modifier_weakening_attack:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
-
-  self.duration = self.ability:GetSpecialValueFor("duration")
 end
 
 function modifier_weakening_attack:DeclareFunctions()
@@ -31,6 +29,7 @@ function modifier_weakening_attack:OnAttackLanded(keys)
 
   if attacker == self.caster and not IsCustomBuilding(target) then
     local debuffName = "modifier_weakening_attack_debuff"
+    self.duration = self.ability:GetSpecialValueFor("duration")
     target:AddNewModifier(self.caster, self.ability, debuffName, {duration = self.duration})
   end
 end

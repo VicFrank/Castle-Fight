@@ -115,7 +115,9 @@ function GameMode:StartHeroSelection()
     if hero:IsAlive() then
       hero.hasPicked = false
       local dummy = PlayerResource:ReplaceHeroWith(hero:GetPlayerOwnerID(), "npc_dota_hero_wisp", 0, 0)
-      dummy:AddNewModifier(dummy, nil, "modifier_hide_hero", {})
+      if dummy then
+        dummy:AddNewModifier(dummy, nil, "modifier_hide_hero", {})
+      end
     end
   end
 
@@ -270,10 +272,8 @@ function GameMode:CheckFullTeamDisconnect()
 end
 
 function GameMode:DetectAFK()
-  -- if GameRules:IsCheatMode() then return end
-  -- if GameRules:IsInToolsMode() then return end
-
-  local DisconnectTime = 60
+  if GameRules:IsCheatMode() then return end
+  if GameRules:IsInToolsMode() then return end
 
   Timers:CreateTimer(function()
     if not GameRules.roundInProgress then return 1 end
@@ -284,8 +284,9 @@ function GameMode:DetectAFK()
       local connected = PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED
       local isBot = PlayerResource:IsFakeClient(playerID)
 
-      if connected and not isBot and timeSinceLastOrder > DisconnectTime then
+      if connected and not isBot and timeSinceLastOrder > AFK_DETECTION_TIME then
         print("player" .. playerID .. " is afk for " .. timeSinceLastOrder .. " seconds")
+        CustomGameEventManager:Send_ServerToPlayer(player, "kick_afk", {})
       end
     end
 

@@ -27,6 +27,14 @@ function modifier_decaying_attack:OnCreated()
   self.death_and_decay_duration = self.ability:GetSpecialValueFor("death_and_decay_duration")
   self.death_and_decay_drain = self.ability:GetSpecialValueFor("death_and_decay_drain")
 end
+function modifier_decaying_attack:OnRefresh()
+  self.soul_steal_chance = self.ability:GetSpecialValueFor("soul_steal_chance")
+  self.soul_steal_absorb = self.ability:GetSpecialValueFor("soul_steal_absorb")
+  self.death_and_decay_chance = self.ability:GetSpecialValueFor("death_and_decay_chance")
+  self.death_and_decay_aoe = self.ability:GetSpecialValueFor("death_and_decay_aoe")
+  self.death_and_decay_duration = self.ability:GetSpecialValueFor("death_and_decay_duration")
+  self.death_and_decay_drain = self.ability:GetSpecialValueFor("death_and_decay_drain")
+end
 
 function modifier_decaying_attack:DeclareFunctions()
   local funcs = {

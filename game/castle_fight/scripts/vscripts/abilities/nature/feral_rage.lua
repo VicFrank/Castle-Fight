@@ -12,9 +12,6 @@ function modifier_bear_feral_rage:OnCreated()
   self.caster = self:GetCaster()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
-
-  self.chance = self.ability:GetSpecialValueFor("chance")
-  self.duration = self.ability:GetSpecialValueFor("duration")
 end
 
 function modifier_bear_feral_rage:DeclareFunctions()
@@ -31,8 +28,8 @@ function modifier_bear_feral_rage:OnAttackLanded(keys)
   local target = keys.target
 
   if attacker == self.caster and not IsCustomBuilding(target) then
-    if self.chance >= RandomInt(1, 100) then
-      attacker:AddNewModifier(attacker, self.ability, "modifier_bear_feral_rage_buff", {duration = self.duration})
+    if self.ability:GetSpecialValueFor("chance") >= RandomInt(1, 100) then
+      attacker:AddNewModifier(attacker, self.ability, "modifier_bear_feral_rage_buff", {duration = self.ability:GetSpecialValueFor("duration")})
     end
   end
 end
