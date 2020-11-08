@@ -411,26 +411,6 @@
     }
   }
 
-  // I don't know what this is. Status resistance?
-  "avenging_spirit_spell_reduction"
-  {
-    "AbilityTextureName"          "spectre_dispersion"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/night_elves/spell_reduction"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "resistance"              "30"
-      }
-    }
-  }
-
   // 14%
   "avenging_spirit_heal_on_kill"
   {
@@ -447,33 +427,6 @@
       {
         "var_type"      "FIELD_INTEGER"
         "heal_pct"      "12 14"
-      }
-    }
-  }
-
-  // Upon death, deals 350 chaos damage to its killer. Does not work on
-  // buildings
-  "avenging_spirit_revenge"
-  {
-    "AbilityTextureName"          "spectre_haunt"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/night_elves/revenge"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "precache"
-    {
-      "particle"  "particles/items_fx/necronomicon_warrior_last_will.vpcf"
-      "soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "damage"        "350"
       }
     }
   }
