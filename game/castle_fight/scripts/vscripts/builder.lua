@@ -157,7 +157,7 @@ function Build( event )
         -- Add the self destruct item
         local self_destruct_item = CreateItem("item_building_self_destruct", hero, hero)
         unit:AddItem(self_destruct_item)
-        unit:SwapItems(0,1)
+        unit:SwapItems(0,5)
 
         -- Remove the dust construction particle
         if unit.construction_particle and BuildingHelper:GetNumBuildersRepairing(unit) == 0 then 
