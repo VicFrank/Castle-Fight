@@ -8,7 +8,7 @@ function freezing_blast:OnSpellStart()
 
   local particleName = "particles/units/heroes/hero_winter_wyvern/wyvern_splinter_blast.vpcf"
   
-  local filter = function(target) return not target:HasFlyMovementCapability() end
+  local filter = function(target) return target:HasFlyMovementCapability() end
   local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
 
   if not target then return end
