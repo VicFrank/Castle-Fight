@@ -128,7 +128,7 @@
   "upgrade_stronghold"
   {
     "AbilityTextureName"            "stronghold"
-    "GoldCost"                      "100"
+    "GoldCost"                      "160"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
@@ -464,36 +464,6 @@
         "Function"      "SpawnUnits"
         "NumUnits"      "1"
         "UnitName"      "gryphon_rider"
-      }
-    }
-  }
-
-  "gryphon_bash"
-  {
-    "AbilityTextureName"          "storm_spirit_electric_vortex"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/generic/bash"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"       "FIELD_INTEGER"
-        "bash_duration"  "2"
-      }
-      "02"
-      {
-        "var_type"       "FIELD_INTEGER"
-        "bash_chance"    "15"
-      }
-      "03"
-      {
-        "var_type"       "FIELD_INTEGER"
-        "bash_damage"    "25"
       }
     }
   }

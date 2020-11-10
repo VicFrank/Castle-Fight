@@ -50,12 +50,6 @@ function modifier_random_armor:OnCreated()
   local armor_type = GetRandomTableElement(armorTypes)
 
   parent:SetArmorType(armor_type)
-  
-  if armor_type == "divine" then
-    parent:SetBaseMagicalResistanceValue(75)
-  elseif armor_type == "hero" then
-    parent:SetBaseMagicalResistanceValue(60)
-  end
 
   local modifier = GetRandomTableElement(modifiers)
   parent:AddNewModifier(parent, ability, modifier, {})
