@@ -840,4 +840,58 @@
       }
     }
   }
+
+  "bear_critical_strike"
+  {
+    "AbilityTextureName"          "phantom_assassin_coup_de_grace"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/critical_strike"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_chance"             "25 30"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "crit_damage"             "200"
+      }
+    }
+  }
+
+  "bear_bash"
+  {
+    "AbilityTextureName"          "ursa_overpower"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/bash"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_duration"  "1"
+      }
+      "02"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_chance"    "30"
+      }
+      "03"
+      {
+        "var_type"       "FIELD_INTEGER"
+        "bash_damage"    "65"
+      }
+    }
+  }
 }
