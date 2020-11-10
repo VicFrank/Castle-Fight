@@ -1,16 +1,29 @@
 function GameMode:OnScriptReload()
   print("Script Reload")
 
-  -- SpawnTestBuildings()
-  -- SpawnRandomBuilding()
-  -- KillEverything()
-  -- GameMode:StartRound()
-  -- GameMode:EndRound(DOTA_TEAM_BADGUYS)
-  -- GiveLumberToAllPlayers(2000)
-  -- KillAllUnits()
-  -- KillAllBuildings()
-  -- GameMode:StartHeroSelection()
-  -- SendGameStatsToServer()
+  for _,unit in pairs(FindAllUnits()) do
+    if IsCustomBuilding(unit) and unit:GetUnitName() ~= "castle" then
+      local ability = unit:GetAbilityByIndex(0)
+
+      if ability then
+        print(ability:GetAbilityName())
+        local behavior = ability:GetBehavior()
+        print(hasbit(behavior, DOTA_ABILITY_BEHAVIOR_AUTOCAST))
+      end
+    end
+  end
+end
+
+function getBinaryValues( decNumber )
+  local backwards = ""
+
+  while decNumber > 0 do
+    local rem = decNumber % 2
+    backwards = backwards .. rem
+    decNumber = math.floor(decNumber / 2)
+  end
+  --return string.reverse(backwards)
+  return backwards
 end
 
 function SpawnTestBuildings()

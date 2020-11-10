@@ -12,6 +12,7 @@ function Spawn(keys)
       if ability and not ability:IsPassive() then
         table.insert(thisEntity.abilityList, ability)
         -- Toggle auto cast on
+        print(ability:GetAbilityName(), hasbit(ability:GetBehavior(), DOTA_ABILITY_BEHAVIOR_AUTOCAST))
         if hasbit(ability:GetBehavior(), DOTA_ABILITY_BEHAVIOR_AUTOCAST) then
           ability:ToggleAutoCast()
           local cooldown = ability:GetCooldown(ability:GetLevel())
@@ -71,8 +72,4 @@ function thisEntity:UseAutoCastAbility()
   end
 
   return 0.1
-end
-
-function hasbit(x, p)
-  return x % (p + p) >= p       
 end

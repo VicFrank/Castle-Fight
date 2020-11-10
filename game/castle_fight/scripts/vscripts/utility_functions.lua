@@ -1,3 +1,8 @@
+function hasbit(x, p)
+  if type(x) == "userdata" then x = tonumber(tostring(x)) end
+  return x % (p + p) >= p       
+end
+
 function GetOpposingTeam(team)
   if team == DOTA_TEAM_GOODGUYS then
     return DOTA_TEAM_BADGUYS
