@@ -604,36 +604,6 @@
     }
   }
 
-  // 25%
-  "crusader_cleave"
-  {
-    "AbilityTextureName"          "sven_great_cleave"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/generic/cleave"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "precache"
-    {
-      "particle"  "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "cleave_damage"         "25"
-      }
-      "02"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "cleave_radius"         "200"
-      }
-    }
-  }
-
   "crusader_bash"
   {
     "AbilityTextureName"          "sven_storm_bolt"
@@ -664,9 +634,6 @@
     }
   }
 
-  //level 1 (+6 armor, +16hp / sec, +100 thp)
-  //level 2 (+9 armor, +25hp / sec, +100 thp)
-  //duration?
   "crusader_blessing"
   {
     "AbilityTextureName"             "luna_lunar_blessing"
@@ -706,7 +673,7 @@
       "03"
       {
         "var_type"               "FIELD_INTEGER"
-        "regen_bonus"            "16 25"
+        "regen_bonus"            "7 14"
       }
       "04"
       {
