@@ -20,11 +20,6 @@ function Units:Init( unit )
   local armor_type = unit:GetArmorType()
   if armor_type then
     ApplyModifier(unit, "modifier_armor_"..armor_type)
-    if armor_type == "divine" then
-      unit:SetBaseMagicalResistanceValue(75)
-    elseif armor_type == "hero" then
-      unit:SetBaseMagicalResistanceValue(60)
-    end
   end
 
   if unit:HasSplashAttack() then

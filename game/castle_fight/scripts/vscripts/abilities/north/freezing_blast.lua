@@ -7,22 +7,9 @@ function freezing_blast:OnSpellStart()
   local ability = self
 
   local particleName = "particles/units/heroes/hero_winter_wyvern/wyvern_splinter_blast.vpcf"
-
-  local team = caster:GetTeamNumber()
-  local position = point or caster:GetAbsOrigin()
-  local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
-  local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
-  local enemies =  FindUnitsInRadius(team, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_ANY_ORDER, false)
-
-  local flyingUnits = {}
-
-  for _,enemy in pairs(enemies) do
-    if enemy:HasFlyMovementCapability() then
-      table.insert(flyingUnits, enemy)
-    end
-  end
-
-  local target = GetRandomTableElement(flyingUnits)
+  
+  local filter = function(target) return target:HasFlyMovementCapability() end
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
 
   if not target then return end
 
