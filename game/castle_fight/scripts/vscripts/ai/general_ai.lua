@@ -213,12 +213,11 @@ function UseAbility(self)
 
   local target
   local castRange = ability:GetCastRange(self:GetAbsOrigin(), self)
+  local behavior = ability:GetBehavior()
 
   if castRange and castRange > 0 then
     -- We should wait a bit before casting an aoe no-target ability
-    if string.sub(getBinaryValues(ability:GetBehavior()),3,3) == "1" then
-      --DOTA_ABILITY_BEHAVIOR_NO_TARGET
-
+    if hasbit(behavior, DOTA_ABILITY_BEHAVIOR_NO_TARGET) then
       if self.aiState.waitToCast then
         return false
       end
@@ -284,20 +283,16 @@ function UseAbility(self)
     target = self.aiState.aggroTarget
   end
 
-  if string.sub(getBinaryValues(ability:GetBehavior()),3,3) == "1" then
-    --DOTA_ABILITY_BEHAVIOR_NO_TARGET
+  if hasbit(behavior, DOTA_ABILITY_BEHAVIOR_NO_TARGET) then
     self:CastAbilityNoTarget(ability, -1)
     if self.aiState.canCast then
       self.aiState.canCast = false
     end
-  elseif string.sub(getBinaryValues(ability:GetBehavior()),4,4) == "1" then
-  --DOTA_ABILITY_BEHAVIOR_UNIT_TARGET
+  elseif hasbit(behavior, DOTA_ABILITY_BEHAVIOR_UNIT_TARGET) then
     self:CastAbilityOnTarget(target, ability, -1)
-  elseif string.sub(getBinaryValues(ability:GetBehavior()),5,5) == "1" then
-  --DOTA_ABILITY_BEHAVIOR_POINT
-    self:CastAbilityOnPosition(target:GetAbsOrigin(), ability, -1)
-  elseif string.sub(getBinaryValues(ability:GetBehavior()),6,6) == "1" then
-  --DOTA_ABILITY_BEHAVIOR_AOE
+  elseif hasbit(behavior, DOTA_ABILITY_BEHAVIOR_POINT) then
+      self:CastAbilityOnPosition(target:GetAbsOrigin(), ability, -1)
+  elseif hasbit(behavior, DOTA_ABILITY_BEHAVIOR_AOE) then
     self:CastAbilityOnPosition(target:GetAbsOrigin(), ability, -1)
   end
 

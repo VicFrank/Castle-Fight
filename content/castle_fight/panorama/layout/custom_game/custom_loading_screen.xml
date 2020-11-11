@@ -87,6 +87,7 @@
 			<Label class="List" text="#Credits_Noya" />
 			<Label class="List" text="#Credits_GeFire" />
 			<Label class="List" text="#Credits_東風谷早苗" />
+			<Label class="List" text="#Credits_Napoqe" />
 			<Label class="List" text="#Credits_Radar"	onactivate="ExternalBrowserGoToURL('https://battleshipsdota.com/');"/>
 		</Panel>
 		

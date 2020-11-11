@@ -32,14 +32,14 @@ function UpdateItemInfo(data) {
 
   var itemButtonPanel = $("#" + itemname);
 
-  // var goldCostLabel = itemButtonPanel.FindChildrenWithClassTraverse("GoldCost")[0];
-  // var lumberCostLabel = itemButtonPanel.FindChildrenWithClassTraverse("LumberCost")[0];
+  var goldCostLabel = itemButtonPanel.FindChildrenWithClassTraverse("GoldCost")[0];
+  var lumberCostLabel = itemButtonPanel.FindChildrenWithClassTraverse("LumberCost")[0];
   var stockLabel = itemButtonPanel.FindChildrenWithClassTraverse("Stock")[0];
   stockLabel.text = stock;
 
-  // goldCostLabel.text = gold_cost;
-  // if (lumber_cost > 0)
-  //   lumberCostLabel.text = lumber_cost;
+  goldCostLabel.text = gold_cost;
+  if (lumber_cost > 0)
+    lumberCostLabel.text = lumber_cost;
 
   restockTimes[itemname] = {restock_time: restock_time, purchase_time: purchase_time};
 

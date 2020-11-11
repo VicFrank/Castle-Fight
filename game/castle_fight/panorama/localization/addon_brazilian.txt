@@ -1,0 +1,103 @@
+﻿"addon"
+{
+  "addon_game_name"                "Castle Fight"
+  "DOTA_GameMode_15"               "Castle Fight"
+  "addonname"                      "Castle Fight"
+
+  "DOTA_GoodGuys"                  "Forças do Oeste"
+  "DOTA_BadGuys"                   "Forças do Leste"
+
+  "human"           "Human"
+  "naga"            "Naga"
+  "nature"          "Nature"
+  "night_elves"     "Night Elves"
+  "undead"          "Undead"
+  "orc"             "Orc"
+  "north"           "Northern Alliance"
+  "elves"           "High Elves"
+  "chaos"           "Chaos"
+  "mech"            "Mech"
+  "corrupted"       "The Corrupted"
+  "elementals"      "Elementals"
+
+  "human_description"           "Os humanos usam muitas unidades baratas para dominar o inimigo. Eles podem usar artilharia para demolir a base inimiga sem ter que atacá-la diretamente. A raça tem uma torre de defesa básica."
+
+  "naga_description"            "Os Nagas têm unidades poderosas acima da média com uma alta regeneração de pontos de vida. Além disso, muitas construções especiais caros estão disponíveis para eles. Mas note que esta raça não tem torres."
+
+  "nature_description"          "As forças da própria natureza são chamadas a lutar por seus mestres. Especializada em unidades fortes e feitiços poderosos, a raça da natureza é um pouco mais cara, mas geralmente melhor do que outras raças."
+
+  "night_elves_description"     "Elfos Noturnos se separaram da União dos Elfos e lutam independentemente por sua deusa Elune. Essas criaturas aparentemente frágeis sabem como se esquivar dos ataques do inimigo e neutralizar feitiços negativos. Os elfos noturnos têm uma torre que queima a mana do inimigo."
+
+  "undead_description"          "Os mortos-vivos estão ganhando guerreiros em suas fileiras com os mortos ressuscitados. Eles trazem morte e doença para seus inimigos. O construtor de mortos-vivos pode construir uma torre de espíritos para proteger sua base."
+
+  "orc_description"          "A horda treina guerreiros resistentes e fortes, e também os apóia com a ajuda de xamãs mágicos. Seus mestres de machado são temidos por todos no campo de batalha. Orcs podem construir uma torre de defesa antiaérea."
+
+  "north_description"          "Os habitantes do norte agem como uma frente unida contra qualquer um que queira invadir suas planícies de gelo e montanhas. A União Nortista usa muitos feitiços que reduzem a velocidade e congelam seus inimigos. Os nortistas defendem suas construções com uma torre que causa danos em area congelantes.."
+
+  "elves_description"          "Os Elfos Altos se reuniram para defender seus reinos. Os Elfos Altos usam magias fortes para enfraquecer os inimigos e ajudar os aliados. Além disso, possuem fortes armas de cerco e uma torre defensiva, que atinge vários inimigos simultaneamente."
+
+  "chaos_description"          "As forças do Caos invocam demônios horríveis e usam magia destrutiva para derrotar seus inimigos. O caos não tem armas de cerco, mas há muitas unidades fortes com ataque caótico (chaos).\nEsta raça não tem torres."
+
+  "corrupted_description"      "Amaldiçoados por demônios malignos, essas criaturas antes amigáveis se tornaram seguidores das trevas. Eles usam magia negra para enfraquecer seus inimigos. O Corrompido pode construir uma torre com ataques que se estilhação (splash)."
+
+  "mech_description"          "Técnicos inteligentes e mecânicos goblins se uniram para criar seu próprio exército. Suas unidades têm danos em àrea significativos e blindagem alta, mas não possuem tropas com ataques mágicos e ataques à distância. Os técnicos têm uma grande torre que pode atingir vários inimigos."
+
+  "elementals_description"     "Os elementais são a raça mais antiga que existe desde a própria formação do universo. As unidades dos elementais são bastante fortes, mas ao mesmo tempo bastante caras. Os elementais usam o controle de elemento para derrotar seus inimigos e fortalecer seus aliados com magias fortes. Esta raça única pode reduzir o tempo de treinamento de unidades. A raça tem uma torre defensiva."
+
+  "random_description"         "Escolhe uma raça aleatória."
+
+  "shop"                     "Loja"
+  "resources"                "Recursos"
+  "western_forces"           "Forças do Oeste"
+  "eastern_forces"           "Forças do Leste"
+  "income"                   "Renda"
+  "units_trained"            "Unidades treinadas"
+  "units_killed"             "Units Killed"
+  "buildings_built"          "Construções Construídas"
+  "rs_damage"                "Dano de Rescue Strike"
+  "choose_your_race"         "Escolha sua Raça"
+  "select"                   "Selecionar"
+  "lumber"                   "Madeira"
+  "gold"                     "Ouro"
+  "cheese"                   "Queijo"
+  "cheese_tip"               "Queijo é usado para construir construções lendárias."
+  "lumber_tip"               "A madeira é obtida ao construir construções que podem treinar unidades."
+  "gold_tip"                 "Ouro é ganho matando unidades inimigas e periodicamente com a renda."
+  "round"                        "Rodada"
+  "victory"                      "Vitória"
+  "base_interest"                "Base Interest"
+  "interest_from_buildings"      "Rendimentos de Construções"
+  "treasure_chest_multiplier"    "Multiplicador de Treasure Chest"
+  "taxes"                        "Taxas"
+  "total_interest"               "Total de Rendimentos"
+  "race_selection"               "Selecionador de Raça"
+  "loading"                      "Carregando"
+  "offer_draw"                   "Oferecer Empate"
+  "draw"                         "Aceitar"
+  "reject"                       "Rejeitar"
+
+  "Latest_Update"                "Última atualização"
+  "Vote_Options"                 "Opções de Votação"
+  "Enable_bots"                  "Habilitar Bots"
+  "Yes"                          "Sim"
+  "No"                           "Não"
+  "Rounds_to_win"                "Rodadas para Vencer"
+
+  "Credits"                      "Créditos"
+  "Credits_Description"          "Obrigado às seguintes pessoas por contribuírem para Castle Fight"
+  "Credits_Flam3s"               "Flam3s: UI (Interface Gráfica)"
+  "Credits_Myll"                 "Noya/Myll: Building Helper"
+  "Credits_Noya"                 "Noya: Dotacraft"
+  "Credits_GeFire"               "GeFire: Tradução russa"
+  "Credits_東風谷早苗"            "東風谷早苗, 赵怜, 玄武: Tradução chinesa"
+  "Credits_VicFrank"             "VicFrank"
+  "Credits_Radar"                "radar: Jogar Battleships"
+  "Credits_sim"                  "sim<>n[a]: Muitas mudanças cosméticas"
+
+  "Tips_1"                       "- Você ganha uma renda a cada 10 segundos. Você pode aumentar sua renda construindo construções."
+  "Tips_2"                       "- Você ganha madeira fazendo ou atualizando (melhorando) construções que treinam unidades (as habilidades de seu herói). A madeira ganha é igual ao custo."
+  "Tips_3"                       "- Você pode consertar construções clicando com o botão direito nelas."
+
+  "Info_Description1"            "Construa construções que treinem unidades para lutar contra as forças inimigas. Destrua o castelo inimigo para vencer a rodada.."
+  "Info_Description2"            "Pode haver várias rodadas, então certifique-se de não sair após a primeira rodada!"
+}
