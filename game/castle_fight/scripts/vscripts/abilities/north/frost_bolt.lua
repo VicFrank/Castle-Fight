@@ -10,6 +10,8 @@ function frost_bolt:OnSpellStart()
 
   local team = caster:GetTeamNumber()
   local position = point or caster:GetAbsOrigin()
+  local num_targets = ability:GetSpecialValueFor("targets")
+
   local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
   local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
   local enemies =  FindUnitsInRadius(team, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_ANY_ORDER, false)
@@ -22,24 +24,26 @@ function frost_bolt:OnSpellStart()
     end
   end
 
-  local target = GetRandomTableElement(enemyBuildings)
+  local targets = GetRandomTableElements(enemyBuildings, num_targets)
 
   caster:EmitSound("Hero_Crystal.CrystalNovaCast")
 
   local particleName = "particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"
 
-  local projectile = {
-    Target = target,
-    Source = caster,
-    Ability = ability,
-    EffectName = particleName,
-    iMoveSpeed = 2000,
-    bDodgeable = false,
-    bVisibleToEnemies = true,
-    bReplaceExisting = false,
-  }
-
-  ProjectileManager:CreateTrackingProjectile(projectile)
+  for _,target in pairs(targets) do
+    local projectile = {
+      Target = target,
+      Source = caster,
+      Ability = ability,
+      EffectName = particleName,
+      iMoveSpeed = 2000,
+      bDodgeable = false,
+      bVisibleToEnemies = true,
+      bReplaceExisting = false,
+    }
+  
+    ProjectileManager:CreateTrackingProjectile(projectile)
+  end
 end
 
 function frost_bolt:OnProjectileHit(target, locationn)
@@ -71,6 +75,8 @@ function greater_frost_bolt:OnSpellStart()
 
   local team = caster:GetTeamNumber()
   local position = point or caster:GetAbsOrigin()
+  local num_targets = ability:GetSpecialValueFor("targets")
+
   local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
   local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
   local enemies = FindUnitsInRadius(team, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_ANY_ORDER, false)
@@ -83,24 +89,26 @@ function greater_frost_bolt:OnSpellStart()
     end
   end
 
-  local target = GetRandomTableElement(enemyBuildings)
+  local targets = GetRandomTableElements(enemyBuildings, num_targets)
 
   caster:EmitSound("Hero_Crystal.CrystalNova")
 
   local particleName = "particles/units/heroes/hero_winter_wyvern/winter_wyvern_arctic_attack.vpcf"
 
-  local projectile = {
-    Target = target,
-    Source = caster,
-    Ability = ability,
-    EffectName = particleName,
-    iMoveSpeed = 2000,
-    bDodgeable = false,
-    bVisibleToEnemies = true,
-    bReplaceExisting = false,
-  }
-
-  ProjectileManager:CreateTrackingProjectile(projectile)
+  for _,target in pairs(targets) do
+    local projectile = {
+      Target = target,
+      Source = caster,
+      Ability = ability,
+      EffectName = particleName,
+      iMoveSpeed = 2000,
+      bDodgeable = false,
+      bVisibleToEnemies = true,
+      bReplaceExisting = false,
+    }
+  
+    ProjectileManager:CreateTrackingProjectile(projectile)
+  end
 end
 
 function greater_frost_bolt:OnProjectileHit(target, location)
@@ -111,7 +119,6 @@ function greater_frost_bolt:OnProjectileHit(target, location)
     target:EmitSound("hero_Crystal.projectileImpact")
 
     local damage = self:GetSpecialValueFor("damage")
-    local radius = self:GetSpecialValueFor("radius")
 
     local team = caster:GetTeamNumber()
     local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
@@ -199,6 +206,7 @@ end
 function modifier_frost_bolt_freeze:OnCreated( kv )
   if IsServer() then
     local parent = self:GetParent()
+    self.mana_modifier = self:GetAbility():GetSpecialValueFor("mana_regen")
     parent:EmitSound("Hero_Crystal.Frostbite")
     local particleNameA = "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
     local particleNameB = "particles/generic_gameplay/generic_slowed_cold.vpcf"
@@ -211,12 +219,17 @@ end
 function modifier_frost_bolt_freeze:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
+    MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE
   }
   return funcs
 end
 
 function modifier_frost_bolt_freeze:GetModifierProvidesFOWVision()
   return 1
+end
+
+function modifier_frost_bolt_freeze:GetModifierTotalPercentageManaRegen()
+  return self.mana_modifier
 end
 
 function modifier_frost_bolt_freeze:OnDestroy()

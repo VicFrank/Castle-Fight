@@ -121,9 +121,6 @@
     }
   }
 
-  // Launches a Frost Bolt at a random enemy structure. On impact this bolt freezes
-  // the structure for 10 seconds and deals 50 chaos damage to it.
-  //  Cooldown: 12 seconds
   "frost_bolt"
   {
     "AbilityTextureName"          "winter_wyvern_splinter_blast"
@@ -147,19 +144,26 @@
       "01"
       {
         "var_type"         "FIELD_INTEGER"
-        "duration"         "5"
+        "duration"         "14"
       }
       "02"
       {
         "var_type"         "FIELD_INTEGER"
-        "damage"           "50"
+        "damage"           "0"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "targets"                 "1"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "mana_regen"                 "-1.0"
       }
     }
   }
 
-  // Launches a huge frost bolt at a random enemy structure. On impact, this unit
-  // freezes everything in 250 range for 12 seconds and deals 100 chaos damage to
-  // it.
   "greater_frost_bolt"
   {
     "AbilityTextureName"          "tusk_ice_shards"
@@ -169,7 +173,7 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "1.0"
-    "AbilityManaCost"             "15"
+    "AbilityManaCost"             "12"
 
     "precache"
     {
@@ -183,17 +187,22 @@
       "01"
       {
         "var_type"         "FIELD_INTEGER"
-        "duration"         "6"
+        "duration"         "16"
       }
       "02"
       {
         "var_type"         "FIELD_INTEGER"
-        "damage"           "100"
+        "damage"           "0"
       }
       "03"
       {
-        "var_type"         "FIELD_INTEGER"
-        "radius"           "200"
+        "var_type"                "FIELD_INTEGER"
+        "targets"                 "2"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "mana_regen"                 "-1.0"
       }
     }
   }

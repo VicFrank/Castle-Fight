@@ -54,6 +54,28 @@ function GetRandomTableElement( table )
   return randomElement
 end
 
+function GetRandomTableElements(table, amount)
+  if #table == 0 then return nil end
+  
+  local indexes = {}
+  local elements = {}
+  
+  while TableCount(indexes) < amount do
+    local nRandomIndex = RandomInt(1, #table)
+    if not TableContainsValue(indexes, nRandomIndex) then
+      table.insert(indexes, nRandomIndex)
+    end
+    if TableCount(indexes) >= TableCount(table) then break end
+  end
+
+  for _,i in pairs(indexes) do
+    local randomElement = table[ i ]
+    table.insert(elements, randomElement)
+  end
+  
+  return elements
+end
+
 function FilterTable(inputTable, filter)
   local newTable = {}
   for _,v in pairs(inputTable) do
