@@ -19,7 +19,7 @@ function frost_bolt:OnSpellStart()
   local enemyBuildings = {}
 
   for _,enemy in pairs(enemies) do
-    if IsCustomBuilding(enemy) then
+    if IsCustomBuilding(enemy) and enemy:GetUnitName() ~= "castle" then
       table.insert(enemyBuildings, enemy)
     end
   end
@@ -84,7 +84,7 @@ function greater_frost_bolt:OnSpellStart()
   local enemyBuildings = {}
 
   for _,enemy in pairs(enemies) do
-    if IsCustomBuilding(enemy) then
+    if IsCustomBuilding(enemy) and enemy:GetUnitName() ~= "castle" then
       table.insert(enemyBuildings, enemy)
     end
   end
