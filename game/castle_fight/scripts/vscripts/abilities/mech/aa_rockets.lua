@@ -25,7 +25,7 @@ modifier_aa_rockets = class({})
 function modifier_aa_rockets:IsHidden() return true end
 
 function modifier_aa_rockets:OnCreated()
-  self:StartIntervalThink(3)
+  self:StartIntervalThink(2)
 end
 
 function modifier_aa_rockets:OnIntervalThink()
