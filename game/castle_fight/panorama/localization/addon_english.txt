@@ -32,7 +32,7 @@
 
   "orc_description"          "The horde trains hardy and strong warriors, and well as supports them with the help of magic shamans. Their axe masters are feared by all on the battlefield. Orcs can build an anti-air defense tower."
 
-  "north_description"          "The northern inhabitants act as a united front against anyone who wants to invade their ice plains and mountains. The north uses many spells that slow and freeze their enemies. Northerners defend their buildings with a tower that deals freezing splash damage."
+  "north_description"          "The northern inhabitants act as a united front against anyone who wants to invade their ice plains and mountains. The north uses many spells that slow and freeze their enemies. Northerners defend their buildings with a tower that freezes enemy buildings."
 
   "elves_description"          "The High Elves have gathered to defend their kingdoms. High Elves use strong magic to weaken enemies and help allies. In addition, they have strong siege weapons and a defensive tower, which hits several enemies simultaneously."
 
