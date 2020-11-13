@@ -116,27 +116,19 @@ function greater_frost_bolt:OnProjectileHit(target, location)
   local duration = self:GetSpecialValueFor("duration")
 
   if target then
-    target:EmitSound("hero_Crystal.projectileImpact")
+      target:EmitSound("hero_Crystal.projectileImpact")
+      target:AddNewModifier(caster, self, "modifier_frost_bolt_freeze", {duration = duration})
+      FreezeCooldowns(target, duration)
 
-    local damage = self:GetSpecialValueFor("damage")
-
-    local team = caster:GetTeamNumber()
-    local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
-    local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
-    local enemies = FindUnitsInRadius(team, location, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_ANY_ORDER, false)
-
-    for _,enemy in pairs(enemies) do
-      enemy:AddNewModifier(caster, self, "modifier_frost_bolt_freeze", {duration = duration})
-      FreezeCooldowns(enemy, duration)
+      local damage = self:GetSpecialValueFor("damage")
 
       ApplyDamage({
-        victim = enemy,
-        attacker = caster,
-        damage = damage,
-        damage_type = DAMAGE_TYPE_PURE,
-        ability = self,
+      victim = target,
+      attacker = caster,
+      damage = damage,
+      damage_type = DAMAGE_TYPE_PURE,
+      ability = self,
       })
-    end
   end
 end
 
