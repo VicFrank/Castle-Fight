@@ -80,7 +80,7 @@ function UpgradeBuilding(keys)
   -- Add the self destruct item
   local self_destruct_item = CreateItem("item_building_self_destruct", hero, hero)
   building:AddItem(self_destruct_item)
-  building:SwapItems(0,1)
+  building:SwapItems(0,5)
 
   -- If the building to upgrade is selected, change the selection to the new one
   if PlayerResource:IsUnitSelected(playerID, caster) then
