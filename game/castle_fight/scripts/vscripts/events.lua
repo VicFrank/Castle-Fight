@@ -16,11 +16,13 @@ function GameMode:OnGameInProgress()
       -- Record the game settings for stat tracking purposes
       local roundsToWin = tonumber(CustomNetTables:GetTableValue("settings", "num_rounds")["numRounds"])
       local botsEnabled = CustomNetTables:GetTableValue("settings", "bots_enabled")["botsEnabled"]
+      local draftMode = CustomNetTables:GetTableValue("settings", "draft_mode")["draftMode"]
       local cheatsEnabled = GameRules:IsCheatMode()
       GameRules.GameData.settings = {
         roundsToWin = roundsToWin,
         allowBots = botsEnabled,
         cheatsEnabled = cheatsEnabled,
+        draftMode = draftMode,
       }
 
       CustomNetTables:SetTableValue("round_score", "score", {

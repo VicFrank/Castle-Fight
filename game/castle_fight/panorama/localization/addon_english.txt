@@ -82,6 +82,12 @@
   "Yes"                          "Yes"
   "No"                           "No"
   "Rounds_to_win"                "Rounds to Win"
+  "Draft_mode"                   "Draft mode"
+  "No_opinion"                   "No opinion"
+  "All_pick"                     "All pick"
+  "Single_draft"                 "Single draft"
+  "All_random"                   "All random"
+
 
   "Credits"                      "Credits"
   "Credits_Description"          "Thanks to the following people for contributing to Castle Fight"
