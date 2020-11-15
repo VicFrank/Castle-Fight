@@ -49,12 +49,7 @@ function modifier_overtake:OnAttackLanded(keys)
       FindClearSpaceForUnit(new_unit, position, true)
 
       local cooldown = health / self.cooldownPerHealth + 5
-      print("overtake cooldown " .. cooldown)
       self.ability:StartCooldown(cooldown)
-
-      print("overtake target:GetHealthPercent() " .. target:GetHealthPercent())
-      print("overtake relative_health " .. relative_health)
-      print("overtake health " .. health)
 
       target:CustomRemoveSelf()
 
