@@ -23,7 +23,7 @@ function lunatic_goblin_suicide:OnSpellStart()
       local damage = far_damage
 
       if IsCustomBuilding(enemy) then
-        damage = damage * 0.35
+        damage = damage * 0.75
       end
 
       ApplyDamage({
@@ -42,7 +42,7 @@ function lunatic_goblin_suicide:OnSpellStart()
       local damage = full_damage - far_damage
 
       if IsCustomBuilding(enemy) then
-        damage = damage * 0.35
+        damage = damage * 0.75
       end
 
       ApplyDamage({
