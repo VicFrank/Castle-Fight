@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
   // Natures Curse (Reduces the mana regeneration rate of all enemy
-  // buildings and units on the map by 50%. Duration: 10 seconds.)
+  // buildings and units on the map)
   "ancient_of_wonders_natures_curse"
   {
     "AbilityTextureName"          "silencer_curse_of_the_silent"
@@ -19,7 +19,7 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "mana_regen"              "-50"
+        "mana_regen"              "-0.75"
       }
       "02"
       {
@@ -31,7 +31,7 @@
 
   // Summons a wandering tornado around an enemy unit that slows
   // movement and attack speed by 25%, and also causes 40 dps in the area
-  // of ​​250 AoE for 5 seconds. Buildings take 50% damage
+  // of ​​250 AoE for 5 seconds.
   "ancient_of_wind_cyclone"
   {
     "AbilityTextureName"          "enraged_wildkin_tornado"
@@ -42,7 +42,7 @@
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 
     "AbilityCooldown"        "1.0"
-    "AbilityManaCost"        "14"
+    "AbilityManaCost"        "16"
 
     "precache"
     {
@@ -421,7 +421,7 @@
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     "AbilityCooldown"             "10.0 8.0"
-    "AbilityManaCost"             "25"
+    "AbilityManaCost"             "40"
 
     "AbilityCastRange"        "700"
     "AbilityCastPoint"        "0.3"
@@ -512,7 +512,6 @@
     "AbilityManaCost"             "200"
   }
 
-  // 15hp / sec
   "keeper_natures_aura"
   {
     "AbilityTextureName"          "furion_teleportation"
@@ -528,7 +527,7 @@
       "01"
       {
         "var_type"               "FIELD_INTEGER"
-        "health_per_second"      "15"
+        "health_per_second"      "9"
       }
       "02"
       {

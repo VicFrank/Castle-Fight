@@ -62,25 +62,32 @@ end
 
 function GameMode:RandomHero(playerID)
   local heroes = {
-    "npc_dota_hero_kunkka",
-    "npc_dota_hero_slark",
-    "npc_dota_hero_treant",
-    "npc_dota_hero_vengefulspirit",
-    "npc_dota_hero_abaddon",
-    "npc_dota_hero_juggernaut",
-    "npc_dota_hero_tusk",
-    "npc_dota_hero_invoker",
-    "npc_dota_hero_chaos_knight",
-    "npc_dota_hero_grimstroke",
-    "npc_dota_hero_tinker",
+    human = "npc_dota_hero_kunkka",
+    naga = "npc_dota_hero_slark",
+    nature = "npc_dota_hero_treant",
+    night_elves = "npc_dota_hero_vengefulspirit",
+    undead = "npc_dota_hero_abaddon",
+    orc = "npc_dota_hero_juggernaut",
+    north = "npc_dota_hero_tusk",
+    elves = "npc_dota_hero_invoker",
+    chaos = "npc_dota_hero_chaos_knight",
+    corrupted = "npc_dota_hero_grimstroke",
+    mech = "npc_dota_hero_tinker",
   }
 
   local botHeroes = {
     "npc_dota_hero_kunkka",
   }
 
+  local heroesAvailable = CustomNetTables:GetTableValue("heroes_available", tostring(playerID))
+  local heroesToPickFrom = {}
+
+  for _,availableHero in pairs(heroesAvailable.heroes) do
+    table.insert(heroesToPickFrom, heroes[availableHero])
+  end
+
   -- Randomly select a hero from the pool
-  local hero = GetRandomTableElement(heroes)
+  local hero = GetRandomTableElement(heroesToPickFrom)
 
   if PlayerResource:IsFakeClient(playerID) then
     hero = GetRandomTableElement(botHeroes)
@@ -103,6 +110,8 @@ end
 
 function GameMode:StartHeroSelection()
   print("StartHeroSelection()")
+
+  GameMode:SetAvailableHeroes()
 
   GameRules.InHeroSelection = true
   CustomNetTables:SetTableValue("hero_select", "status", {ongoing = true})
@@ -149,6 +158,43 @@ function GameMode:StartHeroSelection()
 
     return 1
   end)
+end
+
+
+function GameMode:SetAvailableHeroes()
+  local heroes = {
+    "human",
+    "naga",
+    "nature",
+    "night_elves",
+    "undead",
+    "orc",
+    "north",
+    "elves",
+    "chaos",
+    "corrupted",
+    "mech",
+  }
+  
+  local availableHeroes = {}
+  
+  local draftMode = tonumber(CustomNetTables:GetTableValue("settings", "draft_mode")["draftMode"])
+  
+  for _,playerID in pairs(GameRules.playerIDs) do
+    if draftMode == 1 then -- All pick
+      availableHeroes = heroes
+    elseif draftMode == 2 then -- Single draft
+      availableHeroes = GetRandomTableElements(heroes, 3)
+    elseif draftMode == 3 then -- All random
+      availableHeroes = GetRandomTableElements(heroes, 1)
+    end
+  
+    CustomNetTables:SetTableValue("heroes_available", tostring(playerID), {
+      heroes = availableHeroes,
+    })
+  end  
+  
+  CustomGameEventManager:Send_ServerToAllClients("available_heroes", {})
 end
 
 function GameMode:EndHeroSelection()

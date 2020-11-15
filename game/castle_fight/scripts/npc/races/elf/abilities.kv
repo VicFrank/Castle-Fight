@@ -1,8 +1,8 @@
 "DOTAAbilities"
 {
-  // Whenever an allied unit dies, there is a 20% chance the unit will revive after
+  // Whenever an allied unit dies, there is a chance the unit will revive after
   // 2 seconds.
-  // Cannot revive legendary units. This aura stacks once.
+  // Cannot revive legendary units. 
   "bright_aura_of_grace"
   {
     "AbilityTextureName"          "omniknight_guardian_angel"
@@ -23,7 +23,12 @@
       "01"
       {
         "var_type"           "FIELD_INTEGER"
-        "chance"             "20"
+        "chance"             "25"
+      }
+      "02"
+      {
+        "var_type"           "FIELD_INTEGER"
+        "cooldown"             "1.5"
       }
     }
   }
@@ -63,7 +68,7 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "1.0"
-    "AbilityManaCost"             "4.0"
+    "AbilityManaCost"             "5.0"
 
     "precache"
     {
@@ -265,7 +270,7 @@
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     "AbilityCooldown"             "12.0"
-    "AbilityManaCost"             "0"
+    "AbilityManaCost"             "40"
 
     "AbilityCastRange"          "700"
     "AbilityCastPoint"          "0.3"
@@ -434,7 +439,7 @@
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     "AbilityCooldown"             "8.0"
-    "AbilityManaCost"             "50"
+    "AbilityManaCost"             "60"
 
     "AbilityCastRange"          "700"
     "AbilityCastPoint"          "0.3"

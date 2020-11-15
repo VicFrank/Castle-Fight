@@ -14,6 +14,7 @@ function modifier_overtake:OnCreated()
   self.parent = self:GetParent()
 
   self.chance = self.ability:GetSpecialValueFor("chance")
+  self.cooldownPerHealth = self.ability:GetSpecialValueFor("cooldown_per_health")
 end
 
 function modifier_overtake:DeclareFunctions()
@@ -25,6 +26,8 @@ end
 
 function modifier_overtake:OnAttackLanded(keys)
   if not IsServer() then return end
+
+  if not self.ability:IsCooldownReady() then return end
 
   local attacker = keys.attacker
   local target = keys.target
@@ -39,10 +42,14 @@ function modifier_overtake:OnAttackLanded(keys)
       local playerID = self.parent.playerID
       local team = self.parent:GetTeam()
       local new_unit = CreateLaneUnit(unitName, position, team, playerID)
-      new_unit:SetHealth(new_unit:GetMaxHealth() * relative_health)
+      local health = new_unit:GetMaxHealth() * relative_health
+      new_unit:SetHealth(health)
       new_unit:SetMana(target:GetMana())
       new_unit:SetForwardVector(fv)
       FindClearSpaceForUnit(new_unit, position, true)
+
+      local cooldown = health / self.cooldownPerHealth + 5
+      self.ability:StartCooldown(cooldown)
 
       target:CustomRemoveSelf()
 

@@ -218,6 +218,7 @@ function GameMode:InitGameMode()
   GameRules.drawVotes = {}
   GameRules.numRoundsVotes = {}
   GameRules.allowBotsVote = {}
+  GameRules.draftMode = {}
   GameRules.ggVote = {}
 
   GameRules.HeroSelectionTimer = ""
@@ -251,6 +252,9 @@ function GameMode:InitGameMode()
   })
   CustomNetTables:SetTableValue("settings", "bots_enabled", {
     botsEnabled = false
+  })
+  CustomNetTables:SetTableValue("settings", "draft_mode", {
+    draftMode = 1
   })
 end
 

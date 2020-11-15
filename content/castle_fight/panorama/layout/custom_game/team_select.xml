@@ -57,13 +57,15 @@
                     <Label text="Yes" id="1"/>
                   </DropDown>   
                 </Panel>
-                <!-- <Panel id="DraftModeVote" class="OptionsContainer">
+                <Panel id="DraftModeVote" class="OptionsContainer">
                   <Label text="Draft Mode"/>
-                  <DropDown oninputsubmit="VoteOptionClickedDraftMode()">
-                    <Label text="All Pick" id="1"/>
-                    <Label text="All Random" id="2"/>
+                  <DropDown id="DraftModeVoteDropdown" oninputsubmit="VoteOptionClickedDraftMode()">
+                    <Label text="#No_opinion" id="-1"/>
+                    <Label text="#All_pick" id="1"/>
+                    <Label text="#Single_draft" id="2"/>
+                    <Label text="#All_random" id="3"/>
                   </DropDown>
-                </Panel> -->
+                </Panel>
               </Panel>
               <Panel id="OptionDivider" />
               <Label id="Advanced" text="#Advanced" onactivate="OnAdvancedOptionsPressed()"/>

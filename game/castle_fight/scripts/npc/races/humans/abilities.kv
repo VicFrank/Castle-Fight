@@ -128,7 +128,7 @@
   "upgrade_stronghold"
   {
     "AbilityTextureName"            "stronghold"
-    "GoldCost"                      "160"
+    "GoldCost"                      "140"
     "AbilityChannelTime"            "5"
 
     "BaseClass"                     "ability_datadriven"
@@ -604,36 +604,6 @@
     }
   }
 
-  // 25%
-  "crusader_cleave"
-  {
-    "AbilityTextureName"          "sven_great_cleave"
-    "BaseClass"                   "ability_lua"
-    "ScriptFile"                  "abilities/generic/cleave"
-    "MaxLevel"                    "1"
-
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "precache"
-    {
-      "particle"  "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "cleave_damage"         "25"
-      }
-      "02"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "cleave_radius"         "200"
-      }
-    }
-  }
-
   "crusader_bash"
   {
     "AbilityTextureName"          "sven_storm_bolt"
@@ -664,9 +634,6 @@
     }
   }
 
-  //level 1 (+6 armor, +16hp / sec, +100 thp)
-  //level 2 (+9 armor, +25hp / sec, +100 thp)
-  //duration?
   "crusader_blessing"
   {
     "AbilityTextureName"             "luna_lunar_blessing"
@@ -706,7 +673,7 @@
       "03"
       {
         "var_type"               "FIELD_INTEGER"
-        "regen_bonus"            "16 25"
+        "regen_bonus"            "7 14"
       }
       "04"
       {
@@ -838,7 +805,6 @@
     }
   }
 
-  // 270 dmg within 370 aoe, 35 mana 12 CD
   "chamber_of_darkness"
   {
     "AbilityTextureName"             "pugna_nether_blast"
@@ -846,14 +812,14 @@
     "ScriptFile"                     "abilities/human/chamber_of_darkness"
     "MaxLevel"                       "1"
 
-    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_POINT"
     "AbilityUnitDamageType"       "DAMAGE_TYPE_MAGICAL"
     "AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     "AbilityCooldown"        "12.0"
     "AbilityManaCost"        "35"
-    "AbilityCastRange"       "370"
+    "AbilityCastRange"       "300"
 
     "precache"
     {
@@ -866,7 +832,7 @@
       "01"
       {
         "var_type"               "FIELD_INTEGER"
-        "radius"                 "370"
+        "radius"                 "300"
       }
       "02"
       {
@@ -907,7 +873,7 @@
     }
   }
 
-  // Increases the attack speed of nearby allied units by 66%. 7 mana, CD: 7
+  // Increases the attack speed of nearby allied units
   "holy_power"
   {
     "AbilityTextureName"             "omniknight_purification"
@@ -935,12 +901,12 @@
       "01"
       {
         "var_type"               "FIELD_INTEGER"
-        "attack_speed"           "66"
+        "attack_speed"           "30"
       }
       "02"
       {
         "var_type"               "FIELD_INTEGER"
-        "radius"                 "800"
+        "radius"                 "900"
       }
     }
   }
@@ -1057,7 +1023,7 @@
     }
   }
 
-  // Whenever an allied structure trains a unit, there is a 24% chance of
+  // Whenever an allied structure trains a unit, there is a chance of
   // producing an additional unit of the same type, fighting for the owner of
   // the Altar. Does not train legendary units. Aura does not stack.
   "call_to_arms"
@@ -1074,7 +1040,7 @@
       "01"
       {
         "var_type"               "FIELD_INTEGER"
-        "trigger_chance"         "24"
+        "trigger_chance"         "20"
       }
     }
   }

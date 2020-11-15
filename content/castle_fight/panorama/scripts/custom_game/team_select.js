@@ -33,7 +33,7 @@ function VoteOptionClickedBots()
 
 function VoteOptionClickedDraftMode()
 {
-	var panel = $("#DraftModeVote");
+	var panel = $("#DraftModeVoteDropdown");
 	var id = panel.GetSelected().id;
 	GameEvents.SendCustomGameEventToServer("draft_mode_vote", {id: id});
 }
