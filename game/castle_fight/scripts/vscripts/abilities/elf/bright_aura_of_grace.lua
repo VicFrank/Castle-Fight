@@ -1,6 +1,7 @@
 bright_aura_of_grace = class({})
 LinkLuaModifier("modifier_bright_aura_of_grace_aura", "abilities/elf/bright_aura_of_grace.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_bright_aura_of_grace_aura_buff", "abilities/elf/bright_aura_of_grace.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_bright_aura_of_grace_resurrect_debuff", "abilities/elf/bright_aura_of_grace.lua", LUA_MODIFIER_MOTION_NONE)
 
 function bright_aura_of_grace:GetIntrinsicModifierName()
   return "modifier_bright_aura_of_grace_aura"
@@ -43,7 +44,7 @@ function modifier_bright_aura_of_grace_aura:GetAuraSearchTeam()
 end
 
 function modifier_bright_aura_of_grace_aura:GetAuraEntityReject(target)
-  return IsCustomBuilding(target) or target:IsRealHero() or target:IsLegendary()
+  return IsCustomBuilding(target) or target:IsRealHero() or target:IsLegendary() or target:HasModifier("modifier_bright_aura_of_grace_resurrect_debuff")
 end
 
 function modifier_bright_aura_of_grace_aura:GetAuraSearchType()
@@ -74,10 +75,15 @@ end
 function modifier_bright_aura_of_grace_aura_buff:OnDeath(params)
   if not IsServer() then return end
 
+  local ability = self:GetAbility()
+  if not ability:IsCooldownReady() then return end
+
   local parent = self:GetParent()
+  local attacker = params.attacker
 
   if params.unit == parent then
-    local chance = self:GetAbility():GetSpecialValueFor("chance")
+    local chance = ability:GetSpecialValueFor("chance")
+    local cooldown = ability:GetSpecialValueFor("cooldown")
 
     if chance >= RandomInt(1, 100) then
       local unitName = parent:GetUnitName()
@@ -85,6 +91,7 @@ function modifier_bright_aura_of_grace_aura_buff:OnDeath(params)
       local team = parent:GetTeam()
       local playerID = parent.playerID
       local fv = parent:GetForwardVector()
+      ability:StartCooldown(cooldown)
 
       -- revive after 2 seconds
       Timers:CreateTimer(2, function()
@@ -92,6 +99,8 @@ function modifier_bright_aura_of_grace_aura_buff:OnDeath(params)
 
         resurrected:SetForwardVector(fv)
         FindClearSpaceForUnit(resurrected, position, true)
+
+        resurrected:AddNewModifier(attacker, ability, "modifier_bright_aura_of_grace_resurrect_debuff", {})
 
         resurrected:EmitSound("Hero_Omniknight.GuardianAngel.Cast")
         local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf", PATTACH_ABSORIGIN_FOLLOW, resurrected)
@@ -101,4 +110,22 @@ function modifier_bright_aura_of_grace_aura_buff:OnDeath(params)
       end)
     end
   end
+end
+
+
+
+modifier_bright_aura_of_grace_resurrect_debuff = class({})
+
+function modifier_bright_aura_of_grace_resurrect_debuff:IsPurgable()
+  return false
+end
+
+function modifier_bright_aura_of_grace_resurrect_debuff:DeclareFunctions()
+  local funcs = {
+  }
+  return funcs
+end
+
+function modifier_bright_aura_of_grace_aura_buff:GetTexture()
+  return "omniknight_guardian_angel"
 end
