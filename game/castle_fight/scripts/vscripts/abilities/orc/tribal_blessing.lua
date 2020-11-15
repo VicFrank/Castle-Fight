@@ -5,18 +5,30 @@ LinkLuaModifier("modifier_tribal_blessing", "abilities/orc/tribal_blessing.lua",
 function tribal_blessing:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
+  local max_stacks = ability:GetSpecialValueFor("max_stacks")
+  local modifierName = "modifier_tribal_blessing"
 
   local allies = FindAlliesInRadius(caster, FIND_UNITS_EVERYWHERE)
 
-  local target = FindFirstUnit(allies, function(target)
-    return not IsCustomBuilding(target) and not target:IsRealHero()
-  end)
+  local target
+  for _,ally in pairs(allies) do
+    if not ally:IsRealHero() and not IsCustomBuilding(ally) then
+      if not ally:HasModifier(modifierName) then
+        target = ally
+      elseif ally:HasModifier(modifierName) and ally:GetModifierStackCount(modifierName, ally) < max_stacks then
+        target = ally
+      end
+    end
+  end
 
   if not target then return end
 
   caster:EmitSound("Hero_Dazzle.Shallow_Grave")
 
-  target:AddNewModifier(caster, ability, "modifier_tribal_blessing", {})
+  local modifier = target:AddNewModifier(target, ability, modifierName, {})
+
+  local stackCount = target:GetModifierStackCount(modifierName, target)
+  modifier:SetStackCount(math.min(stackCount + 1, max_stacks))
 
   local abilities = {
     "tribal_blessing_critical_strike",
@@ -65,15 +77,15 @@ function modifier_tribal_blessing:DeclareFunctions()
 end
 
 function modifier_tribal_blessing:GetModifierPhysicalArmorBonus()
-  return self.armor
+  return self:GetStackCount() * self.armor
 end
 
 function modifier_tribal_blessing:GetModifierAttackSpeedBonus_Constant()
-  return self.attack_speed
+  return self:GetStackCount() * self.attack_speed
 end
 
 function modifier_tribal_blessing:GetModifierPreAttack_BonusDamage()
-  return self.damage_increase
+  return self:GetStackCount() * self.damage_increase
 end
 
 -- function modifier_tribal_blessing:GetEffectName()
