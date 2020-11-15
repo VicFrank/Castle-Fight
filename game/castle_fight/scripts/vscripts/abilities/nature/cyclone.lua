@@ -47,7 +47,7 @@ function modifier_ancient_of_wind_cyclone_aura:GetAuraEntityReject(target) retur
 modifier_ancient_of_wind_cyclone_debuff = class({})
 
 function modifier_ancient_of_wind_cyclone_debuff:IsDebuff() return true end
-function modifier_ancient_of_wind_cyclone_debuff:IsHidden() return true end
+function modifier_ancient_of_wind_cyclone_debuff:IsHidden() return false end
 
 function modifier_ancient_of_wind_cyclone_debuff:GetAttributes()
   return MODIFIER_ATTRIBUTE_MULTIPLE
@@ -65,9 +65,9 @@ end
 function modifier_ancient_of_wind_cyclone_debuff:OnIntervalThink()
   if not IsServer() then return end
 
-  local damage = self.tick_rate * self.dps
+  if IsCustomBuilding(self:GetParent()) then return end
 
-  if IsCustomBuilding(self:GetParent()) then damage = damage * 0.5 end
+  local damage = self.tick_rate * self.dps
 
   ApplyDamage({
     victim = self:GetParent(),
