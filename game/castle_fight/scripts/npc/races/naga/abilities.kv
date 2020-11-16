@@ -145,7 +145,7 @@
       "03"
       {
         "var_type"                "FIELD_INTEGER"
-        "aoe"                     "125"
+        "aoe"                     "150"
       }
     }
   }
@@ -284,7 +284,7 @@
     "AbilityTextureName"          "venomancer_poison_sting"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/naga/hydra_poison_attack"
-    "MaxLevel"                    "1"
+    "MaxLevel"                    "4"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -308,7 +308,7 @@
       "03"
       {
         "var_type"           "FIELD_INTEGER"
-        "dps"                "4"
+        "dps"                "4 10 15 25"
       }
       "04"
       {
@@ -430,7 +430,7 @@
       "01"
       {
         "var_type"       "FIELD_INTEGER"
-        "bash_duration"  "2"
+        "bash_duration"  "0.6"
       }
       "02"
       {
@@ -470,7 +470,7 @@
     }
   }
 
-  // Remove all buffs, significant slow, 20 mana, CD: 6
+  // Remove all buffs, significant slow
   "naga_siren_purge"
   {
     "AbilityTextureName"          "satyr_trickster_purge"
@@ -511,7 +511,6 @@
   // Summon Lobsters Summons two lobsters that live for 45 seconds.
   // Lobsters (Pierce / Heavy, 360HP) have Critical Strike (10%, 3x)
   // 50% chance to reduce damage taken by 35.
-  // TODO: Mana cost/Cooldown
   "naga_siren_summon_lobsters"
   {
     "AbilityTextureName"          "lycan_summon_wolves"

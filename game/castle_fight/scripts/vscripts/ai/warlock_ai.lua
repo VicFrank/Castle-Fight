@@ -81,9 +81,11 @@ end
 
 function thisEntity:UseAbility()
   local ability = self:FindAbilityByName("chamber_of_darkness")
+  local castRange = ability:GetCastRange(self:GetAbsOrigin(), self)
 
-  if GetDistanceBetweenTwoUnits(self, self.aiState.aggroTarget) < 230 then
-    self:CastAbilityNoTarget(ability, -1)
+  if GetDistanceBetweenTwoUnits(self, self.aiState.aggroTarget) < castRange then
+    local position = self.aiState.aggroTarget:GetAbsOrigin()
+    self:CastAbilityOnPosition(position, ability, -1)
     return true
   end
 

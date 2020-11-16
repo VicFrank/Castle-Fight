@@ -180,8 +180,20 @@ function OnAllowBotsVote(eventSourceIndex, args)
 end
 
 function OnDraftModeVote(eventSourceIndex, args)
-  local playerID = args.PlayerID
-
+    local playerID = args.PlayerID
+    local draftMode = args.id
+  
+    if draftMode == "-1" then
+        GameRules.draftMode[playerID] = nil
+    else
+        GameRules.draftMode[playerID] = draftMode
+    end
+    
+    local result = GetVoteResult(GameRules.draftMode, 1)
+  
+    CustomNetTables:SetTableValue("settings", "draft_mode", {
+        draftMode = result
+    })
 end
 
 function ClearGGVote(team)

@@ -62,6 +62,10 @@
 				<Label class="SettingsRowLeft" text="#Enable_bots" />
 				<Label class="SettingsRowRight" id="AllowBotsLabel" text="#no" />
 			</Panel>
+			<Panel class="SettingsRow">
+				<Label class="SettingsRowLeft" text="#Draft_mode" />
+				<Label class="SettingsRowRight" id="DraftModeLabel" text="#All_pick" />
+			</Panel>
 		</Panel>	
 
 		<Panel id="InfoPanel">

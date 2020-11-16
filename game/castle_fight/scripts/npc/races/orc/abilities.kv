@@ -418,8 +418,8 @@
     }
   }
 
-  //Gives a random ally permanent +20 damage, +20 attack speed, 3 armor and
-  // 200 hit points. Also gives one of the following
+  //Gives a random ally permanent +30 damage, +20 attack speed, 3 armor
+  // Also gives one of the following
   //  - Demolish (x1.5)
   //  - Critical Strike (25%, x2)
   //  - Evasion (30%)
@@ -446,7 +446,7 @@
       "01"
       {
         "var_type"             "FIELD_INTEGER"
-        "damage_increase"      "20"
+        "damage_increase"      "30"
       }
       "02"
       {
@@ -461,7 +461,7 @@
       "04"
       {
         "var_type"      "FIELD_INTEGER"
-        "health"        "200"
+        "max_stacks"         "3"
       }
     }
   }
@@ -581,7 +581,7 @@
       "06"
       {
         "var_type"      "FIELD_INTEGER"
-        "radius"        "250"
+        "radius"        "300"
       }
     }
   }

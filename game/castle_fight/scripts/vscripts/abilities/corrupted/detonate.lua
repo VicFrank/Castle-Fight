@@ -31,7 +31,7 @@ function modifier_infernal_detonate:OnDeath(keys)
     local enemies = FindEnemiesInRadius(self:GetParent(), self.radius)
 
     for _,enemy in pairs(enemies) do
-      if not IsCustomBuilding(enemy) then
+      if not IsCustomBuilding(enemy) and not enemy:HasFlyMovementCapability() then
         local damageTable = {
           victim = enemy,
           attacker = self:GetParent(),
@@ -47,7 +47,7 @@ function modifier_infernal_detonate:OnDeath(keys)
     enemies = FindEnemiesInRadius(self:GetParent(), self.radius / 2)
 
     for _,enemy in pairs(enemies) do
-      if not IsCustomBuilding(enemy) then
+      if not IsCustomBuilding(enemy) and not enemy:HasFlyMovementCapability() then
         local damageTable = {
           victim = enemy,
           attacker = self:GetParent(),

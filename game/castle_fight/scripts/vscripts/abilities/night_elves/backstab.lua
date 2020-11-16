@@ -73,6 +73,8 @@ function modifier_assassin_backstab:OnAttackLanded(keys)
       if not IsCustomBuilding(target) then
         self.caster:EmitSound("Hero_BountyHunter.Jinada")
 
+        self.ability:StartCooldown(self.ability:GetCooldown(self.ability:GetLevel()))
+
         -- Deal bonus damage
         local damageTable = {
           victim = target,

@@ -12,6 +12,7 @@
     "hero_select",
     "custom_shop",
     "round_score",
+    "heroes_available",
     "settings"
   ]
 } 

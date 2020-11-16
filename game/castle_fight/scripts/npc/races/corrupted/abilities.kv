@@ -31,7 +31,7 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "1.0"
-    "AbilityManaCost"             "12"
+    "AbilityManaCost"             "15"
   }
 
   "tentacle_critical_strike"
@@ -72,7 +72,7 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "AbilityCooldown"             "1.0"
-    "AbilityManaCost"             "5"
+    "AbilityManaCost"             "6"
   }
 
   "corrupted_weakening_attack"
@@ -263,7 +263,7 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-    "AbilityCastRange"            "400 650"
+    "AbilityCastRange"            "650"
 
     "AbilitySpecial"
     {
@@ -275,7 +275,7 @@
       "02"
       {
         "var_type"                "FIELD_INTEGER"
-        "radius"                  "400 650"
+        "radius"                  "650"
       }
     }
   }
@@ -418,6 +418,11 @@
       {
         "var_type"                "FIELD_INTEGER"
         "chance"                  "10"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "cooldown_per_health"     "100"
       }
     }
   }
