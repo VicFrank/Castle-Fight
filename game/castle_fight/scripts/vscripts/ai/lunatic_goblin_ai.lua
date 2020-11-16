@@ -50,8 +50,10 @@ function thisEntity:AIThink()
     MoveToAggroTarget(self)
     if GetDistanceBetweenTwoUnits(self, self.aiState.aggroTarget) < 150 then
       local ability = self:FindAbilityByName("lunatic_goblin_suicide")
-      if ability:IsFullyCastable() then
+
+      if ability:IsFullyCastable() and not ability:IsInAbilityPhase() then
         self:CastAbilityNoTarget(ability, -1)
+        return 0.6
       end
     end
     return GetAggroThinkTime()
