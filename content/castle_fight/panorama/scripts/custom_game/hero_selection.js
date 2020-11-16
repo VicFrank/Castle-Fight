@@ -43,22 +43,20 @@ var RaceToMovieSource = {
   random: "file://{resources}/videos/heroes/npc_dota_hero_wisp.webm",
 };
 
+var CurrentSelectedMoviePanel;
 var CurrentRace = "human";
 
-function SetAvailableHeroes(data) {
-  RemoveOldHeroPanels();
-
+function SetAvailableHeroes() {
   var localPlayerID = Players.GetLocalPlayer();
   var availableHeroes = CustomNetTables.GetTableValue("heroes_available", localPlayerID);
-
-  var heroListPanel = $("#HeroList");
-
+  
   var amountOfAvailableHeroes = Object.keys(availableHeroes.heroes).length;
+  var heroListPanel = $("#HeroPickHolder");
   if(amountOfAvailableHeroes > 1) {
     availableHeroes.heroes[amountOfAvailableHeroes + 1] = "random";
   }
 
-  const amountOfHeroesPerRow = 4;
+  const amountOfHeroesPerRow = 6;
   const amountOfRows = Math.ceil(amountOfAvailableHeroes / amountOfHeroesPerRow);
   for (let rowIndex = 0; rowIndex < amountOfRows; rowIndex++) {
     let heroRowPanel = $.CreatePanel("Panel", heroListPanel, "heroRow" + rowIndex);
@@ -80,10 +78,12 @@ function SetAvailableHeroes(data) {
     }
   }
 
-  OnRaceSelected(availableHeroes.heroes[1]);
+  const heroToSelect = Math.floor(Math.random() * amountOfAvailableHeroes) + 1;
+  OnRaceSelected(availableHeroes.heroes[heroToSelect]);
 }
 
 function RemoveOldHeroPanels() {
+  CurrentSelectedMoviePanel = null;
   var rowIndex = 0;
   do {    
     var heroRowPanel = $("#heroRow" + rowIndex);
@@ -102,7 +102,7 @@ function GetXmlForHeroMoviePanel(hero, heroIndex) {
 
   const videoSource = RaceToMovieSource[hero];
 
-  let xml = '<MoviePanel id="heroMovietest' + heroIndex + '" class="HeroImage" ' +
+  let xml = '<MoviePanel id="heroMovie' + hero + '" class="HeroImage" ' +
       'src="' + videoSource + '" repeat="true" autoplay="onload" ' +
       'onmouseover="UIShowTextTooltip(' + heroNameLocalized + ')" onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected(\'' + hero + '\')" />';
 
@@ -115,8 +115,6 @@ function OnRaceSelected(race) {
   Game.EmitSound("General.ButtonClick")
 }
 
-var CurrentSelectedMoviePanel = $("#kunkka_selected");
-
 function UpdateHeroDetails(race) {
   var heroLabel = $("#CurrentHeroLabel");
   var heroImage = $("#HeroImageSelected");
@@ -125,12 +123,17 @@ function UpdateHeroDetails(race) {
   heroLabel.text = $.Localize("#" + race);
   description.text = $.Localize("#" + race + "_description");
 
-  var moviePanelID = RaceToPanelID[race];
-  var moviePanel = $("#" + moviePanelID);
+  if(CurrentSelectedMoviePanel) {
+    CurrentSelectedMoviePanel.RemoveClass("hero-selected");
+  }
+  var moviePanel = $("#heroMovie" + race);
 
-  CurrentSelectedMoviePanel.style.visibility = "collapse";
-  moviePanel.style.visibility = "visible";
+  if(!moviePanel) {
+    return;
+  }
+
   CurrentSelectedMoviePanel = moviePanel;
+  CurrentSelectedMoviePanel.AddClass("hero-selected");
 }
 
 function OnHeroSelectButtonPressed() {
@@ -158,12 +161,25 @@ function ShowHeroPanel() {
 var HeroSelectPanel = $("#HeroPickHolder");
 
 function HideHeroSelect() {
-  HeroSelectPanel.RemoveClass("HeroSelectVisible")
+  HeroSelectPanel.RemoveClass("HeroSelectVisible");
+  $("#DraftModeContainer").AddClass("hidden");
+  $("#DraftModeContainer").RemoveClass("visible");
+  $("#HeroDetailsContainer").AddClass("hidden");
+  $("#HeroDetailsContainer").RemoveClass("visible");
+
+  RemoveOldHeroPanels();
+
   ShowHeroPanel();  
 }
 
 function ShowHeroSelect() {
+  
   HeroSelectPanel.AddClass("HeroSelectVisible");
+  $("#DraftModeContainer").AddClass("visible");
+  $("#DraftModeContainer").RemoveClass("hidden");
+  $("#HeroDetailsContainer").AddClass("visible");
+  $("#HeroDetailsContainer").RemoveClass("hidden");
+
   HideHeroPanel();
 }
 
@@ -178,6 +194,24 @@ function UpdateHeroSelectVisibility() {
     ShowHeroSelect();
   } else {
     HideHeroSelect();
+  }
+  
+  SetDraftModeText();
+}
+
+function SetDraftModeText() {
+  var draftMode = CustomNetTables.GetTableValue("settings", "draft_mode")["draftMode"];
+
+  switch (draftMode) {
+    case "1": //All pick
+      $("#DraftModeHeroSelectLabel").text = $.Localize("#All_pick");
+      break;
+    case "2": //Single draft
+      $("#DraftModeHeroSelectLabel").text = $.Localize("#Single_draft");
+      break;
+    case "3": //All random
+      $("#DraftModeHeroSelectLabel").text = $.Localize("#All_random");
+      break;
   }
 }
 
@@ -206,7 +240,6 @@ function HideHeroesInScoreboard() {
 }
 
 (function () {
-  // ShowHeroSelect();
   UpdateHeroDetails(CurrentRace);
 
   $.Schedule(1, HideHeroesInScoreboard);
