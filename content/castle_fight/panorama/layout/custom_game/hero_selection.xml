@@ -6,33 +6,25 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/hero_selection.js" />     
   </scripts>
+  
   <Panel class="HeroSelectionRoot" hittest="false">
+    <Panel id="DraftModeContainer" class="DraftModeContainter" hittest="false">
+      <Label id="DraftModeHeroSelectLabel" text="#All_pick" />
+    </Panel>
+
     <Panel id="HeroPickHolder" class="HeroSelectHidden" hittest="false">
-      <Panel id="HeroList" hittest="false">
-        <Label id="HeroListLabel" text="#choose_your_race" />
-      </Panel>
+      <Label id="HeroListLabel" text="#choose_your_race" />
+    </Panel>
+
+    <Panel id="HeroDetailsContainer" hittest="false">
       <Panel id="HeroDetails" hittest="false">
-        <Panel id="SelectedHeroMovie" hittest="false">
-          <MoviePanel id="kunkka_selected" class="HeroImageSelected" src="file://{resources}/videos/heroes/npc_dota_hero_kunkka.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="slark_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_slark.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="treant_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_treant.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="vengefulspirit_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_vengefulspirit.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="abaddon_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_abaddon.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="juggernaut_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_juggernaut.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="tusk_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_tusk.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="invoker_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_invoker.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="chaos_knight_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_chaos_knight.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="grimstroke_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_grimstroke.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="tinker_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_tinker.webm" repeat="true" autoplay="onload"/>
-          <MoviePanel id="random_selected" class="HeroImageSelected HeroSelectionHidden" src="file://{resources}/videos/heroes/npc_dota_hero_wisp.webm" repeat="true" autoplay="onload"/>
-        </Panel>
-        <Panel id="RaceDescription" text="">
-			<Label id="CurrentHeroLabel" text="#human" />
-			<Label id="RaceDescriptionLabel" text=""/>
-		</Panel>
-		<Button id="HeroSelectButton" onactivate="OnHeroSelectButtonPressed()">
-			<Label id="HeroSelectButtonLabel" text="#select" />
-		</Button>
+        <Label id="CurrentHeroLabel" text="#human" />
+
+        <Label id="RaceDescriptionLabel" text=""/>
+
+        <Button id="HeroSelectButton" onactivate="OnHeroSelectButtonPressed()">
+          <Label id="HeroSelectButtonLabel" text="#select" />
+        </Button>
       </Panel>
     </Panel>
   </Panel>

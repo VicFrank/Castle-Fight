@@ -1,218 +1,215 @@
-.HeroSelectionRoot
-{
-  width: 100%;
-  height: 100%;
+.HeroSelectionRoot {
+    width: 100%;
+    height: 100%;
+    flow-children: down;
 }
 
-#HeroPickHolder
-{
-  width: 1000px;
-  height: 700px;
-
-  horizontal-align: center;
-  vertical-align: top;
-
-  margin-top: 75px;
-
-  border-radius: 5.0px;
-  background-color: #000000da;
-  background-size: 100%;
-  flow-children: right;
-  border-top: 1px solid #ffffff11;
-  border-left: 1px solid #ffffff11;
-  border-right: 1px solid #ffffff11;
-  border-bottom: 1px solid #ffffff11;
+.DraftModeContainter {
+    horizontal-align: center;
+    vertical-align: top;
+    margin-top: 60px;
+    background-color: #000000da;
+    padding: 5px;
 }
 
-.HeroSelectHidden
-{
-  transition-property: opacity, transform;
+#DraftModeHeroSelectLabel {
+    align: center top;
+    margin-top: 1px;
+    margin-left: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px 1.2 black;
+    font-family: defaultFont;
+    font-size: 36px;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+#HeroPickHolder {
+    min-height: 200px;
+
+    horizontal-align: center;
+    vertical-align: top;
+
+    margin-top: 20px;
+
+    padding: 5px;
+    padding-right: 0px;
+
+    border-radius: 5px;
+    background-color: #000000da;
+    background-size: 100%;
+    flow-children: right;
+    border-top: 1px solid #ffffff11;
+    border-left: 1px solid #ffffff11;
+    border-right: 1px solid #ffffff11;
+    border-bottom: 1px solid #ffffff11;
+
+    flow-children: down;
+}
+
+.HeroRow {
+    padding: 5px;
+    padding-right: 0px;
+    flow-children: right;
+    horizontal-align: center;
+}
+
+.HeroSelectHidden {
+    transition-property: opacity, transform;
     transition-duration: 0.25s;
-  opacity: 0;
-  transform: scaleX(0) scaleY(0) translatey(-50px);
+    opacity: 0;
+    transform: scaleX(0) scaleY(0) translatey(-50px);
 }
 
-.HeroSelectVisible
-{
-  opacity: 1;
-  transform: scaleX(1) scaleY(1);
+.HeroSelectVisible {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
 }
 
-#HeroList
-{
-  width: 650px;
-  height: 100%;
-
-  border-right: 2px solid #111111FF;
-
-  flow-children: down;
+#HeroListLabel {
+    align: center top;
+    margin-top: 4px;
+    margin-left: 20px;
+    margin-right: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px 1.2 black;
+    font-family: defaultFont;
+    font-size: 36px;
 }
 
-#HeroListLabel
-{
-	align: center top;
-	margin-top: 4px;
-	margin-left: 4px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: white;
-	text-shadow: 1px 1px 2px 1.2 black;
-	font-family: defaultFont;
-	font-size: 36px;
+#HeroDetailsContainer {
+    horizontal-align: center;
+    width: 650px;
+    height: 250px;
+    margin-top: 20px;
 }
 
-.HeroRow
-{
-  flow-children: right;
-  padding: 5px;
-  horizontal-align: center;
+#HeroDetails {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #000000da;
+    background-size: 100%;
+    border-top: 1px solid #ffffff11;
+    border-left: 1px solid #ffffff11;
+    border-right: 1px solid #ffffff11;
+    border-bottom: 1px solid #ffffff11;
+    flow-children: down;
 }
 
-.HeroImage
-{
-  padding: 5px;
+#CurrentHeroLabel {
+    horizontal-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px 1.2 black;
+    font-family: defaultFont;
+    font-size: 36px;
 }
 
-#HeroDetails
-{
-  width: 350px;
-  height: 100%;
-  background-image: url("file://{images}/custom_game/kunkka_scroll_texture_psd_mip0.tga");
-  background-repeat: no-repeat;
-  background-size: 100% 41%;
-  box-shadow: fill #00000066 -4px -4px 8px 8px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #444444;
-  flow-children: down;
+#RaceDescriptionLabel {
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    text-overflow: shrink;
+    text-shadow: 0px 1px 0px 3 #00000077;
+    transition-property: color;
+    transition-duration: 0.1811s;
+    transition-timing-function: ease-in-out;
 }
 
-#CurrentHeroLabel
-{
-	align: center top;
-	margin-top: 15px;
-	margin-left: 4px;
-	margin-bottom: 0px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: white;
-	text-shadow: 1px 1px 2px 1.2 black;
-	font-family: defaultFont;
-	font-size: 36px;
+#HeroSelectButton {
+    width: 250px;
+    horizontal-align: center;
+    vertical-align: bottom;
+
+    background-color: #5a615ecc;
+
+    border: 1px solid #00000088;
+
+    transition-property: box-shadow, background-color, opacity, transform;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+
+    brightness: 1;
 }
 
-#RaceDescription
-{
-  margin-top: 25px;
-  margin-left: 0px;
-  background-image: url("file://{images}/custom_game/newbloom_scroll_texture_psd_mip0.tga");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  width: 100%;
-  height: 100%;
+#HeroSelectButton:hover {
+    brightness: 1.2;
 }
 
-#RaceDescriptionLabel
-{
-	font-size: 20px;
-	color: white;
-	width: 100%;
-  height: 100%;
-	text-overflow: shrink;
-	text-shadow: 0px 1px 0px 3.0 #00000077;
-	margin-left: 10px;
-	margin-top: 60px;
-	margin-right: 10px;
-	margin-bottom: 10px;
-	transition-property: color;
-	transition-duration: .1811s;
-	transition-timing-function: ease-in-out;
-}
-
-#HeroSelectButton
-{
-	width: 70%;
-	horizontal-align: center;
-	margin-top: -70px;
-
-	background-image: url("s2r://panorama/images/backgrounds/background_play_button_large_2x_png.vtex");
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5A615Ecc ), to( #879695cc ) );
-
-	border-top: 1px solid #ffffff44;
-	border-right: 1px solid #00000088;
-	border-left: 1px solid #ffffff44;
-	border-bottom: 1px solid #00000088;
-
-	transition-property: box-shadow, background-color, opacity, transform;
-	transition-delay: 0.0s;
-	transition-duration: 0.2s;
-	transition-timing-function: ease-in-out;
-	
-	brightness: 1;
-}
-
-#HeroSelectButton:Hover
-{
-  brightness: 1.2;
- }
-
-#HeroSelectButtonLabel
-{
-	font-size: 25px;
-	text-align: center;
-	margin-top: 4px;
-	horizontal-align: center;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-weight: bold;
-	color: white;
-	text-shadow: 1px 1px 2px 1.2 black;
-	font-family: defaultFont;
+#HeroSelectButtonLabel {
+    font-size: 28px;
+    text-align: center;
+    horizontal-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px 1.2 black;
+    font-family: defaultFont;
 }
 
 .HeroImage {
-	width: 148px;
-	height: 186px;
-	background-color: #000000de;
-	vertical-align: middle;
-	horizontal-align: center;
-	tooltip-position: top;
-	opacity: 0.9;
-	margin-right: 5px;
-	border-top: 1px solid #ffffff11;
-	border-left: 1px solid #ffffff11;
-	border-right: 1px solid #ffffff11;
-	border-bottom: 1px solid #ffffff11;
+    width: 148px;
+    height: 186px;
+    background-color: #000000de;
+    vertical-align: middle;
+    horizontal-align: center;
+    tooltip-position: top;
+    opacity: 0.85;
+    margin-right: 10px;
+    border-top: 1px solid #ffffff11;
+    border-left: 1px solid #ffffff11;
+    border-right: 1px solid #ffffff11;
+    border-bottom: 1px solid #ffffff11;
 }
 
 .HeroImage:hover {
-	opacity: 2;
-	pre-transform-scale2d: 1.05;
-	
+    opacity: 2;
+    pre-transform-scale2d: 1.05;
+}
+
+.hero-selected {
+    border: 5px solid #ffffffce;
+    opacity: 2;
 }
 
 #SelectedHeroMovie {
-  horizontal-align: center;
+    horizontal-align: center;
 }
 
 .HeroImageSelected {
-	width: 148px;
-	height: 186px;
-	background-color: #000000de;
-	vertical-align: middle;
-	horizontal-align: center;
-	tooltip-position: top;
-	opacity: 0.9;
-	margin-left: 5px;
-	margin-top: 25px;
-	border-top: 1px solid #ffffff11;
-	border-left: 1px solid #ffffff11;
-	border-right: 1px solid #ffffff11;
-	border-bottom: 1px solid #ffffff11;
+    width: 148px;
+    height: 186px;
+    background-color: #000000de;
+    vertical-align: middle;
+    horizontal-align: center;
+    tooltip-position: top;
+    opacity: 0.9;
+    margin-left: 5px;
+    margin-top: 25px;
+    border-top: 1px solid #ffffff11;
+    border-left: 1px solid #ffffff11;
+    border-right: 1px solid #ffffff11;
+    border-bottom: 1px solid #ffffff11;
 }
 
 .HeroSelectionHidden {
-  visibility: collapse;
+    visibility: collapse;
 }
