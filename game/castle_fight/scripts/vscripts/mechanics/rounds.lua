@@ -142,6 +142,12 @@ function GameMode:StartHeroSelection()
   end
 
   local timeToStart = HERO_SELECT_TIME
+
+  local draftMode = tonumber(CustomNetTables:GetTableValue("settings", "draft_mode")["draftMode"])
+  if draftMode == 3 then -- All random
+    timeToStart = 5
+  end
+
   -- Reset the timer if it's already going
   Timers:RemoveTimer(GameRules.HeroSelectionTimer)
 
@@ -191,9 +197,8 @@ function GameMode:SetAvailableHeroes()
   
     CustomNetTables:SetTableValue("heroes_available", tostring(playerID), {
       heroes = availableHeroes,
-    })
-  end  
-  
+    })  
+  end
   CustomGameEventManager:Send_ServerToAllClients("available_heroes", {})
 end
 
