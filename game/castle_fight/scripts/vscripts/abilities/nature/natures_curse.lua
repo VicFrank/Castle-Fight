@@ -4,7 +4,6 @@ LinkLuaModifier("modifier_natures_curse_debuff", "abilities/nature/natures_curse
 
 function ancient_of_wonders_natures_curse:OnSpellStart()
   local duration = self:GetSpecialValueFor("duration")
-  self.mana_modifier = self:GetAbility():GetSpecialValueFor("mana_regen")
   self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_natures_curse_aura", {duration = duration})
 end
 
@@ -53,6 +52,12 @@ function modifier_natures_curse_aura:GetAuraDuration()
 end
 
 modifier_natures_curse_debuff = class({})
+
+function modifier_natures_curse_debuff:OnCreated()
+  self.ability = self:GetAbility()
+
+  self.mana_modifier = self.ability:GetSpecialValueFor("mana_regen")
+end
 
 function modifier_natures_curse_debuff:IsPurgable()
   return false
