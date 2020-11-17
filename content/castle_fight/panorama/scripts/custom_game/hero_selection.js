@@ -46,6 +46,18 @@ var RaceToMovieSource = {
 var CurrentSelectedMoviePanel;
 var CurrentRace = "human";
 
+function OnHeroesAvailableChanged(table_name, keyPlayerID, data) {
+    var localPlayerID = Players.GetLocalPlayer();
+    if(localPlayerID != keyPlayerID) {
+      return;
+    }
+
+    var heroesAvailable = CustomNetTables.GetTableValue("heroes_available", localPlayerID);
+    if (heroesAvailable && heroesAvailable.heroes) {
+      SetAvailableHeroes();
+    }
+}
+
 function SetAvailableHeroes() {
   var localPlayerID = Players.GetLocalPlayer();
   var availableHeroes = CustomNetTables.GetTableValue("heroes_available", localPlayerID);
@@ -172,8 +184,7 @@ function HideHeroSelect() {
   ShowHeroPanel();  
 }
 
-function ShowHeroSelect() {
-  
+function ShowHeroSelect() {  
   HeroSelectPanel.AddClass("HeroSelectVisible");
   $("#DraftModeContainer").AddClass("visible");
   $("#DraftModeContainer").RemoveClass("hidden");
@@ -244,7 +255,7 @@ function HideHeroesInScoreboard() {
 
   $.Schedule(1, HideHeroesInScoreboard);
 
-  GameEvents.Subscribe("available_heroes", SetAvailableHeroes);
+  CustomNetTables.SubscribeNetTableListener("heroes_available", OnHeroesAvailableChanged);
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
   UpdateHeroSelectVisibility();
 })();

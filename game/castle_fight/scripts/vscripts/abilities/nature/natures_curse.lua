@@ -39,9 +39,6 @@ function modifier_natures_curse_aura:GetAuraSearchTeam()
   return DOTA_UNIT_TARGET_TEAM_ENEMY
 end
 
--- function modifier_natures_curse_aura:GetAuraEntityReject(target)
---   return not IsCustomBuilding(target)
--- end
 
 function modifier_natures_curse_aura:GetAuraSearchType()
   return DOTA_UNIT_TARGET_ALL
@@ -65,11 +62,11 @@ end
 
 function modifier_natures_curse_debuff:DeclareFunctions()
   local funcs = {
-    MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE
+    MODIFIER_PROPERTY_MANA_REGEN_CONSTANT
   }
   return funcs  
 end
 
-function modifier_natures_curse_debuff:GetModifierTotalPercentageManaRegen()
+function modifier_natures_curse_debuff:GetModifierConstantManaRegen()
   return self.mana_modifier
 end
