@@ -12,7 +12,7 @@ function tribal_blessing:OnSpellStart()
 
   local target
   for _,ally in pairs(allies) do
-    if not ally:IsRealHero() and not IsCustomBuilding(ally) then
+    if not ally:IsRealHero() and not IsCustomBuilding(ally) and not ally:GetUnitName() == "lunatic_goblin" then
       if not ally:HasModifier(modifierName) then
         target = ally
       elseif ally:HasModifier(modifierName) and ally:GetModifierStackCount(modifierName, ally) < max_stacks then
