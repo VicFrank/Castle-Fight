@@ -111,6 +111,8 @@ end
 function GameMode:StartHeroSelection()
   print("StartHeroSelection()")
 
+  GameMode:SetAvailableHeroes()
+
   GameRules.InHeroSelection = true
   CustomNetTables:SetTableValue("hero_select", "status", {ongoing = true})
 
@@ -162,8 +164,6 @@ function GameMode:StartHeroSelection()
 
     return 1
   end)
-
-  GameMode:SetAvailableHeroes()
 end
 
 
@@ -211,6 +211,10 @@ function GameMode:EndHeroSelection()
     if hero:IsAlive() and not hero.hasPicked then
       GameMode:RandomHero(hero:GetPlayerOwnerID())
     end
+  end
+  
+  for _,playerID in pairs(GameRules.playerIDs) do
+    CustomNetTables:SetTableValue("heroes_available", tostring(playerID), nil)  
   end
 
   -- Wait for loading, then start the next round

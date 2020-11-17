@@ -48,8 +48,12 @@ var CurrentRace = "human";
 
 function OnHeroesAvailableChanged(table_name, keyPlayerID, data) {
     var localPlayerID = Players.GetLocalPlayer();
+    if(localPlayerID != keyPlayerID) {
+      return;
+    }
+
     var heroesAvailable = CustomNetTables.GetTableValue("heroes_available", localPlayerID);
-    if (heroesAvailable && localPlayerID == keyPlayerID) {
+    if (heroesAvailable && heroesAvailable.heroes) {
       SetAvailableHeroes();
     }
 }
