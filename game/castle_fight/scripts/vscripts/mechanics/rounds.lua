@@ -199,7 +199,6 @@ function GameMode:SetAvailableHeroes()
       heroes = availableHeroes,
     })  
   end
-  CustomGameEventManager:Send_ServerToAllClients("available_heroes", {})
 end
 
 function GameMode:EndHeroSelection()
@@ -212,6 +211,10 @@ function GameMode:EndHeroSelection()
     if hero:IsAlive() and not hero.hasPicked then
       GameMode:RandomHero(hero:GetPlayerOwnerID())
     end
+  end
+  
+  for _,playerID in pairs(GameRules.playerIDs) do
+    CustomNetTables:SetTableValue("heroes_available", tostring(playerID), nil)  
   end
 
   -- Wait for loading, then start the next round

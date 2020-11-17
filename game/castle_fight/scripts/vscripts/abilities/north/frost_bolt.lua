@@ -192,6 +192,7 @@ function modifier_frost_bolt_freeze:CheckState()
   return {
     [MODIFIER_STATE_ROOTED] = true,
     [MODIFIER_STATE_DISARMED] = true,
+    [MODIFIER_STATE_SILENCED] = true,
   }
 end
 
@@ -211,7 +212,7 @@ end
 function modifier_frost_bolt_freeze:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
-    MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE
+    MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
   }
   return funcs
 end
@@ -220,7 +221,7 @@ function modifier_frost_bolt_freeze:GetModifierProvidesFOWVision()
   return 1
 end
 
-function modifier_frost_bolt_freeze:GetModifierTotalPercentageManaRegen()
+function modifier_frost_bolt_freeze:GetModifierConstantManaRegen()
   return self.mana_modifier
 end
 
