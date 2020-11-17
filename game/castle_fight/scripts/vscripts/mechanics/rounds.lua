@@ -111,8 +111,6 @@ end
 function GameMode:StartHeroSelection()
   print("StartHeroSelection()")
 
-  GameMode:SetAvailableHeroes()
-
   GameRules.InHeroSelection = true
   CustomNetTables:SetTableValue("hero_select", "status", {ongoing = true})
 
@@ -164,6 +162,8 @@ function GameMode:StartHeroSelection()
 
     return 1
   end)
+
+  GameMode:SetAvailableHeroes()
 end
 
 
@@ -199,7 +199,6 @@ function GameMode:SetAvailableHeroes()
       heroes = availableHeroes,
     })  
   end
-  CustomGameEventManager:Send_ServerToAllClients("available_heroes", {})
 end
 
 function GameMode:EndHeroSelection()
