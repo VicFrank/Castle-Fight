@@ -233,6 +233,7 @@ function GameMode:InitGameMode()
   GameRules.GameData.playerInfo = {}
   GameRules.GameData.settings = {}
   GameRules.GameData.rounds = {}
+  GameRules.GameData.spawnPositions = {}
 
   GameRules.PlayerOrderTime = {}
 
