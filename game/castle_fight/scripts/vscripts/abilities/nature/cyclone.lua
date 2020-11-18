@@ -65,8 +65,6 @@ end
 function modifier_ancient_of_wind_cyclone_debuff:OnIntervalThink()
   if not IsServer() then return end
 
-  if IsCustomBuilding(self:GetParent()) then return end
-
   local damage = self.tick_rate * self.dps
 
   ApplyDamage({

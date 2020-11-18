@@ -5,7 +5,6 @@ modifier_bassline_aura = class({})
 function modifier_bassline_aura:GetTexture() return "item_ancient_janggo" end
 function modifier_bassline_aura:IsAura() return true end
 function modifier_bassline_aura:IsPurgable() return false end
-function modifier_bassline_aura:GetAuraRadius() return 99999 end
 function modifier_bassline_aura:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_bassline_aura:GetAuraSearchType() return DOTA_UNIT_TARGET_ALL end
 function modifier_bassline_aura:GetAuraDuration() return 0.5 end
@@ -13,6 +12,27 @@ function modifier_bassline_aura:GetModifierAura() return "modifier_bassline_buff
 
 function modifier_bassline_aura:GetAuraEntityReject(target)
   return IsCustomBuilding(target) or target:IsRealHero()
+end
+
+function modifier_bassline_aura:OnCreated()
+  if not IsServer() then return end
+  self.creationTime = GameRules:GetGameTime()
+end
+
+function modifier_bassline_aura:GetAuraRadius()
+  if not IsServer() then return end
+
+  local time = GameRules:GetGameTime() - self.creationTime
+  local radius = 99999
+  local expansionTime = 3
+
+  if time < expansionTime then
+    multiplier = time / expansionTime
+
+    return radius * multiplier
+  end
+
+  return radius
 end
 
 modifier_bassline_buff = class({})
