@@ -28,7 +28,14 @@ function erase:OnSpellStart()
   local enemyName = enemy:GetUnitName()
 
   for _,enemy in pairs(enemies) do
-    if enemy:GetUnitName() == enemyName then
+    local skipUnit = false
+    for _,modifier in pairs(enemy:FindAllModifiers()) do
+      if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+        skipUnit = true
+      end
+    end
+
+    if enemy:GetUnitName() == enemyName and not skipUnit then
       PlayPACrit(caster, enemy)
       enemy:Kill(ability, caster)
     end

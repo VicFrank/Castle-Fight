@@ -25,6 +25,12 @@ function earthquake:OnSpellStart()
 
   target:EmitSound(sound)
 
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end 
+
   local earthquakeTargets = FindEnemiesInRadius(caster, radius, target:GetAbsOrigin())
 
   for _,earthquakeTarget in pairs(earthquakeTargets) do

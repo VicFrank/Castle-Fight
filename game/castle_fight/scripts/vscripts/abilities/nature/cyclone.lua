@@ -10,6 +10,12 @@ function ancient_of_wind_cyclone:OnSpellStart()
   local target = GetRandomVisibleEnemy(caster:GetTeam())
   if not target then return end
 
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
+
   local duration = ability:GetSpecialValueFor("duration")
 
   local dummy = CreateUnitByName("dummy_unit", target:GetAbsOrigin(), true, nil, nil, caster:GetTeam())

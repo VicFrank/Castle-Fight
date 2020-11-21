@@ -9,6 +9,12 @@ function volcano_eruption:OnSpellStart()
 
   if not target then return end
 
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
+
   local position = target:GetAbsOrigin()
 
   local tick_rate = 1.0
