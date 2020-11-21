@@ -188,6 +188,10 @@ function OnDraftModeVote(eventSourceIndex, args)
     else
         GameRules.draftMode[playerID] = draftMode
     end
+  
+    CustomNetTables:SetTableValue("settings", "vote_draft_mode_" .. playerID , {
+        vote = draftMode
+    })
     
     local result = GetVoteResult(GameRules.draftMode, 1)
   
