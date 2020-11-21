@@ -5,7 +5,7 @@ function volcano_eruption:OnSpellStart()
   local ability = self
 
   local filter = function(target) return not target:HasFlyMovementCapability() end
-  local target = GetRandomEnemy(caster:GetTeam(), filter)
+  local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
 
   if not target then return end
 
