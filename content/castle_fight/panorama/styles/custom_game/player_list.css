@@ -1,0 +1,215 @@
+.Root {
+    width: 100%;
+    height: 100%;
+}
+
+.AvatarsPanel {
+    flow-children: down;
+    horizontal-align: left;
+    z-index: 3;
+    margin-top: 100px;
+    padding-bottom: 10px;
+}
+
+#PlayerPanel {
+    width: 290px;
+    height: 70px;
+    opacity: 1;
+    transition-duration: 0.05s;
+    transition-property: background-image;
+    transition-timing-function: ease-in-out;
+    margin-bottom: 5px;
+    /* border-bottom-left-radius: 10px; */
+    /* border-top-left-radius: 10px; */
+    flow-children: right;
+
+    background-color: #000e;
+}
+
+#PlayerPanel.AvatarEnemy {
+    background-color: rgba(26, 8, 8, 0.933);
+}
+
+.AvatarContainer {
+    width: 70px;
+    height: 70px;
+}
+
+.UserAvatar {
+    width: 70px;
+    height: 70px;
+    background-size: 100%;
+    background-image: url("file://{images}/custom_game/PlayerPanel/user_avatar.png");
+    horizontal-align: left;
+
+    border: 1px solid #373a40;
+}
+
+#DisconnectedIcon {
+    width: 70px;
+    height: 20px;
+
+    vertical-align: center;
+
+    background-image: url("s2r://panorama/images/hud/reborn/icon_disconnect_png.vtex");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-duration: 0.3s;
+}
+
+.Disconnected #DisconnectedIcon {
+    opacity: 1;
+}
+
+#Username {
+    horizontal-align: left;
+    margin-right: 25px;
+    margin-bottom: 18px;
+    margin-top: 5px;
+    padding-right: 5px;
+
+    text-overflow: clip;
+    overflow: clip;
+}
+
+#Username > Label {
+    font-weight: thin;
+    color: #7a8a9d;
+    transform: translateX(6px);
+    text-shadow: 0px 0px 0px 1 transparent;
+
+    text-shadow: 1px 1px 3px 2 #000000;
+
+    tooltip-position: bottom;
+    tooltip-body-position: 50% 50%;
+    context-menu-position: bottom;
+    context-menu-body-position: 50% 50%;
+}
+
+.IsLocalPlayer.PlayerInControl #Username > Label,
+.IsLocalPlayer #Username > Label {
+    color: white;
+    font-weight: bold;
+}
+
+Label {
+    color: white;
+}
+
+.UserInfoContainer {
+    flow-children: down;
+    width: 150px;
+    height: 100%;
+}
+
+.FirstRow {
+    flow-children: right;
+    margin-top: -17px;
+}
+
+.InterestContainer {
+    flow-children: right;
+}
+
+.InterestIcon {
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+    background-image: url("file://{images}/custom_game/PlayerPanel/GoldIcon.png");
+    horizontal-align: left;
+    margin: 2px 5px 0px 5px;
+}
+
+.InterestText {
+    horizontal-align: center;
+    color: #f7cd60;
+    text-shadow: 2px 2px 8px 3 black;
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: -3px;
+    margin-top: -2px;
+}
+
+.ResourcesContainer {
+    flow-children: down;
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.GoldContainer {
+    flow-children: right;
+    margin: 1px 0;
+}
+
+.LumberContainer {
+    flow-children: right;
+    margin: 1px 0;
+}
+
+.CheeseContainer {
+    flow-children: right;
+    margin: 1px 0;
+}
+
+.GoldIcon {
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+    background-image: url("file://{images}/custom_game/gold_icon.png");
+    horizontal-align: left;
+    margin: 0px 5px 0px 5px;
+}
+
+.GoldText {
+    horizontal-align: center;
+    color: #f7cd60;
+    text-shadow: 2px 2px 8px 3 black;
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: -3px;
+    margin-top: -2px;
+}
+
+.LumberIcon {
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+    background-image: url("file://{images}/custom_game/lumber_icon.png");
+    horizontal-align: left;
+    margin: 0px 5px 2px 5px;
+}
+
+.LumberText {
+    horizontal-align: center;
+    color: #87c080;
+    text-shadow: 2px 2px 8px 3 black;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: -1px;
+    margin-left: -3px;
+}
+
+.CheeseIcon {
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+    background-image: url("file://{images}/custom_game/cheese_icon.tga");
+    horizontal-align: left;
+    margin: 0px 5px 2px 5px;
+}
+
+.CheeseText {
+    horizontal-align: center;
+    color: #9862e9;
+    text-shadow: 2px 2px 8px 3 black;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: -1px;
+    margin-left: -3px;
+}
