@@ -90,6 +90,8 @@ function SetDraftModeVoteTexts(draftModeVotes)
   draftVotesPanel.RemoveAndDeleteChildren();
 
   for (const [draftMode, votes] of Object.entries(draftModeVotes)) {
+    if(draftMode == "-1") continue;
+
     let draftVotePanel = $.CreatePanel("Label", draftVotesPanel, "draft_vote_" + draftMode);
     draftVotePanel.AddClass("draft-vote-text");
 
