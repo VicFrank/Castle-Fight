@@ -67,6 +67,16 @@ function CreatePlayerPanel(id, steam_id) {
   AvatarPanel.steamid = steam_id;
 
   let DisconnectedIcon = $.CreatePanel("Panel", AvatarContainer, "DisconnectedIcon");
+  
+  $.Schedule(1.0, () => {
+    var hero = Players.GetPlayerHeroEntityIndex(id);
+    var heroName = Entities.GetUnitName(hero);
+
+    let HeroIconPanel = $.CreatePanel("DOTAHeroImage", AvatarContainer, "hero_icon" + id);
+    HeroIconPanel.AddClass("HeroIconPanel");
+    HeroIconPanel.heroname = heroName;
+    HeroIconPanel.heroimagestyle = "icon";
+  });
 
   let UserInfoContainer = $.CreatePanel("Panel", playerPanel, "user_info" + id);
   UserInfoContainer.AddClass("UserInfoContainer");
@@ -128,54 +138,6 @@ function CreatePlayerPanel(id, steam_id) {
   return playerPanel;
 }
 
-function RoundToK(number) {
-  let roundedNumber = number;
-
-  if (roundedNumber > 10000) {
-    roundedNumber = Math.floor(roundedNumber / 1000);
-    roundedNumber = roundedNumber + "k";
-  } else {
-    roundedNumber = Math.floor(number);
-  }
-
-  return roundedNumber;
-}
-
-function UpdateGold(playerID, gold) {
-  $("#gold_text" + playerID).text = RoundToK(gold);
-}
-
-function UpdateIncomes() {
-  for (let i = 0; i < DOTALimits_t.DOTA_MAX_TEAM_PLAYERS; i++){
-    if (Game.GetPlayerInfo(i)) {
-      let data = CustomNetTables.GetTableValue("player_stats", i);
-      if (data) {
-        let income = data.income;
-        $("#interest_text" + i).text = "+" +  RoundToK(income);
-      }
-    }
-  }
-}
-
-function OnIncomeChanged(table_name, key, data) {
-  let playerID = key;
-  let income = data.income;
-
-  $("#interest_text" + playerID).text = "+" + RoundToK(income);
-}
-
-function ResetGold() {
-  for (let i = 0; i < DOTALimits_t.DOTA_MAX_TEAM_PLAYERS; i++){
-    if (Game.GetPlayerInfo(i)) {
-      let data = CustomNetTables.GetTableValue("custom_shop", "gold" + i);
-      if (data) {
-        let gold = data.gold;
-        UpdateGold(i, gold);
-      }
-    }
-  }
-}
-
 function UpdatePanels() {
   for(let i=0; i<playerPanels.length; i++) {
     let panel = playerPanels[i];
@@ -185,36 +147,12 @@ function UpdatePanels() {
     let isDisconnected = connectionState != DOTAConnectionState_t.DOTA_CONNECTION_STATE_CONNECTED
 
     panel.SetHasClass("Disconnected", isDisconnected);
-
-    if (Game.GetPlayerInfo(playerID)) {
-      // let hero = Players.GetPlayerHeroEntityIndex(playerID);
-      // let LumberIconText = $("#lumber_text" + playerID);
-      // const lumber = Entities.GetLumber(hero);
-
-      // LumberIconText.text = lumber;
-
-      // panel.SetHasClass("IsDead", lumber <= 0);
-    }
   }
 
   $.Schedule(1.0/30.0, UpdatePanels);
 }
 
-function UpdateResources() {
-  var playerID = GetPlayerIDToShow();
-  var data = CustomNetTables.GetTableValue("resources", playerID);
-
-  if (data) {
-    $('#GoldText').text = Math.floor(data.gold);
-    $('#CheeseText').text = Math.floor(data.cheese);
-    $('#LumberText').text = Math.floor(data.lumber);
-  }
-}
-
 function OnResourcesUpdated(table_name, playerID, resources) {
-  $.Msg("abcd OnResourcesUpdated playerID ", playerID);
-  $.Msg("abcd OnResourcesUpdated resources ", resources);
-  
   if (!resources) return;  
   
   for(let i = 0; i < playerPanels.length; i++) {
@@ -233,10 +171,7 @@ function OnResourcesUpdated(table_name, playerID, resources) {
   }
 }
 
-function OnIncomeUpdated(table_name, playerID, income) {
-  $.Msg("abcd OnResourcesUpdated playerID ", playerID);
-  $.Msg("abcd OnResourcesUpdated income ", income);
-  
+function OnIncomeUpdated(table_name, playerID, income) {  
   if (!income) return;
   
   for(let i = 0; i < playerPanels.length; i++) {
@@ -262,12 +197,7 @@ function OnHeroSelectStatusChanged(table_name, key, data) {
 }
 
 (function () {
-  // UpdateIncomes();
-  // UpdatePanels();
-  // ResetGold();
-
   CustomNetTables.SubscribeNetTableListener("resources", OnResourcesUpdated);
   CustomNetTables.SubscribeNetTableListener("player_income", OnIncomeUpdated);
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
-  // CustomNetTables.SubscribeNetTableListener("player_stats", OnIncomeChanged);
 })();

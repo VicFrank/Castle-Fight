@@ -45,6 +45,10 @@
     border: 1px solid #373a40;
 }
 
+.HeroIconPanel {
+  align: right bottom;
+}
+
 #DisconnectedIcon {
     width: 70px;
     height: 20px;
