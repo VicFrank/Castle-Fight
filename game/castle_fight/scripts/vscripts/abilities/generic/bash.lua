@@ -1,6 +1,8 @@
 LinkLuaModifier("modifier_bash_chance_custom", "abilities/generic/bash.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_bash_custom", "abilities/generic/bash.lua", LUA_MODIFIER_MOTION_NONE)
 
+gryphon_bash = class({})
+function gryphon_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
 crusader_bash = class({})
 function crusader_bash:GetIntrinsicModifierName() return "modifier_bash_chance_custom" end
 dragon_turtle_bash = class({})

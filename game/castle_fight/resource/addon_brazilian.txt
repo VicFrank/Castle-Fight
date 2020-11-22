@@ -1,8 +1,8 @@
 "lang"
 {
-  "Language"		"Brazilian"
+  "Language"        "Brazilian"
   "Tokens"
-  {		
+  {     
     "addon_game_name"     "Castle Fight"
 
     "error_not_enough_lumber"                                      "Madeira insuficiente"
@@ -26,32 +26,32 @@
     // Items
 
     "DOTA_Tooltip_Ability_item_scroll_of_stone"               "Scroll of Stone"
-    "DOTA_Tooltip_Ability_item_scroll_of_stone_Description"   "<h1>Ouro: <font color='#FFFF99'>150</font></h1>Quando usado, o pergaminho cura 400 Hp, 200 de mana e fornece 8 de armadura por 30 segundos em uma área enorme (multiplos alvos, consumido em uso)"
+    "DOTA_Tooltip_Ability_item_scroll_of_stone_Description"   "Quando usado, o pergaminho cura 400 Hp, 200 de mana e fornece 8 de armadura por 30 segundos em uma área enorme (multiplos alvos, consumido em uso)"
     "DOTA_Tooltip_Ability_item_orb_of_lightning"              "Orb of Lightning"
-    "DOTA_Tooltip_Ability_item_orb_of_lightning_Description"  "<h1>Ouro: <font color='#FFFF99'>550</font></h1>Cria um Chain Lightning que salta entre até 10 inimigos. 1000 de dano inicial.."
+    "DOTA_Tooltip_Ability_item_orb_of_lightning_Description"  "Cria um Chain Lightning que salta entre até 10 inimigos. 1000 de dano inicial.."
     "DOTA_Tooltip_Ability_item_blast_staff"                   "Blast Staff"
-    "DOTA_Tooltip_Ability_item_blast_staff_Description"       "<h1>Ouro: <font color='#FFFF99'>150</font> Madeira: <font color='#22a543'>300</h1><h1>Madeira: <font color='#22a543'>300</font></h1>Causa 40 de dano mágico a cada segundo a um inimigo próximo ao herói."
+    "DOTA_Tooltip_Ability_item_blast_staff_Description"       "<h1>Madeira: <font color='#22a543'>300</font></h1>Causa 40 de dano mágico a cada segundo a um inimigo próximo ao herói."
     "DOTA_Tooltip_Ability_item_rune_of_repair"                "Rune of Repair"
-    "DOTA_Tooltip_Ability_item_rune_of_repair_Description"    "<h1>Ouro: <font color='#FFFF99'>500</font></h1>Cura construções próximas."
+    "DOTA_Tooltip_Ability_item_rune_of_repair_Description"    "Cura construções próximas."
     "DOTA_Tooltip_Ability_item_bassline"                      "Bassline Generator"
-    "DOTA_Tooltip_Ability_item_bassline_Description"          "<h1>Ouro: <font color='#FFFF99'>600</font></h1>Aumenta a velocidade de movimento de todos os aliados em 15%% e a velocidade de ataque em 30%%."
+    "DOTA_Tooltip_Ability_item_bassline_Description"          "Aumenta a velocidade de movimento de todos os aliados em 15%% e a velocidade de ataque em 30%%."
     "DOTA_Tooltip_Ability_item_drums"                         "Bass Drums"
-    "DOTA_Tooltip_Ability_item_drums_Description"             "<h1>Ouro: <font color='#FFFF99'>650</font></h1>Aumenta em 33% o dano de toda a unidade aliada."
+    "DOTA_Tooltip_Ability_item_drums_Description"             "Aumenta em 33% o dano de toda a unidade aliada."
     "DOTA_Tooltip_Ability_item_double_damage"                 "Double Damage"
-    "DOTA_Tooltip_Ability_item_double_damage_Description"     "<h1>Ouro: <font color='#FFFF99'>600</font></h1>Dobra o dano de todas as unidades aliadas por 30 segundos"
+    "DOTA_Tooltip_Ability_item_double_damage_Description"     "Dobra o dano de todas as unidades aliadas por 30 segundos"
     "DOTA_Tooltip_Ability_item_quad_damage"                   "Quad Damage"
-    "DOTA_Tooltip_Ability_item_quad_damage_Description"       "<h1>Ouro: <font color='#FFFF99'>1400</font></h1>Quádrupla o dano de todas as unidades aliadas por 30 segundos."
+    "DOTA_Tooltip_Ability_item_quad_damage_Description"       "Quádrupla o dano de todas as unidades aliadas por 30 segundos."
     "DOTA_Tooltip_Ability_item_custom_cheese"                 "Queijo"
-    "DOTA_Tooltip_Ability_item_custom_cheese_Description"     "<h1>Ouro: <font color='#FFFF99'>1500</font></h1>Pode ser usado para comprar uma construção lendária adicional."
+    "DOTA_Tooltip_Ability_item_custom_cheese_Description"     "Pode ser usado para comprar uma construção lendária adicional."
 
     "DOTA_Tooltip_Ability_scroll_of_stone"                "Scroll of Stone"
     "DOTA_Tooltip_Ability_scroll_of_stone_Description"    "Quando usado, o pergaminho cura 400 Hp, 200 de mana e fornece 8 de armadura por 30 segundos em uma área enorme. Consumido no uso."
     "DOTA_Tooltip_Ability_orb_of_lightning"               "Orb of Lightning"
     "DOTA_Tooltip_Ability_orb_of_lightning_Description"   "Cria um Chain Lightning que salta entre até 10 inimigos. 1000 de dano inicial."
-	
-	"DOTA_Tooltip_Ability_item_custom_blink"                "Blink Dagger"
+    
+    "DOTA_Tooltip_Ability_item_custom_blink"                "Blink Dagger"
     "DOTA_Tooltip_Ability_item_custom_blink_Description"    "Pode ser usado para teletransportar uma curta distância"
-	
+    
 
     // Item Modifiers
 
@@ -292,25 +292,25 @@
 
     "DOTA_Tooltip_Ability_build_chapel"                  "Construir Chapel" 
     "DOTA_Tooltip_Ability_build_chapel_Lore"             "Melhoramentos: 1" 
-    "DOTA_Tooltip_Ability_build_chapel_Description"      "<font color='#62bc25'>Unidade</font>\n<h1>Crusader</h1>Tipo de Ataque: Hero (corpo a corpo)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Cleave (25%%)<br>- Bash (20%%, 25 dano, 2seg)<br>- Blessing (+6 armadura, +16hp/seg, +100hp)" 
+    "DOTA_Tooltip_Ability_build_chapel_Description"      "<font color='#62bc25'>Unidade</font>\n<h1>Crusader</h1>Tipo de Ataque: Hero (corpo a corpo)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>-<br>- Bash (20%%, 25 dano, 2seg)<br>- Blessing (+6 armadura, +7hp/seg, +100hp)" 
     "DOTA_Tooltip_Ability_train_crusader"                "Treinar Crusader" 
-    "DOTA_Tooltip_Ability_train_crusader_Description"    "<h1>Crusader</h1>Tipo de Ataque: Hero (corpo a corpo)<br>Armadura: Heavy\n\n<h1>Habilidades:</h1>- Cleave (25%%)<br>- Bash (20%, 25 dano, 2seg)<br>- Blessing (+6 armadura, +16hp/seg, +100hp)" 
+    "DOTA_Tooltip_Ability_train_crusader_Description"    "<h1>Crusader</h1>Tipo de Ataque: Hero (corpo a corpo)<br>Armadura: Heavy\n\n<h1>Habilidades:</h1> Bash (20%, 25 dano, 2seg)<br>- Blessing (+6 armadura, +7hp/seg, +100hp)" 
     "DOTA_Tooltip_Ability_upgrade_church"                "Melhorar para Church" 
     "DOTA_Tooltip_Ability_upgrade_church_Lore"           "Melhoramentos: 0" 
-    "DOTA_Tooltip_Ability_upgrade_church_Description"    "<font color='#62bc25'>Unidade</font>\n<h1>Paladin</h1>Tipo de Ataque: Hero (corpo a corpo)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Cleave (25%%)<br>- Bash (20%%, 25 dano, 2seg)<br>- Blessing (+9 armadura, +24hp/seg, +100hp)<br>- Resurrection (ressuscita uma unidade não lendária aliada)<br>- Aura de Armadura (+3)" 
+    "DOTA_Tooltip_Ability_upgrade_church_Description"    "<font color='#62bc25'>Unidade</font>\n<h1>Paladin</h1>Tipo de Ataque: Hero (corpo a corpo)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Bash (20%%, 25 dano, 2seg)<br>- Blessing (+9 armadura, +14hp/seg, +100hp)<br>- Resurrection (ressuscita uma unidade não lendária aliada)<br>- Aura de Armadura (+3)" 
     "DOTA_Tooltip_Ability_train_paladin"                 "Treinar Paldin" 
-    "DOTA_Tooltip_Ability_train_paladin_Description"     "<h1>Paladin</h1>Tipo de Ataque: Hero (corpo a corpo)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Cleave (25%%)<br>- Bash (20%, 25dmg, 2seg)<br>- Blessing (+9 armadura, +24hp/seg, +100hp)<br>- Resurrection (ressuscita uma unidade não lendária aliada)<br>- Aura de Armadura (+3)" 
+    "DOTA_Tooltip_Ability_train_paladin_Description"     "<h1>Paladin</h1>Tipo de Ataque: Hero (corpo a corpo)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Bash (20%, 25dmg, 2seg)<br>- Blessing (+9 armadura, +14hp/seg, +100hp)<br>- Resurrection (ressuscita uma unidade não lendária aliada)<br>- Aura de Armadura (+3)" 
 
     "DOTA_Tooltip_Ability_build_hjordhejmen"             "Construir Hjordhejmen" 
     "DOTA_Tooltip_Ability_build_hjordhejmen_Lore"        "Melhoramentos: 0" 
-    "DOTA_Tooltip_Ability_build_hjordhejmen_Description" "<font color='#62bc25'>Unidade</font>\n<h1>Warlock</h1>Tipo de Ataque: Chaos (alcance: 160)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades:</h1>- Chamber of Darkness (270 dano, 370 area de efeito)" 
+    "DOTA_Tooltip_Ability_build_hjordhejmen_Description" "<font color='#62bc25'>Unidade</font>\n<h1>Warlock</h1>Tipo de Ataque: Chaos (alcance: 160)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades:</h1>- Chamber of Darkness (270 dano, 300 area de efeito)" 
     "DOTA_Tooltip_Ability_train_warlock"                 "Treinar Warlock" 
-    "DOTA_Tooltip_Ability_train_warlock_Description"     "<h1>Warlock</h1>Tipo de Ataque: Chaos (alcance: 160)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades:</h1>- Chamber of Darkness (270 dano, 370 area de efeito)" 
+    "DOTA_Tooltip_Ability_train_warlock_Description"     "<h1>Warlock</h1>Tipo de Ataque: Chaos (alcance: 160)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades:</h1>- Chamber of Darkness (270 dano, 300 area de efeito)" 
 
     "DOTA_Tooltip_Ability_build_gjallarhorn"             "Construir Gjallarhorn"
-    "DOTA_Tooltip_Ability_build_gjallarhorn_Description" "Habilidade Passiva: Holy Power (Aumenta a velocidade de ataque de unidades aliadas próximas em 66%%.)"
+    "DOTA_Tooltip_Ability_build_gjallarhorn_Description" "Habilidade Passiva: Holy Power (Aumenta a velocidade de ataque de unidades aliadas próximas em 33%%.)"
     "DOTA_Tooltip_Ability_item_build_gjallarhorn"             "Construir Gjallarhorn"
-    "DOTA_Tooltip_Ability_item_build_gjallarhorn_Description" "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade Passiva: Holy Power (Aumenta a velocidade de ataque de unidades aliadas próximas em 66%%.)"
+    "DOTA_Tooltip_Ability_item_build_gjallarhorn_Description" "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade Passiva: Holy Power (Aumenta a velocidade de ataque de unidades aliadas próximas em 33%%.)"
 
     "DOTA_Tooltip_Ability_build_artillery"               "Construir Artillery"
     "DOTA_Tooltip_Ability_build_artillery_Description"   "Atira projéteis de artilharia na base inimiga. Causa 300-400 de dano siege. Não é muito preciso, mas muito destrutivo se atingir o alvo. Forte dano em area."
@@ -460,9 +460,9 @@
     "DOTA_Tooltip_Ability_train_suupmolk_Description"            "<h1>Suupmolk</h1>Tipo de Ataque: Normal (alcance: 325)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Poison Attack (35%% slow, 4dps, 2s)"
 
     "DOTA_Tooltip_Ability_upgrade_lernaean_fountain"             "Melhorar para Lernaean Fountain"
-    "DOTA_Tooltip_Ability_upgrade_lernaean_fountain_Description" "<font color='#62bc25'>Unidade</font>\n<h1>Ancient Hydra</h1>Tipo de Ataque: Chaos (alcance: 500)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Poison Attack (35%% slow, 4dps, 2s)<br>- Splash Damage<br>- Resistência a Mágia Lendária<br>- Split (divide em duas Hydras menores na morte)"
+    "DOTA_Tooltip_Ability_upgrade_lernaean_fountain_Description" "<font color='#62bc25'>Unidade</font>\n<h1>Ancient Hydra</h1>Tipo de Ataque: Chaos (alcance: 500)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Poison Attack (35%% slow, 25dps, 2s)<br>- Splash Damage<br>- Resistência a Mágia Lendária<br>- Split (divide em duas Hydras menores na morte)"
     "DOTA_Tooltip_Ability_train_ancient_hydra"                   "Treinar Ancient Hydra"
-    "DOTA_Tooltip_Ability_train_ancient_hydra_Description"       "<h1>Ancient Hydra</h1>Tipo de Ataque: Chaos (alcance: 500 )<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Poison Attack (35%% slow, 4dps, 2s)<br>- Splash Damage<br>- Resistência a Mágia Lendária<br>- Split (divide em duas Hydras menores na morte)"
+    "DOTA_Tooltip_Ability_train_ancient_hydra_Description"       "<h1>Ancient Hydra</h1>Tipo de Ataque: Chaos (alcance: 500 )<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Poison Attack (35%% slow, 25dps, 2s)<br>- Splash Damage<br>- Resistência a Mágia Lendária<br>- Split (divide em duas Hydras menores na morte)"
 
     "DOTA_Tooltip_Ability_build_temple_of_snakes"                "Construir Temple Of Snakes"
     "DOTA_Tooltip_Ability_build_temple_of_snakes_Description"    "<font color='#62bc25'>Unidade</font>\n<h1>Winged Serpent</h1>Tipo de Ataque: Magic (alcance: 420)<br>Tipo de Armadura: Light\n\n<h1>Habilidades:</h1>- Flying (Unidade Aérea)<br>- Bouncing Attack (3 alvos, 30%% menos de dano a cada salto)"
@@ -481,9 +481,9 @@
     "DOTA_Tooltip_Ability_train_royal_guard_Description"      "<h1>Royal Guard</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Cleaving Attack (50%%)<br>- Critical Strike (10%%, 2x)"
 
     "DOTA_Tooltip_Ability_build_reptile_pool"                 "Construir Reptile Pool"
-    "DOTA_Tooltip_Ability_build_reptile_pool_Description"     "<font color='#995a0a'>Unidade de Cerco</font>\n<h1>Dragon Turtle</h1>Tipo de Ataque: Siege (alcance: 550)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Bash (15%, 25 dano, 2s)<br>- Thornshell (35%%)"
+    "DOTA_Tooltip_Ability_build_reptile_pool_Description"     "<font color='#995a0a'>Unidade de Cerco</font>\n<h1>Dragon Turtle</h1>Tipo de Ataque: Siege (alcance: 550)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Bash (15%, 25 dano, 0.6s)<br>- Thornshell (35%%)"
     "DOTA_Tooltip_Ability_train_dragon_turtle"                "Treinar Dragon Turtle"
-    "DOTA_Tooltip_Ability_train_dragon_turtle_Description"    "<h1>Dragon Turtle</h1>Tipo de Ataque: Siege (alcance: 550)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Bash (15%, 25 dano, 2s)<br>- Thornshell (35%%)"
+    "DOTA_Tooltip_Ability_train_dragon_turtle_Description"    "<h1>Dragon Turtle</h1>Tipo de Ataque: Siege (alcance: 550)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades:</h1>- Bash (15%, 25 dano, 0.6s)<br>- Thornshell (35%%)"
     
     "DOTA_Tooltip_Ability_build_naga_spring"                  "Construir Naga Spring"
     "DOTA_Tooltip_Ability_build_naga_spring_Description"      "<font color='#62bc25'>Unidade</font>\n<h1>Naga Siren</h1>Tipo de Ataque: Chaos (alcance: 400)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades:</h1>- Purge <br>- Summon Lobsters"
@@ -687,14 +687,14 @@
 
     "DOTA_Tooltip_Ability_build_crypt"               "Construir Crypt"
     "DOTA_Tooltip_Ability_build_crypt_Lore"          "Melhoramentos: 1"
-    "DOTA_Tooltip_Ability_build_crypt_Description"   "<font color='#62bc25'>Treina Unidade</font>\n<h1>Vampire</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Hero\n\n<h1>Habilidades:</h1>- Raise Lesser Vampire<br>- Lifesteal Aura (30%% de roubo de vida, só para corpo a corpo)<br>- Vampire Attack (70%% roubo de vida)"
+    "DOTA_Tooltip_Ability_build_crypt_Description"   "<font color='#62bc25'>Treina Unidade</font>\n<h1>Vampire</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Hero\n\n<h1>Habilidades:</h1>- Raise Lesser Vampire<br>- Lifesteal Aura (20%% de roubo de vida, só para corpo a corpo)<br>- Vampire Attack (70%% roubo de vida)"
     "DOTA_Tooltip_Ability_train_vampire"               "Treinar Vampire"
-    "DOTA_Tooltip_Ability_train_vampire_Description"   "<h1>Vampire</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Hero\n\n<h1>Habilidades:</h1>- Raise Lesser Vampire<br>- Lifesteal Aura (30%% de roubo de vida, só para corpo a corpo)<br>- Vampire Attack (70% roubo de vida)"
+    "DOTA_Tooltip_Ability_train_vampire_Description"   "<h1>Vampire</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Hero\n\n<h1>Habilidades:</h1>- Raise Lesser Vampire<br>- Lifesteal Aura (20%% de roubo de vida, só para corpo a corpo)<br>- Vampire Attack (70% roubo de vida)"
 
     "DOTA_Tooltip_Ability_upgrade_graveyard"               "Melhorar para Graveyard"
-    "DOTA_Tooltip_Ability_upgrade_graveyard_Description"   "<font color='#62bc25'>Treina Unidade</font>\n<h1>Vampire Lord</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Hero\n\n<h1>Habilidades:</h1>- Raise Vampire<br>- Lifesteal Aura (30%% de roubo de vida, só para corpo a corpo)<br>- Vampire Attack (100%% roubo de vida)"
+    "DOTA_Tooltip_Ability_upgrade_graveyard_Description"   "<font color='#62bc25'>Treina Unidade</font>\n<h1>Vampire Lord</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Hero\n\n<h1>Habilidades:</h1>- Raise Vampire<br>- Lifesteal Aura (35%% de roubo de vida, só para corpo a corpo)<br>- Vampire Attack (100%% roubo de vida)"
     "DOTA_Tooltip_Ability_train_vampire_lord"               "Treinar Vampire Lord"
-    "DOTA_Tooltip_Ability_train_vampire_lord_Description"   "<h1>Vampire Lord</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Hero\n\n<h1>Habilidades:</h1>- Raise Vampire<br>- Lifesteal Aura (30%% de roubo de vida, só para corpo a corpo)<br>- Vampire Attack (100%% roubo de vida)"
+    "DOTA_Tooltip_Ability_train_vampire_lord_Description"   "<h1>Vampire Lord</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Hero\n\n<h1>Habilidades:</h1>- Raise Vampire<br>- Lifesteal Aura (35%% de roubo de vida, só para corpo a corpo)<br>- Vampire Attack (100%% roubo de vida)"
 
     "DOTA_Tooltip_Ability_build_haunted_mine"               "Construir Haunted Mine"
     "DOTA_Tooltip_Ability_build_haunted_mine_Description"   "<font color='#62bc25'>Treina Unidade</font>\n<h1>Banshee</h1>Tipo de Ataque: Magic (alcance: 420)<br>Tipo de Armadura: Divine\n\n<h1>Habilidades:</h1>- Astral Chains (-30%% velocidade de movimento e ataque)<br>- Fear Aura (-15%% dano)"
@@ -1113,9 +1113,9 @@
 "DOTA_Tooltip_Ability_train_keeper_of_the_grove_Description"    "<h1>Keeper of the Grove</h1>Tipo de Ataque: Pierce (alcance: 525)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Abolish Magic (20%%)<br>- Spell Resist (20%% de resistencia a magia)<br>- Nature's Touch (150hp, 3 armadura)<br>Summon Treants (2)"
 
 "DOTA_Tooltip_Ability_upgrade_ancient_of_eternity"                "Melhorar para Ancient of Eternity"
-"DOTA_Tooltip_Ability_upgrade_ancient_of_eternity_Description"    "<font color='#62bc25'>Treina Unidade</font>\n<h1>Ancient Keeper</h1>Tipo de Ataque: Chaos (alcance: 550)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Abolish Magic (25%%)<br>- Resistência a Magia Lendária<br>- Nature's Aura (15hp/sec, 350 area)<br>- Treant Sprout (5 treants)<br>- Incorporeal (25%% de chance de esquivar)"
+"DOTA_Tooltip_Ability_upgrade_ancient_of_eternity_Description"    "<font color='#62bc25'>Treina Unidade</font>\n<h1>Ancient Keeper</h1>Tipo de Ataque: Chaos (alcance: 550)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Abolish Magic (25%%)<br>- Resistência a Magia Lendária<br>- Nature's Aura (9hp/sec, 350 area)<br>- Treant Sprout (5 treants)<br>- Incorporeal (25%% de chance de esquivar)"
 "DOTA_Tooltip_Ability_train_ancient_keeper"                "Treinar Ancient Keeper"
-"DOTA_Tooltip_Ability_train_ancient_keeper_Description"    "<h1>Ancient Keeper</h1>Tipo de Ataque: Chaos (alcance: 550)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Abolish Magic (25%%)<br>- Resistência a Magia Lendária<br>- Nature's Aura (15hp/sec, 350 area)<br>- Treant Sprout (5 treants)<br>- Incorporeal (25%% de chance de esquivar)"
+"DOTA_Tooltip_Ability_train_ancient_keeper_Description"    "<h1>Ancient Keeper</h1>Tipo de Ataque: Chaos (alcance: 550)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades:</h1>- Abolish Magic (25%%)<br>- Resistência a Magia Lendária<br>- Nature's Aura (9hp/sec, 350 area)<br>- Treant Sprout (5 treants)<br>- Incorporeal (25%% de chance de esquivar)"
 
 "DOTA_Tooltip_Ability_build_ancient_of_slumber"                "Construir Ancient of Slumber"
 "DOTA_Tooltip_Ability_build_ancient_of_slumber_Description"    "<font color='#62bc25'>Treina Unidade</font>\n<h1>Bear</h1>Tipo de Ataque: Normal (corpo a corpo)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades:</h1>- Feral Rage (15%% chance, 20%% de dano e velocidade de ataque)<br>- Cleave (30%%)<br>- Slumber"
@@ -1145,14 +1145,14 @@
 "DOTA_Tooltip_Ability_item_build_ancient_protector_Description"    "<font color='#FFBF00'>Support Building</font>\nTipo de Ataque: Siege (alcance: 700)<br>Tipo de Armadura: Fortified<br><h1>Habilidades</h1>- Bash<br>- Splash Attack"
 
 "DOTA_Tooltip_Ability_item_build_ancient_of_wind"                "Construir Ancient of Wind"
-"DOTA_Tooltip_Ability_item_build_ancient_of_wind_Description"    "<font color='#FFBF00'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Cyclone\nEvoca um tornado sem rumo ao redor de uma unidade inimiga que diminui velocidade de movimento e de ataque em 25%% e também causa 40 de dano por segundo em uma area de 250 por 5 segundos. Construções recebem 50%% do dano."
+"DOTA_Tooltip_Ability_item_build_ancient_of_wind_Description"    "<font color='#FFBF00'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Cyclone\nEvoca um tornado sem rumo ao redor de uma unidade inimiga que diminui velocidade de movimento e de ataque em 25%% e também causa 40 de dano por segundo em uma area de 250 por 5 segundos."
 
 "DOTA_Tooltip_Ability_item_build_ancient_of_wonders"                "Construir Ancient of Wonders"
-"DOTA_Tooltip_Ability_item_build_ancient_of_wonders_Description"    "<font color='#FFBF00'>Construção de Habilidade de Efeito Negativo</font>\nAbility: Natures Curse\nReduces the mana regeneration rate of all enemy buildings and units on the map by 50%."
+"DOTA_Tooltip_Ability_item_build_ancient_of_wonders_Description"    "<font color='#FFBF00'>Construção de Habilidade de Efeito Negativo</font>\nAbility: Natures Curse\nReduz a taxa de regeneração de mana de todos as construções e unidades inimigas no mapa em 75%."
 
 
 "DOTA_Tooltip_Ability_ancient_of_wonders_natures_curse"             "Nature's Curse"
-"DOTA_Tooltip_Ability_ancient_of_wonders_natures_curse_Description" "Reduz a taxa de regeneração de mana de todos as construções e unidades inimigas no mapa em 50%.\nDuração: 10 segundos."
+"DOTA_Tooltip_Ability_ancient_of_wonders_natures_curse_Description" "Reduz a taxa de regeneração de mana de todos as construções e unidades inimigas no mapa em 75%.\nDuração: 10 segundos."
 "DOTA_Tooltip_Ability_ancient_of_wind_cyclone"             "Cyclone"
 "DOTA_Tooltip_Ability_ancient_of_wind_cyclone_Description" "Evoca um tornado sem rumo ao redor de uma unidade inimiga que diminui velocidade de movimento e de ataque em 25%% e também causa 40 de dano por segundo em uma area de 250 por 5 segundos. Construções recebem 50%% do dano."
 "DOTA_Tooltip_Ability_ancient_protector_bash"                 "Bash"
@@ -1181,7 +1181,7 @@
 "DOTA_Tooltip_Ability_furbolg_mana_burn"             "Mana Burn"
 "DOTA_Tooltip_Ability_furbolg_mana_burn_chance"      "%Chance:"
 "DOTA_Tooltip_Ability_furbolg_mana_burn_mana_burn"   "Mana Burn:"
-"DOTA_Tooltip_Ability_furbolg_mana_burn_Description" "Tem a  %chance%%% de queimar a mana do inimigo. Inflige dano igual ao mana queimada.."
+"DOTA_Tooltip_Ability_furbolg_mana_burn_Description" "Tem a chance  %chance%%% de queimar a mana do inimigo. Inflige dano igual a mana queimada."
 "DOTA_Tooltip_Ability_dryad_abolish_magic"             "Abolish Magic"
 "DOTA_Tooltip_Ability_dryad_abolish_magic_Description" "Tem a chance de %chance%%% de remover buffs (efeito) positivos de um inimigo."
 "DOTA_Tooltip_Ability_dryad_spell_resist"             "Spell Resist"
@@ -1365,14 +1365,14 @@
 
 "DOTA_Tooltip_Ability_build_ice_claws"                 "Construir Ice Claws"
 "DOTA_Tooltip_Ability_build_ice_claws_Lore"            "Melhoramentos: 1"
-"DOTA_Tooltip_Ability_build_ice_claws_Description"     "<font color='#62bc25'>Treina Unidade</font>\n<h1>Wendigo</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Medium\n\n<h1>Habilidade</h1>- Pulverize (25%% de chance, 80 dano)"
+"DOTA_Tooltip_Ability_build_ice_claws_Description"     "<font color='#62bc25'>Treina Unidade</font>\n<h1>Wendigo</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Medium\n\n<h1>Habilidade</h1>- Pulverize (25%% de chance, 120 dano)"
 "DOTA_Tooltip_Ability_train_wendigo"                 "Treinar Wendigo"
-"DOTA_Tooltip_Ability_train_wendigo_Description"     "<h1>Wendigo</h1>Attack: Pierce (corpo a corpo)<br>Tipo de Armadura: Medium\n\n<h1>Habilidade</h1>- Pulverize (25%% de chance, 80 dano)"
+"DOTA_Tooltip_Ability_train_wendigo_Description"     "<h1>Wendigo</h1>Attack: Pierce (corpo a corpo)<br>Tipo de Armadura: Medium\n\n<h1>Habilidade</h1>- Pulverize (25%% de chance, 120 dano)"
 
 "DOTA_Tooltip_Ability_upgrade_frost_claws"                 "Melhorar para Frost Claws"
-"DOTA_Tooltip_Ability_upgrade_frost_claws_Description"     "<font color='#62bc25'>Treina Unidade</font>\n<h1>Ancient Wendigo</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades</h1>- Pulverize (30%% de chance, 140 de dano)<br>- Howl (-4 de armadura, -30 de dano)"
+"DOTA_Tooltip_Ability_upgrade_frost_claws_Description"     "<font color='#62bc25'>Treina Unidade</font>\n<h1>Ancient Wendigo</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades</h1>- Pulverize (30%% de chance, 180 de dano)<br>- Howl (-4 de armadura, -30 de dano)"
 "DOTA_Tooltip_Ability_train_ancient_wendigo"                 "Treinar Ancient Wendigo"
-"DOTA_Tooltip_Ability_train_ancient_wendigo_Description"     "<h1>Ancient Wendigo</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades</h1>- Pulverize (30%% de chance, 140 de dano)<br>- Howl (-4 de armadura, -30 de dano)"
+"DOTA_Tooltip_Ability_train_ancient_wendigo_Description"     "<h1>Ancient Wendigo</h1>Tipo de Ataque: Pierce (corpo a corpo)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades</h1>- Pulverize (30%% de chance, 180 de dano)<br>- Howl (-4 de armadura, -30 de dano)"
 
 "DOTA_Tooltip_Ability_build_azure_nest"                 "Construir Azure Nest"
 "DOTA_Tooltip_Ability_build_azure_nest_Description"     "<font color='#62bc25'>Treina Unidade</font>\n<h1>Azure Drake</h1>Tipo de Ataque: Chaos (alcance: 250)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades</h1>- Splash Damage<br>- Chilling Attack<br>- Unidade Voadora"
@@ -1380,21 +1380,21 @@
 "DOTA_Tooltip_Ability_train_azure_drake_Description"     "<h1>Azure Drake</h1>Tipo de Ataque: Chaos (alcance: 250)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades</h1>- Splash Damage<br>- Chilling Attack<br>-  Unidade Voadora"
 
 "DOTA_Tooltip_Ability_build_crystal_palace"                 "Construir Crystal Palace"
-"DOTA_Tooltip_Ability_build_crystal_palace_Description"     "<font color='#62bc25'>Treina Unidade</font>\n<h1>Ice Queen</h1>Tipo de Ataque: Chaos (alcance: 450)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades</h1>- Frost Nova (150 de dano)<br>- Frost Attack (20%% de chance, 12.5seg, 30dps)<br>- Crystal Aura (+0.5 mana/seg)"
+"DOTA_Tooltip_Ability_build_crystal_palace_Description"     "<font color='#62bc25'>Treina Unidade</font>\n<h1>Ice Queen</h1>Tipo de Ataque: Chaos (alcance: 450)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades</h1>- Frost Nova (150 de dano)<br>- Frost Attack (20%% de chance, 12.5seg, 30dps)<br>- Crystal Aura (+1 mana/seg)"
 "DOTA_Tooltip_Ability_train_ice_queen"                 "Treinar Ice Queen"
-"DOTA_Tooltip_Ability_train_ice_queen_Description"     "<h1>Ice Queen</h1>Tipo de Ataque: Chaos (alcance: 450)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades</h1>- Frost Nova (150 dano)<br>- Frost Attack (20%% de chance, 12.5seg, 30dps)<br>- Crystal Aura (+0.5 mana/seg)"
+"DOTA_Tooltip_Ability_train_ice_queen_Description"     "<h1>Ice Queen</h1>Tipo de Ataque: Chaos (alcance: 450)<br>Tipo de Armadura: Unarmored\n\n<h1>Habilidades</h1>- Frost Nova (150 dano)<br>- Frost Attack (20%% de chance, 12.5seg, 30dps)<br>- Crystal Aura (+1 mana/seg)"
 
 
 "DOTA_Tooltip_Ability_item_build_frost_launcher"              "Construir Frost Launcher"
-"DOTA_Tooltip_Ability_item_build_frost_launcher_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Frost Bolt\nLança um Frost Bolt em uma estrutura inimiga aleatória. No impacto, esse projetil congela a estrutura por 5 segundos e causa 50 de dano chaos ela."
+"DOTA_Tooltip_Ability_item_build_frost_launcher_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Frost Bolt\nLança um Frost Bolt em uma construção inimiga aleatória. No impacto, esse raio congela a construção, travando o intervalo de usos (cooldown) e removendo a regeneração de mana base. Dura 14 segundos."
 "DOTA_Tooltip_Ability_upgrade_greater_frost_launcher"              "Melhorar para Greater Frost Launcher"
-"DOTA_Tooltip_Ability_upgrade_greater_frost_launcher_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Greater Frost Bolt\nLança um enorme raio de gelo em uma estrutura inimiga aleatória. No impacto, esta unidade congela tudo em um alcance de 250 por 6 segundos e causa 100 de dano chaos ela."
+"DOTA_Tooltip_Ability_upgrade_greater_frost_launcher_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Greater Frost Bolt\nLança dois Frost Bolt em duas construções inimiga aleatória. No impacto, esse raio congela a construção, travando o intervalo de usos (cooldown) e removendo a regeneração de mana base. Dura 16 segundos."
 "DOTA_Tooltip_Ability_item_build_chilling_mushroom"              "Construir Chilling Mushroom"
 "DOTA_Tooltip_Ability_item_build_chilling_mushroom_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Freezing Blast\nCongela uma unidade aérea, atordoando-a por 5 segundos e causando 250 de dano."
 "DOTA_Tooltip_Ability_item_build_icy_tower"              "Construir Icy Tower"
 "DOTA_Tooltip_Ability_item_build_icy_tower_Description"  "<font color='#a3098c'>Torre</font>\nTipo de Ataque: Normal (alcance: 750)\nTipo de Armadura: Fortified\n\n<h1>Habilidades</h1>- Splash Damage\n- Chilling Attack"
 "DOTA_Tooltip_Ability_item_build_world_freezer"              "Construir World Freezer"
-"DOTA_Tooltip_Ability_item_build_world_freezer_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Onset of Winter\nEnvia três orbes de gelo que voam em uma direção aleatória, atacando inimigos aleatórios com 100 dps (dano por segundo) de dano mágico, atordoando unidades aéreas aleatórias, congelando unidades terrestres aleatórias e congelando cada unidade perto delas."
+"DOTA_Tooltip_Ability_item_build_world_freezer_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Onset of Winter\nEnvia três orbes de gelo que voam em uma direção aleatória, atacando inimigos aleatórios com 115 dps (dano por segundo) de dano mágico, atordoando unidades aéreas aleatórias, congelando unidades terrestres aleatórias e congelando cada unidade perto delas."
 
 
 // Abilities
@@ -1407,9 +1407,9 @@
 "DOTA_Tooltip_Ability_freezing_blast"                "Freezing Blast"
 "DOTA_Tooltip_Ability_freezing_blast_Description"    "Congela uma unidade aérea, atordoando-a por %duration% segundos e causando %damage% de dano"
 "DOTA_Tooltip_Ability_frost_bolt"                "Frost Bolt"
-"DOTA_Tooltip_Ability_frost_bolt_Description"    "Lança um Frost Bolt em uma estrutura inimiga aleatória. No impacto, esse projetil congela a estrutura por %duration% segundos e causa %damage% dano puro a ela."
+"DOTA_Tooltip_Ability_frost_bolt_Description"    "Lança um Frost Bolt em uma construção inimiga aleatória. No impacto, esse raio congela a construção, travando o intervalo de usos (cooldown) e removendo a regeneração de mana base. Dura %duration% segundos."
 "DOTA_Tooltip_Ability_greater_frost_bolt"                "Greater Frost Bolt"
-"DOTA_Tooltip_Ability_greater_frost_bolt_Description"    "Lança um enorme raio de gelo em uma estrutura inimiga aleatória. No impacto, congela tudo no alcance de %radius% por %duration% segundos e causa %damage% dano puro a ela."
+"DOTA_Tooltip_Ability_greater_frost_bolt_Description"    "Lança dois Frost Bolt em duas construções inimiga aleatória. No impacto, esse raio congela a construção, travando o intervalo de usos (cooldown) e removendo a regeneração de mana base. Dura %duration% segundos."
 "DOTA_Tooltip_Ability_wolf_critical_strike"                "Critical Strike"
 "DOTA_Tooltip_Ability_wolf_critical_strike_crit_chance"    "Chance do Ataque Critico:"
 "DOTA_Tooltip_Ability_wolf_critical_strike_crit_damage"    "Dano do Ataque Critico:"
@@ -1581,16 +1581,16 @@
 "DOTA_Tooltip_Ability_train_spellbreaker_kodo_Description"    "<h1>Spellbreaker Kodo</h1>Tipo de Ataque: Pierce (alcance: 200)<br>Tipo de Armadura: Light\n\n<h1>Habilidade</h1>- Magic Resist Aura (30%%)"
 
 "DOTA_Tooltip_Ability_build_orcish_siege_factory"                "Construir Orcish Siege Factory"
-"DOTA_Tooltip_Ability_build_orcish_siege_factory_Description"    "<font color='#995a0a'>Treina Unidade de Cerco</font>\n<h1>Catapult</h1>Tipo de Ataque: Siege (alcance: 1000)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades</h1>- Splash Damage<br>- Burning Ammo (48dps)<br>- <font color='#C40000'>Não pode atacar unidades aéreas</font>"
+"DOTA_Tooltip_Ability_build_orcish_siege_factory_Description"    "<font color='#995a0a'>Treina Unidade de Cerco</font>\n<h1>Catapult</h1>Tipo de Ataque: Siege (alcance: 1000)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades</h1>- Burning Ammo (48dps)<br>- <font color='#C40000'>Não pode atacar unidades aéreas</font>"
 "DOTA_Tooltip_Ability_train_catapult"                "Treinar Catapult"
-"DOTA_Tooltip_Ability_train_catapult_Description"    "<h1>Catapult</h1>Tipo de Ataque: Siege (alcance: 1000)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades</h1>- Splash Damage<br>- Burning Ammo (48dps)<br>- <font color='#C40000'>Não pode atacar unidades aéreas</font>"
+"DOTA_Tooltip_Ability_train_catapult_Description"    "<h1>Catapult</h1>Tipo de Ataque: Siege (alcance: 1000)<br>Tipo de Armadura: Medium\n\n<h1>Habilidades</h1>- Burning Ammo (48dps)<br>- <font color='#C40000'>Não pode atacar unidades aéreas</font>"
 
 
 "DOTA_Tooltip_Ability_item_build_serpent_rock"                "Construir Serpent Rock"
 "DOTA_Tooltip_Ability_item_build_serpent_rock_Description"    "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Poison Area\nCospe veneno em uma área próxima a uma unidade inimiga aleatória. Todas as unidades atingidas pelo veneno têm sua armadura reduzida em 5, sua velocidade de ataque e de movimento reduzida em 20% e sofrem dano ao longo do tempo. O veneno dura 5 segundos e causa 30 dps (dano por segundo)."
 
 "DOTA_Tooltip_Ability_item_build_ceremonial_totem"                "Construir Ceremonial Totem"
-"DOTA_Tooltip_Ability_item_build_ceremonial_totem_Description"    "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade: Tribal Blessing\nDá a um aliado aleatório permanente +20 de dano, +20 de velocidade de ataque, 3 armaduras e 200 pontos de vida. Também dá um dos seguintes\n- Demolir(x1.5 de dano extra a construções)<br> -  Critical Strike (25%%, x2)<br> - Evasão(30%% de chance de esquivar) "
+"DOTA_Tooltip_Ability_item_build_ceremonial_totem_Description"    "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade: Tribal Blessing\nDá a um aliado aleatório permanente +30 de dano, +20 de velocidade de ataque e 3 armaduras. Também dá um dos seguintes\n- Demolir(x1.5 de dano extra a construções)<br> -  Critical Strike (25%%, x2)<br> - Evasão(30%% de chance de esquivar)<br><br>Os efeitos dessa habilidade pode acumular 3 vezes. "
 
 "DOTA_Tooltip_Ability_item_build_anti_air_tower"                "Construir Anti Air Tower"
 "DOTA_Tooltip_Ability_item_build_anti_air_tower_Description"    "<font color='#a3098c'>Torre</font>\nvs Alvo Unidade Aérea: Normal, (alcance: 900), DPS (dano por segundo) 175 (60-80\nvs Alvo Unidade Terrestre: Normal, (700 alcance), DPS 37 (dano por segundo) (20-25)\n- Poisoned Arrows (25% slow (retardo)"
@@ -1800,12 +1800,12 @@
 "DOTA_Tooltip_Ability_item_build_arcane_tower_Description"  "<font color='#a3098c'>Torre</font>\nTipo de Ataque: Magic\nTipo de Armadura: Fortified<h1>Habilidade</h1>- Multishot (5 alvos)"
 
 "DOTA_Tooltip_Ability_item_build_golden_shrine_of_justice"              "Construir Golden Shrine of Justice"
-"DOTA_Tooltip_Ability_item_build_golden_shrine_of_justice_Description"  "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade: Bright Aura of Grace\nSempre que uma unidade aliada morre, há 20%% de chance de a unidade reviver após 2 segundos. Não pode reviver unidades lendárias. Não acumula."
+"DOTA_Tooltip_Ability_item_build_golden_shrine_of_justice_Description"  "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade: Bright Aura of Grace\nSempre que uma unidade aliada morre, há 25%% de chance de a unidade reviver após 2 segundos. Não pode reviver unidades lendárias. Não acumula. A unidade só pode ser revivida uma vez."
 
 // Modifiers
 
 "DOTA_Tooltip_Ability_bright_aura_of_grace"              "Bright Aura of Grace"
-"DOTA_Tooltip_Ability_bright_aura_of_grace_Description"  "Sempre que uma unidade aliada morre, há 20%% de chance de a unidade reviver após 2 segundos. Não pode reviver unidades lendárias. Não acumula."
+"DOTA_Tooltip_Ability_bright_aura_of_grace_Description"  "Sempre que uma unidade aliada morre, há 25%% de chance de a unidade reviver após 2 segundos. Não pode reviver unidades lendárias. Não acumula. A unidade só pode ser revivida uma vez."
 "DOTA_Tooltip_Ability_arcane_tower_multishot"              "Multishot"
 "DOTA_Tooltip_Ability_arcane_tower_multishot_Description"  "Ataca até 5 alvos de uma vez. Todos os ataques causam dano total."
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam"              "Light Beam"
@@ -2151,7 +2151,7 @@
 "DOTA_Tooltip_Ability_infernal_line_damage"   "Line Damage"
 "DOTA_Tooltip_Ability_infernal_line_damage_Description"   "Ataques causam %dano% dano adicional a todas as unidades em uma linha."
 "DOTA_Tooltip_Ability_incubus_overtake"   "Overtake"
-"DOTA_Tooltip_Ability_incubus_overtake_Description"   "%chance %%% de chance em cada ataque de assumir o controle da unidade atacada. Não afeta as unidades lendárias."
+"DOTA_Tooltip_Ability_incubus_overtake_Description"   "%chance%%% de chance em cada ataque de assumir o controle da unidade atacada. Não afeta as unidades lendárias."
 
 
 "DOTA_Tooltip_modifier_weakening_attack_debuff"   "Enfraquecido"
@@ -2253,9 +2253,9 @@
 "DOTA_Tooltip_Ability_train_heavy_tank_Description"    "<h1>Heavy Tank</h1>Tipo de Ataque: Normal (alcance: 400)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidade</h1>- Não pode atacar unidades aéreas<br>- Heavy Tank Armor (-24 de dano)"
 
 "DOTA_Tooltip_Ability_upgrade_rocket_tank_factory"                "Melhorar para Rocket Tank Factory"
-"DOTA_Tooltip_Ability_upgrade_rocket_tank_factory_Description"    "<h1>Rocket Tank</h1>Tipo de Ataque: Normal (alcance: 400)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades</h1>- Só pode atacar unidades aéreas com habilidade<br>- Heavy Tank Armor (-24 de dano)<br>- AA Rockets (75 de dano, 1 míssil por segundo)"
+"DOTA_Tooltip_Ability_upgrade_rocket_tank_factory_Description"    "<h1>Rocket Tank</h1>Tipo de Ataque: Normal (alcance: 400)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades</h1>- Só pode atacar unidades aéreas com habilidade<br>- Heavy Tank Armor (-24 de dano)<br>- AA Rockets (150 de dano, 1 míssil a cada 2 segundos)"
 "DOTA_Tooltip_Ability_train_rocket_tank"                "Treinar Rocket Tank"
-"DOTA_Tooltip_Ability_train_rocket_tank_Description"    "<h1>Rocket Tank</h1>Tipo de Ataque: Normal (alcance: 400)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades</h1>- Só pode atacar unidades aéreas com habilidade<br>- Heavy Tank Armor (-24 de dano)<br>- AA Rockets (75 de dano, 1 míssil por segundo)"
+"DOTA_Tooltip_Ability_train_rocket_tank_Description"    "<h1>Rocket Tank</h1>Tipo de Ataque: Normal (alcance: 400)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades</h1>- Só pode atacar unidades aéreas com habilidade<br>- Heavy Tank Armor (-24 de dano)<br>- AA Rockets (150 de dano, 1 míssil a cada 2 segundos)"
 
 "DOTA_Tooltip_Ability_upgrade_assault_tank_factory"                "Melhorar para Assault Tank Factory"
 "DOTA_Tooltip_Ability_upgrade_assault_tank_factory_Description"    "<h1>Assault Tank</h1>Tipo de Ataque: Chaos (alcance: 550)<br>Tipo de Armadura: Heavy\n\n<h1>Habilidades</h1>- Não pode atacar unidades aéreas<br>- Medium Tank Armor (-18 de dano)<br>- Splash Damage"
@@ -2305,7 +2305,7 @@
 "DOTA_Tooltip_Ability_item_build_spare_part_heap_Description"   "<h1>Assemble Gobbo Mechanist</h1>Monta um Gobbo Mechanist a cada 25 segundos, que dura 40 segundos e procura por construções danificadas e unidades mecânicas que possa reparar."
 
 "DOTA_Tooltip_Ability_item_build_energy_tower"   "Construir Energy Tower"
-"DOTA_Tooltip_Ability_item_build_energy_tower_Description"   "Tipo de Ataque: Chaos (alcance: 600)<h1>Habilidades</h1>- Bouncing Attack (3 alvos, 30%% menos de dano em cada salto)<br>- Energy Burst (20%% de chance, 8 alvos, 80 de dano, 20%% menos de dano em cada salto)"
+"DOTA_Tooltip_Ability_item_build_energy_tower_Description"   "Tipo de Ataque: Chaos (alcance: 600)<h1>Habilidades</h1>- Bouncing Attack (3 alvos, 30%% menos de dano em cada salto)<br>- Energy Burst (20%% de chance, 4 alvos, 80 de dano, 20%% menos de dano em cada salto)"
 
 "DOTA_Tooltip_Ability_item_build_blue_shield_generator"   "Construir Blue Shield Generator"
 "DOTA_Tooltip_Ability_item_build_blue_shield_generator_Description"   "<h1>Energy Shield</h1>Protege uma unidade aliada aleatória com energia, dando a ela +2 de armadura. Na próxima vez que a unidade for atingida por uma habilidade de construção negativa, a habilidade não terá efeito e o escudo desaparecerá."
@@ -2339,7 +2339,7 @@
 "DOTA_Tooltip_Ability_tank_armor_damage_reduced"   "Redução de Dano:"
 "DOTA_Tooltip_Ability_tank_armor_Description"   "Reduz o dano de todos os ataques recebidos"
 "DOTA_Tooltip_Ability_rocket_tank_aa_rockets"   "AA Rockets"
-"DOTA_Tooltip_Ability_rocket_tank_aa_rockets_Description"   "Dispara um missil em um inimigo voador aleatório no alcance de %radius% a cada segundo. Cada foguete causa %dano% de dano."
+"DOTA_Tooltip_Ability_rocket_tank_aa_rockets_Description"   "Dispara um missil em um inimigo voador aleatório no alcance de %radius% a 2 segundos. Cada foguete causa %dano% de dano."
 "DOTA_Tooltip_Ability_mine_layer_lay_mine"   "Lay Mine"
 "DOTA_Tooltip_Ability_mine_layer_lay_mine_Description"   "Coloca uma mina que explode quando os inimigos passarem por cima dela.\nCausa 250 de dano aos inimigos no alcance %close_radius% e %dano% dano aos inimigos no alcance %far_radius%"
 "DOTA_Tooltip_Ability_lunatic_goblin_suicide"   "Suicide"

@@ -5,11 +5,31 @@ modifier_drums_aura = class({})
 function modifier_drums_aura:GetTexture() return "item_spirit_vessel" end
 function modifier_drums_aura:IsAura() return true end
 function modifier_drums_aura:IsPurgable() return false end
-function modifier_drums_aura:GetAuraRadius() return 99999 end
 function modifier_drums_aura:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_drums_aura:GetAuraSearchType() return DOTA_UNIT_TARGET_ALL end
 function modifier_drums_aura:GetAuraDuration() return 0.5 end
 function modifier_drums_aura:GetModifierAura() return "modifier_drums_buff" end
+
+function modifier_drums_aura:OnCreated()
+  if not IsServer() then return end
+  self.creationTime = GameRules:GetGameTime()
+end
+
+function modifier_drums_aura:GetAuraRadius()
+  if not IsServer() then return end
+
+  local time = GameRules:GetGameTime() - self.creationTime
+  local radius = 99999
+  local expansionTime = 3
+
+  if time < expansionTime then
+    multiplier = time / expansionTime
+
+    return radius * multiplier
+  end
+
+  return radius
+end
 
 function modifier_drums_aura:GetAuraEntityReject(target)
   return IsCustomBuilding(target) or target:IsRealHero()
