@@ -68,15 +68,7 @@ function CreatePlayerPanel(id, steam_id) {
 
   let DisconnectedIcon = $.CreatePanel("Panel", AvatarContainer, "DisconnectedIcon");
   
-  $.Schedule(1.0, () => {
-    var hero = Players.GetPlayerHeroEntityIndex(id);
-    var heroName = Entities.GetUnitName(hero);
-
-    let HeroIconPanel = $.CreatePanel("DOTAHeroImage", AvatarContainer, "hero_icon" + id);
-    HeroIconPanel.AddClass("HeroIconPanel");
-    HeroIconPanel.heroname = heroName;
-    HeroIconPanel.heroimagestyle = "icon";
-  });
+  $.Schedule(1.0, () => CreateHeroIconPanel(id, AvatarContainer));
 
   let UserInfoContainer = $.CreatePanel("Panel", playerPanel, "user_info" + id);
   UserInfoContainer.AddClass("UserInfoContainer");
@@ -96,6 +88,12 @@ function CreatePlayerPanel(id, steam_id) {
   let InterestText = $.CreatePanel("Label", InterestContainer, "interest_text" + id);
   InterestText.AddClass("InterestText");
   InterestText.text = "+5";
+  InterestContainer.style.visibility = "collapse";
+  
+  var timeToHideIncome = isInEnemyTeam ? 60.0 : 0;
+  $.Schedule(timeToHideIncome, () => {    
+    InterestContainer.style.visibility = "visible";
+  });
   
   if (isInEnemyTeam) {
     playerPanel.AddClass("AvatarEnemy");
@@ -136,6 +134,15 @@ function CreatePlayerPanel(id, steam_id) {
   }
 
   return playerPanel;
+}
+
+function CreateHeroIconPanel(playerID, AvatarContainer) {
+  var heroName = Players.GetPlayerSelectedHero(playerID)
+
+  let HeroIconPanel = $.CreatePanel("DOTAHeroImage", AvatarContainer, "hero_icon" + playerID);
+  HeroIconPanel.AddClass("HeroIconPanel");
+  HeroIconPanel.heroname = heroName;
+  HeroIconPanel.heroimagestyle = "icon";  
 }
 
 function UpdatePanels() {
@@ -179,7 +186,10 @@ function OnIncomeUpdated(table_name, playerID, income) {
     const panelPlayerID = panel.playerID;
 
     if(panelPlayerID == playerID) {
-      $('#interest_text' + panelPlayerID).text = "+" + Math.floor(income.income);
+      var interestTextPanel = $('#interest_text' + panelPlayerID);
+      if(interestTextPanel) {
+        interestTextPanel.text = "+" + Math.floor(income.income);
+      }
       
       break;
     }
