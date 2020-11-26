@@ -143,10 +143,10 @@ function ConvertTimeToTable(t)
   local s01 = seconds - (s10 * 10)
   local broadcast_gametimer = 
     {
-        timer_minute_10 = m10,
-        timer_minute_01 = m01,
-        timer_second_10 = s10,
-        timer_second_01 = s01,
+      timer_minute_10 = m10,
+      timer_minute_01 = m01,
+      timer_second_10 = s10,
+      timer_second_01 = s01,
     }
   return broadcast_gametimer
 end
