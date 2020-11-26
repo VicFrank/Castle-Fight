@@ -151,13 +151,37 @@ function GameMode:OnHeroInGame(hero)
 
     -- Place the hero at a random spawn location
     local spawnPositions
+    local goodGuys = true
     if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
       spawnPositions = Entities:FindAllByClassname("info_player_start_goodguys")
     else
+      goodGuys = false
       spawnPositions = Entities:FindAllByClassname("info_player_start_badguys")
     end
 
-    local spawnPosition = GetRandomTableElement(spawnPositions):GetAbsOrigin()
+    -- Unique spawn positions
+    local playerSpawnPosition
+    local takenSpawnPositionsTable = {}
+    for _,v in pairs(GameRules.GameData.spawnPositions) do
+      if v.playerID == playerID then
+        playerSpawnPosition = v
+      end
+      if v.goodGuys == goodGuys then
+        table.insert(takenSpawnPositionsTable, v.spawnPositionIndex)
+      end
+    end
+
+    if not playerSpawnPosition then 
+      local spawnPositionIndex = 1
+      while TableContainsValue(takenSpawnPositionsTable, spawnPositionIndex) do
+        spawnPositionIndex = spawnPositionIndex + 1
+      end
+
+      playerSpawnPosition = { playerID = playerID, spawnPositionIndex = spawnPositionIndex, goodGuys = goodGuys }
+      table.insert(GameRules.GameData.spawnPositions, playerSpawnPosition)
+    end
+
+    local spawnPosition = spawnPositions[playerSpawnPosition.spawnPositionIndex]:GetAbsOrigin()
     hero:SetAbsOrigin(spawnPosition)
 
     -- Only precache if the game has actually started

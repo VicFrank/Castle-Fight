@@ -1,65 +1,69 @@
 call_to_arms = class({})
-LinkLuaModifier("modifier_call_to_arms_aura", "abilities/human/call_to_arms.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_call_to_arms_aura_buff", "abilities/human/call_to_arms.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_call_to_arms_buff", "abilities/human/call_to_arms.lua", LUA_MODIFIER_MOTION_NONE)
 
-function call_to_arms:GetIntrinsicModifierName()
-  return "modifier_call_to_arms_aura"
+function call_to_arms:OnSpellStart()
+    local caster = self:GetCaster()
+    local ability = self
+  
+    local team = caster:GetTeamNumber()
+    local position = point or caster:GetAbsOrigin()
+    local num_targets = ability:GetSpecialValueFor("targets")
+  
+    local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+    local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
+    local allies =  FindUnitsInRadius(team, position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, flags, FIND_ANY_ORDER, false)
+  
+    local friendlyBuildings = {}
+  
+    for _,target in pairs(allies) do
+      if IsCustomBuilding(target) 
+      and (target:GetBuildingType() == "UnitTrainer" or target:GetBuildingType() == "SiegeTrainer") 
+      and not target:IsLegendary() 
+      and not target:HasModifier("modifier_call_to_arms_buff") then
+        table.insert(friendlyBuildings, target)
+      end
+    end
+
+    caster:EmitSound("Hero_Chen.HolyPersuasionCast")
+  
+    local targets = GetRandomTableElements(friendlyBuildings, num_targets)
+
+    if not targets then return end
+      
+    for _,target in pairs(targets) do
+        target:AddNewModifier(caster, self, "modifier_call_to_arms_buff", {})
+    end
 end
 
-modifier_call_to_arms_aura = class({})
+modifier_call_to_arms_buff = class({})
 
-function modifier_call_to_arms_aura:IsAura()
-  return true
+function modifier_call_to_arms_buff:OnCreated()
+  if not self:GetAbility() then return end
+
+  self.caster = self:GetCaster()
+  self.ability = self:GetAbility()
+  self.parent = self:GetParent()
+
+  local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_chen/chen_holy_persuasion_b.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
+  ParticleManager:ReleaseParticleIndex(particle)
 end
 
-function modifier_call_to_arms_aura:IsHidden()
-  return false
-end
-
-function modifier_call_to_arms_aura:IsAuraActiveOnDeath()
-  return false
-end
-
-function modifier_call_to_arms_aura:IsPurgable()
-  return false
-end
-
-function modifier_call_to_arms_aura:GetAuraRadius()
-  if not IsServer() then return end
-  local radius = 99999
-  local parent = self:GetParent()
-  if parent:GetTeam() == DOTA_TEAM_NEUTRALS or parent:PassivesDisabled() then
-    radius = 0
+function modifier_call_to_arms_buff:OnDestroy()
+  if IsServer() then
+    local parent = self:GetParent()
+    local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
+    ParticleManager:ReleaseParticleIndex(particle)
   end
-  return radius
 end
 
-function modifier_call_to_arms_aura:GetModifierAura()
-  return "modifier_call_to_arms_aura_buff"
+function modifier_call_to_arms_buff:GetEffectName()
+  return "particles/units/heroes/hero_omniknight/omniknight_heavenly_grace_beam.vpcf"
 end
 
-function modifier_call_to_arms_aura:GetAuraSearchTeam()
-  return DOTA_UNIT_TARGET_TEAM_FRIENDLY
-end
-
-function modifier_call_to_arms_aura:GetAuraEntityReject(target)
-  return not IsCustomBuilding(target) or not (target:GetBuildingType() == "UnitTrainer" or target:GetBuildingType() == "SiegeTrainer") or target:IsLegendary()
-end
-
-function modifier_call_to_arms_aura:GetAuraSearchType()
-  return DOTA_UNIT_TARGET_ALL
-end
-
-function modifier_call_to_arms_aura:GetAuraDuration()
-  return 0.5
-end
-
-modifier_call_to_arms_aura_buff = class({})
-
-function modifier_call_to_arms_aura_buff:IsPurgable()
+function modifier_call_to_arms_buff:IsPurgable()
   return false
 end
 
-function modifier_call_to_arms_aura_buff:GetTexture()
+function modifier_call_to_arms_buff:GetTexture()
   return "chen_holy_persuasion"
 end

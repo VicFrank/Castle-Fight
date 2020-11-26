@@ -11,6 +11,12 @@ function tentacle_prison:OnSpellStart()
 
   if not target then return end
 
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
+
   local unitName = "tentacle_prison_tentacle"
   local team = caster:GetTeam()
   local playerID = caster:GetPlayerOwnerID()
