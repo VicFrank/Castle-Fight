@@ -10,6 +10,12 @@ function ancient_of_wind_cyclone:OnSpellStart()
   local target = GetRandomVisibleEnemy(caster:GetTeam())
   if not target then return end
 
+  for _,modifier in pairs(target:FindAllModifiers()) do
+    if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+      return
+    end
+  end
+
   local duration = ability:GetSpecialValueFor("duration")
 
   local dummy = CreateUnitByName("dummy_unit", target:GetAbsOrigin(), true, nil, nil, caster:GetTeam())
@@ -66,6 +72,9 @@ function modifier_ancient_of_wind_cyclone_debuff:OnIntervalThink()
   if not IsServer() then return end
 
   local damage = self.tick_rate * self.dps
+  if IsCustomBuilding(self:GetParent()) then
+    damage = damage * 0.4
+  end
 
   ApplyDamage({
     victim = self:GetParent(),

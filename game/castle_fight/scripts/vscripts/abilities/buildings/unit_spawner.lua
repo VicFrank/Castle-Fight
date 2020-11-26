@@ -24,10 +24,10 @@ function SpawnUnits(keys)
   caster.progressParticle = ParticleManager:CreateParticle(particleName, PATTACH_OVERHEAD_FOLLOW, caster)
   ParticleManager:SetParticleControl(caster.progressParticle, 1, Vector(ringRadius, 1 / cooldown, 1))
 
-  if caster:HasModifier("modifier_call_to_arms_aura_buff") then
-    if 24 >= RandomInt(1,100) then
-      numUnits = numUnits * 2
-    end
+  if caster:HasModifier("modifier_call_to_arms_buff") then
+    caster:RemoveModifierByName("modifier_call_to_arms_buff")
+    caster:EmitSound("Hero_Chen.HolyPersuasionEnemy")
+    numUnits = numUnits * 2
   end
 
   for i=1,numUnits do

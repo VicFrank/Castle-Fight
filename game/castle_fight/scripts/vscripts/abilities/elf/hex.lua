@@ -6,7 +6,7 @@ function city_of_magic_hex:OnSpellStart()
   local caster = self:GetCaster()
   local ability = self
 
-  local filter = function(target) return not target:IsLegendary() end
+  local filter = function(target) return not target:IsLegendary() and not target:HasModifier("modifier_city_of_magic_hex") end
   local target = GetRandomVisibleEnemyWithFilter(caster:GetTeam(), filter)
 
   if not target then return end
