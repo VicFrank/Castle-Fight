@@ -1023,9 +1023,6 @@
     }
   }
 
-  // Whenever an allied structure trains a unit, there is a chance of
-  // producing an additional unit of the same type, fighting for the owner of
-  // the Altar. Does not train legendary units. Aura does not stack.
   "call_to_arms"
   {
     "AbilityTextureName"             "chen_holy_persuasion"
@@ -1033,14 +1030,24 @@
     "ScriptFile"                     "abilities/human/call_to_arms"
     "MaxLevel"                       "1"
 
-    "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"             "1.0"
+    "AbilityManaCost"             "30"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_omniknight/omniknight_heavenly_grace_beam.vpcf"
+      "particle"  "particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf"
+      "particle"  "particles/units/heroes/hero_chen/chen_holy_persuasion_b.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
+    }
 
     "AbilitySpecial"
     {
       "01"
       {
-        "var_type"               "FIELD_INTEGER"
-        "trigger_chance"         "20"
+        "var_type"                "FIELD_INTEGER"
+        "targets"                 "6"
       }
     }
   }

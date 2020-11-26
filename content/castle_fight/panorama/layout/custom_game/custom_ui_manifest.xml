@@ -79,5 +79,6 @@
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/round_timer.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/round_stats.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/draw_settings.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/player_list.xml" />
   </Panel>
 </root>

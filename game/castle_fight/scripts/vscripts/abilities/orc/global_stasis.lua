@@ -17,7 +17,14 @@ function global_stasis:OnSpellStart()
   caster:EmitSound("Hero_Techies.StasisTrap.Stun")
 
   for _,enemy in pairs(enemies) do
-    if not IsCustomBuilding(enemy) then
+    local skipUnit = false
+    for _,modifier in pairs(enemy:FindAllModifiers()) do
+      if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
+        skipUnit = true
+      end
+    end
+
+    if not IsCustomBuilding(enemy) and not skipUnit then
       enemy:AddNewModifier(caster, ability, "modifier_global_stasis", {duration = duration})
     end
   end

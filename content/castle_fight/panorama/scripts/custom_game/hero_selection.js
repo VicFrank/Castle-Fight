@@ -248,12 +248,13 @@ function HideHeroesInScoreboard() {
       panel.style.visibility = "collapse";
     }
    );
+
+   $.Schedule(1.0/4.0, HideHeroesInScoreboard);
 }
 
 (function () {
   UpdateHeroDetails(CurrentRace);
-
-  $.Schedule(1, HideHeroesInScoreboard);
+  HideHeroesInScoreboard();
 
   CustomNetTables.SubscribeNetTableListener("heroes_available", OnHeroesAvailableChanged);
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);

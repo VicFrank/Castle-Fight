@@ -96,32 +96,15 @@ function thisEntity:GoInvisible()
 end
 
 function thisEntity:GetInvisTargetPriority(enemy)
-  -- units with mana and light armor
-  if enemy:GetMana() > 0 and enemy:HasModifier("modifier_armor_light") then
-    return 0
-  end
-  -- units with mana unarmored
-  if enemy:GetMana() > 0 and enemy:HasModifier("modifier_armor_unarmored") then
-    return 1
-  end
-  -- units with less than some hp amount (350)
-  if enemy:GetHealth() < 350 then
-    return 2
-  end
-  -- units with mana another armor type
-  if enemy:GetMana() > 0 then
-    return 3
-  end
-  -- units with light armor
-  if enemy:HasModifier("modifier_armor_light") then
-    return 4
-  end
-  -- units unarmored
-  if enemy:HasModifier("modifier_armor_unarmored") then
-    return 5
-  end
-  -- units with other armor type and lot of hp
-  return 6
+  local priority = 5
+
+  if enemy:HasModifier("modifier_armor_light") then priority = priority - 2 end
+  if enemy:HasModifier("modifier_armor_unarmored") then priority = priority - 1 end
+  if enemy:GetHealth() < 350 then priority = priority - 1 end
+  if enemy:GetMana() > 0 then priority = priority - 1 end
+  if (enemy:GetKeyValue("AttackRange") or 0) > 275 then priority = priority - 1 end
+
+  return priority
 end
 
 function thisEntity:FindTarget()

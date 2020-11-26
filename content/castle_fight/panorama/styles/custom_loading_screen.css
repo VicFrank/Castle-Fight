@@ -231,3 +231,19 @@
 .CreditsDescription {
 	margin-bottom: 20px;
 }
+
+#draft_votes_panel {
+  flow-children: down;
+  width: 80%;
+  horizontal-align: center;
+  margin: 4px 0 4px 0;
+  background-color: #141616;
+}
+
+.draft-vote-text {
+  horizontal-align: right;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #AABBBB;
+  padding: 3px;
+}
