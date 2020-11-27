@@ -7,13 +7,13 @@
     flow-children: down;
     horizontal-align: left;
     z-index: 3;
-    margin-top: 100px;
+    margin-top: 140px;
     padding-bottom: 10px;
 }
 
 #PlayerPanel {
-    width: 290px;
-    height: 70px;
+    width: 270px;
+    height: 50px;
     opacity: 1;
     transition-duration: 0.05s;
     transition-property: background-image;
@@ -31,13 +31,13 @@
 }
 
 .AvatarContainer {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
 }
 
 .UserAvatar {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     background-size: 100%;
     background-image: url("file://{images}/custom_game/PlayerPanel/user_avatar.png");
     horizontal-align: left;
@@ -156,11 +156,6 @@ Label {
     margin: 1px 0;
 }
 
-.CheeseContainer {
-    flow-children: right;
-    margin: 1px 0;
-}
-
 .GoldIcon {
     width: 16px;
     height: 16px;
@@ -199,6 +194,10 @@ Label {
     margin-left: -3px;
 }
 
+.CheeseContainer {
+  
+}
+
 .CheeseIcon {
     width: 16px;
     height: 16px;
@@ -208,12 +207,23 @@ Label {
     margin: 0px 5px 2px 5px;
 }
 
-.CheeseText {
-    horizontal-align: center;
-    color: #9862e9;
-    text-shadow: 2px 2px 8px 3 black;
-    font-weight: bold;
-    font-size: 17px;
-    margin-top: -1px;
-    margin-left: -3px;
+.NoCheese {
+  opacity: 0.15;
+}
+
+.RescueStrikeContainer {
+  
+}
+
+.RescueStrikeIcon {
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+    background-image: url("file://{images}/custom_game/rescue_strike.png");
+    horizontal-align: left;
+    margin: 0px 5px 2px 5px;
+}
+
+.NoRescueStrike {
+  opacity: 0.15;
 }
