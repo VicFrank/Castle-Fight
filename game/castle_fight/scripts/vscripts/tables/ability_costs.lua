@@ -97,6 +97,7 @@ g_Custom_Ability_Costs = {
   "upgrade_murloc_fortress",
   "upgrade_lernaean_fountain",
   "upgrade_royal_spawning_grounds",
+  "upgrade_royal_naga_spring",
   "upgrade_archery_tower",
   "upgrade_hall_of_the_eldest",
   "upgrade_tower_of_supreme_magic",

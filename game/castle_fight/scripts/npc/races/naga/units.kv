@@ -751,13 +751,120 @@
     "MovementSpeed"          "380"
     "StatusHealth"           "500"
     "StatusHealthRegen"      "0.5"
-    "StatusMana"             "300"
-    "StatusManaRegen"        "1.0"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0"
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
     "BountyGoldMin"          "3"
     "BountyGoldMax"          "3"
+
+    "AttackType"             "pierce"
+    "ArmorType"              "heavy"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+    }
+  }
+
+  "slithereen_naga_siren" 
+  {
+    "BaseClass"        "npc_dota_creature"
+    "Model"            "models/heroes/siren/siren.vmdl"
+    "SoundSet"         "n_creep_Ranged"
+    "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+    "Level"            "1"
+    "ModelScale"       "0.95"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "18"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "naga_siren_purge"
+    "Ability2"                "naga_siren_summon_big_lobsters"
+
+    "ArmorPhysical"           "4"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"         "100"
+    "AttackDamageMax"         "120"
+    "AttackRate"              "1.6"
+    "AttackAnimationPoint"    "0.3"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "400"
+    "ProjectileModel"         "particles/units/heroes/hero_shadowshaman/shadow_shaman_ward_base_attack.vpcf"
+    "ProjectileSpeed"         "900"    
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "320"
+    "StatusHealth"           "850"
+    "StatusHealthRegen"      "2.0"
+    "StatusMana"             "300"
+    "StatusManaRegen"        "3.0"     
+    "StatusStartingMana"     "225"     
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "16"
+    "BountyGoldMax"          "16"
+
+    "AttackType"             "chaos"
+    "ArmorType"              "unarmored"
+
+    "Creature"
+    {
+      "DisableClumpingBehavior" "1"
+      "AttachWearables"
+      {
+        "Wearable1"   { "ItemDef"  "4505" }
+        "Wearable2"   { "ItemDef"  "4506" }
+        "Wearable3"   { "ItemDef"  "4509" }
+        "Wearable4"   { "ItemDef"  "4487" }
+        "Wearable5"   { "ItemDef"  "4493" }
+      }
+    }
+  }
+
+  "naga_big_lobster" 
+  {
+    "BaseClass"        "npc_dota_creature"
+    "Model"            "models/items/courier/hermit_crab/hermit_crab.vmdl"
+    "SoundSet"         "n_creep_Melee"
+    "GameSoundsFile"   "soundevents/game_sounds_creeps.vsndevts"
+    "Level"            "2"
+    "ModelScale"       "1.55"
+    "RingRadius"       "40"
+    "HealthBarOffset"  "170"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "18"
+    "vscripts"         "ai/generic_unit_ai.lua"
+
+    "Ability1"                "lobster_critical_strike"
+    "Ability2"                "lobster_damage_reduction"
+
+    "ArmorPhysical"           "7"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"         "70"
+    "AttackDamageMax"         "100"
+    "AttackRate"              "1.4"
+    "AttackAnimationPoint"    "0.5"
+    "AttackAcquisitionRange"  "0"
+    "AttackRange"             "128"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"          "380"
+    "StatusHealth"           "1000"
+    "StatusHealthRegen"      "0.5"
+    "StatusMana"             "0"
+    "StatusManaRegen"        "0"
+    "VisionDaytimeRange"     "1400"
+    "VisionNighttimeRange"   "800"
+
+    "BountyGoldMin"          "7"
+    "BountyGoldMax"          "7"
 
     "AttackType"             "pierce"
     "ArmorType"              "heavy"

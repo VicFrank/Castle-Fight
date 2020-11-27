@@ -508,9 +508,6 @@
     }
   }
 
-  // Summon Lobsters Summons two lobsters that live for 45 seconds.
-  // Lobsters (Pierce / Heavy, 360HP) have Critical Strike (10%, 3x)
-  // 50% chance to reduce damage taken by 35.
   "naga_siren_summon_lobsters"
   {
     "AbilityTextureName"          "lycan_summon_wolves"
@@ -534,12 +531,35 @@
     }
   }
 
+  "naga_siren_summon_big_lobsters"
+  {
+    "AbilityTextureName"          "lycan_summon_wolves"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/naga/summon_big_lobsters"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    "AbilityCastPoint"        "0.3"
+    "AbilityCooldown"         "30.0"
+    "AbilityManaCost"         "145"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "duration"                "45"
+      }
+    }
+  }
+
   "lobster_critical_strike"
   {
     "AbilityTextureName"          "phantom_assassin_coup_de_grace"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/generic/critical_strike"
-    "MaxLevel"                    "1"
+    "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -548,7 +568,7 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "crit_chance"             "10"
+        "crit_chance"             "10 20"
       }
       "02"
       {
@@ -563,7 +583,7 @@
     "AbilityTextureName"          "tidehunter_kraken_shell"
     "BaseClass"                   "ability_lua"
     "ScriptFile"                  "abilities/generic/damage_reduction"
-    "MaxLevel"                    "1"
+    "MaxLevel"                    "2"
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
@@ -572,7 +592,7 @@
       "01"
       {
         "var_type"                "FIELD_INTEGER"
-        "damage_reduced"          "35"
+        "damage_reduced"          "35 50"
       }
       "02"
       {
