@@ -47,6 +47,25 @@ function startsWith(str, start)
   return str:sub(1, #start) == start
 end
 
+function PickRandomShuffle(reference_list, bucket)
+  if (TableCount(reference_list) == 0) then
+    return nil
+  end
+  if (#bucket == 0) then
+    -- ran out of options, refill the bucket from the reference
+    local i = 1
+    for k, v in pairs(reference_list) do
+      bucket[i] = v
+      i = i + 1
+    end
+  end
+  -- pick a value from the bucket and remove it
+  local pick_index = RandomInt(1, #bucket)
+  local result = bucket[pick_index]
+  table.remove(bucket, pick_index)
+  return result
+end
+
 function GetRandomTableElement( table )
   if #table == 0 then return nil end
   local nRandomIndex = RandomInt( 1, #table )

@@ -53,7 +53,7 @@ function frost_bolt:OnProjectileHit(target, locationn)
   if target then
     target:EmitSound("hero_Crystal.projectileImpact")
     target:AddNewModifier(caster, self, "modifier_frost_bolt_freeze", {duration = duration})
-    FreezeCooldowns(target, duration)
+    -- FreezeCooldowns(target, duration)
 
     local damage = self:GetSpecialValueFor("damage")
 
@@ -114,24 +114,35 @@ end
 function greater_frost_bolt:OnProjectileHit(target, location)
   local caster = self:GetCaster()
   local duration = self:GetSpecialValueFor("duration")
+  local damage = self:GetSpecialValueFor("damage")
+  local radius = self:GetSpecialValueFor("radius")
+
+  local team = caster:GetTeamNumber()
+  local target_type = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
+  local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
+  local enemies = FindUnitsInRadius(team, location, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, flags, FIND_ANY_ORDER, false)
 
   if target then
-      target:EmitSound("hero_Crystal.projectileImpact")
-      target:AddNewModifier(caster, self, "modifier_frost_bolt_freeze", {duration = duration})
-      FreezeCooldowns(target, duration)
+    target:EmitSound("hero_Crystal.projectileImpact")
+  end
 
-      local damage = self:GetSpecialValueFor("damage")
+  for _,enemy in pairs(enemies) do
+    if IsCustomBuilding(enemy) then
+      enemy:AddNewModifier(caster, self, "modifier_frost_bolt_freeze", {duration = duration})
+      -- FreezeCooldowns(enemy, duration)
 
       ApplyDamage({
-      victim = target,
-      attacker = caster,
-      damage = damage,
-      damage_type = DAMAGE_TYPE_PURE,
-      ability = self,
+        victim = enemy,
+        attacker = caster,
+        damage = damage,
+        damage_type = DAMAGE_TYPE_PURE,
+        ability = self,
       })
+    end
   end
 end
 
+-- Has been replaced with a silence
 function FreezeCooldowns(unit, duration)
   local abilityList = {}
 
@@ -199,7 +210,6 @@ end
 function modifier_frost_bolt_freeze:OnCreated( kv )
   if IsServer() then
     local parent = self:GetParent()
-    self.mana_modifier = self:GetAbility():GetSpecialValueFor("mana_regen")
     parent:EmitSound("Hero_Crystal.Frostbite")
     local particleNameA = "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
     local particleNameB = "particles/generic_gameplay/generic_slowed_cold.vpcf"
@@ -212,17 +222,12 @@ end
 function modifier_frost_bolt_freeze:DeclareFunctions()
   local funcs = {
     MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
-    MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
   }
   return funcs
 end
 
 function modifier_frost_bolt_freeze:GetModifierProvidesFOWVision()
   return 1
-end
-
-function modifier_frost_bolt_freeze:GetModifierConstantManaRegen()
-  return self.mana_modifier
 end
 
 function modifier_frost_bolt_freeze:OnDestroy()

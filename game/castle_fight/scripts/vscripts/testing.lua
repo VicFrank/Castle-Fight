@@ -1,16 +1,28 @@
 function GameMode:OnScriptReload()
   print("Script Reload")
 
-  for _,unit in pairs(FindAllUnits()) do
-    if IsCustomBuilding(unit) and unit:GetUnitName() ~= "castle" then
-      local ability = unit:GetAbilityByIndex(0)
+  local heroes = {
+    "human",
+    "naga",
+    "nature",
+    "night_elves",
+    "undead",
+    "orc",
+    "north",
+    "elves",
+    "chaos",
+    "corrupted",
+    "mech",
+  }
+  
+  local availableHeroes = {}
+  local bucket = {}
 
-      if ability then
-        print(ability:GetAbilityName())
-        local behavior = ability:GetBehavior()
-        print(hasbit(behavior, DOTA_ABILITY_BEHAVIOR_AUTOCAST))
-      end
-    end
+  for i=1,10 do
+    hero = PickRandomShuffle(heroes, bucket)
+    availableHeroes = {hero}
+  
+    print(i, hero)
   end
 end
 
