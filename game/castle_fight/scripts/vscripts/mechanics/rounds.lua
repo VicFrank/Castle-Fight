@@ -183,6 +183,7 @@ function GameMode:SetAvailableHeroes()
   }
   
   local availableHeroes = {}
+  local bucket = {}
   
   local draftMode = tonumber(CustomNetTables:GetTableValue("settings", "draft_mode")["draftMode"])
   
@@ -192,12 +193,13 @@ function GameMode:SetAvailableHeroes()
     elseif draftMode == 2 then -- Single draft
       availableHeroes = GetRandomTableElements(heroes, 3)
     elseif draftMode == 3 then -- All random
-      availableHeroes = GetRandomTableElements(heroes, 1)
+      hero = PickRandomShuffle(heroes, bucket)
+      availableHeroes = {hero}
     end
   
     CustomNetTables:SetTableValue("heroes_available", tostring(playerID), {
       heroes = availableHeroes,
-    })  
+    })
   end
 end
 

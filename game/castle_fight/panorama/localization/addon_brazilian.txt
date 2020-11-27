@@ -85,7 +85,7 @@
   "Draft_mode"                   "Modo de Escolha"
   "No_opinion"                   "Padrão"
   "All_pick"                     "Escolha Livre"
-  "Single_draft"                 "Single draft"
+  "Single_draft"                 "Lista Tríplice"
   "All_random"                   "Escolha Aléatoria"
 
   "Credits"                      "Créditos"

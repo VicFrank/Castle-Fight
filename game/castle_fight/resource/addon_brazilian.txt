@@ -323,10 +323,10 @@
     "DOTA_Tooltip_Ability_item_build_watch_tower_Description"   "<font color='#a3098c'>Torre</font>\nUma torre defensiva que protege locais estratégicos.\nTipo de Ataque: Piercing (alcance: 950)\nArmadura: Fortified"
 
     "DOTA_Tooltip_Ability_build_heroic_shrine"              "Construir Heroic Shrine" 
-    "DOTA_Tooltip_Ability_build_heroic_shrine_Description"  "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade Passiva: Call to Arms (Toda vez que uma construção produz uma unidade, existe uma chance de 24%% de treinar uma unidade adicional do mesmo tipo, lutando pelo dono do Altar. Não treina unidades lendárias. \N\ nO efeito não acumula." 
+    "DOTA_Tooltip_Ability_build_heroic_shrine_Description"  "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade Passiva: Call to Arms (Adiciona um efeito a construções de treinamento aliado. As construções com esse efeito produzirão uma unidade adicional lutando pelo dono do Altar. Não afeta construções lendarias. Alveja no máximo 6 construções." 
 
     "DOTA_Tooltip_Ability_item_build_heroic_shrine"             "Construir Heroic Shrine" 
-    "DOTA_Tooltip_Ability_item_build_heroic_shrine_Description" "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade Passiva: Call to Arms (Toda vez que uma construção produz uma unidade, existe uma chance de 24%% de treinar uma unidade adicional do mesmo tipo, lutando pelo dono do Altar. Não treina unidades lendárias. \N\ nO efeito não acumula." 
+    "DOTA_Tooltip_Ability_item_build_heroic_shrine_Description" "<font color='#FFBF00'>Construção de Habilidade de Efeito Positivo</font>\nHabilidade Passiva: Call to Arms (Adiciona um efeito a construções de treinamento aliado. As construções com esse efeito produzirão uma unidade adicional lutando pelo dono do Altar. Não afeta construções lendarias. Alveja no máximo 6 construções." 
 
     // Human Unit Abilities
 
@@ -387,11 +387,11 @@
     "DOTA_Tooltip_Ability_artillery_fire_Description"           "Atira projéteis de artilharia na base inimiga. Causa 300-400 de dano siege. Não é muito preciso, mas muito destrutivo se atingir o alvo. Forte dano em area." 
     
     "DOTA_Tooltip_Ability_call_to_arms"                         "Call To Arms"
-    "DOTA_Tooltip_Ability_call_to_arms_Description"             "Todas as construções aliadas têm 24% de chance de treinar uma unidade adicional. O efeito não acumula."
+    "DOTA_Tooltip_Ability_call_to_arms_Description"             "Afeta %targets% diferentes construções de treinamento. Elas vão treinar uma unidade adicional."
     "DOTA_Tooltip_modifier_call_to_arms_aura"                   "Call To Arms Aura"
-    "DOTA_Tooltip_modifier_call_to_arms_aura_Description"       "Todas as construções aliadas têm uma de chance de treinar uma unidade adicional. O efeito não acumula."
+    "DOTA_Tooltip_modifier_call_to_arms_aura_Description"       "Algumas Construções aliadas treinaram uma unidade adicional"
     "DOTA_Tooltip_modifier_call_to_arms_aura_buff"              "Call To Arms"
-    "DOTA_Tooltip_modifier_call_to_arms_aura_buff_Description"  "Esta construção tem a chance de treinar uma unidade adicional."
+    "DOTA_Tooltip_modifier_call_to_arms_aura_buff_Description"  "Esta construção treinara uma unidade adicional."
 
     
     //////////////////////
@@ -1386,9 +1386,9 @@
 
 
 "DOTA_Tooltip_Ability_item_build_frost_launcher"              "Construir Frost Launcher"
-"DOTA_Tooltip_Ability_item_build_frost_launcher_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Frost Bolt\nLança um Frost Bolt em uma construção inimiga aleatória. No impacto, esse raio congela a construção, travando o intervalo de usos (cooldown) e removendo a regeneração de mana base. Dura 14 segundos."
+"DOTA_Tooltip_Ability_item_build_frost_launcher_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Frost Bolt\nLança um Frost Bolt em uma construção inimiga aleatória. No impacto, esse raio silencia a construção e causa 50 de dano. Dura 8 segundos."
 "DOTA_Tooltip_Ability_upgrade_greater_frost_launcher"              "Melhorar para Greater Frost Launcher"
-"DOTA_Tooltip_Ability_upgrade_greater_frost_launcher_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Greater Frost Bolt\nLança dois Frost Bolt em duas construções inimiga aleatória. No impacto, esse raio congela a construção, travando o intervalo de usos (cooldown) e removendo a regeneração de mana base. Dura 16 segundos."
+"DOTA_Tooltip_Ability_upgrade_greater_frost_launcher_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Greater Frost Bolt\nLança dois Frost Bolt em duas construções inimiga aleatória. No impacto, esse raio silencia a construção e causando 100 de dano. Quando alvejado em torre, congela todas as construções em roda. Dura 16 segundos."
 "DOTA_Tooltip_Ability_item_build_chilling_mushroom"              "Construir Chilling Mushroom"
 "DOTA_Tooltip_Ability_item_build_chilling_mushroom_Description"  "<font color='#C40000'>Construção de Habilidade de Efeito Negativo</font>\nHabilidade: Freezing Blast\nCongela uma unidade aérea, atordoando-a por 5 segundos e causando 250 de dano."
 "DOTA_Tooltip_Ability_item_build_icy_tower"              "Construir Icy Tower"
@@ -1407,9 +1407,9 @@
 "DOTA_Tooltip_Ability_freezing_blast"                "Freezing Blast"
 "DOTA_Tooltip_Ability_freezing_blast_Description"    "Congela uma unidade aérea, atordoando-a por %duration% segundos e causando %damage% de dano"
 "DOTA_Tooltip_Ability_frost_bolt"                "Frost Bolt"
-"DOTA_Tooltip_Ability_frost_bolt_Description"    "Lança um Frost Bolt em uma construção inimiga aleatória. No impacto, esse raio congela a construção, travando o intervalo de usos (cooldown) e removendo a regeneração de mana base. Dura %duration% segundos."
+"DOTA_Tooltip_Ability_frost_bolt_Description"    "Lança um Frost Bolt em uma construção inimiga aleatória. No impacto, esse raio silencia a construção e causa 50 de dano. Dura %duration% segundos."
 "DOTA_Tooltip_Ability_greater_frost_bolt"                "Greater Frost Bolt"
-"DOTA_Tooltip_Ability_greater_frost_bolt_Description"    "Lança dois Frost Bolt em duas construções inimiga aleatória. No impacto, esse raio congela a construção, travando o intervalo de usos (cooldown) e removendo a regeneração de mana base. Dura %duration% segundos."
+"DOTA_Tooltip_Ability_greater_frost_bolt_Description"    "Lança dois Frost Bolt em duas construções inimiga aleatória. No impacto, esse raio silencia a construção e causando 100 de dano. Quando alvejado em torre, congela todas as construções em roda. Dura %duration% segundos."
 "DOTA_Tooltip_Ability_wolf_critical_strike"                "Critical Strike"
 "DOTA_Tooltip_Ability_wolf_critical_strike_crit_chance"    "Chance do Ataque Critico:"
 "DOTA_Tooltip_Ability_wolf_critical_strike_crit_damage"    "Dano do Ataque Critico:"
