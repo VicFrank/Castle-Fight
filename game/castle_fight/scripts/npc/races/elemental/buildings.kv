@@ -1,0 +1,708 @@
+"DOTAUnits"
+{
+  "trapped_gale"
+  {
+    "Model"            "models/corrupted/gs_ti9_skill.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "3.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "3"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_lesser_wind_elemental"
+    "Ability2"                "upgrade_monument_of_wind_stream"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "24"
+    "BountyGoldMax"          "24"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "monument_of_wind_stream"
+  {
+    "Model"            "models/items/pugna/ward/weta_call_of_the_nether_lotus_ward/weta_call_of_the_nether_lotus_ward.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_wind_elemental"
+    "Ability2"                "upgrade_zephyros_memorial"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1300"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "44"
+    "BountyGoldMax"          "44"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "zephyros_memorial"
+  {
+    "Model"            "models/items/furion/treant/treant_cis/treant_cis.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "3"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.2"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_greater_wind_elemental"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1500"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "85"
+    "BountyGoldMax"          "85"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "water_spring"
+  {
+    "Model"            "models/corrupted/effigy_pedestal_fm16_dire_wood.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "3"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_lesser_water_elemental"
+    "Ability2"                "upgrade_golden_fountain"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "42"
+    "BountyGoldMax"          "42"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "golden_fountain"
+  {
+    "Model"            "models/corrupted/effigy_pedestal_fm16_dire.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "2"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.9"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_water_elemental"
+    "Ability2"                "upgrade_spellbound_fountain"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1500"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "76"
+    "BountyGoldMax"          "76"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "spellbound_fountain"
+  {
+    "Model"            "models/items/venomancer/ward/acidic_ward_of_the_flytrap/acidic_ward_of_the_flytrap.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "3"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_greater_water_elemental"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1700"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "148"
+    "BountyGoldMax"          "148"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "pillar_of_globe_lightning"
+  {
+    "Model"            "models/items/venomancer/ward/chomper_ward/chomper_ward.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.1"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_lightning_elemental"
+    "Ability2"                "upgrade_pillar_of_elmo_fire"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "46"
+    "BountyGoldMax"          "46"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "pillar_of_elmo_fire"
+  {
+    "Model"            "models/corrupted/ti9_immortal_fissure.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_greater_lightning_elemental"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1400"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "95"
+    "BountyGoldMax"          "95"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "altar_of_fire"
+  {
+    "Model"            "models/corrupted/jade_reckoning_boulder.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelOffset"      "10"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "SiegeTrainer"
+
+    "Ability1"                "train_fire_elemental"
+    "Ability2"                "upgrade_altar_of_blaze"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "58"
+    "BountyGoldMax"          "58"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "altar_of_blaze"
+  {
+    "Model"            "models/corrupted/ti9_cache_earthspirit_turquoise_giant_ability_4.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.8"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_greater_fire_elemental"
+    "Ability2"                "upgrade_tower_of_elder_knowledge"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1400"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "74"
+    "BountyGoldMax"          "74"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "tower_of_elder_knowledge"
+  {
+    "Model"            "models/corrupted/warlock_ti9_immortal_lantern.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.4"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_master_of_elements"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1700"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "100"
+    "BountyGoldMax"          "100"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "rock_pile"
+  {
+    "Model"            "models/corrupted/lion_ti9_immortal_spike"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "3.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_earth_elemental"
+    "Ability2"                "upgrade_greater_fissure"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "40"
+    "StatusStartingMana"     "0"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "72"
+    "BountyGoldMax"          "72"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "greater_fissure"
+  {
+    "Model"            "models/items/venomancer/ward/ti8_veno_stalagmite_crawler_stalagmite_crawler/ti8_veno_stalagmite_crawler_stalagmite_crawler.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_greater_earth_elemental"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1400"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "32"
+    "BountyGoldMax"          "32"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "mana_generator"
+  {
+    "Model"            "models/props_structures/rock_golem/tower_dire_rock_golem.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.7"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotationMode""FACE_ENEMY_BASE"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Support"
+
+    "Ability1"                "mana_transfusion"
+
+    "ArmorPhysical"             "58"
+    "MagicalResistance"         "0"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "50"
+    "BountyGoldMax"          "50"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "obelisk_of_element"
+  {
+    "Model"            "models/items/wards/megagreevil_ward/megagreevil_ward.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.6"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotationMode""FACE_ENEMY_BASE"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Support"
+
+    "Ability1"                "elemental_enchantment"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "12"
+    "StatusStartingMana"     "0"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "130"
+    "BountyGoldMax"          "130"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "book_of_conjuration"
+  {
+    "Model"            "models/items/wards/megagreevil_ward/megagreevil_ward.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.6"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Killing"
+
+    "Ability1"                "elemental_rain"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"    
+    "StatusMana"             "16"
+    "StatusStartingMana"     "0"
+    "StatusManaRegen"        "1.0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "130"
+    "BountyGoldMax"          "130"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "elemental_guard_tower"
+  {
+    "Model"            "models/items/world/towers/ti10_radiant_tower/ti10_radiant_tower_model_editor.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.0"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotationMode""FACE_ENEMY_BASE"
+
+    "BuildTime"        "20"
+    "BuildingType"     "Tower"
+
+    "Ability1"                "elemental_nature"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+
+    "AttackType"                "chaos"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"           "80"
+    "AttackDamageMax"           "100"
+    "AttackRate"                "1.2"
+    "AttackAnimationPoint"      "0.1"
+    "AttackAcquisitionRange"    "900"
+    "AttackRange"               "900"
+    "ProjectileModel"           "particles/econ/events/ti9/rock_golem_tower/dire_tower_attack.vpcf"
+    "ProjectileSpeed"           "750"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "130"
+    "BountyGoldMax"          "130"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "linker"
+  {
+    "Model"            "models/items/wards/weta_eyes_of_the_watchroot/weta_eyes_of_the_watchroot.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "1.6"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "Support"
+
+    "Ability1"                "link"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "130"
+    "BountyGoldMax"          "130"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+}

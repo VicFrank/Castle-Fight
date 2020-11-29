@@ -1,13 +1,13 @@
 "DOTAUnits"
 {
-  "train_grunt"
+  "train_lesser_wind_elemental"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "grunt"
+    "AbilityTextureName"        "lesser_wind_elemental"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "20.0"
+    "AbilityCooldown"       "23.0"
 
     "OnSpellStart"
     {
@@ -16,20 +16,19 @@
         "ScriptFile"    "abilities/buildings/unit_spawner.lua"
         "Function"      "SpawnUnits"
         "NumUnits"      "1"
-        "UnitName"      "grunt"
+        "UnitName"      "lesser_wind_elemental"
       }
     }
-
   }
 
-  "train_veteran_grunt"
+  "train_wind_elemental"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "veteran_grunt"
+    "AbilityTextureName"        "wind_elemental"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "26.0"
+    "AbilityCooldown"       "33.0"
 
     "OnSpellStart"
     {
@@ -38,20 +37,19 @@
         "ScriptFile"    "abilities/buildings/unit_spawner.lua"
         "Function"      "SpawnUnits"
         "NumUnits"      "1"
-        "UnitName"      "veteran_grunt"
+        "UnitName"      "wind_elemental"
       }
     }
-
   }
 
-  "train_axemaster"
+  "train_greater_wind_elemental"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "axemaster"
+    "AbilityTextureName"        "greater_wind_elemental"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "38.0"
+    "AbilityCooldown"       "46.0"
 
     "OnSpellStart"
     {
@@ -60,15 +58,15 @@
         "ScriptFile"    "abilities/buildings/unit_spawner.lua"
         "Function"      "SpawnUnits"
         "NumUnits"      "1"
-        "UnitName"      "axemaster"
+        "UnitName"      "greater_wind_elemental"
       }
     }
   }
 
-  "train_shaman"
+  "train_lesser_water_elemental"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "shaman"
+    "AbilityTextureName"        "lesser_water_elemental"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
@@ -81,162 +79,15 @@
         "ScriptFile"    "abilities/buildings/unit_spawner.lua"
         "Function"      "SpawnUnits"
         "NumUnits"      "1"
-        "UnitName"      "shaman"
+        "UnitName"      "lesser_water_elemental"
       }
     }
   }
 
-  "train_troll"
+  "train_water_elemental"
   {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "troll"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "25.0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-        "Function"      "SpawnUnits"
-        "NumUnits"      "1"
-        "UnitName"      "troll"
-      }
-    }
-  }
-
-  "train_troll_trapper"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "troll_trapper"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "29.0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-        "Function"      "SpawnUnits"
-        "NumUnits"      "1"
-        "UnitName"      "troll_trapper"
-      }
-    }
-  }
-
-  "train_wyvern_rider"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "wyvern_rider"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "26.0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-        "Function"      "SpawnUnits"
-        "NumUnits"      "1"
-        "UnitName"      "wyvern_rider"
-      }
-    }
-  }
-
-  "train_kodo"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "kodo"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "28.0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-        "Function"      "SpawnUnits"
-        "NumUnits"      "1"
-        "UnitName"      "kodo"
-      }
-    }
-  }
-
-  "train_offensive_kodo"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "offensive_kodo"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "35.0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-        "Function"      "SpawnUnits"
-        "NumUnits"      "1"
-        "UnitName"      "offensive_kodo"
-      }
-    }
-  }
-
-  "train_defensive_kodo"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "defensive_kodo"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "35.0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-        "Function"      "SpawnUnits"
-        "NumUnits"      "1"
-        "UnitName"      "defensive_kodo"
-      }
-    }
-  }
-
-  "train_spellbreaker_kodo"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "spellbreaker_kodo"
-
-    "MaxLevel"              "1"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityCooldown"       "35.0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
-        "Function"      "SpawnUnits"
-        "NumUnits"      "1"
-        "UnitName"      "spellbreaker_kodo"
-      }
-    }
-  }
-
-  "train_catapult"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "catapult"
+    "AbilityTextureName"        "water_elemental"
 
     "MaxLevel"              "1"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
@@ -249,7 +100,175 @@
         "ScriptFile"    "abilities/buildings/unit_spawner.lua"
         "Function"      "SpawnUnits"
         "NumUnits"      "1"
-        "UnitName"      "catapult"
+        "UnitName"      "water_elemental"
+      }
+    }
+  }
+
+  "train_greater_water_elemental"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "greater_water_elemental"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "43.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "greater_water_elemental"
+      }
+    }
+  }
+
+  "train_lightning_elemental"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "lightning_elemental"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "26.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "lightning_elemental"
+      }
+    }
+  }
+
+  "train_greater_lightning_elemental"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "greater_lightning_elemental"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "40.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "greater_lightning_elemental"
+      }
+    }
+  }
+
+  "train_fire_elemental"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "fire_elemental"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "27.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "fire_elemental"
+      }
+    }
+  }
+
+  "train_greater_fire_elemental"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "greater_fire_elemental"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "39.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "greater_fire_elemental"
+      }
+    }
+  }
+
+  "train_master_of_elements"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "master_of_elements"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "54.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "master_of_elements"
+      }
+    }
+  }
+
+  "train_earth_elemental"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "earth_elemental"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "25.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "earth_elemental"
+      }
+    }
+  }
+
+  "train_greater_earth_elemental"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "greater_earth_elemental"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "40.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "greater_earth_elemental"
       }
     }
   }

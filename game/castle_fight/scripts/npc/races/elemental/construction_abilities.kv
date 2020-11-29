@@ -1,0 +1,466 @@
+"DOTAUnits"
+{
+  "build_trapped_gale"
+  {
+    "AbilityTextureName"            "trapped_gale"
+
+    "UnitName"                      "trapped_gale"
+    "GoldCost"                      "160"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_monument_of_wind_stream"
+  {
+    "AbilityTextureName"            "monument_of_wind_stream"
+    "GoldCost"                      "200"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "monument_of_wind_stream"
+      }
+    }
+  }
+
+  "upgrade_zephyros_memorial"
+  {
+    "AbilityTextureName"            "zephyros_memorial"
+    "GoldCost"                      "260"
+    "LumberCost"                    "0"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "zephyros_memorial"
+      }
+    }
+  }
+
+  "build_water_spring"
+  {
+    "AbilityTextureName"            "water_spring"
+
+    "UnitName"                      "water_spring"
+    "GoldCost"                      "190"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_golden_fountain"
+  {
+    "AbilityTextureName"            "golden_fountain"
+    "GoldCost"                      "190"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "golden_fountain"
+      }
+    }
+  }
+
+  "upgrade_spellbound_fountain"
+  {
+    "AbilityTextureName"            "spellbound_fountain"
+    "GoldCost"                      "190"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "spellbound_fountain"
+      }
+    }
+  }
+
+  "build_pillar_of_globe_lightning"
+  {
+    "AbilityTextureName"            "pillar_of_globe_lightning"
+
+    "UnitName"                      "pillar_of_globe_lightning"
+    "GoldCost"                      "230"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_pillar_of_elmo_fire"
+  {
+    "AbilityTextureName"            "pillar_of_elmo_fire"
+    "GoldCost"                      "280"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "pillar_of_elmo_fire"
+      }
+    }
+  }
+
+  "build_altar_of_fire"
+  {
+    "AbilityTextureName"            "altar_of_fire"
+
+    "UnitName"                      "altar_of_fire"
+    "GoldCost"                      "240"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_altar_of_blaze"
+  {
+    "AbilityTextureName"            "altar_of_blaze"
+    "GoldCost"                      "240"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "altar_of_blaze"
+      }
+    }
+  }
+
+  "upgrade_tower_of_elder_knowledge"
+  {
+    "AbilityTextureName"            "tower_of_elder_knowledge"
+    "GoldCost"                      "300"
+    "LumberCost"                    "400"
+    "IsLegendary"                   "1"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "tower_of_elder_knowledge"
+      }
+    }
+  }
+
+  "build_rock_pile"
+  {
+    "AbilityTextureName"            "rock_pile"
+
+    "UnitName"                      "rock_pile"
+    "GoldCost"                      "250"
+    "LumberCost"                    "0"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "upgrade_greater_fissure"
+  {
+    "AbilityTextureName"            "greater_fissure"
+    "GoldCost"                      "250"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "greater_fissure"
+      }
+    }
+  }
+
+  "build_linker"
+  {
+    "AbilityTextureName"            "linker"
+
+    "UnitName"                      "linker"
+    "GoldCost"                      "700"
+    "LumberCost"                    "1600"
+    "IsLegendary"                   "1"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+}

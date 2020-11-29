@@ -14,12 +14,12 @@ function Units:Init( unit )
   -- Apply armor and damage modifier (for visuals)
   local attack_type = unit:GetAttackType()
   if attack_type and unit:GetAttackDamage() > 0 then
-    ApplyModifier(unit, "modifier_attack_"..attack_type)
+    ApplyModifier(unit, "modifier_attack_".. attack_type)
   end
 
   local armor_type = unit:GetArmorType()
   if armor_type then
-    ApplyModifier(unit, "modifier_armor_"..armor_type)
+    ApplyModifier(unit, "modifier_armor_".. armor_type)
   end
 
   if unit:HasSplashAttack() then

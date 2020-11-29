@@ -1,0 +1,629 @@
+"DOTAAbilities"
+{
+  // reduces attack and move speed of enemy air units in 500 range
+  "gale"
+  {
+    "AbilityTextureName"          "enraged_wildkin_tornado"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/gale"
+    "MaxLevel"                    "3"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "slow_percent"            "0 20 35"
+      }
+    }
+  }
+
+  // pretty sure this is just evasion
+  "liquid_body"
+  {
+    "AbilityTextureName"          "morphling_replicate"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/evasion"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "evasion"                 "60 80"
+      }
+    }
+  }
+
+  // 20% chance to copy itself on attack. Illusion deals 60% damage and takes 200% damage
+  // do a manta effect when spawning the illusion
+  "water_elemental_illusion"
+  {
+    "AbilityTextureName"          "morphling_replicate"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/water_elemental_illusion"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "copy_chance"             "20"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "illusion_duration"       "60"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "illusion_damage_out_pct" "60"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "illusion_damage_in_pct"  "200"
+      }
+    }
+  }
+
+  // instead of doing a regular attack, cast forked lighting on each attack
+  // dotacraft does this by shooting an invisible cone shaped linear projectile (clever)
+  // how does this work on buildings
+  "lightning_attack"
+  {
+    "AbilityTextureName"          "disruptor_thunder_strike"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/lightning_attack"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/items_fx/chain_lightning.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "damage"                  "60 80"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "num_targets"             "3 5"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "max_range"               "400 600"
+      }
+    }
+  }
+
+  // 15% chance to stun melee attacker (how long?)
+  "lightning_shield"
+  {
+    "AbilityTextureName"          "storm_spirit_electric_vortex"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/lightning_shield"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_razor/razor_storm_lightning_strike.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "chance"                  "15 30"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_FLOAT"
+        "stun_duration"           "1.5"
+      }
+    }
+  }
+
+  // Every 15 attacks splits into 2
+  "fire_elemental_split"
+  {
+    "AbilityTextureName"          "invoker_forge_spirit"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/fire_elemental_split"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "num_attacks"             "15"
+      }
+    }
+  }
+
+  // 20% chance to breathe fire, 100 damage
+  // see how amenable the particle is to changing radius
+  "fire_breath"
+  {
+    "AbilityTextureName"          "dragon_knight_breathe_fire"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/fire_breath"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "chance"                  "20"
+      }
+      "02"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "start_radius"            "150"
+      }
+      "03"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "end_radius"              "250"
+      }
+      "04"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "range"                   "750"
+      }
+      "05"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "speed"                   "1050"
+      }
+      "06"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "damage"                  "100"
+      }
+    }
+  }
+
+  // casts 1 of 2 abilities of elemental nature every 8 seconds
+  // ??? they're some sort of weird aoe things
+  // I kind of like the idea of just casting another elemental's ability? but stronger
+  "knowledge_of_elementals"
+  {
+    "AbilityTextureName"          "invoker_invoke"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/knowledge_of_elementals"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                "FIELD_INTEGER"
+        "cooldown"                "8"
+      }
+    }
+  }
+
+  "earth_elemental_pulverize"
+  {
+    "AbilityTextureName"          "tiny_avalanche"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/generic/pulverize"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "chance"        "20 25"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "close_range"   "150 200"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "close_damage"  "100 200"
+      }
+      "04"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "far_range"     "250 300"
+      }
+      "05"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "far_damage"    "50 100"
+      }
+    }
+  }
+
+  // Deals additional damage proportional to health 100*currentHealth/maxHealth
+  "power_of_earth"
+  {
+    "AbilityTextureName"          "earthshaker_fissure"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/power_of_earth"
+    "MaxLevel"                    "2"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "max_damage"    "50 125"
+      }
+    }
+  }
+
+  // Generate energy and pass it to one of the buildings to increase its mana generation.
+  // Generate 0.3 additional mana/sec. Reduced effect on non elemental buildings.
+  // targeted ability, with a castrange
+  "mana_transfusion"
+  {
+    "AbilityTextureName"          "keeper_of_the_light_chakra_magic"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/mana_transfusion"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+
+    "AbilityCastRange"        "700"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "mana_regen"        "0.3"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "non_elemental_reduction"   "50"
+      }
+    }
+  }
+
+  //Gives 1 of 4 abilities to a random ally
+  //  - Forge weapons: gives splash damage (250 range, 50%)
+  //  - Rock Shield: +15 Armor
+  //  - Haste: Increase attack and move speed by 75% and 25% respectively
+  //  - Rejuvenation: heal 450 hp instantly
+  "elemental_enchantment"
+  {
+    "AbilityTextureName"          "keeper_of_the_light_chakra_magic"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_enchantment"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+
+    "AbilityCooldown"        "10.0"
+    "AbilityManaCost"        "10"
+  }
+
+  "forge_weapons"
+  {
+    "AbilityTextureName"          "black_dragon_splash_attack"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_enchantment"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "splash_radius"        "250"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "splash_damage"   "50"
+      }
+    }
+  }
+
+  "rock_shield"
+  {
+    "AbilityTextureName"          "tiny_craggy_exterior"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_enchantment"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "bonus_armor"        "15"
+      }
+    }
+  }
+
+  "haste"
+  {
+    "AbilityTextureName"          "tiny_craggy_exterior"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_enchantment"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "attack_speed"        "75"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "move_speed"        "25"
+      }
+    }
+  }
+
+  // Cast 1 of the following spells (at random)
+  //   - Monsoon: 50 dps, 5 sec (250) (what particle)
+  //   - Meteor Shower: 150 dmg, 15 dps, 3 sec (195)
+  //   - Blizzard: 40 dmg/wave, 7 waves (280)
+  "elemental_rain"
+  {
+    "AbilityTextureName"          "chen_divine_favor"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_rain"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+
+    "AbilityCooldown"        "14.0"
+    "AbilityManaCost"        "14"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "monsoon_dps"        "50"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "monsoon_duration"        "5.0"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "meteor_shower_damage"        "150"
+      }
+      "04"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "meteor_shower_dps"        "15"
+      }
+      "05"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "meteor_shower_duration"        "3.0"
+      }
+      "06"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "blizzard_damage_per_wave"        "40"
+      }
+      "07"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "blizzard_waves"        "7"
+      }
+      "08"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "aoe"        "200"
+      }
+    }
+  }
+
+  // Elemental Nature (gains one of the following abilities at random)
+  //   - Discharge (50 dmg to a random enemy every 0.1 seconds)
+  //   - Boulder (70%  chance to stun enemy for 10 sec and deal 100 additional damage)
+  //   - Immolation (40 dps 600 aoe)
+  //   - Shield of Mist (prevents melee attacks on tower)
+  "elemental_nature"
+  {
+    "AbilityTextureName"          "obsidian_destroyer_astral_imprisonment"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_nature"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  // 50 dmg to a random enemy every 0.1 seconds
+  "elemental_nature_discharge"
+  {
+    "AbilityTextureName"          "harpy_storm_chain_lightning"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_nature"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityCastRange"        "300"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage"      "50"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "interval"    "0.1"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"    "300"
+      }
+    }
+  }
+
+  // 70% chance to stun enemy for 10 sec and deal 100 additional damage
+  "elemental_nature_boulder"
+  {
+    "AbilityTextureName"          "tiny_toss"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_nature"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "chance"        "70"
+      }
+      "02"
+      {
+        "var_type"         "FIELD_FLOAT"
+        "stun_duration"    "10.0"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "damage"    "100"
+      }
+    }
+  }
+
+  // 40 dps 600 aoe
+  "elemental_nature_immolation"
+  {
+    "AbilityTextureName"          "ember_spirit_flame_guard"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_nature"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "dps"      "40"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "interval"    "0.1"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"    "600"
+      }
+    }
+  }
+
+  // prevents melee attacks on tower (i'm just going to make it flying for attack purposes)
+  "elemental_nature_shield_of_mist"
+  {
+    "AbilityTextureName"          "abaddon_aphotic_shield"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_nature"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  }
+
+  // Whenever an allied elemental dies, its life power is distributed among nearby allied units,
+  // healing them. Heals 20 * number of elemental buildings. Can't heal more than 500.
+  "link"
+  {
+    "AbilityTextureName"          "abaddon_aphotic_shield"
+    "BaseClass"                   "ability_lua"
+    "ScriptFile"                  "abilities/elemental/elemental_nature"
+    "MaxLevel"                    "1"
+
+    "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "max_heal"      "500"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "radius"    "600"
+      }
+      "03"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "heal_per_building"    "20"
+      }
+    }
+  }
+}

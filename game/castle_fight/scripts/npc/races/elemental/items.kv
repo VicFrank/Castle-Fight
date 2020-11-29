@@ -1,0 +1,122 @@
+"DOTAAbilities"
+{
+  "item_build_mana_generator"
+  {
+    "AbilityTextureName"            "mana_generator"
+
+    "UnitName"                      "mana_generator"
+    "GoldCost"                      "250"
+    "LumberCost"                    "350"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "item_build_obelisk_of_element"
+  {
+    "AbilityTextureName"            "obelisk_of_element"
+
+    "UnitName"                      "obelisk_of_element"
+    "GoldCost"                      "260"
+    "LumberCost"                    "600"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "item_build_book_of_conjuration"
+  {
+    "AbilityTextureName"            "book_of_conjuration"
+
+    "UnitName"                      "book_of_conjuration"
+    "GoldCost"                      "340"
+    "LumberCost"                    "650"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+
+  "item_build_elemental_guard_tower"
+  {
+    "AbilityTextureName"            "elemental_guard_tower"
+
+    "UnitName"                      "elemental_guard_tower"
+    "GoldCost"                      "240"
+    "LumberCost"                    "300"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "MaxLevel"                      "1"
+    "Building"                      "1"
+    "AbilityCastRange"              "260"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"        "builder.lua"
+        "Function"          "Build"
+      }
+    }
+  }
+}
