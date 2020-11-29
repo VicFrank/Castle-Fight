@@ -398,7 +398,7 @@
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
     "ConsideredHero"   "1"
-    "ModelScale"       "0.8"
+    "ModelScale"       "0.7"
     "RingRadius"       "100"
     "HealthBarOffset"  "160"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
@@ -411,6 +411,47 @@
     "BuildingType"     "UnitTrainer"
 
     "Ability1"                "train_naga_siren"
+    "Ability2"                "upgrade_royal_naga_spring"
+
+    "ArmorPhysical"             "5"
+    "MagicalResistance"         "0"
+    "ArmorType"                 "fortified"
+
+    "AttackCapabilities"      "DOTA_UNIT_CAP_NO_ATTACK"
+
+    "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_NONE"
+    "StatusHealth"           "1200"
+    "StatusMana"             "0"
+
+    "VisionDaytimeRange"     "900"
+    "VisionNighttimeRange"   "600"
+
+    "BountyGoldMin"          "70"
+    "BountyGoldMax"          "70"
+
+    "ConstructionSize"       "2"
+    "BlockPathingSize"       "2"
+  }
+
+  "royal_naga_spring"
+  {
+    "Model"            "models/statue_cavern.vmdl"
+    "BaseClass"        "npc_dota_creature"
+    "Level"            "1"
+    "ConsideredHero"   "1"
+    "ModelScale"       "0.9"
+    "RingRadius"       "100"
+    "HealthBarOffset"  "160"
+    "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+    "CollisionSize"    "40"
+    "ModelRotationMode"       "RANDOM"
+    "ModelRandomRotationStep" "90"
+    "vscripts"         "ai/generic_building_ai.lua"
+
+    "BuildTime"        "5"
+    "BuildingType"     "UnitTrainer"
+
+    "Ability1"                "train_slithereen_naga_siren"
 
     "ArmorPhysical"             "5"
     "MagicalResistance"         "0"

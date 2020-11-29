@@ -349,4 +349,42 @@
       }
     }
   }
+
+  "upgrade_royal_naga_spring"
+  {
+    "AbilityTextureName"            "naga_spring"
+    "GoldCost"                      "350"
+    "AbilityChannelTime"            "5"
+
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "ResourceCheck"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "RefundUpgradePrice"
+      }
+    }
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abilities/buildings/upgrades.lua"
+        "Function"    "UpgradeBuilding"
+        "UnitName"    "royal_naga_spring"
+      }
+    }
+  }
 }

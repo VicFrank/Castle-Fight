@@ -230,4 +230,25 @@
       }
     }
   }
+
+  "train_slithereen_naga_siren"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "naga_siren"
+
+    "MaxLevel"              "1"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityCooldown"       "44.0"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"    "abilities/buildings/unit_spawner.lua"
+        "Function"      "SpawnUnits"
+        "NumUnits"      "1"
+        "UnitName"      "slithereen_naga_siren"
+      }
+    }
+  }
 }

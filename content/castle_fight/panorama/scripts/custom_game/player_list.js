@@ -89,6 +89,12 @@ function CreatePlayerPanel(id, steam_id) {
   InterestText.AddClass("InterestText");
   InterestText.text = "+5";
   InterestContainer.style.visibility = "collapse";
+
+  let RescueStrikeContainer = $.CreatePanel("Panel", FirstRow, "rescue_strike_panel" + id);
+  RescueStrikeContainer.AddClass("RescueStrikeContainer");
+  
+  let RescueStrikeIconPanel = $.CreatePanel("Panel", RescueStrikeContainer, "rescue_strike_icon" + id);
+  RescueStrikeIconPanel.AddClass("RescueStrikeIcon");
   
   var timeToHideIncome = isInEnemyTeam ? 60.0 : 0;
   $.Schedule(timeToHideIncome, () => {    
@@ -99,6 +105,12 @@ function CreatePlayerPanel(id, steam_id) {
     playerPanel.AddClass("AvatarEnemy");
   }
   else {
+    let CheeseContainer = $.CreatePanel("Panel", FirstRow, "cheese_panel" + id);
+    CheeseContainer.AddClass("CheeseContainer");
+    
+    let CheeseIconPanel = $.CreatePanel("Panel", CheeseContainer, "cheese_icon" + id);
+    CheeseIconPanel.AddClass("CheeseIcon");
+
     let ResourcesContainer = $.CreatePanel("Panel", playerPanel, "resources_panel" + id);
     ResourcesContainer.AddClass("ResourcesContainer");
   
@@ -121,16 +133,6 @@ function CreatePlayerPanel(id, steam_id) {
     let LumberIconText = $.CreatePanel("Label", LumberContainer, "lumber_text" + id);
     LumberIconText.AddClass("LumberText");
     LumberIconText.text = "0";
-  
-    let CheeseContainer = $.CreatePanel("Panel", ResourcesContainer, "cheese_panel" + id);
-    CheeseContainer.AddClass("CheeseContainer");
-    
-    let CheeseIconPanel = $.CreatePanel("Panel", CheeseContainer, "cheese_icon" + id);
-    CheeseIconPanel.AddClass("CheeseIcon");
-    
-    let CheeseIconText = $.CreatePanel("Label", CheeseContainer, "cheese_text" + id);
-    CheeseIconText.AddClass("CheeseText");
-    CheeseIconText.text = "1";
   }
 
   return playerPanel;
@@ -170,8 +172,14 @@ function OnResourcesUpdated(table_name, playerID, resources) {
 
     if(panelPlayerID == playerID && !isInEnemyTeam) {
       $('#gold_text' + panelPlayerID).text = Math.floor(resources.gold);
-      $('#cheese_text' + panelPlayerID).text = Math.floor(resources.cheese);
       $('#lumber_text' + panelPlayerID).text = Math.floor(resources.lumber);
+
+      let CheeseIconPanel = $('#cheese_icon' + panelPlayerID);
+      if(resources.cheese === 0) {
+        CheeseIconPanel.AddClass("NoCheese");
+      } else {
+        CheeseIconPanel.RemoveClass("NoCheese");
+      }
       
       break;
     }
@@ -206,7 +214,14 @@ function OnHeroSelectStatusChanged(table_name, key, data) {
   }
 }
 
+function OnRescueStrikeUsed(data) {
+  var playerID = data.playerID;
+  let RescueStrikeIconPanel = $('#rescue_strike_icon' + playerID);
+  RescueStrikeIconPanel.AddClass("NoRescueStrike");
+}
+
 (function () {
+  GameEvents.Subscribe("rescue_strike_used", OnRescueStrikeUsed);
   CustomNetTables.SubscribeNetTableListener("resources", OnResourcesUpdated);
   CustomNetTables.SubscribeNetTableListener("player_income", OnIncomeUpdated);
   CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
