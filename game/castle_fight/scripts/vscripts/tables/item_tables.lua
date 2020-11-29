@@ -68,4 +68,10 @@ g_Race_Items = {
     "item_build_energy_tower",
     "item_build_blue_shield_generator",
   },
+  npc_dota_hero_zuus = {
+    "item_build_mana_generator",
+    "item_build_obelisk_of_element",
+    "item_build_book_of_conjuration",
+    "item_build_elemental_guard_tower",
+  },
 }

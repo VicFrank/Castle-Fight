@@ -10,6 +10,7 @@ var RaceToHero = {
   chaos: "npc_dota_hero_chaos_knight",
   corrupted: "npc_dota_hero_grimstroke",
   mech: "npc_dota_hero_tinker",
+  elemental: "npc_dota_hero_wisp",
   random: "random",
 };
 
@@ -25,6 +26,7 @@ var RaceToPanelID = {
   chaos: "chaos_knight_selected",
   corrupted: "grimstroke_selected",
   mech: "tinker_selected",
+  elemental: "wisp_selected",
   random: "random_selected",
 };
 
@@ -40,6 +42,7 @@ var RaceToMovieSource = {
   chaos: "file://{resources}/videos/heroes/npc_dota_hero_chaos_knight.webm",
   corrupted: "file://{resources}/videos/heroes/npc_dota_hero_grimstroke.webm",
   mech: "file://{resources}/videos/heroes/npc_dota_hero_tinker.webm",
+  elemental: "file://{resources}/videos/heroes/npc_dota_hero_wisp.webm",
   random: "file://{resources}/videos/heroes/npc_dota_hero_wisp.webm",
 };
 
