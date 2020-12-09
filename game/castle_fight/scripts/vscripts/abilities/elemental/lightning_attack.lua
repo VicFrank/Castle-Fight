@@ -62,7 +62,7 @@ function modifier_lightning_attack:OnAttackLanded(keys)
     local centerDir = (attacker:GetAbsOrigin() - target:GetAbsOrigin()):Normalized()
 
     for _,enemy in pairs(enemies) do
-      if enemy:GetEntityIndex() ~= target:GetEntityIndex() then
+      if (enemy:GetEntityIndex() ~= target:GetEntityIndex()) and not IsCustomBuilding(enemy) then
         local targetDir = (attacker:GetAbsOrigin() - enemy:GetAbsOrigin()):Normalized()
 
         local angle = math.acos(centerDir:Dot(targetDir))
