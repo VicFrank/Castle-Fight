@@ -11,7 +11,6 @@ var RaceToHero = {
   corrupted: "npc_dota_hero_grimstroke",
   mech: "npc_dota_hero_tinker",
   elemental: "npc_dota_hero_wisp",
-  random: "random",
 };
 
 var RaceToPanelID = {
@@ -27,7 +26,6 @@ var RaceToPanelID = {
   corrupted: "grimstroke_selected",
   mech: "tinker_selected",
   elemental: "wisp_selected",
-  random: "random_selected",
 };
 
 var RaceToMovieSource = {
@@ -43,7 +41,6 @@ var RaceToMovieSource = {
   corrupted: "file://{resources}/videos/heroes/npc_dota_hero_grimstroke.webm",
   mech: "file://{resources}/videos/heroes/npc_dota_hero_tinker.webm",
   elemental: "file://{resources}/videos/heroes/npc_dota_hero_wisp.webm",
-  random: "file://{resources}/videos/heroes/npc_dota_hero_wisp.webm",
 };
 
 var CurrentSelectedMoviePanel;
@@ -67,9 +64,6 @@ function SetAvailableHeroes() {
   
   var amountOfAvailableHeroes = Object.keys(availableHeroes.heroes).length;
   var heroListPanel = $("#HeroPickHolder");
-  if(amountOfAvailableHeroes > 1) {
-    availableHeroes.heroes[amountOfAvailableHeroes + 1] = "random";
-  }
 
   const amountOfHeroesPerRow = 6;
   const amountOfRows = Math.ceil(amountOfAvailableHeroes / amountOfHeroesPerRow);
@@ -155,6 +149,17 @@ function OnHeroSelectButtonPressed() {
   GameEvents.SendCustomGameEventToServer("on_race_selected", 
     {
       hero: RaceToHero[CurrentRace]
+    });
+
+  Game.EmitSound("HeroPicker.Selected")
+
+  HideHeroSelect();
+}
+
+function OnRandomHeroButtonPressed() {
+  GameEvents.SendCustomGameEventToServer("on_race_selected", 
+    {
+      hero: "random"
     });
 
   Game.EmitSound("HeroPicker.Selected")

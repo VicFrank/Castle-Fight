@@ -90,18 +90,34 @@ function IsCustomBuilding(unit)
   return unit:HasModifier("modifier_building")
 end
 
+function CDOTA_BaseNPC:GetMovementCapability()
+  return self:HasFlyMovementCapability() and "air" or "ground"
+end
+
+function CDOTA_BaseNPC:HasSecondaryAttack()
+  return self:GetSecondaryAttackTable()
+end
+
 function CDOTA_BaseNPC:IsFlyingUnit()
   return self:GetKeyValue("MovementCapabilities") == "DOTA_UNIT_CAP_MOVE_FLY"
 end
 
+function CDOTA_BaseNPC:SetAttackRange(value)
+  if self:HasModifier("modifier_attack_range") then
+    self:RemoveModifierByName("modifier_attack_range")
+  end
+
+  self:AddNewModifier(self, nil, "modifier_attack_range", {range = value})
+end
+
 -- Shortcut for a very common check
-function IsValidAlive( unit )
+function IsValidAlive(unit)
   return (IsValidEntity(unit) and unit:IsAlive())
 end
 
--- Auxiliar function that goes through every ability and item, checking for any ability being channelled
-function IsChanneling ( unit )
-    
+-- Auxiliary function that goes through every ability and item, checking for any
+-- ability being channelled
+function IsChanneling (unit)
   for abilitySlot=0,15 do
     local ability = unit:GetAbilityByIndex(abilitySlot)
     if ability and ability:IsChanneling() then 
@@ -340,6 +356,14 @@ end
 
 function CDOTA_BaseNPC:IsMechanical()
   return self:GetUnitLabel():match("mechanical")
+end
+
+function CDOTA_BaseNPC:IsElemental()
+  return self:GetUnitLabel():match("elemental")
+end
+
+function CDOTA_BaseNPC:IsElementalBuilding()
+  return self:GetUnitLabel():match("elemental_building")
 end
 
 function CDOTA_BaseNPC:IsLegendary()

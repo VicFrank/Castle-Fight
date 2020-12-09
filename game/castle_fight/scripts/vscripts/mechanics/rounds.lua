@@ -73,6 +73,7 @@ function GameMode:RandomHero(playerID)
     chaos = "npc_dota_hero_chaos_knight",
     corrupted = "npc_dota_hero_grimstroke",
     mech = "npc_dota_hero_tinker",
+    elemental = "npc_dota_hero_wisp",
   }
 
   local botHeroes = {
@@ -123,9 +124,9 @@ function GameMode:StartHeroSelection()
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     if hero:IsAlive() then
       hero.hasPicked = false
-      local dummy = PlayerResource:ReplaceHeroWith(hero:GetPlayerOwnerID(), "npc_dota_hero_wisp", 0, 0)
-      if dummy then
-        dummy:AddNewModifier(dummy, nil, "modifier_hide_hero", {})
+      -- local dummy = PlayerResource:ReplaceHeroWith(hero:GetPlayerOwnerID(), "npc_dota_hero_wisp", 0, 0)
+      if hero then
+        hero:AddNewModifier(hero, nil, "modifier_hide_hero", {})
       end
     end
   end
@@ -180,6 +181,7 @@ function GameMode:SetAvailableHeroes()
     "chaos",
     "corrupted",
     "mech",
+    "elemental",
   }
   
   local availableHeroes = {}

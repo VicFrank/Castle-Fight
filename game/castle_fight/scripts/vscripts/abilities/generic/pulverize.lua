@@ -10,6 +10,8 @@ wendigo_pulverize = class({})
 function wendigo_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
 adamant_golem_pulverize = class({})
 function adamant_golem_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
+earth_elemental_pulverize = class({})
+function earth_elemental_pulverize:GetIntrinsicModifierName() return "modifier_pulverize" end
 
 modifier_pulverize = class({})
 

@@ -11,6 +11,7 @@
 #base "races/corrupted/items.kv"
 #base "races/chaos/items.kv"
 #base "races/mech/items.kv"
+#base "races/elemental/items.kv"
 
 "DOTAAbilities"
 {

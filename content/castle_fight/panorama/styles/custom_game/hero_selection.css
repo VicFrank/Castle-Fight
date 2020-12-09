@@ -92,7 +92,7 @@
 #HeroDetailsContainer {
     horizontal-align: center;
     width: 650px;
-    height: 250px;
+    height: 300px;
     margin-top: 20px;
 }
 
@@ -125,17 +125,20 @@
     font-size: 20px;
     color: white;
     width: 100%;
+    height: 100px;
     text-overflow: shrink;
     text-shadow: 0px 1px 0px 3 #00000077;
     transition-property: color;
     transition-duration: 0.1811s;
     transition-timing-function: ease-in-out;
+
+    margin-bottom: 25px;
 }
 
 #HeroSelectButton {
     width: 250px;
     horizontal-align: center;
-    vertical-align: bottom;
+    vertical-align: center;
 
     background-color: #5a615ecc;
 
@@ -154,6 +157,39 @@
 }
 
 #HeroSelectButtonLabel {
+    font-size: 28px;
+    text-align: center;
+    horizontal-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px 1.2 black;
+    font-family: defaultFont;
+}
+
+#RandomHeroButton {
+    width: 250px;
+    horizontal-align: center;
+    vertical-align: center;
+
+    background-color: #5a615ecc;
+
+    border: 1px solid #00000088;
+
+    transition-property: box-shadow, background-color, opacity, transform;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+
+    brightness: 1;
+}
+
+#RandomHeroButton:hover {
+    brightness: 1.2;
+}
+
+#RandomHeroButtonLabel {
     font-size: 28px;
     text-align: center;
     horizontal-align: center;

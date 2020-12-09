@@ -89,7 +89,7 @@ function BotAI:GetNextBuildingToBuild(hero)
             building = building,
             ability = upgradeAbility,
           }
-          print("Next building (upgrade) is: ", upgradeAbility:GetAbilityName())
+          -- print("Next building (upgrade) is: ", upgradeAbility:GetAbilityName())
           return
         end
       end
@@ -110,13 +110,13 @@ function BotAI:GetNextBuildingToBuild(hero)
         table.insert(buildings, ability)
       end
     else
-      print("Data for ability " .. abilityName .. " not found")
+      -- print("Data for ability " .. abilityName .. " not found")
     end    
   end
 
   local nextBuilding = GetRandomTableElement(buildings)
   hero.nextBuilding = nextBuilding
-  print("Next building is: ", nextBuilding:GetAbilityName())
+  -- print("Next building is: ", nextBuilding:GetAbilityName())
 end
 
 function BotAI:HasEnoughSpecialResources(hero, ability)
@@ -283,7 +283,7 @@ function BotAI:BuildNextBuilding(hero)
     if BotAI:CanBuildBuilding(hero, ability) then
       building:CastAbilityNoTarget(ability, hero:GetPlayerOwnerID())
       hero.nextUpgrade = nil
-      print("Upgrading " .. ability:GetAbilityName())
+      -- print("Upgrading " .. ability:GetAbilityName())
       return 0.5
     else
       return 1
@@ -292,7 +292,7 @@ function BotAI:BuildNextBuilding(hero)
 
   if not hero.nextBuilding and state == "idle" then
     -- If we've finished our building queue, start looking for our next building
-    print("BotAI: look for next building")
+    -- print("BotAI: look for next building")
     return 0.5
   end
 
@@ -306,7 +306,7 @@ function BotAI:BuildNextBuilding(hero)
     BotAI:PlaceBuilding(hero, hero.nextBuilding, hero.buildPosition)
     hero.nextBuilding = nil
   else
-    print("Couldn't find buildPosition")
+    -- print("Couldn't find buildPosition")
   end
   
   return 1
@@ -315,7 +315,7 @@ end
 function BotAI:PlaceBuilding(hero, ability, position)
   DebugDrawCircle(position, Vector(0,255,0), 50, 100, true, 3)
 
-  print("Place Building ", position)
+  -- print("Place Building ", position)
   BuildingHelper:OrderBuildingConstruction(hero, ability, position)
 end
 

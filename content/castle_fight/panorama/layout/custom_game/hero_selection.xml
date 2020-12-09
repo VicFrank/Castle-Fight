@@ -25,6 +25,9 @@
         <Button id="HeroSelectButton" onactivate="OnHeroSelectButtonPressed()">
           <Label id="HeroSelectButtonLabel" text="#select" />
         </Button>
+        <Button id="RandomHeroButton" onactivate="OnRandomHeroButtonPressed()">
+          <Label id="RandomHeroButtonLabel" text="#random" />
+        </Button>
       </Panel>
     </Panel>
   </Panel>

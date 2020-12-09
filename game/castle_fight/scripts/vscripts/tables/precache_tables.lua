@@ -364,8 +364,8 @@ g_Precache_Tables = {
     "gobbo_mechanist",
   },
 
-  npc_dota_hero_zuus = {
-    "npc_dota_hero_zuus",
+  npc_dota_hero_wisp = {
+    "npc_dota_hero_wisp",
     -- Buildings
     "trapped_gale",
     "monument_of_wind_stream",

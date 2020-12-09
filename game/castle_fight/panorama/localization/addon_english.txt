@@ -18,7 +18,7 @@
   "chaos"           "Chaos"
   "mech"            "Mech"
   "corrupted"       "The Corrupted"
-  "elementals"      "Elementals"
+  "elemental"       "Elementals"
 
   "human_description"           "Humans use many cheap units to overrun the enemy. They can use artillery to demolish the enemy base without having to attack it directly. The race has a basic defense tower."
 
@@ -36,13 +36,13 @@
 
   "elves_description"          "The High Elves have gathered to defend their kingdoms. High Elves use strong magic to weaken enemies and help allies. In addition, they have strong siege weapons and a defensive tower, which hits several enemies simultaneously."
 
-  "chaos_description"          "The forces of Chaos invoke horrible demons and use destructive magic to defeat their enemies. Chaos has no siege weapons, but there are many strong units with chaos attack.\nThis race has no towers."
+  "chaos_description"          "The forces of Chaos invoke horrible demons and use destructive magic to defeat their enemies. Chaos has no siege weapons, but there are many strong units with chaos attack. This race has no towers."
 
   "corrupted_description"      "Cursed by evil demons, these formerly friendly creatures became followers of darkness. They use dark magic to weaken their enemies. The Corrupted can build a tower with splash damage."
 
   "mech_description"          "Clever technicians and goblin mechanics have teamed up to create their own army. Their units have significant splash damage and high armor, but they have no troops with magical attacks and ranged attacks. Technicians have a great tower that can hit multiple enemies."
 
-  "elemental_description"     "Elementals are the oldest race that exists from the very formation of the universe. Elementals' units are quite strong, but at the same time rather expensive. Elementals use element control to defeat their enemies and strengthen their allies with strong magic. This unique race can reduce unit training time. The race has a defensive tower."
+  "elemental_description"     "Elementals are the oldest race, dating back to the very formation of the universe. Elemental units are quite strong, but at the same time rather expensive. Elementals use strong magic to defeat their foes and strengthen their allies. The race has a defensive tower."
 
   "random_description"         "Choose a random race."
 

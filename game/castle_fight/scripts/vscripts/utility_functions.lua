@@ -31,13 +31,15 @@ function heroToRace(heroname)
   elseif heroname == "npc_dota_hero_invoker" then
     return "High Elf"
   elseif heroname == "npc_dota_hero_wisp" then
-    return "Wisp"
+    return "Elemental"
   elseif heroname == "npc_dota_hero_grimstroke" then
     return "Corrupted"
   elseif heroname == "npc_dota_hero_chaos_knight" then
     return "Chaos"
   elseif heroname == "npc_dota_hero_tinker" then
     return "Mech"
+  elseif heroname == "npc_dota_hero_zuus" then
+    return "Random"
   else
     return "Invalid Hero"
   end

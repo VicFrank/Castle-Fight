@@ -12,6 +12,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "ArmorPhysical"           "4"
 
@@ -36,8 +37,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "4"
-    "BountyGoldMax"          "4"
+    "BountyGoldMin"          "5"
+    "BountyGoldMax"          "5"
 
     "AttackType"             "pierce"
     "ArmorType"              "medium"
@@ -60,14 +61,15 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "gale"
 
     "ArmorPhysical"           "4"
 
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"         "43"
-    "AttackDamageMax"         "86"
+    "AttackDamageMin"         "60"
+    "AttackDamageMax"         "70"
     "AttackRate"              "1.5"
     "AttackAnimationPoint"    "0.33"
     "AttackAcquisitionRange"  "0"
@@ -84,8 +86,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "8"
-    "BountyGoldMax"          "8"
+    "BountyGoldMin"          "9"
+    "BountyGoldMax"          "9"
 
     "AttackType"             "pierce"
     "ArmorType"              "medium"
@@ -110,6 +112,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "gale"
 
@@ -135,8 +138,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "23"
-    "BountyGoldMax"          "23"
+    "BountyGoldMin"          "17"
+    "BountyGoldMax"          "17"
 
     "AttackType"             "pierce"
     "ArmorType"              "medium"
@@ -160,6 +163,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "liquid_body"
 
@@ -172,8 +176,19 @@
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
-    "ProjectileModel"         "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
-    "ProjectileSpeed"         "1200"
+
+    "SecondaryAttack"
+    {
+        "UsedAgainst"           "air"
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackType"            "pierce"
+        "AttackDamageMin"       "30"
+        "AttackDamageMax"       "30"
+        "AttackRate"            "1.65"
+        "AttackRange"           "300"
+        "ProjectileModel"       "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+        "ProjectileSpeed"       "1200"
+    }
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "280"
@@ -210,6 +225,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "liquid_body"
 
@@ -222,16 +238,25 @@
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
-    "ProjectileModel"         "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
-    "ProjectileSpeed"         "1200"
+
+    "SecondaryAttack"
+    {
+        "UsedAgainst"           "air"
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackType"            "pierce"
+        "AttackDamageMin"       "50"
+        "AttackDamageMax"       "56"
+        "AttackRate"            "1.8"
+        "AttackRange"           "340"
+        "ProjectileModel"       "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+        "ProjectileSpeed"       "1200"
+    }
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "270"
     "StatusHealth"           "500"
     "StatusHealthRegen"      "2.0"
     "StatusMana"             "0"
-    "StatusManaRegen"        "0"
-    "StatusStartingMana"     "0"
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
@@ -261,6 +286,7 @@
     "Model"            "models/heroes/morphling/morphling.vmdl"
     "SoundSet"         "Hero_Morphling"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+    "BaseClass"        "npc_dota_creature"
     "Level"            "3"
     "ModelScale"       "1.0"
     "RingRadius"       "40"
@@ -268,6 +294,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "liquid_body"
     "Ability2"                "water_elemental_illusion"
@@ -281,18 +308,31 @@
     "AttackAnimationPoint"    "0.5"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "128"
-    "ProjectileModel"         "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
-    "ProjectileSpeed"         "1200"
+
+    "SecondaryAttack"
+    {
+        "UsedAgainst"           "air"
+        "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackType"            "pierce"
+        "AttackDamageMin"       "100"
+        "AttackDamageMax"       "166"
+        "AttackRate"            "1.8"
+        "AttackRange"           "340"
+        "ProjectileModel"       "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+        "ProjectileSpeed"       "1200"
+    }
+
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "300"
     "StatusHealth"           "650"
     "StatusHealthRegen"      "2.0"
+    "StatusMana"             "0"
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "7"
-    "BountyGoldMax"          "7"
+    "BountyGoldMin"          "18"
+    "BountyGoldMax"          "18"
 
     "AttackType"             "normal"
     "ArmorType"              "medium"
@@ -318,12 +358,13 @@
     "BaseClass"        "npc_dota_creature"
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
     "Level"            "1"
-    "ModelScale"       "0.64"
+    "ModelScale"       "0.8"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "lightning_attack"
     "Ability2"                "lightning_shield"
@@ -333,12 +374,12 @@
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
     "AttackDamageMin"         "1"
     "AttackDamageMax"         "1"
-    "AttackRate"              "1.5"
+    "AttackRate"              "2.5"
     "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "350"
-    "ProjectileModel"         "particles/units/heroes/hero_razor/razor_base_attack.vpcf"
-    "ProjectileSpeed"         "1200"
+    "ProjectileModel"         "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"
+    "ProjectileSpeed"         "6000"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "270"
@@ -347,8 +388,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "11"
-    "BountyGoldMax"          "11"
+    "BountyGoldMin"          "9"
+    "BountyGoldMax"          "9"
 
     "AttackType"             "magic"
     "ArmorType"              "light"
@@ -374,12 +415,13 @@
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "2"
-    "ModelScale"       "0.6"
+    "ModelScale"       "1.0"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "lightning_attack"
     "Ability2"                "lightning_shield"
@@ -389,24 +431,24 @@
     "AttackCapabilities"      "DOTA_UNIT_CAP_RANGED_ATTACK"
     "AttackDamageMin"         "1"
     "AttackDamageMax"         "1"
-    "AttackRate"              "1.5"
+    "AttackRate"              "2.5"
     "AttackAnimationPoint"    "0.3"
     "AttackAcquisitionRange"  "0"
     "AttackRange"             "400"
-    "ProjectileModel"         "particles/units/heroes/hero_razor/razor_base_attack.vpcf"
-    "ProjectileSpeed"         "1200"
+    "ProjectileModel"         "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"
+    "ProjectileSpeed"         "6000"
 
     "MovementCapabilities"   "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"          "280"
     "StatusHealth"           "800"
-    "StatusHealthRegen"      "2.0"
+    "StatusHealthRegen"      "3.0"
     "StatusMana"             "0"
     "StatusManaRegen"        "0.0"
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "8"
-    "BountyGoldMax"          "8"
+    "BountyGoldMin"          "13"
+    "BountyGoldMax"          "13"
 
     "AttackType"             "magic"
     "ArmorType"              "light"
@@ -437,6 +479,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "ArmorPhysical"           "5"
 
@@ -459,8 +502,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "10"
-    "BountyGoldMax"          "10"
+    "BountyGoldMin"          "8"
+    "BountyGoldMax"          "8"
 
     "AttackType"             "chaos"
     "ArmorType"              "heavy"
@@ -483,6 +526,7 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "fire_elemental_split"
     "Ability2"                "fire_breath"
@@ -534,8 +578,10 @@
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "18"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "knowledge_of_elementals"
+    "Ability2"                "legendary_spell_resistance"
 
     "ArmorPhysical"           "8"
 
@@ -558,8 +604,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "16"
-    "BountyGoldMax"          "16"
+    "BountyGoldMin"          "23"
+    "BountyGoldMax"          "23"
 
     "AttackType"             "magic"
     "ArmorType"              "unarmored"
@@ -586,12 +632,13 @@
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "1"
-    "ModelScale"       "0.8"
+    "ModelScale"       "1.1"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "12"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "earth_elemental_pulverize"
     "Ability2"                "power_of_earth"
@@ -615,8 +662,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "2"
-    "BountyGoldMax"          "2"
+    "BountyGoldMin"          "9"
+    "BountyGoldMax"          "9"
 
     "AttackType"             "siege"
     "ArmorType"              "hero"
@@ -634,12 +681,13 @@
     "GameSoundsFile"   "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
     "BaseClass"        "npc_dota_creature"
     "Level"            "2"
-    "ModelScale"       "1.0"
+    "ModelScale"       "1.2"
     "RingRadius"       "40"
     "HealthBarOffset"  "170"
     "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
     "CollisionSize"    "12"
     "vscripts"         "ai/generic_unit_ai.lua"
+    "UnitLabel"        "elemental"
 
     "Ability1"                "earth_elemental_pulverize"
     "Ability2"                "power_of_earth"
@@ -663,8 +711,8 @@
     "VisionDaytimeRange"     "1400"
     "VisionNighttimeRange"   "800"
 
-    "BountyGoldMin"          "2"
-    "BountyGoldMax"          "2"
+    "BountyGoldMin"          "16"
+    "BountyGoldMax"          "16"
 
     "AttackType"             "siege"
     "ArmorType"              "hero"

@@ -42,6 +42,11 @@ function Spawn(keys)
       end
     end
 
+    if thisEntity:HasSecondaryAttack() then
+      canHitFlying = true
+      canHitGround = true
+    end
+
     local attackRange = thisEntity:GetKeyValue("AttackRange") or 0
     if attackRange == 0 then print(thisEntity:GetUnitName() .. " has no attack range") end
     local acquisitionRange = math.max(900, attackRange)

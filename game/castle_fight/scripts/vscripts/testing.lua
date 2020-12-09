@@ -1,29 +1,5 @@
 function GameMode:OnScriptReload()
   print("Script Reload")
-
-  local heroes = {
-    "human",
-    "naga",
-    "nature",
-    "night_elves",
-    "undead",
-    "orc",
-    "north",
-    "elves",
-    "chaos",
-    "corrupted",
-    "mech",
-  }
-  
-  local availableHeroes = {}
-  local bucket = {}
-
-  for i=1,10 do
-    hero = PickRandomShuffle(heroes, bucket)
-    availableHeroes = {hero}
-  
-    print(i, hero)
-  end
 end
 
 function getBinaryValues( decNumber )
@@ -68,7 +44,6 @@ function SpawnTestBuildings()
 
     BuildingHelper:PlaceBuilding(nil, building, randomPosition, 2, 2, 0, DOTA_TEAM_BADGUYS)
   end
-
 end
 
 function SpawnRandomBuilding()

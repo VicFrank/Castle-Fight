@@ -80,8 +80,7 @@ function CheckAngles(keys)
       victim_angle = victim_angle + 180.0
   
       -- The difference between the world angle of the caster-target vector and the target-unit vector
-      local angle_difference = math.abs(victim_angle - attacker_angle)      
-            
+      local angle_difference = math.abs(victim_angle - attacker_angle)            
       -- Ensures the angle difference is less than the allowed width
       if angle_difference <= attack_spill_width then
         ApplyDamage({

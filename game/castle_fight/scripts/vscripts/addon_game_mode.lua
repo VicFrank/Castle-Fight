@@ -89,9 +89,9 @@ function Activate()
 
   if IsInToolsMode() then
     Timers:CreateTimer(1, function()
-      Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
-      Tutorial:AddBot("npc_dota_hero_wisp", "", "", false)
-      Tutorial:AddBot("npc_dota_hero_wisp", "", "", true)
+      Tutorial:AddBot("npc_dota_hero_kunkka", "", "", false)
+      Tutorial:AddBot("npc_dota_hero_kunkka", "", "", false)
+      Tutorial:AddBot("npc_dota_hero_kunkka", "", "", true)
     end)
   end
 end
@@ -184,6 +184,7 @@ function GameMode:InitGameMode()
   LinkLuaModifier("modifier_hide_hero", "abilities/modifiers/modifier_hide_hero", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("modifier_stunned_custom", "abilities/modifiers/modifier_stunned_custom", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("modifier_end_round", "abilities/modifiers/modifier_end_round", LUA_MODIFIER_MOTION_NONE)
+  LinkLuaModifier("modifier_attack_range", "abilities/modifiers/modifier_attack_range", LUA_MODIFIER_MOTION_NONE)
 
   self.vUserIds = {}
 

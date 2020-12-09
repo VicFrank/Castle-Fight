@@ -1,12 +1,12 @@
 kodo_melee_damage_aura = class({})
 kodo_armor_aura = class({})
 kodo_magic_resist_aura = class({})
-LinkLuaModifier("modifier_kodo_melee_damage_aura", "abilities/orc/kodo_auras.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_kodo_melee_damage_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_kodo_armor_aura", "abilities/orc/kodo_auras.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_kodo_armor_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_kodo_magic_resist_aura", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_kodo_magic_resist_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_kodo_melee_damage_aura", "abilities/orc/kodo_auras.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_kodo_melee_damage_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_kodo_armor_aura", "abilities/orc/kodo_auras.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_kodo_armor_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_kodo_magic_resist_aura", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_kodo_magic_resist_aura_buff", "abilities/orc/kodo_auras", LUA_MODIFIER_MOTION_NONE)
 
 function kodo_melee_damage_aura:GetIntrinsicModifierName()
   return "modifier_kodo_melee_damage_aura"

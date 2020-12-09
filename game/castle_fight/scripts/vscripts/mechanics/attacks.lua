@@ -52,3 +52,63 @@ function SplashAttackUnit(attacker, position)
     end
   end
 end
+
+function CDOTA_BaseNPC:CheckSecondaryAttackAgainst(target)
+  local secondaryAttackTable = self:GetSecondaryAttackTable()
+  if secondaryAttackTable then
+    local used_against = secondaryAttackTable["UsedAgainst"]
+    if used_against == "building" and IsCustomBuilding(target) then
+      self:SwapToSecondaryAttack()
+      return
+    end
+    local target_type = target:GetMovementCapability()
+    if used_against == target_type then
+      self:SwapToSecondaryAttack()
+      return
+    end
+    self:SwapToPrimaryAttack()
+  end
+end
+
+AttackCapabilities = {
+  ["DOTA_UNIT_CAP_NO_ATTACK"] = 0,
+  ["DOTA_UNIT_CAP_MELEE_ATTACK"] = 1,
+  ["DOTA_UNIT_CAP_RANGED_ATTACK"] = 2,
+}
+
+function CDOTA_BaseNPC:SwapToSecondaryAttack()
+  if self.usingSecondaryAttack then return end
+  local secondaryAttackTable = self:GetSecondaryAttackTable()
+  self:SetAttackCapability(AttackCapabilities[secondaryAttackTable.AttackCapabilities])
+  self:SetAttackType(secondaryAttackTable.AttackType)
+  self:SetBaseDamageMin(secondaryAttackTable.AttackDamageMin)
+  self:SetBaseDamageMax(secondaryAttackTable.AttackDamageMax)
+  self:SetBaseAttackTime(secondaryAttackTable.AttackRate)
+  self:SetAttackRange(secondaryAttackTable.AttackRange)
+  if secondaryAttackTable.ProjectileModel then
+    self:SetRangedProjectileName(secondaryAttackTable.ProjectileModel)
+  end
+  self.usingSecondaryAttack = true
+end
+
+function CDOTA_BaseNPC:SwapToPrimaryAttack()
+  if not self.usingSecondaryAttack then return end
+  self:SetAttackCapability(AttackCapabilities[self:GetKeyValue("AttackCapabilities")])
+  self:SetAttackType(self:GetKeyValue("AttackType"))
+  self:SetBaseDamageMin(self:GetKeyValue("AttackDamageMin"))
+  self:SetBaseDamageMax(self:GetKeyValue("AttackDamageMax"))
+  self:SetBaseAttackTime(self:GetKeyValue("AttackRate"))
+  self:SetAttackRange(self:GetKeyValue("AttackRange"))
+  if self:GetKeyValue("ProjectileModel") then
+    self:SetRangedProjectileName(self:GetKeyValue("ProjectileModel"))
+  end
+  self.usingSecondaryAttack = false
+end
+
+function CDOTA_BaseNPC:SetSecondaryAttackTable(attackTable)
+  self.secondaryAttackTable = attackTable
+end
+
+function CDOTA_BaseNPC:GetSecondaryAttackTable()
+  return self.secondaryAttackTable or self:GetKeyValue("SecondaryAttack")
+end

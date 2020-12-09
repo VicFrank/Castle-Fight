@@ -52,6 +52,8 @@ function FindAggro(self)
   end
 
   if target then
+    -- Update the target
+    self:CheckSecondaryAttackAgainst(target)
     self.aiState.aggroTarget = target
     return true
   else

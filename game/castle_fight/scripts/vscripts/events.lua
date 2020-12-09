@@ -383,7 +383,8 @@ function OnRaceSelected(eventSourceIndex, args)
   if heroName == "random" then
     GameMode:RandomHero(playerID)
   else
-    PlayerResource:ReplaceHeroWith(playerID, heroName, 0, 0)
+    local hero = PlayerResource:ReplaceHeroWith(playerID, heroName, 0, 0)
+    hero.hasPicked = true
   end
 
   GameRules.needToPick = GameRules.needToPick - 1

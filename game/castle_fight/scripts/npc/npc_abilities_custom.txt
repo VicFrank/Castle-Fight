@@ -11,6 +11,7 @@
 #base "races/corrupted/abilities.kv"
 #base "races/chaos/abilities.kv"
 #base "races/mech/abilities.kv"
+#base "races/elemental/abilities.kv"
 
 #base "races/naga/construction_abilities.kv"
 #base "races/nature/construction_abilities.kv"
@@ -22,6 +23,7 @@
 #base "races/corrupted/construction_abilities.kv"
 #base "races/chaos/construction_abilities.kv"
 #base "races/mech/construction_abilities.kv"
+#base "races/elemental/construction_abilities.kv"
 
 #base "races/naga/training_abilities.kv"
 #base "races/nature/training_abilities.kv"
@@ -33,6 +35,7 @@
 #base "races/corrupted/training_abilities.kv"
 #base "races/chaos/training_abilities.kv"
 #base "races/mech/training_abilities.kv"
+#base "races/elemental/training_abilities.kv"
 
 "DOTAAbilities"
 {
