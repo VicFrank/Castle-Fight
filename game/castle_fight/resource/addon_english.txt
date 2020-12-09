@@ -2505,9 +2505,9 @@
 
 "DOTA_Tooltip_Ability_upgrade_pillar_of_elmo_fire"    "Upgrade Pillar of Elmo Fire"
 "DOTA_Tooltip_Ability_upgrade_pillar_of_elmo_fire_Lore"    "Upgrades: 0"
-"DOTA_Tooltip_Ability_upgrade_pillar_of_elmo_fire_Description"    "<h1>Greater Lightning Elemental</h1>Attack: Magic (400 range)<br>Armor: Light\n\n<h1>Abilities</h1>- Lightning Attack (80 dmg, 5 targets)<br>- Lightning Shield (30%%)"
+"DOTA_Tooltip_Ability_upgrade_pillar_of_elmo_fire_Description"    "<h1>Greater Lightning Elemental</h1>Attack: Magic (400 range)<br>Armor: Light\n\n<h1>Abilities</h1>- Lightning Attack (70 dmg, 5 targets)<br>- Lightning Shield (30%%)"
 "DOTA_Tooltip_Ability_train_greater_lightning_elemental"    "Train Greater Lightning Elemental"
-"DOTA_Tooltip_Ability_train_greater_lightning_elemental_Description"    "<h1>Greater Lightning Elemental</h1>Attack: Magic (400 range)<br>Armor: Light\n\n<h1>Abilities</h1>- Lightning Attack (80 dmg, 5 targets)<br>- Lightning Shield (30%%)"
+"DOTA_Tooltip_Ability_train_greater_lightning_elemental_Description"    "<h1>Greater Lightning Elemental</h1>Attack: Magic (400 range)<br>Armor: Light\n\n<h1>Abilities</h1>- Lightning Attack (70 dmg, 5 targets)<br>- Lightning Shield (30%%)"
 
 "DOTA_Tooltip_Ability_build_altar_of_fire"    "Build Altar of Fire"
 "DOTA_Tooltip_Ability_build_altar_of_fire_Lore"    "Upgrades: 2"

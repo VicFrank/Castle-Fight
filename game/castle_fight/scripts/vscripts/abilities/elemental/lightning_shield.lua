@@ -38,7 +38,7 @@ function modifier_lightning_shield:OnAttackLanded(keys)
   if target == self.parent and IsValidAlive(attacker) then
     local distance = GetDistanceBetweenTwoUnits(target, attacker)
 
-    if distance < 150 and RollPercentage(self.chance) then
+    if distance < 300 and RollPercentage(self.chance) then
       -- shoot lightning, stun target
       local particleName = "particles/units/heroes/hero_razor/razor_storm_lightning_strike.vpcf"
       particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, attacker)
@@ -49,7 +49,7 @@ function modifier_lightning_shield:OnAttackLanded(keys)
 
       target:EmitSound("Ability.static.start")
 
-      attacker:AddNewModifier(self.caster, self.ability, "modifier_stunned", {stun_duration})
+      attacker:AddNewModifier(self.parent, self.ability, "modifier_stunned", {duration = self.stun_duration})
     end
   end
 end

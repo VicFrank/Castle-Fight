@@ -19,7 +19,7 @@ function knowledge_of_elementals:OnSpellStart()
   local abilityToAdd = GetRandomTableElement(abilityNames)
 
   local addedAbility = caster:AddAbility(abilityToAdd)
-  addedAbility:SetLevel(addedAbility:GetMaxLevel())
+  addedAbility:SetLevel(1)
 
   ability.current_ability = addedAbility
 end

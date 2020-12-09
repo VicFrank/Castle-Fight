@@ -32,7 +32,7 @@ function modifier_water_elemental_illusion:OnAttackLanded(keys)
   if attacker == self.parent and not attacker:HasModifier("modifier_illusion") then
     if RollPercentage(self.copy_chance) then
       attacker:EmitSound("DOTA_Item.Manta.Activate")
-      attacker:AddNewModifier(self.parent, self.ability, "modifier_manta_invulnerable", {duration = 0.5})
+      attacker:AddNewModifier(self.parent, self.ability, "modifier_manta_invulnerable", {duration = 0.4})
     end
   end
 end
@@ -80,7 +80,7 @@ function modifier_manta_invulnerable:OnDestroy()
     {
       duration = self.duration,
       outgoing_damage = -self.outgoing_damage,
-      incoming_damage = self.incoming_damage - 100
+      incoming_damage = self.incoming_damage,
     }
   )
   illusion:AddNewModifier(

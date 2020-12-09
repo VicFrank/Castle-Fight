@@ -188,7 +188,7 @@ function OnIncomeUpdated(table_name, playerID, income) {
     if(panelPlayerID == playerID) {
       var interestTextPanel = $('#interest_text' + panelPlayerID);
       if(interestTextPanel) {
-        interestTextPanel.text = "+" + Math.floor(income.income);
+        interestTextPanel.text = "+" + Math.floor(income.postTaxIncome);
       }
       
       break;

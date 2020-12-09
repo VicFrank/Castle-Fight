@@ -125,7 +125,8 @@ function GameMode:SetIncome(playerID, value)
   CustomNetTables:SetTableValue("player_income", tostring(playerID),
     {
       income = value,
-      numBoxes = GameMode:GetNumBoxes(playerID)
+      numBoxes = GameMode:GetNumBoxes(playerID),
+      postTaxIncome = GameMode:GetPostTaxIncome(value)
     })
 end
 

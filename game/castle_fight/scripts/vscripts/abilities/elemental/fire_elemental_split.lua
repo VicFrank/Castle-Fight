@@ -44,8 +44,8 @@ function modifier_fire_elemental_split:OnAttackLanded(keys)
       ParticleManager:ReleaseParticleIndex(particle)
 
       copy:EmitSound("Hero_Invoker.ForgeSpirit")
-
-      -- copy:SetHealth(attacker:GetHealth())
+      copy:RemoveAbility("fire_elemental_split")
+      copy:SetHealth(attacker:GetHealth())
 
       self:SetStackCount(0)
     end
