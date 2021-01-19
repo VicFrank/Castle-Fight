@@ -53,7 +53,7 @@ function modifier_lightning_attack:OnAttackLanded(keys)
   local target = keys.target
 
   if attacker == self.parent then
-    local enemies = FindEnemiesInRadius(attacker, self.max_range, target:GetAbsOrigin())
+    local enemies = FindEnemiesInRadius(attacker, self.max_range)
     local targets = {}
 
     -- always insert the target first
@@ -81,17 +81,15 @@ function modifier_lightning_attack:OnAttackLanded(keys)
     end
 
     for _,enemy in pairs(targets) do
-      local particleName = "particles/econ/items/razor/razor_punctured_crest/razor_storm_lightning_strike_blade.vpcf"
+      local particleName = "particles/units/heroes/hero_razor/razor_base_attack.vpcf"
 
-      local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, attacker)
-      -- ParticleManager:SetParticleControlEnt(particle, 0, attacker, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", Vector(attacker:GetAbsOrigin().x,attacker:GetAbsOrigin().y,attacker:GetAbsOrigin().z+attacker:GetBoundingMaxs().z * 2), false)
-      -- ParticleManager:SetParticleControlEnt(particle, 1, enemy, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", Vector(enemy:GetAbsOrigin().x,enemy:GetAbsOrigin().y,enemy:GetAbsOrigin().z+enemy:GetBoundingMaxs().z * 2), false)
-      -- ParticleManager:SetParticleControl(particle, 18, Vector(1,1,2))
-      -- ParticleManager:ReleaseParticleIndex(particle)
+      local nfx = ParticleManager:CreateParticle(particleName, PATTACH_POINT_FOLLOW, self.parent)
+      ParticleManager:SetParticleControlEnt(nfx, 0, enemy, PATTACH_POINT_FOLLOW, "attach_hitloc", enemy:GetAbsOrigin(), true)
+      ParticleManager:SetParticleControlEnt(nfx, 1, self.parent, PATTACH_POINT_FOLLOW, "attach_hitloc", self.parent:GetAbsOrigin(), true)
+      ParticleManager:SetParticleControlEnt(nfx, 2, enemy, PATTACH_POINT_FOLLOW, "attach_hitloc", enemy:GetAbsOrigin(), true)
+      ParticleManager:SetParticleControlEnt(nfx, 9, enemy, PATTACH_POINT_FOLLOW, "attach_hitloc", enemy:GetAbsOrigin(), true)
 
-      ParticleManager:SetParticleControlEnt(particle, 0, attacker, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", attacker:GetAbsOrigin(), false)
-      ParticleManager:SetParticleControlEnt(particle, 1, enemy, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", enemy:GetAbsOrigin(), false)
-      ParticleManager:ReleaseParticleIndex(particle)
+      ParticleManager:ReleaseParticleIndex(nfx)
 
       local damage = self.damage
       if IsCustomBuilding(target) then

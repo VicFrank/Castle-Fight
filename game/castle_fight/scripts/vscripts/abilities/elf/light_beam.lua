@@ -9,7 +9,7 @@ function obelisk_of_light_light_beam:OnSpellStart()
 
   caster:EmitSound("Hero_Tinker.Laser")
 
-  caster:AddNewModifier(caster, ability, "modifier_provide_vision", {duration = 0.1})
+  caster:AddNewModifier(caster, ability, "modifier_provide_vision", {duration = 1})
 
   local particleName = "particles/units/heroes/hero_tinker/tinker_laser.vpcf"
   local particle = ParticleManager:CreateParticle(particleName, PATTACH_POINT_FOLLOW, caster)

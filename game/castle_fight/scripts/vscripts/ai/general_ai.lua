@@ -104,18 +104,14 @@ end
 -- Returns the level of priority the unit has when calculating what to aggro onto
 -- Higher Number = Higher Priority
 -- 3 - Target is a unit
--- 2 - Target is a building that can attack
+-- 2 - Target is a building that can attack (testing giving it same priority as unit)
 -- 1 - Target is a building
 --------------------------------------------------------------------------------
 function GetTargetPriority(self, target)
   if IsCustomBuilding(target) then
-    if target:HasAttackCapability() then
+    if target:GetBuildingType() == "Tower" then
       -- Is a building that can attack
-      if self:HasModifier("modifier_attack_siege") then
-        return 3
-      else
-        return 2
-      end
+      return 3
     else
       -- Is a regular building
       return 1
@@ -147,10 +143,12 @@ function GetHigherPriorityTarget(self, unit1, unit2)
   local distance2 = GridNav:FindPathLength(self:GetAbsOrigin(), unit2:GetAbsOrigin())
 
   -- Stick to the currently aggro'd target
-  if (unit1 == self.aiState.aggroTarget) then
+  if unit1:GetEntityIndex() == self.aiState.aggroTarget:GetEntityIndex() then
     distance1 = distance1 - 200
-  elseif (unit2 == self.aiState.aggroTarget) then
+    print("current target")
+  elseif unit2:GetEntityIndex() == self.aiState.aggroTarget:GetEntityIndex() then
     distance2 = distance2 - 200
+    print("current target2")
   end
   
   -- print(unit1:GetUnitName(), unit1:GetUnitName(), unit2:GetUnitName())

@@ -23,9 +23,7 @@ function modifier_troll_berserk:OnDeath(params)
 
   if params.attacker == self:GetParent() then
     local duration = self:GetAbility():GetSpecialValueFor("duration")
-
-    print("On Death")
-
+    
     self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_troll_berserk_buff", {duration = duration})
   end
 end

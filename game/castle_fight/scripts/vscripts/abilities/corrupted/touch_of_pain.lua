@@ -17,6 +17,8 @@ function touch_of_pain:OnSpellStart()
   ParticleManager:SetParticleControl(particle_finger_fx, 2, target:GetAbsOrigin())
   ParticleManager:ReleaseParticleIndex(particle_finger_fx)  
 
+  caster:AddNewModifier(caster, ability, "modifier_provide_vision", {duration = 1})
+
   for _,modifier in pairs(target:FindAllModifiers()) do
     if modifier.OnBuildingTarget and modifier:OnBuildingTarget() then
       return

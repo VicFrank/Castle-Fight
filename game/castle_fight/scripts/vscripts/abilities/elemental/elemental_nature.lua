@@ -81,13 +81,15 @@ function modifier_elemental_nature_boulder:OnAttack(keys)
 
   if attacker == self.parent then
     if IsCustomBuilding(target) then return end
-    local rockParticle = "particle particles/econ/events/ti9/rock_golem_tower/dire_tower_attack.vpcf"
+    local rockParticle = "particles/econ/events/ti9/rock_golem_tower/dire_tower_attack.vpcf"
     local normalParticle = "particles/econ/world/towers/ti10_dire_tower/ti10_dire_tower_attack.vpcf"
 
     if RollPercentage(self.chance) then
+      print("Bash")
       attacker:SetRangedProjectileName(rockParticle)
       self.nextHitBash = true
     else
+      print("Not bash")
       attacker:SetRangedProjectileName(normalParticle)
     end
   end
@@ -99,10 +101,10 @@ function modifier_elemental_nature_boulder:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
-  if attacker == self.caster then
+  if attacker == self.parent then
     if self.nextHitBash then
       self.nextHitBash = false
-      target:AddNewModifier(self.caster, self.ability, "modifier_stunned", {duration = self.stun_duration})
+      target:AddNewModifier(self.parent, self.ability, "modifier_stunned", {duration = self.stun_duration})
     end
   end
 end

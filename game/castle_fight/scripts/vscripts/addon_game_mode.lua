@@ -135,7 +135,7 @@ function GameMode:InitGameMode()
     GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 2)
   end
 
-  -- -- Set game mode rules
+  -- Set game mode rules
   mode = GameRules:GetGameModeEntity()
   mode:DisableHudFlip(true)
   mode:SetBuybackEnabled(false)

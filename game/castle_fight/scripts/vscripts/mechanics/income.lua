@@ -126,7 +126,7 @@ function GameMode:SetIncome(playerID, value)
     {
       income = value,
       numBoxes = GameMode:GetNumBoxes(playerID),
-      postTaxIncome = GameMode:GetPostTaxIncome(value)
+      postTaxIncome = GameMode:GetIncomeForPlayer(playerID)
     })
 end
 

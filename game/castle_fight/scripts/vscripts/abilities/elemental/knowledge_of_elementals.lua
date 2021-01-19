@@ -10,16 +10,20 @@ function knowledge_of_elementals:OnSpellStart()
     caster:RemoveAbilityByHandle(ability.current_ability)
   end
 
+  if not self.bucket then
+    self.bucket = {}
+  end
+
   local abilityNames = {
     "power_of_earth",
     "fire_breath",
     "lightning_attack",
   }
 
-  local abilityToAdd = GetRandomTableElement(abilityNames)
+  local abilityToAdd = PickRandomShuffle(abilityNames, self.bucket)
 
   local addedAbility = caster:AddAbility(abilityToAdd)
-  addedAbility:SetLevel(1)
+  addedAbility:SetLevel(2)
 
   ability.current_ability = addedAbility
 end

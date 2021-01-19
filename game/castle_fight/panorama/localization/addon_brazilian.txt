@@ -1,8 +1,8 @@
 ﻿"lang"
 {
-  "Language"    "Brazilian"
+  "Language"        "Brazilian"
   "Tokens"
-  {   
+  {     
     "addon_game_name"     "Castle Fight"
 
     "error_not_enough_lumber"                                      "Madeira insuficiente"
@@ -48,10 +48,10 @@
     "DOTA_Tooltip_Ability_scroll_of_stone_Description"    "Quando usado, o pergaminho cura 400 Hp, 200 de mana e fornece 8 de armadura por 30 segundos em uma área enorme. Consumido no uso."
     "DOTA_Tooltip_Ability_orb_of_lightning"               "Orb of Lightning"
     "DOTA_Tooltip_Ability_orb_of_lightning_Description"   "Cria um Chain Lightning que salta entre até 10 inimigos. 1000 de dano inicial."
-  
-  "DOTA_Tooltip_Ability_item_custom_blink"                "Blink Dagger"
+    
+    "DOTA_Tooltip_Ability_item_custom_blink"                "Blink Dagger"
     "DOTA_Tooltip_Ability_item_custom_blink_Description"    "Pode ser usado para teletransportar uma curta distância"
-  
+    
 
     // Item Modifiers
 

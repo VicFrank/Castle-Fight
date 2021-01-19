@@ -129,6 +129,5 @@ end
 function modifier_mana_transfusion:OnIntervalThink()
   if not IsServer() then return end
 
-  print("Give mana", self.mana_regen)
   self.parent:GiveMana(self.mana_regen)
 end

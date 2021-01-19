@@ -328,10 +328,10 @@
     "DOTA_Tooltip_Ability_item_build_watch_tower_Description"   "<font color='#a3098c'>Tower</font>\nA defensive tower that protects a strategic location.\nAttack: Piercing (range 950)\nArmor: Fortified"
 
     "DOTA_Tooltip_Ability_build_heroic_shrine"              "Build Heroic Shrine" 
-    "DOTA_Tooltip_Ability_build_heroic_shrine_Description"  "<font color='#FFBF00'>Support Building</font>\nCall to Arms: Buffs friendly training buildings. They will produce an additional unit fighting for the owner of the Altar. Does not buff legendary buildings." 
+    "DOTA_Tooltip_Ability_build_heroic_shrine_Description"  "<font color='#FFBF00'>Support Building</font>\nCall to Arms: Buffs 4 friendly training buildings. They will produce an additional unit fighting for the owner of the Altar. Does not buff legendary buildings." 
 
     "DOTA_Tooltip_Ability_item_build_heroic_shrine"             "Build Heroic Shrine" 
-    "DOTA_Tooltip_Ability_item_build_heroic_shrine_Description" "<font color='#FFBF00'>Support Building</font>\nCall to Arms: Buffs friendly training buildings. They will produce an additional unit fighting for the owner of the Altar. Does not buff legendary buildings." 
+    "DOTA_Tooltip_Ability_item_build_heroic_shrine_Description" "<font color='#FFBF00'>Support Building</font>\nCall to Arms: Buffs 4 friendly training buildings. They will produce an additional unit fighting for the owner of the Altar. Does not buff legendary buildings." 
 
     // Human Unit Abilities
 
@@ -2523,36 +2523,36 @@
 
 "DOTA_Tooltip_Ability_upgrade_tower_of_elder_knowledge"    "Upgrade Tower of Elder Knowledge"
 "DOTA_Tooltip_Ability_upgrade_tower_of_elder_knowledge_Lore"    "Upgrades: 0"
-"DOTA_Tooltip_Ability_upgrade_tower_of_elder_knowledge_Description"    "<h1>Master of ELements</h1>Attack: Chaos (500 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Legendary Spell Resistance<br>- Knowledge of Elementals"
+"DOTA_Tooltip_Ability_upgrade_tower_of_elder_knowledge_Description"    "<h1>Master of ELements</h1>Attack: Magic (500 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Legendary Spell Resistance<br>- Knowledge of Elementals"
 "DOTA_Tooltip_Ability_train_master_of_elements"    "Train Master of Elements"
-"DOTA_Tooltip_Ability_train_master_of_elements_Description"    "<h1>Master of ELements</h1>Attack: Chaos (500 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Legendary Spell Resistance<br>- Knowledge of Elementals"
+"DOTA_Tooltip_Ability_train_master_of_elements_Description"    "<h1>Master of ELements</h1>Attack: Magic (500 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Legendary Spell Resistance<br>- Knowledge of Elementals"
 
 "DOTA_Tooltip_Ability_build_rock_pile"    "Build Rock Pile"
 "DOTA_Tooltip_Ability_build_rock_pile_Lore"    "Upgrades: 1"
-"DOTA_Tooltip_Ability_build_rock_pile_Description"    "<h1>Earth ELemental</h1>Attack: Siege (melee)<br>Armor: Hero\n\n<h1>Abilities</h1>- Pulverize (20%%, 100 dmg)<br>- Power of Earth (50 max dmg)"
+"DOTA_Tooltip_Ability_build_rock_pile_Description"    "<font color='#995a0a'>Siege Trainer</font>\n<<h1>Earth ELemental</h1>Attack: Siege (melee)<br>Armor: Hero\n\n<h1>Abilities</h1>- Pulverize (20%%, 100 dmg)<br>- Power of Earth (50 max dmg)"
 "DOTA_Tooltip_Ability_train_earth_elemental"    "Train Earth Elemental"
 "DOTA_Tooltip_Ability_train_earth_elemental_Description"    "<h1>Earth ELemental</h1>Attack: Siege (melee)<br>Armor: Hero\n\n<h1>Abilities</h1>- Pulverize (20%%, 100 dmg)<br>- Power of Earth (50 max dmg)"
 
 "DOTA_Tooltip_Ability_upgrade_greater_fissure"    "Upgrade Greater Fissure"
 "DOTA_Tooltip_Ability_upgrade_greater_fissure_Lore"    "Upgrades: 0"
-"DOTA_Tooltip_Ability_upgrade_greater_fissure_Description"    "<h1>Greater Earth ELemental</h1>Attack: Siege (melee)<br>Armor: Hero\n\n<h1>Abilities</h1>- Pulverize (25%%, 200 dmg)<br>- Power of Earth (100 max dmg)"
+"DOTA_Tooltip_Ability_upgrade_greater_fissure_Description"    "<font color='#995a0a'>Siege Trainer</font>\n<<h1>Greater Earth ELemental</h1>Attack: Siege (melee)<br>Armor: Hero\n\n<h1>Abilities</h1>- Pulverize (25%%, 200 dmg)<br>- Power of Earth (100 max dmg)"
 "DOTA_Tooltip_Ability_train_greater_earth_elemental"    "Train Greater Earth Elemental"
 "DOTA_Tooltip_Ability_train_greater_earth_elemental_Description"    "<h1>Greater Earth ELemental</h1>Attack: Siege (melee)<br>Armor: Hero\n\n<h1>Abilities</h1>- Pulverize (25%%, 200 dmg)<br>- Power of Earth (100 max dmg)"
 
 "DOTA_Tooltip_Ability_build_linker"    "Build Linker"
 "DOTA_Tooltip_Ability_build_linker_Description"    "<font color='#FFBF00'>Support Building</font>\nAbility: Link\nWhenever an allied elemental dies, its life power is distributed among nearby allied units, healing them. Heals 20 * number of elemental buildings. Can't heal more than 500. Effect does not stack."
 
-"DOTA_Tooltip_Ability_item_build_mana_generator"    "Item Build Mana Generator"
+"DOTA_Tooltip_Ability_item_build_mana_generator"    "Build Mana Generator"
 "DOTA_Tooltip_Ability_item_build_mana_generator_Description"    "<font color='#FFBF00'>Support Building</font>\nAbility: Mana Transfusion\nGenerate energy and pass it to another building to increase its manag generation. Generates 0.3 mana/sec. Reduced effect on non-elemental buildings."
 
-"DOTA_Tooltip_Ability_item_build_obelisk_of_element"    "Item Build Obelisk of Element"
+"DOTA_Tooltip_Ability_item_build_obelisk_of_element"    "Build Obelisk of Element"
 "DOTA_Tooltip_Ability_item_build_obelisk_of_element_Description"    "<font color='#C40000'>Killing Building</font>\nAbility: Enchantment\nGives 1 of 4 abilities to a random ally\n- Forge Weapons (splash attack, 250 range, 50%% dmg)<br>- Rock Shield (+15 armor)<br>- Haste (increase attack/move speed by 75%%/25%%)<br>- Rejuvenation (heal 450 hp instantly)"
 
-"DOTA_Tooltip_Ability_item_build_book_of_conjuration"    "Item Build Book of Conjuration"
+"DOTA_Tooltip_Ability_item_build_book_of_conjuration"    "Build Book of Conjuration"
 "DOTA_Tooltip_Ability_item_build_book_of_conjuration_Description"    "<font color='#C40000'>Killing Building</font>\nCast 1 of the following spells (at random)\n- Monsoon (50 dps, 5s)<br>- Meteor Shower (150 dmg, 15 dps, 3s)<br>- Blizzard (40 dmg/wave, 7 waves)"
 
-"DOTA_Tooltip_Ability_item_build_elemental_guard_tower"    "Item Build Elemental Guard Tower"
-"DOTA_Tooltip_Ability_item_build_elemental_guard_tower_Description"    "<font color='#a3098c'>Tower</font>\nAttack: Magic (900 range)<br>Armor: Fortified\n\n<h1>Abilities</h1>- Boulder (70%% to stun for 10s, dealing 100 damage)"
+"DOTA_Tooltip_Ability_item_build_elemental_guard_tower"    "Build Elemental Guard Tower"
+"DOTA_Tooltip_Ability_item_build_elemental_guard_tower_Description"    "<font color='#a3098c'>Tower</font>\nAttack: Magic (900 range)<br>Armor: Fortified\n\n<h1>Abilities</h1>- Boulder (30%% to stun for 10s, dealing 100 damage)"
 
 
 
@@ -2603,7 +2603,7 @@
 "DOTA_Tooltip_Ability_elemental_rain"    "Elemental Rain"
 "DOTA_Tooltip_Ability_elemental_rain_Description"    "Cast 1 of the following spells (at random)\n- Monsoon: 50 dps, 5 sec<br>- Blizzard: 40 dmg/wave, 7 waves<br>- Meteor Shower: 150 dmg, 15 dps, 3 sec"
 "DOTA_Tooltip_Ability_elemental_nature"    "Elemental Nature"
-"DOTA_Tooltip_Ability_elemental_nature_Description"    "Boulder (70%% chance to stun enemy for 10 sec and deal 100 additional damage)"
+"DOTA_Tooltip_Ability_elemental_nature_Description"    "Boulder (30%% chance to stun enemy for 10 sec and deal 100 additional damage)"
 "DOTA_Tooltip_Ability_elemental_nature_discharge"    "Discharge"
 "DOTA_Tooltip_Ability_elemental_nature_discharge_Description"    "Dealing %damage% damage to a random enemy every %interval% seconds"
 "DOTA_Tooltip_Ability_elemental_nature_boulder"    "Boulder"

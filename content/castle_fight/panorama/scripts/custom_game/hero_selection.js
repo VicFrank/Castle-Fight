@@ -218,18 +218,22 @@ function UpdateHeroSelectVisibility() {
   SetDraftModeText();
 }
 
+
 function SetDraftModeText() {
   var draftMode = CustomNetTables.GetTableValue("settings", "draft_mode")["draftMode"];
 
   switch (draftMode) {
     case "1": //All pick
       $("#DraftModeHeroSelectLabel").text = $.Localize("#All_pick");
+      $("#RandomHeroButton").visible = true;
       break;
     case "2": //Single draft
       $("#DraftModeHeroSelectLabel").text = $.Localize("#Single_draft");
+      $("#RandomHeroButton").visible = true;
       break;
     case "3": //All random
       $("#DraftModeHeroSelectLabel").text = $.Localize("#All_random");
+      $("#RandomHeroButton").visible = false;
       break;
   }
 }
