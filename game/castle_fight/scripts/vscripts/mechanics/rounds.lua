@@ -530,8 +530,16 @@ function GameMode:EndRound(losingTeam)
 
   local pointsToWin = tonumber(CustomNetTables:GetTableValue("settings", "num_rounds")["numRounds"])
 
+  local gameIsOver = GameRules.leftRoundsWon >= pointsToWin or GameRules.rightRoundsWon >= pointsToWin
+
+  if gameIsOver then
+    -- Send the game's stats to the server
+    GameRules.GameData.winner = winningTeam
+    SendGameStatsToServer()
+  end
+
   GameRules.PostRoundTimer = Timers:CreateTimer(POST_ROUND_TIME, function()
-    if GameRules.leftRoundsWon >= pointsToWin or GameRules.rightRoundsWon >= pointsToWin then
+    if gameIsOver then
       GameMode:EndGame(winningTeam)
     else
       -- Go into the next round preparation phase
@@ -553,11 +561,6 @@ function GameMode:EndGame(winningTeam)
   elseif winningTeam == DOTA_TEAM_BADGUYS then
     Notifications:TopToAll({text="Eastern Forces Victory!", duration=30})
   end
-
-  -- Send the game's stats to the server
-  GameRules.GameData.winner = winningTeam
-
-  SendGameStatsToServer()
 
   GameRules:SetGameWinner(winningTeam)
 end

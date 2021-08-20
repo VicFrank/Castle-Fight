@@ -165,8 +165,8 @@ function OnResourcesUpdated(table_name, playerID, resources) {
   for(let i = 0; i < playerPanels.length; i++) {
     let panel = playerPanels[i];
     const panelPlayerID = panel.playerID;
-    var playerTeam = Players.GetTeam(panelPlayerID);
-    var isInEnemyTeam = LocalTeam != playerTeam;
+    let playerTeam = Players.GetTeam(panelPlayerID);
+    let isInEnemyTeam = LocalTeam != playerTeam;
 
     if(panelPlayerID == playerID && !isInEnemyTeam) {
       $('#gold_text' + panelPlayerID).text = Math.floor(resources.gold);
@@ -186,8 +186,11 @@ function OnIncomeUpdated(table_name, playerID, income) {
     const panelPlayerID = panel.playerID;
 
     if(panelPlayerID == playerID) {
-      var interestTextPanel = $('#interest_text' + panelPlayerID);
+      let interestTextPanel = $('#interest_text' + panelPlayerID);
       if(interestTextPanel) {
+        if (!income.postTaxIncome) {
+          income.postTaxIncome = 5;
+        }
         interestTextPanel.text = "+" + Math.floor(income.postTaxIncome);
       }
       

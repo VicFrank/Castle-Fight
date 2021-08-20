@@ -83,12 +83,12 @@ function modifier_spider_poison_debuff:DamageTick()
   end
 end
 
-function modifier_spider_poison_debuff:GetModifierMoveSpeedBonus_Percentage()
-  return -self.move_speed_slow
-end
-
 function modifier_spider_poison_debuff:OnIntervalThink()
   self:DamageTick()
+end
+
+function modifier_spider_poison_debuff:GetModifierMoveSpeedBonus_Percentage()
+  return -self.move_speed_slow
 end
 
 function modifier_spider_poison_debuff:GetEffectName()

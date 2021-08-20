@@ -32,7 +32,7 @@ function Spawn(keys)
 
     local attackRange = thisEntity:GetKeyValue("AttackRange") or 0
     if attackRange == 0 then print(thisEntity:GetUnitName() .. " has no attack range") end
-    local acquisitionRange = math.max(900, attackRange + 200)
+    local acquisitionRange = 1200
 
     thisEntity.aiState = {
       aggroTarget = nil,
@@ -69,11 +69,8 @@ function thisEntity:AIThink()
     return self:Retreat()
   end
 
-  print(FindAggro(self))
-
   if FindAggro(self) then
     if self:UseAbility() then
-      print("Casting ability")
       return self:FindAbilityByName("chamber_of_darkness"):GetCastPoint() + 0.3
     end
     AttackTarget(self)
@@ -87,11 +84,10 @@ function thisEntity:UseAbility()
   local ability = self:FindAbilityByName("chamber_of_darkness")
   local castRange = ability:GetCastRange(self:GetAbsOrigin(), self)
 
-  print(GetDistanceBetweenTwoUnits(self, self.aiState.aggroTarget), castRange)
-
   if GetDistanceBetweenTwoUnits(self, self.aiState.aggroTarget) < castRange then
     local position = self.aiState.aggroTarget:GetAbsOrigin()
     self:CastAbilityOnPosition(position, ability, -1)
+    self.aiState.aggroTarget = nil
     return true
   end
 

@@ -25,7 +25,7 @@ function mana_transfusion:OnChannelFinish()
 end
 
 function mana_transfusion:GetChannelTime()
-  return 99999
+  return -1
 end
 
 function mana_transfusion:CastFilterResultTarget(target)
@@ -49,11 +49,7 @@ function mana_transfusion:CastFilterResultTarget(target)
   return UF_SUCCESS
 end
 
-function mana_transfusion:GetCustomCastErrorTarget(target)
-  if GetDistanceBetweenTwoUnits(self:GetCaster(), target) > 700 then
-    return "#dota_hud_error_target_out_of_range"
-  end
-    
+function mana_transfusion:GetCustomCastErrorTarget(target)    
   if self:GetCaster() == target then
     return "#dota_hud_error_cant_cast_on_self"
   end
@@ -65,6 +61,9 @@ function mana_transfusion:GetCustomCastErrorTarget(target)
   if IsServer() then
     if not IsCustomBuilding(target) then
       return "#dota_hud_error_cant_cast_on_creep"
+    end
+    if GetDistanceBetweenTwoUnits(self:GetCaster(), target) > 700 then
+      return "dota_hud_error_target_out_of_range"
     end
   end
 
@@ -126,8 +125,12 @@ function modifier_mana_transfusion:OnCreated()
   self:StartIntervalThink(1)
 end
 
-function modifier_mana_transfusion:OnIntervalThink()
-  if not IsServer() then return end
+function modifier_mana_transfusion:DeclareFunctions()
+  return {
+    MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
+  }
+end
 
-  self.parent:GiveMana(self.mana_regen)
+function modifier_mana_transfusion:GetModifierConstantManaRegen()
+  return self.mana_regen
 end

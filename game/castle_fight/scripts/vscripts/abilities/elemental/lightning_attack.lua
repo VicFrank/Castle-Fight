@@ -56,6 +56,8 @@ function modifier_lightning_attack:OnAttackLanded(keys)
     local enemies = FindEnemiesInRadius(attacker, self.max_range)
     local targets = {}
 
+    print(#enemies, self.max_range)
+
     -- always insert the target first
     table.insert(targets, target)
 

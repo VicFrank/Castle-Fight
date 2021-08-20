@@ -891,18 +891,18 @@ DOTAAvatarImage
   margin-left: 10px;  
 }*/
 
-#AddBotButton   
+#AddBotButton
 { 
-  width: 24px;  
-  height: 24px; 
-  wash-color: #00aa00ee;  
+  width: 24px;
+  height: 24px;
+  wash-color: #00aa00ee;
 
-  background-image: url("file://{images}/control_icons/plus_png.vtex");  
-  background-size: 24px 24px; 
-  background-repeat: no-repeat; 
-  background-position: 50% 50%; 
-  margin: 4px;  
-
+  background-image: url("file://{images}/custom_game/plus_png.png");
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  margin: 4px;
+  
   visibility: collapse;  
 } 
 

@@ -1796,9 +1796,9 @@
 "DOTA_Tooltip_Ability_train_sorceress_Description"  "<h1>Sorceress</h1>Attack: Magic (500 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Healing Wave (150hp, 2 targets)<br>- Chain Lightning (25%%, 150 dmg)"
 
 "DOTA_Tooltip_Ability_upgrade_tower_of_supreme_magic"              "Upgrade Tower of Supreme Magic"
-"DOTA_Tooltip_Ability_upgrade_tower_of_supreme_magic_Description"  "<font color='#62bc25'>Unit Trainer</font>\n<h1>Wizard</h1>Attack: Chaos (650 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Healing Wave (300hp, 6 targets)<br>- Chain Lightning (25%%, 150 dmg)<br>- Firebolt (75 dmg)<br>- Legendary Spell Resistance"
+"DOTA_Tooltip_Ability_upgrade_tower_of_supreme_magic_Description"  "<font color='#62bc25'>Unit Trainer</font>\n<h1>Wizard</h1>Attack: Chaos (650 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Healing Wave (300hp, 6 targets)<br>- Chain Lightning (30%%, 250 dmg)<br>- Firebolt (75 dmg)<br>- Legendary Spell Resistance"
 "DOTA_Tooltip_Ability_train_wizard"              "Train Wizard"
-"DOTA_Tooltip_Ability_train_wizard_Description"  "<h1>Wizard</h1>Attack: Chaos (650 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Healing Wave (300hp, 6 targets)<br>- Chain Lightning (25%%, 150 dmg)<br>- Firebolt (75 dmg)<br>- Legendary Spell Resistance"
+"DOTA_Tooltip_Ability_train_wizard_Description"  "<h1>Wizard</h1>Attack: Chaos (650 range)<br>Armor: Unarmored\n\n<h1>Abilities</h1>- Healing Wave (300hp, 6 targets)<br>- Chain Lightning (30%%, 250 dmg)<br>- Firebolt (75 dmg)<br>- Legendary Spell Resistance"
 
 
 // Abilities
@@ -2584,7 +2584,7 @@
 "DOTA_Tooltip_Ability_power_of_earth_Description"    "Deals additional damage propotional to health."
 "DOTA_Tooltip_Ability_power_of_earth_max_damage"    "Max Damage:"
 "DOTA_Tooltip_Ability_mana_transfusion"    "Mana Transfusion"
-"DOTA_Tooltip_Ability_mana_transfusion_Description"    "Generate senergy and pass it to one of the buildings to increase its mana generation. Less effective on non-elemental buildings"
+"DOTA_Tooltip_Ability_mana_transfusion_Description"    "Generates energy and passes it to another building to increase its mana generation. Less effective on non-elemental buildings. Does not stack."
 "DOTA_Tooltip_Ability_mana_transfusion_mana_regen"    "Bonus Regen:"
 "DOTA_Tooltip_Ability_mana_transfusion_non_elemental_reduction"    "%Non-Elemental Regen:"
 "DOTA_Tooltip_Ability_elemental_enchantment"    "Elemental Enchantment"

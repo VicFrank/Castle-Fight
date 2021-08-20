@@ -1,0 +1,1135 @@
+Castle Fight
+
+- AI bug: After killing, units often stand still and do nothing.
+- Multi-Builder mode
+  - Mode where each player controls an additional builder
+- Custom end screen
+- Auto repair
+- Gold minigame
+
+
+- warlock ai
+- linker should count upgrades for heal
+- add -draw
+
+
+- ask sunsfan about 1099 form
+
+silence cancels mana drain channel
+
+Races:
+  Each Race has 10 unique buildings and 1 treasure box
+
+   Build Time = 15 + (Total Building Price)/20
+   bounty = ????
+
+  ✓ Humans
+    Humans use many cheap units to overrun the enemy. They can use artillery to demolish the enemy base without having to attack it directly. The race has a basic defense tower.
+
+    Barracks (100)
+      "models/props_structures/radiant_melee_barracks001.vmdl"
+      Footman (Dragon Knight?)
+      25-26
+      .7 as
+      HP: 200, Normal (18 dps, melee) / Heavy (4)
+      - Stronghold (175)
+        "models/props_structures/good_barracks_melee001.vmdl"
+        Defender (Dragon Knight)
+        45-60
+        HP: 575, Normal (38 dps, melee) / Heavy (7)
+        Evade (15%), Defend: 50% chance to repel long-range attacks. It also reduces the damage received from ranged attacks by 40%, spell damage by 50%.
+
+    Sniper Nest (140)
+      (farms) 
+      "models/props_structures/radiant_ranged_barracks001.vmdl"
+      models/props_generic/tent_01a.vmdl
+      Sniper (Sniper)
+      32-36
+      .647 
+      HP: 270, Pierce (22 dps, 500 rng) / Medium (0)
+      Critical Strike (10%, 1.5x)
+      - Gunner's Hall (180)
+        models/props_generic/tent_02a.vmdl
+        Heavy Gunner (Sniper)
+        60-100
+        .6625 as
+        HP: 500, Pierce (53 dps, 800 rng) / Medium (3)
+        Can't attack air, Splash Damage, Critical Strike (20%, 2x)
+      - Marksmen's Encampment (160)
+        models/props_generic/tent_03a.vmdl
+        Marksman (Sniper)
+        43-95 (800 range) / 27-29 (for ground, which they can't attack)
+        2.464 as
+        HP: 450, Pierce (28 dps, 500 rng) / Medium (1)
+        Can't attack ground, Air Critical Strike (40%, 3x)
+
+    Weapon Lab (210)
+      "models/items/rattletrap/mechanised_pilgrim_cog/mechanised_pilgrim_cog.vmdl"
+      Mortar
+      68-80 3.5
+      HP: 280, Siege (21 dps, 1000 rng) / Light (0)
+      Can't attack air, Splash Damage (?)
+
+    Gryphon Rock (250 gold)
+      models/props_structures/gryphon_statue001.vmdl
+      Gryphon Rider
+      45-50 2 as
+      HP: 500, Magic (23 dps, 450 rng) / Medium 2
+      Flying, Bash (15%, 25 dmg, 2 sec), Chain Lightning (10% chance to trigger, 150 dmg, 25% less subsequent)
+
+    Chapel (280)
+    models/props_structures/cathedral001.vmdl
+      Crusader (Legion Commander) / Omni
+      50-70 1.428
+      HP: 600, Mana: (100/200) Hero (42 dps, melee) / Heavy (6)
+      Cleave (25%), Bash (20%, 25 dmg, 2 sec), Blessing (+6 armor, +16hp / sec, +100 hp (temp)), single target, 33 mana, CD 7(?)
+      - Church (245)
+      Paladin (Legion Commander / Omni(?))
+      200/300 mana
+      70-120 1.4
+      models/props_structures/cathedral001.vmdl
+      HP: 850, Hero (67 dps, melee) / Heavy (9)
+      Cleave (25%), Bash (20%, 25 dmg, 2 sec), Blessing (+9 armor, +24 hp / sec, +100 hp (temp)), single target, 33 mana, CD 7(?), resurrection, resurrects an allied non-legendary unit, 103 mana CD 40, Armor Aura (+3)
+
+    Hjordhejmen (?) (300)
+      "models/props_structures/radiant_ranged_barracks001.vmdl"
+      Warlock (kotl) (medivh)
+      ai involves running away when ability on cd
+      30-33 1.85
+      HP: 320, Chaos (17 dps, 160 range) / Unarmored
+      100/100 mana
+      Chamber of Darkness 270 dmg within 370 aoe, 35 mana 12 CD
+
+    Gjallarhorn (225, 750)
+      10 mana, 1 mana/second
+      models/props_structures/good_statue008.vmdl
+      Passive: Holy Power (Increases the attack speed of nearby allied units by 66%.) 7 mana, CD: 7 seconds
+
+    Artillery (200, 360)
+      Cannon Tower
+      "models/props_structures/tower001.vmdl" from dotacraft or
+      models/props_structures/radiant_tower001.vmdl
+       Artillery Fire (Shoots artillery shells at the enemy base. Deals 300-400 siege damage. Not very accurate but very destructive if it hits the target. Strong AOE damage.) Recharge time: 12 seconds
+
+    Watch Tower (150, 300)
+      "models/props_structures/tower_good.vmdl"
+      Pierce (DPS 90, Range 950)
+
+    Heroic Shrine (700, 1800, 1 food)
+      "models/props_structures/tower_good2.vmdl"
+      Call to Arms (Every time a union building produces a unit, there is a 24% chance of producing an additional unit of the same type fighting for the owner of the Altar. Does not train legendary units.)
+
+  ✓ Naga
+    The Nagas have above average powerful units with a high hitpoint regeneration. In addition many expensive special buildings are available to them. But note that this race has no towers.
+
+    Murloc Hut (120)
+      Slark
+      Normal (12 dps, melee) / Unarmored (2)
+      HP: 180
+        Murloc Camp (130)
+            Normal (24 dps, melee ) / Unarmored (4) 
+            HP: 325
+            Critical Strike (10%, 2x) 
+              Murloc Village (150)
+                Normal (36 dps, melee) / Unarmored (6)
+                HP: 520
+                Cleaving Attack (25%), Evade (8%), Bash (15%, 25 dmg, 2 sec) , Critical Strike (10%, 2x)
+                  Murloc Fortress (200)
+                    Normal (50 dps, melee) / Unarmored (8)
+                    HP: 750
+                    Cleaving Attack (30%), Evade (15%), Bash (15%, 25 dmg, 2 sec) , Critical Strike (20%, 2x), Feedback (25 mana) (100% mana to damage)
+
+    Swamp Well (175)
+      Suumpmolk Attack (?)
+      boar (?)
+      Normal (27 dps, 325 range) / Medium (3)
+      HP: 380
+      Poison Attack (35% attack and ms slow, 4dps, 2 seconds)
+       - Lernaean Fountain (?) (725, 450, 1)
+          Ancient Hydra
+           Venomancer (?)
+           Chaos (133 dps, 500 range ) / Medium (9)
+           HP: 1750
+           Splash Damage, Legendary Spell Resistance (70% magic resistance), 100% status resistance, Poison Attack (35% slow), Split (divides into 2 small hydras, which divide into 2 smaller hydras on death)
+
+    Temple of Snakes (230)
+      Winged Serpent
+      flying ancient creep
+      Magic (33 dps, 420 range) / Light (2)
+      HP: 410
+      Flying, Bouncing Attack (3 targets, 30% less each bounce)
+
+    Spawning Grounds (?) (250)
+      Naga Guardian
+      slerder
+      Pierce (51 dps, melee) / Heavy (6)
+      HP: 625
+      Abilities: Cleaving Attack (35%)
+        - Royal Spawning Grounds (200)
+          fancy slerder
+          Royal Guard 
+          Attack Type / Armor Type: Pierce (78 dps, melee) / Heavy (9) 
+          HP: 1100
+          Critical Strike (10%, 2x), Cleaving Attack (50%) 
+
+    Reptile Pool (280)
+    Dragon Turtle
+    Attack Type / Armor Type: Siege (54 dps, 550 range) / Heavy (8)
+    HP: 650
+    Bash (15%, 25 dmg, 2 sec), Thornshell (35%)
+
+    Naga Spring (350)
+      Naga Siren
+      300 mana
+      60-100
+      Attack Type / Armor Type: Chaos (50 dps, 400 range) / Unarmored (3)
+      HP: 550
+      Purge (Remove all buffs, significant slow, 20 mana, CD: 6), Summon Lobsters Summons two lobsters that live for 45 seconds. Lobsters (Pierce / Heavy, 360HP) have Critical Strike (10%, 3x) 50% chance to reduce damage taken by 35.
+
+    Ancient Pyramid (360, 600)
+    Ability: Earthquake (Shakes the ground under a random enemy unit, causing damage and slowing all enemy units in the area around the unit. Deals 40 spell damage, slows down by 50% for 10 seconds)
+    Recharge Time: 7 seconds 
+
+    Oracle of Sirens (310 gold 625 lumber)
+    Control Enemy (Gets control over a random enemy unit)
+    Cooldown: 18 seconds 
+    
+    Coral Statue
+    Cost: 250 gold 480 lumber
+    Restore Area(. Increases the life regeneration from allied units standing close to 7.5 HP / SEC, as well as the regeneration of buildings 2.5 HP / SEC effect from Coral Statue stacks with other effects Coral Statue, as well as the effect of the Rune of the Repair )
+
+    Tidal Guardian (750 gold 1500 lumber 1 food)
+    constant aura (?)
+    tidehunter aghs
+    Tsunami (Throws a huge wave in the direction of a random enemy unit. The wave deals 270 damage to all ground enemy units in its path) Recharge time: 15 seconds 
+
+  ✓ Elves
+    Elven peoples gathered to defend their kingdoms. Elves use strong magic to weaken enemies and help allies. In addition, they have strong siege weapons and a defensive tower, which beats at several targets simultaneously.
+
+    Archery Range (180)
+      Archer - Pierce (450 range) Unarmored
+      - Headshot (10%, 0.5 second stun, 50 dmg)
+      - Evade (15%)
+
+      Archery Tower (200)
+      Master Archer (Pierce 500 range) Unarmored
+      - Headshot (20%, 125 dmg)
+      - Evade (25%)
+
+    Hall of Honor (220)
+      Blademaster - Normal (melee) Heavy
+      - Evade (15%)
+      - Critical Strike (25%, x2.5)
+      - Spell Resistance (15% magic resistance)
+
+        Hall of the Eldest (230)
+          Elder Blademaster - Normal (melee) Heavy
+          - Evade (25%)
+          - Critical Strike (30%, x3)
+          - Spell Resistance (25% magic resistance)
+          - Feedback (40 mana)
+          - Spell Steal (remove a negative buff from an ally and apply it to an enemy, or remove a positive buff from an enemy and apply it to an ally) cd 12
+
+    Bloodelf War Academy (275)
+      Bloodthirster - Magic (360 range), Medium
+      - Bouncing Attack (3 targets, 30% reduction)
+      - Faerie Fire (Reduces the armor of an enemy by 6 for 30 seconds) cd 6 mana cost 20
+
+    Dragonhawk Portal (310)
+      Dragonhawk Rider - Pierce (450 range) Heavy
+      - Flying
+      - Solar Strike (Strikes up to 4 non-mechanical air units  in 400 aoe with sunlight, dealing 80 damage and stunning for 4 seconds) CD 14 Mana cost 50
+
+    Highelf Siege Factory (350)
+      Ballista - Siege (850 range) Medium
+      - Can't attack Air
+      - Line Damage
+
+    School of Wizardry (360)
+      Sorceress - Magic (500 range) Unarmored
+      - Healing Wave (150hp, 2 targets) cd 8 mana cost 50 40% less on each bounce
+      - Chain Lightning (25%, 150 dmg) (30% less on each bounce, up to 7 enemies)
+
+      Tower of Supreme Magic (440, 400, 1)
+      Wizard - Chaos (650) Unarmored
+      - Legendary Spell Resist
+      - Healing Wave (300 hp, 6 targets) cd 12 mana cost 70 30% less on each bounce
+      - Chain Lightning (30%, 260 dmg) 20% less on bounce, 7 enemies
+      - Firebolt (75 dmg) casts a firebolt on a random enemy unit or building every 3 seconds. Deals 75 damage on impact. Burns for 4 seconds, 25 dps
+
+    City of Magic (240, 420)
+      Hex: Turns a random enemy unit into a sheep for 45 second, CD 10
+
+    Obelisk of Light (235, 450)
+      Light Beam: Shoots a beam of light at a random unit, dealing 160 damage to it. CD 4
+      Actually fires a projectile
+
+    Arcane Tower (250, 300)
+      Magic, 675, 39
+      Multishot (5 targets)
+
+    Golden Shrine of Justice (650, 1800, 1)
+      Ability: Bright Aura of Grace
+      Whenever an allied unit dies, there is a 20% chance the unit will revive after 2 seconds. Cannot revive legendary units. This aura stacks once.
+
+  Chaos
+    The forces of Chaos invoke horrible demons and use destructive magic to defeat their enemies. Chaos has no siege weapons, but there are many strong units with chaos attack.\nThis race  has no towers.
+
+    Lesser Demon Cage (120) 21
+    Satyr - Normal (275 range) Light
+
+      Greater Demon Cage (230) 32
+      Quill demon - Normal (310 range) Light
+      Bouncing Attack (2 targets) 50% less each bounce
+      Quill Aura (35%) Allies in 350 range gain a damage shield that deals 35% of melee damage taken back to the attacker
+
+    Chaos Citadel (160)
+    Chaos Warrior - Normal (melee) Medium
+    - Cleave (25%)
+
+      Greater Chaos Citadel (190)
+      Chaos Champion - Normal (melee) Medium
+      - Critical Strike (10%, x2)
+      - Roar (+25% dmg) Increases the damage of all friendly units in 525 range by 25%. Lasts 20 seconds. CD 30 0 mana
+      - Cleaving Attack (35%) 200 range
+
+    Altar of Greed (230)
+    Succubus - Magic (360 range) Light
+    - Curse (35% miss) 45 seconds, 6.5 cd, 20 mana
+
+    Fountain of Blood (280)
+    Blood Fiend - Chaos (melee) Differs
+    - Present of Chaos (Each blood fiend is spawned with different random abilities and armor type)
+
+    Dragon Nest (350)
+    Red Dragon - Chaos (400 range) Heavy
+    - Flying
+    - Splash Damage
+
+    Demon Gate (500) 40?
+    Infernal - Chaos (melee) Heavy
+    - Can attack air
+    - Immolation (33dps) 300 range
+
+
+    Eraser (350, 1000, 1)
+    Ability: Erase
+    Kills all enemy units of a random unit type that the enemy controls
+    Cooldown 50, -12.5 seconds per upgrade
+
+      Eraser Level 2 (175, 350)
+
+        Eraser Level 3 (175, 350)
+
+    Volcano (340, 660)
+    Ability: Eruption
+    Damages the area around a random enemy unit dealing 100 dps spell damage for 2.75 seconds. Cannot damage more than 6 units concurrently. Deals 40% damage to buildings
+    Cooldown: 12 seconds
+
+    Magic Tower Ruin (200, 330)
+    Ability: Present of Chaos
+    Sends chaotic forces into a random enemy unit. These forces have one of the following effects:
+    - The unit explodes (no bounty)
+    - The unit dies (you gain bounty)
+    - The unit transforms into a mutation that fights for you
+    - The unit is hexed
+    - The unit recieves 500 damage
+    - The unit gets 400 bonus health and +25 damage and is fully healed
+    - The unit is stunned for 6 seconds and recieves 200 spell damage
+    - Nothing happens
+
+    Shrine of Destruction (850, 1800, 1)
+    Ability: Hell's Fist
+    Destroys a random enemy building. Cannot destroy legendary buildings or the main castle. You don't gain bounty for the destroyed building.
+
+  ✓ Undead
+    The undead are gaining warriors in their ranks from among the resurrected dead. They bring death and disease to their enemies. The builder of the undead can construct a tower of spirits to protect your base.
+
+    Rotting Hay Cart 120
+      models/heroes/undying/undying_tower.vmdl
+      Undying Zombie
+      Rot - Damages organic enemies in 250 range, dealing 8 damage per second
+      Tainted Farm 100
+        models/items/undying/idol_of_ruination/idol_tower.vmdl
+        Undying
+        Rot - 290 range, 12 dps
+        Plague Attack - Units hit by the Zombie get their ms reduced by 15% and receive 8 dps for 10 seconds
+        Defiled Granary 205
+          models/items/undying/idol_of_ruination/idol_tower_gold.vmdl
+          Undying Flesh Golem
+          Rot - 20 dps, 350 range
+          Plague Attack - 15 dps, 30% ms drop, 15 seconds
+
+    Temple of Bone 210
+      undead base building
+      Raise Dead - Raises a skeleton. CD 45, Mana Cost 75
+      Temple of Necromancy 170
+        Necrophos
+        Carrion Swarm - 25% chance on attack to release a carrion swarm that deals 70 damage to all enemies in a cone.
+        Greater Raise Dead - Raises a skeleton. Can also raise Greater Skeletons and Heros. (but no generals)
+        High Citadel of Necromancy 370 375 1
+          Lich King (lich)
+          Legendary spell resistance
+          Immune - This unit is immune to certain negative effects (make part of legendary spell resistance)
+          Decaying Attack - Has a 15% chance to soul steal its target, killing it instantly and gaining 50% of its health, or a 10% chance to cast Death and Decay onto a 300 aoe around its target.
+          Death and Decay lasts 5 seconds, drains 8% of enemy's max health per second
+          Raise Ultimate Dead - Raises 2 greater skeletons. Skeletons raised this way have 3 bonus armor and 12 bonus damage.
+          Cooldown 25, Mana Cost 100
+
+          Has a skull attack particle (maybe that necrophos hand thing?)
+
+    Crypt 230
+      Tombstone?
+      Vampire Nightstalker
+      Raise Lesser Vampire - Whenever the vampire kills a living unit, it will spawn a vampire from it.
+      Vampiric Aura -  30% lifesteal, 900 range
+      Vampire Attack - Regains 70% of its attack damaage
+      Graveyard 260
+        Vampire Lord
+        Raise Vampire - Whenever the vampire kills a living unit, it will spawn a vampire from it.
+        Vampiric Aura -  30% lifesteal, 900 range
+        Vampire Attack - Regains 100% of its attack damaage
+
+    Skeleton General
+      Command Aura - +20 attack damage increase
+
+    Haunted Mine 290
+      Banshee (weak melee creep)
+      Fear Aura - Decreases the damage output of all enemies in 450 range by 15%
+      Astral Chains - Reduces movement and attack speed of target enemy by 30% for 35 seconds. 10 cd 25 mana 
+
+    Slaughter House 370
+      Flesh Golem (pudge)
+      Demolish - This unit deals 150% against buildings
+      Pulverize - Grants a 33% chance on attack to hit all enemies in 150 range for 125 damage and all units in 250 range for half damage.
+
+    Dragon Cemetery 500
+      Frost Wyrm (dragon knight)
+      Flying
+      Splash Damage
+      Chilling Attack - All units hit get chilled for 5 seconds
+
+    Death Pit 360 625
+      Ability: Sudden Death
+      Kills a random enemy unit instantly
+
+      Cooldown: 15 seconds
+
+    Skull Pile 160
+      Ability: Raise Dead
+      Raises a random skeleton from a random corpse
+
+      Skull Shrine 140
+        Ability: Raise Dead (greater)
+        Raises a random skeleton from a random corpse
+        Can raise normal or greater skeletons and generals
+        mana 18, cost 15, cd 15
+
+    Turret of Souls 200 300
+      Dire Tower
+
+    City of Decay 650 1800
+      Decay - Deals 10 dps to all non-mechanical enemy units. Does not stack.
+
+    Necromancer:
+      55-55 Magic
+      Unarmored 1
+      300/200
+
+      Skeletal Mage:
+      26-27 magic
+      Light 2
+      240 
+
+    Plague Bearer:
+      100-110 Chaos
+      Medium 6
+      1050
+      passive rotating
+
+  ✓ Orc
+    The horde trains hardy and strong warriors, as well as supports them with the help of magic shamans. Their ax masters are afraid of everyone on the battlefield. Orcs are available to build an anti-aircraft defense tower.
+
+    Fighter's Hall (110)
+      Grunt - Normal (melee) Heavy
+
+      Advanced Fighter's Hall (100)
+      Veteran Grunt - Normal (melee) Heavy
+      - Critical Strike (25%, x2)
+
+        Superior Fighter's Hall (240)
+        Axemaster - Normal (melee) Heavy
+        - Critical Strike (30%, x3)
+        - Pulverize (35%, 130 dmg)
+
+    Shamanic Tent (170)
+      Shaman - Magic (350 range) Unarmored
+      - Shaman Buff (+4 armor, +33% dmg, +3hp/sec)
+
+    Troll Hut (200)
+      Troll - Normal (300 range) Medium
+      - Berserk (+200%)
+
+      Trapper's Hut (80)
+      Troll Trapper - Normal (325) Medium
+      - Ensnare (Ensnares an enemy air unit for 16 seconds) CD 8
+      - Berserk (Whenever this unit kills an enemy, it goes into a rampage, gaining 200% attack speed, 25% move speed, but also takes 10% more damage. Rampage lasts 6 seconds.)
+
+    Falcon-Clan Encampment (220)
+      Wyvern Rider - Pierce (400 range) Unarmored
+      - Flying
+      - Minor Poison Attack (20% slow)
+
+    Kodo Farm (260)
+      Kodo - Pierce (melee) Light
+
+      Offensive Kodo Farm (100)
+      Offensive Kodo - Pierce (200) Light
+      - Melee Damage Aura (increases the damage of all allied melee units in 900 range by 30%)
+
+      Defensive Kodo Farm (100)
+      Defensive Kodo - Pierce (200) Light
+      - Armor Aura (+4)
+
+      Spellbreaker Kodo Farm (100)
+      Spellbreaker Kodo - Pierce (200) Light
+      - Spell Resistance (80%)
+
+    Orcish Siege Factory (380)
+      Catapult - Siege (1000 range) Medium
+      - Can't attack Air
+      - Splash Damage
+      - Burning Ammo (48dps)
+
+
+    Serpent Rock (270, 640)
+      Ability: Poison Area
+      Spits poison onto an area near a random enemy unit. All units that get hit by the poison get their armor reduced by 5, their attack and move speed reduced by 20%, and take damage over time. The poison lasts 5 seconds and deals 30 dps.
+
+      CD (12)
+
+    Ceremonial Totem (250, 540)
+      Ability: Tribal Blessing
+      Gives a random ally permanent +20 damage, +20 attack speed, 3 armor and 200 hit points. Also gives one of the following
+      - Demolish (x1.5)
+      - Critical Strike (25%, x2)
+      - Evasion (30%)
+
+      CD (10)
+
+    Anti Air Tower (175, 300)
+      vs Air: Normal, (900 range), DPS 175 (60-80)
+      vs Ground: Normal, (700 range), DPS 37 (20-25)
+
+      - Poisoned Arrows (25% slow)
+
+    Stasis Totem (475, 1350, 1)
+      Ability: Global Stasis
+      Stuns all enemy units for 4.5 seconds
+
+      CD (40)
+
+  ✓ North
+    The northern inhabitants will act as a united front against anyone who wants to invade their favorite ice plains and mountains. At their disposal cooling and freezing spells. Northerners defend their buildings tower with freezing splash damage.
+
+    - Frost attacks only work against ground units/buildings
+    - Frost attacks root the enemy for the duration
+    - 
+
+    Snowy Rocks (115)
+    Frost Wolf - Normal (melee) Unarmored
+    - Critical Strike (10%, 1.5x)
+
+      Icy Rocks (125)
+      Polar Bear - Normal (melee) Unarmored
+      - Critical Strike (10%, 2x)
+      - Cleave (27%, 200 range)
+
+        Glacier (250)
+        Magnataur - Normal (melee) Unarmored
+        - Critical Strike (15%, 3x)
+        - Cleave (40%, 200 range)
+        - Stomp (3.5 sec, 75dmg) 250 range cd 12 mana cost 25
+
+    Igloo (160)
+    Hrimthrusa - Pierce (380 range) heavy
+    - Frost Attack (5% 7sec 15dps)
+
+    Ice Troll Hut (175)
+    Ice Troll Shadow Priest - Magic (350 range) Light
+    - Frost Attack (10%, 7sec, 15dps)
+    - Frost Armor (+3.5) lasts 30 seconds, chills melee attackers for 4 seconds, cd 8, mana cost 35
+
+      Ice Troll Voodoo Hut (150)
+      Ice Troll Witch Doctor - Magic (370 range) Light
+      - Chilling Attack
+      - Frost Attack (10%, 10sec, 20dps)
+      - Frost Armor (+7)
+
+    Ice Claws (275)
+    Wendigo - Pierce (melee) Medium
+    - Pulverize (25%, 80dmg)
+
+      Frost Claws (225)
+      Ancient Wendigo - Pierce (melee) Medium
+      - Pulverize (30%, 140dmg)
+      - Howl  (-4 armor, -30 dmg)
+
+    Azure Nest (280)
+    Azure Drake - Chaos (250 range) Heavy
+    - Flying
+    - Splash Damage
+    - Chilling Attack - All units get chilled for 5 seconds
+
+    Crystal Palace (400)
+    Ice Queen - Chaos (450 range) Unarmored
+    - Frost Nova 150 damage to target, 75 in 300 aoe, chills all targets for 6 seconds. cd 10 mana cost 80
+    - Frost Attack (20%, 12.5sec, 30dps) 20% chance to freeze
+    - Crystal Aura (+0.5 mana/sec) 800 aoe
+
+    Frost Launcher (210 475)
+    Ability: Frost Bolt
+    Launches a Frost Bolt at a random enemy structure. On impact this bolt freezes the structure for 10 seconds and deals 50 chaos damage to it.
+    Cooldown: 12 seconds
+
+      Greater Frost Launcher (290, 575)
+      Ability: Greater Frost Bolt
+      Launches a huge frost bolt at a random enemy structure. On impact, this unit freezes everything in 250 range for 12 seconds and deals 100 chaos damage to it.
+
+    Chilling Mushroom (190 350)
+    Ability: Freezing Blast
+    Freezes an air unit, stunning it for 5 seconds and dealing 200 damage
+    Cooldown: 8 seconds
+
+    Icy Tower (230 300)
+    Normal (750 range) Fortified
+    - Splash Damage
+    - Chilling Attack
+
+    World Freezer (600 1350 1)
+    Ability: Onset of Winter
+    Sends out three frost orbs that fly in a random direction, attacking random enemies for 60dps spell damage, stunning random air units freezing random ground units and chilling each unit near them.
+
+  The Corrupted
+    Cursed by evil demons, these past-friendly creatures became followers of darkness. They use dark magic to weaken their enemies. The Corrupted can build a tower with splash damage.
+
+    Corrupted Ancient of Battle (125)
+    Corrupted Ent - Normal melee 19dps Heavy
+    -  Weakening Attack (-27% dmg) 20 seconds
+
+      Corrupted Ancient of War (125)
+      Corrupted Treant - Normal melee 38 dps Heavy
+      - Cleaving Attack (25%)
+      - Critical Strike (10%, x2)
+      - Weakening Attack (-55% dmg)
+
+        Corrupted Ancient of Annihilation (500, 375, 1)
+        Corrupted Annihilator - Normal melee 111 dps Heavy
+        - Legendary Spell Resistance
+        - Cleaving Attack (40%)
+        - Critical Strike (15%, x2)
+        - Weakening Attack (-100% dmg)
+        - Fan of Spikes (250 dmg, 3.5 sec stun)
+
+    Void Portal (190)
+    Void Walker - Magic 380 range 25 dps Light
+    - Incinerate (+7 dmg per hit) if the target dies, it explodes, dealing 80 spell damage to enemies in 150 aoe and half in 200 aoe
+    - Corruption Aura (-2 armor) 400 range
+
+      Portal of the Abyss (190)
+      Void Keeper
+      - Incinerate (+7 dmg per hit) 160 spell damage
+      - Corruption Aura (-4 armor) 650 range
+
+    Nether Ancient (235)
+      Nether Drake - Magic (400 range) 26 dps Medium
+      - Flying
+      - Splash Attack (+20 dmg) - costs 20 mana per attack (250 radius)
+
+      Shadow Ancient (165)
+      Shadow Drake - Magic 400 range Medium
+      - Flying
+      - Splash Attack (+25 dmg) - costs 20 mana per attack (250 radius)
+
+    Felhound Shrine (240)
+      Felhound Pierce melee 37 dps Medium
+      - Haste Aura (+18%) increases attack speed 900 range 18%
+
+    Hell's Gate (300)
+      Infernal Machine - Siege 600 45 dps Heavy
+      - Cant attack air
+      - Detonate (100 dmg) deals 100 damage to nearby units in 225 range. further targets take less damage
+
+      Hell's Portal (150)
+      Infernal Tank - Siege 600 57 dps Heavy
+      - Can't attack air
+      - Line damage (60) deals 60 spell damage on each attack to enemies in a line
+      - Detonate (150) 275 range
+
+    Demonic Statue (520)
+      Incubus - Chaos 530 range 64 dps Medium
+      Splash Damage
+      Overtake - 10% chance on each attack to take control of the attacked unit
+
+    Well of Pain (275, 480)
+    Ability: Touch of Pain
+    Deals 200 damage to a random enemy.
+    Cooldown (1.5) Mana Cost 4
+
+    Forgotten One (260, 420)
+    Ability: Tentacle Prison
+    Creates 6 aggressive tentacles around a random enemy unit. raised tentacles have a lesser critical strike
+    Cooldown: 12 seconds
+
+    Corrupted Protector (200, 300)
+    Chaos (800 range) Fortified
+    43 dps
+    - Splash Damage
+
+    Eye of Corruption (500, 1350, 1)
+    Ability: Gaze of Corruption
+    Lowers the armor of all enemies by 6
+
+  ✓ Night Elves
+    Night elves separated from the Union of Elves and fight independently for their goddess Elune. These seemingly fragile creatures know how to dodge enemy strikes and counteract negative spells. The night elves have a tower that burns enemy mana.
+
+    Builder: night elf warden lady. kind of looks like venge
+
+    Hunter's Hall (150)
+    Huntress (elf archer lady)
+    Pierce (400rng, 27dps)
+    Light 1
+    hp 300
+    evade 8%
+      Ranger's Hall (200)
+      evade (15%)
+      multi shot (3 targets)
+      Ranger (windrunner?)
+        Amazon's Hall (400 375 1)
+        Amazon (Drow)
+        Legendary spell resistance
+        multi shot (7 targets)
+        evade (25%)
+        Takes 50 seconds to train
+
+    Moon Shrine (190) (moon well)
+    Druid (furion?)
+    Chaos 375 31
+    Unarmored 1
+    hp 325 (100/200)
+    Entangle 5 sec, 15 dps
+    cd 14 mana cost 30
+      Moon Altar (210) (heroic shrine)
+      Sage Druid (Furion)
+      Mass Entangle 3 ground units 6 seconds 35dps
+      cd 14 mana cost 35
+
+    House of Shadows (200) (night elf outhouse)
+    Assassin (TA)
+    Pierce melee 30
+    25-35
+    medium 1
+    hp 375/100
+    evade 15% feedback (40mana, x1.7) backstab (150 dmg, windwalk) mana cost 50 (no cd)
+      Guild of Shadows (175)
+      Royal Assassin (TA)
+      Pierce melee 60 dps
+      40-50
+      medium 2
+      575/150 
+      evade 25%
+      feedback 60mana, x2.2
+      backstab (300 dmg)
+
+    Pillaged Hut (230)
+    Avenging Spirit (VS)
+    Magic melee 37
+    light 5
+    425
+    corrosive attack (-4 armor)
+    spell reduction (status resistance)
+    evade (30%)
+    heal on kill (12%)
+      Scorched Mansion (240)
+      Avatar of Vengeance (Spectre)
+      Spell reduction
+      corrosive attack (-7 armor)
+      evade (40%)
+      heal on kill (14%)
+      revenge (350)
+
+    Fountain of Wonders (260) (Fountain)
+    Faerie Dragon (Puck)
+    Magic 350 28
+    Light 2
+    460
+    Flying
+    Heal (175) Heals a friendly unit for 175 health cd 6 mana cost 20
+    feedback (25, 100% mana burned as damage)
+
+    Nightelf Siege Factory (285)
+    Glaive Thrower
+    Siege 1000 26
+    Heavy 2
+    400
+    Can't attack air, Bouncing attack (4 targets, 30% less on each bounce)
+
+    Silver Glade (225, 600)
+    Moon Shine Blessing: Blesses everything around a random friendly unit that is attacked. Blessed units regain 175 health, 50 mana and +6 armor for 6 seconds.
+    CD: 20
+
+    Obelisk of Wilderness (220, 300)
+    Ability: Resistance of the Wilderness
+    Blesses a friendly random unit with the resistance of the wilderness, giving it permanent 40% spell damage reduction and a 40% chance to reduce incoming attack damage by 40. Has an extra chance to target units that don't have the buff yet.
+
+    Elune's Lantern (210, 300)
+    Magic 850 87
+    Feedback (35)
+
+    Starfall Obelisk (650, 1350, 1)
+    Ability: Starfall
+    Stars fall from the sky around a random enemy unit, damaing all enemies in its area for 11 seconds, dealing 50 dps spell damage. Buildings receive only 40% of this damage.
+    Cooldown: 30 seconds
+
+  Mech
+    Clever technicians and goblin mechanics have teamed up to create their own army. Their units have significant splash damage and high armor, but they have no troops with magical attacks and ranged attacks. Technicians have a great tower with an attack on several units.
+
+    The Wonderously Encumbered Travelling Automaton
+    Morok's Mechanical Mediary
+    Filmtail
+
+    Aircraft Factory (160)
+    Roterothopter (Pierce, 500 range, 25dps) Light 4
+    - Flying
+    - Can't attack ground
+    - Bash (30%%, 40dmg, 1.2s)
+
+      Bomber Factory (180)
+      Gyrocopter Pierce (500 range) 45 dps Light 6
+      - Flying
+      - Can't attack ground
+      - Bash (50%%, 60dmg, 1.2s)
+
+    Tank Factory (180)
+    Light Tank - Normal (375 range) Heavy 5 400 hp 33 dps
+    bounty 6
+    - Can't attack air
+    - Light Tank Armor (-12 dmg)
+
+      Heavy Tank Factory (200)
+      Heavy Tank
+      Normal (400 range) 62 dps 800 hp
+      Heavy 12 
+      - Can't attack air
+      - Heavy Tank Armor (-24 dmg)
+
+        Rocket Tank Factory (150)
+        - Can't attack air
+        - Heavy Tank Armor (-24 dmg)
+        - AA Rockets (Fires rockets at random enemies in 850 range. Each rocket deals 75 damage)
+
+      Assault Tank Factory (200)
+      Assault Tank
+      Chaos (550 range) Heavy 8 700 hp 50 dps
+      - Can't attack air
+      - Splash Damage
+      - Medium Tank Armor (-18 dmg)
+
+      Mine Layer Factory (150)
+      Mine Layer (Normal melee, 42dps) Heavy 7 600 hp
+      - Light Tank Armor (-12 dmg)
+      - Lay Mine (250 dmg)
+
+    Demolition Lab (200)
+    Lunatic Goblin - Can't attack, Unarmored (0) HP 175
+    - Suicide (275 dmg) 275 in 150 aoe, 125 in 300 aoe, buildings take 75%
+    - Detonate (150 dmg) Upon death, does 150 to enemies in 280 aoe, further targets take less damage, stacks with suicide
+
+    Gun Smith (220)
+    Flame Gunner - Chaos (70 range) Armor Light 4 37 dps hp 500
+    - Can't attack air
+    - Line Damage (hits all units 150 range behind its attacks)
+
+      Arsenal (140)
+      Flamegunner Sergeant Chaos (70 range) Light 7 HP 700 66 dps
+      - Can't attack air
+      - Line Damage (same)
+      - Astral Grenade (Launches a grenade that deals 30 damage and burns up to 100 mana, dealing mana burned as damage. Slows units by 50%% for 3 seconds. 300 AoE)
+
+    Golem Factory (270)
+    Iron Golem - Hero (melee) Armor: Medium 12 46 dps 525 hp
+    - Spell Resistance (30%%)
+    - Pulverize (25%%, 60 dmg)
+    - Bash (15%%, 40dmg, 2s)
+
+      Precious Golem Factory (500, 385, 1)
+      Adamant Golem - Hero (melee) Divine (15) 950 hp 92 dps
+      - Extreme Spell Resistance (90%%)
+      - Bash (50%%, 100dmg, 2s)
+      - Pulverize (40%%, 150 dmg)
+
+    Lumber Mill (375)
+    Goblin Shredder - Pierce (melee) 56 dps Medium 9  1000 hp
+    - Inducted Rage (Each time the shredder is hit by a negative special building, it permanently gains 50%% attackspeed and has a 60%% chance to block the spell's effect. Attack speed bonus is capped at 200%%)
+    - Detonate (50 dmg) Upon death, the shredder deals up to 50 damage to enemies in 300 range. Each time the shredder gets hit by a negative special building the damage gets doubled. Max of 4 hits.
+    - Shredder Attack (each hit does full damage to units in 160 range in front of this unit)
+
+    Power Plant (340, 1050)
+    Ability: Power Buildings
+    Powers all buildings in 180 range, giving them +2 armor. Empowered buildings have a chance to get negative buffs removed from them. In addition, towers gain +25%% damage and special buildings gain +0.25 mana/sec. Creep producing structures train stronger creeps.
+    - 100 bonus HP
+    - 2 bonus Armor
+    - 20%% bonus damage
+
+    Spare Part Heap (250, 350)
+    Ability: Assemble Gobbo Mechanist
+    Assembles a Gobbo Mechanist every 25 seconds, which lasts 40 seconds and looks for damaged buildings and mechanical units it can repair
+
+    Energy Tower (240, 300)
+    Damage: Chaos (600 range)
+    DPS 65
+    - Bouncing Attack (3 targets) 30% less on each bounce
+    - Energy Burst (20%% chain lightning, 8 targets, 80 damage, 20% less on each bounce)
+
+    Blue Shield Generator (190, 270)
+    Ability: Energy Shield
+    Shields a random friendly unit with energy, giving it +2 armor. The next time the unit is hit by a negative building ability, the ability will have no effect and the shield will vanish.
+
+    Red Shield Generator (140, 130)
+    Ability: Greater Energy Shield
+    Shields a random friendly unit with energy, giving it +4 armor. The next two times the unit is hit by a negative building ability, the ability will have no effect. In addition, the unit will gain +100 health.
+
+  ✓ Nature
+    The forces of nature itself are called upon to fight for their masters. Specializing in strong units and powerful spells, the race of nature is a bit more expensive, but generally better than other races.
+
+    Spider Egg Clutch (?) (170)
+      Black Spider x2 (siltbreaker spiders)
+      Attack Type / Armor Type: Pierce (30 dps, melee) / Unarmored (1)
+      HP: 250
+      Abilities: Slow Poison (10% slow, 5dmg / sec, 10 sec)
+      - Spider Egg Nest (200)
+        Giant Spider x2 (siltbreaker spiders)
+        Attack Type / Armor Type: Pierce (53 dps, melee) / Unarmored (4)
+        HP: 500
+        Web, Slow Poison (15% slow, 8dmg / sec), Split (2 Forest Spider)
+        - Spider Egg Hatchery (250)
+        Brood Mother x2 (siltbreaker spiders)
+        Attack Type / Armor Type: Pierce (76 dps, melee) / Unarmored (6)
+        HP: 800
+        Web, Slow Poison (25% slow, 12dmg / sec), Split (2 Giant Spider), Infest (Deals 100 initial damage and 20 damage / second for 10 seconds. A killed unit spawns 2 forest spiders., 50 Mana CD 18)
+
+    Furbolg Hut (200)
+    Furbolg Shaman (furbolgs)
+    Attack Type / Armor Type: Magic (37 dps, 400 range) / Light (1)
+    HP: 450
+    Rejuvenation (200hp over 10 seconds, 50 mana, CD 16)
+      - Furbolg Abode (200)
+      Furbolg Elder Shaman (furbolgs)
+      Attack Type / Armor Type: Magic (40 dps, 450 range) / Light (3)
+      HP: 650
+      Abilities: Manaburn (15% to burn 150 mana, inflicts damage equal to mana burned), Rejuvenation (400hp over 10 seconds, 50 mana, CD 14)
+
+    Ancient of Growth (220)
+    "models/items/furion/treant/furion_treant_nelum_red/furion_treant_nelum_red.vmdl"
+    Dryad (enchantress)
+    Attack Type / Armor Type: Pierce (37 dps, 500 range) / Medium (3)
+    HP: 500
+    Abolish Magic (15% chance to remove positive buff from an enemy), Spell Resist (15%), Natures Touch (75hp, 2 armor)
+
+      - Ancient of Life (220)
+      "models/items/furion/treant/primeval_treant/primeval_treant.vmdl"
+      Keeper of the Grove (leshrac)
+      Attack Type / Armor Type: Pierce (50 dps, 525 range) / Medium (5) HP: 800 Abolish Magic (20% chance to remove positive buff from an enemy), Summon Treants ( Summons 2 ents with Thorns ability (reflects 10% of melee damage taken) Reload: 25 seconds; Mana Consumption: 100), Spell Resist (20%), Natures Touch (150hp, 3 armor) 
+
+        - Ancient of Eternity (400, 400, 1)
+        "models/items/furion/treant_flower_1.vmdl"
+        Ancient Keeper (leshrac)
+        Attack Type / Armor Type: Chaos (69 dps, 550 range) / Medium (7)
+        HP: 1000
+        Abolish Magic  25% chance when attacking to remove positive buffs in the 100 AoE area from enemy units, Incorporeal (25% evasion), Spell Imune, Treant Sprout Ancient Keeper invokes 5 trees around itself that protect it from melee attacks. After 3 seconds, the trees turn into treants that go on the attack. Recharge: 30 seconds; Mana Consumption: 200, Natures Aura (15hp / sec, 350 aoe)
+
+    Ancient of Slumber (260)
+    "models/items/furion/treant/furion_treant_nelum_red/furion_treant_nelum_red.vmdl"
+    Bear (LD Bear)
+    Attack Type / Armor Type: Normal (48 dps, melee) / Unarmored (5)
+    HP: 675
+    Feral Rage 15% (lvl2-50%) chance to increase your own attack speed and receive additional damage by 20% (lvl2-30%) from the hit., Slumber A bear hibernates when its hp level is low, which increases the speed of regeneration of its lives to 20hp / sec., Cleave (30%), Critical Strike (25%, 2x), Bash (25%, .5 sec, 50 dmg)
+      - Ancient of Hibernation (230)
+      "models/items/furion/treant/furion_treant_nelum_red/furion_treant_nelum_red.vmdl"
+      Ancient Bear (LD Bear)
+      Attack Type / Armor Type: Normal (57 dps, melee) / Unarmored (8)
+      HP: 1100
+      Feral Rage, Hibernation Ancient Bear goes into deep hibernation if its hp level is extremely low, which increases the regeneration of its lives to 40hp / sec. In addition, Ancient Bear takes 100% damage to the first attack after waking up., Cleave (35%), Critical Strike (30%, 2x), Bash (30%, 1 sec, 65 dmg) 
+
+    Emerald Dragon Roost (310)
+    Emerald Dragon (Green Dragon Knight Dragon)
+        models/creeps/neutral_creeps/n_creep_jungle_stalker/n_creep_gargoyle_jungle_stalker.vmdl
+    Attack Type / Armor Type: Chaos (30 dps, 250 range) / Heavy (5)
+    HP: 700
+    Splash, Corrosive Breath (reduce armor by 2 for each attack, max -6)
+
+    Monolith (510)
+    models/props_structures/good_statue010.vmdl
+    Mountain Giant (Tiny)
+    Attack Type / Armor Type: Normal (83 dps, melee) / Fortified (8)
+    HP: 1050
+    Grab Tree (increases damage, changes attack type to siege, can hit flying, lasts 20 attacks), Taunt (350 aoe), Hardened Skin (take 25 less damage from physical attacks), Resistant Skin (20% less from strikes and status resistance), Pulverize (30%, 200 dmg, 175 AoE)
+
+    Ancient Guardian (250, 400)
+    ability: Banish (.. Moves the enemy unit in the astral Units located in the astral plane can not attack, but they can cast spells Spells aimed at units during their prebyvaeniya in the astral plane to inflict additional damage.)
+    Time recharge: 12 seconds
+
+    Ancient of Wind (350, 650)
+    "models/items/furion/treant_flower_1.vmdl"
+    Ability: Cyclone (Summons a wandering tornado around an enemy unit that slows down its movement and attack speed by 25%, and also causes 40 dps in the area of ​​250 AoE for 5 seconds. Buildings take 50% damage .)
+    Recharge time: 14 seconds
+
+    Ancient Protector (210, 300)
+    models/props_structures/rock_golem/tower_radiant_rock_golem.vmdl
+    Tower
+    Attack Type: Siege ; Range: 700 ; Average DPS: 70 ; 
+    Abilities: Bash, Splash Damage
+
+    Ancient of Wonders (600, 1500, 1)
+    "models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl"
+    Ability: Natures Curse (Reduces the mana regeneration rate of all enemy buildings and units on the map by 50%. Duration: 10 seconds.)
+    Recharge time: 35 seconds
+
+  Elementals
+    Elementals are the oldest race that exists from the very formation of the universe. Elementals' units are quite strong, but at the same time rather expensive. Elementals use element control to defeat their enemies and strengthen the Allied army with strong magic. This unique race can reduce unit training time. The race has a defensive tower.
+
+
+    Trapped Gale (160) bounty 5
+    Lesser Wind Elemental: Pierce (400 range) Medium 2 30 dps 30-60
+    hp 350
+    - Flying
+    - Can't attack ground
+
+     Monument of Wind Stream (200)
+     Wind Elemental: Pierce (450 range) 43 dps
+     550 medium 4
+      - Flying
+      - Gale (reduces attack and move speed of enemy air units by 20% in 500 range)
+      60-70
+      50-70
+
+        Zephyros Memorial (260)
+        Greater Wind Elemental: Pierce (450 range) 55 dps
+        1300 Medium (9)
+        55-110
+        50-90
+        - Flying
+        - Gale (35% slow (air))
+
+    Water Spring (190)
+    Lesser Water Elemental - morphling
+
+      Melee, normal 28 dps vs ground
+      300 range, Pierce, 18 dps vs air
+      Normal 32-60 28 dps
+      Pierce 30-30
+      300 Medium 1
+    - Liquid body (60%) 60% of attacks pass through, dealing no damage
+
+      Golden Fountain (190)
+      Water Elemental - morphling gift of the sea
+      Melee, normal 40 dps vs ground 60-82
+      340 range, Pierce, 29 dps vs air 50-56
+      500 medium 3
+      Medium
+      - Liquid Body (80%)
+
+        Spellbound Fontain (190)
+        Greater Water Elemental - morphling shards of polymorphia
+        650 medium 7
+        Melee, normal 66 dps vs ground 110-130
+        melee, Pierce, 66 dps vs air 100-166
+        - Liquid Body (80%)
+        - Illusion (20% chance to copy itself on attack. Illusion deals 60% damage and takes 200% damage)
+
+    Pillar of Globe Lightning (230)
+    Lightning Elemental Magic, 350 range, 0 dps - Razor
+    400 light 3
+    - Lightning Attack (50 damage up to 3 targets in 600 range)
+    - Lightning Shield (15% chance to stun melee attacker)
+
+      Pillar of St Elmo's Fire (280) - Razor Empire of the Lightning Lord
+      Greater Lightning Elemental: Magic (400 range) 0 dps
+      800 light 9
+      - Lightning Attack (80 damage up to 5 targets in 600 range)
+      - Lightning Shield (30% chance to stun melee attacker)
+
+    Altar of Fire (240)
+    Fire Elemental: Chaos 400 range 34 dps - Forge Spirit
+    40-50 dmg
+    625 heavy 5
+
+      Altar of Blaze (240) - Forge Spirit - Arsenal Forge
+      Greater Fire Elemental: Chaos 450 range 51 dps heavy
+      65-90 dmg
+      900 heavy 7
+      - Split every 15 attacks splits into 2
+      - Fire Breath 20% chance to breathe fire, 100 damage
+
+        Tower of Elder Knowledge (300, 400, 1) - Invoker
+        Master of Elements: Magic (500 range) 70 dps unarmored
+        100-140
+        1200 unarmored 8
+
+        - Legendary Spell Resistance
+        - Knowledge of Elementals cd 8
+        casts 1 of 2 abilities of elemental nature every 8 seconds
+
+
+    Rock Pile (250)
+    Earth Elemental: Siege melee 50 dps - Small Tiny (majesty of the collossus?)
+    450 hero 4
+    75-75
+    - Pulverize (20%, 100 dmg)
+    - Power of Earth (50 max damage)
+
+      Greater Fissue
+      Greater Earth Elemental: Siege melee 83 dps Hero - Medium Tiny (majesty of the collossus?)
+      950 hero 8
+      150-150
+      - Pulverize 25%(200 damage 200 aoe, 100 damage 300 aoe)
+      - Power of Earth (Deals additional damage proportional to health) 100*currentHealth/maxHealth
+
+    Mana Generator (250, 350)
+    Ability: Mana Transfusion
+    Generate energy and pass it to one of the buildings to increase its mana generation. Generate 0.3 additional mana/sec. Reduced effect on non elemental buildings.
+
+    Obelisk of Element (260, 600)
+    Ability: Enchantment
+    Gives 1 of 4 abilities to a random ally
+    - Forge weapons: gives splash damage (250 range, 50%)
+    - Rock Shield: +15 Armor
+    - Haste: Increase attack and move speed by 75% and 25% respectively
+    - Rejuvenation: heal 450 hp instantly
+    units can maybe only have one buff at a time (rejuvenation is not a buff)
+    CD 10
+
+    Book of Conjuration (340, 650)
+    Ability: Elemental Rain
+    Choose one
+    Cast 1 of the following spells (at random)
+      abilities can target in fog
+    - Monsoon: 50 dps, 5 sec (groud only) units in the area take leshrac lightning every sec
+    - Meteor Shower: 150 dmg, 15 dps, 3 sec (air only)
+    - Blizzard: 40 dmg/wave, 7 waves (ground only)
+    CD 14
+
+    Elemental Guard Tower (240, 300)
+    Chaos (900 range) dps 79
+    Elemental Nature (gains one of the following abilities at random)
+    - Discharge (50 dmg to a random enemy every 0.1 seconds)
+    - Boulder (70%  chance to stun enemy for 10 sec and deal 100 additional damage)
+    - Immolation (40 dps 600 aoe)
+    - Shield of Mist (prevents melee attacks on tower)
+
+    Linker (700, 1600, 1)
+    
+    Ability: Link
+    Whenever an allied unit dies, its life power is distributed among other allied units, healing them
+
+    Whenever an allied elemental dies, its life power is distributed among nearby allied units, healing them. Heals 20* number of elemental buildings. Can't heal more than 500
