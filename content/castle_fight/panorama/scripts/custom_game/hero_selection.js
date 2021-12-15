@@ -76,14 +76,8 @@ function SetAvailableHeroes() {
       if(!hero) {
         break;
       }
-      
-      let xml = GetXmlForHeroMoviePanel(hero, heroIndex);
 
-      heroRowPanel.BCreateChildren(
-        xml,
-        false,
-        false
-      );
+      CreateHeroMoviePanel(hero, heroIndex, heroRowPanel);
     }
   }
 
@@ -106,16 +100,26 @@ function RemoveOldHeroPanels() {
   } while (true);
 }
 
-function GetXmlForHeroMoviePanel(hero, heroIndex) {
-  var heroNameLocalized = $.Localize("#" + hero);
-
+function CreateHeroMoviePanel(hero, heroIndex, parentPanel) {
+  const heroNameLocalized = $.Localize("#" + hero);
   const videoSource = RaceToMovieSource[hero];
 
-  let xml = '<MoviePanel id="heroMovie' + hero + '" class="HeroImage" ' +
-      'src="' + videoSource + '" repeat="true" autoplay="onload" ' +
-      'onmouseover="UIShowTextTooltip(' + heroNameLocalized + ')" onmouseout="UIHideTextTooltip()" onactivate="OnRaceSelected(\'' + hero + '\')" />';
+  const heroPanelProperties = {
+    class: "HeroImage",
+    src: videoSource,
+    repeat: true,
+    autoplay: "onload",
+    onmouseover: `UIShowTextTooltip(${heroNameLocalized})`,
+    onmouseout: `UIHideTextTooltip()`,
+    onactivate: `OnRaceSelected('${hero}')`
+  }
 
-  return xml;
+  return $.CreatePanelWithProperties(
+    "MoviePanel",
+    parentPanel,
+    `heroMovie${hero}`,
+    heroPanelProperties
+  );
 }
 
 function OnRaceSelected(race) {

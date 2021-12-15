@@ -33,17 +33,17 @@ function blademaster_spell_steal:OnSpellStart()
   local unitToBuff
 
   local radius = ability:GetSpecialValueFor("radius")
-  local buildingFilter = function(unit) return not IsCustomBuilding(unit) end
+  local unitFilter = function(unit) return not target:IsLegendary() and not IsCustomBuilding(unit) end
 
   if targetIsFriendly then
     -- give the debuff to an enemy
     local enemies = FindEnemiesInRadius(caster, radius)
-    enemies = FilterTable(enemies, buildingFilter)
+    enemies = FilterTable(enemies, unitFilter)
     unitToBuff = GetRandomTableElement(enemies)
   else
     -- give the buff to an ally
     local allies = FindAlliesInRadius(caster, radius)
-    allies = FilterTable(allies, buildingFilter)
+    allies = FilterTable(allies, unitFilter)
     unitToBuff = GetRandomTableElement(allies)
   end
 

@@ -24,6 +24,16 @@ function mana_transfusion:OnChannelFinish()
   end
 end
 
+function mana_transfusion:OnOwnerDied()
+  local ability = self
+  local caster = self:GetCaster()
+  local target = self:GetCursorTarget()
+
+  if ability.drain and not ability.drain:IsNull() then
+    ability.drain:Destroy()
+  end
+end
+
 function mana_transfusion:GetChannelTime()
   return -1
 end

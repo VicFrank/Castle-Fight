@@ -8,6 +8,9 @@
 *.vmat_c
 *.vagrp_c
 *.vmesh_c
+*.vxml_c
+*.vjs_c
+*.vcss_c
 
 # Map files
 *.vpk

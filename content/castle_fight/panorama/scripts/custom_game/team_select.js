@@ -229,7 +229,7 @@ function OnTeamPlayerListChanged()
 		
 	// Make sure all of the unassigned player have a player panel 
 	// and that panel is a child of the unassigned player panel.
-	var unassignedPlayers = Game.GetUnassignedPlayerIDs();
+	const unassignedPlayers = Game.GetUnassignedPlayerIDs();
 	for ( var i = 0; i < unassignedPlayers.length; ++i )
 	{		
 		var playerId = unassignedPlayers[ i ];
@@ -238,7 +238,7 @@ function OnTeamPlayerListChanged()
 
 	// Update all of the team panels moving the player panels for the
 	// players assigned to each team to the corresponding team panel.
-	for ( var i = 0; i < g_TeamPanels.length; ++i )
+	for ( let i = 0; i < g_TeamPanels.length; ++i )
 	{
 		UpdateTeamPanel( g_TeamPanels[ i ] )
 	}
@@ -293,12 +293,12 @@ function CheckForHostPrivileges()
 //--------------------------------------------------------------------------------------------------
 function UpdateTimer()
 {
-	var gameTime = Game.GetGameTime();
-	var transitionTime = Game.GetStateTransitionTime();
+	const gameTime = Game.GetGameTime();
+	const transitionTime = Game.GetStateTransitionTime();
 
 	CheckForHostPrivileges();
 	
-	var mapInfo = Game.GetMapInfo();
+	const mapInfo = Game.GetMapInfo();
 	$( "#MapInfo" ).SetDialogVariable( "map_name", mapInfo.map_display_name );
 
 	if ( transitionTime >= 0 )
@@ -313,7 +313,7 @@ function UpdateTimer()
 		$( "#StartGameCountdownTimer" ).SetHasClass( "countdown_inactive", true );
 	}
 
-	var autoLaunch = Game.GetAutoLaunchEnabled();
+	const autoLaunch = Game.GetAutoLaunchEnabled();
 	$( "#StartGameCountdownTimer" ).SetHasClass( "auto_start", autoLaunch );
 	$( "#StartGameCountdownTimer" ).SetHasClass( "forced_start", ( autoLaunch == false ) );
 
@@ -325,8 +325,11 @@ function UpdateTimer()
 }
 
 function OnSettingsChanged() {
-	var botsEnabled = CustomNetTables.GetTableValue("settings", "bots_enabled")["botsEnabled"];
-	$.GetContextPanel().SetHasClass("bots_not_enabled", botsEnabled == 0);
+	const settings = CustomNetTables.GetTableValue("settings", "bots_enabled")
+	if (settings) {
+		const botsEnabled = settings.botsEnabled;
+		$.GetContextPanel().SetHasClass("bots_not_enabled", botsEnabled == 0);
+	}
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -337,8 +340,8 @@ function OnSettingsChanged() {
 	$.GetContextPanel().SetHasClass("bots_not_enabled", true);
 	CustomNetTables.SubscribeNetTableListener("settings", OnSettingsChanged);
 
-	var bShowSpectatorTeam = false;
-	var bAutoAssignTeams = true;
+	let bShowSpectatorTeam = false;
+	let bAutoAssignTeams = true;
 
 	// get any custom config
 	if ( GameUI.CustomUIConfig().team_select )
@@ -354,23 +357,23 @@ function OnSettingsChanged() {
 		}
 	}
 
-	$("#NumRoundsDropdown").SetSelected(2);
+	// $("#NumRoundsDropdown").SetSelected(2);
 
 	if ($( "#TeamSelectContainer" ))
 		$( "#TeamSelectContainer" ).SetAcceptsFocus( true ); // Prevents the chat window from taking focus by default
-	var teamsListRootNode = $( "#TeamsListRoot" );
+	const teamsListRootNode = $( "#TeamsListRoot" );
 
 	// Construct the panels for each team
-	var allTeamIDs = Game.GetAllTeamIDs();
+	let allTeamIDs = Game.GetAllTeamIDs();
 	
 	if ( bShowSpectatorTeam )
 	{
 		allTeamIDs.unshift( g_TEAM_SPECATOR );
 	}
 	
-	for ( var teamId of allTeamIDs )
+	for ( const teamId of allTeamIDs )
 	{
-		var teamNode = $.CreatePanel( "Panel", teamsListRootNode, "" );
+		let teamNode = $.CreatePanel( "Panel", teamsListRootNode, "" );
 		teamNode.AddClass( "team_" + teamId ); // team_1, etc.
 		teamNode.SetAttributeInt( "team_id", teamId );
 		teamNode.BLoadLayout( "file://{resources}/layout/custom_game/team_select_team.xml", false, false );

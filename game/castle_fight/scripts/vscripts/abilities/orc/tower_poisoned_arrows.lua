@@ -29,7 +29,7 @@ function modifier_tower_poisoned_arrows:OnAttackLanded(keys)
   local attacker = keys.attacker
   local target = keys.target
 
-  if attacker == self.caster and not IsCustomBuilding(target) then
+  if attacker == self.caster and not IsCustomBuilding(target) and not target:IsMechanical() then
     local debuffName = "modifier_tower_poisoned_arrows_debuff"
     target:AddNewModifier(self.caster, self.ability, debuffName, {duration = self.duration})
   end

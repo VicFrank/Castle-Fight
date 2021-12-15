@@ -57,10 +57,14 @@ function CreatePlayerPanel(id, steam_id) {
   let AvatarContainer = $.CreatePanel("Panel", playerPanel, "");
   AvatarContainer.AddClass("AvatarContainer");
 
-  AvatarContainer.BCreateChildren(
-    '<DOTAAvatarImage hittest="false" id="player_avatar_' + id + '" class="UserAvatar"/>',
-    false,
-    false
+  $.CreatePanelWithProperties(
+    "DOTAAvatarImage",
+    AvatarContainer,
+    `player_avatar_${id}`,
+    {
+      hittest: false,
+      class: "UserAvatar",
+    }
   );
 
   let AvatarPanel = $("#player_avatar_" + id);

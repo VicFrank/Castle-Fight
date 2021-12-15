@@ -198,7 +198,7 @@ function GameMode:SetAvailableHeroes()
       hero = PickRandomShuffle(heroes, bucket)
       availableHeroes = {hero}
     end
-  
+
     CustomNetTables:SetTableValue("heroes_available", tostring(playerID), {
       heroes = availableHeroes,
     })
@@ -290,14 +290,14 @@ function GameMode:CheckLeavers()
         GameRules.CheckingForLeavers = false
         local goodConnected, badConnected = GameMode:CheckFullTeamDisconnect()
         if not goodConnected and not badConnected then
+          GameRules.gameIsOver = true
           GameMode:EndRound(DOTA_TEAM_NEUTRALS)
-          GameMode:EndGame(DOTA_TEAM_NEUTRALS)
         elseif not goodConnected then
+          GameRules.gameIsOver = true
           GameMode:EndRound(DOTA_TEAM_GOODGUYS)
-          GameMode:EndGame(DOTA_TEAM_BADGUYS)
         elseif not badConnected then
+          GameRules.gameIsOver = true
           GameMode:EndRound(DOTA_TEAM_BADGUYS)
-          GameMode:EndGame(DOTA_TEAM_GOODGUYS)
         end
       end)
     end
@@ -530,7 +530,9 @@ function GameMode:EndRound(losingTeam)
 
   local pointsToWin = tonumber(CustomNetTables:GetTableValue("settings", "num_rounds")["numRounds"])
 
-  local gameIsOver = GameRules.leftRoundsWon >= pointsToWin or GameRules.rightRoundsWon >= pointsToWin
+  local gameIsOver = GameRules.leftRoundsWon >= pointsToWin
+    or GameRules.rightRoundsWon >= pointsToWin
+    or GameRules.gameIsOver
 
   if gameIsOver then
     -- Send the game's stats to the server
