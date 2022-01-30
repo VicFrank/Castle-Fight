@@ -1,19 +1,33 @@
 // Navigating through the ai to get panels to insert lumber costs into
 var HUD = $.GetContextPanel().GetParent().GetParent().GetParent();
-var newUI = HUD.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
+var newUI = HUD.FindChildTraverse("HUDElements")
+  .FindChildTraverse("lower_hud")
+  .FindChildTraverse("center_with_stats")
+  .FindChildTraverse("center_block");
 
-var inventoryContainer = newUI.FindChildTraverse("inventory").FindChildTraverse("inventory_items").FindChildTraverse("inventory_list_container");
+var inventoryContainer = newUI
+  .FindChildTraverse("inventory")
+  .FindChildTraverse("inventory_items")
+  .FindChildTraverse("inventory_list_container");
 
 var inventoryTop = inventoryContainer.FindChildTraverse("inventory_list");
 var inventoryBot = inventoryContainer.FindChildTraverse("inventory_list2");
 
-function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost){
+function test() {
+  GameUI.PingMinimapAtLocation([1, 0, 128]);
+}
+
+function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost) {
   var subContainer;
   if (itemSlot < 3) subContainer = inventoryTop;
   else subContainer = inventoryBot;
 
   var slotContainer = subContainer.FindChildTraverse("inventory_slot_" + itemSlot);
-  var button = slotContainer.FindChildTraverse("ButtonAndLevel").FindChildTraverse("ButtonWithLevelUpTab").FindChildTraverse("ButtonWell").FindChildTraverse("ButtonSize");
+  var button = slotContainer
+    .FindChildTraverse("ButtonAndLevel")
+    .FindChildTraverse("ButtonWithLevelUpTab")
+    .FindChildTraverse("ButtonWell")
+    .FindChildTraverse("ButtonSize");
 
   if (lumberCost == 0) lumberCost = "";
   if (cheeseCost == 0) cheeseCost = "";
@@ -62,15 +76,15 @@ function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost){
 
 function UpdateItemsUI() {
   var i;
-  for(i=0; i<6; i++){
+  for (i = 0; i < 6; i++) {
     var queryUnit = Players.GetLocalPlayerPortraitUnit();
-    var item = Entities.GetItemInSlot(queryUnit, i);    
+    var item = Entities.GetItemInSlot(queryUnit, i);
 
     var itemname = Abilities.GetAbilityName(item);
 
     var itemCostData = CustomNetTables.GetTableValue("ability_costs", itemname);
     if (!itemCostData) {
-      SetCustomItemCosts(i, '', '', '');
+      SetCustomItemCosts(i, "", "", "");
       continue;
     }
 
@@ -85,12 +99,17 @@ function UpdateItemsUI() {
   }
 }
 
-var AbilitiesContainer = newUI.FindChildTraverse("AbilitiesAndStatBranch").FindChildTraverse("abilities");
+var AbilitiesContainer = newUI
+  .FindChildTraverse("AbilitiesAndStatBranch")
+  .FindChildTraverse("abilities");
 
 function SetCustomAbilityCosts(abilityNumber, lumberCost, cheeseCost, goldCost) {
   var AbilityPanel = AbilitiesContainer.FindChildTraverse("Ability" + abilityNumber);
   if (!AbilityPanel) return;
-  var AbilityButton = AbilityPanel.FindChildTraverse("ButtonAndLevel").FindChildTraverse("ButtonWithLevelUpTab").FindChildTraverse("ButtonWell").FindChildTraverse("ButtonSize");
+  var AbilityButton = AbilityPanel.FindChildTraverse("ButtonAndLevel")
+    .FindChildTraverse("ButtonWithLevelUpTab")
+    .FindChildTraverse("ButtonWell")
+    .FindChildTraverse("ButtonSize");
 
   if (lumberCost == 0) lumberCost = "";
   if (cheeseCost == 0) cheeseCost = "";
@@ -144,13 +163,11 @@ function DelayedUpdateAbilityUI() {
 function UpdateAbilityUI() {
   var queryUnit = Players.GetLocalPlayerPortraitUnit();
 
-  for (var i=0; i < Entities.GetAbilityCount(queryUnit); ++i) {
+  for (var i = 0; i < Entities.GetAbilityCount(queryUnit); ++i) {
     var ability = Entities.GetAbility(queryUnit, i);
-    if (ability == -1)
-      continue;
+    if (ability == -1) continue;
 
-    if (!Abilities.IsDisplayedAbility(ability))
-      continue;
+    if (!Abilities.IsDisplayedAbility(ability)) continue;
 
     var abilityname = Abilities.GetAbilityName(ability);
 
@@ -177,8 +194,7 @@ var LocalPlayerID = Players.GetLocalPlayer();
 var LocalPlayerTeam = Players.GetTeam(LocalPlayerID);
 
 var DefaultPlayerID = 0;
-if (!IsSpectator)
-  DefaultPlayerID = LocalPlayerID;
+if (!IsSpectator) DefaultPlayerID = LocalPlayerID;
 
 function GetPlayerIDToShow() {
   var queryUnit = Players.GetLocalPlayerPortraitUnit();
@@ -186,10 +202,8 @@ function GetPlayerIDToShow() {
   var queryUnitPlayerOwnerID = Entities.GetPlayerOwnerID(queryUnit);
   if (queryUnitPlayerOwnerID >= 0 && queryUnitTeam === LocalPlayerTeam)
     return queryUnitPlayerOwnerID;
-  else if (IsSpectator && queryUnitPlayerOwnerID >= 0)
-    return queryUnitPlayerOwnerID;
-  else
-    return DefaultPlayerID;
+  else if (IsSpectator && queryUnitPlayerOwnerID >= 0) return queryUnitPlayerOwnerID;
+  else return DefaultPlayerID;
 }
 
 function UpdateResources() {
@@ -197,9 +211,9 @@ function UpdateResources() {
   var data = CustomNetTables.GetTableValue("resources", playerID);
 
   if (data) {
-    $('#GoldText').text = Math.floor(data.gold);
-    $('#CheeseText').text = Math.floor(data.cheese);
-    $('#LumberText').text = Math.floor(data.lumber);
+    $("#GoldText").text = Math.floor(data.gold);
+    $("#CheeseText").text = Math.floor(data.cheese);
+    $("#LumberText").text = Math.floor(data.lumber);
   }
 }
 
@@ -213,7 +227,7 @@ function OnResourcesChange(table_name, key, data) {
 }
 
 // function UpdateGold() {
-//   var playerID = GetPlayerIDToShow();  
+//   var playerID = GetPlayerIDToShow();
 //   var gold = Players.GetGold(playerID);
 //   $('#GoldText').text = gold;
 //   $.Schedule(0.1, UpdateGold);
@@ -228,7 +242,7 @@ function CalculateTreasureBoxMultiplier(numBoxes) {
   var sum = 0;
 
   var i;
-  for(i=0; i<numBoxes; i++){
+  for (i = 0; i < numBoxes; i++) {
     sum = sum + reducedRate;
     reducedRate = reducedRate - reducedRate * reduction;
   }
@@ -236,7 +250,7 @@ function CalculateTreasureBoxMultiplier(numBoxes) {
   return sum;
 }
 
-function GetPostTaxIncome(income){
+function GetPostTaxIncome(income) {
   var sum = 0;
   var multiplier = 0;
 
@@ -244,8 +258,8 @@ function GetPostTaxIncome(income){
     income = income - 25;
     var increase = 25;
     if (income < 0) increase = income + 25;
-    sum = sum + increase - (increase * multiplier);
-    multiplier = Math.min(0.8, multiplier + .1);
+    sum = sum + increase - increase * multiplier;
+    multiplier = Math.min(0.8, multiplier + 0.1);
   }
 
   return sum;
@@ -256,12 +270,12 @@ function GenerateGoldTooltip() {
   var incomeData = CustomNetTables.GetTableValue("player_income", playerID);
 
   var line1 = $.Localize("#gold_tip");
-  
+
   if (!incomeData) {
     return line1;
   }
 
-  var baseInterest = 5
+  var baseInterest = 5;
   var buildingInterest = incomeData.income - 5;
   var numBoxes = incomeData.numBoxes;
   var treasureChestMultiplier = CalculateTreasureBoxMultiplier(numBoxes);
@@ -269,29 +283,37 @@ function GenerateGoldTooltip() {
   var totalInterest = GetPostTaxIncome(income);
   var taxes = income - totalInterest;
 
-  var line2 = $.Localize("#base_interest") + ": <font color='#FFBF00'>" +
-    Math.floor(baseInterest) +"</font>";
-  var line3 = $.Localize("#interest_from_buildings") + ": <font color='#FFBF00'>" + 
-    Math.floor(buildingInterest) + "</font>";
-  var line4 = $.Localize("#treasure_chest_multiplier") + ": <font color='#00C400'>" +
-    Math.floor(treasureChestMultiplier * 100) + "%</font>";
-  var line5 = $.Localize("#taxes") + ": <font color='#C40000'>" +
-    Math.floor(taxes) + "</font>";
-  var line6 = $.Localize("#total_interest") + ": <font color='#FFBF00'>" +
-    Math.floor(totalInterest) + "</font>";
+  var line2 =
+    $.Localize("#base_interest") +
+    ": <font color='#FFBF00'>" +
+    Math.floor(baseInterest) +
+    "</font>";
+  var line3 =
+    $.Localize("#interest_from_buildings") +
+    ": <font color='#FFBF00'>" +
+    Math.floor(buildingInterest) +
+    "</font>";
+  var line4 =
+    $.Localize("#treasure_chest_multiplier") +
+    ": <font color='#00C400'>" +
+    Math.floor(treasureChestMultiplier * 100) +
+    "%</font>";
+  var line5 = $.Localize("#taxes") + ": <font color='#C40000'>" + Math.floor(taxes) + "</font>";
+  var line6 =
+    $.Localize("#total_interest") +
+    ": <font color='#FFBF00'>" +
+    Math.floor(totalInterest) +
+    "</font>";
 
-  return line1 + "<br><br>" + line2  + "<br>" + line3  + "<br>" + line4 +
-    "<br>" + line5  + "<br>" + line6;
+  return (
+    line1 + "<br><br>" + line2 + "<br>" + line3 + "<br>" + line4 + "<br>" + line5 + "<br>" + line6
+  );
 }
 
 // Set up the text for the gold panel
-$('#GoldLabelPanel').SetPanelEvent(
-  "onmouseover", 
-  function(){
-    $.DispatchEvent("DOTAShowTextTooltip", $('#GoldLabelPanel'), 
-      GenerateGoldTooltip());
-  }
-);
+$("#GoldLabelPanel").SetPanelEvent("onmouseover", function () {
+  $.DispatchEvent("DOTAShowTextTooltip", $("#GoldLabelPanel"), GenerateGoldTooltip());
+});
 
 (function () {
   UpdateResources();

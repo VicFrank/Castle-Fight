@@ -54,8 +54,8 @@
 
 .ShopHidden
 {
-  
   transform: translatex(300px);
+  ui-scale: 101%;
 }
 
 #ShopHeader
@@ -76,7 +76,7 @@
   background-size: cover;
 
   transition-property: transform;
-    transition-duration: 0.25s;
+  transition-duration: 0.25s;
 }
 
 .ItemRow
