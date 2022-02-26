@@ -186,8 +186,6 @@ function GameMode:InitGameMode()
   LinkLuaModifier("modifier_end_round", "abilities/modifiers/modifier_end_round", LUA_MODIFIER_MOTION_NONE)
   LinkLuaModifier("modifier_attack_range", "abilities/modifiers/modifier_attack_range", LUA_MODIFIER_MOTION_NONE)
 
-  self.vUserIds = {}
-
   -- Setup Global Values
   GameRules.leftCastlePosition = Entities:FindByName(nil, "left_ancient_position"):GetAbsOrigin()
   GameRules.rightCastlePosition = Entities:FindByName(nil, "right_ancient_position"):GetAbsOrigin()

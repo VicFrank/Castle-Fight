@@ -167,7 +167,7 @@ function BotAI:GetPlaceToBuild(hero)
       return searchLocation
     end
 
-    DebugDrawCircle(searchLocation, Vector(255,0,0), 50, 100, true, 3)
+    -- DebugDrawCircle(searchLocation, Vector(255,0,0), 50, 100, true, 3)
 
     searchLocation = searchLocation + Vector(0, searchDirectionY * searchInterval, 0)
 
@@ -313,7 +313,7 @@ function BotAI:BuildNextBuilding(hero)
 end
 
 function BotAI:PlaceBuilding(hero, ability, position)
-  DebugDrawCircle(position, Vector(0,255,0), 50, 100, true, 3)
+  -- DebugDrawCircle(position, Vector(0,255,0), 50, 100, true, 3)
 
   -- print("Place Building ", position)
   BuildingHelper:OrderBuildingConstruction(hero, ability, position)

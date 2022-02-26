@@ -47,6 +47,7 @@
 
 .HeroIconPanel {
   align: right bottom;
+  z-index:  3;
 }
 
 #DisconnectedIcon {
@@ -63,6 +64,8 @@
 
     transition-property: opacity;
     transition-duration: 0.3s;
+
+    z-index: 999;
 }
 
 .Disconnected #DisconnectedIcon {

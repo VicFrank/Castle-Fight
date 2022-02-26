@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -6,16 +6,61 @@
 	m_flConstantRadius = 64.0
 	m_nConstantSequenceNumber = 6
 	m_bShouldSort = false
-	m_Renderers = 
+	m_nBehaviorVersion = 12
+	m_nFirstMultipleOverride_BackwardCompat = 5
+	m_Emitters = 
 	[
 		{
-			_class = "C_OP_RenderTrails"
-			m_vEndTrailTintFactor = [ 0.5, 0.0, 2.0, 1.0 ]
-			m_bAdditive = true
-			m_hTexture = resource:"materials/particle/sparks/meteorite_blue.vtex"
-			m_flFinalTextureScaleV = -1.0
-			m_bTintByFOW = true
-			m_bIgnoreDT = true
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.35
+			}
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 24.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.25
+			m_fLifetimeMax = 0.25
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_nControlPointNumber = 3
+			m_bLocalCoords = true
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+			m_flDegreesMin = 90.0
+			m_flDegreesMax = 90.0
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
+			m_flMinLength = 4.0
+			m_flMaxLength = 4.0
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 52.0
+			m_flRadiusMax = 64.0
+		},
+		{
+			_class = "C_INIT_OffsetVectorToVector"
+			m_nFieldOutput = 2
+			m_vecOutputMin = [ 0.0, 0.0, 200.0 ]
+			m_vecOutputMax = [ 0.0, 0.0, 320.0 ]
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, -40.0 ]
+			m_OffsetMax = [ 0.0, 0.0, -40.0 ]
 		},
 	]
 	m_Operators = 
@@ -51,51 +96,32 @@
 			m_flEndScale = 0.0
 		},
 	]
-	m_Initializers = 
+	m_Renderers = 
 	[
 		{
-			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 0.25
-			m_fLifetimeMax = 0.25
-		},
-		{
-			_class = "C_INIT_CreateWithinSphere"
-			m_nControlPointNumber = 3
-			m_bLocalCoords = true
-		},
-		{
-			_class = "C_INIT_RandomRotation"
-			m_flDegreesMin = 90.0
-			m_flDegreesMax = 90.0
-		},
-		{
-			_class = "C_INIT_RandomTrailLength"
-			m_flMinLength = 4.0
-			m_flMaxLength = 4.0
-		},
-		{
-			_class = "C_INIT_OffsetVectorToVector"
-			m_nFieldOutput = 2
-			m_vecOutputMin = [ 0.0, 0.0, 200.0 ]
-			m_vecOutputMax = [ 0.0, 0.0, 320.0 ]
-		},
-		{
-			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ 0.0, 0.0, -40.0 ]
-			m_OffsetMax = [ 0.0, 0.0, -40.0 ]
-		},
-		{
-			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 52.0
-			m_flRadiusMax = 64.0
-		},
-	]
-	m_Emitters = 
-	[
-		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 0.35
-			m_flEmitRate = 24.0
+			_class = "C_OP_RenderTrails"
+			m_bTintByFOW = true
+			m_bIgnoreDT = true
+			m_vecTailColorScale = 
+			{
+				m_nType = "PVEC_TYPE_LITERAL"
+				m_vLiteralValue = [ 0.5, 0.0, 2.0 ]
+			}
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/sparks/meteorite_blue.vtex"
+					m_TextureControls = 
+					{
+						m_flFinalTextureScaleV = 
+						{
+							m_nType = "PF_TYPE_LITERAL"
+							m_flLiteralValue = -1.0
+						}
+					}
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
 		},
 	]
 }

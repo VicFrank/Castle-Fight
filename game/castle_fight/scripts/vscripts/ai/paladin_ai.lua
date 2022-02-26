@@ -99,6 +99,7 @@ end
 function thisEntity:CastResurrection(corpse)
   local ability = self:FindAbilityByName("crusader_resurrection")
   local position = corpse:GetAbsOrigin()
+  local direction = corpse:GetForwardVector()
 
   self:CastAbilityOnPosition(position, ability, -1)
 
@@ -110,7 +111,12 @@ function thisEntity:CastResurrection(corpse)
 
     local resurrected = CreateLaneUnit(corpse.unit_name, position, team, playerID)
 
-    resurrected:SetForwardVector(corpse:GetForwardVector())
+    if not IsValidAlive(resurrected) then
+      print("Failed to revive " .. corpse.unit_name)
+      return
+    end
+
+    resurrected:SetForwardVector(direction)
     FindClearSpaceForUnit(resurrected, position, true)
 
     resurrected:EmitSound("Hero_Omniknight.GuardianAngel.Cast")

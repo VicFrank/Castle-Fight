@@ -34,7 +34,10 @@ function modifier_emerald_dragon_corrosive_breath:OnAttackLanded(keys)
 
   if attacker == self.caster then
     local modifierName = "modifier_emerald_dragon_corrosive_breath_debuff"
-    local modifier = target:AddNewModifier(self.caster, self.ability, modifierName, {duration = self.duration})
+    target:AddNewModifier(self.caster, self.ability, modifierName, {duration = self.duration})
+    local modifier = target:FindModifierByName(modifierName)
+
+    if not modifier then return end
 
     local max_stacks = self.ability:GetSpecialValueFor("max_stacks")
 

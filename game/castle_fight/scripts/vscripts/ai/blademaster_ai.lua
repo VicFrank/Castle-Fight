@@ -108,7 +108,6 @@ function HasModifierToSteal(caster, unit)
         end
       -- if it's an enemy, get a buff
       elseif not buff:IsDebuff() and buff:IsPurgable() then
-        print(buff, buff:IsDebuff(), buff:IsPurgable())
         modifier = buff
         return true
       end

@@ -1,84 +1,58 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_nMaxParticles = 20
-	m_Operators =
+	m_nBehaviorVersion = 12
+	m_nFirstMultipleOverride_BackwardCompat = 8
+	m_controlPointConfigurations = 
 	[
 		{
-			_class = "C_OP_BasicMovement"
-			m_Gravity =
+			m_name = "preview"
+			m_drivers = 
 			[
-				0.000000,
-				0.000000,
-				400.000000,
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
 			]
-			m_fDrag = 0.100000
-		},
-		{
-			_class = "C_OP_Decay"
-		},
-		{
-			_class = "C_OP_InterpolateRadius"
-			m_flStartScale = 0.500000
-			m_flBias = 0.800000
-		},
-		{
-			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 0.850000
-			m_bDisableOperator = true
-		},
-		{
-			_class = "C_OP_FadeAndKill"
-		},
-		{
-			_class = "C_OP_Spin"
-			m_nSpinRateDegrees = 4
 		},
 	]
-	m_Renderers =
+	m_Emitters = 
 	[
 		{
-			_class = "C_OP_RenderSprites"
-			m_flAnimationRate = 0.500000
-			m_bFitCycleToLifetime = true
-			m_nSequenceCombineMode = "2"
-			m_nRefractBlurType = "2"
-			m_hTexture = resource:"materials/particle/smoke1/smoke1.vtex"
-			VisibilityInputs =
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
 			{
-				m_flInputMax = 0.000000
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 3.0
+			}
+		},
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 32.0
 			}
 		},
 	]
-	m_Initializers =
+	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin =
-			[
-				181,
-				171,
-				146,
-				255,
-			]
-			m_ColorMax =
-			[
-				196,
-				206,
-				151,
-				255,
-			]
+			m_ColorMin = [ 181, 171, 146, 255 ]
+			m_ColorMax = [ 196, 206, 151, 255 ]
 			m_nTintBlendMode = "2"
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 0.500000
-			m_fLifetimeMax = 2.000000
+			m_fLifetimeMin = 0.5
+			m_fLifetimeMax = 2.0
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 10.000000
-			m_flRadiusMax = 15.000000
+			m_flRadiusMin = 10.0
+			m_flRadiusMax = 15.0
 		},
 		{
 			_class = "C_INIT_RandomRotation"
@@ -89,100 +63,122 @@
 		},
 		{
 			_class = "C_INIT_RingWave"
-			m_flInitialRadius = 5.000000
-			m_flThickness = 10.000000
-			m_flInitialSpeedMin = 124.000000
-			m_flInitialSpeedMax = 232.000000
-		},
-		{
-			_class = "C_INIT_PositionOffset"
-			m_OffsetMin =
-			[
-				0.000000,
-				0.000000,
-				500.000000,
-			]
-			m_OffsetMax =
-			[
-				0.000000,
-				0.000000,
-				500.000000,
-			]
-			m_nControlPointNumber = 1
-		},
-		{
-			_class = "C_INIT_PositionPlaceOnGround"
-			m_flMaxTraceLength = 2048.000000
-		},
-		{
-			_class = "C_INIT_InitialVelocityNoise"
-			m_vecOutputMin =
-			[
-				-16.000000,
-				-16.000000,
-				150.000000,
-			]
-			m_vecOutputMax =
-			[
-				16.000000,
-				16.000000,
-				200.000000,
-			]
-			m_flNoiseScale = 2.000000
-			m_flNoiseScaleLoc = 2.000000
-			m_bLocalSpace = true
-		},
-		{
-			_class = "C_INIT_RandomYawFlip"
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 5.0
+			}
+			m_flThickness = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 10.0
+			}
+			m_flInitialSpeedMin = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 124.0
+			}
+			m_flInitialSpeedMax = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 232.0
+			}
 		},
 		{
 			_class = "C_INIT_CreationNoise"
 			m_nFieldOutput = 5
-			m_flOutputMin = -15.000000
-			m_flOutputMax = 15.000000
-			m_flNoiseScale = 3.000000
-			m_flNoiseScaleLoc = 1.000000
-		},
-		{
-			_class = "C_INIT_RemapScalar"
-			m_flInputMax = 0.250000
-			m_flOutputMin = 2.000000
-			m_flOutputMax = 5.000000
-			m_bScaleInitialRange = true
+			m_flOutputMin = -15.0
+			m_flOutputMax = 15.0
+			m_flNoiseScale = 3.0
+			m_flNoiseScaleLoc = 1.0
 		},
 		{
 			_class = "C_INIT_RandomAlpha"
 			m_nAlphaMin = 130
 		},
 		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 500.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 500.0 ]
+			m_nControlPointNumber = 1
+		},
+		{
+			_class = "C_INIT_PositionPlaceOnGround"
+			m_flMaxTraceLength = 2048.0
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_vecOutputMin = [ -16.0, -16.0, 150.0 ]
+			m_vecOutputMax = [ 16.0, 16.0, 200.0 ]
+			m_flNoiseScale = 2.0
+			m_flNoiseScaleLoc = 2.0
+			m_bLocalSpace = true
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
+		},
+		{
+			_class = "C_INIT_RemapScalar"
+			m_flInputMax = 0.25
+			m_flOutputMin = 2.0
+			m_flOutputMax = 5.0
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+		},
+		{
 			_class = "C_INIT_RemapScalarToVector"
 			m_nFieldOutput = 6
-			m_flInputMax = 0.500000
-			m_vecOutputMin =
-			[
-				1.000000,
-				1.000000,
-				1.000000,
-			]
-			m_vecOutputMax =
-			[
-				0.100000,
-				0.100000,
-				0.100000,
-			]
-			m_bScaleInitialRange = true
+			m_flInputMax = 0.5
+			m_vecOutputMin = [ 1.0, 1.0, 1.0 ]
+			m_vecOutputMax = [ 0.1, 0.1, 0.1 ]
 			m_bDisableOperator = true
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
 		},
 	]
-	m_Emitters =
+	m_Operators = 
 	[
 		{
-			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 3
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, 400.0 ]
+			m_fDrag = 0.1
 		},
 		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 32.000000
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 0.5
+			m_flBias = 0.8
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.85
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_FadeAndKill"
+		},
+		{
+			_class = "C_OP_Spin"
+			m_nSpinRateDegrees = 4
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_flAnimationRate = 0.5
+			m_nRefractBlurType = "2"
+			VisibilityInputs = 
+			{
+				m_flInputMax = 0.0
+			}
+			m_nAnimationType = "ANIMATION_TYPE_FIT_LIFETIME"
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/smoke1/smoke1.vtex"
+				},
+			]
 		},
 	]
 }

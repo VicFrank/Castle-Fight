@@ -1,48 +1,15 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf21:version{7a150ecc-d865-438f-ad53-5963fe1a2720} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 256
 	m_ConstantColor = [ 255, 255, 255, 40 ]
-	m_Renderers = 
+	m_nBehaviorVersion = 12
+	m_nFirstMultipleOverride_BackwardCompat = 8
+	m_Emitters = 
 	[
 		{
-			_class = "C_OP_RenderSprites"
-			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
-			m_bAdditive = true
-			m_bDisableZBuffering = true
-			m_hTexture = resource:"materials/particle/particle_flares/aircraft_white_v2.vtex"
-			m_flAnimationRate2 = 0.1
-			m_flAnimationRate = 1.0
-			m_nHSVShiftControlPoint = 62
-		},
-	]
-	m_Operators = 
-	[
-		{
-			_class = "C_OP_BasicMovement"
-			m_fDrag = 0.05
-			m_Gravity = [ 0.0, 0.0, 40.0 ]
-		},
-		{
-			_class = "C_OP_InterpolateRadius"
-			m_flStartScale = 2.5
-			m_flBias = 0.68
-			m_flEndScale = 0.2
-		},
-		{
-			_class = "C_OP_Decay"
-		},
-		{
-			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 1.0
-		},
-		{
-			_class = "C_OP_RampScalarLinearSimple"
-			m_nOpEndCapState = 1
-			m_nField = 16
-			m_Rate = -1.0
-			m_flEndTime = 99999.0
+			_class = "C_OP_ContinuousEmitter"
 		},
 	]
 	m_Initializers = 
@@ -92,28 +59,48 @@
 			m_flNoiseScaleLoc = 3.0
 		},
 	]
-	m_Emitters = 
+	m_Operators = 
 	[
 		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_flStartTime = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_flEmitRate = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 100.0
-			}
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.05
+			m_Gravity = [ 0.0, 0.0, 40.0 ]
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 2.5
+			m_flBias = 0.68
+			m_flEndScale = 0.2
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 1.0
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+			m_nField = 16
+			m_Rate = -1.0
+			m_flEndTime = 99999.0
 		},
 	]
-	m_PreEmissionOperators = [  ]
-	m_nBehaviorVersion = 5
-	m_nFirstMultipleOverride_BackwardCompat = 8
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_bDisableZBuffering = true
+			m_flAnimationRate = 1.0
+			m_nHSVShiftControlPoint = 62
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/particle_flares/aircraft_white_v2.vtex"
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+		},
+	]
 }

@@ -1,39 +1,40 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 1
 	m_ConstantNormal = [ 0.0, 0.0, -1.0 ]
 	m_bShouldSort = false
-	m_Renderers = 
+	m_nBehaviorVersion = 12
+	m_Emitters = 
 	[
 		{
-			_class = "C_OP_RenderModels"
-			m_nModelCP = 9
-			m_EconSlotName = "weapon"
-			m_bIgnoreNormal = true
-			m_nAnimationScaleField = 19
-			m_nAnimationField = 19
-			m_nBodyGroupField = 19
-			m_nSubModelField = 19
-			m_nManualFrameField = 19
-			m_bSuppressTint = true
-			m_ModelList = 
-			[
-				{
-					m_model = resource:"models/items/disruptor/disruptor_rider_storm_hammer/disruptor_rider_storm_hammer.vmdl"
-				},
-			]
-			m_bAnimated = true
-			m_nLOD = 1
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomRadius"
 		},
 		{
-			_class = "C_OP_RenderDeferredLight"
-			m_flRadiusScale = 64.0
-			m_flAlphaScale = 16.0
-			m_flStartFalloff = 0.1
-			m_ColorScale = [ 0, 107, 207 ]
-			m_hTexture = resource:""
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.2
+			m_fLifetimeMax = 0.2
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+			m_flDegreesMin = 90.0
+			m_flDegreesMax = 90.0
+			m_bDisableOperator = true
 		},
 	]
 	m_Operators = 
@@ -43,7 +44,7 @@
 		},
 		{
 			_class = "C_OP_Decay"
-			m_nOpEndCapState = 1
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
 		},
 		{
 			_class = "C_OP_CPOffsetToPercentageBetweenCPs"
@@ -83,40 +84,52 @@
 			m_nCP = 3
 		},
 	]
-	m_Initializers = 
-	[
-		{
-			_class = "C_INIT_RandomRadius"
-		},
-		{
-			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 0.2
-			m_fLifetimeMax = 0.2
-		},
-		{
-			_class = "C_INIT_CreateWithinSphere"
-		},
-		{
-			_class = "C_INIT_RandomRotation"
-			m_flDegreesMin = 90.0
-			m_flDegreesMax = 90.0
-			m_bDisableOperator = true
-		},
-	]
-	m_Emitters = 
-	[
-		{
-			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 1
-		},
-	]
 	m_ForceGenerators = 
 	[
 		{
 			_class = "C_OP_AttractToControlPoint"
-			m_fForceAmount = 100000.0
+			m_fForceAmount = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 100000.0
+			}
 			m_fFalloffPower = 0.0
 			m_nControlPointNumber = 4
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderModels"
+			m_nModelCP = 9
+			m_EconSlotName = "weapon"
+			m_bIgnoreNormal = true
+			m_nAnimationScaleField = 19
+			m_nAnimationField = 19
+			m_nBodyGroupField = 19
+			m_nSubModelField = 19
+			m_nManualFrameField = 19
+			m_bSuppressTint = true
+			m_ModelList = 
+			[
+				{
+					m_model = resource:"models/items/disruptor/disruptor_rider_storm_hammer/disruptor_rider_storm_hammer.vmdl"
+				},
+			]
+			m_bAnimated = true
+			m_nLOD = 1
+			m_bForceLoopingAnimation = true
+		},
+		{
+			_class = "C_OP_RenderDeferredLight"
+			m_flRadiusScale = 64.0
+			m_flAlphaScale = 16.0
+			m_flStartFalloff = 0.1
+			m_vecColorScale = 
+			{
+				m_nType = "PVEC_TYPE_LITERAL_COLOR"
+				m_LiteralColor = [ 0, 107, 207 ]
+			}
 		},
 	]
 	m_Children = 

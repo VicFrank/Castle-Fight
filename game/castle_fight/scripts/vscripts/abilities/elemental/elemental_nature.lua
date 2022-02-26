@@ -85,11 +85,9 @@ function modifier_elemental_nature_boulder:OnAttack(keys)
     local normalParticle = "particles/econ/world/towers/ti10_dire_tower/ti10_dire_tower_attack.vpcf"
 
     if RollPercentage(self.chance) then
-      print("Bash")
       attacker:SetRangedProjectileName(rockParticle)
       self.nextHitBash = true
     else
-      print("Not bash")
       attacker:SetRangedProjectileName(normalParticle)
     end
   end

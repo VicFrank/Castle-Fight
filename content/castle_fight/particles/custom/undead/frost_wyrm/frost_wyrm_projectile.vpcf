@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf25:version{7bca2d8d-3a14-4a76-bd41-f483fdf78d50} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -9,21 +9,65 @@
 	m_ConstantColor = [ 110, 203, 246, 255 ]
 	m_nConstantSequenceNumber = 7
 	m_bShouldSort = false
-	m_Renderers = 
+	m_nBehaviorVersion = 12
+	m_controlPointConfigurations = 
 	[
 		{
-			_class = "C_OP_RenderModels"
-			m_nSkin = 4
-			m_ModelList = 
+			m_name = "preview"
+			m_drivers = 
 			[
 				{
-					m_model = resource:"models/particle/sphere.vmdl"
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 4
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
 				},
 			]
-			m_bAnimated = true
-			m_bForceDrawInterlevedWithSiblings = true
-			m_nLOD = 1
-			m_bForceLoopingAnimation = true
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.1
+			m_fLifetimeMin = 0.1
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomYaw"
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
 		},
 	]
 	m_Operators = 
@@ -62,56 +106,25 @@
 		},
 		{
 			_class = "C_OP_RampScalarLinearSimple"
-			m_nOpEndCapState = 1
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
 			m_Rate = -400.0
 			m_flEndTime = 999999.0
 		},
 		{
 			_class = "C_OP_RadiusDecay"
-			m_nOpEndCapState = 1
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
 		},
 		{
 			_class = "C_OP_RampScalarLinear"
-			m_nField = "20"
+			m_nField = 20
 			m_RateMin = -4.0
 			m_RateMax = 4.0
 		},
 		{
 			_class = "C_OP_RampScalarLinear"
-			m_nField = "12"
+			m_nField = 12
 			m_RateMin = -4.0
 			m_RateMax = 4.0
-		},
-	]
-	m_Initializers = 
-	[
-		{
-			_class = "C_INIT_CreateWithinSphere"
-		},
-		{
-			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMax = 0.1
-			m_fLifetimeMin = 0.1
-		},
-		{
-			_class = "C_INIT_RandomRotation"
-		},
-		{
-			_class = "C_INIT_RandomYaw"
-		},
-		{
-			_class = "C_INIT_RandomTrailLength"
-		},
-	]
-	m_Emitters = 
-	[
-		{
-			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 1.0
-			}
 		},
 	]
 	m_ForceGenerators = 
@@ -125,6 +138,23 @@
 			}
 			m_fFalloffPower = 0.0
 			m_nControlPointNumber = 4
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderModels"
+			m_nSkin = 4
+			m_ModelList = 
+			[
+				{
+					m_model = resource:"models/particle/sphere.vmdl"
+				},
+			]
+			m_bAnimated = true
+			m_bForceDrawInterlevedWithSiblings = true
+			m_nLOD = 1
+			m_bForceLoopingAnimation = true
 		},
 	]
 	m_Children = 
@@ -141,43 +171,6 @@
 		{
 			m_bEndCap = true
 			m_ChildRef = resource:"particles/custom/undead/frost_wyrm/frost_wyrm_projectile_explosion.vpcf"
-		},
-	]
-	m_nBehaviorVersion = 5
-	m_controlPointConfigurations = 
-	[
-		{
-			m_name = "preview"
-			m_drivers = 
-			[
-				{
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ null, null, null ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 1
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ null, null, null ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 2
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 1.0, 0.0, 0.0 ]
-					m_angOffset = [ null, null, null ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 4
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ null, null, null ]
-					m_entityName = "self"
-				},
-			]
 		},
 	]
 }

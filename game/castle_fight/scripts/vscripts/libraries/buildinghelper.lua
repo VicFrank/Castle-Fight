@@ -595,7 +595,7 @@ function BuildingHelper:OrderFilter(order)
             local target_name = target_handle:GetUnitName()
 
             if self:OnPreRepair(target_handle, unit) then
-                print("Order: Repair "..target_handle:GetUnitName())
+                -- print("Order: Repair "..target_handle:GetUnitName())
 
                 -- Get the currently selected units and send new orders
                 local entityList = PlayerResource:GetSelectedEntities(unit:GetPlayerOwnerID())
@@ -610,7 +610,7 @@ function BuildingHelper:OrderFilter(order)
                         end
 
                         ent.skip = true
-                        print("Repair Multi Order "..target_handle:GetUnitName())
+                        -- print("Repair Multi Order "..target_handle:GetUnitName())
                         ExecuteOrderFromTable({UnitIndex = entityIndex, OrderType = DOTA_UNIT_ORDER_CAST_TARGET, TargetIndex = targetIndex, AbilityIndex = repair_ability:GetEntityIndex(), Queue = queue})
                     end
                 end
@@ -966,7 +966,7 @@ function BuildingHelper:PlaceBuilding(player, name, location, construction_size,
         local playerID = type(player)=="number" and player or player:GetPlayerID() --accept pass player ID or player Handle
         local player = PlayerResource:GetPlayer(playerID)
         local playersHero = PlayerResource:GetSelectedHeroEntity(playerID)
-        print("PlaceBuilding for playerID ".. playerID)
+        -- print("PlaceBuilding for playerID ".. playerID)
 
         -- Spawn the building
         building = CreateUnitByName(name, model_location, false, playersHero, player, playersHero:GetTeamNumber())
@@ -975,7 +975,7 @@ function BuildingHelper:PlaceBuilding(player, name, location, construction_size,
 
         BuildingHelper:AddBuildingToPlayerTable(playerID, building)
     else
-        print("PlaceBuilding for team ".. team)
+        -- print("PlaceBuilding for team ".. team)
         -- Spawn the building
         building = CreateUnitByName(name, model_location, false, nil, nil, team)
     end
@@ -1004,7 +1004,7 @@ end
 -- Replaces a building by a new one by name, updating the necessary references and returning the new created unit
 function BuildingHelper:UpgradeBuilding(building, newName)
     local oldBuildingName = building:GetUnitName()
-    print("Upgrading Building: "..oldBuildingName.." -> "..newName)
+    -- print("Upgrading Building: "..oldBuildingName.." -> "..newName)
     local playerID = building:GetPlayerOwnerID()
     local position = building:GetAbsOrigin()
     -- local angle = GetUnitKV(newName, "ModelRotation") or -building:GetAngles().y
@@ -1057,7 +1057,7 @@ end
 -- Removes a building, removing it from the gridnav, with an optional parameter to skip particle effects
 function BuildingHelper:RemoveBuilding(building, bSkipEffects)
     local buildingName = building:GetUnitName()
-    print("Removing Building: "..buildingName)
+    -- print("Removing Building: "..buildingName)
 
     -- Don't show the destruction effects when specified or killed to due UpgradeBuilding
     if not bSkipEffects and building.upgraded ~= true then
@@ -1133,7 +1133,7 @@ function BuildingHelper:StartBuilding(builder)
         return
     end
 
-    print("Initializing Building Entity: "..unitName.." at "..VectorString(location))
+    -- print("Initializing Building Entity: "..unitName.." at "..VectorString(location))
 
     -- Mark this work in progress, skip refund if cancelled as the building is already placed
     work.inProgress = true
@@ -1288,7 +1288,7 @@ function BuildingHelper:StartBuilding(builder)
                     if adjustment > 0 then
                         building:SetHealth(building:GetHealth() + fMaxHealth - fAddedHealth - nInitialHealth) -- round up the last little bit
                     end
-                    print(string.format("Finished %s in %.2f seconds. HP was off by %.2f",building:GetUnitName(),GameRules:GetGameTime()-startTime,adjustment))
+                    -- print(string.format("Finished %s in %.2f seconds. HP was off by %.2f",building:GetUnitName(),GameRules:GetGameTime()-startTime,adjustment))
 
                     -- completion: timesUp is true
                     if callbacks.onConstructionCompleted then
@@ -1334,7 +1334,7 @@ function BuildingHelper:StartBuilding(builder)
         -- The building will have to be assisted through a repair ability
         local repair_ability = BuildingHelper:GetRepairAbility(builder)
         if repair_ability then
-            print("Building "..building:GetUnitName().." will be constructed using RepairAbility")
+            -- print("Building "..building:GetUnitName().." will be constructed using RepairAbility")
             building.repair_distance = (builder:GetAbsOrigin() - building:GetAbsOrigin()):Length2D() -- To instantly start repairing
             building.callbacks = callbacks
             BuildingHelper:StartRepair(builder, building)
@@ -1360,7 +1360,7 @@ function BuildingHelper:StartBuilding(builder)
                     end
                 else
 
-                    print("Scale was off by: "..(fMaxScale - fCurrentScale))
+                    -- print("Scale was off by: "..(fMaxScale - fCurrentScale))
                     building:SetModelScale(fMaxScale)
                     return
                 end
@@ -1421,7 +1421,7 @@ function BuildingHelper:StartRepair(builder, target)
     -- Check target and cancel if invalid
     local repair_ability = BuildingHelper:GetRepairAbility(builder)
     if underConstruction and repair_ability and not repair_ability:GetKeyValue("CanAssistConstruction") then
-        print("The Repair Ability "..repair_ability:GetAbilityName().." can't be used to assist construction! Cancelling")
+        -- print("The Repair Ability "..repair_ability:GetAbilityName().." can't be used to assist construction! Cancelling")
 
         -- Advance Queue
         BuildingHelper:AdvanceQueue(builder)
@@ -1651,7 +1651,7 @@ function BuildingHelper:CancelRepair(building)
 
     if IsValidEntity(building) then
         building:RemoveModifierByName("modifier_repairing")
-        print("Repair of "..building:GetUnitName().." fully cancelled")
+        -- print("Repair of "..building:GetUnitName().." fully cancelled")
     else
         print("Building removed during the repair process")
     end
@@ -1756,7 +1756,7 @@ function BuildingHelper:SetGridType(size, location, grid_type, option)
     local lowerBoundY = math.min(boundY1, boundY2)
     local upperBoundY = math.max(boundY1, boundY2)
 
-    print('Pos x: ' .. originX .. ' y: ' .. originY)
+    -- print('Pos x: ' .. originX .. ' y: ' .. originY)
 
     -- Adjust even size
     if (size % 2) == 0 then
@@ -2052,7 +2052,7 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
         end
     end
 
-    print("AddToQueue "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> location "..VectorString(location))
+    -- print("AddToQueue "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> location "..VectorString(location))
 
     -- Make the new work entry
     local work = {["location"] = location, ["name"] = buildingName, ["buildingTable"] = buildingTable, ["callbacks"] = callbacks}
@@ -2067,7 +2067,7 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
         table.insert(builder.buildingQueue, work)
 
         BuildingHelper:AdvanceQueue(builder)
-        print("Starting self placement of "..buildingName)
+        -- print("Starting self placement of "..buildingName)
 
     else
         -- Adjust the model position z
@@ -2159,11 +2159,11 @@ function BuildingHelper:AddToQueue(builder, location, bQueued)
         -- Extra check for builder-inside behaviour, those abilities are always queued
         if builder.work == nil and not builder:HasModifier("modifier_builder_hidden") and not (builder.state == "repairing" or builder.state == "moving_to_repair") then
             builder.work = builder.buildingQueue[1]
-            print("Builder doesn't have work to do, start right away")
+            -- print("Builder doesn't have work to do, start right away")
             BuildingHelper:AdvanceQueue(builder)
         else
-            print("Work was queued, builder already has work to do")
-            printQueue(builder)
+            -- print("Work was queued, builder already has work to do")
+            -- printQueue(builder)
         end
     end
 end
@@ -2183,7 +2183,7 @@ function BuildingHelper:AddRepairToQueue(builder, building, bQueued)
     local buildingTable = playerTable.activeBuildingTable
     local callbacks = playerTable.activeCallbacks
 
-    print("AddRepairToQueue "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> building "..building:GetUnitName())
+    -- print("AddRepairToQueue "..builder:GetUnitName().." "..builder:GetEntityIndex().." -> building "..building:GetUnitName())
 
     -- Make the new work entry
     local work = {["building"] = building, ["name"] = buildingName, ["buildingTable"] = buildingTable, ["callbacks"] = callbacks, isRepair = true}
@@ -2200,11 +2200,11 @@ function BuildingHelper:AddRepairToQueue(builder, building, bQueued)
     -- Extra check for builder-inside behaviour, those abilities are always queued
     if builder.work == nil and not builder:HasModifier("modifier_builder_hidden") and not (builder.state == "repairing" or builder.state == "moving_to_repair") then
         builder.work = builder.buildingQueue[1]
-        print("Builder doesn't have work to do, start moving to repair right away")
+        -- print("Builder doesn't have work to do, start moving to repair right away")
         BuildingHelper:AdvanceQueue(builder)
     else
-        print("Repair Work was queued, builder already has work to do")
-        printQueue(builder)
+        -- print("Repair Work was queued, builder already has work to do")
+        -- printQueue(builder)
     end
 end
 
@@ -2213,7 +2213,7 @@ function BuildingHelper:AdvanceQueue(builder)
     if (builder.move_to_build_timer) then Timers:RemoveTimer(builder.move_to_build_timer) end
 
     if builder.buildingQueue and #builder.buildingQueue > 0 then
-        printQueue(builder)
+        -- printQueue(builder)
 
         local work = builder.buildingQueue[1]
         table.remove(builder.buildingQueue, 1) --Pop
@@ -2221,7 +2221,7 @@ function BuildingHelper:AdvanceQueue(builder)
         if work.building then
             -- Repair Queued
             if not IsValidEntity(work.building) or not work.building:IsAlive() then
-                print("Queued Repair "..work.name.." but it was removed, continue with the queue")
+                -- print("Queued Repair "..work.name.." but it was removed, continue with the queue")
                 self:AdvanceQueue(builder)
             else
                 local building = work.building
@@ -2232,7 +2232,7 @@ function BuildingHelper:AdvanceQueue(builder)
                 builder.repair_target = building
                 builder.state = "moving_to_repair"
 
-                print("AdvanceQueue: Repair "..work.name.." "..work.building:GetEntityIndex())
+                -- print("AdvanceQueue: Repair "..work.name.." "..work.building:GetEntityIndex())
 
                 -- Move towards the building until close range
                 ExecuteOrderFromTable({UnitIndex = builder:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Queue = false})
@@ -2244,7 +2244,7 @@ function BuildingHelper:AdvanceQueue(builder)
                     if distance > castRange then
                         return 0.03
                     else
-                        print("Reached building, start the Repair process!")
+                        -- print("Reached building, start the Repair process!")
                         --builder:Stop()
 
                         builder.repairRange = castRange
@@ -2290,7 +2290,7 @@ function BuildingHelper:AdvanceQueue(builder)
         end
     else
         -- Set the builder work to nil to accept next work directly
-        print("Builder "..builder:GetUnitName().." "..builder:GetEntityIndex().." finished its building Queue")
+        -- print("Builder "..builder:GetUnitName().." "..builder:GetEntityIndex().." finished its building Queue")
         builder.state = "idle"
         builder.repair_target = nil
         builder.work = nil
@@ -2315,7 +2315,7 @@ function BuildingHelper:ClearQueue(builder)
         local index = getIndexTable(target.units_repairing, builder)
         if index then
             table.remove(target.units_repairing, index)
-            print("Builder stopped repairing, currently "..getTableCount(target.units_repairing).." left.")
+            -- print("Builder stopped repairing, currently "..getTableCount(target.units_repairing).." left.")
         end
         builder.repair_target = nil
         self:OnRepairCancelled(builder, target)
@@ -2332,7 +2332,7 @@ function BuildingHelper:ClearQueue(builder)
         return
     end
 
-   print("ClearQueue "..builder:GetUnitName().." "..builder:GetEntityIndex())
+--    print("ClearQueue "..builder:GetUnitName().." "..builder:GetEntityIndex())
 
     -- Main work
     if work then
@@ -2441,7 +2441,7 @@ function BuildingHelper:GetOrCreateDummy(unitName)
     if BuildingHelper.Dummies[unitName] then
         return BuildingHelper.Dummies[unitName]
     else
-        print("AddBuilding "..unitName)
+        -- print("AddBuilding "..unitName)
         local mgd = CreateUnitByName(unitName, Vector(0,0,0), false, nil, nil, 0)
         mgd:AddEffects(EF_NODRAW)
         mgd:AddNewModifier(mgd, nil, "modifier_out_of_world", {})

@@ -13,10 +13,6 @@ var inventoryContainer = newUI
 var inventoryTop = inventoryContainer.FindChildTraverse("inventory_list");
 var inventoryBot = inventoryContainer.FindChildTraverse("inventory_list2");
 
-function test() {
-  GameUI.PingMinimapAtLocation([1, 0, 128]);
-}
-
 function SetCustomItemCosts(itemSlot, lumberCost, cheeseCost, goldCost) {
   var subContainer;
   if (itemSlot < 3) subContainer = inventoryTop;

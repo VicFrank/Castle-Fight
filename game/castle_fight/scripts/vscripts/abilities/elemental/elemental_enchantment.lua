@@ -48,10 +48,8 @@ function elemental_enchantment:OnSpellStart()
       if not ally:IsRealHero() and not IsCustomBuilding(ally) and ally:GetUnitName() ~= "lunatic_goblin" then
         local hasAbility = false
 
-        for _,abilityName in pairs(abilityNames) do        
-          if ally:FindAbilityByName(abilityName) then
-            hasAbility = true
-          end
+        if ally:FindAbilityByName(abilityToAdd) then
+          hasAbility = true
         end
 
         if not hasAbility then
@@ -63,8 +61,11 @@ function elemental_enchantment:OnSpellStart()
 
     if not target then return end
 
-    -- TODO: Come up with a sound
-    -- caster:EmitSound("")
+    local particleName = "particles/units/heroes/hero_chen/chen_hand_of_god.vpcf"
+    local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, target)
+    ParticleManager:ReleaseParticleIndex(particle)
+
+    target:EmitSound("Hero_Chen.HandOfGodHealCreep")
 
     if abilityToAdd then
       local addedAbility = target:AddAbility(abilityToAdd)
@@ -85,8 +86,12 @@ function modifier_elemental_forge_weapons:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
-  self.splash_radius = self.ability:GetSpecialValueFor("splash_radius")
-  self.splash_damage = self.ability:GetSpecialValueFor("splash_damage")
+  self.splash_radius = 250
+  self.splash_damage = 50
+end
+
+function modifier_elemental_forge_weapons:OnRefresh()
+  self:OnCreated()
 end
 
 function modifier_elemental_forge_weapons:DeclareFunctions()
@@ -115,7 +120,7 @@ function modifier_elemental_forge_weapons:OnAttackLanded(params)
       local enemies = FindEnemiesInRadius(attacker, self.splash_radius, target:GetAbsOrigin())
 
       for _,enemy in pairs(enemies) do
-        if not enemy:GetEntityIndex() == target:GetEntityIndex() then
+        if enemy:GetEntityIndex() ~= target:GetEntityIndex() then
           ApplyDamage({
             victim = enemy,
             attacker = attacker,
@@ -138,10 +143,7 @@ modifier_elemental_rock_shield = class({})
 function modifier_elemental_rock_shield:IsHidden() return true end
 
 function modifier_elemental_rock_shield:OnCreated()
-  self.ability = self:GetAbility()
-  self.parent = self:GetParent()
-
-  self.bonus_armor = self.ability:GetSpecialValueFor("bonus_armor")
+  self.bonus_armor = self:GetAbility():GetSpecialValueFor("bonus_armor")
 end
 
 function modifier_elemental_rock_shield:DeclareFunctions()
@@ -151,7 +153,7 @@ function modifier_elemental_rock_shield:DeclareFunctions()
 end
 
 function modifier_elemental_rock_shield:GetModifierPhysicalArmorBonus()
-  return self.bonus_armor
+  return 15
 end
 
 haste = class({})
@@ -163,11 +165,8 @@ modifier_elemental_haste = class({})
 function modifier_elemental_haste:IsHidden() return true end
 
 function modifier_elemental_haste:OnCreated()
-  self.ability = self:GetAbility()
-  self.parent = self:GetParent()
-
-  self.attack_speed = self.ability:GetSpecialValueFor("attack_speed")
-  self.move_speed = self.ability:GetSpecialValueFor("move_speed")
+  self.attack_speed = self:GetAbility():GetSpecialValueFor("attack_speed")
+  self.move_speed = self:GetAbility():GetSpecialValueFor("move_speed")
 end
 
 function modifier_elemental_haste:DeclareFunctions()
@@ -178,9 +177,9 @@ function modifier_elemental_haste:DeclareFunctions()
 end
 
 function modifier_elemental_haste:GetModifierAttackSpeedBonus_Constant(keys)
-  return self.attack_speed
+  return 75
 end
 
 function modifier_elemental_haste:GetModifierMoveSpeedBonus_Percentage(keys)
-  return self.move_speed
+  return 25
 end

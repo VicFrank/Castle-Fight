@@ -53,6 +53,7 @@ function FireCannon(ability, modifier)
   ability:StartCooldown(modifier.fire_delay)
 
   local caster = modifier.caster
+  local casterTeam = caster:GetTeam()
   local target = RandomPositionBetweenBounds(modifier.minBounds, modifier.maxBounds)
   local sound_attack = "Hero_Techies.Attack"
   local sound_impact = "Hero_Techies.ProjectileImpact"
@@ -79,7 +80,7 @@ function FireCannon(ability, modifier)
 
       EmitSoundOn(sound_impact, caster)
 
-      AddFOWViewer(caster:GetTeam(), target, 160, 3, false)
+      AddFOWViewer(casterTeam, target, 160, 3, false)
 
       if not caster:IsNull() then
         SplashAttackGround(caster, target)

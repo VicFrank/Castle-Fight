@@ -11,6 +11,8 @@ function modifier_fire_elemental_split:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
+  if not self.ability then return end
+
   self.num_attacks = self.ability:GetSpecialValueFor("num_attacks")
 
   self:SetStackCount(0)

@@ -261,7 +261,7 @@ function GameMode:OnEntityKilled(keys)
     end
 
     -- Refund Cheese when a legendary building dies
-    if killed:IsLegendary() then
+    if killed:IsLegendary() and killedPlayerID >= 0 then
       ModifyCheese(killedPlayerID, 1)
     end
   end
@@ -270,51 +270,48 @@ function GameMode:OnEntityKilled(keys)
 end
 
 function GameMode:OnConnectFull(keys)
-  local entIndex = keys.index+1
-  -- The Player entity of the joining user
-  local ply = EntIndexToHScript(entIndex)
-  -- The Player ID of the joining player
-  local playerID = ply:GetPlayerID()
-  local userID = keys.userid
+  local playerID
+  local ply
+  -- Loop over all player IDs and initialize the player if it doesn't exist
+  for i=0,24 do
+    local player = PlayerResource:GetPlayer(i)
+    if player and not TableContainsValue(GameRules.playerIDs, playerID) then
+      playerID = i
+      ply = player
 
-  if playerID < 0 then return end
+      print(playerID .. " connected")
 
-  self.vUserIds = self.vUserIds or {}
-  self.vUserIds[userID] = ply
-  print(playerID .. " connected")
+      if not TableContainsValue(GameRules.playerIDs, playerID) then
+        -- insert player data for stat tracking
+        local playerData = {
+          playerID = playerID,
+          steamID = tostring(PlayerResource:GetSteamID(playerID)),
+          username = PlayerResource:GetPlayerName(playerID),
+        }
+        table.insert(GameRules.GameData.playerInfo, playerData)
 
-  -- SetLumber(playerID, 0)
-  -- SetCheese(playerID, 0)
-  -- SetCustomGold(playerID, 0)
+        -- insert playerID to list of playerIDs
+        table.insert(GameRules.playerIDs, playerID)
 
-  if not TableContainsValue(GameRules.playerIDs, playerID) then
-    -- insert player data for stat tracking
-    local playerData = {
-      playerID = playerID,
-      steamID = tostring(PlayerResource:GetSteamID(playerID)),
-      username = PlayerResource:GetPlayerName(playerID),
-    }
-    table.insert(GameRules.GameData.playerInfo, playerData)
+        -- Insert into list of actions
+        GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
 
-    -- insert playerID to list of playerIDs
-    table.insert(GameRules.playerIDs, playerID)
-
-    -- Insert into list of actions
-    GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
-
-    -- initialize settings vote values
-    GameRules.numRoundsVotes[playerID] = 2
-    GameRules.allowBotsVote[playerID] = false
+        -- initialize settings vote values
+        GameRules.numRoundsVotes[playerID] = 2
+        GameRules.allowBotsVote[playerID] = false
+      end
+    end
   end
 end
 
 function GameMode:OnPlayerReconnect(keys)
   print("OnPlayerReconnect")
-  local player = PlayerResource:GetPlayer(keys.PlayerID)
-  local playerHero = player:GetAssignedHero()
+  -- Commented out, because I heard they removed keys.PlayerID
+  -- local player = PlayerResource:GetPlayer(keys.PlayerID)
+  -- local playerHero = player:GetAssignedHero()
   
-  -- Reconnecting counts as an action
-  GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
+  -- -- Reconnecting counts as an action
+  -- GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
 end
 
 function GameMode:OnConstructionCompleted(building, ability, isUpgrade, previousIncomeValue)

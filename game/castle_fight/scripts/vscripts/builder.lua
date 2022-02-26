@@ -25,28 +25,28 @@ function Build( event )
     event:OnPreConstruction(function(vPos)
         -- Check for minimum height if defined
         if not BuildingHelper:MeetsHeightCondition(vPos) then
-            print("Failed placement of " .. building_name .." - Placement is below the min height required")
+            -- print("Failed placement of " .. building_name .." - Placement is below the min height required")
             SendErrorMessage(playerID, "#error_invalid_build_position")
             return false
         end
 
         -- If not enough resources to queue, stop
         if GetCustomGold(playerID) < gold_cost then
-            print("Failed placement of " .. building_name .." - Not enough gold!")
+            -- print("Failed placement of " .. building_name .." - Not enough gold!")
             SendErrorMessage(playerID, "#error_not_enough_gold")
             return false
         end
 
         -- If not enough resources to queue, stop
         if hero:GetLumber() < lumber_cost then
-            print("Failed placement of " .. building_name .." - Not enough lumber!")
+            -- print("Failed placement of " .. building_name .." - Not enough lumber!")
             SendErrorMessage(playerID, "#error_not_enough_lumber")
             return false
         end
 
         -- If not enough resources to queue, stop
         if hero:GetCheese() < cheese_cost then
-            print("Failed placement of " .. building_name .." - Not enough cheese!")
+            -- print("Failed placement of " .. building_name .." - Not enough cheese!")
             SendErrorMessage(playerID, "#error_not_enough_cheese")
             return false
         end
@@ -71,13 +71,13 @@ function Build( event )
         local playerTable = BuildingHelper:GetPlayerTable(playerID)
         local building_name = playerTable.activeBuilding
 
-        print("Failed placement of " .. building_name)
+        -- print("Failed placement of " .. building_name)
     end)
 
     -- Cancelled due to ClearQueue
     event:OnConstructionCancelled(function(work)
         local building_name = work.name
-        print("Cancelled construction of " .. building_name)
+        -- print("Cancelled construction of " .. building_name)
 
         -- work.building is not nil if this was a repair action
         if work.building then
@@ -95,7 +95,7 @@ function Build( event )
 
     -- A building unit was created
     event:OnConstructionStarted(function(unit)
-        print("Started construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
+        -- print("Started construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
         -- Play construction sound
 
         -- If it's an item-ability and has charges, remove a charge or remove the item if no charges left
@@ -145,7 +145,7 @@ function Build( event )
 
     -- A building finished construction
     event:OnConstructionCompleted(function(unit)
-        print("Completed construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
+        -- print("Completed construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
         
         -- Play construction complete sound
         
@@ -177,12 +177,12 @@ function Build( event )
     -- These callbacks will only fire when the state between below half health/above half health changes.
     -- i.e. it won't fire multiple times unnecessarily.
     event:OnBelowHalfHealth(function(unit)
-        print(unit:GetUnitName() .. " is below half health.")
+        -- print(unit:GetUnitName() .. " is below half health.")
         ApplyModifier(unit, "modifier_onfire")
     end)
 
     event:OnAboveHalfHealth(function(unit)
-        print(unit:GetUnitName().. " is above half health.")   
+        -- print(unit:GetUnitName().. " is above half health.")   
         unit:RemoveModifierByName("modifier_onfire")
     end)
 end
@@ -193,7 +193,7 @@ function CancelBuilding( keys )
     local hero = building:GetOwner()
     local playerID = building:GetPlayerOwnerID()
 
-    print("CancelBuilding "..building:GetUnitName().." "..building:GetEntityIndex())
+    -- print("CancelBuilding "..building:GetUnitName().." "..building:GetEntityIndex())
 
     -- Discount the refund based on how much damage the tower took when cancelled
     local refundPercent = (building:GetHealth() - building.initialHealth) / building.addedHealth

@@ -143,7 +143,7 @@ function GetHigherPriorityTarget(self, unit1, unit2)
   local distance2 = GridNav:FindPathLength(self:GetAbsOrigin(), unit2:GetAbsOrigin())
 
   -- Stick to the currently aggro'd target
-  if self.aiState.aggroTarget then
+  if IsValidAlive(self.aiState.aggroTarget) then
     if unit1:GetEntityIndex() == self.aiState.aggroTarget:GetEntityIndex() then
       distance1 = distance1 - 200
     elseif unit2:GetEntityIndex() == self.aiState.aggroTarget:GetEntityIndex() then
@@ -296,7 +296,7 @@ function UseAbility(self)
     self:CastAbilityOnPosition(target:GetAbsOrigin(), ability, -1)
   end
 
-  print("Casting: " .. ability:GetAbilityName())
+  -- print("Casting: " .. ability:GetAbilityName())
 
   return true
 end

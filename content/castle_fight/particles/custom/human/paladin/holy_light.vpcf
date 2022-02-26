@@ -1,134 +1,176 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 32
-	m_flConstantRadius = 50.000000
-	m_ConstantColor =
-	[
-		252,
-		179,
-		84,
-		55,
-	]
+	m_flConstantRadius = 50.0
+	m_ConstantColor = [ 252, 179, 84, 55 ]
 	m_nGroupID = 1
-	m_Renderers =
+	m_nBehaviorVersion = 12
+	m_controlPointConfigurations = 
 	[
 		{
-			_class = "C_OP_RenderRopes"
-			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
-			m_bAdditive = true
-			m_nOrientationType = 3
-			m_hTexture = resource:"materials/particle/beam_generic_5.vtex"
-			m_flRadiusScale = 0.500000
-			m_flTextureVWorldSize = 100.000000
-			m_flTextureVScrollRate = 100.000000
-			m_nMaxTesselation = 1
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
 		},
 	]
-	m_Operators =
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_vecCP1Pos = [ 0.0, 0.0, 384.0 ]
+			m_nCP1 = 2
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 24.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RingWave"
+			m_nControlPointNumber = 2
+			m_bEvenDistribution = true
+			m_flParticlesPerOrbit = 23.0
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_CONTROL_POINT_COMPONENT"
+				m_nControlPoint = 1
+				m_nVectorComponent = 0
+				m_nMapType = "PF_MAP_TYPE_MULT"
+				m_flMultFactor = 0.4
+			}
+			m_flThickness = 
+			{
+				m_nType = "PF_TYPE_CONTROL_POINT_COMPONENT"
+				m_nControlPoint = 1
+				m_nVectorComponent = 1
+				m_nMapType = "PF_MAP_TYPE_MULT"
+				m_flMultFactor = 0.0
+			}
+			m_flInitialSpeedMin = 
+			{
+				m_nType = "PF_TYPE_CONTROL_POINT_COMPONENT"
+				m_nControlPoint = 1
+				m_nVectorComponent = 2
+				m_nMapType = "PF_MAP_TYPE_MULT"
+				m_flMultFactor = 0.0
+			}
+			m_flInitialSpeedMax = 
+			{
+				m_nType = "PF_TYPE_CONTROL_POINT_COMPONENT"
+				m_nControlPoint = 1
+				m_nVectorComponent = 2
+				m_nMapType = "PF_MAP_TYPE_MULT"
+				m_flMultFactor = 0.0
+			}
+		},
+	]
+	m_Operators = 
 	[
 		{
 			_class = "C_OP_Decay"
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 0.800000
+			m_flFadeOutTime = 0.8
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flStartTime = 0.200000
-			m_flStartScale = -16.000000
-			m_flBias = 0.750000
+			m_flStartTime = 0.2
+			m_flStartScale = -16.0
+			m_flBias = 0.75
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade =
-			[
-				164,
-				112,
-				21,
-				255,
-			]
-			m_flFadeStartTime = 0.400000
+			m_ColorFade = [ 164, 112, 21, 255 ]
+			m_flFadeStartTime = 0.4
 		},
 		{
 			_class = "C_OP_RemapDirectionToCPToVector"
 			m_nCP = 2
-			m_flOpEndFadeOutTime = 0.100000
-			m_flOpStartFadeOutTime = 0.100000
+			m_flOpEndFadeOutTime = 0.1
+			m_flOpStartFadeOutTime = 0.1
 			m_nFieldOutput = 21
 			m_bNormalize = true
 		},
 		{
 			_class = "C_OP_FadeInSimple"
-			m_flFadeInTime = 0.200000
-		},
-		{
-			_class = "C_OP_SetSingleControlPointPosition"
-			m_vecCP1Pos =
-			[
-				0.000000,
-				0.000000,
-				384.000000,
-			]
-			m_nCP1 = 2
+			m_flFadeInTime = 0.2
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flBias = 0.850000
-			m_flEndScale = -16.000000
-			m_flEndTime = 0.200000
+			m_flBias = 0.85
+			m_flEndScale = -16.0
+			m_flEndTime = 0.2
 		},
 		{
 			_class = "C_OP_BasicMovement"
-			m_Gravity =
-			[
-				0.000000,
-				0.000000,
-				-1500.000000,
-			]
-			m_flOpEndFadeInTime = 0.100000
-			m_flOpStartFadeInTime = 0.100000
+			m_Gravity = [ 0.0, 0.0, -1500.0 ]
+			m_flOpEndFadeInTime = 0.1
+			m_flOpStartFadeInTime = 0.1
 		},
 		{
 			_class = "C_OP_PositionLock"
 		},
 	]
-	m_Initializers =
-	[
-		{
-			_class = "C_INIT_RingWave"
-			m_nControlPointNumber = 2
-			m_flInitialRadius = 0.400000
-			m_bEvenDistribution = true
-			m_flParticlesPerOrbit = 23.000000
-			m_nOverrideCP = 1
-		},
-	]
-	m_Emitters =
-	[
-		{
-			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 24
-		},
-	]
-	m_ForceGenerators =
+	m_ForceGenerators = 
 	[
 		{
 			_class = "C_OP_AttractToControlPoint"
-			m_vecComponentScale =
-			[
-				1.000000,
-				1.000000,
-				0.000000,
-			]
-			m_fFalloffPower = 0.750000
-			m_fForceAmount = -120000.000000
+			m_vecComponentScale = [ 1.0, 1.0, 0.0 ]
+			m_fFalloffPower = 0.75
+			m_fForceAmount = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = -120000.0
+			}
 			m_bDisableOperator = true
 		},
 	]
-	m_Children =
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderRopes"
+			m_nOrientationType = "PARTICLE_ORIENTATION_ALIGN_TO_PARTICLE_NORMAL"
+			m_flRadiusScale = 0.5
+			m_flTextureVWorldSize = 100.0
+			m_flTextureVScrollRate = 100.0
+			m_nMaxTesselation = 1
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/beam_generic_5.vtex"
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+		},
+	]
+	m_Children = 
 	[
 		{
 			m_ChildRef = resource:"particles/custom/human/paladin/holy_light_b.vpcf"

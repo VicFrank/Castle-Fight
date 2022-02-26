@@ -57,18 +57,20 @@ function modifier_vampire_lifesteal_aura_buff:DeclareFunctions()
   return funcs
 end
 
+function modifier_vampire_lifesteal_aura_buff:OnCreated()
+  self.lifesteal = self:GetAbility():GetSpecialValueFor("lifesteal")
+end
+
 function modifier_vampire_lifesteal_aura_buff:OnAttackLanded(params)
   if not IsServer() then return end
   
   local parent = self:GetParent()
   local target = params.target
   local attacker = params.attacker
-  local ability = self:GetAbility()
   local damage = params.damage
 
   if attacker == parent and not IsCustomBuilding(target) and not target:IsMechanical() then
-    local lifesteal = ability:GetSpecialValueFor("lifesteal")
-    attacker:Heal(damage * lifesteal * 0.01, attacker)
+    attacker:Heal(damage * self.lifesteal * 0.01, attacker)
 
     local particleName = "particles/units/heroes/hero_skeletonking/wraith_king_vampiric_aura_lifesteal.vpcf"
     local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, attacker)

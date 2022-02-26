@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf21:version{7a150ecc-d865-438f-ad53-5963fe1a2720} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -7,21 +7,42 @@
 	m_ConstantColor = [ 27, 72, 205, 155 ]
 	m_nConstantSequenceNumber = 7
 	m_bShouldSort = false
-	m_Renderers = 
+	m_nBehaviorVersion = 12
+	m_Emitters = 
 	[
 		{
-			_class = "C_OP_RenderModels"
-			m_nSkin = 3
-			m_ModelList = 
-			[
-				{
-					m_model = resource:"models/particle/sphere.vmdl"
-				},
-			]
-			m_bAnimated = true
-			m_bForceDrawInterlevedWithSiblings = true
-			m_nLOD = 1
-			m_bForceLoopingAnimation = true
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_nControlPointNumber = 3
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.1
+			m_fLifetimeMax = 0.1
+		},
+		{
+			_class = "C_INIT_RandomTrailLength"
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomYaw"
+		},
+		{
+			_class = "C_INIT_RandomScalar"
+			m_nFieldOutput = 20
+			m_flMax = 3.141592
 		},
 	]
 	m_Operators = 
@@ -64,7 +85,7 @@
 		{
 			_class = "C_OP_RemapCPtoVector"
 			m_nCPInput = 60
-			m_nFieldOutput = "6"
+			m_nFieldOutput = 6
 			m_vInputMax = [ 255.0, 255.0, 255.0 ]
 			m_vOutputMax = [ 255.0, 255.0, 255.0 ]
 			m_flOpStrength = 
@@ -80,46 +101,21 @@
 			}
 		},
 	]
-	m_Initializers = 
+	m_Renderers = 
 	[
 		{
-			_class = "C_INIT_CreateWithinSphere"
-			m_nControlPointNumber = 3
-		},
-		{
-			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 0.1
-			m_fLifetimeMax = 0.1
-		},
-		{
-			_class = "C_INIT_RandomTrailLength"
-		},
-		{
-			_class = "C_INIT_RandomRotation"
-		},
-		{
-			_class = "C_INIT_RandomYaw"
-		},
-		{
-			_class = "C_INIT_RandomScalar"
-			m_nFieldOutput = 20
-			m_flMax = 3.141592
-		},
-	]
-	m_Emitters = 
-	[
-		{
-			_class = "C_OP_InstantaneousEmitter"
-			m_flStartTime = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_nParticlesToEmit = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 1.0
-			}
+			_class = "C_OP_RenderModels"
+			m_nSkin = 3
+			m_ModelList = 
+			[
+				{
+					m_model = resource:"models/particle/sphere.vmdl"
+				},
+			]
+			m_bAnimated = true
+			m_bForceDrawInterlevedWithSiblings = true
+			m_nLOD = 1
+			m_bForceLoopingAnimation = true
 		},
 	]
 	m_Children = 
@@ -128,6 +124,4 @@
 			m_ChildRef = resource:"particles/custom/north/lich/lich_chain_frost_2_launch_b.vpcf"
 		},
 	]
-	m_PreEmissionOperators = [  ]
-	m_nBehaviorVersion = 5
 }

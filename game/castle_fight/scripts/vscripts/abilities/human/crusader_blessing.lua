@@ -20,6 +20,8 @@ function modifier_crusader_blessing:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
+  if not self.ability then return end
+
   self.armor_bonus = self.ability:GetSpecialValueFor("armor_bonus")
   self.regen_bonus = self.ability:GetSpecialValueFor("regen_bonus")
   self.health_bonus = self.ability:GetSpecialValueFor("health_bonus")

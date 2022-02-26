@@ -75,6 +75,7 @@
   "offer_draw"                   "Offer Draw"
   "draw"                         "Draw"
   "reject"                       "Reject"
+  "Advanced"                      "Advanced"
 
   "Latest_Update"                "Latest Update"
   "Vote_Options"                 "Vote Options"

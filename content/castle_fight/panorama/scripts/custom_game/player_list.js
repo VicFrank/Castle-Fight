@@ -63,12 +63,17 @@ function CreatePlayerPanel(id, steam_id) {
     `player_avatar_${id}`,
     {
       hittest: false,
-      class: "UserAvatar",
+      steamid: steam_id
     }
   );
 
-  let AvatarPanel = $("#player_avatar_" + id);
-  AvatarPanel.steamid = steam_id;
+  const AvatarPanel = $("#player_avatar_" + id);
+  AvatarPanel.style.width = "70px";
+  AvatarPanel.style.height = "70px";
+  AvatarPanel.style.border = "1px solid #373a40";
+  AvatarPanel.style.backgroundSize = "100%";
+  AvatarPanel.style.backgroundImage = "url('file://{images}/custom_game/PlayerPanel/user_avatar.png')";
+  AvatarPanel.style.horizontalAlign = "left";
 
   let DisconnectedIcon = $.CreatePanel("Panel", AvatarContainer, "DisconnectedIcon");
   
@@ -151,12 +156,11 @@ function CreateHeroIconPanel(playerID, AvatarContainer) {
 
 function UpdatePanels() {
   for(let i=0; i<playerPanels.length; i++) {
-    let panel = playerPanels[i];
+    const panel = playerPanels[i];
     const playerID = panel.playerID;
     
-    let connectionState = Game.GetPlayerInfo(playerID).player_connection_state;
-    let isDisconnected = connectionState != DOTAConnectionState_t.DOTA_CONNECTION_STATE_CONNECTED
-
+    const connectionState = Game.GetPlayerInfo(playerID).player_connection_state;
+    const isDisconnected = connectionState != DOTAConnectionState_t.DOTA_CONNECTION_STATE_CONNECTED
     panel.SetHasClass("Disconnected", isDisconnected);
   }
 

@@ -49,7 +49,6 @@ function blademaster_spell_steal:OnSpellStart()
 
   -- if we've found a modifier to give, and a unit to give it to, transfer it
   if unitToBuff and modifier then
-    print(target:GetUnitName(), unitToBuff:GetUnitName(), modifier:GetAbility():GetAbilityName())
     modifier:Transfer(target, unitToBuff)
   else
     print("Spell Steal failed")

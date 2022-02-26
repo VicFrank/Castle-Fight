@@ -1,15 +1,58 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
-	m_Renderers = 
+	m_nMaxParticles = 10
+	m_nBehaviorVersion = 12
+	m_nFirstMultipleOverride_BackwardCompat = 3
+	m_PreEmissionOperators = 
 	[
 		{
-			_class = "C_OP_RenderRopes"
-			m_nMaxTesselation = 1
-			m_flTextureVWorldSize = 1024.0
-			m_flTextureVScrollRate = -100.0
-			m_hTexture = resource:"materials/particle/beam_crack_03.vtex"
-			m_flOverbrightFactor = 2.0
+			_class = "C_OP_SetControlPointPositions"
+			m_nCP2 = 4
+			m_nCP3 = 4
+			m_vecCP1Pos = [ 0.0, 0.0, 1140.0 ]
+			m_vecCP2Pos = [ 0.0, 0.0, 0.0 ]
+			m_vecCP3Pos = [ 0.0, 0.0, 0.0 ]
+			m_vecCP4Pos = [ 0.0, 0.0, 0.0 ]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.35
+			}
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 32.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.5
+			m_fLifetimeMax = 0.5
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_nControlPointNumber = 1
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 63, 63, 253, 255 ]
+			m_ColorMin = [ 65, 100, 253, 255 ]
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_nInputMin = 9
+			m_nInputMax = 6
+			m_flOutputMax = 50.0
 		},
 	]
 	m_Operators = 
@@ -42,48 +85,7 @@
 			m_ColorFade = [ 166, 178, 255, 255 ]
 			m_flFadeStartTime = 0.15
 		},
-		{
-			_class = "C_OP_SetControlPointPositions"
-			m_nCP2 = 4
-			m_nCP3 = 4
-			m_vecCP1Pos = [ 0.0, 0.0, 1140.0 ]
-			m_vecCP2Pos = [ 0.0, 0.0, 0.0 ]
-			m_vecCP3Pos = [ 0.0, 0.0, 0.0 ]
-			m_vecCP4Pos = [ 0.0, 0.0, 0.0 ]
-		},
 	]
-	m_Initializers = 
-	[
-		{
-			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 0.5
-			m_fLifetimeMax = 0.5
-		},
-		{
-			_class = "C_INIT_CreateWithinSphere"
-			m_nControlPointNumber = 1
-		},
-		{
-			_class = "C_INIT_RandomColor"
-			m_ColorMax = [ 63, 63, 253, 255 ]
-			m_ColorMin = [ 65, 100, 253, 255 ]
-		},
-		{
-			_class = "C_INIT_RemapParticleCountToScalar"
-			m_nInputMin = 9
-			m_nInputMax = 6
-			m_flOutputMax = 50.0
-		},
-	]
-	m_Emitters = 
-	[
-		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 32.0
-			m_flEmissionDuration = 0.35
-		},
-	]
-	m_nMaxParticles = 10
 	m_Constraints = 
 	[
 		{
@@ -94,6 +96,22 @@
 				m_nStartControlPointNumber = 1
 			}
 			m_flTravelTime = 0.5
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderRopes"
+			m_nMaxTesselation = 1
+			m_flTextureVWorldSize = 1024.0
+			m_flTextureVScrollRate = -100.0
+			m_flOverbrightFactor = 2.0
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/beam_crack_03.vtex"
+				},
+			]
 		},
 	]
 }

@@ -1,59 +1,16 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf21:version{7a150ecc-d865-438f-ad53-5963fe1a2720} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 256
 	m_ConstantColor = [ 255, 255, 255, 40 ]
 	m_nConstantSequenceNumber1 = 10
-	m_Renderers = 
+	m_nBehaviorVersion = 12
+	m_nFirstMultipleOverride_BackwardCompat = 7
+	m_Emitters = 
 	[
 		{
-			_class = "C_OP_RenderSprites"
-			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_ALPHA_FROM0_RGB_FROM_1"
-			m_flZoomAmount1 = 4.0
-			m_flStartFadeSize = 1.0
-			m_flEndFadeSize = 1.4
-			m_bBlendFramesSeq0 = false
-			m_hTexture = resource:"materials/particle/smoke3/smoke3b.vtex"
-			m_flAnimationRate = 1.0
-			m_flAnimationRate2 = 0.1
-			m_nHSVShiftControlPoint = 62
-		},
-	]
-	m_Operators = 
-	[
-		{
-			_class = "C_OP_BasicMovement"
-			m_Gravity = [ 0.0, 0.0, 40.0 ]
-			m_fDrag = 0.05
-		},
-		{
-			_class = "C_OP_InterpolateRadius"
-			m_flEndScale = 0.5
-			m_flBias = 0.65
-			m_flStartScale = 3.0
-		},
-		{
-			_class = "C_OP_Decay"
-		},
-		{
-			_class = "C_OP_PositionLock"
-			m_flStartTime_max = 0.0
-			m_flStartTime_min = 0.0
-			m_nControlPointNumber = 3
-			m_flEndTime_min = 0.125
-			m_flEndTime_max = 0.125
-		},
-		{
-			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 1.0
-		},
-		{
-			_class = "C_OP_RampScalarLinearSimple"
-			m_flEndTime = 99999.0
-			m_Rate = -1.0
-			m_nField = 16
-			m_nOpEndCapState = 1
+			_class = "C_OP_ContinuousEmitter"
 		},
 	]
 	m_Initializers = 
@@ -98,25 +55,40 @@
 			m_flNoiseScale = 3.0
 		},
 	]
-	m_Emitters = 
+	m_Operators = 
 	[
 		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_flStartTime = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 0.0
-			}
-			m_flEmitRate = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 100.0
-			}
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, 40.0 ]
+			m_fDrag = 0.05
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 0.5
+			m_flBias = 0.65
+			m_flStartScale = 3.0
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_PositionLock"
+			m_flStartTime_max = 0.0
+			m_flStartTime_min = 0.0
+			m_nControlPointNumber = 3
+			m_flEndTime_min = 0.125
+			m_flEndTime_max = 0.125
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 1.0
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_flEndTime = 99999.0
+			m_Rate = -1.0
+			m_nField = 16
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
 		},
 	]
 	m_ForceGenerators = 
@@ -130,12 +102,42 @@
 				m_nType = "PF_TYPE_LITERAL"
 				m_flLiteralValue = -500.0
 			}
-			m_nOpEndCapState = 1
-			m_fForceAmountMin = null
-			m_bApplyMinForce = false
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
 		},
 	]
-	m_PreEmissionOperators = [  ]
-	m_nBehaviorVersion = 5
-	m_nFirstMultipleOverride_BackwardCompat = 7
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_flStartFadeSize = 1.0
+			m_flEndFadeSize = 1.4
+			m_bBlendFramesSeq0 = false
+			m_flAnimationRate = 1.0
+			m_nHSVShiftControlPoint = 62
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/smoke3/smoke3b.vtex"
+					m_nTextureChannels = "SPRITECARD_TEXTURE_CHANNEL_MIX_A"
+				},
+				{
+					m_hTexture = resource:"materials/particle/smoke3/smoke3b.vtex"
+					m_TextureControls = 
+					{
+						m_flZoomScale = 
+						{
+							m_nType = "PF_TYPE_LITERAL"
+							m_flLiteralValue = 4.0
+						}
+						m_flFinalTextureUVRotation = 
+						{
+							m_nType = "PF_TYPE_LITERAL"
+							m_flLiteralValue = 0.1
+						}
+					}
+					m_nTextureChannels = "SPRITECARD_TEXTURE_CHANNEL_MIX_RGB"
+				},
+			]
+		},
+	]
 }

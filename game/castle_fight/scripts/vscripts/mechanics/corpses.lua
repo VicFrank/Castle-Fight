@@ -23,7 +23,6 @@ function Corpses:CreateFromUnit(killed)
 end
 
 function Corpses:CreateByNameOnPosition(name, position, team)
-  print("Creating Corpse")
   local corpse = CreateUnitByName("dotacraft_corpse", position, false, nil, nil, team)
   corpse.unit_name = name -- Keep a reference to its name
 

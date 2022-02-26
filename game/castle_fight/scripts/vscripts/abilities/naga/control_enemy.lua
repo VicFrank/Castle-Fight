@@ -55,6 +55,8 @@ modifier_control_enemy_fx = class ({})
 function modifier_control_enemy_fx:OnCreated(table)
   self.isOvertakeEffect = true
 
+  if not IsServer() then return end
+
   local modifiers = self:GetParent():FindAllModifiers()
   for _,modifier in pairs(modifiers) do
     if modifier.isOvertakeEffect and modifier ~= self then

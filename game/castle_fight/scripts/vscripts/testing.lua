@@ -374,8 +374,7 @@ LAST_COMMAND = ""
 
 function GameMode:OnPlayerChat(keys)
   local text = keys.text
-  local userID = keys.userid
-  local playerID = self.vUserIds[userID] and self.vUserIds[userID]:GetPlayerID()
+  local playerID = keys.playerid
   if not playerID then return end
 
   if StringStartsWith(text, "!") then

@@ -1,32 +1,67 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 1
 	m_flConstantRadius = 0.425
-	m_Renderers = 
+	m_nBehaviorVersion = 12
+	m_nFirstMultipleOverride_BackwardCompat = 5
+	m_controlPointConfigurations = 
 	[
 		{
-			_class = "C_OP_RenderModels"
-			m_bIgnoreNormal = true
-			m_bSuppressTint = true
-			m_ModelList = 
+			m_name = "preview"
+			m_drivers = 
 			[
 				{
-					m_model = resource:"models/heroes/dragon_knight/shield.vmdl"
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
 				},
 			]
-			m_bAnimated = true
-			m_bForceDrawInterlevedWithSiblings = true
-			m_nLOD = 1
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
 		},
 		{
-			_class = "C_OP_RenderDeferredLight"
-			m_ColorScale = [ 255, 250, 121 ]
-			m_flStartFalloff = 0.1
-			m_flAlphaScale = 10.0
-			m_flRadiusScale = 350.0
-			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
+			_class = "C_INIT_CreateWithinSphere"
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+			m_bRandomlyFlipDirection = false
+			m_flDegreesMax = 180.0
+			m_flDegreesMin = 180.0
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+			m_flDegreesMin = 90.0
+			m_flDegreesMax = 90.0
+			m_nFieldOutput = 12
+			m_bRandomlyFlipDirection = false
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+			m_flDegreesMin = 180.0
+			m_flDegreesMax = 180.0
+			m_nFieldOutput = 20
+			m_bRandomlyFlipDirection = false
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 22.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 22.0 ]
 		},
 	]
 	m_Operators = 
@@ -54,45 +89,34 @@
 			m_flDecayTime = 0.5
 		},
 	]
-	m_Initializers = 
+	m_Renderers = 
 	[
 		{
-			_class = "C_INIT_RandomLifeTime"
+			_class = "C_OP_RenderModels"
+			m_bIgnoreNormal = true
+			m_bSuppressTint = true
+			m_ModelList = 
+			[
+				{
+					m_model = resource:"models/heroes/dragon_knight/shield.vmdl"
+				},
+			]
+			m_bAnimated = true
+			m_bForceDrawInterlevedWithSiblings = true
+			m_nLOD = 1
+			m_bForceLoopingAnimation = true
 		},
 		{
-			_class = "C_INIT_CreateWithinSphere"
-		},
-		{
-			_class = "C_INIT_PositionOffset"
-			m_OffsetMax = [ 0.0, 0.0, 22.0 ]
-			m_OffsetMin = [ 0.0, 0.0, 22.0 ]
-		},
-		{
-			_class = "C_INIT_RandomRotation"
-			m_bRandomlyFlipDirection = false
-			m_flDegreesMax = 180.0
-			m_flDegreesMin = 180.0
-		},
-		{
-			_class = "C_INIT_RandomRotation"
-			m_flDegreesMin = 90.0
-			m_flDegreesMax = 90.0
-			m_nFieldOutput = 12
-			m_bRandomlyFlipDirection = false
-		},
-		{
-			_class = "C_INIT_RandomRotation"
-			m_flDegreesMin = 180.0
-			m_flDegreesMax = 180.0
-			m_nFieldOutput = 20
-			m_bRandomlyFlipDirection = false
-		},
-	]
-	m_Emitters = 
-	[
-		{
-			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 1
+			_class = "C_OP_RenderDeferredLight"
+			m_flStartFalloff = 0.1
+			m_flAlphaScale = 10.0
+			m_flRadiusScale = 350.0
+			m_hTexture = resource:"materials/particle/particle_glow_05.vtex"
+			m_vecColorScale = 
+			{
+				m_nType = "PVEC_TYPE_LITERAL_COLOR"
+				m_LiteralColor = [ 255, 250, 121 ]
+			}
 		},
 	]
 	m_Children = 
