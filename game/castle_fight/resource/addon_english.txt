@@ -1824,7 +1824,7 @@
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam"              "Light Beam"
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam_Description"  "Shoots a beam of light at a random unit, dealing 160 damage to it."
 "DOTA_Tooltip_Ability_city_of_magic_hex"              "Hex"
-"DOTA_Tooltip_Ability_city_of_magic_hex_Description"  "Turns a random enemy unit into a sheep for 45 second."
+"DOTA_Tooltip_Ability_city_of_magic_hex_Description"  "Turns a random enemy unit into a sheep for 20 second."
 "DOTA_Tooltip_Ability_archer_headshot"              "Headshot"
 "DOTA_Tooltip_Ability_archer_headshot_chance"       "%Headshot Chance:"
 "DOTA_Tooltip_Ability_archer_headshot_stun_duration"       "Stun Duration:"

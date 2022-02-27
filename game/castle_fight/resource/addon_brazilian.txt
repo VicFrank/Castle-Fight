@@ -1811,7 +1811,7 @@
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam"              "Light Beam"
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam_Description"  "Atira um feixe de luz em uma unidade aleatória inimiga, causando 160 de dano a ela."
 "DOTA_Tooltip_Ability_city_of_magic_hex"              "Hex"
-"DOTA_Tooltip_Ability_city_of_magic_hex_Description"  "Transforma uma unidade inimiga aleatória em uma ovelha por 45 segundos."
+"DOTA_Tooltip_Ability_city_of_magic_hex_Description"  "Transforma uma unidade inimiga aleatória em uma ovelha por 20 segundos."
 "DOTA_Tooltip_Ability_archer_headshot"              "Headshot"
 "DOTA_Tooltip_Ability_archer_headshot_chance"       "%Headshot Chance:"
 "DOTA_Tooltip_Ability_archer_headshot_stun_duration"       "Duração do Atordoamento:"

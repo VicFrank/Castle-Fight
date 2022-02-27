@@ -1802,7 +1802,7 @@
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam"              "光束射线"
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam_Description"  "朝随机敌人射出一道强力的光束，造成160点伤害。"
 "DOTA_Tooltip_Ability_city_of_magic_hex"              "巫术"
-"DOTA_Tooltip_Ability_city_of_magic_hex_Description"  "将一个随机敌人变成羊，持续45秒。"
+"DOTA_Tooltip_Ability_city_of_magic_hex_Description"  "将一个随机敌人变成羊，持续20秒。"
 "DOTA_Tooltip_Ability_archer_headshot"              "爆头"
 "DOTA_Tooltip_Ability_archer_headshot_chance"       "%爆头概率:"
 "DOTA_Tooltip_Ability_archer_headshot_stun_duration"       "眩晕持续时间:"

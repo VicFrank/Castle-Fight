@@ -1803,7 +1803,7 @@
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam"              "Луч Света"
 "DOTA_Tooltip_Ability_obelisk_of_light_light_beam_Description"  "Выпускает луч света в случайного вражеского юнита, нанося ему 160 урона."
 "DOTA_Tooltip_Ability_city_of_magic_hex"              "Сглаз"
-"DOTA_Tooltip_Ability_city_of_magic_hex_Description"  "Превращает случайного вражеского юнита в овцу на 45 секунд."
+"DOTA_Tooltip_Ability_city_of_magic_hex_Description"  "Превращает случайного вражеского юнита в овцу на 20 секунд."
 "DOTA_Tooltip_Ability_archer_headshot"              "Выстрел в голову"
 "DOTA_Tooltip_Ability_archer_headshot_chance"       "%Вероятность:"
 "DOTA_Tooltip_Ability_archer_headshot_stun_duration"       "Длительность оглушения:"

@@ -270,36 +270,31 @@ function GameMode:OnEntityKilled(keys)
 end
 
 function GameMode:OnConnectFull(keys)
-  local playerID
-  local ply
   -- Loop over all player IDs and initialize the player if it doesn't exist
-  for i=0,24 do
-    local player = PlayerResource:GetPlayer(i)
+  for playerID=0,24 do
+    local player = PlayerResource:GetPlayer(playerID)
     if player and not TableContainsValue(GameRules.playerIDs, playerID) then
-      playerID = i
       ply = player
 
-      print(playerID .. " connected")
+      print("PlayerID " .. playerID .. " connected")
 
-      if not TableContainsValue(GameRules.playerIDs, playerID) then
-        -- insert player data for stat tracking
-        local playerData = {
-          playerID = playerID,
-          steamID = tostring(PlayerResource:GetSteamID(playerID)),
-          username = PlayerResource:GetPlayerName(playerID),
-        }
-        table.insert(GameRules.GameData.playerInfo, playerData)
+      -- insert player data for stat tracking
+      local playerData = {
+        playerID = playerID,
+        steamID = tostring(PlayerResource:GetSteamID(playerID)),
+        username = PlayerResource:GetPlayerName(playerID),
+      }
+      table.insert(GameRules.GameData.playerInfo, playerData)
 
-        -- insert playerID to list of playerIDs
-        table.insert(GameRules.playerIDs, playerID)
+      -- insert playerID to list of playerIDs
+      table.insert(GameRules.playerIDs, playerID)
 
-        -- Insert into list of actions
-        GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
+      -- Insert into list of actions
+      GameRules.PlayerOrderTime[playerID] = GameRules:GetGameTime()
 
-        -- initialize settings vote values
-        GameRules.numRoundsVotes[playerID] = 2
-        GameRules.allowBotsVote[playerID] = false
-      end
+      -- initialize settings vote values
+      GameRules.numRoundsVotes[playerID] = 2
+      GameRules.allowBotsVote[playerID] = false
     end
   end
 end

@@ -103,7 +103,7 @@ end
 
 function GameMode:InitGameMode()
   GameMode = self
-  print("Castle Fight has loaded.")
+  print("Castle Fight has loaded")
 
   LimitPathingSearchDepth(0.5)
 

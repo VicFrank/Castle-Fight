@@ -80,8 +80,12 @@ function GameMode:RandomHero(playerID)
     "npc_dota_hero_kunkka",
   }
 
+  print("Getting heroes available")
+
   local heroesAvailable = CustomNetTables:GetTableValue("heroes_available", tostring(playerID))
   local heroesToPickFrom = {}
+
+  DeepPrintTable(heroesAvailable)
 
   for _,availableHero in pairs(heroesAvailable.heroes) do
     table.insert(heroesToPickFrom, heroes[availableHero])
@@ -90,9 +94,13 @@ function GameMode:RandomHero(playerID)
   -- Randomly select a hero from the pool
   local hero = GetRandomTableElement(heroesToPickFrom)
 
+  print("Selected", hero)
+
   if PlayerResource:IsFakeClient(playerID) then
     hero = GetRandomTableElement(botHeroes)
   end
+
+  print("Replacing hero")
 
   PlayerResource:ReplaceHeroWith(playerID, hero, 0, 0)
 end
@@ -156,7 +164,7 @@ function GameMode:StartHeroSelection()
     CustomGameEventManager:Send_ServerToAllClients("countdown",
       {seconds = timeToStart})
 
-    if timeToStart == 0 then
+    if timeToStart <= 0 then
       --Hero Selection is over
       GameMode:EndHeroSelection()
     end
@@ -213,11 +221,13 @@ function GameMode:EndHeroSelection()
   -- Force players who haven't picked to random a hero
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     if hero:IsAlive() and not hero.hasPicked then
+      print("Randoming hero")
       GameMode:RandomHero(hero:GetPlayerOwnerID())
     end
   end
   
   for _,playerID in pairs(GameRules.playerIDs) do
+    print("clearing heroes available" .. playerID)
     CustomNetTables:SetTableValue("heroes_available", tostring(playerID), nil)  
   end
 
@@ -226,6 +236,7 @@ function GameMode:EndHeroSelection()
 end
 
 function GameMode:WaitToLoad()
+  print("Waiting to load")
   CustomGameEventManager:Send_ServerToAllClients("loading_started", {})
 
   Timers:RemoveTimer(GameRules.LoadingTimer)
