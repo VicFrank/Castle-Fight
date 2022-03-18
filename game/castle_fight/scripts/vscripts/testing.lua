@@ -366,16 +366,18 @@ CHEAT_CODES = {
 }
 
 GAME_COMMANDS = {
-  ["ff"] = function(...) GameMode:VoteGG(...) end,
-  ["gg"] = function(...) GameMode:VoteGG(...) end,
+  -- ["ff"] = function(...) GameMode:VoteGG(...) end,
+  -- ["gg"] = function(...) GameMode:VoteGG(...) end,
 }
 
 LAST_COMMAND = ""
 
 function GameMode:OnPlayerChat(keys)
+  for k,v in pairs(keys) do print(k,v) end
   local text = keys.text
   local playerID = keys.playerid
   if not playerID then return end
+  if playerID < 0 then return end
 
   if StringStartsWith(text, "!") then
     text = string.sub(text, 2, string.len(text))

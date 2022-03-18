@@ -80,12 +80,8 @@ function GameMode:RandomHero(playerID)
     "npc_dota_hero_kunkka",
   }
 
-  print("Getting heroes available")
-
   local heroesAvailable = CustomNetTables:GetTableValue("heroes_available", tostring(playerID))
   local heroesToPickFrom = {}
-
-  DeepPrintTable(heroesAvailable)
 
   for _,availableHero in pairs(heroesAvailable.heroes) do
     table.insert(heroesToPickFrom, heroes[availableHero])
@@ -94,13 +90,9 @@ function GameMode:RandomHero(playerID)
   -- Randomly select a hero from the pool
   local hero = GetRandomTableElement(heroesToPickFrom)
 
-  print("Selected", hero)
-
   if PlayerResource:IsFakeClient(playerID) then
     hero = GetRandomTableElement(botHeroes)
   end
-
-  print("Replacing hero")
 
   PlayerResource:ReplaceHeroWith(playerID, hero, 0, 0)
 end
@@ -118,8 +110,6 @@ function GameMode:StartRoundTimer()
 end
 
 function GameMode:StartHeroSelection()
-  print("StartHeroSelection()")
-
   GameMode:SetAvailableHeroes()
 
   GameRules.InHeroSelection = true
@@ -221,13 +211,11 @@ function GameMode:EndHeroSelection()
   -- Force players who haven't picked to random a hero
   for _,hero in pairs(HeroList:GetAllHeroes()) do
     if hero:IsAlive() and not hero.hasPicked then
-      print("Randoming hero")
       GameMode:RandomHero(hero:GetPlayerOwnerID())
     end
   end
   
   for _,playerID in pairs(GameRules.playerIDs) do
-    print("clearing heroes available" .. playerID)
     CustomNetTables:SetTableValue("heroes_available", tostring(playerID), nil)  
   end
 
@@ -238,13 +226,14 @@ end
 function GameMode:WaitToLoad()
   print("Waiting to load")
   CustomGameEventManager:Send_ServerToAllClients("loading_started", {})
-
   Timers:RemoveTimer(GameRules.LoadingTimer)
 
   local announcerLine = RandomInt(1, 2)
   EmitAnnouncerSound("announcer_ann_custom_round_begin_0" .. announcerLine)
 
+  print("Create loading timer", GameRules.numToCache)
   GameRules.LoadingTimer = Timers:CreateTimer(1, function()
+    print("Loading timer", GameRules.numToCache)
     if GameRules.numToCache == 0 then
       -- Start the next round after we've finished precaching everything
       GameMode:StartRound()

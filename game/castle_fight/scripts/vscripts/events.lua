@@ -277,6 +277,7 @@ function GameMode:OnConnectFull(keys)
       ply = player
 
       print("PlayerID " .. playerID .. " connected")
+      print("IsFakeClient", PlayerResource:IsFakeClient(playerID))
 
       -- insert player data for stat tracking
       local playerData = {

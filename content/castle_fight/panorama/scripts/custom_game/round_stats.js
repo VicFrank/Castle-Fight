@@ -1,6 +1,8 @@
-function UpdateRoundScores() {  
+function UpdateRoundScores() {
   var scoreData = CustomNetTables.GetTableValue("round_score", "score");
-  var numRounds = CustomNetTables.GetTableValue("settings", "num_rounds")["numRounds"];
+  var numRounds = CustomNetTables.GetTableValue("settings", "num_rounds")[
+    "numRounds"
+  ];
   if (scoreData) {
     $("#GoodGuysScore").text = scoreData.left_score;
     $("#BadGuysScore").text = scoreData.right_score;
@@ -35,7 +37,7 @@ function OnRoundScoreChanged(table_name, key, data) {
     var buildingsBuilt = data.buildingsBuilt;
     var numUnitsTrained = data.numUnitsTrained;
     var rescueStrikeDamage = data.rescueStrikeDamage;
-    var rescueStrikeKills  = data.rescueStrikeKills;
+    var rescueStrikeKills = data.rescueStrikeKills;
     var income = Math.floor(data.income);
 
     if (!rowPositions[playerID]) {
@@ -87,7 +89,8 @@ function OnRoundScoreChanged(table_name, key, data) {
     else ScoreboardRow.GetChild(5).RemoveClass("HighScore");
     // Rescue Strike Damage
     ScoreboardRow.GetChild(6).text = rescueStrikeDamage;
-    if (data.maxRescueStrikeDamage) ScoreboardRow.GetChild(6).AddClass("HighScore");
+    if (data.maxRescueStrikeDamage)
+      ScoreboardRow.GetChild(6).AddClass("HighScore");
     else ScoreboardRow.GetChild(6).RemoveClass("HighScore");
   }
 }
@@ -102,13 +105,35 @@ function OnRoundEnded(data) {
   var roundNumber = data.roundNumber - 1; // get the round number of the last round
 
   if (data.winningTeam == DOTATeam_t.DOTA_TEAM_GOODGUYS) {
-    RoundWinnerPanel.text = $.Localize("round") + " " + roundNumber + ": " + $.Localize("western_forces") + " " + $.Localize("#victory") + "!";
+    RoundWinnerPanel.text =
+      $.Localize("#Round") +
+      " " +
+      roundNumber +
+      ": " +
+      $.Localize("#western_forces") +
+      " " +
+      $.Localize("#victory") +
+      "!";
     RoundWinnerPanel.AddClass("WestColor");
   } else if (data.winningTeam == DOTATeam_t.DOTA_TEAM_BADGUYS) {
-    RoundWinnerPanel.text = $.Localize("round") + " " + roundNumber + ": " + $.Localize("eastern_forces") + " " + $.Localize("#victory") + "!";
+    RoundWinnerPanel.text =
+      $.Localize("#Round") +
+      " " +
+      roundNumber +
+      ": " +
+      $.Localize("#eastern_forces") +
+      " " +
+      $.Localize("#victory") +
+      "!";
     RoundWinnerPanel.AddClass("EastColor");
   } else {
-    RoundWinnerPanel.text = $.Localize("round") + " " + roundNumber + ": " + $.Localize("#draw") + "!";
+    RoundWinnerPanel.text =
+      $.Localize("#Round") +
+      " " +
+      roundNumber +
+      ": " +
+      $.Localize("#draw") +
+      "!";
     RoundWinnerPanel.AddClass("NeutralColor");
   }
 }
@@ -136,9 +161,13 @@ function OnNumUnitsChanged(data) {
 }
 
 function OnRoundTimerChanged(data) {
-  var time = data.time.timer_minute_10 + "" +
-    data.time.timer_minute_01 + ":" +
-    data.time.timer_second_10 + "" +
+  var time =
+    data.time.timer_minute_10 +
+    "" +
+    data.time.timer_minute_01 +
+    ":" +
+    data.time.timer_second_10 +
+    "" +
     data.time.timer_second_01;
   $("#RoundTime").text = time;
 }
@@ -149,7 +178,10 @@ function OnRoundTimerChanged(data) {
 
   GameEvents.Subscribe("round_ended", OnRoundEnded);
   GameEvents.Subscribe("game_ended", OnGameEnded);
-  CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
+  CustomNetTables.SubscribeNetTableListener(
+    "hero_select",
+    OnHeroSelectStatusChanged
+  );
 
   GameEvents.Subscribe("num_units_changed", OnNumUnitsChanged);
   GameEvents.Subscribe("round_timer", OnRoundTimerChanged);

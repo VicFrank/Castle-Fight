@@ -98,11 +98,11 @@
             <Label id="NumRoundsEast" class="SmallScore EastColor" text="/2" />
           </Panel>
           <Label id="EasternForcesHeader" class="TeamNameLabel EastColor" text="#eastern_forces" />
-          <Label class="ScoreboardHeader" text="income" />
-          <Label class="ScoreboardHeader" text="units_trained" />
-          <Label class="ScoreboardHeader" text="units_killed" />
-          <Label class="ScoreboardHeader" text="buildings_built" />
-          <Label class="ScoreboardHeader" text="rs_damage" />
+          <Label class="ScoreboardHeader" text="#income" />
+          <Label class="ScoreboardHeader" text="#units_trained" />
+          <Label class="ScoreboardHeader" text="#units_killed" />
+          <Label class="ScoreboardHeader" text="#buildings_built" />
+          <Label class="ScoreboardHeader" text="#rs_damage" />
         </Panel>
 
         <Panel id="ScoreboardRow5" hittest="false" class="ScoreboardRow">

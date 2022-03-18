@@ -64,6 +64,7 @@
   "lumber_tip"               "Lumber is earned from making buildings that can train units."
   "gold_tip"                 "Gold is earned from killing enemy units, and periodically from interest."
   "round"                        "Round"
+  "Round"                        "Round"
   "victory"                      "Victory"
   "base_interest"                "Base Interest"
   "interest_from_buildings"      "Interest from Buildings"
@@ -75,7 +76,7 @@
   "offer_draw"                   "Offer Draw"
   "draw"                         "Draw"
   "reject"                       "Reject"
-  "Advanced"                      "Advanced"
+  "Advanced"                     "Advanced"
 
   "Latest_Update"                "Latest Update"
   "Vote_Options"                 "Vote Options"
@@ -88,6 +89,12 @@
   "All_pick"                     "All pick"
   "Single_draft"                 "Single draft"
   "All_random"                   "All random"
+  "Round"                        "Round"
+  "Info"                         "Info"
+  "Tips"                         "Tips"
+  "Settings"                     "Settings"
+  "Discord"                      "Discord"
+  "Workshop"                     "Workshop"
 
 
   "Credits"                      "Credits"
