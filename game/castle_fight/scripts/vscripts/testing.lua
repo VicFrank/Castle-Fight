@@ -366,8 +366,8 @@ CHEAT_CODES = {
 }
 
 GAME_COMMANDS = {
-  -- ["ff"] = function(...) GameMode:VoteGG(...) end,
-  -- ["gg"] = function(...) GameMode:VoteGG(...) end,
+  ["ff"] = function(...) GameMode:VoteGG(...) end,
+  ["gg"] = function(...) GameMode:VoteGG(...) end,
 }
 
 LAST_COMMAND = ""

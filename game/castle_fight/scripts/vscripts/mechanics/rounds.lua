@@ -331,7 +331,7 @@ end
 
 function GameMode:DetectAFK()
   if GameRules:IsCheatMode() then return end
-  if GameRules:IsInToolsMode() then return end
+  if IsInToolsMode() then return end
 
   Timers:CreateTimer(function()
     if not GameRules.roundInProgress then return 1 end

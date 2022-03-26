@@ -235,7 +235,7 @@ function GameMode:VoteGG(playerID)
 
   local roundDuration = GameRules:GetGameTime() - GameRules.roundStartTime
   if roundDuration < 400 then
-    Say(nil, "It is too early to concede", false)
+    -- Say(nil, "It is too early to concede", false)
     return
   end
 
@@ -250,9 +250,7 @@ function GameMode:VoteGG(playerID)
     teamString = "East"
   end
 
-  local voteStatus = votes .. "/" .. numPlayers .. " " .. teamString
-    .. " players voted to forfeit!"
-  Say(nil, voteStatus, false)
+  local voteStatus = votes .. "/" .. numPlayers .. " " .. teamString .. " players voted to forfeit!"
 
   if votes == numPlayers then
     GameMode:EndRound(team)
@@ -260,13 +258,13 @@ function GameMode:VoteGG(playerID)
     if team == DOTA_TEAM_GOODGUYS then
       Timers:RemoveTimer(GameRules.GGTimerWest)
       GameRules.GGTimerWest = Timers:CreateTimer(90, function()
-        Say(nil, "GG vote failed for West", false)
+        -- Say(nil, "GG vote failed for West", false)
         ClearGGVote(team)
       end)
     elseif team == DOTA_TEAM_BADGUYS then
       Timers:RemoveTimer(GameRules.GGTimerEast)
       GameRules.GGTimerEast = Timers:CreateTimer(90, function()
-        Say(nil, "GG vote failed for East", false)
+        -- Say(nil, "GG vote failed for East", false)
         ClearGGVote(team)
       end)
     end

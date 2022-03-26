@@ -90,6 +90,7 @@
   "Single_draft"                 "Single draft"
   "All_random"                   "All random"
   "Round"                        "Round"
+  "Round_1"                      "Round 1"
   "Info"                         "Info"
   "Tips"                         "Tips"
   "Settings"                     "Settings"
