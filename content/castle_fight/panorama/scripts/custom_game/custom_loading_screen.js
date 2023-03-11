@@ -1,52 +1,49 @@
 "use strict";
 
-var currentPanel = $("#SettingsPanel")
+var currentPanel = $("#SettingsPanel");
 
-function UpdateCurrentPanel(newPanel)
-{
+function UpdateCurrentPanel(newPanel) {
   currentPanel.style.visibility = "collapse";
   currentPanel = newPanel;
   newPanel.style.visibility = "visible";
 }
 
-function OnHomeClicked()
-{
+function OnHomeClicked() {
   UpdateCurrentPanel($("#SettingsPanel"));
 }
 
-function OnInfoClicked()
-{
+function OnInfoClicked() {
   UpdateCurrentPanel($("#InfoPanel"));
 }
 
-function OnTipsClicked()
-{
+function OnTipsClicked() {
   UpdateCurrentPanel($("#TipsPanel"));
 }
 
-function OnCreditsClicked()
-{
+function OnCreditsClicked() {
   UpdateCurrentPanel($("#CreditsPanel"));
 }
 
-function SetUpdateDate()
-{
-  var lastUpdate = "12/5/2020";
+function SetUpdateDate() {
+  const lastUpdate = "3/25/2022";
 
   $("#LatestUpdate").text = lastUpdate;
 }
 
-function OnSettingsChanged()
-{
-  var numRounds = CustomNetTables.GetTableValue("settings", "num_rounds")["numRounds"];
-  var botsEnabled = CustomNetTables.GetTableValue("settings", "bots_enabled")["botsEnabled"] == 1;
-  var draftMode = CustomNetTables.GetTableValue("settings", "draft_mode")["draftMode"];
+function OnSettingsChanged() {
+  var numRounds = CustomNetTables.GetTableValue("settings", "num_rounds")[
+    "numRounds"
+  ];
+  var botsEnabled =
+    CustomNetTables.GetTableValue("settings", "bots_enabled")["botsEnabled"] ==
+    1;
+  var draftMode = CustomNetTables.GetTableValue("settings", "draft_mode")[
+    "draftMode"
+  ];
 
   $("#RoundsToWinLabel").text = numRounds;
-  if (botsEnabled)
-    $("#AllowBotsLabel").text = $.Localize("#yes");
-  else
-    $("#AllowBotsLabel").text = $.Localize("#no");
+  if (botsEnabled) $("#AllowBotsLabel").text = $.Localize("#yes");
+  else $("#AllowBotsLabel").text = $.Localize("#no");
 
   switch (draftMode) {
     case "1": //All pick
@@ -61,22 +58,23 @@ function OnSettingsChanged()
   }
 }
 
-function OnPlayerVoteChanged(table_name, key, value)
-{
+function OnPlayerVoteChanged(table_name, key, value) {
   const draftModeVoteKey = "vote_draft_mode_";
   if (!key.startsWith(draftModeVoteKey)) return;
 
   var draftModeVotes = {};
 
   for (let playerID = 0; playerID < 8; playerID++) {
-    var draftModeVote = CustomNetTables.GetTableValue("settings", draftModeVoteKey + playerID);
+    var draftModeVote = CustomNetTables.GetTableValue(
+      "settings",
+      draftModeVoteKey + playerID
+    );
     if (!draftModeVote) continue;
 
     var draftModeVoteIndex = draftModeVote["vote"];
     if (draftModeVotes[draftModeVoteIndex] != null) {
       draftModeVotes[draftModeVoteIndex]++;
-    }
-    else {
+    } else {
       draftModeVotes[draftModeVoteIndex] = 1;
     }
   }
@@ -84,15 +82,18 @@ function OnPlayerVoteChanged(table_name, key, value)
   SetDraftModeVoteTexts(draftModeVotes);
 }
 
-function SetDraftModeVoteTexts(draftModeVotes)
-{
+function SetDraftModeVoteTexts(draftModeVotes) {
   var draftVotesPanel = $("#draft_votes_panel");
   draftVotesPanel.RemoveAndDeleteChildren();
 
   for (const [draftMode, votes] of Object.entries(draftModeVotes)) {
-    if(draftMode == "-1") continue;
+    if (draftMode == "-1") continue;
 
-    let draftVotePanel = $.CreatePanel("Label", draftVotesPanel, "draft_vote_" + draftMode);
+    let draftVotePanel = $.CreatePanel(
+      "Label",
+      draftVotesPanel,
+      "draft_vote_" + draftMode
+    );
     draftVotePanel.AddClass("draft-vote-text");
 
     switch (draftMode) {
@@ -110,8 +111,7 @@ function SetDraftModeVoteTexts(draftModeVotes)
   }
 }
 
-(function ()
-{
+(function () {
   SetUpdateDate();
   CustomNetTables.SubscribeNetTableListener("settings", OnSettingsChanged);
   CustomNetTables.SubscribeNetTableListener("settings", OnPlayerVoteChanged);

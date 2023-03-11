@@ -1,6 +1,6 @@
 function hasbit(x, p)
   if type(x) == "userdata" then x = tonumber(tostring(x)) end
-  return x % (p + p) >= p       
+  return x % (p + p) >= p
 end
 
 function GetOpposingTeam(team)
