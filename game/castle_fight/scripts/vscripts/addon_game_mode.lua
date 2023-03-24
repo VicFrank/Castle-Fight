@@ -171,6 +171,7 @@ function GameMode:InitGameMode()
   CustomGameEventManager:RegisterListener('draw_vote', OnVoteDraw)
   CustomGameEventManager:RegisterListener('num_rounds_vote', OnNumRoundsVote)
   CustomGameEventManager:RegisterListener('bots_vote', OnAllowBotsVote)
+  CustomGameEventManager:RegisterListener('treasure_box_vote', OnAllowTreasureBoxVote)
   CustomGameEventManager:RegisterListener('draft_mode_vote', OnDraftModeVote)
 
   -- Filters
@@ -217,6 +218,7 @@ function GameMode:InitGameMode()
   GameRules.drawVotes = {}
   GameRules.numRoundsVotes = {}
   GameRules.allowBotsVote = {}
+  GameRules.allowTreasureBoxVote = {}
   GameRules.draftMode = {}
   GameRules.ggVote = {}
 
@@ -253,6 +255,9 @@ function GameMode:InitGameMode()
   CustomNetTables:SetTableValue("settings", "bots_enabled", {
     botsEnabled = false
   })
+  CustomNetTables:SetTableValue("settings", "treasure_box_enabled", {
+    treasureBoxEnabled = false
+  })  
   CustomNetTables:SetTableValue("settings", "draft_mode", {
     draftMode = 1
   })

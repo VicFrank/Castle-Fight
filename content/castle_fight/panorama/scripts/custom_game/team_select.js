@@ -32,6 +32,13 @@ function VoteOptionClickedDraftMode() {
   GameEvents.SendCustomGameEventToServer("draft_mode_vote", { id: id });
 }
 
+function VoteOptionClickedTreasureBoxMode() {
+  var panel = $("#TreasureBoxModeVoteDropdown");
+  var id = panel.GetSelected().id;
+  var allowTreasureBox = id == 1;
+  GameEvents.SendCustomGameEventToServer("treasure_box_vote", { allowTreasureBox: allowTreasureBox });
+}
+
 //--------------------------------------------------------------------------------------------------
 // Handeler for when the unssigned players panel is clicked that causes the player to be reassigned
 // to the unssigned players team
@@ -303,12 +310,19 @@ function UpdateTimer() {
 }
 
 function OnSettingsChanged() {
-  const settings = CustomNetTables.GetTableValue("settings", "bots_enabled");
-  if (settings) {
-    $.Msg(settings);
-    const botsEnabled = settings.botsEnabled;
+  const botsEnabledSettings = CustomNetTables.GetTableValue("settings", "bots_enabled");
+  if (botsEnabledSettings) {
+    $.Msg(botsEnabledSettings);
+    const botsEnabled = botsEnabledSettings.botsEnabled;
     $.GetContextPanel().SetHasClass("bots_not_enabled", botsEnabled == 0);
   }
+
+  const treasureBoxEnabledSettings = CustomNetTables.GetTableValue("settings", "treasure_box_enabled");
+  if (treasureBoxEnabledSettings) {
+    $.Msg(treasureBoxEnabledSettings);
+    const treasureBoxEnabled = treasureBoxEnabledSettings.treasureBoxEnabled;
+    $.GetContextPanel().SetHasClass("treasure_box_not_enabled", treasureBoxEnabled == 0);
+  }  
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -316,6 +330,7 @@ function OnSettingsChanged() {
 //--------------------------------------------------------------------------------------------------
 (function () {
   $.GetContextPanel().SetHasClass("bots_not_enabled", true);
+  $.GetContextPanel().SetHasClass("treasure_box_not_enabled", true);
   CustomNetTables.SubscribeNetTableListener("settings", OnSettingsChanged);
 
   let bShowSpectatorTeam = false;

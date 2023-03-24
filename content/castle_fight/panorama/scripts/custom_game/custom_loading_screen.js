@@ -40,10 +40,16 @@ function OnSettingsChanged() {
   var draftMode = CustomNetTables.GetTableValue("settings", "draft_mode")[
     "draftMode"
   ];
+  var treasureBoxEnabled = 
+    CustomNetTables.GetTableValue("settings", "treasure_box_enabled")["treasureBoxEnabled"] == 1;
 
   $("#RoundsToWinLabel").text = numRounds;
+  
   if (botsEnabled) $("#AllowBotsLabel").text = $.Localize("#yes");
   else $("#AllowBotsLabel").text = $.Localize("#no");
+
+  if (treasureBoxEnabled) $("#AllowTreasureBoxLabel").text = $.Localize("#yes");
+  else $("#AllowTreasureBoxLabel").text = $.Localize("#no");  
 
   switch (draftMode) {
     case "1": //All pick

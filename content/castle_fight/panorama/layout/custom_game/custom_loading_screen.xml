@@ -63,6 +63,10 @@
 				<Label class="SettingsRowRight" id="AllowBotsLabel" text="#no" />
 			</Panel>
 			<Panel class="SettingsRow">
+				<Label class="SettingsRowLeft" text="Enable Treasure Box" />
+				<Label class="SettingsRowRight" id="AllowTreasureBoxLabel" text="#yes" />				
+			</Panel>
+			<Panel class="SettingsRow">
 				<Label class="SettingsRowLeft" text="#Draft_mode" />
 				<Label class="SettingsRowRight" id="DraftModeLabel" text="#All_pick" />
 			</Panel>
