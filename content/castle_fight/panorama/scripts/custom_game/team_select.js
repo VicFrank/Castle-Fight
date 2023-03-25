@@ -36,7 +36,9 @@ function VoteOptionClickedTreasureBoxMode() {
   var panel = $("#TreasureBoxModeVoteDropdown");
   var id = panel.GetSelected().id;
   var allowTreasureBox = id == 1;
-  GameEvents.SendCustomGameEventToServer("treasure_box_vote", { allowTreasureBox: allowTreasureBox });
+  GameEvents.SendCustomGameEventToServer("treasure_box_vote", {
+    allowTreasureBox: allowTreasureBox,
+  });
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -277,24 +279,24 @@ function UpdateTimer() {
   if ($("#MapInfo"))
     $("#MapInfo").SetDialogVariable("map_name", mapInfo.map_display_name);
 
-  if (transitionTime >= 0) {
-    $("#StartGameCountdownTimer").SetDialogVariableInt(
-      "countdown_timer_seconds",
-      Math.max(0, Math.floor(transitionTime - gameTime))
-    );
-    $("#StartGameCountdownTimer").SetHasClass("countdown_active", true);
-    $("#StartGameCountdownTimer").SetHasClass("countdown_inactive", false);
-  } else {
-    $("#StartGameCountdownTimer").SetHasClass("countdown_active", false);
-    $("#StartGameCountdownTimer").SetHasClass("countdown_inactive", true);
-  }
+  const countdownTimer = $("#StartGameCountdownTimer");
+  if (countdownTimer) {
+    if (transitionTime >= 0) {
+      countdownTimer.SetDialogVariableInt(
+        "countdown_timer_seconds",
+        Math.max(0, Math.floor(transitionTime - gameTime))
+      );
+      countdownTimer.SetHasClass("countdown_active", true);
+      countdownTimer.SetHasClass("countdown_inactive", false);
+    } else {
+      countdownTimer.SetHasClass("countdown_active", false);
+      countdownTimer.SetHasClass("countdown_inactive", true);
+    }
 
-  const autoLaunch = Game.GetAutoLaunchEnabled();
-  $("#StartGameCountdownTimer").SetHasClass("auto_start", autoLaunch);
-  $("#StartGameCountdownTimer").SetHasClass(
-    "forced_start",
-    autoLaunch == false
-  );
+    const autoLaunch = Game.GetAutoLaunchEnabled();
+    countdownTimer.SetHasClass("auto_start", autoLaunch);
+    countdownTimer.SetHasClass("forced_start", autoLaunch == false);
+  }
 
   // Allow the ui to update its state based on team selection being locked or unlocked
   $.GetContextPanel().SetHasClass(
@@ -310,19 +312,28 @@ function UpdateTimer() {
 }
 
 function OnSettingsChanged() {
-  const botsEnabledSettings = CustomNetTables.GetTableValue("settings", "bots_enabled");
+  const botsEnabledSettings = CustomNetTables.GetTableValue(
+    "settings",
+    "bots_enabled"
+  );
   if (botsEnabledSettings) {
     $.Msg(botsEnabledSettings);
     const botsEnabled = botsEnabledSettings.botsEnabled;
     $.GetContextPanel().SetHasClass("bots_not_enabled", botsEnabled == 0);
   }
 
-  const treasureBoxEnabledSettings = CustomNetTables.GetTableValue("settings", "treasure_box_enabled");
+  const treasureBoxEnabledSettings = CustomNetTables.GetTableValue(
+    "settings",
+    "treasure_box_enabled"
+  );
   if (treasureBoxEnabledSettings) {
     $.Msg(treasureBoxEnabledSettings);
     const treasureBoxEnabled = treasureBoxEnabledSettings.treasureBoxEnabled;
-    $.GetContextPanel().SetHasClass("treasure_box_not_enabled", treasureBoxEnabled == 0);
-  }  
+    $.GetContextPanel().SetHasClass(
+      "treasure_box_not_enabled",
+      treasureBoxEnabled == 0
+    );
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -360,18 +371,20 @@ function OnSettingsChanged() {
     allTeamIDs.unshift(g_TEAM_SPECATOR);
   }
 
-  for (const teamId of allTeamIDs) {
-    let teamNode = $.CreatePanel("Panel", teamsListRootNode, "");
-    teamNode.AddClass("team_" + teamId); // team_1, etc.
-    teamNode.SetAttributeInt("team_id", teamId);
-    teamNode.BLoadLayout(
-      "file://{resources}/layout/custom_game/team_select_team.xml",
-      false,
-      false
-    );
+  if (teamsListRootNode) {
+    for (const teamId of allTeamIDs) {
+      const teamNode = $.CreatePanel("Panel", teamsListRootNode, "");
+      teamNode.AddClass("team_" + teamId); // team_1, etc.
+      teamNode.SetAttributeInt("team_id", teamId);
+      teamNode.BLoadLayout(
+        "file://{resources}/layout/custom_game/team_select_team.xml",
+        false,
+        false
+      );
 
-    // Add the team panel to the global list so we can get to it easily later to update it
-    g_TeamPanels.push(teamNode);
+      // Add the team panel to the global list so we can get to it easily later to update it
+      g_TeamPanels.push(teamNode);
+    }
   }
 
   // Automatically assign players to teams.

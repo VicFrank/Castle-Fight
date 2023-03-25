@@ -256,7 +256,7 @@ function GameMode:InitGameMode()
     botsEnabled = false
   })
   CustomNetTables:SetTableValue("settings", "treasure_box_enabled", {
-    treasureBoxEnabled = false
+    treasureBoxEnabled = true
   })  
   CustomNetTables:SetTableValue("settings", "draft_mode", {
     draftMode = 1

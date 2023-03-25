@@ -25,31 +25,29 @@ function OnCreditsClicked() {
 }
 
 function SetUpdateDate() {
-  const lastUpdate = "3/25/2022";
+  const lastUpdate = "3/24/2023";
 
   $("#LatestUpdate").text = lastUpdate;
 }
 
 function OnSettingsChanged() {
-  var numRounds = CustomNetTables.GetTableValue("settings", "num_rounds")[
-    "numRounds"
-  ];
-  var botsEnabled =
-    CustomNetTables.GetTableValue("settings", "bots_enabled")["botsEnabled"] ==
-    1;
-  var draftMode = CustomNetTables.GetTableValue("settings", "draft_mode")[
-    "draftMode"
-  ];
-  var treasureBoxEnabled = 
-    CustomNetTables.GetTableValue("settings", "treasure_box_enabled")["treasureBoxEnabled"] == 1;
+  const numRounds =
+    CustomNetTables.GetTableValue("settings", "num_rounds")?.numRounds ?? 1;
+  const botsEnabled =
+    CustomNetTables.GetTableValue("settings", "bots_enabled")?.botsEnabled == 1;
+  const draftMode =
+    CustomNetTables.GetTableValue("settings", "draft_mode")?.draftMode ?? "1";
+  const treasureBoxEnabled =
+    CustomNetTables.GetTableValue("settings", "treasure_box_enabled")
+      ?.treasureBoxEnabled == 1;
 
   $("#RoundsToWinLabel").text = numRounds;
-  
+
   if (botsEnabled) $("#AllowBotsLabel").text = $.Localize("#yes");
   else $("#AllowBotsLabel").text = $.Localize("#no");
 
   if (treasureBoxEnabled) $("#AllowTreasureBoxLabel").text = $.Localize("#yes");
-  else $("#AllowTreasureBoxLabel").text = $.Localize("#no");  
+  else $("#AllowTreasureBoxLabel").text = $.Localize("#no");
 
   switch (draftMode) {
     case "1": //All pick
