@@ -11,6 +11,9 @@
 *.vxml_c
 *.vjs_c
 *.vcss_c
+*.vanim_c
+*.vmdl_c
+*.vpcf_c
 
 # Map files
 *.vpk

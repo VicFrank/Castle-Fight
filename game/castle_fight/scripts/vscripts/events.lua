@@ -16,11 +16,13 @@ function GameMode:OnGameInProgress()
       -- Record the game settings for stat tracking purposes
       local roundsToWin = tonumber(CustomNetTables:GetTableValue("settings", "num_rounds")["numRounds"])
       local botsEnabled = CustomNetTables:GetTableValue("settings", "bots_enabled")["botsEnabled"]
+      local treasureBoxEnabled = CustomNetTables:GetTableValue("settings", "treasure_box_enabled")["treasureBoxEnabled"]
       local draftMode = CustomNetTables:GetTableValue("settings", "draft_mode")["draftMode"]
       local cheatsEnabled = GameRules:IsCheatMode()
       GameRules.GameData.settings = {
         roundsToWin = roundsToWin,
         allowBots = botsEnabled,
+        allowTreasureBox = treasureBoxEnabled,
         cheatsEnabled = cheatsEnabled,
         draftMode = draftMode,
       }
@@ -143,7 +145,10 @@ function GameMode:OnHeroInGame(hero)
       end
     end
 
-    hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
+    local treasureBoxEnabled = CustomNetTables:GetTableValue("settings", "treasure_box_enabled")["treasureBoxEnabled"]
+    if treasureBoxEnabled == 1 then
+      hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
+    end
     hero:AddItem(CreateItem("item_custom_blink", hero, hero))
 
     -- Stun the hero until the round starts

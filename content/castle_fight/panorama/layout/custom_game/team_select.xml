@@ -69,6 +69,13 @@
                     <Label text="#All_random" id="3"/>
                   </DropDown>
                 </Panel>
+                <Panel id="TreasureBoxVote" class="OptionsContainer">
+                  <Label text="Treasure Box"/>
+                  <DropDown id="TreasureBoxModeVoteDropdown" oninputsubmit="VoteOptionClickedTreasureBoxMode()">
+                    <Label text="Yes" id="1"/>                  
+                    <Label text="No" id="2"/>          
+                  </DropDown>
+                </Panel>                
               </Panel>
               <Panel id="OptionDivider" />
               <Label id="Advanced" text="#Advanced" onactivate="OnAdvancedOptionsPressed()"/>

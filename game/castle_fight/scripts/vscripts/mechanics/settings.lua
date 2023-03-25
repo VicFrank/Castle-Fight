@@ -179,6 +179,20 @@ function OnAllowBotsVote(eventSourceIndex, args)
   })
 end
 
+function OnAllowTreasureBoxVote(eventSourceIndex, args)
+  local playerID = args.PlayerID
+  local allowTreasureBox = args.allowTreasureBox == 1
+
+  GameRules.allowTreasureBoxVote[playerID] = allowTreasureBox
+
+  local result = GetVoteResult(GameRules.allowTreasureBoxVote, false)
+  
+  CustomNetTables:SetTableValue("settings", "treasure_box_enabled", {
+    treasureBoxEnabled = result
+  })
+end
+
+
 function OnDraftModeVote(eventSourceIndex, args)
     local playerID = args.PlayerID
     local draftMode = args.id
