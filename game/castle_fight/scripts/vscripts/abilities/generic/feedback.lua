@@ -57,7 +57,7 @@ function modifier_feedback_custom:OnAttackLanded(keys)
 
       local manaToBurn = math.min(self.mana_burn, target:GetMana())
 
-      target:ReduceMana(manaToBurn)
+      target:Script_ReduceMana(manaToBurn, self:GetAbility())
       SendOverheadEventMessage(nil, OVERHEAD_ALERT_MANA_LOSS, target, manaToBurn, nil)
 
       local damageTable = {
