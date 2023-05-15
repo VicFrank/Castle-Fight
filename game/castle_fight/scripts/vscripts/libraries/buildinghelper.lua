@@ -1037,7 +1037,7 @@ function BuildingHelper:UpgradeBuilding(building, newName)
     -- Kill the old building
     building:AddEffects(EF_NODRAW) --Hide it, so that it's still accessible after this script
     building.upgraded = true --Skips visual effects
-    building:ForceKill(true) --This will call RemoveBuilding
+    ForceKill(building)
 
     -- Create the new building
     local new_building = BuildingHelper:PlaceBuilding(playerID, newName, position, BuildingHelper:GetConstructionSize(newName), BuildingHelper:GetBlockPathingSize(newName), angle)
@@ -1303,7 +1303,7 @@ function BuildingHelper:StartBuilding(builder)
 
                         -- Consume Builder
                         if bConsumesBuilder then
-                            builder:ForceKill(true)
+                            ForceKill(builder)
                         else
                             BuildingHelper:ShowBuilder(builder)
                         end

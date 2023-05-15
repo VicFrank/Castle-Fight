@@ -51,7 +51,7 @@ function present_of_chaos:OnSpellStart()
         target
       )
     )
-    target:ForceKill(false)
+    ForceKill(target)
   elseif option == "DEATH" then
     PlayPACrit(caster, target)
     target:Kill(ability, caster)

@@ -79,7 +79,7 @@ function modifier_mine:OnIntervalThink()
       end
     end
   
-    self:GetParent():ForceKill(false)
+    ForceKill(self:GetParent())
     self:Destroy()
   end
 end

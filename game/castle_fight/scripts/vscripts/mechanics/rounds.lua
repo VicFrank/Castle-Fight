@@ -251,7 +251,7 @@ function GameMode:KillAllUnitsAndBuildings()
     if numSweeps <= 0 then return end
     for _,unit in pairs(FindAllUnits()) do
       if not unit:IsHero() then
-        unit:ForceKill(false)
+        ForceKill(unit)
       end
     end
 

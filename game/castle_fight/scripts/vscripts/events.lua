@@ -194,12 +194,12 @@ function GameMode:OnHeroInGame(hero)
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
     -- Precache this race
       if not GameRules.precached[unitName] and g_Precache_Tables[unitName] then
-        for _,unit in ipairs(g_Precache_Tables[unitName]) do
+        for _,unitToPrecache in ipairs(g_Precache_Tables[unitName]) do
           GameRules.numToCache = GameRules.numToCache + 1
 
-          PrecacheUnitByNameAsync(unit, function(unit)
+          PrecacheUnitByNameAsync(unitToPrecache, function(unit)
             GameRules.numToCache = GameRules.numToCache - 1
-            print(GameRules.numToCache)
+            print(GameRules.numToCache, unitToPrecache)
            end)
         end
 

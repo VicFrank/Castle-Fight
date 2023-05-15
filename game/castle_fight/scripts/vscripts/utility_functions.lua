@@ -13,6 +13,10 @@ function GetOpposingTeam(team)
   return DOTA_TEAM_NEUTRALS
 end
 
+function ForceKill(unit)
+  unit:Kill(nil, nil)
+end
+
 function heroToRace(heroname)
   if heroname == "npc_dota_hero_kunkka" then
     return "Human"

@@ -54,7 +54,7 @@ function modifier_manta_invulnerable:OnDestroy()
   local currentIllusion = self:GetAbility().currentIllusion
 
   if IsValidAlive(currentIllusion) then
-    currentIllusion:ForceKill(false)
+    ForceKill(currentIllusion)
   end
     
   self.outgoing_damage = self:GetAbility():GetSpecialValueFor("illusion_damage_out_pct")

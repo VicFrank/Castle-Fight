@@ -33,8 +33,13 @@ function item_building_self_destruct:OnSpellStart()
   ParticleManager:SetParticleControl(particle, 2, Vector(explosion_range, 1, 1))
   ParticleManager:ReleaseParticleIndex(particle)
 
+  if caster.construction_particle then 
+      ParticleManager:DestroyParticle(caster.construction_particle, false)
+      caster.construction_particle = nil
+  end
+  
   caster:AddEffects(EF_NODRAW)
-  caster:ForceKill(true)
+  caster:Kill(nil, nil)
 end
 
 modifier_self_destruct = class({})
@@ -51,7 +56,7 @@ function modifier_self_destruct:OnTakeDamage( keys )
   local parent = self:GetParent()
   local unit = keys.unit
 
-  if parent == unit and keys.attacker:GetTeam() ~= parent:GetTeam() then
+  if parent == unit and keys.attacker and keys.attacker:GetTeam() ~= parent:GetTeam() then
     ability:StartCooldown(5)
   end
 end

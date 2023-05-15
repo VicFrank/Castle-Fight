@@ -44,5 +44,5 @@ function hells_fist:OnSpellStart()
   ParticleManager:ReleaseParticleIndex(particle)
 
   target:AddEffects(EF_NODRAW)
-  target:ForceKill(false)
+  ForceKill(target)
 end

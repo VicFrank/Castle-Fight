@@ -213,7 +213,8 @@ function CancelBuilding( keys )
         BuildingHelper:ShowBuilder(builder)
     end
 
-    building:ForceKill(true) --This will call RemoveBuilding
+    building:AddNoDraw()
+    ForceKill(building) --This will call RemoveBuilding
 end
 
 -- Requires notifications library from bmddota/barebones
