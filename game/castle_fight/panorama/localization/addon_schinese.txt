@@ -18,7 +18,7 @@
   "chaos"           "混沌"
   "mech"            "机械"
   "corrupted"       "堕落"
-  "elementals"      "元素"
+  "elemental"       "元素"
 
   "human_description"           "人类擅长制造廉价的单位来击溃敌人。他们拥有高射炮和防御塔。"
 
@@ -42,7 +42,7 @@
 
   "mech_description"          "聪明的工匠和哥布林技师组建了自己的军队。他们的单位拥有强大的溅射攻击和护甲，但没有魔法和远程单位。防御塔可以攻击多个单位。"
 
-  "elementals_description"     "元素是自宇宙之处最古老的种族。他们的单位强大但昂贵。可以缩短训练单位的时间。拥有防御塔。"
+  "elemental_description"     "元素是自宇宙之处最古老的种族。他们的单位强大但昂贵。可以缩短训练单位的时间。拥有防御塔。"
 
   "random_description"         "随机选择种族。"
 
@@ -64,6 +64,7 @@
   "lumber_tip"               "木材通过建造训练单位的建筑来获得。"
   "gold_tip"                 "金币从击杀敌人而来和利息而来。"
   "round"                        "回合"
+  "Round"                        "回合"
   "victory"                      "胜利"
   "base_interest"                "基本利息"
   "interest_from_buildings"      "建筑利息"
@@ -75,6 +76,7 @@
   "offer_draw"                   "提议和局"
   "draw"                         "和局"
   "reject"                       "拒绝"
+  "Advanced"                     "高級"
 
   "Latest_Update"                "最近更新"
   "Vote_Options"                 "投票选项"
@@ -82,14 +84,28 @@
   "Yes"                          "是"
   "No"                           "否"
   "Rounds_to_win"                "胜利所需回合"
+  "Draft_mode"                   "征召模式"
+  "No_opinion"                   "无选项"
+  "All_pick"                     "全种族选择"
+  "Single_draft"                 "单一征召"
+  "All_random"                   "全种族随机"
+  "Round"                        "回合"
+  "Round_1"                      "回合 1"
+  "Info"                         "资讯"
+  "Tips"                         "提示"
+  "Settings"                     "设置"
+  "Discord"                      "Discord"
+  "Workshop"                     "创意工坊"
 
-  "Credits"                      "Credits"
+
+  "Credits"                      "特别鸣谢"
   "Credits_Description"          "感谢以下人员对城堡战争的贡献"
   "Credits_Flam3s"               "Flam3s: UI"
   "Credits_Myll"                 "Noya/Myll: Building Helper"
   "Credits_Noya"                 "Noya: Dotacraft"
-  "Credits_GeFire"               "GeFire: Russian Translation"
-  "Credits_東風谷早苗"            "東風谷早苗, 赵怜, 玄武: Chinese translation"
+  "Credits_GeFire"               "GeFire: 俄语翻译"
+  "Credits_東風谷早苗"            "東風谷早苗, 赵怜, 玄武: 中文翻译"
+  "Credits_Napoqe"               "Napoqe: 巴西葡萄牙语翻译"
   "Credits_VicFrank"             "VicFrank"
   "Credits_Radar"                "radar: Play Battleships"
   "Credits_sim"                  "sim<>n[a]: Many cosmetic changes"
