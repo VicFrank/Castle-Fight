@@ -67,6 +67,10 @@
 				<Label class="SettingsRowRight" id="AllowTreasureBoxLabel" text="#yes" />				
 			</Panel>
 			<Panel class="SettingsRow">
+				<Label class="SettingsRowLeft" text="Enable Caging" />
+				<Label class="SettingsRowRight" id="AllowCagingLabel" text="#yes" />				
+			</Panel>
+			<Panel class="SettingsRow">
 				<Label class="SettingsRowLeft" text="#Draft_mode" />
 				<Label class="SettingsRowRight" id="DraftModeLabel" text="#All_pick" />
 			</Panel>

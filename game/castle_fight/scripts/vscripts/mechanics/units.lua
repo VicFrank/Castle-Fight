@@ -270,14 +270,37 @@ function GetRandomVisibleEnemyWithFilter(team, filter)
   return GetRandomTableElement(filteredEnemies)
 end
 
+function GetEnemyCastle(team)
+  if team == DOTA_TEAM_GOODGUYS then
+    return GameRules.rightCastlePosition - Vector(300,128,0)
+  else
+    return GameRules.leftCastlePosition - Vector(300,128,0)
+  end
+end
+
 function CreateLaneUnit(unitname, position, team, playerID)
   local unit = CreateUnitByName(unitname, position, true, nil, nil, team)
   unit.playerID = playerID
   if not playerID then
     print(unitname .. " created without playerID")
   end
-  -- local playerName = PlayerResource:GetPlayerName(playerID)
-  -- unit:SetCustomHealthLabel(playerName, 255, 255, 255)
+
+  -- Anti-caging check
+  local cagingEnabled = CustomNetTables:GetTableValue("settings", "caging_enabled")["caging"]
+  if cagingEnabled ~= 1 then
+    Timers:CreateTimer(function()
+      if unit:IsFlyingUnit() then return end
+      if IsValidAlive(unit) then
+        local distance = GridNav:FindPathLength(unit:GetAbsOrigin(), GetEnemyCastle(team))
+        if distance < 0 then
+          -- spawn the unit at the enemy team's goal
+          local friedlyCastle = GetEnemyCastle(GetOpposingTeam(team))
+          FindClearSpaceForUnit(unit, friedlyCastle, true)
+        end
+      end
+    end)
+  end
+
   return unit
 end
 

@@ -192,6 +192,19 @@ function OnAllowTreasureBoxVote(eventSourceIndex, args)
   })
 end
 
+function OnAllowCagingVote(eventSourceIndex, args)
+  local playerID = args.PlayerID
+  local allowCaging = args.allowCaging == 1
+
+  GameRules.allowCagingVote[playerID] = allowCaging
+
+  local result = GetVoteResult(GameRules.allowCagingVote, false)
+  
+  CustomNetTables:SetTableValue("settings", "caging_enabled", {
+    caging = result
+  })
+end
+
 
 function OnDraftModeVote(eventSourceIndex, args)
     local playerID = args.PlayerID

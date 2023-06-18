@@ -40,6 +40,8 @@ function OnSettingsChanged() {
   const treasureBoxEnabled =
     CustomNetTables.GetTableValue("settings", "treasure_box_enabled")
       ?.treasureBoxEnabled == 1;
+  const cagingEnabled =
+    CustomNetTables.GetTableValue("settings", "caging_enabled")?.caging == 1;
 
   $("#RoundsToWinLabel").text = numRounds;
 
@@ -48,6 +50,9 @@ function OnSettingsChanged() {
 
   if (treasureBoxEnabled) $("#AllowTreasureBoxLabel").text = $.Localize("#yes");
   else $("#AllowTreasureBoxLabel").text = $.Localize("#no");
+
+  if (cagingEnabled) $("#AllowCagingLabel").text = $.Localize("#yes");
+  else $("#AllowCagingLabel").text = $.Localize("#no");
 
   switch (draftMode) {
     case "1": //All pick

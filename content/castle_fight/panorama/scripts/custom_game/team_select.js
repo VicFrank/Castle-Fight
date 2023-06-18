@@ -5,39 +5,48 @@ var g_TeamPanels = [];
 
 // Global list of panels representing each of the players (1 per-player). These are reparented
 // to the appropriate team panel to indicate which team the player is on.
-var g_PlayerPanels = [];
+const g_PlayerPanels = [];
 
-var g_TEAM_SPECATOR = 1;
+const g_TEAM_SPECATOR = 1;
 
 function OnAdvancedOptionsPressed() {
   Game.EmitSound("ui.profile_close");
 }
 
 function VoteOptionClickedRound() {
-  var panel = $("#NumRoundsDropdown");
-  var id = panel.GetSelected().id;
+  const panel = $("#NumRoundsDropdown");
+  const id = panel.GetSelected().id;
   GameEvents.SendCustomGameEventToServer("num_rounds_vote", { numRounds: id });
 }
 
 function VoteOptionClickedBots() {
-  var panel = $("#EnableBotsDropdown");
-  var id = panel.GetSelected().id;
-  var allowBots = id == 1;
+  const panel = $("#EnableBotsDropdown");
+  const id = panel.GetSelected().id;
+  const allowBots = id == 1;
   GameEvents.SendCustomGameEventToServer("bots_vote", { allowBots: allowBots });
 }
 
 function VoteOptionClickedDraftMode() {
-  var panel = $("#DraftModeVoteDropdown");
-  var id = panel.GetSelected().id;
+  const panel = $("#DraftModeVoteDropdown");
+  const id = panel.GetSelected().id;
   GameEvents.SendCustomGameEventToServer("draft_mode_vote", { id: id });
 }
 
 function VoteOptionClickedTreasureBoxMode() {
-  var panel = $("#TreasureBoxModeVoteDropdown");
-  var id = panel.GetSelected().id;
-  var allowTreasureBox = id == 1;
+  const panel = $("#TreasureBoxModeVoteDropdown");
+  const id = panel.GetSelected().id;
+  const allowTreasureBox = id == 1;
   GameEvents.SendCustomGameEventToServer("treasure_box_vote", {
     allowTreasureBox: allowTreasureBox,
+  });
+}
+
+function VoteOptionClickedAllowCaging() {
+  const panel = $("#AllowCagingVoteDropdown");
+  const id = panel.GetSelected().id;
+  const allowCaging = id == 1;
+  GameEvents.SendCustomGameEventToServer("caging_vote", {
+    allowCaging: allowCaging,
   });
 }
 

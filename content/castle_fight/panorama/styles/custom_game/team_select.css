@@ -372,7 +372,7 @@
 
 #OptionList {
   width: 400px;
-  height: 230px;
+  height: 260px;
   flow-children: down;
   animation-name: TeamsListAppear;
   animation-duration: 0.75s;

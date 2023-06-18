@@ -17,12 +17,14 @@ function GameMode:OnGameInProgress()
       local roundsToWin = tonumber(CustomNetTables:GetTableValue("settings", "num_rounds")["numRounds"])
       local botsEnabled = CustomNetTables:GetTableValue("settings", "bots_enabled")["botsEnabled"]
       local treasureBoxEnabled = CustomNetTables:GetTableValue("settings", "treasure_box_enabled")["treasureBoxEnabled"]
+      local cagingEnabled = CustomNetTables:GetTableValue("settings", "caging_enabled")["caging"]
       local draftMode = CustomNetTables:GetTableValue("settings", "draft_mode")["draftMode"]
       local cheatsEnabled = GameRules:IsCheatMode()
       GameRules.GameData.settings = {
         roundsToWin = roundsToWin,
         allowBots = botsEnabled,
         allowTreasureBox = treasureBoxEnabled,
+        allowCaging = cagingEnabled,
         cheatsEnabled = cheatsEnabled,
         draftMode = draftMode,
       }

@@ -75,7 +75,14 @@
                     <Label text="Yes" id="1"/>                  
                     <Label text="No" id="2"/>          
                   </DropDown>
-                </Panel>                
+                </Panel>
+                <Panel id="CagingVote" class="OptionsContainer">
+                  <Label text="Caging Allowed"/>
+                  <DropDown id="AllowCagingVoteDropdown" oninputsubmit="VoteOptionClickedAllowCaging()">
+                    <Label text="Yes" id="1"/>                  
+                    <Label text="No" id="2"/>          
+                  </DropDown>
+                </Panel>
               </Panel>
               <Panel id="OptionDivider" />
               <Label id="Advanced" text="#Advanced" onactivate="OnAdvancedOptionsPressed()"/>

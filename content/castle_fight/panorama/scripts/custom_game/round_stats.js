@@ -31,7 +31,7 @@ function OnRoundScoreChanged(table_name, key, data) {
     var steamid = Game.GetPlayerInfo(playerID).player_steamid;
 
     var hero = Players.GetPlayerHeroEntityIndex(playerID);
-    var heroName = $.Localize(Entities.GetUnitName(hero));
+    var heroName = $.Localize(`#${Entities.GetUnitName(hero)}`);
 
     var unitsKilled = data.unitsKilled;
     var buildingsBuilt = data.buildingsBuilt;

@@ -172,6 +172,7 @@ function GameMode:InitGameMode()
   CustomGameEventManager:RegisterListener('num_rounds_vote', OnNumRoundsVote)
   CustomGameEventManager:RegisterListener('bots_vote', OnAllowBotsVote)
   CustomGameEventManager:RegisterListener('treasure_box_vote', OnAllowTreasureBoxVote)
+  CustomGameEventManager:RegisterListener('caging_vote', OnAllowCagingVote)
   CustomGameEventManager:RegisterListener('draft_mode_vote', OnDraftModeVote)
 
   -- Filters
@@ -219,6 +220,7 @@ function GameMode:InitGameMode()
   GameRules.numRoundsVotes = {}
   GameRules.allowBotsVote = {}
   GameRules.allowTreasureBoxVote = {}
+  GameRules.allowCagingVote = {}
   GameRules.draftMode = {}
   GameRules.ggVote = {}
 
@@ -257,7 +259,10 @@ function GameMode:InitGameMode()
   })
   CustomNetTables:SetTableValue("settings", "treasure_box_enabled", {
     treasureBoxEnabled = true
-  })  
+  })
+  CustomNetTables:SetTableValue("settings", "caging_enabled", {
+    caging = true
+  })
   CustomNetTables:SetTableValue("settings", "draft_mode", {
     draftMode = 1
   })

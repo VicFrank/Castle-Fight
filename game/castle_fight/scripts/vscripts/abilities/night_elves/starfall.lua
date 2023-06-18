@@ -48,6 +48,11 @@ function StarfallDamage(ability, position)
 
   local targets = FindEnemiesInRadius(caster, radius, position)
 
+  -- cap the number of targets
+  if #targets > 8 then
+    targets = GetRandomTableElements(targets, 8)
+  end
+
   for _,target in pairs(targets) do
     local timeToDamage = RandomFloat(0.1, wave_interval)
     Timers:CreateTimer(timeToDamage, function()
