@@ -83,7 +83,12 @@
   "Enable_bots"                  "Enable Bots"
   "Yes"                          "Yes"
   "No"                           "No"
+  "auto_assign"                  "Auto Assign"
+  "shuffle_teams"                "Shuffle Teams"
   "Rounds_to_win"                "Rounds to Win"
+  "Rounds_to_win_1"              "1 Round"
+  "Rounds_to_win_2"              "2 Rounds"
+  "Rounds_to_win_3"              "3 Rounds"
   "Draft_mode"                   "Draft mode"
   "No_opinion"                   "No opinion"
   "All_pick"                     "All pick"
@@ -91,6 +96,7 @@
   "All_random"                   "All random"
   "Round"                        "Round"
   "Round_1"                      "Round 1"
+  "Treasure_box"                 "Treasure Box"
   "Info"                         "Info"
   "Tips"                         "Tips"
   "Settings"                     "Settings"
@@ -116,4 +122,10 @@
 
   "Info_Description1"            "Build buildings that train units to fight off the enemy forces. Destroy the enemy castle to win the round."
   "Info_Description2"            "There can be multiple rounds, so make sure not to leave after the first round!"
+
+  "Draw_votes"                   "Draw Votes:"
+  "Accept"                       "Accept"
+  "Reject"                       "Reject"
+  "Draw_west"                    "West: "
+  "Draw_east"                    "East: "
 }

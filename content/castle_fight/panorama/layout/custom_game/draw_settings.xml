@@ -8,18 +8,18 @@
   </scripts>
   <Panel class="DrawSettingsRoot" hittest="false">
     <Panel id="DrawStatusPanel">
-      <Label id="DrawHeader" text="Draw Votes:" />
+      <Label id="DrawHeader" text="#Draw_votes" />
       <Panel class="DrawVoteRow" >
-        <Label id="AcceptHeader" class="DrawVotes" text="Accept" />
-        <Label id="RejectHeader" class="DrawVotes" text="Reject" />
+        <Label id="AcceptHeader" class="DrawVotes" text="#Accept" />
+        <Label id="RejectHeader" class="DrawVotes" text="#Reject" />
       </Panel>
       <Panel class="DrawVoteRow" >
-        <Label class="DrawVotes TeamLabel" text="West: " />
+        <Label class="DrawVotes TeamLabel" text="#Draw_west" />
         <Label id="WestDrawVotes" class="DrawVotes AcceptVotes" text="" />
         <Label id="WestRejectVotes" class="DrawVotes RejectVotes" text="" />
       </Panel>
       <Panel class="DrawVoteRow" >
-        <Label class="DrawVotes TeamLabel" text="East: " />
+        <Label class="DrawVotes TeamLabel" text="#Draw_east" />
         <Label id="EastDrawVotes" class="DrawVotes AcceptVotes" text="" />
         <Label id="EastRejectVotes" class="DrawVotes RejectVotes" text="" />
       </Panel>

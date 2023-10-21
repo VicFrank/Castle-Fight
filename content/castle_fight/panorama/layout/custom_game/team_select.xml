@@ -27,10 +27,10 @@
         </Panel>
       </Panel>
       <Panel class="AutoAssignButtonNew" hittest="true" onactivate="OnAutoAssignPressed()">
-        <Label id="AssignLabel" text="Auto Assign" />
+        <Label id="AssignLabel" text="#auto_assign" />
       </Panel>
       <Panel class="ShuffleTeamAssignmentButtonNew" hittest="true" onactivate="OnShufflePlayersPressed()">
-        <Label id="AssignLabel" text="Shuffle Teams" />
+        <Label id="AssignLabel" text="#shuffle_teams" />
       </Panel>
       <!--Teams List, left hand panel-->
       <Panel id="TeamsList" >
@@ -48,20 +48,20 @@
                 <Panel class="OptionsContainer">
                   <Label text="#Rounds_to_win"/>
                   <DropDown id="NumRoundsDropdown" oninputsubmit="VoteOptionClickedRound()">
-                    <Label text="1 Round" id="1"/>
-                    <Label text="2 Rounds" id="2"/>
-                    <Label text="3 Rounds" id="3"/>
+                    <Label text="#Rounds_to_win_1" id="1"/>
+                    <Label text="#Rounds_to_win_2" id="2"/>
+                    <Label text="#Rounds_to_win_3" id="3"/>
                   </DropDown>
                 </Panel>
                 <Panel class="OptionsContainer">
                   <Label text="#Enable_bots"/>
                   <DropDown id="EnableBotsDropdown" oninputsubmit="VoteOptionClickedBots()">
-                    <Label text="No" id="2"/>
-                    <Label text="Yes" id="1"/>
+                    <Label text="#No" id="2"/>
+                    <Label text="#Yes" id="1"/>
                   </DropDown>   
                 </Panel>
                 <Panel id="DraftModeVote" class="OptionsContainer">
-                  <Label text="Draft Mode"/>
+                  <Label text="#Draft_mode"/>
                   <DropDown id="DraftModeVoteDropdown" oninputsubmit="VoteOptionClickedDraftMode()">
                     <Label text="#No_opinion" id="-1"/>
                     <Label text="#All_pick" id="1"/>
@@ -70,10 +70,10 @@
                   </DropDown>
                 </Panel>
                 <Panel id="TreasureBoxVote" class="OptionsContainer">
-                  <Label text="Treasure Box"/>
+                  <Label text="#Treasure_box"/>
                   <DropDown id="TreasureBoxModeVoteDropdown" oninputsubmit="VoteOptionClickedTreasureBoxMode()">
-                    <Label text="Yes" id="1"/>                  
-                    <Label text="No" id="2"/>          
+                    <Label text="#Yes" id="1"/>                  
+                    <Label text="#No" id="2"/>          
                   </DropDown>
                 </Panel>
                 <Panel id="CagingVote" class="OptionsContainer">
