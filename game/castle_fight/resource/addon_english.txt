@@ -2517,9 +2517,9 @@
 
 "DOTA_Tooltip_Ability_upgrade_altar_of_blaze"    "Upgrade Altar of Blaze"
 "DOTA_Tooltip_Ability_upgrade_altar_of_blaze_Lore"    "Upgrades: 1"
-"DOTA_Tooltip_Ability_upgrade_altar_of_blaze_Description"    "<h1>Greater Fire ELemental</h1>Attack: Chaos (450 range)<br>Armor: Heavy\n\n<h1>Abilities</h1>- Split (15 attacks)<br>- Fire Breath (20%%, 100 dmg)"
+"DOTA_Tooltip_Ability_upgrade_altar_of_blaze_Description"    "<h1>Greater Fire ELemental</h1>Attack: Chaos (450 range)<br>Armor: Heavy\n\n<h1>Abilities</h1>- Split (13 attacks)<br>- Fire Breath (20%%, 100 dmg)"
 "DOTA_Tooltip_Ability_train_greater_fire_elemental"    "Train Greater Fire Elemental"
-"DOTA_Tooltip_Ability_train_greater_fire_elemental_Description"    "<h1>Greater Fire ELemental</h1>Attack: Chaos (450 range)<br>Armor: Heavy\n\n<h1>Abilities</h1>- Split (15 attacks)<br>- Fire Breath (20%%, 100 dmg)"
+"DOTA_Tooltip_Ability_train_greater_fire_elemental_Description"    "<h1>Greater Fire ELemental</h1>Attack: Chaos (450 range)<br>Armor: Heavy\n\n<h1>Abilities</h1>- Split (13 attacks)<br>- Fire Breath (20%%, 100 dmg)"
 
 "DOTA_Tooltip_Ability_upgrade_tower_of_elder_knowledge"    "Upgrade Tower of Elder Knowledge"
 "DOTA_Tooltip_Ability_upgrade_tower_of_elder_knowledge_Lore"    "Upgrades: 0"

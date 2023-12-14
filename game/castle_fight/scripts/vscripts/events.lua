@@ -195,18 +195,18 @@ function GameMode:OnHeroInGame(hero)
     -- This is so we don't needlessly precache the heroes the bots random
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
     -- Precache this race
-      if not GameRules.precached[unitName] and g_Precache_Tables[unitName] then
-        for _,unitToPrecache in ipairs(g_Precache_Tables[unitName]) do
-          GameRules.numToCache = GameRules.numToCache + 1
+      -- if not GameRules.precached[unitName] and g_Precache_Tables[unitName] then
+      --   for _,unitToPrecache in ipairs(g_Precache_Tables[unitName]) do
+      --     GameRules.numToCache = GameRules.numToCache + 1
 
-          PrecacheUnitByNameAsync(unitToPrecache, function(unit)
-            GameRules.numToCache = GameRules.numToCache - 1
-            print(GameRules.numToCache, unitToPrecache)
-           end)
-        end
+      --     PrecacheUnitByNameAsync(unitToPrecache, function(unit)
+      --       GameRules.numToCache = GameRules.numToCache - 1
+      --       print(GameRules.numToCache, unitToPrecache)
+      --      end)
+      --   end
 
-        GameRules.precached[unitName] = true
-      end
+      --   GameRules.precached[unitName] = true
+      -- end
     end
   end) 
 end

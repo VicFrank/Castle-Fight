@@ -80,7 +80,7 @@ function FireCannon(ability, modifier)
 
       EmitSoundOn(sound_impact, caster)
 
-      AddFOWViewer(casterTeam, target, 160, 3, false)
+      -- AddFOWViewer(casterTeam, target, 160, 3, false)
 
       if not caster:IsNull() then
         SplashAttackGround(caster, target)

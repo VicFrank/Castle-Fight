@@ -214,7 +214,7 @@ function OnTeamPlayerListChanged() {
   // Move all existing player panels back to the unassigned player list
   for (var i = 0; i < g_PlayerPanels.length; ++i) {
     var playerPanel = g_PlayerPanels[i];
-    playerPanel.SetParent(unassignedPlayersContainerNode);
+    if (playerPanel) playerPanel.SetParent(unassignedPlayersContainerNode);
   }
 
   // Make sure all of the unassigned player have a player panel

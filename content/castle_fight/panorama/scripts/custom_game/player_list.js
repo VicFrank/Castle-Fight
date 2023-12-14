@@ -14,7 +14,7 @@ function Initialize() {
 
   let players = [];
 
-  for (let i = 0; i < 8; i++){
+  for (let i = 0; i < 8; i++) {
     if (Game.GetPlayerInfo(i)) {
       let steam_id = Game.GetPlayerInfo(i).player_steamid;
       let team = Players.GetTeam(i);
@@ -23,15 +23,15 @@ function Initialize() {
         steam_id,
         playerID: i,
         team,
-      })
+      });
     }
   }
 
-  players.sort(function(a,b) {
+  players.sort(function (a, b) {
     return a.team - b.team;
   });
 
-  players.forEach(function(playerInfo) {
+  players.forEach(function (playerInfo) {
     let steam_id = playerInfo.steam_id;
     let playerID = playerInfo.playerID;
 
@@ -63,7 +63,7 @@ function CreatePlayerPanel(id, steam_id) {
     `player_avatar_${id}`,
     {
       hittest: false,
-      steamid: steam_id
+      steamid: steam_id,
     }
   );
 
@@ -72,72 +72,128 @@ function CreatePlayerPanel(id, steam_id) {
   AvatarPanel.style.height = "70px";
   AvatarPanel.style.border = "1px solid #373a40";
   AvatarPanel.style.backgroundSize = "100%";
-  AvatarPanel.style.backgroundImage = "url('file://{images}/custom_game/PlayerPanel/user_avatar.png')";
+  AvatarPanel.style.backgroundImage =
+    "url('file://{images}/custom_game/PlayerPanel/user_avatar.png')";
   AvatarPanel.style.horizontalAlign = "left";
 
-  let DisconnectedIcon = $.CreatePanel("Panel", AvatarContainer, "DisconnectedIcon");
-  
+  let DisconnectedIcon = $.CreatePanel(
+    "Panel",
+    AvatarContainer,
+    "DisconnectedIcon"
+  );
+
   $.Schedule(1.0, () => CreateHeroIconPanel(id, AvatarContainer));
 
   let UserInfoContainer = $.CreatePanel("Panel", playerPanel, "user_info" + id);
   UserInfoContainer.AddClass("UserInfoContainer");
 
-  let usernamePanel = $.CreatePanel("DOTAUserName", UserInfoContainer, "Username");
+  let usernamePanel = $.CreatePanel(
+    "DOTAUserName",
+    UserInfoContainer,
+    "Username"
+  );
   usernamePanel.steamid = steam_id;
 
-  let FirstRow = $.CreatePanel("Panel", UserInfoContainer, "first_row_panel" + id);
+  let FirstRow = $.CreatePanel(
+    "Panel",
+    UserInfoContainer,
+    "first_row_panel" + id
+  );
   FirstRow.AddClass("FirstRow");
-  
-  let InterestContainer = $.CreatePanel("Panel", FirstRow, "interest_container" + id);
+
+  let InterestContainer = $.CreatePanel(
+    "Panel",
+    FirstRow,
+    "interest_container" + id
+  );
   InterestContainer.AddClass("InterestContainer");
 
-  let InterestIconPanel = $.CreatePanel("Panel", InterestContainer, "interest_icon" + id);
+  let InterestIconPanel = $.CreatePanel(
+    "Panel",
+    InterestContainer,
+    "interest_icon" + id
+  );
   InterestIconPanel.AddClass("InterestIcon");
-  
-  let InterestText = $.CreatePanel("Label", InterestContainer, "interest_text" + id);
+
+  let InterestText = $.CreatePanel(
+    "Label",
+    InterestContainer,
+    "interest_text" + id
+  );
   InterestText.AddClass("InterestText");
   InterestText.text = "+5";
   InterestContainer.style.visibility = "collapse";
-  
+
   var timeToHideIncome = isInEnemyTeam ? 60.0 : 0;
-  $.Schedule(timeToHideIncome, () => {    
-    InterestContainer.style.visibility = "visible";
+  $.Schedule(timeToHideIncome, () => {
+    if (InterestContainer) InterestContainer.style.visibility = "visible";
   });
-  
+
   if (isInEnemyTeam) {
     playerPanel.AddClass("AvatarEnemy");
-  }
-  else {
-    let ResourcesContainer = $.CreatePanel("Panel", playerPanel, "resources_panel" + id);
+  } else {
+    let ResourcesContainer = $.CreatePanel(
+      "Panel",
+      playerPanel,
+      "resources_panel" + id
+    );
     ResourcesContainer.AddClass("ResourcesContainer");
-  
-    let GoldContainer = $.CreatePanel("Panel", ResourcesContainer, "gold_container" + id);
+
+    let GoldContainer = $.CreatePanel(
+      "Panel",
+      ResourcesContainer,
+      "gold_container" + id
+    );
     GoldContainer.AddClass("GoldContainer");
-    
+
     let GoldIconPanel = $.CreatePanel("Panel", GoldContainer, "gold_icon" + id);
     GoldIconPanel.AddClass("GoldIcon");
-    
+
     let GoldIconText = $.CreatePanel("Label", GoldContainer, "gold_text" + id);
     GoldIconText.AddClass("GoldText");
     GoldIconText.text = Players.GetGold(id);
-  
-    let LumberContainer = $.CreatePanel("Panel", ResourcesContainer, "lumber_panel" + id);
+
+    let LumberContainer = $.CreatePanel(
+      "Panel",
+      ResourcesContainer,
+      "lumber_panel" + id
+    );
     LumberContainer.AddClass("LumberContainer");
-    
-    let LumberIconPanel = $.CreatePanel("Panel", LumberContainer, "lumber_icon" + id);
+
+    let LumberIconPanel = $.CreatePanel(
+      "Panel",
+      LumberContainer,
+      "lumber_icon" + id
+    );
     LumberIconPanel.AddClass("LumberIcon");
-    
-    let LumberIconText = $.CreatePanel("Label", LumberContainer, "lumber_text" + id);
+
+    let LumberIconText = $.CreatePanel(
+      "Label",
+      LumberContainer,
+      "lumber_text" + id
+    );
     LumberIconText.AddClass("LumberText");
     LumberIconText.text = "0";
-  
-    let CheeseContainer = $.CreatePanel("Panel", ResourcesContainer, "cheese_panel" + id);
+
+    let CheeseContainer = $.CreatePanel(
+      "Panel",
+      ResourcesContainer,
+      "cheese_panel" + id
+    );
     CheeseContainer.AddClass("CheeseContainer");
-    
-    let CheeseIconPanel = $.CreatePanel("Panel", CheeseContainer, "cheese_icon" + id);
+
+    let CheeseIconPanel = $.CreatePanel(
+      "Panel",
+      CheeseContainer,
+      "cheese_icon" + id
+    );
     CheeseIconPanel.AddClass("CheeseIcon");
-    
-    let CheeseIconText = $.CreatePanel("Label", CheeseContainer, "cheese_text" + id);
+
+    let CheeseIconText = $.CreatePanel(
+      "Label",
+      CheeseContainer,
+      "cheese_text" + id
+    );
     CheeseIconText.AddClass("CheeseText");
     CheeseIconText.text = "1";
   }
@@ -146,69 +202,75 @@ function CreatePlayerPanel(id, steam_id) {
 }
 
 function CreateHeroIconPanel(playerID, AvatarContainer) {
-  var heroName = Players.GetPlayerSelectedHero(playerID)
+  var heroName = Players.GetPlayerSelectedHero(playerID);
 
-  let HeroIconPanel = $.CreatePanel("DOTAHeroImage", AvatarContainer, "hero_icon" + playerID);
+  let HeroIconPanel = $.CreatePanel(
+    "DOTAHeroImage",
+    AvatarContainer,
+    "hero_icon" + playerID
+  );
   HeroIconPanel.AddClass("HeroIconPanel");
   HeroIconPanel.heroname = heroName;
-  HeroIconPanel.heroimagestyle = "icon";  
+  HeroIconPanel.heroimagestyle = "icon";
 }
 
 function UpdatePanels() {
-  for(let i=0; i<playerPanels.length; i++) {
+  for (let i = 0; i < playerPanels.length; i++) {
     const panel = playerPanels[i];
     const playerID = panel.playerID;
-    
-    const connectionState = Game.GetPlayerInfo(playerID).player_connection_state;
-    const isDisconnected = connectionState != DOTAConnectionState_t.DOTA_CONNECTION_STATE_CONNECTED
+
+    const connectionState =
+      Game.GetPlayerInfo(playerID).player_connection_state;
+    const isDisconnected =
+      connectionState != DOTAConnectionState_t.DOTA_CONNECTION_STATE_CONNECTED;
     panel.SetHasClass("Disconnected", isDisconnected);
   }
 
-  $.Schedule(1.0/30.0, UpdatePanels);
+  $.Schedule(1.0 / 30.0, UpdatePanels);
 }
 
 function OnResourcesUpdated(table_name, playerID, resources) {
-  if (!resources) return;  
-  
-  for(let i = 0; i < playerPanels.length; i++) {
+  if (!resources) return;
+
+  for (let i = 0; i < playerPanels.length; i++) {
     let panel = playerPanels[i];
     const panelPlayerID = panel.playerID;
     let playerTeam = Players.GetTeam(panelPlayerID);
     let isInEnemyTeam = LocalTeam != playerTeam;
 
-    if(panelPlayerID == playerID && !isInEnemyTeam) {
-      $('#gold_text' + panelPlayerID).text = Math.floor(resources.gold);
-      $('#cheese_text' + panelPlayerID).text = Math.floor(resources.cheese);
-      $('#lumber_text' + panelPlayerID).text = Math.floor(resources.lumber);
-      
+    if (panelPlayerID == playerID && !isInEnemyTeam) {
+      $("#gold_text" + panelPlayerID).text = Math.floor(resources.gold);
+      $("#cheese_text" + panelPlayerID).text = Math.floor(resources.cheese);
+      $("#lumber_text" + panelPlayerID).text = Math.floor(resources.lumber);
+
       break;
     }
   }
 }
 
-function OnIncomeUpdated(table_name, playerID, income) {  
+function OnIncomeUpdated(table_name, playerID, income) {
   if (!income) return;
-  
-  for(let i = 0; i < playerPanels.length; i++) {
+
+  for (let i = 0; i < playerPanels.length; i++) {
     let panel = playerPanels[i];
     const panelPlayerID = panel.playerID;
 
-    if(panelPlayerID == playerID) {
-      let interestTextPanel = $('#interest_text' + panelPlayerID);
-      if(interestTextPanel) {
+    if (panelPlayerID == playerID) {
+      let interestTextPanel = $("#interest_text" + panelPlayerID);
+      if (interestTextPanel) {
         if (!income.postTaxIncome) {
           income.postTaxIncome = 5;
         }
         interestTextPanel.text = "+" + Math.floor(income.postTaxIncome);
       }
-      
+
       break;
     }
   }
 }
 
 function OnHeroSelectStatusChanged(table_name, key, data) {
-  if(key != "status") return;
+  if (key != "status") return;
 
   if (data && data.ongoing) {
     HidePlayerList();
@@ -220,5 +282,8 @@ function OnHeroSelectStatusChanged(table_name, key, data) {
 (function () {
   CustomNetTables.SubscribeNetTableListener("resources", OnResourcesUpdated);
   CustomNetTables.SubscribeNetTableListener("player_income", OnIncomeUpdated);
-  CustomNetTables.SubscribeNetTableListener("hero_select", OnHeroSelectStatusChanged);
+  CustomNetTables.SubscribeNetTableListener(
+    "hero_select",
+    OnHeroSelectStatusChanged
+  );
 })();

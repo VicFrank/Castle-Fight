@@ -75,6 +75,12 @@ function Precache( context )
   PrecacheItemByNameSync("scroll_of_stone", context)
   PrecacheItemByNameSync("item_building_self_destruct", context)
 
+  for unitName, units in pairs(g_Precache_Tables) do
+    for _,unitToPrecache in ipairs(units) do
+      PrecacheUnitByNameSync(unitToPrecache, context)
+    end
+  end
+
   -- Human Precaches
   -- for _,unitname in ipairs(g_Human_Precache) do
   --   PrecacheUnitByNameSync(unitname, context)

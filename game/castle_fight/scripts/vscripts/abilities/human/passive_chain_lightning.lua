@@ -16,12 +16,14 @@ function modifier_passive_chain_lightning:OnCreated()
   self.ability = self:GetAbility()
   self.parent = self:GetParent()
 
-  self.trigger_chance = self.ability:GetSpecialValueFor("trigger_chance")
-  self.initial_damage = self.ability:GetSpecialValueFor("initial_damage")
-  self.max_targets = self.ability:GetSpecialValueFor("max_targets")
-  self.jump_damage_reduction = self.ability:GetSpecialValueFor("jump_damage_reduction")
-  self.jump_range = self.ability:GetSpecialValueFor("jump_range")
-  self.jump_delay = self.ability:GetSpecialValueFor("jump_delay")
+  if (self.ability) then
+    self.trigger_chance = self.ability:GetSpecialValueFor("trigger_chance")
+    self.initial_damage = self.ability:GetSpecialValueFor("initial_damage")
+    self.max_targets = self.ability:GetSpecialValueFor("max_targets")
+    self.jump_damage_reduction = self.ability:GetSpecialValueFor("jump_damage_reduction")
+    self.jump_range = self.ability:GetSpecialValueFor("jump_range")
+    self.jump_delay = self.ability:GetSpecialValueFor("jump_delay")
+  end
 end
 
 function modifier_passive_chain_lightning:OnRefresh()
