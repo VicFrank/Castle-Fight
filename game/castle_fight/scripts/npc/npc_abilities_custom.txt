@@ -61,33 +61,13 @@
       "soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
     }
 
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"           "FIELD_INTEGER"
-        "initial_damage"     "1000"
-      }
-      "02"
-      {
-        "var_type"           "FIELD_INTEGER"
-        "max_targets"        "10"
-      }
-      "03"
-      {
-        "var_type"                 "FIELD_FLOAT"
-        "jump_damage_reduction"    "0.10"
-      }
-      "04"
-      {
-        "var_type"           "FIELD_INTEGER"
-        "jump_range"         "500"
-      }      
-      "05"
-      {
-        "var_type"           "FIELD_FLOAT"
-        "jump_delay"         "0.25"
-      }
+      "initial_damage"     "1000"
+      "max_targets"        "10"
+      "jump_damage_reduction"    "0.10"
+      "jump_range"         "500"
+      "jump_delay"         "0.25"
     }
   }
 
@@ -112,33 +92,13 @@
       "particle"  "particles/items2_fx/mekanism_recipient.vpcf"
     }
 
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"    "FIELD_INTEGER"
-        "heal"        "400"
-      }
-      "02"
-      {
-        "var_type"    "FIELD_INTEGER"
-        "mana"        "200"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "armor"           "8"
-      }
-      "04"
-      {
-        "var_type"         "FIELD_INTEGER"
-        "duration"         "8"
-      }      
-      "05"
-      {
-        "var_type"         "FIELD_INTEGER"
-        "radius"           "1200"
-      }
+      "heal"        "400"
+      "mana"        "200"
+      "armor"       "8"
+      "duration"    "8"
+      "radius"      "1200"
     }
   }
 
@@ -150,13 +110,9 @@
 
     "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "damage"        "40"
-      }
+      "damage"        "40"
     }
 
     "OnProjectileHitUnit"

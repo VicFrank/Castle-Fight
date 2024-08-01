@@ -55,5 +55,5 @@ function lunatic_goblin_suicide:OnSpellStart()
     end
   end
 
-  caster:Kill(ability, caster)
+  ForceKill(caster)
 end

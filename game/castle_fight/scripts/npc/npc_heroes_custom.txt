@@ -29,6 +29,10 @@
 
     //"AbilityLayout"                 "6"
 
+    "Facets"
+		{
+		}
+
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
     "AttributeBaseIntelligence"     "0"
@@ -78,6 +82,10 @@
     "Ability17"   ""
     "Ability18"   ""
     "Ability19"   ""
+
+    "Facets"
+		{
+		}
 
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
@@ -129,6 +137,10 @@
     "Ability18"   ""
     "Ability19"   ""
 
+    "Facets"
+		{
+		}
+
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
     "AttributeBaseIntelligence"     "0"
@@ -178,6 +190,10 @@
     "Ability17"   ""
     "Ability18"   ""
     "Ability19"   ""
+
+    "Facets"
+		{
+		}
 
     //"AbilityLayout"                 "6"
 
@@ -231,6 +247,10 @@
     "Ability18"   ""
     "Ability19"   ""
 
+    "Facets"
+		{
+		}
+
     //"AbilityLayout"                 "6"
 
     "AttributeBaseStrength"         "0"
@@ -283,6 +303,10 @@
     "Ability18"   ""
     "Ability19"   ""
 
+    "Facets"
+		{
+		}
+
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
     "AttributeBaseIntelligence"     "0"
@@ -332,6 +356,10 @@
     "Ability17"   ""
     "Ability18"   ""
     "Ability19"   ""
+
+    "Facets"
+		{
+		}
 
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
@@ -383,6 +411,10 @@
     "Ability18"   ""
     "Ability19"   ""
 
+    "Facets"
+		{
+		}
+
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
     "AttributeBaseIntelligence"     "0"
@@ -432,6 +464,10 @@
     "Ability17"   ""
     "Ability18"   ""
     "Ability19"   ""
+
+    "Facets"
+		{
+		}
 
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
@@ -483,6 +519,10 @@
     "Ability18"   ""
     "Ability19"   ""
 
+    "Facets"
+		{
+		}
+
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
     "AttributeBaseIntelligence"     "0"
@@ -533,6 +573,10 @@
     "Ability18"   ""
     "Ability19"   ""
 
+    "Facets"
+		{
+		}
+
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"
     "AttributeBaseIntelligence"     "0"
@@ -582,6 +626,10 @@
     "Ability17"   ""
     "Ability18"   ""
     "Ability19"   ""
+
+    "Facets"
+		{
+		}
 
     "AttributeBaseStrength"         "0"
     "AttributeBaseAgility"          "0"

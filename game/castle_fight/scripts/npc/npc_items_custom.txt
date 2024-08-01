@@ -62,18 +62,10 @@
       "particle"  "particles/units/heroes/hero_puck/puck_base_attack.vpcf"
     }
 
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "damage"        "40"
-      }
-      "02"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "radius"        "900"
-      }
+      "damage"        "40"
+      "radius"        "900"
     }
 
     "OnSpellStart"
@@ -120,13 +112,9 @@
     "BaseClass"                     "item_datadriven"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"            "FIELD_FLOAT"
-        "building_regen"      "3.0"
-      }
+      "building_regen"      "3.0"
     }
 
     "OnSpellStart"
