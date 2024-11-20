@@ -1,0 +1,353 @@
+#base "generic/items.kv"
+
+#base "races/humans/items.kv"
+#base "races/naga/items.kv"
+#base "races/nature/items.kv"
+#base "races/night_elves/items.kv"
+#base "races/undead/items.kv"
+#base "races/orc/items.kv"
+#base "races/north/items.kv"
+#base "races/elf/items.kv"
+#base "races/corrupted/items.kv"
+#base "races/chaos/items.kv"
+#base "races/mech/items.kv"
+#base "races/elemental/items.kv"
+
+"DOTAAbilities"
+{
+  "item_custom_blink"
+  {
+    "BaseClass"             "item_lua"
+    "AbilityTextureName"    "item_blink"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+    "ScriptFile"            "items/abilities/custom_blink.lua"
+
+    "AbilityCastRange"        "0"
+    "AbilityCastPoint"        "0.0"
+    "AbilityCooldown"         "5.0"
+    "AbilityManaCost"         "0"
+
+    "ItemCost"              "0"
+    "ItemIsNeutralDrop"     "1"
+    "ItemPurchasable"       "0"
+    "ItemInitiallySellable" "0"
+    "ItemSellable"          "0"
+    "ItemDroppable"         "0"
+  }
+
+  "item_blast_staff"
+  {
+    "AbilityTextureName"            "item_rod_of_atos"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "150"
+    "LumberCost"                "300"
+    "InitialStock"              "1"
+    "RestockTime"               "360"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_puck/puck_base_attack.vpcf"
+    }
+
+    "AbilityValues"
+    {
+      "damage"        "40"
+      "radius"        "900"
+    }
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "BlastStaff"
+      }
+    }
+
+    "OnProjectileHitUnit"
+    {
+      "DeleteOnHit"                           "true"
+      "Damage"
+      {
+        "Type"                                  "DAMAGE_TYPE_MAGICAL"
+        "Damage"                                "%damage"
+        "Target"                                "TARGET"
+      }        
+    }
+  }
+
+  "item_rune_of_repair"
+  {
+    "AbilityTextureName"            "item_holy_locket"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "500"
+    "InitialStock"              "1"
+    "RestockTime"               "180"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "AbilityValues"
+    {
+      "building_regen"      "3.0"
+    }
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "RuneOfRepair"
+      }
+    }
+  }
+
+  "item_scroll_of_stone"
+  {
+    "AbilityTextureName"            "item_mekansm"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "150"
+    "InitialStock"              "2"
+    "RestockTime"               "120"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "ScrollOfStone"
+      }
+    }
+  }
+
+  "item_orb_of_lightning"
+  {
+    "AbilityTextureName"            "item_mjollnir"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "550"
+    "InitialStock"              "1"
+    "RestockTime"               "180"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "OrbOfLightning"
+      }
+    }
+  }
+
+  "item_bassline"
+  {
+    "AbilityTextureName"            "item_ancient_janggo"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "600"
+    "InitialStock"              "1"
+    "RestockTime"               "-1"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "Bassline"
+      }
+    }
+  }
+
+  "item_drums"
+  {
+    "AbilityTextureName"            "item_spirit_vessel"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "650"
+    "InitialStock"              "1"
+    "RestockTime"               "-1"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "Drums"
+      }
+    }
+  }
+
+  "item_double_damage"
+  {
+    "AbilityTextureName"            "item_energy_booster"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "600"
+    "InitialStock"              "1"
+    "RestockTime"               "120"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "DoubleDamage"
+      }
+    }
+  }
+
+  "item_quad_damage"
+  {
+    "AbilityTextureName"            "item_soul_booster"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "1400"
+    "InitialStock"              "1"
+    "RestockTime"               "120"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "QuadDamage"
+      }
+    }
+  }
+
+  "item_custom_cheese"
+  {
+    "AbilityTextureName"            "item_cheese"
+
+    "ItemSellable"                  "0"
+    "ItemDroppable"                 "0"
+    "ItemPurchasable"               "0"
+
+    "ItemPermanent"             "0"
+    "ItemCastOnPickup"          "1"
+    "ItemInitialCharges"        "1"
+
+    "ItemCost"                  "1500"
+    "InitialStock"              "2"
+    "RestockTime"               "120"
+
+    "BaseClass"                     "item_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "OnSpellStart"
+    {
+      "SpendCharge" 
+      {}
+
+      "RunScript"
+      {
+        "ScriptFile"        "items/item_effects.lua"
+        "Function"          "Cheese"
+      }
+    }
+  }
+}
