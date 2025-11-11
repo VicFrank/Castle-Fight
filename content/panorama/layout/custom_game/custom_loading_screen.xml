@@ -72,7 +72,7 @@
 			</Panel>
 			<Panel class="SettingsRow">
 				<Label class="SettingsRowLeft" text="#Draft_mode" />
-				<Label class="SettingsRowRight" id="DraftModeLabel" text="#All_pick" />
+				<Label class="SettingsRowRight" id="DraftModeLabel" text="#Single_draft" />
 			</Panel>
 			<Panel id="draft_votes_panel">
 

@@ -147,11 +147,13 @@ function GameMode:OnHeroInGame(hero)
       end
     end
 
+    local blink = hero:AddItem(CreateItem("item_custom_blink", hero, hero))
+    hero:SwapItems(DOTA_ITEM_SLOT_5, DOTA_ITEM_NEUTRAL_ACTIVE_SLOT)
+
     local treasureBoxEnabled = CustomNetTables:GetTableValue("settings", "treasure_box_enabled")["treasureBoxEnabled"]
     if treasureBoxEnabled == 1 then
       hero:AddItem(CreateItem("item_build_treasure_box", hero, hero))
     end
-    hero:AddItem(CreateItem("item_custom_blink", hero, hero))
 
     -- Stun the hero until the round starts
     hero:AddNewModifier(hero, nil, "modifier_stunned_custom", {})

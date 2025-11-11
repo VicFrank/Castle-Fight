@@ -466,7 +466,7 @@ DropDownMenu {
   width: 180px;
   height: 40px;
   align: center center;
-  margin-top: -340px;
+  margin-top: -650px;
   margin-right: 5px;
   background-color: gradient(
     linear,
@@ -476,7 +476,7 @@ DropDownMenu {
     to(#486ca9cc)
   );
   background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
-  box-shadow: fill #486ca922 -4px -4px 8px 8px;
+  /* box-shadow: fill #486ca922 -4px -4px 8px 8px; */
   border-top: 1px solid #ffffff03;
   border-left: 1px solid #ffffff03;
 }
@@ -485,7 +485,7 @@ DropDownMenu {
   width: 180px;
   height: 40px;
   align: center center;
-  margin-top: -340px;
+  margin-top: -650px;
   margin-right: -395px;
   background-color: gradient(
     linear,
@@ -495,7 +495,7 @@ DropDownMenu {
     to(#486ca9cc)
   );
   background-image: url("s2r://panorama/images/backgrounds/background_play_button_2x_png.vtex");
-  box-shadow: fill #486ca922 -4px -4px 8px 8px;
+  /* box-shadow: fill #486ca922 -4px -4px 8px 8px; */
   border-top: 1px solid #ffffff03;
   border-left: 1px solid #ffffff03;
 }

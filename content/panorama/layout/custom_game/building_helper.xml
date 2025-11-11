@@ -3,8 +3,5 @@
         <include src="file://{resources}/scripts/clicks.js" />
         <include src="file://{resources}/scripts/building_helper.js" />
     </scripts>
-    <script>
-        $.Msg( "Compiled Building Helper!" );
-    </script>
     <Panel></Panel>
 </root>

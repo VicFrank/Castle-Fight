@@ -66,6 +66,7 @@ function Precache( context )
   PrecacheResource("particle", "particles/econ/generic/generic_timer/generic_timer.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_antimage/antimage_blink_start.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_antimage/antimage_blink_end.vpcf", context)
+  PrecacheResource("particle", "particles/abilities/generic/rescue_strike/rescue_strike.vpcf", context)
 
   -- Precache the heroes
 
@@ -95,9 +96,9 @@ function Activate()
 
   if IsInToolsMode() then
     Timers:CreateTimer(1, function()
-      Tutorial:AddBot("npc_dota_hero_kunkka", "", "", false)
-      Tutorial:AddBot("npc_dota_hero_kunkka", "", "", false)
-      Tutorial:AddBot("npc_dota_hero_kunkka", "", "", true)
+      GameRules:AddBotPlayerWithEntityScript("npc_dota_hero_kunkka", "Bot 1", DOTA_TEAM_GOODGUYS, "", true)
+      GameRules:AddBotPlayerWithEntityScript("npc_dota_hero_kunkka", "Bot 2", DOTA_TEAM_BADGUYS, "", true)
+      GameRules:AddBotPlayerWithEntityScript("npc_dota_hero_kunkka", "Bot 3", DOTA_TEAM_BADGUYS, "", true)
     end)
   end
 end
@@ -270,7 +271,7 @@ function GameMode:InitGameMode()
     caging = true
   })
   CustomNetTables:SetTableValue("settings", "draft_mode", {
-    draftMode = 1
+    draftMode = 2
   })
 end
 
